@@ -19,6 +19,7 @@ function EmployeeModal({
           </div>
           <div className="modal-body">
             <div className="row g-3">
+              {/* Name */}
               <div className="col-md-4">
                 <input
                   type="text"
@@ -46,16 +47,18 @@ function EmployeeModal({
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                 />
               </div>
-              <div className="col-12">
-                <textarea
+
+              {/* Address, Email, Mobile */}
+              <div className="col-md-4">
+                <input
+                  type="text"
                   className="form-control"
                   placeholder="Address"
-                  rows={2}
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                ></textarea>
+                />
               </div>
-              <div className="col-md-6">
+              <div className="col-md-4">
                 <input
                   type="email"
                   className="form-control"
@@ -64,7 +67,7 @@ function EmployeeModal({
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
               </div>
-              <div className="col-md-6">
+              <div className="col-md-4">
                 <input
                   type="text"
                   className="form-control"
@@ -74,6 +77,7 @@ function EmployeeModal({
                 />
               </div>
 
+              {/* Country */}
               <div className="col-md-4">
                 <label className="form-label">Country</label>
                 <select
@@ -94,6 +98,8 @@ function EmployeeModal({
                   ))}
                 </select>
               </div>
+
+              {/* State */}
               <div className="col-md-4">
                 <label className="form-label">State</label>
                 <select
@@ -115,6 +121,8 @@ function EmployeeModal({
                     ))}
                 </select>
               </div>
+
+              {/* District */}
               <div className="col-md-4">
                 <label className="form-label">District</label>
                 <select
@@ -130,94 +138,8 @@ function EmployeeModal({
                 </select>
               </div>
 
-              {/* Gender */}
+              {/* Qualifications, Gender, Languages - Single Row */}
               <div className="col-md-4">
-                <label className="form-label">Gender</label>
-                <div className="d-flex gap-2">
-                  {["Male", "Female"].map(g => (
-                    <div key={g} className="form-check form-check-inline">
-                      <input
-                        type="radio"
-                        className="btn-check"
-                        name="gender"
-                        id={`gender-${g}`}
-                        autoComplete="off"
-                        value={g}
-                        checked={formData.gender === g}
-                        onChange={() => setFormData({ ...formData, gender: g })}
-                      />
-                      <label
-                        className="btn btn-outline-primary btn-sm"
-                        htmlFor={`gender-${g}`}
-                      >
-                        {g}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Religion */}
-              <div className="col-md-4">
-                <label className="form-label">Religion</label>
-                <div className="d-flex gap-2 flex-wrap">
-                  {["Hindu", "Muslim", "Christian"].map(r => (
-                    <div key={r} className="form-check form-check-inline">
-                      <input
-                        type="radio"
-                        className="btn-check"
-                        name="religion"
-                        id={`religion-${r}`}
-                        autoComplete="off"
-                        value={r}
-                        checked={formData.religion === r}
-                        onChange={() => setFormData({ ...formData, religion: r })}
-                      />
-                      <label
-                        className="btn btn-outline-success btn-sm"
-                        htmlFor={`religion-${r}`}
-                      >
-                        {r}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Languages */}
-              <div className="col-md-4">
-                <label className="form-label">Languages</label>
-                <div className="d-flex gap-2 flex-wrap">
-                  {["Hindi", "English", "Other"].map(l => (
-                    <div key={l} className="form-check form-check-inline">
-                      <input
-                        type="checkbox"
-                        className="btn-check"
-                        id={`lang-${l}`}
-                        checked={formData.languages.includes(l)}
-                        onChange={() => {
-                          const exists = formData.languages.includes(l);
-                          setFormData({
-                            ...formData,
-                            languages: exists
-                              ? formData.languages.filter(x => x !== l)
-                              : [...formData.languages, l],
-                          });
-                        }}
-                      />
-                      <label
-                        className="btn btn-outline-warning btn-sm"
-                        htmlFor={`lang-${l}`}
-                      >
-                        {l}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Qualifications */}
-              <div className="col-md-6">
                 <label className="form-label">Qualifications</label>
                 <div className="dropdown">
                   <button
@@ -256,8 +178,64 @@ function EmployeeModal({
                 </div>
               </div>
 
+              <div className="col-md-4">
+                <label className="form-label">Gender</label>
+                <div className="d-flex gap-3">
+                  {["Male", "Female"].map(g => (
+                    <div key={g} className="form-check">
+                      <input
+                        type="radio"
+                        className="form-check-input"
+                        name="gender"
+                        id={`gender-${g}`}
+                        value={g}
+                        checked={formData.gender === g}
+                        onChange={() => setFormData({ ...formData, gender: g })}
+                      />
+                      <label
+                        className="form-check-label fw-semibold text-primary"
+                        htmlFor={`gender-${g}`}
+                      >
+                        {g}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="col-md-4">
+                <label className="form-label">Languages</label>
+                <div className="d-flex gap-3 flex-wrap">
+                  {["Hindi", "English", "Other"].map(l => (
+                    <div key={l} className="form-check">
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        id={`lang-${l}`}
+                        checked={formData.languages.includes(l)}
+                        onChange={() => {
+                          const exists = formData.languages.includes(l);
+                          setFormData({
+                            ...formData,
+                            languages: exists
+                              ? formData.languages.filter(x => x !== l)
+                              : [...formData.languages, l],
+                          });
+                        }}
+                      />
+                      <label
+                        className="form-check-label fw-semibold text-warning"
+                        htmlFor={`lang-${l}`}
+                      >
+                        {l}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               {/* Image Upload */}
-              <div className="col-md-6">
+              <div className="col-md-12">
                 <label className="form-label">Upload Image</label>
                 <input
                   type="file"
