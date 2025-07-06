@@ -4,6 +4,7 @@ import Sample2 from './Pages/Sample2';
 import Sample3 from './Pages/Sample3';
 import Header from './Components/Header';
 import Dashboard from './Pages/Dashboard';
+import Sample4 from './Pages/Sample4';
 
 function Sidebar() {
   const location = useLocation();
@@ -47,6 +48,7 @@ function App() {
             <Route path="/sample1" element={<Sample1 />} />
             <Route path="/sample2" element={<Sample2 />} />
             <Route path="/sample3" element={<Sample3 />} />
+            <Route path="/sample4" element={<Sample4 />} />            
           </Routes>
         </div>
       </div>
