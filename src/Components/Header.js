@@ -27,7 +27,13 @@ function Header() {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/sample4">Sample 4</Link>
-              </li>              
+              </li>  
+              <li className="nav-item">
+                <Link className="nav-link" to="/studentmanage">Student</Link>
+              </li>  
+               <li className="nav-item">
+                <Link className="nav-link" to="/inquiry">Inquiry</Link>
+              </li>            
             </ul>
             <div className="d-flex">
               <button className="btn btn-outline-light me-2" onClick={() => setShowSignup(true)}>

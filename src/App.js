@@ -5,12 +5,14 @@ import Sample3 from './Pages/Sample3';
 import Header from './Components/Header';
 import Dashboard from './Pages/Dashboard';
 import Sample4 from './Pages/Sample4';
+import Student from './Pages/Student';
+import Inquiry from './Pages/Inquiry';
 
 function Sidebar() {
   const location = useLocation();
 
   return (
-    <div className="bg-dark text-light vh-100" style={{ width: "250px" }}>
+    <div className="bg-dark text-light vh-100" style={{ width: "250px"}}>
       <div className="p-3">
         {/* <h4 className="mb-4"><i className="bi bi-grid-fill me-2"></i>Navigation</h4> */}
         <ul className="nav nav-pills flex-column gap-2">
@@ -48,7 +50,9 @@ function App() {
             <Route path="/sample1" element={<Sample1 />} />
             <Route path="/sample2" element={<Sample2 />} />
             <Route path="/sample3" element={<Sample3 />} />
-            <Route path="/sample4" element={<Sample4 />} />            
+            <Route path="/sample4" element={<Sample4 />} /> 
+            <Route path="/studentmanage" element={<Student />} />   
+             <Route path="/inquiry" element={<Inquiry />} />          
           </Routes>
         </div>
       </div>
