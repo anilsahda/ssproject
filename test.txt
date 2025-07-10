@@ -1,0 +1,9 @@
+CHECKING THE ACCESS {
+    IF(YES){
+        PUSH
+    }
+
+    ELSE{
+        NO
+    }
+}
