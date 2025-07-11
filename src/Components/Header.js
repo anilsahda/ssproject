@@ -16,18 +16,7 @@ function Header() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link" to="/sample1">Sample 1</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/sample2">Sample 2</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/sample3">Sample 3</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/sample4">Sample 4</Link>
-              </li>  
+             
               <li className="nav-item">
                 <Link className="nav-link" to="/studentmanage">Student</Link>
               </li>  
