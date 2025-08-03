@@ -4,7 +4,7 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import EmployeeViewModal from "./EmployeeViewModal";
 import EmployeeModal from "./EmployeeModal";
 
-function EmployeeManagement() {
+function Sample4() {
   const countries = [
     { id: 1, name: "India" },
     { id: 2, name: "USA" },
@@ -267,7 +267,4 @@ function EmployeeManagement() {
   );
 }
 
-// 🔹 For brevity, I'll provide EmployeeModal and EmployeeViewModal separately.
-// If you'd like, I will send those next.
-
-export default EmployeeManagement;
+export default Sample4;

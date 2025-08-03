@@ -1,80 +1,62 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import "sweetalert2/dist/sweetalert2.min.css";
 
 function Sample3() {
-  const countries = [
-    { id: 1, name: "India" },
-    { id: 2, name: "USA" },
-  ];
+  const [list, setList] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
 
-  const states = [
-    { id: 1, name: "Maharashtra", countryId: 1 },
-    { id: 2, name: "Gujarat", countryId: 1 },
-    { id: 3, name: "California", countryId: 2 },
-    { id: 4, name: "Texas", countryId: 2 },
-  ];
+  const [id, setId] = useState(0);
+  const [name, setName] = useState("");
+  const [countryId, setCountryId] = useState(0);
+  const [stateId, setStateId] = useState(0);
 
-  const [districts, setDistricts] = useState([]);
+  const [addUpdateModal, setAddUpdateModal] = useState(false);
+  const [viewModal, setViewModal] = useState(false);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
 
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [newDistrictName, setNewDistrictName] = useState("");
-  const [newCountryId, setNewCountryId] = useState(countries[0].id);
-  const [newStateId, setNewStateId] = useState(
-    states.find(s => s.countryId === countries[0].id)?.id || ""
-  );
+  useEffect(() => {
+    setCountries([
+      { id: 1, name: "India" },
+      { id: 2, name: "USA" }
+    ]);
 
-  const [editDistrictId, setEditDistrictId] = useState(null);
-  const [editDistrictName, setEditDistrictName] = useState("");
-  const [editCountryId, setEditCountryId] = useState(countries[0].id);
-  const [editStateId, setEditStateId] = useState(
-    states.find(s => s.countryId === countries[0].id)?.id || ""
-  );
+    setStates([
+      { id: 1, countryId: 1, name: "Madhya Pradesh" },
+      { id: 2, countryId: 1, name: "Maharashtra" },
+      { id: 3, countryId: 2, name: "California" },
+      { id: 4, countryId: 2, name: "Texas" }
+    ]);
 
-  const [viewDistrict, setViewDistrict] = useState(null);
+    setList([
+      { id: 1, countryId: 1, stateId: 1, name: "Bhopal" },
+      { id: 2, countryId: 2, stateId: 3, name: "San Francisco" }
+    ]);
+  }, []);
 
-  const handleAddDistrict = () => {
-    if (newDistrictName.trim() !== "") {
-      const newId = districts.length > 0 ? Math.max(...districts.map(d => d.id)) + 1 : 1;
-      setDistricts([
-        ...districts,
-        { id: newId, name: newDistrictName, countryId: newCountryId, stateId: newStateId },
-      ]);
-      setNewDistrictName("");
-      setNewCountryId(countries[0].id);
-      setNewStateId(states.find(s => s.countryId === countries[0].id)?.id || "");
-      setShowAddModal(false);
+  const handleAddUpdate = () => {
+    if (name.trim() === "" || countryId === 0 || stateId === 0) return;
+
+    if (id === 0) {
+      const newId = list.length > 0 ? Math.max(...list.map((c) => c.id)) + 1 : 1;
+      setList([...list, { id: newId, countryId, stateId, name }]);
+    } else {
+      setList(list.map((c) => (c.id === id ? { id, countryId, stateId, name } : c)));
     }
+
+    Swal.fire({ toast: true, position: "top-end", icon: "success", title: `Data saved successfully!`, showConfirmButton: false, timer: 1500 });
+    setId(0);
+    setCountryId(0);
+    setStateId(0);
+    setName("");
+    setAddUpdateModal(false);
   };
 
-  const handleEditDistrict = (district) => {
-    setEditDistrictId(district.id);
-    setEditDistrictName(district.name);
-    setEditCountryId(district.countryId);
-    setEditStateId(district.stateId);
-  };
-
-  const handleUpdateDistrict = () => {
-    if (editDistrictName.trim() !== "") {
-      setDistricts(
-        districts.map(d =>
-          d.id === editDistrictId
-            ? { ...d, name: editDistrictName, countryId: editCountryId, stateId: editStateId }
-            : d
-        )
-      );
-      setEditDistrictId(null);
-      setEditDistrictName("");
-      setEditCountryId(countries[0].id);
-      setEditStateId(states.find(s => s.countryId === countries[0].id)?.id || "");
-    }
-  };
-
-  const handleDeleteDistrict = (id) => {
-    const district = districts.find(d => d.id === id);
+  const handleDelete = (id) => {
+    const district = list.find((c) => c.id === id);
     Swal.fire({
       title: `Delete "${district.name}"?`,
       text: "This cannot be undone.",
@@ -83,85 +65,68 @@ function Sample3() {
       confirmButtonText: "Delete",
       cancelButtonText: "Cancel",
       confirmButtonColor: "#e74c3c",
-      cancelButtonColor: "#95a5a6",
-      width: "300px",
-      padding: "1em",
-    }).then(result => {
+      cancelButtonColor: "#95a5a6"
+    }).then((result) => {
       if (result.isConfirmed) {
-        setDistricts(districts.filter(d => d.id !== id));
-        Swal.fire({
-          toast: true,
-          position: "top-end",
-          icon: "success",
-          title: `"${district.name}" deleted`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        setList(list.filter((c) => c.id !== id));
+        Swal.fire({ toast: true, position: "top-end", icon: "success", title: `"${district.name}" deleted`, showConfirmButton: false, timer: 1500 });
       }
     });
   };
 
-  const handleExportCSV = () => {
-    const csvRows = [
-      "District,State,Country",
-      ...districts
-        .filter(d => d.name.toLowerCase().includes(searchTerm.toLowerCase()))
-        .map(d => {
-          const stateName = states.find(s => s.id === d.stateId)?.name || "";
-          const countryName = countries.find(c => c.id === d.countryId)?.name || "";
-          return `${d.name},${stateName},${countryName}`;
-        }),
-    ];
-    const blob = new Blob([csvRows.join("\n")], { type: "text/csv" });
+  const handleEdit = (obj) => {
+    setId(obj.id);
+    setCountryId(obj.countryId);
+    setStateId(obj.stateId);
+    setName(obj.name);
+    setAddUpdateModal(true);
+  };
+
+  const handleView = (obj) => {
+    setId(obj.id);
+    setCountryId(obj.countryId);
+    setStateId(obj.stateId);
+    setName(obj.name);
+    setViewModal(true);
+  };
+
+  const handleDownload = () => {
+    const csv = list.map((c) => `${c.id},${countries.find(x => x.id === c.countryId)?.name || ""},${states.find(x => x.id === c.stateId)?.name || ""},${c.name}`).join("\n");
+    const blob = new Blob([`Id,Country,State,District\n${csv}`], { type: "text/csv" });
     const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
     link.download = "districts.csv";
     link.click();
   };
 
-  const filteredDistricts = districts.filter(d =>
-    d.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-  const totalPages = Math.ceil(filteredDistricts.length / pageSize);
+  const filteredList = list.filter((c) => c.name.toLowerCase().includes(searchTerm.toLowerCase()));
   const startIndex = (currentPage - 1) * pageSize;
-  const paginatedDistricts = filteredDistricts.slice(startIndex, startIndex + pageSize);
+  const paginatedList = filteredList.slice(startIndex, startIndex + pageSize);
+  const totalPages = Math.ceil(filteredList.length / pageSize);
+
+  const filteredStates = states.filter(s => s.countryId === countryId);
 
   return (
-    <div className="container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-        <h4>🏙️ District Management</h4>
-        <div className="d-flex gap-2">
-          <button className="btn btn-primary btn-sm" onClick={() => setShowAddModal(true)}>
-            + Add District
-          </button>
-          <button className="btn btn-success btn-sm" onClick={handleExportCSV}>
-            📥 Export CSV
-          </button>
+    <div className="p-4 max-w-7xl mx-auto">
+      <div className="flex justify-between items-center mb-4 gap-2 flex-wrap">
+        <h2 className="text-xl font-bold">🏙️ District Management</h2>
+        <div className="flex gap-2">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={() => setAddUpdateModal(true)}>➕ Add District</button>
+          <button className="bg-green-600 text-white px-4 py-2 rounded" onClick={handleDownload}>📥 Export CSV</button>
         </div>
       </div>
 
-      <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+      <div className="flex justify-between mb-4 gap-4 flex-wrap items-center">
         <input
           type="text"
-          className="form-control form-control-sm"
-          placeholder="Search districts..."
+          className="border rounded px-3 py-2 w-64"
+          placeholder="🔍 Search..."
           value={searchTerm}
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-            setCurrentPage(1);
-          }}
-          style={{ maxWidth: "250px" }}
+          onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
         />
-        <div>
-          <label className="form-label me-2 mb-0">Items per page:</label>
-          <select
-            className="form-select form-select-sm d-inline-block w-auto"
-            value={pageSize}
-            onChange={(e) => {
-              setPageSize(parseInt(e.target.value));
-              setCurrentPage(1);
-            }}
-          >
+        <div className="flex items-center gap-2">
+          <label>Items per page:</label>
+          <select className="border rounded px-2 py-1" value={pageSize} onChange={(e) => { setPageSize(parseInt(e.target.value)); setCurrentPage(1); }}>
             <option value={3}>3</option>
             <option value={5}>5</option>
             <option value={10}>10</option>
@@ -169,213 +134,96 @@ function Sample3() {
         </div>
       </div>
 
-      <table className="table table-bordered table-striped">
-        <thead className="table-light">
-          <tr>
-            <th>ID</th>
-            <th>District</th>
-            <th>State</th>
-            <th>Country</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {paginatedDistricts.length === 0 ? (
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border border-gray-200">
+          <thead className="bg-gray-100">
             <tr>
-              <td colSpan="5" className="text-center">No districts found.</td>
+              <th className="border px-4 py-2">Id</th>
+              <th className="border px-4 py-2">Country</th>
+              <th className="border px-4 py-2">State</th>
+              <th className="border px-4 py-2">District</th>
+              <th className="border px-4 py-2">Actions</th>
             </tr>
-          ) : (
-            paginatedDistricts.map(d => (
-              <tr key={d.id}>
-                <td>{d.id}</td>
-                <td>{d.name}</td>
-                <td>{states.find(s => s.id === d.stateId)?.name}</td>
-                <td>{countries.find(c => c.id === d.countryId)?.name}</td>
-<td>
-  <button
-    className="border-0 bg-transparent me-2"
-    title="Edit"
-    onClick={() => handleEditDistrict(d)}
-  >
-    <i className="bi bi-pencil-fill text-primary fs-5"></i>
-  </button>
-  <button
-    className="border-0 bg-transparent me-2"
-    title="Delete"
-    onClick={() => handleDeleteDistrict(d.id)}
-  >
-    <i className="bi bi-trash-fill text-danger fs-5"></i>
-  </button>
-  <button
-    className="border-0 bg-transparent"
-    title="View"
-    onClick={() => setViewDistrict(d)}
-  >
-    <i className="bi bi-eye-fill text-success fs-5"></i>
-  </button>
-</td>
-
+          </thead>
+          <tbody>
+            {paginatedList.map((c) => (
+              <tr key={c.id} className="text-center">
+                <td className="border px-4 py-2">{c.id}</td>
+                <td className="border px-4 py-2">{countries.find(x => x.id === c.countryId)?.name}</td>
+                <td className="border px-4 py-2">{states.find(x => x.id === c.stateId)?.name}</td>
+                <td className="border px-4 py-2">{c.name}</td>
+                <td className="border px-4 py-2 flex justify-center gap-2">
+                  <button onClick={() => handleEdit(c)} className="text-blue-600">✏️</button>
+                  <button onClick={() => handleDelete(c.id)} className="text-red-600">🗑️</button>
+                  <button onClick={() => handleView(c)} className="text-green-600">👁️</button>
+                </td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-
-      {totalPages > 1 && (
-        <nav>
-          <ul className="pagination pagination-sm justify-content-center">
-            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-              <button className="page-link" onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}>
-                Previous
-              </button>
-            </li>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-              <li key={page} className={`page-item ${currentPage === page ? "active" : ""}`}>
-                <button className="page-link" onClick={() => setCurrentPage(page)}>
-                  {page}
-                </button>
-              </li>
             ))}
-            <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-              <button className="page-link" onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}>
-                Next
-              </button>
-            </li>
-          </ul>
-        </nav>
-      )}
+            {paginatedList.length === 0 && (
+              <tr>
+                <td colSpan={5} className="text-center py-4">No data found.</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
 
-      {/* Add Modal */}
-      {showAddModal && (
-        <>
-          <div className="modal fade show" style={{ display: "block" }}>
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title">Add District</h5>
-                  <button type="button" className="btn-close" onClick={() => setShowAddModal(false)}></button>
-                </div>
-                <div className="modal-body">
-                  <label className="form-label">Country</label>
-                  <select
-                    className="form-select mb-2"
-                    value={newCountryId}
-                    onChange={(e) => {
-                      const selected = parseInt(e.target.value);
-                      setNewCountryId(selected);
-                      setNewStateId(states.find(s => s.countryId === selected)?.id || "");
-                    }}
-                  >
-                    {countries.map(c => (
-                      <option key={c.id} value={c.id}>{c.name}</option>
-                    ))}
-                  </select>
-                  <label className="form-label">State</label>
-                  <select
-                    className="form-select mb-2"
-                    value={newStateId}
-                    onChange={(e) => setNewStateId(parseInt(e.target.value))}
-                  >
-                    {states.filter(s => s.countryId === newCountryId).map(s => (
-                      <option key={s.id} value={s.id}>{s.name}</option>
-                    ))}
-                  </select>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="District Name"
-                    value={newDistrictName}
-                    onChange={(e) => setNewDistrictName(e.target.value)}
-                  />
-                </div>
-                <div className="modal-footer">
-                  <button className="btn btn-secondary" onClick={() => setShowAddModal(false)}>Cancel</button>
-                  <button className="btn btn-primary" onClick={handleAddDistrict}>Save</button>
-                </div>
-              </div>
+      <div className="mt-4 flex justify-center gap-2 flex-wrap">
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          <button key={page} onClick={() => setCurrentPage(page)} className={`px-3 py-1 border rounded ${currentPage === page ? "bg-blue-600 text-white" : "bg-white"}`}>
+            {page}
+          </button>
+        ))}
+      </div>
+
+      {/* Modal: Add/Edit */}
+      {addUpdateModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded shadow-lg w-full max-w-md p-6">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold">{id === 0 ? "Add District" : "Edit District"}</h3>
+              <button onClick={() => setAddUpdateModal(false)}>❌</button>
+            </div>
+            <div className="space-y-3">
+              <select className="w-full border px-3 py-2 rounded" value={countryId} onChange={(e) => { setCountryId(parseInt(e.target.value)); setStateId(0); }}>
+                <option value={0}>Select Country</option>
+                {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+              </select>
+
+              <select className="w-full border px-3 py-2 rounded" value={stateId} onChange={(e) => setStateId(parseInt(e.target.value))} disabled={countryId === 0}>
+                <option value={0}>Select State</option>
+                {filteredStates.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+              </select>
+
+              <input type="text" className="w-full border px-3 py-2 rounded" placeholder="Enter District Name" value={name} onChange={(e) => setName(e.target.value)} />
+            </div>
+            <div className="flex justify-end gap-2 mt-4">
+              <button className="bg-gray-500 text-white px-4 py-2 rounded" onClick={() => setAddUpdateModal(false)}>Cancel</button>
+              <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={handleAddUpdate}>Save</button>
             </div>
           </div>
-          <div className="modal-backdrop fade show"></div>
-        </>
+        </div>
       )}
 
-      {/* Edit Modal */}
-      {editDistrictId !== null && (
-        <>
-          <div className="modal fade show" style={{ display: "block" }}>
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title">Edit District</h5>
-                  <button type="button" className="btn-close" onClick={() => setEditDistrictId(null)}></button>
-                </div>
-                <div className="modal-body">
-                  <label className="form-label">Country</label>
-                  <select
-                    className="form-select mb-2"
-                    value={editCountryId}
-                    onChange={(e) => {
-                      const selected = parseInt(e.target.value);
-                      setEditCountryId(selected);
-                      setEditStateId(states.find(s => s.countryId === selected)?.id || "");
-                    }}
-                  >
-                    {countries.map(c => (
-                      <option key={c.id} value={c.id}>{c.name}</option>
-                    ))}
-                  </select>
-                  <label className="form-label">State</label>
-                  <select
-                    className="form-select mb-2"
-                    value={editStateId}
-                    onChange={(e) => setEditStateId(parseInt(e.target.value))}
-                  >
-                    {states.filter(s => s.countryId === editCountryId).map(s => (
-                      <option key={s.id} value={s.id}>{s.name}</option>
-                    ))}
-                  </select>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={editDistrictName}
-                    onChange={(e) => setEditDistrictName(e.target.value)}
-                  />
-                </div>
-                <div className="modal-footer">
-                  <button className="btn btn-secondary" onClick={() => setEditDistrictId(null)}>Cancel</button>
-                  <button className="btn btn-primary" onClick={handleUpdateDistrict}>Update</button>
-                </div>
-              </div>
+      {/* Modal: View */}
+      {viewModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded shadow-lg w-full max-w-md p-6">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold">District Details</h3>
+              <button onClick={() => setViewModal(false)}>❌</button>
+            </div>
+            <div className="space-y-2">
+              <p><strong>Id:</strong> {id}</p>
+              <p><strong>Country:</strong> {countries.find(x => x.id === countryId)?.name}</p>
+              <p><strong>State:</strong> {states.find(x => x.id === stateId)?.name}</p>
+              <p><strong>District:</strong> {name}</p>
+            </div>
+            <div className="flex justify-end mt-4">
+              <button className="bg-gray-500 text-white px-4 py-2 rounded" onClick={() => setViewModal(false)}>Close</button>
             </div>
           </div>
-          <div className="modal-backdrop fade show"></div>
-        </>
-      )}
-
-      {/* View Modal */}
-      {viewDistrict && (
-        <>
-          <div className="modal fade show" style={{ display: "block" }}>
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header bg-success text-white">
-                  <h5 className="modal-title">District Details</h5>
-                  <button type="button" className="btn-close" onClick={() => setViewDistrict(null)}></button>
-                </div>
-                <div className="modal-body">
-                  <p><strong>ID:</strong> {viewDistrict.id}</p>
-                  <p><strong>Name:</strong> {viewDistrict.name}</p>
-                  <p><strong>Country:</strong> {countries.find(c => c.id === viewDistrict.countryId)?.name}</p>
-                  <p><strong>State:</strong> {states.find(s => s.id === viewDistrict.stateId)?.name}</p>
-                </div>
-                <div className="modal-footer">
-                  <button className="btn btn-secondary" onClick={() => setViewDistrict(null)}>Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="modal-backdrop fade show"></div>
-        </>
+        </div>
       )}
     </div>
   );
