@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import { Add, Delete, Edit, Visibility } from "@mui/icons-material";
 
-function Sample2() {
+function Dropdown() {
   const countries = [
     { id: 1, name: "India" },
     { id: 2, name: "USA" },
@@ -201,4 +201,4 @@ function Sample2() {
   );
 }
 
-export default Sample2;
+export default Dropdown;
