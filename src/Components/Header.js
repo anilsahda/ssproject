@@ -1,78 +1,49 @@
-import { Link } from 'react-router-dom';
 import './Header.css';
 
 function Header({ setActiveMenu }) {
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-light text-dark py-1"
-      style={{
-        background: 'linear-gradient(90deg, #d1c4e9, #b2ebf2)',
-      }}
-    >
+    <nav className="navbar navbar-expand-lg custom-navbar shadow-sm">
       <div className="container-fluid">
-        {/* Mobile Toggle Button */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-
-        {/* Navigation Links */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto mb-0">
-            <li
-              className="nav-item dropdown hover-dropdown"
-              onClick={() => setActiveMenu('BasicFullstack')}
-            >
-              <span
-                className="nav-link dropdown-toggle fw-semibold text-dark link-hover"
-                role="button"
-              >
-                Basic Fullstack
-              </span>
+          <ul className="navbar-nav me-auto mb-0 d-flex gap-2 align-items-center flex-wrap">
+            <li className="nav-item">
+              <button className="btn btn-sm btn-projects nav-btn" onClick={() => setActiveMenu("Project")}>Projects</button>
             </li>
-
-            <li
-              className="nav-item dropdown hover-dropdown"
-              onClick={() => setActiveMenu('OurProject')}
-            >
-              <span
-                className="nav-link dropdown-toggle fw-semibold text-dark link-hover"
-                role="button"
-              >
-                Our Project
-              </span>
+            <li className="nav-item">
+              <button className="btn btn-sm btn-fullstack nav-btn" onClick={() => setActiveMenu("Fullstack")}>Fullstack</button>
             </li>
-
-            <li className="nav-item dropdown hover-dropdown">
-              <span
-                className="nav-link dropdown-toggle fw-semibold text-dark link-hover"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Tech Stacks
-              </span>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/dotnetcore">.NET Core API</Link></li>
-                <li><Link className="dropdown-item" to="/springboot">Spring Boot API</Link></li>
-                <li><Link className="dropdown-item" to="/node">Node API</Link></li>
-                <li><Link className="dropdown-item" to="/sqlserver">SQL Server</Link></li>
-                <li><Link className="dropdown-item" to="/mongodb">MongoDB</Link></li>
-                <li><Link className="dropdown-item" to="/aws">AWS</Link></li>
-                <li><Link className="dropdown-item" to="/azure">Azure</Link></li>
-                <li><Link className="dropdown-item" to="/dsa">DSA</Link></li>
-                <li><Link className="dropdown-item" to="/react">React JS</Link></li>
-                <li><Link className="dropdown-item" to="/next">Next JS</Link></li>
-                <li><Link className="dropdown-item" to="/kafka">Apache Kafka</Link></li>
-                <li><Link className="dropdown-item" to="/rabbitmq">RabbitMQ</Link></li>
-              </ul>
+            <li className="nav-item">
+              <button className="btn btn-sm nav-btn btn-secondary" onClick={() => setActiveMenu("Dotnet")}>.NET Core</button>
+            </li>
+            <li className="nav-item">
+              <button className="btn btn-sm nav-btn btn-success" onClick={() => setActiveMenu("Springboot")}>Spring Boot</button>
+            </li>
+            <li className="nav-item">
+              <button className="btn btn-sm nav-btn btn-warning" onClick={() => setActiveMenu("Node")}>Node</button>
+            </li>
+            <li className="nav-item">
+              <button className="btn btn-sm nav-btn btn-danger" onClick={() => setActiveMenu("DSA")}>DSA</button>
+            </li>
+            <li className="nav-item">
+              <button className="btn btn-sm nav-btn btn-dark" onClick={() => setActiveMenu("SQL")}>SQL Server</button>
+            </li>
+            <li className="nav-item">
+              <button className="btn btn-sm btn-aws nav-btn" onClick={() => setActiveMenu("AWS")}>AWS</button>
+            </li>
+            <li className="nav-item">
+            <button className="btn btn-sm btn-fullstack nav-btn" onClick={() => setActiveMenu("Azure")}>Azure</button>
+            </li>
+            <li className="nav-item">
+              <button className="btn btn-sm nav-btn btn-warning" onClick={() => setActiveMenu("DevOps")}>DevOps</button>
+            </li>            
+            <li className="nav-item">
+              <button className="btn btn-sm nav-btn btn-info" onClick={() => setActiveMenu("React")}>React</button>
+            </li>
+            <li className="nav-item">
+              <button className="btn btn-sm nav-btn btn-primary" onClick={() => setActiveMenu("Next")}>Next</button>
             </li>
           </ul>
         </div>

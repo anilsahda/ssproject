@@ -4,7 +4,7 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import EmployeeViewModal from "./EmployeeViewModal";
 import EmployeeModal from "./EmployeeModal";
 
-function Multiselectddl() {
+function MultiselectDropdown() {
   const countries = [
     { id: 1, name: "India" },
     { id: 2, name: "USA" },
@@ -267,4 +267,4 @@ function Multiselectddl() {
   );
 }
 
-export default Multiselectddl;
+export default MultiselectDropdown;

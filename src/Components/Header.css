@@ -1,44 +1,55 @@
-/* Show dropdown on hover */
-.hover-dropdown:hover .dropdown-menu {
-  display: block;
-  margin-top: 0;
+/* Smaller nav button style */
+.nav-btn {
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 5px 14px;    /* smaller padding */
+  min-width: 70px;      /* reduced width */
+  font-size: 0.85rem;   /* slightly smaller font */
+  color: #fff !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
 }
 
-/* Dropdown menu styling */
-.dropdown-menu {
-  background-color: #e3f2fd;
-  border-radius: 6px;
-  border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+/* Specific button background colors - base */
+.btn-fullstack {
+  background-color: #7b1fa2 !important;
+}
+.btn-projects {
+  background-color: #00796b !important;
+}
+.btn-aws {
+  background-color: #ef6c00 !important;
 }
 
-.dropdown-item:hover {
-  background-color: #bbdefb;
-  color: #0d47a1;
+/* Hover/focus */
+.btn-fullstack:hover,
+.btn-fullstack:focus {
+  background-color: #4a0072 !important;
+  color: #fff !important;
 }
 
-/* Hover underline effect */
-.link-hover {
-  position: relative;
-  transition: color 0.3s ease;
+.btn-projects:hover,
+.btn-projects:focus {
+  background-color: #004d40 !important;
+  color: #fff !important;
 }
 
-.link-hover::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 2px;
-  height: 2px;
-  width: 0%;
-  background-color: #1976d2;
-  transition: width 0.3s ease;
+.btn-aws:hover,
+.btn-aws:focus {
+  background-color: #bf360c !important;
+  color: #fff !important;
 }
 
-.link-hover:hover {
-  color: #1976d2 !important;
-}
-
-.link-hover:hover::after {
-  width: 100%;
+/* Hover/focus transform */
+.nav-btn:hover,
+.nav-btn:focus,
+.nav-btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  opacity: 1 !important;
+  transform: scale(1.05);
 }

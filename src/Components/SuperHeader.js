@@ -56,7 +56,7 @@ function SuperHeader() {
           <div className="d-flex align-items-center">
             <Link className="navbar-brand fw-bold" to="/">
               <img src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png" alt="Logo" className="me-2" height="40" />
-              <span className="fs-5 fw-bold">MyApp</span>
+              <span className="fs-5 fw-bold">SS Intern</span>
             </Link>
           </div>
           <form className="d-flex mx-3 flex-grow-1" role="search" style={{ maxWidth: '400px' }}>

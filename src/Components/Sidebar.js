@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import SidebarButton from "./SidebarButton";
 
 function Sidebar({ activeMenu }) {
   const location = useLocation();
@@ -9,138 +10,250 @@ function Sidebar({ activeMenu }) {
     setRole(localStorage.getItem("role"));
   }, [location]);
 
+   if (!["Interners", "Super Admin"].includes(role)) {
+    return null;
+  }
+  
   return (
-    <div className="bg-dark text-light vh-100" style={{ width: "250px" }}>
-      <div className="p-3">
-        <ul className="nav nav-pills flex-column gap-2">
+<div
+  className="maxHeight"
+  style={{
+    width: "250px",
+    overflowY: "auto",
+    background: "linear-gradient(180deg, #0f2027, #203a43, #2c5364)",
+    padding: "1.5rem 1rem",
+    paddingTop: "2rem",
+    paddingBottom: "4rem",
+    color: "#fff",
+    boxShadow: "2px 0 5px rgba(0,0,0,0.3)"
+  }}
+>
+  <div className="d-flex flex-column gap-2">
+    <ul className="nav nav-pills flex-column gap-2">
+        {role === "Interners" && activeMenu === "Project" && (
+          <>
+          <SidebarButton to="/societymanagement" icon="bi-building" label="Society Management" />
+          <SidebarButton to="/jobportal" icon="bi-briefcase" label="Job Portal" />
+          <SidebarButton to="/employeepayroll" icon="bi-cash-stack" label="Employee Payroll" />
+          <SidebarButton to="/attendanceportal" icon="bi-calendar-check" label="Attendance Portal" />
+          <SidebarButton to="/ecommerce" icon="bi-cart4" label="E-commerce" />
+          <SidebarButton to="/digitallibrary" icon="bi-book" label="Digital Library" />
+          <SidebarButton to="/matrimonialsystem" icon="bi-heart-fill" label="Matrimonial System" />
+          <SidebarButton to="/hospitalmanagement" icon="bi-hospital" label="Hospital Management" />
+          <SidebarButton to="/medicalstore" icon="bi-capsule" label="Medical Store" />
+          <SidebarButton to="/clinicmanagement" icon="bi-mortarboard" label="Clinic Management" />
+          </>
+        )}
 
-        {role === "Interners" && activeMenu === "BasicFullstack" && (
-            <>
-              <li className="nav-item">
-                <Link to="/basiccrud" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
-                  <i className="bi bi-speedometer2 me-2"></i> Basic CRUD
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/dropdown" className={`nav-link d-flex align-items-center ${location.pathname === "/dropdown" ? "active" : "text-light"}`}>
-                  <i className="bi bi-shield-lock me-2"></i> Dropdown
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/cascadingddl" className={`nav-link d-flex align-items-center ${location.pathname === "/cascadingddl" ? "active" : "text-light"}`}>
-                  <i className="bi bi-people-fill me-2"></i> cascading Dropdown
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/multiselectddl" className={`nav-link d-flex align-items-center ${location.pathname === "/multiselectddl" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> Multi Select Dropdown
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/radiobutton" className={`nav-link d-flex align-items-center ${location.pathname === "/radiobutton" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> Radio Button
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/checkbox" className={`nav-link d-flex align-items-center ${location.pathname === "/checkbox" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> checkbox
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/imageupload" className={`nav-link d-flex align-items-center ${location.pathname === "/imageupload" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> imageupload
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/searching" className={`nav-link d-flex align-items-center ${location.pathname === "/searching" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> searching
-                </Link>
-              </li> 
-              <li className="nav-item">
-                <Link to="/pagination" className={`nav-link d-flex align-items-center ${location.pathname === "/pagination" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> pagination
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/jwtauth" className={`nav-link d-flex align-items-center ${location.pathname === "/jwtauth" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> jwtauth
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/googleauth" className={`nav-link d-flex align-items-center ${location.pathname === "/googleauth" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> googleauth
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/facebookauth" className={`nav-link d-flex align-items-center ${location.pathname === "/facebookauth" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> facebookauth
-                </Link>
-              </li> 
-              <li className="nav-item">
-                <Link to="/microservices" className={`nav-link d-flex align-items-center ${location.pathname === "/microservices" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> microservices
-                </Link>
-              </li>
+        {role === "Interners" && activeMenu === "Fullstack" && (
+          <>
+          <SidebarButton to="/crud" icon="bi-ui-checks-grid" label="CRUD" />
+          <SidebarButton to="/dropdown" icon="bi-caret-down-square" label="Dropdown" />
+          <SidebarButton to="/cascadingdropdown" icon="bi-diagram-3" label="Cascading Dropdown" />
+          <SidebarButton to="/multiselectdropdown" icon="bi-check2-square" label="Multi Select Dropdown" />
+          <SidebarButton to="/radiobutton" icon="bi-record-circle" label="Radio Button" />
+          <SidebarButton to="/checkbox" icon="bi-check-square" label="Checkbox" />
+          <SidebarButton to="/imageupload" icon="bi-file-image" label="Image Upload" />
+          <SidebarButton to="/searching" icon="bi-search" label="Searching" />
+          <SidebarButton to="/pagination" icon="bi-list-nested" label="Pagination" />
+          <SidebarButton to="/jwtauth" icon="bi-shield-lock" label="JWT Auth" />
+          <SidebarButton to="/googleauth" icon="bi-google" label="Google Auth" />
+          <SidebarButton to="/facebookauth" icon="bi-facebook" label="Facebook Auth" />
+          <SidebarButton to="/onionarchitecture" icon="bi-layers" label="Onion Architecture" />
+          <SidebarButton to="/cqrsdesignpattern" icon="bi-diagram-3-fill" label="CQRS Design Pattern" />
+          <SidebarButton to="/logger" icon="bi-terminal" label="Logger" />
+          <SidebarButton to="/microservices" icon="bi-boxes" label="Microservices" />
             </>
           )}
 
-          {role === "Interners" && activeMenu === "OurProject" && (
+          {role === "Interners" && activeMenu === "Dotnet" && (
             <>
-              <li className="nav-item">
-                <Link to="/societymanagement" className={`nav-link d-flex align-items-center ${location.pathname === "/societymanagement" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> societymanagement
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/jobportal" className={`nav-link d-flex align-items-center ${location.pathname === "/radiobutton" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> jobportal
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/employeepayroll" className={`nav-link d-flex align-items-center ${location.pathname === "/employeepayroll" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> employeepayroll
-                </Link>
-              </li> 
-              <li className="nav-item">
-                <Link to="/attendanceportal" className={`nav-link d-flex align-items-center ${location.pathname === "/attendanceportal" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> attendanceportal
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/ecommerce" className={`nav-link d-flex align-items-center ${location.pathname === "/ecommerce" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> ecommerce
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/digitallibrary" className={`nav-link d-flex align-items-center ${location.pathname === "/digitallibrary" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> digitallibrary
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/matrimonialsystem" className={`nav-link d-flex align-items-center ${location.pathname === "/matrimonialsystem" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> matrimonialsystem
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/hospitalmanagement" className={`nav-link d-flex align-items-center ${location.pathname === "/hospitalmanagement" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> hospitalmanagement
-                </Link>
-              </li> 
-              <li className="nav-item">
-                <Link to="/medicalstore" className={`nav-link d-flex align-items-center ${location.pathname === "/medicalstore" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> medicalstore
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/shiwanshacademy" className={`nav-link d-flex align-items-center ${location.pathname === "/radiobutton" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> 
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/radiobutton" className={`nav-link d-flex align-items-center ${location.pathname === "/shiwanshacademy" ? "active" : "text-light"}`}>
-                  <i className="bi bi-person-check-fill me-2"></i> shiwanshacademy
-                </Link>
-              </li>
+            <SidebarButton to="/netprojectsetup" icon="bi-calendar-check" label=".Net Project Setup" />
+            <SidebarButton to="/netcrud" icon="bi-ui-checks-grid" label=".Net CRUD" />
+            <SidebarButton to="/netdropdown" icon="bi-caret-down-square" label=".Net Dropdown" />
+            <SidebarButton to="/netcascadingdropdown" icon="bi-diagram-3" label=".Net Cascading Dropdown" />
+            <SidebarButton to="/netmultiselectdropdown" icon="bi-check2-square" label=".Net Multi Select Dropdown" />
+            <SidebarButton to="/netradiobutton" icon="bi-record-circle" label=".Net Radio Button" />
+            <SidebarButton to="/netcheckbox" icon="bi-check-square" label=".Net Checkbox" />
+            <SidebarButton to="/netimageupload" icon="bi-file-image" label=".Net Image Upload" />
+            <SidebarButton to="/netsearching" icon="bi-search" label=".Net Searching" />
+            <SidebarButton to="/netpagination" icon="bi-list-nested" label=".Net Pagination" />
+            <SidebarButton to="/netjwtauth" icon="bi-shield-lock" label=".Net JWT Auth" />
+            <SidebarButton to="/netgoogleauth" icon="bi-google" label=".Net Google Auth" />
+            <SidebarButton to="/netfacebookauth" icon="bi-facebook" label=".Net Facebook Auth" />
+            <SidebarButton to="/netonionarchitecture" icon="bi-layers" label=".Net Onion Architecture" />
+            <SidebarButton to="/netcqrsdesignpattern" icon="bi-diagram-3-fill" label=".Net CQRS Design Pattern" />
+            <SidebarButton to="/netlogger" icon="bi-terminal" label=".Net Logger" />
+            <SidebarButton to="/netmicroservices" icon="bi-boxes" label=".Net Microservices" />
+            <SidebarButton to="/netquestions" icon="bi-calendar-check" label=".Net Questions" />
+            </>
+          )}
+
+          {role === "Interners" && activeMenu === "Springboot" && (
+            <>
+            <SidebarButton to="/javaprojectsetup" icon="bi-calendar-check" label="Java Project Setup" />
+            <SidebarButton to="/javacrud" icon="bi-ui-checks-grid" label="Java CRUD" />
+            <SidebarButton to="/javadropdown" icon="bi-caret-down-square" label="Java Dropdown" />
+            <SidebarButton to="/javacascadingdropdown" icon="bi-diagram-3" label="Java Cascading Dropdown" />
+            <SidebarButton to="/javamultiselectdropdown" icon="bi-check2-square" label="Java Multi Select Dropdown" />
+            <SidebarButton to="/javaradiobutton" icon="bi-record-circle" label="Java Radio Button" />
+            <SidebarButton to="/javacheckbox" icon="bi-check-square" label="Java Checkbox" />
+            <SidebarButton to="/javaimageupload" icon="bi-file-image" label="Java Image Upload" />
+            <SidebarButton to="/javasearching" icon="bi-search" label="Java Searching" />
+            <SidebarButton to="/javapagination" icon="bi-list-nested" label="Java Pagination" />
+            <SidebarButton to="/javajwtauth" icon="bi-shield-lock" label="Java JWT Auth" />
+            <SidebarButton to="/javagoogleauth" icon="bi-google" label="Java Google Auth" />
+            <SidebarButton to="/javafacebookauth" icon="bi-facebook" label="Java Facebook Auth" />
+            <SidebarButton to="/javaonionarchitecture" icon="bi-layers" label="Java Onion Architecture" />
+            <SidebarButton to="/javacqrsdesignpattern" icon="bi-diagram-3-fill" label="Java CQRS Design Pattern" />
+            <SidebarButton to="/javalogger" icon="bi-terminal" label="Java Logger" />
+            <SidebarButton to="/javamicroservices" icon="bi-boxes" label="Java Microservices" />
+            <SidebarButton to="/javaquestions" icon="bi-calendar-check" label="Java Questions" />
+            </>
+          )}
+
+          {role === "Interners" && activeMenu === "Node" && (
+            <>
+            <SidebarButton to="/nodeprojectsetup" icon="bi-calendar-check" label="Node Project Setup" />
+            <SidebarButton to="/nodecrud" icon="bi-ui-checks-grid" label="Node CRUD" />
+            <SidebarButton to="/nodedropdown" icon="bi-caret-down-square" label="Node Dropdown" />
+            <SidebarButton to="/nodecascadingdropdown" icon="bi-diagram-3" label="Node Cascading Dropdown" />
+            <SidebarButton to="/nodemultiselectdropdown" icon="bi-check2-square" label="Node Multi Select Dropdown" />
+            <SidebarButton to="/noderadiobutton" icon="bi-record-circle" label="Node Radio Button" />
+            <SidebarButton to="/nodecheckbox" icon="bi-check-square" label="Node Checkbox" />
+            <SidebarButton to="/nodeimageupload" icon="bi-file-image" label="Node Image Upload" />
+            <SidebarButton to="/nodesearching" icon="bi-search" label="Node Searching" />
+            <SidebarButton to="/nodepagination" icon="bi-list-nested" label="Node Pagination" />
+            <SidebarButton to="/nodejwtauth" icon="bi-shield-lock" label="Node JWT Auth" />
+            <SidebarButton to="/nodegoogleauth" icon="bi-google" label="Node Google Auth" />
+            <SidebarButton to="/nodefacebookauth" icon="bi-facebook" label="Node Facebook Auth" />
+            <SidebarButton to="/nodelogger" icon="bi-terminal" label="Node Logger" />
+            <SidebarButton to="/nodemicroservices" icon="bi-boxes" label="Node Microservices" />
+            <SidebarButton to="/nodequestions" icon="bi-calendar-check" label="Node Questions" />
+            </>
+          )}
+
+          {role === "Interners" && activeMenu === "DSA" && (
+            <>
+              <SidebarButton to="/array" icon="bi-bricks" label="Array" />
+              <SidebarButton to="/arraylist" icon="bi-card-list" label="ArrayList" />
+              <SidebarButton to="/list" icon="bi-list-ul" label="List" />
+              <SidebarButton to="/hashmap" icon="bi-diagram-3" label="Hashmap" />
+              <SidebarButton to="/Dictionary" icon="bi-book" label="Dictionary" />
+              <SidebarButton to="/Hashtable" icon="bi-grid-3x3-gap" label="Hashtable" />
+              <SidebarButton to="/binarysearch" icon="bi-search" label="Binary Search" />
+              <SidebarButton to="/linearsearch" icon="bi-search" label="Linear Search" />
+              <SidebarButton to="/selectionsort" icon="bi-sort-down-alt" label="Selection Sort" />
+              <SidebarButton to="/quicksort" icon="bi-lightning-fill" label="Quick Sort" />
+              <SidebarButton to="/linkedlist" icon="bi-link-45deg" label="Linked List" />
+              <SidebarButton to="/dsaquestions" icon="bi-question-circle" label="DSA Questions" />
+            </>
+          )}
+
+          {role === "Interners" && activeMenu === "SQL" && (
+            <>
+              <SidebarButton to="/sqlcrud" icon="bi-pencil-square" label="SQL CRUD" />
+              <SidebarButton to="/sqlstoredprocedure" icon="bi-gear" label="SQL Stored Procedure" />
+              <SidebarButton to="/sqlfunctions" icon="bi-funnel" label="SQL Functions" />
+              <SidebarButton to="/sqltrigger" icon="bi-bell" label="SQL Trigger" />
+              <SidebarButton to="/sqlcursor" icon="bi-arrow-left-right" label="SQL Cursor" />
+              <SidebarButton to="/sqlprofiler" icon="bi-graph-up" label="SQL Profiler" />
+              <SidebarButton to="/sqlacid" icon="bi-shield-check" label="SQL ACID" />
+              <SidebarButton to="/sqlindexing" icon="bi-list-nested" label="SQL Indexing" />
+              <SidebarButton to="/sqlnormalization" icon="bi-sliders" label="SQL Normalization" />
+              <SidebarButton to="/sqlqueriescommands" icon="bi-terminal" label="SQL Queries Commands" />
+              <SidebarButton to="/sqlquestions" icon="bi-question-circle" label="SQL Questions" />
+            </>
+          )}
+
+          {role === "Interners" && activeMenu === "AWS" && (
+            <>
+              <SidebarButton to="/awsaccountsetup" icon="bi-person-gear" label="AWS Account Setup" />
+              <SidebarButton to="/awsiam" icon="bi-person-lock" label="AWS IAM" />
+              <SidebarButton to="/awsectwoinstance" icon="bi-hdd-network" label="AWS EC2 Instance" />
+              <SidebarButton to="/awsthreebucket" icon="bi-bucket" label="AWS S3 Bucket" />
+              <SidebarButton to="/awslambda" icon="bi-lightning-charge" label="AWS Lambda" />
+              <SidebarButton to="/awsdynamodb" icon="bi-database" label="AWS Dynamo DB" />
+              <SidebarButton to="/awsvpc" icon="bi-diagram-3-fill" label="AWS VPC" />
+              <SidebarButton to="/awscloudwatch" icon="bi-eye" label="AWS Cloud Watch" />
+              <SidebarButton to="/awsquestions" icon="bi-question-circle" label="AWS Questions" />
+            </>
+          )}
+
+          {role === "Interners" && activeMenu === "Azure" && (
+            <>
+              <SidebarButton to="/azureaccountsetup" icon="bi-person-gear" label="Azure Account Setup" />
+              <SidebarButton to="/azureblobstorage" icon="bi-bucket" label="Azure Blob Storage" />
+              <SidebarButton to="/azurefuncions" icon="bi-lightning-charge-fill" label="Azure Functions" />
+              <SidebarButton to="/azureappinsight" icon="bi-eye-fill" label="Azure App Insight" />
+              <SidebarButton to="/azurecosmosdb" icon="bi-database-fill-gear" label="Azure Cosmos DB" />
+              <SidebarButton to="/azurevirtualmachines" icon="bi-hdd-stack" label="Azure Virtual Machines" />
+              <SidebarButton to="/azureaks" icon="bi-diagram-3" label="Azure Kubernetes Service (AKS)" />
+              <SidebarButton to="/azuresql" icon="bi-database-fill" label="Azure SQL Database" />
+              <SidebarButton to="/azuremonitor" icon="bi-graph-up" label="Azure Monitor" />
+              <SidebarButton to="/azurerbac" icon="bi-person-lock" label="Azure RBAC" />
+              <SidebarButton to="/azurequestions" icon="bi-question-circle" label="Azure Questions" />
+            </>
+          )}
+
+          {role === "Interners" && activeMenu === "DevOps" && (
+            <>
+              <SidebarButton to="/cicdpipelines" icon="bi-arrow-repeat" label="CI-CD Pipelines" />
+              <SidebarButton to="/jenkins" icon="bi-gear-fill" label="Jenkins" />
+              <SidebarButton to="/docker" icon="bi-box" label="Docker" />
+              <SidebarButton to="/kubernetes" icon="bi-diagram-3-fill" label="Kubernetes" />
+              <SidebarButton to="/ansible" icon="bi-tools" label="Ansible" />
+              <SidebarButton to="/terraform" icon="bi-layers" label="Terraform" />
+              <SidebarButton to="/monitoring" icon="bi-graph-up-arrow" label="Monitoring & Logging" />
+              <SidebarButton to="/gitgithub" icon="bi-git" label="Git & GitHub" />
+              <SidebarButton to="/devopsbestpractices" icon="bi-stars" label="DevOps Best Practices" />
+              <SidebarButton to="/devopsquestions" icon="bi-question-circle" label="DevOps Questions" />
+            </>
+          )}
+
+          {role === "Interners" && activeMenu === "React" && (
+            <>
+            <SidebarButton to="/reactprojectsetup" icon="bi-calendar-check" label="React Project Setup" />
+            <SidebarButton to="/reactcrud" icon="bi-ui-checks-grid" label="React CRUD" />
+            <SidebarButton to="/reactdropdown" icon="bi-caret-down-square" label="React Dropdown" />
+            <SidebarButton to="/reactcascadingdropdown" icon="bi-diagram-3" label="React Cascading Dropdown" />
+            <SidebarButton to="/reactmultiselectdropdown" icon="bi-check2-square" label="React Multi Select Dropdown" />
+            <SidebarButton to="/reactradiobutton" icon="bi-record-circle" label="React Radio Button" />
+            <SidebarButton to="/reactcheckbox" icon="bi-check-square" label="React Checkbox" />
+            <SidebarButton to="/reactimageupload" icon="bi-file-image" label="React Image Upload" />
+            <SidebarButton to="/reactsearching" icon="bi-search" label="React Searching" />
+            <SidebarButton to="/reactpagination" icon="bi-list-nested" label="React Pagination" />
+            <SidebarButton to="/reactjwtauth" icon="bi-shield-lock" label="React JWT Auth" />
+            <SidebarButton to="/reactgoogleauth" icon="bi-google" label="React Google Auth" />
+            <SidebarButton to="/reactfacebookauth" icon="bi-facebook" label="React Facebook Auth" />
+            <SidebarButton to="/reactlocalstorage" icon="bi-layers" label="React Local Storage" />
+            <SidebarButton to="/reactzustand" icon="bi-diagram-3-fill" label="React Zustand" />
+            <SidebarButton to="/reactredux" icon="bi-terminal" label="React Redux" />
+            <SidebarButton to="/reactreducer" icon="bi-boxes" label="React Reducer" />
+            <SidebarButton to="/reactquestions" icon="bi-calendar-check" label="React Questions" />
+            </>
+          )}
+
+          {role === "Interners" && activeMenu === "Next" && (
+            <>
+            <SidebarButton to="/nextprojectsetup" icon="bi-calendar-check" label="Next Project Setup" />
+            <SidebarButton to="/nextcrud" icon="bi-ui-checks-grid" label="Next CRUD" />
+            <SidebarButton to="/nextdropdown" icon="bi-caret-down-square" label="Next Dropdown" />
+            <SidebarButton to="/nextcascadingdropdown" icon="bi-diagram-3" label="Next Cascading Dropdown" />
+            <SidebarButton to="/nextmultiselectdropdown" icon="bi-check2-square" label="Next Multi Select Dropdown" />
+            <SidebarButton to="/nextradiobutton" icon="bi-record-circle" label="Next Radio Button" />
+            <SidebarButton to="/nextcheckbox" icon="bi-check-square" label="Next Checkbox" />
+            <SidebarButton to="/nextimageupload" icon="bi-file-image" label="Next Image Upload" />
+            <SidebarButton to="/nextsearching" icon="bi-search" label="Next Searching" />
+            <SidebarButton to="/nextpagination" icon="bi-list-nested" label="Next Pagination" />
+            <SidebarButton to="/nextjwtauth" icon="bi-shield-lock" label="Next JWT Auth" />
+            <SidebarButton to="/nextgoogleauth" icon="bi-google" label="Next Google Auth" />
+            <SidebarButton to="/nextfacebookauth" icon="bi-facebook" label="Next Facebook Auth" />
+            <SidebarButton to="/nextlocalstorage" icon="bi-layers" label="Next Local Storage" />
+            <SidebarButton to="/nextzustand" icon="bi-diagram-3-fill" label="Next Zustand" />
+            <SidebarButton to="/nextredux" icon="bi-terminal" label="Next Redux" />
+            <SidebarButton to="/nextreducer" icon="bi-boxes" label="Next Reducer" />
+            <SidebarButton to="/nextquestions" icon="bi-calendar-check" label="Next Questions" />
             </>
           )}
 
