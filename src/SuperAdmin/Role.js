@@ -18,10 +18,10 @@ function Role() {
 
     const handleAddUpdate = () => {
       if (id === 0) {
-        axios.post('https://localhost:7070/api/Roles', { id: id, name: name });
+        axios.post(`${process.env.REACT_APP_BASE_URL}/Roles`, { id: id, name: name });
       }
       else {
-        axios.put('https://localhost:7070/api/Roles', { id: id, name: name });
+        axios.put(`${process.env.REACT_APP_BASE_URL}/Roles`, { id: id, name: name });
       }
       Swal.fire({ toast: true, position: "top-end", icon: "success", title: `Data saved successfully!`, showConfirmButton: false });
       setName("");
@@ -29,7 +29,7 @@ function Role() {
     }
 
     const handleDelete = (id) => {
-        axios.delete(`https://localhost:7070/api/Roles/${id}`);
+        axios.delete(`${process.env.REACT_APP_BASE_URL}/Roles/${id}`);
         Swal.fire({ toast: true, position: "top-end", icon: "success", title: `Data deleted successfully!`, showConfirmButton: false });
     };
 
@@ -53,7 +53,7 @@ function Role() {
     };
 
     useEffect(() => {
-        axios.get('https://localhost:7070/api/Roles').then((res) => setList(res.data));
+        axios.get(`${process.env.REACT_APP_BASE_URL}/Roles`).then((res) => setList(res.data));
     }, [handleAddUpdate, handleDelete]);
 
 

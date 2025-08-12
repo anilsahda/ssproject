@@ -18,7 +18,10 @@ function SuperHeader() {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://localhost:7070/api/Auth/login", { email, password });
+      const response = await axios.post(
+  `${process.env.REACT_APP_BASE_URL}/Auth/login`,
+  { email, password }
+);
 
       if (response.data.statusCode === "200") {
         localStorage.setItem("token", response.data.token);

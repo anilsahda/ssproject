@@ -20,10 +20,10 @@ function User() {
 
     const handleAddUpdate = () => {
       if (id === 0) {
-        axios.post('https://localhost:7070/api/Users', { id: id, name: name, email: email, password: password });
+        axios.post(`${process.env.REACT_APP_BASE_URL}/Users`, { id: id, name: name, email: email, password: password });
       }
       else {
-        axios.put('https://localhost:7070/api/Users', { id: id, name: name, email: email, password: password });
+        axios.put(`${process.env.REACT_APP_BASE_URL}/Users`, { id: id, name: name, email: email, password: password });
       }
       Swal.fire({ toast: true, position: "top-end", icon: "success", title: `Data saved successfully!`, showConfirmButton: false });
       setName("");
@@ -31,7 +31,7 @@ function User() {
     }
 
     const handleDelete = (id) => {
-        axios.delete(`https://localhost:7070/api/Users/${id}`);
+        axios.delete(`${process.env.REACT_APP_BASE_URL}/Users/${id}`);
         Swal.fire({ toast: true, position: "top-end", icon: "success", title: `Data deleted successfully!`, showConfirmButton: false });
     };
 
@@ -59,7 +59,7 @@ function User() {
     };
 
     useEffect(() => {
-        axios.get('https://localhost:7070/api/Users').then((res) => setList(res.data));
+        axios.get(`${process.env.REACT_APP_BASE_URL}/Users`).then((res) => setList(res.data));
     }, [handleAddUpdate, handleDelete]);
 
 

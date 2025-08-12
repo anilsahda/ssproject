@@ -20,10 +20,10 @@ function UserRole() {
 
     const handleAddUpdate = () => {
       if (id === 0) {
-        axios.post('https://localhost:7070/api/UserRoles', { id: id, userId: userId, roleId: roleId });
+        axios.post(`${process.env.REACT_APP_BASE_URL}/UserRoles`, { id: id, userId: userId, roleId: roleId });
       }
       else {
-        axios.put('https://localhost:7070/api/UserRoles', { id: id, userId: userId, roleId: roleId });
+        axios.put(`${process.env.REACT_APP_BASE_URL}/UserRoles`, { id: id, userId: userId, roleId: roleId });
       }
       Swal.fire({ toast: true, position: "top-end", icon: "success", title: `Data saved successfully!`, showConfirmButton: false });
       setUserId(0);
@@ -32,7 +32,7 @@ function UserRole() {
     }
 
     const handleDelete = (id) => {
-        axios.delete(`https://localhost:7070/api/UserRoles/${id}`);
+        axios.delete(`${process.env.REACT_APP_BASE_URL}/UserRoles/${id}`);
         Swal.fire({ toast: true, position: "top-end", icon: "success", title: `Data deleted successfully!`, showConfirmButton: false });
     };
 
@@ -58,9 +58,9 @@ function UserRole() {
     };
 
     useEffect(() => {
-        axios.get('https://localhost:7070/api/UserRoles').then((res) => setList(res.data));
-        axios.get('https://localhost:7070/api/Users').then((res) => setUserList(res.data));
-        axios.get('https://localhost:7070/api/Roles').then((res) => setRoleList(res.data));
+        axios.get(`${process.env.REACT_APP_BASE_URL}/UserRoles`).then((res) => setList(res.data));
+        axios.get(`${process.env.REACT_APP_BASE_URL}/Users`).then((res) => setUserList(res.data));
+        axios.get(`${process.env.REACT_APP_BASE_URL}/Roles`).then((res) => setRoleList(res.data));
     }, [handleAddUpdate, handleDelete]);
 
 
