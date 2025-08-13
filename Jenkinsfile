@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'git@github.com:anilsahda/ssproject.git', credentialsId: 'live-cicdkey'
+                git branch: 'master', url: 'https://github.com/anilsahda/ssproject.git', credentialsId: 'live-cicdkey'
             }
         }
 
