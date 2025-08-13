@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Netcascadingdropdown() {
+function Netdistrict() {
   return (
     <div>
                         <h1>Dotnet</h1>
@@ -8,4 +8,4 @@ function Netcascadingdropdown() {
   )
 }
 
-export default Netcascadingdropdown
+export default Netdistrict

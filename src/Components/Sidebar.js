@@ -38,21 +38,19 @@ function Sidebar({ activeMenu }) {
           <SidebarButton to="/attendanceportal" icon="bi-calendar-check" label="Attendance Portal" />
           <SidebarButton to="/ecommerce" icon="bi-cart4" label="E-commerce" />
           <SidebarButton to="/digitallibrary" icon="bi-book" label="Digital Library" />
-          <SidebarButton to="/matrimonialsystem" icon="bi-heart-fill" label="Matrimonial System" />
           <SidebarButton to="/hospitalmanagement" icon="bi-hospital" label="Hospital Management" />
-          <SidebarButton to="/medicalstore" icon="bi-capsule" label="Medical Store" />
-          <SidebarButton to="/clinicmanagement" icon="bi-mortarboard" label="Clinic Management" />
           </>
         )}
 
         {role === "Interners" && activeMenu === "Fullstack" && (
           <>
-          <SidebarButton to="/crud" icon="bi-ui-checks-grid" label="CRUD" />
-          <SidebarButton to="/dropdown" icon="bi-caret-down-square" label="Dropdown" />
-          <SidebarButton to="/cascadingdropdown" icon="bi-diagram-3" label="Cascading Dropdown" />
-          <SidebarButton to="/multiselectdropdown" icon="bi-check2-square" label="Multi Select Dropdown" />
+          <SidebarButton to="/language" icon="bi-ui-checks-grid" label="Language" />
+          <SidebarButton to="/country" icon="bi-ui-checks-grid" label="Country" />
+          <SidebarButton to="/state" icon="bi-caret-down-square" label="State" />
+          <SidebarButton to="/district" icon="bi-diagram-3" label="District" />
           <SidebarButton to="/radiobutton" icon="bi-record-circle" label="Radio Button" />
           <SidebarButton to="/checkbox" icon="bi-check-square" label="Checkbox" />
+          <SidebarButton to="/multiselectdropdown" icon="bi-check2-square" label="Multi Select Dropdown" />
           <SidebarButton to="/imageupload" icon="bi-file-image" label="Image Upload" />
           <SidebarButton to="/searching" icon="bi-search" label="Searching" />
           <SidebarButton to="/pagination" icon="bi-list-nested" label="Pagination" />
@@ -69,12 +67,12 @@ function Sidebar({ activeMenu }) {
           {role === "Interners" && activeMenu === "Dotnet" && (
             <>
             <SidebarButton to="/netprojectsetup" icon="bi-calendar-check" label=".Net Project Setup" />
-            <SidebarButton to="/netcrud" icon="bi-ui-checks-grid" label=".Net CRUD" />
-            <SidebarButton to="/netdropdown" icon="bi-caret-down-square" label=".Net Dropdown" />
-            <SidebarButton to="/netcascadingdropdown" icon="bi-diagram-3" label=".Net Cascading Dropdown" />
-            <SidebarButton to="/netmultiselectdropdown" icon="bi-check2-square" label=".Net Multi Select Dropdown" />
+            <SidebarButton to="/netcountry" icon="bi-ui-checks-grid" label=".Net Country" />
+            <SidebarButton to="/netstate" icon="bi-caret-down-square" label=".Net State" />
+            <SidebarButton to="/netdistrict" icon="bi-diagram-3" label=".Net District" />
             <SidebarButton to="/netradiobutton" icon="bi-record-circle" label=".Net Radio Button" />
             <SidebarButton to="/netcheckbox" icon="bi-check-square" label=".Net Checkbox" />
+            <SidebarButton to="/netmultiselectdropdown" icon="bi-check2-square" label=".Net Multi Select Dropdown" />
             <SidebarButton to="/netimageupload" icon="bi-file-image" label=".Net Image Upload" />
             <SidebarButton to="/netsearching" icon="bi-search" label=".Net Searching" />
             <SidebarButton to="/netpagination" icon="bi-list-nested" label=".Net Pagination" />
@@ -92,12 +90,12 @@ function Sidebar({ activeMenu }) {
           {role === "Interners" && activeMenu === "Springboot" && (
             <>
             <SidebarButton to="/javaprojectsetup" icon="bi-calendar-check" label="Java Project Setup" />
-            <SidebarButton to="/javacrud" icon="bi-ui-checks-grid" label="Java CRUD" />
-            <SidebarButton to="/javadropdown" icon="bi-caret-down-square" label="Java Dropdown" />
-            <SidebarButton to="/javacascadingdropdown" icon="bi-diagram-3" label="Java Cascading Dropdown" />
-            <SidebarButton to="/javamultiselectdropdown" icon="bi-check2-square" label="Java Multi Select Dropdown" />
+            <SidebarButton to="/javacountry" icon="bi-ui-checks-grid" label="Java Country" />
+            <SidebarButton to="/javastate" icon="bi-caret-down-square" label="Java State" />
+            <SidebarButton to="/javadistrict" icon="bi-diagram-3" label="Java District" />
             <SidebarButton to="/javaradiobutton" icon="bi-record-circle" label="Java Radio Button" />
             <SidebarButton to="/javacheckbox" icon="bi-check-square" label="Java Checkbox" />
+            <SidebarButton to="/javamultiselectdropdown" icon="bi-check2-square" label="Java Multi Select Dropdown" />
             <SidebarButton to="/javaimageupload" icon="bi-file-image" label="Java Image Upload" />
             <SidebarButton to="/javasearching" icon="bi-search" label="Java Searching" />
             <SidebarButton to="/javapagination" icon="bi-list-nested" label="Java Pagination" />
@@ -115,12 +113,12 @@ function Sidebar({ activeMenu }) {
           {role === "Interners" && activeMenu === "Node" && (
             <>
             <SidebarButton to="/nodeprojectsetup" icon="bi-calendar-check" label="Node Project Setup" />
-            <SidebarButton to="/nodecrud" icon="bi-ui-checks-grid" label="Node CRUD" />
-            <SidebarButton to="/nodedropdown" icon="bi-caret-down-square" label="Node Dropdown" />
-            <SidebarButton to="/nodecascadingdropdown" icon="bi-diagram-3" label="Node Cascading Dropdown" />
-            <SidebarButton to="/nodemultiselectdropdown" icon="bi-check2-square" label="Node Multi Select Dropdown" />
+            <SidebarButton to="/nodecountry" icon="bi-ui-checks-grid" label="Node Country" />
+            <SidebarButton to="/nodestate" icon="bi-caret-down-square" label="Node State" />
+            <SidebarButton to="/nodedistrict" icon="bi-diagram-3" label="Node District" />
             <SidebarButton to="/noderadiobutton" icon="bi-record-circle" label="Node Radio Button" />
             <SidebarButton to="/nodecheckbox" icon="bi-check-square" label="Node Checkbox" />
+            <SidebarButton to="/nodemultiselectdropdown" icon="bi-check2-square" label="Node Multi Select Dropdown" />
             <SidebarButton to="/nodeimageupload" icon="bi-file-image" label="Node Image Upload" />
             <SidebarButton to="/nodesearching" icon="bi-search" label="Node Searching" />
             <SidebarButton to="/nodepagination" icon="bi-list-nested" label="Node Pagination" />
@@ -214,12 +212,12 @@ function Sidebar({ activeMenu }) {
           {role === "Interners" && activeMenu === "React" && (
             <>
             <SidebarButton to="/reactprojectsetup" icon="bi-calendar-check" label="React Project Setup" />
-            <SidebarButton to="/reactcrud" icon="bi-ui-checks-grid" label="React CRUD" />
-            <SidebarButton to="/reactdropdown" icon="bi-caret-down-square" label="React Dropdown" />
-            <SidebarButton to="/reactcascadingdropdown" icon="bi-diagram-3" label="React Cascading Dropdown" />
-            <SidebarButton to="/reactmultiselectdropdown" icon="bi-check2-square" label="React Multi Select Dropdown" />
+            <SidebarButton to="/reactcountry" icon="bi-ui-checks-grid" label="React Country" />
+            <SidebarButton to="/reactstate" icon="bi-caret-down-square" label="React State" />
+            <SidebarButton to="/reactdistrict" icon="bi-diagram-3" label="React District" />
             <SidebarButton to="/reactradiobutton" icon="bi-record-circle" label="React Radio Button" />
             <SidebarButton to="/reactcheckbox" icon="bi-check-square" label="React Checkbox" />
+            <SidebarButton to="/reactmultiselectdropdown" icon="bi-check2-square" label="React Multi Select Dropdown" />
             <SidebarButton to="/reactimageupload" icon="bi-file-image" label="React Image Upload" />
             <SidebarButton to="/reactsearching" icon="bi-search" label="React Searching" />
             <SidebarButton to="/reactpagination" icon="bi-list-nested" label="React Pagination" />
@@ -237,12 +235,12 @@ function Sidebar({ activeMenu }) {
           {role === "Interners" && activeMenu === "Next" && (
             <>
             <SidebarButton to="/nextprojectsetup" icon="bi-calendar-check" label="Next Project Setup" />
-            <SidebarButton to="/nextcrud" icon="bi-ui-checks-grid" label="Next CRUD" />
-            <SidebarButton to="/nextdropdown" icon="bi-caret-down-square" label="Next Dropdown" />
-            <SidebarButton to="/nextcascadingdropdown" icon="bi-diagram-3" label="Next Cascading Dropdown" />
-            <SidebarButton to="/nextmultiselectdropdown" icon="bi-check2-square" label="Next Multi Select Dropdown" />
+            <SidebarButton to="/nextcountry" icon="bi-ui-checks-grid" label="Next Country" />
+            <SidebarButton to="/nextstate" icon="bi-caret-down-square" label="Next State" />
+            <SidebarButton to="/nextdistrict" icon="bi-diagram-3" label="Next District" />
             <SidebarButton to="/nextradiobutton" icon="bi-record-circle" label="Next Radio Button" />
             <SidebarButton to="/nextcheckbox" icon="bi-check-square" label="Next Checkbox" />
+            <SidebarButton to="/nextmultiselectdropdown" icon="bi-check2-square" label="Next Multi Select Dropdown" />
             <SidebarButton to="/nextimageupload" icon="bi-file-image" label="Next Image Upload" />
             <SidebarButton to="/nextsearching" icon="bi-search" label="Next Searching" />
             <SidebarButton to="/nextpagination" icon="bi-list-nested" label="Next Pagination" />

@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaBook, FaLink, FaCode, FaCheckCircle } from "react-icons/fa";
 
-function Reactdropdown() {
+function Reactstate() {
   const sectionHeaderStyle = {
     borderBottom: "2px solid #007bff",
     paddingBottom: "5px",
@@ -218,4 +218,4 @@ export default State;`}
   );
 }
 
-export default Reactdropdown;
+export default Reactstate;

@@ -6,10 +6,7 @@ import User from "./SuperAdmin/User";
 import UserRole from "./SuperAdmin/UserRole";
 import SuperHeader from "./Components/SuperHeader";
 import Sidebar from "./Components/Sidebar";
-import Crud from "./Fullstack/Crud";
-import Dropdown from "./Fullstack/Dropdown";
 import MultiselectDropdown from "./Fullstack/MultiselectDropdown";
-import CascadingDropdown from "./Fullstack/CascadingDropdown";
 import CheckBox from "./Fullstack/Checkbox";
 import CQRSDesignPattern from "./Fullstack/CQRSDesignPattern";
 import FacebookAuth from "./Fullstack/FacebookAuth";
@@ -28,10 +25,7 @@ import EmployeePayroll from "./Projects/EmployeePayroll";
 import AttendancePortal from "./Projects/AttendancePortal";
 import Ecommerce from "./Projects/Ecommerce";
 import DigitalLibrary from "./Projects/DigitalLibrary";
-import MatrimonialSystem from "./Projects/MatrimonialSystem";
 import HospitalManagement from "./Projects/HospitalManagement";
-import MedicalStore from "./Projects/MedicalStore";
-import ClinicManagement from "./Projects/ClinicManagement";
 import Array from "./DSA/Array";
 import Arraylist from "./DSA/Arraylist";
 import List from "./DSA/List";
@@ -86,9 +80,6 @@ import Gitgithub from "./DevOps/Gitgithub";
 import Devopsbestpractices from "./DevOps/Devopsbestpractices";
 import Devopsquestions from "./DevOps/Devopsquestions";
 import Reactprojectsetup from "./React/Reactprojectsetup";
-import Reactcrud from "./React/Reactcrud";
-import Reactdropdown from "./React/Reactdropdown";
-import Reactcascadingdropdown from "./React/Reactcascadingdropdown";
 import Reactmultiselectdropdown from "./React/Reactmultiselectdropdown";
 import Reactradiobutton from "./React/Reactradiobutton";
 import Reactcheckbox from "./React/Reactcheckbox";
@@ -102,9 +93,6 @@ import Reactzustand from "./React/Reactzustand";
 import Reactredux from "./React/Reactredux";
 import Reactquestions from "./React/Reactquestions";
 import Nextprojectsetup from "./Next/Nextprojectsetup";
-import Nextcrud from "./Next/Nextcrud";
-import Nextdropdown from "./Next/Nextdropdown";
-import Nextcascadingdropdown from "./Next/Nextcascadingdropdown";
 import Nextmultiselectdropdown from "./Next/Nextmultiselectdropdown";
 import Nextradiobutton from "./Next/Nextradiobutton";
 import Nextcheckbox from "./Next/Nextcheckbox";
@@ -123,11 +111,8 @@ import Netquestions from "./Dotnet/Netquestions";
 import Netprojectsetup from "./Dotnet/Netprojectsetup";
 import Javaquestions from "./Java/Javaquestions";
 import Javaprojectsetup from "./Java/Javaprojectsetup";
-import Netcrud from "./Dotnet/Netcrud";
-import Netcascadingdropdown from "./Dotnet/Netcascadingdropdown";
 import Netcheckbox from "./Dotnet/Netcheckbox";
 import Netcqrsdesignpattern from "./Dotnet/Netcqrsdesignpattern";
-import Netdropdown from "./Dotnet/Netdropdown";
 import Netfacebookauth from "./Dotnet/Netfacebookauth";
 import Netgoogleauth from "./Dotnet/Netgoogleauth";
 import Netimageupload from "./Dotnet/Netimageupload";
@@ -139,12 +124,8 @@ import Nextonionarchitecture from "./Next/Nextonionarchitecture";
 import Netpagination from "./Dotnet/Netpagination";
 import Netradiobutton from "./Dotnet/Netradiobutton";
 import Netsearching from "./Dotnet/Netsearching";
-import { JavascriptRounded } from "@mui/icons-material";
-import Javacrud from "./Java/Javacrud";
-import Javacascadingdropdown from "./Java/Javacascadingdropdown";
 import Javacheckbox from "./Java/Javacheckbox";
 import Javacqrsdesignpattern from "./Java/Javacqrsdesignpattern";
-import Javadropdown from "./Java/Javadropdown";
 import Javafacebookauth from "./Java/Javafacebookauth";
 import Javagoogleauth from "./Java/Javagoogleauth";
 import Javaimageupload from "./Java/Javaimageupload";
@@ -156,10 +137,7 @@ import Javaonionarchitecture from "./Java/Javaonionarchitecture";
 import Javaradiobutton from "./Java/Javaradiobutton";
 import Javapagination from "./Java/Javapagination";
 import Javasearching from "./Java/Javasearching";
-import Nodecascadingdropdown from "./Node/Nodecascadingdropdown";
 import Nodecheckbox from "./Node/Nodecheckbox";
-import Nodecrud from "./Node/Nodecrud";
-import Nodedropdown from "./Node/Nodedropdown";
 import Nodefacebookauth from "./Node/Nodefacebookauth";
 import Nodegoogleauth from "./Node/Nodegoogleauth";
 import Nodeimageupload from "./Node/Nodeimageupload";
@@ -173,6 +151,25 @@ import Nodesearching from "./Node/Nodesearching";
 import Nodeprojectsetup from "./Node/Nodeprojectsetup";
 import Nodequestions from "./Node/Nodequestions";
 import Nextimageupload from "./Next/Nextimageupload";
+import Country from "./Fullstack/Country";
+import State from "./Fullstack/State";
+import District from "./Fullstack/District";
+import Netcountry from "./Dotnet/Netcountry";
+import Netdistrict from "./Dotnet/Netdistrict";
+import Netstate from "./Dotnet/Netstate";
+import Javacountry from "./Java/Javacountry";
+import Javadistrict from "./Java/Javadistrict";
+import Javastate from "./Java/Javastate";
+import Nodecountry from "./Node/Nodecountry";
+import Nodedistrict from "./Node/Nodedistrict";
+import Nodestate from "./Node/Nodestate";
+import Reactcountry from "./React/Reactcountry";
+import Reactstate from "./React/Reactstate";
+import Reactdistrict from "./React/Reactdistrict";
+import Nextcountry from "./Next/Nextcountry";
+import Nextdistrict from "./Next/Nextdistrict";
+import Nextstate from "./Next/Nextstate";
+import Languages from "./Fullstack/Languages";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -198,33 +195,31 @@ function App() {
             <Route path="/attendanceportal" element={<AttendancePortal />} />
             <Route path="/ecommerce" element={<Ecommerce />} />
             <Route path="/digitallibrary" element={<DigitalLibrary />} />
-            <Route path="/matrimonialsystem" element={<MatrimonialSystem />} />
             <Route path="/hospitalmanagement" element={<HospitalManagement />} />
-            <Route path="/medicalstore" element={<MedicalStore />} />
-            <Route path="/clinicmanagement" element={<ClinicManagement />} />
 
-            <Route path="/crud" element={<Crud />} />
-            <Route path="/cascadingdropdown" element={<CascadingDropdown />} />
+            <Route path="/language" element={<Languages />} />
+            <Route path="/country" element={<Country />} />
+            <Route path="/state" element={<State />} />
+            <Route path="/district" element={<District />} />
+            <Route path="/radiobutton" element={<RadioButton />} />
             <Route path="/checkbox" element={<CheckBox />} />
+            <Route path="/multiselectdropdown" element={<MultiselectDropdown />} />
             <Route path="/cqrsdesignpattern" element={<CQRSDesignPattern />} />
-            <Route path="/dropdown" element={<Dropdown />} />
             <Route path="/facebookauth" element={<FacebookAuth />} />
             <Route path="/googleauth" element={<GoogleAuth />} />
             <Route path="/imageupload" element={<ImageUpload />} />
             <Route path="/jwtauth" element={<JWTAuth />} />
             <Route path="/logger" element={<Logger />} />
             <Route path="/microservices" element={<Microservices />} />
-            <Route path="/multiselectdropdown" element={<MultiselectDropdown />} />
             <Route path="/onionarchitecture" element={<OnionArchitecture />} />
             <Route path="/pagination" element={<Pagination />} />
-            <Route path="/radiobutton" element={<RadioButton />} />
             <Route path="/searching" element={<Searching />} />
 
-            <Route path="/netcrud" element={<Netcrud />} />
-            <Route path="/netcascadingdropdown" element={<Netcascadingdropdown />} />
+            <Route path="/netcountry" element={<Netcountry />} />
+            <Route path="/netdistrict" element={<Netdistrict />} />
+            <Route path="/netstate" element={<Netstate />} />
             <Route path="/netcheckbox" element={<Netcheckbox />} />
             <Route path="/netcqrsdesignpattern" element={<Netcqrsdesignpattern />} />
-            <Route path="/netdropdown" element={<Netdropdown />} />
             <Route path="/netfacebookauth" element={<Netfacebookauth />} />
             <Route path="/netgoogleauth" element={<Netgoogleauth />} />
             <Route path="/netimageupload" element={<Netimageupload />} />
@@ -239,11 +234,11 @@ function App() {
             <Route path="/netquestions" element={<Netquestions />} />
             <Route path="/netprojectsetup" element={<Netprojectsetup />} />
 
-            <Route path="/javacrud" element={<Javacrud />} />
-            <Route path="/javacascadingdropdown" element={<Javacascadingdropdown />} />
+            <Route path="/javacountry" element={<Javacountry />} />
+            <Route path="/javadistrict" element={<Javadistrict />} />
             <Route path="/javacheckbox" element={<Javacheckbox />} />
             <Route path="/javacqrsdesignpattern" element={<Javacqrsdesignpattern />} />
-            <Route path="/javadropdown" element={<Javadropdown  />} />
+            <Route path="/javastate" element={<Javastate  />} />
             <Route path="/javafacebookauth" element={<Javafacebookauth />} />
             <Route path="/javagoogleauth" element={<Javagoogleauth />} />
             <Route path="/javaimageupload" element={<Javaimageupload />} />
@@ -259,10 +254,10 @@ function App() {
             <Route path="/javaprojectsetup" element={<Javaprojectsetup />} />
 
             <Route path="/nodeprojectsetup" element={<Nodeprojectsetup />} />
-            <Route path="/nodecrud" element={<Nodecrud />} />
-            <Route path="/nodecascadingdropdown" element={<Nodecascadingdropdown />} />
+            <Route path="/nodecountry" element={<Nodecountry />} />
+            <Route path="/nodedistrict" element={<Nodedistrict />} />
             <Route path="/nodecheckbox" element={<Nodecheckbox />} />
-            <Route path="/nodedropdown" element={<Nodedropdown />} />
+            <Route path="/nodestate" element={<Nodestate />} />
             <Route path="/nodefacebookauth" element={<Nodefacebookauth />} />
             <Route path="/nodegoogleauth" element={<Nodegoogleauth />} />
             <Route path="/nodeimageupload" element={<Nodeimageupload />} />
@@ -334,9 +329,9 @@ function App() {
             <Route path="/devopsquestions" element={<Devopsquestions />} />
 
             <Route path="/reactprojectsetup" element={<Reactprojectsetup />} />
-            <Route path="/reactcrud" element={<Reactcrud />} />
-            <Route path="/reactdropdown" element={<Reactdropdown />} />
-            <Route path="/reactcascadingdropdown" element={<Reactcascadingdropdown />} />
+            <Route path="/reactcountry" element={<Reactcountry />} />
+            <Route path="/reactstate" element={<Reactstate />} />
+            <Route path="/reactdistrict" element={<Reactdistrict />} />
             <Route path="/reactmultiselectdropdown" element={<Reactmultiselectdropdown />} />
             <Route path="/reactradiobutton" element={<Reactradiobutton />} />
             <Route path="/reactcheckbox" element={<Reactcheckbox />} />
@@ -352,9 +347,9 @@ function App() {
             <Route path="/reactquestions" element={<Reactquestions />} />
 
             <Route path="/nextprojectsetup" element={<Nextprojectsetup />} />
-            <Route path="/nextcrud" element={<Nextcrud />} />
-            <Route path="/nextdropdown" element={<Nextdropdown />} />
-            <Route path="/nextcascadingdropdown" element={<Nextcascadingdropdown />} />
+            <Route path="/nextcountry" element={<Nextcountry />} />
+            <Route path="/nextstate" element={<Nextstate />} />
+            <Route path="/nextdistrict" element={<Nextdistrict />} />
             <Route path="/nextmultiselectdropdown" element={<Nextmultiselectdropdown />} />
             <Route path="/nextradiobutton" element={<Nextradiobutton />} />
             <Route path="/nextcheckbox" element={<Nextcheckbox />} />

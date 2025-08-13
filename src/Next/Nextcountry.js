@@ -2,7 +2,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 
-export default function Nextcrud() {
+function Nextcountry() {
   // ✅ Load Bootstrap JS for modals & tooltips in Next.js
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
@@ -195,3 +195,5 @@ const totalPages = Math.ceil(filteredList.length / pageSize);`}
     </div>
   );
 }
+
+export default Nextcountry;

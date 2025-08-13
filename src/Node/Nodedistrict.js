@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Nodecascadingdropdown() {
+function Nodedistrict() {
   return (
     <div>
             <h1>Node</h1>
@@ -8,4 +8,4 @@ function Nodecascadingdropdown() {
   )
 }
 
-export default Nodecascadingdropdown
+export default Nodedistrict
