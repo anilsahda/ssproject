@@ -35,3 +35,7 @@ pipeline {
                 sudo systemctl restart nginx
                 '''
 
+            }
+        }
+    }
+}
