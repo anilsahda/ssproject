@@ -3,101 +3,59 @@ import axios from "axios";
 
 function Checkbox() {
   const [employees, setEmployees] = useState([]);
-
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [districts, setDistricts] = useState([]);
-  const [genders] = useState([
-    { id: 1, name: "Male" },
-    { id: 2, name: "Female" },
-    { id: 3, name: "Other" },
-  ]);
   const [languages, setLanguages] = useState([]);
+  const genders = [{ id: 1, name: "Male" }, { id: 2, name: "Female" }, { id: 3, name: "Other" }];
 
-  // Form fields
-  const [id, setId] = useState(0);
+  const [id, setId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
-  const [countryId, setCountryId] = useState(0);
-  const [stateId, setStateId] = useState(0);
-  const [districtId, setDistrictId] = useState(0);
-  const [genderId, setGenderId] = useState(0);
+  const [countryId, setCountryId] = useState("");
+  const [stateId, setStateId] = useState("");
+  const [districtId, setDistrictId] = useState("");
+  const [genderId, setGenderId] = useState("");
   const [image, setImage] = useState("");
-  const [selectedLanguages, setSelectedLanguages] = useState([]); // array of selected language IDs
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
 
   const baseUrl = `${process.env.REACT_APP_BASE_URL}/Employees`;
-  const countryUrl = `${process.env.REACT_APP_BASE_URL}/Countries`;
-  const stateUrl = `${process.env.REACT_APP_BASE_URL}/States`;
-  const districtUrl = `${process.env.REACT_APP_BASE_URL}/Districts`;
-  const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
 
   useEffect(() => {
     loadEmployees();
-    loadCountries();
-    loadStates();
-    loadDistricts();
-    loadLanguages();
+    axios.get(`${process.env.REACT_APP_BASE_URL}/Countries`).then(res => setCountries(res.data));
+    axios.get(`${process.env.REACT_APP_BASE_URL}/States`).then(res => setStates(res.data));
+    axios.get(`${process.env.REACT_APP_BASE_URL}/Districts`).then(res => setDistricts(res.data));
+    axios.get(`${process.env.REACT_APP_BASE_URL}/Languages`).then(res => setLanguages(res.data));
   }, []);
 
-  // Load employees and map languages to array of languageIds
   const loadEmployees = () => {
-    axios.get(baseUrl).then((res) => {
-      const mappedEmployees = res.data.map((emp) => ({
-        ...emp,
-        languages: emp.languages?.map((l) => l.languageId) || [],
-      }));
-      setEmployees(mappedEmployees);
-    });
-  };
-
-  const loadCountries = () => {
-    axios.get(countryUrl).then((res) => setCountries(res.data));
-  };
-
-  const loadStates = () => {
-    axios.get(stateUrl).then((res) => setStates(res.data));
-  };
-
-  const loadDistricts = () => {
-    axios.get(districtUrl).then((res) => setDistricts(res.data));
-  };
-
-  const loadLanguages = () => {
-    axios.get(languageUrl).then((res) => setLanguages(res.data));
+    axios.get(baseUrl).then(res => setEmployees(res.data));
   };
 
   const resetForm = () => {
-    setId(0);
+    setId("");
     setFirstName("");
     setMiddleName("");
     setLastName("");
     setAddress("");
     setEmail("");
     setMobile("");
-    setCountryId(0);
-    setStateId(0);
-    setDistrictId(0);
-    setGenderId(0);
+    setCountryId("");
+    setStateId("");
+    setDistrictId("");
+    setGenderId("");
     setImage("");
     setSelectedLanguages([]);
   };
 
-  const handleSave = () => {
-    if (
-      !firstName.trim() ||
-      !lastName.trim() ||
-      countryId === 0 ||
-      stateId === 0 ||
-      districtId === 0 ||
-      genderId === 0
-    )
-      return alert("Please fill all required fields.");
-
-    const data = {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const payload = {
       id,
       firstName,
       middleName,
@@ -105,24 +63,22 @@ function Checkbox() {
       address,
       email,
       mobile,
-      countryId,
-      stateId,
-      districtId,
-      genderId,
+      countryId: countryId ? Number(countryId) : null,
+      stateId: stateId ? Number(stateId) : null,
+      districtId: districtId ? Number(districtId) : null,
+      genderId: genderId ? Number(genderId) : null,
       image,
-      languages: selectedLanguages, // send array of selected language IDs
+      languages: selectedLanguages
     };
 
-    // Note: your API expects PUT at `/Employees/{id}`
-    const request =
-      id === 0
-        ? axios.post(baseUrl, data)
-        : axios.put(`${baseUrl}/${id}`, data);
+    if (id) {
+      await axios.put(`${baseUrl}/${id}`, payload);
+    } else {
+      await axios.post(baseUrl, payload);
+    }
 
-    request.then(() => {
-      resetForm();
-      loadEmployees();
-    });
+    resetForm();
+    loadEmployees();
   };
 
   const handleEdit = (emp) => {
@@ -136,235 +92,150 @@ function Checkbox() {
     setCountryId(emp.countryId);
     setStateId(emp.stateId);
     setDistrictId(emp.districtId);
-    setGenderId(emp.genderId);
+    setGenderId(emp.genderId || "");
     setImage(emp.image);
-
-    // Map languages array of objects to array of languageId
-    setSelectedLanguages(emp.languages || []);
+    setSelectedLanguages(emp.languages?.map(l => l.languageId) || []);
   };
 
-  const handleDelete = (empId) => {
-    if (window.confirm("Are you sure you want to delete this employee?")) {
-      axios.delete(`${baseUrl}/${empId}`).then(() => loadEmployees());
+  const handleDelete = async (empId) => {
+    if (window.confirm("Delete this employee?")) {
+      await axios.delete(`${baseUrl}/${empId}`);
+      loadEmployees();
     }
   };
 
-  // Cascading filters
-  const filteredStates = states.filter((s) => s.countryId === countryId);
-  const filteredDistricts = districts.filter((d) => d.stateId === stateId);
-
-  // Toggle language selection
-  const toggleLanguage = (langId) => {
-    setSelectedLanguages((prev) =>
-      prev.includes(langId)
-        ? prev.filter((id) => id !== langId)
-        : [...prev, langId]
-    );
-  };
-
   return (
-    <div className="container mt-4">
-      <h2 className="mb-4">Manage Employees</h2>
+    <div className="container my-4">
+      <h2 className="mb-4 text-primary">Employee Management</h2>
 
-      {/* Form */}
-      <div className="mb-3">
-        <input
-          type="text"
-          className="form-control mb-2"
-          placeholder="First Name *"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <input
-          type="text"
-          className="form-control mb-2"
-          placeholder="Middle Name"
-          value={middleName}
-          onChange={(e) => setMiddleName(e.target.value)}
-        />
-        <input
-          type="text"
-          className="form-control mb-2"
-          placeholder="Last Name *"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <input
-          type="text"
-          className="form-control mb-2"
-          placeholder="Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        <input
-          type="email"
-          className="form-control mb-2"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="tel"
-          className="form-control mb-2"
-          placeholder="Mobile"
-          value={mobile}
-          onChange={(e) => setMobile(e.target.value)}
-        />
+      <form onSubmit={handleSubmit} className="mb-4">
+        <div className="row g-3">
+          {/* Name fields */}
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} required />
+          </div>
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Middle Name" value={middleName} onChange={e => setMiddleName(e.target.value)} />
+          </div>
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} required />
+          </div>
 
-        <select
-          className="form-select mb-2"
-          value={countryId}
-          onChange={(e) => {
-            setCountryId(parseInt(e.target.value));
-            setStateId(0);
-            setDistrictId(0);
-          }}
-        >
-          <option value={0}>Select Country *</option>
-          {countries.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
-          ))}
-        </select>
+          {/* Address */}
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Address" value={address} onChange={e => setAddress(e.target.value)} />
+          </div>
 
-        <select
-          className="form-select mb-2"
-          value={stateId}
-          onChange={(e) => {
-            setStateId(parseInt(e.target.value));
-            setDistrictId(0);
-          }}
-          disabled={countryId === 0}
-        >
-          <option value={0}>Select State *</option>
-          {filteredStates.map((s) => (
-            <option key={s.id} value={s.id}>
-              {s.name}
-            </option>
-          ))}
-        </select>
+          {/* Email & Mobile */}
+          <div className="col-md-4">
+            <input type="email" className="form-control" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+          </div>
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Mobile" value={mobile} onChange={e => setMobile(e.target.value)} />
+          </div>
 
-        <select
-          className="form-select mb-2"
-          value={districtId}
-          onChange={(e) => setDistrictId(parseInt(e.target.value))}
-          disabled={stateId === 0}
-        >
-          <option value={0}>Select District *</option>
-          {filteredDistricts.map((d) => (
-            <option key={d.id} value={d.id}>
-              {d.name}
-            </option>
-          ))}
-        </select>
+          {/* Country */}
+          <div className="col-md-4">
+            <select className="form-select" value={countryId} onChange={e => setCountryId(e.target.value)}>
+              <option value="">Select Country</option>
+              {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </select>
+          </div>
 
-        {/* Gender radio buttons */}
-        <div className="mb-3">
-          <label className="me-3">Gender *</label>
-          {genders.map((g) => (
-            <div className="form-check form-check-inline" key={g.id}>
-              <input
-                className="form-check-input"
-                type="radio"
-                name="gender"
-                id={`gender${g.id}`}
-                value={g.id}
-                checked={genderId === g.id}
-                onChange={() => setGenderId(g.id)}
-              />
-              <label className="form-check-label" htmlFor={`gender${g.id}`}>
-                {g.name}
-              </label>
+          {/* State */}
+          <div className="col-md-4">
+            <select className="form-select" value={stateId} onChange={e => setStateId(e.target.value)}>
+              <option value="">Select State</option>
+              {states.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+            </select>
+          </div>
+
+          {/* District */}
+          <div className="col-md-4">
+            <select className="form-select" value={districtId} onChange={e => setDistrictId(e.target.value)}>
+              <option value="">Select District</option>
+              {districts.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+            </select>
+          </div>
+
+          {/* Image */}
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Image URL" value={image} onChange={e => setImage(e.target.value)} />
+          </div>
+
+          {/* Gender */}
+          <div className="col-md-4">
+            <label className="form-label">Gender</label>
+            <div>
+              {genders.map(g => (
+                <label key={g.id} className="me-3">
+                  <input type="radio" name="gender" value={g.id} checked={Number(genderId) === g.id} onChange={e => setGenderId(e.target.value)} /> {g.name}
+                </label>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Languages */}
+          <div className="col-md-4">
+            <label className="form-label">Languages</label>
+            <div>
+              {languages.map(lang => (
+                <label key={lang.id} className="me-3">
+                  <input type="checkbox" checked={selectedLanguages.includes(lang.id)} onChange={e => {
+                    if (e.target.checked) {
+                      setSelectedLanguages([...selectedLanguages, lang.id]);
+                    } else {
+                      setSelectedLanguages(selectedLanguages.filter(l => l !== lang.id));
+                    }
+                  }} /> {lang.name}
+                </label>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Languages checkboxes */}
-        <div className="mb-3">
-          <label className="me-3">Languages</label>
-          {languages.map((lang) => (
-            <div className="form-check form-check-inline" key={lang.id}>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id={`lang${lang.id}`}
-                value={lang.id}
-                checked={selectedLanguages.includes(lang.id)}
-                onChange={() => toggleLanguage(lang.id)}
-              />
-              <label className="form-check-label" htmlFor={`lang${lang.id}`}>
-                {lang.name}
-              </label>
-            </div>
-          ))}
-        </div>
-
-        <input
-          type="text"
-          className="form-control mb-3"
-          placeholder="Image URL"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
-
-        <button className="btn btn-primary me-2" onClick={handleSave}>
-          {id === 0 ? "Add Employee" : "Update Employee"}
+        <button type="submit" className="btn btn-primary mt-3">
+          {id ? "Update Employee" : "Add Employee"}
         </button>
-        <button className="btn btn-secondary" onClick={resetForm}>
-          Reset
-        </button>
-      </div>
+        {id && (
+          <button type="button" className="btn btn-secondary mt-3 ms-2" onClick={resetForm}>
+            Cancel
+          </button>
+        )}
+      </form>
 
-      {/* Employees Table */}
       <table className="table table-bordered table-striped">
-        <thead className="table-light">
+        <thead>
           <tr>
-            <th>Id</th>
-            <th>Image</th>
-            <th>First Name</th>
+            <th>Name</th>
             <th>Email</th>
             <th>Country</th>
             <th>State</th>
             <th>District</th>
             <th>Gender</th>
             <th>Languages</th>
+            <th>Image</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {employees.length === 0 && (
-            <tr>
-              <td colSpan="14" className="text-center">
-                No employees found.
-              </td>
-            </tr>
-          )}
-          {employees.map((emp) => (
+          {employees.map(emp => (
             <tr key={emp.id}>
-              <td>{emp.id}</td>
-              <td>{emp.image}</td>
-              <td>{emp.firstName}</td>
+              <td>{`${emp.firstName} ${emp.middleName || ""} ${emp.lastName}`}</td>
               <td>{emp.email}</td>
-              <td>{countries.find((c) => c.id === emp.countryId)?.name || ""}</td>
-              <td>{states.find((s) => s.id === emp.stateId)?.name || ""}</td>
-              <td>{districts.find((d) => d.id === emp.districtId)?.name || ""}</td>
-              <td>{genders.find((g) => g.id === emp.genderId)?.name || ""}</td>
+              <td>{countries.find(c => c.id === emp.countryId)?.name}</td>
+              <td>{states.find(s => s.id === emp.stateId)?.name}</td>
+              <td>{districts.find(d => d.id === emp.districtId)?.name}</td>
+              <td>{genders.find(g => g.id === emp.genderId)?.name}</td>
               <td>
-                {emp.languages && emp.languages.length > 0
-                  ? emp.languages
-                      .map((langId) => languages.find((l) => l.id === langId)?.name || "")
-                      .filter((n) => n !== "")
-                      .join(", ")
-                  : ""}
+                {(emp.languages || []).map(lang => languages.find(l => l.id === lang.languageId)?.name).join(", ")}
               </td>
               <td>
-                <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(emp)}>
-                  Edit
-                </button>
-                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(emp.id)}>
-                  Delete
-                </button>
+                {emp.image && <img src={emp.image} alt="Employee" style={{ width: "50px", height: "50px", objectFit: "cover" }} />}
+              </td>
+              <td>
+                <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(emp)}>Edit</button>
+                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(emp.id)}>Delete</button>
               </td>
             </tr>
           ))}

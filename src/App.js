@@ -8,14 +8,10 @@ import SuperHeader from "./Components/SuperHeader";
 import Sidebar from "./Components/Sidebar";
 import MultiselectDropdown from "./Fullstack/MultiselectDropdown";
 import CheckBox from "./Fullstack/Checkbox";
-import CQRSDesignPattern from "./Fullstack/CQRSDesignPattern";
 import FacebookAuth from "./Fullstack/FacebookAuth";
 import GoogleAuth from "./Fullstack/GoogleAuth";
 import ImageUpload from "./Fullstack/ImageUpload";
 import JWTAuth from "./Fullstack/JWTAuth";
-import Logger from "./Fullstack/Logger";
-import Microservices from "./Fullstack/Microservices";
-import OnionArchitecture from "./Fullstack/OnionArchitecture";
 import Pagination from "./Fullstack/Pagination";
 import RadioButton from "./Fullstack/RadioButton";
 import Searching from "./Fullstack/Searching";
@@ -204,14 +200,10 @@ function App() {
             <Route path="/radiobutton" element={<RadioButton />} />
             <Route path="/checkbox" element={<CheckBox />} />
             <Route path="/multiselectdropdown" element={<MultiselectDropdown />} />
-            <Route path="/cqrsdesignpattern" element={<CQRSDesignPattern />} />
             <Route path="/facebookauth" element={<FacebookAuth />} />
             <Route path="/googleauth" element={<GoogleAuth />} />
             <Route path="/imageupload" element={<ImageUpload />} />
             <Route path="/jwtauth" element={<JWTAuth />} />
-            <Route path="/logger" element={<Logger />} />
-            <Route path="/microservices" element={<Microservices />} />
-            <Route path="/onionarchitecture" element={<OnionArchitecture />} />
             <Route path="/pagination" element={<Pagination />} />
             <Route path="/searching" element={<Searching />} />
 

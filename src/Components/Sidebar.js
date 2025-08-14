@@ -57,10 +57,6 @@ function Sidebar({ activeMenu }) {
           <SidebarButton to="/jwtauth" icon="bi-shield-lock" label="JWT Auth" />
           <SidebarButton to="/googleauth" icon="bi-google" label="Google Auth" />
           <SidebarButton to="/facebookauth" icon="bi-facebook" label="Facebook Auth" />
-          <SidebarButton to="/onionarchitecture" icon="bi-layers" label="Onion Architecture" />
-          <SidebarButton to="/cqrsdesignpattern" icon="bi-diagram-3-fill" label="CQRS Design Pattern" />
-          <SidebarButton to="/logger" icon="bi-terminal" label="Logger" />
-          <SidebarButton to="/microservices" icon="bi-boxes" label="Microservices" />
             </>
           )}
 

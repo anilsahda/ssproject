@@ -1,268 +1,287 @@
-import { useState } from "react";
-import Swal from "sweetalert2";
-import "sweetalert2/dist/sweetalert2.min.css";
-import EmployeeViewModal from "./EmployeeViewModal";
-import EmployeeModal from "./EmployeeModal";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Select, { components } from "react-select";
 
 function MultiselectDropdown() {
-  const countries = [
-    { id: 1, name: "India" },
-    { id: 2, name: "USA" },
-  ];
-
-  const states = [
-    { id: 1, name: "Maharashtra", countryId: 1 },
-    { id: 2, name: "Gujarat", countryId: 1 },
-    { id: 3, name: "California", countryId: 2 },
-    { id: 4, name: "Texas", countryId: 2 },
-  ];
-
-  const districts = [
-    { id: 1, name: "Mumbai", stateId: 1 },
-    { id: 2, name: "Pune", stateId: 1 },
-    { id: 3, name: "Houston", stateId: 4 },
-  ];
-
-  const qualificationsList = ["High School", "Bachelor's", "Master's", "PhD"];
-
   const [employees, setEmployees] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(5);
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
+  const [districts, setDistricts] = useState([]);
+  const [languages, setLanguages] = useState([]);
+  const genders = [
+    { id: 1, name: "Male" },
+    { id: 2, name: "Female" },
+    { id: 3, name: "Other" }
+  ];
 
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [editEmployee, setEditEmployee] = useState(null);
-  const [viewEmployee, setViewEmployee] = useState(null);
+  const [id, setId] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [middleName, setMiddleName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [countryId, setCountryId] = useState("");
+  const [stateId, setStateId] = useState("");
+  const [districtId, setDistrictId] = useState("");
+  const [genderId, setGenderId] = useState("");
+  const [image, setImage] = useState("");
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
 
-  const emptyForm = {
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    address: "",
-    email: "",
-    mobile: "",
-    countryId: countries[0].id,
-    stateId: states.find(s => s.countryId === countries[0].id)?.id || "",
-    districtId: "",
-    gender: "",
-    religion: "",
-    languages: [],
-    qualifications: [],
-    image: null,
+  const baseUrl = `${process.env.REACT_APP_BASE_URL}/Employees`;
+
+  useEffect(() => {
+    loadEmployees();
+    axios.get(`${process.env.REACT_APP_BASE_URL}/Countries`).then(res => setCountries(res.data));
+    axios.get(`${process.env.REACT_APP_BASE_URL}/States`).then(res => setStates(res.data));
+    axios.get(`${process.env.REACT_APP_BASE_URL}/Districts`).then(res => setDistricts(res.data));
+    axios.get(`${process.env.REACT_APP_BASE_URL}/Languages`).then(res => setLanguages(res.data));
+  }, []);
+
+  const loadEmployees = () => {
+    axios.get(baseUrl).then(res => setEmployees(res.data));
   };
 
-  const [formData, setFormData] = useState(emptyForm);
-
-  const handleAddEmployee = () => {
-    const newId = employees.length > 0 ? Math.max(...employees.map(e => e.id)) + 1 : 1;
-    setEmployees([...employees, { id: newId, ...formData }]);
-    setFormData(emptyForm);
-    setShowAddModal(false);
+  const resetForm = () => {
+    setId("");
+    setFirstName("");
+    setMiddleName("");
+    setLastName("");
+    setAddress("");
+    setEmail("");
+    setMobile("");
+    setCountryId("");
+    setStateId("");
+    setDistrictId("");
+    setGenderId("");
+    setImage("");
+    setSelectedLanguages([]);
   };
 
-  const handleUpdateEmployee = () => {
-    setEmployees(employees.map(e => e.id === editEmployee.id ? { ...formData, id: e.id } : e));
-    setFormData(emptyForm);
-    setEditEmployee(null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const payload = {
+      id,
+      firstName,
+      middleName,
+      lastName,
+      address,
+      email,
+      mobile,
+      countryId: countryId ? Number(countryId) : null,
+      stateId: stateId ? Number(stateId) : null,
+      districtId: districtId ? Number(districtId) : null,
+      genderId: genderId ? Number(genderId) : null,
+      image,
+      languages: selectedLanguages.map(l => l.value) // store only IDs
+    };
+
+    if (id) {
+      await axios.put(`${baseUrl}/${id}`, payload);
+    } else {
+      await axios.post(baseUrl, payload);
+    }
+
+    resetForm();
+    loadEmployees();
   };
 
-  const handleDeleteEmployee = (id) => {
-    const emp = employees.find(e => e.id === id);
-    Swal.fire({
-      title: `Delete "${emp.firstName} ${emp.lastName}"?`,
-      text: "This cannot be undone.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Delete",
-      cancelButtonText: "Cancel",
-      confirmButtonColor: "#e74c3c",
-      cancelButtonColor: "#95a5a6",
-      width: "300px",
-      padding: "1em",
-    }).then(result => {
-      if (result.isConfirmed) {
-        setEmployees(employees.filter(e => e.id !== id));
-        Swal.fire({
-          toast: true,
-          position: "top-end",
-          icon: "success",
-          title: `"${emp.firstName}" deleted`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
+  const handleEdit = (emp) => {
+    setId(emp.id);
+    setFirstName(emp.firstName);
+    setMiddleName(emp.middleName);
+    setLastName(emp.lastName);
+    setAddress(emp.address);
+    setEmail(emp.email);
+    setMobile(emp.mobile);
+    setCountryId(emp.countryId);
+    setStateId(emp.stateId);
+    setDistrictId(emp.districtId);
+    setGenderId(emp.genderId || "");
+    setImage(emp.image);
+
+    // Pre-fill language options for react-select
+    const preselected = (emp.languages || [])
+      .map(l => {
+        const lang = languages.find(lang => lang.id === l.languageId);
+        return lang ? { value: lang.id, label: lang.name } : null;
+      })
+      .filter(Boolean);
+
+    setSelectedLanguages(preselected);
   };
 
-  const handleExportCSV = () => {
-    const csvRows = [
-      "ID,First Name,Last Name,Email,Mobile,Country,State,District",
-      ...employees
-        .filter(e => `${e.firstName} ${e.lastName}`.toLowerCase().includes(searchTerm.toLowerCase()))
-        .map(e => {
-          const country = countries.find(c => c.id === e.countryId)?.name || "";
-          const state = states.find(s => s.id === e.stateId)?.name || "";
-          const district = districts.find(d => d.id === e.districtId)?.name || "";
-          return `${e.id},"${e.firstName}","${e.lastName}",${e.email},${e.mobile},${country},${state},${district}`;
-        }),
-    ];
-    const blob = new Blob([csvRows.join("\n")], { type: "text/csv" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "employees.csv";
-    link.click();
+  const handleDelete = async (empId) => {
+    if (window.confirm("Delete this employee?")) {
+      await axios.delete(`${baseUrl}/${empId}`);
+      loadEmployees();
+    }
   };
 
-  const filtered = employees.filter(e =>
-    `${e.firstName} ${e.lastName}`.toLowerCase().includes(searchTerm.toLowerCase())
+  // ✅ Custom Option with Checkbox
+  const Option = (props) => (
+    <components.Option {...props}>
+      <input
+        type="checkbox"
+        checked={props.isSelected}
+        onChange={() => null} // handled by react-select internally
+        style={{ marginRight: "8px" }}
+      />
+      <label>{props.label}</label>
+    </components.Option>
   );
-  const totalPages = Math.ceil(filtered.length / pageSize);
-  const startIndex = (currentPage - 1) * pageSize;
-  const paginated = filtered.slice(startIndex, startIndex + pageSize);
 
   return (
-    <div className="container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-        <h4>👤 Employee Management</h4>
-        <div className="d-flex gap-2">
-          <button className="btn btn-primary btn-sm" onClick={() => setShowAddModal(true)}>
-            + Add Employee
-          </button>
-          <button className="btn btn-success btn-sm" onClick={handleExportCSV}>
-            📥 Export CSV
-          </button>
-        </div>
-      </div>
+    <div className="container my-4">
+      <h2 className="mb-4 text-primary">Employee Management</h2>
 
-      <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-        <input
-          type="text"
-          className="form-control form-control-sm"
-          placeholder="Search employees..."
-          value={searchTerm}
-          onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
-          style={{ maxWidth: "250px" }}
-        />
-        <div>
-          <label className="form-label me-2 mb-0">Items per page:</label>
-          <select
-            className="form-select form-select-sm d-inline-block w-auto"
-            value={pageSize}
-            onChange={(e) => { setPageSize(parseInt(e.target.value)); setCurrentPage(1); }}
-          >
-            <option value={3}>3</option>
-            <option value={5}>5</option>
-            <option value={10}>10</option>
-          </select>
-        </div>
-      </div>
+      <form onSubmit={handleSubmit} className="mb-4">
+        <div className="row g-3">
+          {/* Name fields */}
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="First Name"
+              value={firstName} onChange={e => setFirstName(e.target.value)} required />
+          </div>
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Middle Name"
+              value={middleName} onChange={e => setMiddleName(e.target.value)} />
+          </div>
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Last Name"
+              value={lastName} onChange={e => setLastName(e.target.value)} required />
+          </div>
 
+          {/* Address */}
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Address"
+              value={address} onChange={e => setAddress(e.target.value)} />
+          </div>
+
+          {/* Email & Mobile */}
+          <div className="col-md-4">
+            <input type="email" className="form-control" placeholder="Email"
+              value={email} onChange={e => setEmail(e.target.value)} />
+          </div>
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Mobile"
+              value={mobile} onChange={e => setMobile(e.target.value)} />
+          </div>
+
+          {/* Country */}
+          <div className="col-md-4">
+            <select className="form-select" value={countryId}
+              onChange={e => setCountryId(e.target.value)}>
+              <option value="">Select Country</option>
+              {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </select>
+          </div>
+
+          {/* State */}
+          <div className="col-md-4">
+            <select className="form-select" value={stateId}
+              onChange={e => setStateId(e.target.value)}>
+              <option value="">Select State</option>
+              {states.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+            </select>
+          </div>
+
+          {/* District */}
+          <div className="col-md-4">
+            <select className="form-select" value={districtId}
+              onChange={e => setDistrictId(e.target.value)}>
+              <option value="">Select District</option>
+              {districts.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+            </select>
+          </div>
+
+          {/* Image */}
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Image URL"
+              value={image} onChange={e => setImage(e.target.value)} />
+          </div>
+
+          {/* Gender */}
+          <div className="col-md-4">
+            <label className="form-label">Gender</label>
+            <div>
+              {genders.map(g => (
+                <label key={g.id} className="me-3">
+                  <input type="radio" name="gender" value={g.id}
+                    checked={Number(genderId) === g.id}
+                    onChange={e => setGenderId(e.target.value)} /> {g.name}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Languages with checkboxes in dropdown */}
+          <div className="col-md-4">
+            <label className="form-label">Languages</label>
+            <Select
+              options={languages.map(lang => ({ value: lang.id, label: lang.name }))}
+              isMulti
+              closeMenuOnSelect={false}
+              hideSelectedOptions={false}
+              components={{ Option }}
+              onChange={(selected) => setSelectedLanguages(selected)}
+              value={selectedLanguages}
+              placeholder="Select Languages..."
+            />
+          </div>
+        </div>
+
+        <button type="submit" className="btn btn-primary mt-3">
+          {id ? "Update Employee" : "Add Employee"}
+        </button>
+        {id && (
+          <button type="button" className="btn btn-secondary mt-3 ms-2" onClick={resetForm}>
+            Cancel
+          </button>
+        )}
+      </form>
+
+      {/* Employee Table */}
       <table className="table table-bordered table-striped">
-        <thead className="table-light">
+        <thead>
           <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Mobile</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>District</th>
+            <th>Gender</th>
+            <th>Languages</th>
+            <th>Image</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {paginated.length === 0 ? (
-            <tr>
-              <td colSpan="5" className="text-center">No employees found.</td>
-            </tr>
-          ) : paginated.map(e => (
-            <tr key={e.id}>
-              <td>{e.id}</td>
-              <td>{e.firstName} {e.lastName}</td>
-              <td>{e.email}</td>
-              <td>{e.mobile}</td>
+          {employees.map(emp => (
+            <tr key={emp.id}>
+              <td>{`${emp.firstName} ${emp.middleName || ""} ${emp.lastName}`}</td>
+              <td>{emp.email}</td>
+              <td>{countries.find(c => c.id === emp.countryId)?.name}</td>
+              <td>{states.find(s => s.id === emp.stateId)?.name}</td>
+              <td>{districts.find(d => d.id === emp.districtId)?.name}</td>
+              <td>{genders.find(g => g.id === emp.genderId)?.name}</td>
               <td>
-                <button
-                  className="border-0 bg-transparent me-2"
-                  title="Edit"
-                  onClick={() => { setFormData(e); setEditEmployee(e); }}
-                >
-                  <i className="bi bi-pencil-fill text-primary fs-5"></i>
-                </button>
-                <button
-                  className="border-0 bg-transparent me-2"
-                  title="Delete"
-                  onClick={() => handleDeleteEmployee(e.id)}
-                >
-                  <i className="bi bi-trash-fill text-danger fs-5"></i>
-                </button>
-                <button
-                  className="border-0 bg-transparent"
-                  title="View"
-                  onClick={() => setViewEmployee(e)}
-                >
-                  <i className="bi bi-eye-fill text-success fs-5"></i>
-                </button>
+                {(emp.languages || [])
+                  .map(lang => languages.find(l => l.id === lang.languageId)?.name)
+                  .join(", ")}
+              </td>
+              <td>
+                {emp.image && (
+                  <img src={emp.image} alt="Employee" style={{ width: "50px", height: "50px", objectFit: "cover" }} />
+                )}
+              </td>
+              <td>
+                <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(emp)}>Edit</button>
+                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(emp.id)}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      {totalPages > 1 && (
-        <nav>
-          <ul className="pagination pagination-sm justify-content-center">
-            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-              <button className="page-link" onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}>Prev</button>
-            </li>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-              <li key={page} className={`page-item ${currentPage === page ? "active" : ""}`}>
-                <button className="page-link" onClick={() => setCurrentPage(page)}>{page}</button>
-              </li>
-            ))}
-            <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-              <button className="page-link" onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}>Next</button>
-            </li>
-          </ul>
-        </nav>
-      )}
-
-      {/* Modals */}
-      {showAddModal && (
-        <>
-          <EmployeeModal
-            title="Add Employee"
-            formData={formData}
-            setFormData={setFormData}
-            onSave={handleAddEmployee}
-            onCancel={() => setShowAddModal(false)}
-            countries={countries}
-            states={states}
-            districts={districts}
-            qualifications={qualificationsList}
-          />
-          <div className="modal-backdrop fade show"></div>
-        </>
-      )}
-      {editEmployee && (
-        <>
-          <EmployeeModal
-            title="Edit Employee"
-            formData={formData}
-            setFormData={setFormData}
-            onSave={handleUpdateEmployee}
-            onCancel={() => setEditEmployee(null)}
-            countries={countries}
-            states={states}
-            districts={districts}
-            qualifications={qualificationsList}
-          />
-          <div className="modal-backdrop fade show"></div>
-        </>
-      )}
-      {viewEmployee && (
-        <>
-          <EmployeeViewModal employee={viewEmployee} onClose={() => setViewEmployee(null)} countries={countries} states={states} districts={districts} />
-          <div className="modal-backdrop fade show"></div>
-        </>
-      )}
     </div>
   );
 }
