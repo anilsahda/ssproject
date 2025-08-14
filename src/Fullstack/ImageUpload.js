@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function ImageUpload() {
-  const baseUrl = process.env.REACT_APP_BASE_URL;
   const [students, setStudents] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
+  const [districts, setDistricts] = useState([]);
+  const genders = [
+    { id: 1, name: "Male" },
+    { id: 2, name: "Female" },
+    { id: 3, name: "Other" }
+  ];
 
   const [id, setId] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -16,17 +23,15 @@ function ImageUpload() {
   const [stateId, setStateId] = useState("");
   const [districtId, setDistrictId] = useState("");
   const [genderId, setGenderId] = useState("");
-  const [imageFile, setImageFile] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null);
+  const [image, setImage] = useState("");
 
-  const genders = [
-    { id: 1, name: "Male" },
-    { id: 2, name: "Female" },
-    { id: 3, name: "Other" }
-  ];
+  const baseUrl = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     loadStudents();
+    loadCountries();
+    loadStates();
+    loadDistricts();
   }, []);
 
   const loadStudents = async () => {
@@ -34,39 +39,42 @@ function ImageUpload() {
     setStudents(res.data);
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setImageFile(file);
-    setPreviewImage(URL.createObjectURL(file));
+  const loadCountries = async () => {
+    const res = await axios.get(`${baseUrl}/countries`);
+    setCountries(res.data);
+  };
+
+  const loadStates = async () => {
+    const res = await axios.get(`${baseUrl}/states`);
+    setStates(res.data);
+  };
+
+  const loadDistricts = async () => {
+    const res = await axios.get(`${baseUrl}/districts`);
+    setDistricts(res.data);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("FirstName", firstName);
-    formData.append("MiddleName", middleName);
-    formData.append("LastName", lastName);
-    formData.append("Address", address);
-    formData.append("Email", email);
-    formData.append("Mobile", mobile);
-    formData.append("CountryId", countryId);
-    formData.append("StateId", stateId);
-    formData.append("DistrictId", districtId);
-    formData.append("GenderId", genderId);
-
-    if (imageFile) {
-      formData.append("ImageFile", imageFile); // matches controller param
-    }
+    const payload = {
+      firstName,
+      middleName,
+      lastName,
+      address,
+      email,
+      mobile,
+      countryId: countryId ? Number(countryId) : null,
+      stateId: stateId ? Number(stateId) : null,
+      districtId: districtId ? Number(districtId) : null,
+      genderId: genderId ? Number(genderId) : null,
+      image
+    };
 
     if (id) {
-      await axios.put(`${baseUrl}/students/${id}`, formData, {
-        headers: { "Content-Type": "multipart/form-data" }
-      });
+      await axios.put(`${baseUrl}/students/UpdateImageUpload/${id}`, payload);
     } else {
-      await axios.post(`${baseUrl}/students`, formData, {
-        headers: { "Content-Type": "multipart/form-data" }
-      });
+      await axios.post(`${baseUrl}/students/AddImageUpload`, payload);
     }
 
     resetForm();
@@ -76,17 +84,16 @@ function ImageUpload() {
   const handleEdit = (std) => {
     setId(std.id);
     setFirstName(std.firstName);
-    setMiddleName(std.middleName || "");
+    setMiddleName(std.middleName);
     setLastName(std.lastName);
-    setAddress(std.address || "");
-    setEmail(std.email || "");
-    setMobile(std.mobile || "");
-    setCountryId(std.countryId || "");
-    setStateId(std.stateId || "");
-    setDistrictId(std.districtId || "");
+    setAddress(std.address);
+    setEmail(std.email);
+    setMobile(std.mobile);
+    setCountryId(std.countryId);
+    setStateId(std.stateId);
+    setDistrictId(std.districtId);
     setGenderId(std.genderId || "");
-    setImageFile(null);
-    setPreviewImage(std.image ? `${baseUrl}/uploads/${std.image}` : null);
+    setImage(std.image);
   };
 
   const handleDelete = async (id) => {
@@ -106,47 +113,113 @@ function ImageUpload() {
     setStateId("");
     setDistrictId("");
     setGenderId("");
-    setImageFile(null);
-    setPreviewImage(null);
+    setImage("");
   };
 
   return (
     <div className="container my-4">
-      <h2>Student Management</h2>
-      <form onSubmit={handleSubmit}>
-        <input placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
-        <input placeholder="Middle Name" value={middleName} onChange={(e) => setMiddleName(e.target.value)} />
-        <input placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
-        <input placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
-        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
+      <h2 className="mb-4 text-primary">Student Management</h2>
 
-        <input type="file" onChange={handleFileChange} accept="image/*" />
-        {previewImage && <img src={previewImage} alt="Preview" width="80" />}
+      <form onSubmit={handleSubmit} className="mb-4">
+        <div className="row g-3">
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="First Name"
+              value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+          </div>
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Middle Name"
+              value={middleName} onChange={(e) => setMiddleName(e.target.value)} />
+          </div>
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Last Name"
+              value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+          </div>
 
-        <div>
-          {genders.map((g) => (
-            <label key={g.id}>
-              <input
-                type="radio"
-                name="gender"
-                value={g.id}
-                checked={Number(genderId) === g.id}
-                onChange={(e) => setGenderId(e.target.value)}
-              />{" "}
-              {g.name}
-            </label>
-          ))}
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Address"
+              value={address} onChange={(e) => setAddress(e.target.value)} />
+          </div>
+
+          <div className="col-md-4">
+            <input type="email" className="form-control" placeholder="Email"
+              value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Mobile"
+              value={mobile} onChange={(e) => setMobile(e.target.value)} />
+          </div>
+
+          <div className="col-md-4">
+            <select className="form-select" value={countryId}
+              onChange={(e) => setCountryId(e.target.value)}>
+              <option value="">Select Country</option>
+              {countries.map((c) => (
+                <option key={c.id} value={c.id}>{c.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="col-md-4">
+            <select className="form-select" value={stateId}
+              onChange={(e) => setStateId(e.target.value)}>
+              <option value="">Select State</option>
+              {states.map((s) => (
+                <option key={s.id} value={s.id}>{s.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="col-md-4">
+            <select className="form-select" value={districtId}
+              onChange={(e) => setDistrictId(e.target.value)}>
+              <option value="">Select District</option>
+              {districts.map((d) => (
+                <option key={d.id} value={d.id}>{d.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="col-md-4">
+            <input type="text" className="form-control" placeholder="Image Name"
+              value={image} onChange={(e) => setImage(e.target.value)} />
+          </div>
+
+          <div className="col-md-4">
+            <label className="form-label">Gender</label>
+            <div>
+              {genders.map((g) => (
+                <label key={g.id} className="me-3">
+                  <input type="radio" name="gender" value={g.id}
+                    checked={Number(genderId) === g.id}
+                    onChange={(e) => setGenderId(e.target.value)} /> {g.name}
+                </label>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <button type="submit">{id ? "Update" : "Add"} Student</button>
-        {id && <button onClick={resetForm}>Cancel</button>}
+        <button type="submit" className="btn btn-primary mt-3">
+          {id ? "Update Student" : "Add Student"}
+        </button>
+        {id && (
+          <button type="button" className="btn btn-secondary mt-3 ms-2"
+            onClick={resetForm}>
+            Cancel
+          </button>
+        )}
       </form>
 
-      <table border="1">
+      <table className="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>Name</th><th>Email</th><th>Gender</th><th>Image</th><th>Actions</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>District</th>
+            <th>Gender</th>
+            <th>Image</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -154,11 +227,16 @@ function ImageUpload() {
             <tr key={std.id}>
               <td>{`${std.firstName} ${std.middleName || ""} ${std.lastName}`}</td>
               <td>{std.email}</td>
+              <td>{countries.find((c) => c.id === std.countryId)?.name}</td>
+              <td>{states.find((s) => s.id === std.stateId)?.name}</td>
+              <td>{districts.find((d) => d.id === std.districtId)?.name}</td>
               <td>{genders.find((g) => g.id === std.genderId)?.name}</td>
-              <td>{std.image && <img src={`${baseUrl}/uploads/${std.image}`} width="50" alt="Student" />}</td>
+              <td>{std.image}</td>
               <td>
-                <button onClick={() => handleEdit(std)}>Edit</button>
-                <button onClick={() => handleDelete(std.id)}>Delete</button>
+                <button className="btn btn-warning btn-sm me-2"
+                  onClick={() => handleEdit(std)}>Edit</button>
+                <button className="btn btn-danger btn-sm"
+                  onClick={() => handleDelete(std.id)}>Delete</button>
               </td>
             </tr>
           ))}
