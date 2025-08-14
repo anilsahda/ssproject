@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function RadioButton() {
   const [students, setStudents] = useState([]);
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [districts, setDistricts] = useState([]);
+
   const genders = [
     { id: 1, name: "Male" },
     { id: 2, name: "Female" },
     { id: 3, name: "Other" }
   ];
 
-  const [id, setId] = useState("");
+  const [id, setId] = useState(0); // store numeric ID
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -22,7 +24,7 @@ function RadioButton() {
   const [countryId, setCountryId] = useState("");
   const [stateId, setStateId] = useState("");
   const [districtId, setDistrictId] = useState("");
-  const [genderId, setGenderId] = useState("");
+  const [genderId, setGenderId] = useState(0);
   const [image, setImage] = useState("");
 
   const baseUrl = process.env.REACT_APP_BASE_URL;
@@ -35,29 +37,61 @@ function RadioButton() {
   }, []);
 
   const loadStudents = async () => {
-    const res = await axios.get(`${baseUrl}/students`);
-    setStudents(res.data);
+    try {
+      const res = await axios.get(`${baseUrl}/students`);
+      setStudents(res.data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const loadCountries = async () => {
-    const res = await axios.get(`${baseUrl}/countries`);
-    setCountries(res.data);
+    try {
+      const res = await axios.get(`${baseUrl}/countries`);
+      setCountries(res.data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const loadStates = async () => {
-    const res = await axios.get(`${baseUrl}/states`);
-    setStates(res.data);
+    try {
+      const res = await axios.get(`${baseUrl}/states`);
+      setStates(res.data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const loadDistricts = async () => {
-    const res = await axios.get(`${baseUrl}/districts`);
-    setDistricts(res.data);
+    try {
+      const res = await axios.get(`${baseUrl}/districts`);
+      setDistricts(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const resetForm = () => {
+    setId(0);
+    setFirstName("");
+    setMiddleName("");
+    setLastName("");
+    setAddress("");
+    setEmail("");
+    setMobile("");
+    setCountryId("");
+    setStateId("");
+    setDistrictId("");
+    setGenderId(0);
+    setImage("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
+      id,
       firstName,
       middleName,
       lastName,
@@ -71,14 +105,23 @@ function RadioButton() {
       image
     };
 
-    if (id) {
-      await axios.put(`${baseUrl}/students/${id}`, payload);
-    } else {
-      await axios.post(`${baseUrl}/students`, payload);
-    }
+    try {
+      if (id && id > 0) {
+        // Update existing student
+        await axios.put(`${baseUrl}/students`, payload);
+        Swal.fire("Updated!", "Student record has been updated.", "success");
+      } else {
+        // Add new student
+        await axios.post(`${baseUrl}/students`, payload);
+        Swal.fire("Added!", "New student has been added.", "success");
+      }
 
-    resetForm();
-    loadStudents();
+      resetForm();
+      loadStudents();
+    } catch (err) {
+      console.error(err);
+      Swal.fire("Error", "Something went wrong!", "error");
+    }
   };
 
   const handleEdit = (std) => {
@@ -92,28 +135,30 @@ function RadioButton() {
     setCountryId(std.countryId);
     setStateId(std.stateId);
     setDistrictId(std.districtId);
-    setGenderId(std.genderId || "");
+    setGenderId(std.genderId || 0);
     setImage(std.image);
   };
 
-  const handleDelete = async (id) => {
-    await axios.delete(`${baseUrl}/students/${id}`);
-    loadStudents();
-  };
-
-  const resetForm = () => {
-    setId("");
-    setFirstName("");
-    setMiddleName("");
-    setLastName("");
-    setAddress("");
-    setEmail("");
-    setMobile("");
-    setCountryId("");
-    setStateId("");
-    setDistrictId("");
-    setGenderId("");
-    setImage("");
+  const handleDelete = (studentId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axios.delete(`${baseUrl}/students/${studentId}`);
+          loadStudents();
+          Swal.fire("Deleted!", "Student has been deleted.", "success");
+        } catch (err) {
+          console.error(err);
+          Swal.fire("Error", "Delete failed!", "error");
+        }
+      }
+    });
   };
 
   return (
@@ -144,6 +189,7 @@ function RadioButton() {
             <input type="email" className="form-control" placeholder="Email"
               value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
+
           <div className="col-md-4">
             <input type="text" className="form-control" placeholder="Mobile"
               value={mobile} onChange={(e) => setMobile(e.target.value)} />
@@ -190,8 +236,8 @@ function RadioButton() {
               {genders.map((g) => (
                 <label key={g.id} className="me-3">
                   <input type="radio" name="gender" value={g.id}
-                    checked={Number(genderId) === g.id}
-                    onChange={(e) => setGenderId(e.target.value)} /> {g.name}
+                    checked={genderId === g.id}
+                    onChange={(e) => setGenderId(Number(e.target.value))} /> {g.name}
                 </label>
               ))}
             </div>
@@ -199,9 +245,9 @@ function RadioButton() {
         </div>
 
         <button type="submit" className="btn btn-primary mt-3">
-          {id ? "Update Student" : "Add Student"}
+          {id > 0 ? "Update Student" : "Add Student"}
         </button>
-        {id && (
+        {id > 0 && (
           <button type="button" className="btn btn-secondary mt-3 ms-2"
             onClick={resetForm}>
             Cancel
@@ -233,10 +279,8 @@ function RadioButton() {
               <td>{genders.find((g) => g.id === std.genderId)?.name}</td>
               <td>{std.image}</td>
               <td>
-                <button className="btn btn-warning btn-sm me-2"
-                  onClick={() => handleEdit(std)}>Edit</button>
-                <button className="btn btn-danger btn-sm"
-                  onClick={() => handleDelete(std.id)}>Delete</button>
+                <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(std)}>Edit</button>
+                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(std.id)}>Delete</button>
               </td>
             </tr>
           ))}

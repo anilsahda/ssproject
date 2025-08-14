@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function Languages() {
   const [languages, setLanguages] = useState([]);
   const [id, setId] = useState(0);
   const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const baseUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
 
@@ -12,35 +14,64 @@ function Languages() {
     loadLanguages();
   }, []);
 
+  const toast = (icon, title) => {
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon,
+      title,
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true
+    });
+  };
+
   const loadLanguages = () => {
-    axios
-      .get(baseUrl)
+    setLoading(true);
+    axios.get(baseUrl)
       .then((res) => setLanguages(res.data))
-      .catch((error) => console.error("Error loading languages:", error));
+      .catch(() => toast("error", "Failed to load languages"))
+      .finally(() => setLoading(false));
   };
 
   const handleSave = () => {
     const data = { id, name };
 
     if (!name.trim()) {
-      alert("Language name cannot be empty");
+      toast("warning", "Language name required");
       return;
     }
 
+    setLoading(true);
+
     if (id === 0) {
-      axios
-        .post(baseUrl, data)
+      // CREATE
+      axios.post(baseUrl, data)
         .then(() => {
+          toast("success", "Language added");
           resetForm();
           loadLanguages();
         })
+        .catch(() => toast("error", "Failed to add"))
+        .finally(() => setLoading(false));
     } else {
-      axios
-        .put(`${baseUrl}/${id}`, data)
+      // UPDATE
+      axios.put(baseUrl, data)
         .then(() => {
+          toast("success", "Language updated");
           resetForm();
           loadLanguages();
         })
+        .catch(() => {
+          axios.put(`${baseUrl}/${id}`, data)
+            .then(() => {
+              toast("success", "Language updated");
+              resetForm();
+              loadLanguages();
+            })
+            .catch(() => toast("error", "Failed to update"))
+            .finally(() => setLoading(false));
+        });
     }
   };
 
@@ -49,12 +80,27 @@ function Languages() {
     setName(language.name);
   };
 
-  const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this language?")) {
-      axios
-        .delete(`${baseUrl}/${id}`)
-        .then(() => loadLanguages())
-    }
+  const handleDelete = (langId) => {
+    Swal.fire({
+      title: "Delete language?",
+      text: "This cannot be undone!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setLoading(true);
+        axios.delete(`${baseUrl}/${langId}`)
+          .then(() => {
+            toast("success", "Language deleted");
+            loadLanguages();
+          })
+          .catch(() => toast("error", "Failed to delete"))
+          .finally(() => setLoading(false));
+      }
+    });
   };
 
   const resetForm = () => {
@@ -63,7 +109,7 @@ function Languages() {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-4">
       <h2 className="mb-4">Manage Languages</h2>
 
       <div className="mb-3">
@@ -77,13 +123,15 @@ function Languages() {
       </div>
 
       <div className="mb-4">
-        <button className="btn btn-primary me-2" onClick={handleSave}>
+        <button className="btn btn-primary me-2" onClick={handleSave} disabled={loading}>
           {id === 0 ? "Add Language" : "Update Language"}
         </button>
-        <button className="btn btn-secondary" onClick={resetForm}>
+        <button className="btn btn-secondary" onClick={resetForm} disabled={loading}>
           Reset
         </button>
       </div>
+
+      {loading && <p>Loading...</p>}
 
       <table className="table table-bordered table-striped">
         <thead className="table-light">
@@ -95,20 +143,22 @@ function Languages() {
         </thead>
         <tbody>
           {languages.length > 0 ? (
-            languages.map((c) => (
-              <tr key={c.id}>
-                <td>{c.id}</td>
-                <td>{c.name}</td>
+            languages.map((lang) => (
+              <tr key={lang.id}>
+                <td>{lang.id}</td>
+                <td>{lang.name}</td>
                 <td>
                   <button
                     className="btn btn-warning btn-sm me-2"
-                    onClick={() => handleEdit(c)}
+                    onClick={() => handleEdit(lang)}
+                    disabled={loading}
                   >
                     Edit
                   </button>
                   <button
                     className="btn btn-danger btn-sm"
-                    onClick={() => handleDelete(c.id)}
+                    onClick={() => handleDelete(lang.id)}
+                    disabled={loading}
                   >
                     Delete
                   </button>
@@ -117,9 +167,7 @@ function Languages() {
             ))
           ) : (
             <tr>
-              <td colSpan="3" className="text-center">
-                No languages found.
-              </td>
+              <td colSpan="3" className="text-center">No languages found.</td>
             </tr>
           )}
         </tbody>
@@ -128,4 +176,4 @@ function Languages() {
   );
 }
 
-export default Languages
+export default Languages;

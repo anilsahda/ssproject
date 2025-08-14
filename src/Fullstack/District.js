@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function District() {
   const [districts, setDistricts] = useState([]);
@@ -34,20 +35,29 @@ function District() {
   };
 
   const handleSave = () => {
-    if (name.trim() === "" || countryId === 0 || stateId === 0) return;
+    if (name.trim() === "" || countryId === 0 || stateId === 0) {
+      Swal.fire("Validation Error", "All fields are required", "warning");
+      return;
+    }
 
     const data = { id, name, countryId: parseInt(countryId), stateId: parseInt(stateId) };
 
     if (id === 0) {
-      axios.post(baseUrl, data).then(() => {
-        resetForm();
-        loadDistricts();
-      });
+      axios.post(baseUrl, data)
+        .then(() => {
+          Swal.fire("Success", "District added successfully!", "success");
+          resetForm();
+          loadDistricts();
+        })
+        .catch(() => Swal.fire("Error", "Failed to add district", "error"));
     } else {
-      axios.put(baseUrl, data).then(() => {
-        resetForm();
-        loadDistricts();
-      });
+      axios.put(baseUrl, data)
+        .then(() => {
+          Swal.fire("Success", "District updated successfully!", "success");
+          resetForm();
+          loadDistricts();
+        })
+        .catch(() => Swal.fire("Error", "Failed to update district", "error"));
     }
   };
 
@@ -58,8 +68,25 @@ function District() {
     setStateId(district.stateId);
   };
 
-  const handleDelete = (id) => {
-    axios.delete(`${baseUrl}/${id}`).then(() => loadDistricts());
+  const handleDelete = (districtId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This action cannot be undone.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`${baseUrl}/${districtId}`)
+          .then(() => {
+            Swal.fire("Deleted!", "District has been deleted.", "success");
+            loadDistricts();
+          })
+          .catch(() => Swal.fire("Error", "Failed to delete district", "error"));
+      }
+    });
   };
 
   const resetForm = () => {
@@ -75,28 +102,58 @@ function District() {
     <div className="container">
       <h2 className="mb-4">Manage Districts</h2>
       <div className="mb-3">
-        <select className="form-select mb-2" value={countryId} onChange={(e) => { setCountryId(parseInt(e.target.value)); setStateId(0); }} >
+        <select
+          className="form-select mb-2"
+          value={countryId}
+          onChange={(e) => {
+            setCountryId(parseInt(e.target.value));
+            setStateId(0);
+          }}
+        >
           <option value={0}>Select Country</option>
-          {countries.map((c) => (<option key={c.id} value={c.id}>{c.name}</option>))}
+          {countries.map((c) => (
+            <option key={c.id} value={c.id}>{c.name}</option>
+          ))}
         </select>
-        <select className="form-select mb-2" value={stateId} onChange={(e) => setStateId(parseInt(e.target.value))} disabled={countryId === 0} >
+        <select
+          className="form-select mb-2"
+          value={stateId}
+          onChange={(e) => setStateId(parseInt(e.target.value))}
+          disabled={countryId === 0}
+        >
           <option value={0}>Select State</option>
-          {filteredStates.map((s) => (<option key={s.id} value={s.id}>{s.name}</option>))}
+          {filteredStates.map((s) => (
+            <option key={s.id} value={s.id}>{s.name}</option>
+          ))}
         </select>
-        <input type="text" className="form-control mb-3" placeholder="Enter District Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <button className="btn btn-primary me-2" onClick={handleSave}>{id === 0 ? "Add District" : "Update District"}</button>
+        <input
+          type="text"
+          className="form-control mb-3"
+          placeholder="Enter District Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <button className="btn btn-primary me-2" onClick={handleSave}>
+          {id === 0 ? "Add District" : "Update District"}
+        </button>
         <button className="btn btn-secondary" onClick={resetForm}>Reset</button>
       </div>
 
       <table className="table table-bordered table-striped">
         <thead className="table-light">
           <tr>
-            <th>Id</th><th>Country</th><th>State</th><th>District</th><th>Actions</th>
+            <th>Id</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>District</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {districts.length === 0 && (
-            <tr><td colSpan="5" className="text-center">No districts found.</td></tr>
+            <tr>
+              <td colSpan="5" className="text-center">No districts found.</td>
+            </tr>
           )}
           {districts.map((d) => (
             <tr key={d.id}>

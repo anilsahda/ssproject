@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Select, { components } from "react-select";
+import Swal from "sweetalert2"; // ✅ Import SweetAlert2
 
 function MultiselectDropdown() {
   const [employees, setEmployees] = useState([]);
@@ -73,13 +74,23 @@ function MultiselectDropdown() {
       districtId: districtId ? Number(districtId) : null,
       genderId: genderId ? Number(genderId) : null,
       image,
-      languages: selectedLanguages.map(l => l.value) // store only IDs
+      languages: selectedLanguages.map(l => l.value)
     };
 
     if (id) {
       await axios.put(`${baseUrl}/${id}`, payload);
+      Swal.fire({
+        icon: "success",
+        title: "Updated!",
+        text: "Employee details have been updated successfully."
+      });
     } else {
       await axios.post(baseUrl, payload);
+      Swal.fire({
+        icon: "success",
+        title: "Added!",
+        text: "New employee has been added successfully."
+      });
     }
 
     resetForm();
@@ -100,7 +111,6 @@ function MultiselectDropdown() {
     setGenderId(emp.genderId || "");
     setImage(emp.image);
 
-    // Pre-fill language options for react-select
     const preselected = (emp.languages || [])
       .map(l => {
         const lang = languages.find(lang => lang.id === l.languageId);
@@ -112,19 +122,33 @@ function MultiselectDropdown() {
   };
 
   const handleDelete = async (empId) => {
-    if (window.confirm("Delete this employee?")) {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "This action cannot be undone!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!"
+    });
+
+    if (result.isConfirmed) {
       await axios.delete(`${baseUrl}/${empId}`);
       loadEmployees();
+      Swal.fire({
+        icon: "success",
+        title: "Deleted!",
+        text: "Employee has been deleted successfully."
+      });
     }
   };
 
-  // ✅ Custom Option with Checkbox
   const Option = (props) => (
     <components.Option {...props}>
       <input
         type="checkbox"
         checked={props.isSelected}
-        onChange={() => null} // handled by react-select internally
+        onChange={() => null}
         style={{ marginRight: "8px" }}
       />
       <label>{props.label}</label>
@@ -137,7 +161,6 @@ function MultiselectDropdown() {
 
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="row g-3">
-          {/* Name fields */}
           <div className="col-md-4">
             <input type="text" className="form-control" placeholder="First Name"
               value={firstName} onChange={e => setFirstName(e.target.value)} required />
@@ -150,14 +173,10 @@ function MultiselectDropdown() {
             <input type="text" className="form-control" placeholder="Last Name"
               value={lastName} onChange={e => setLastName(e.target.value)} required />
           </div>
-
-          {/* Address */}
           <div className="col-md-4">
             <input type="text" className="form-control" placeholder="Address"
               value={address} onChange={e => setAddress(e.target.value)} />
           </div>
-
-          {/* Email & Mobile */}
           <div className="col-md-4">
             <input type="email" className="form-control" placeholder="Email"
               value={email} onChange={e => setEmail(e.target.value)} />
@@ -166,8 +185,6 @@ function MultiselectDropdown() {
             <input type="text" className="form-control" placeholder="Mobile"
               value={mobile} onChange={e => setMobile(e.target.value)} />
           </div>
-
-          {/* Country */}
           <div className="col-md-4">
             <select className="form-select" value={countryId}
               onChange={e => setCountryId(e.target.value)}>
@@ -175,8 +192,6 @@ function MultiselectDropdown() {
               {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
             </select>
           </div>
-
-          {/* State */}
           <div className="col-md-4">
             <select className="form-select" value={stateId}
               onChange={e => setStateId(e.target.value)}>
@@ -184,8 +199,6 @@ function MultiselectDropdown() {
               {states.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
             </select>
           </div>
-
-          {/* District */}
           <div className="col-md-4">
             <select className="form-select" value={districtId}
               onChange={e => setDistrictId(e.target.value)}>
@@ -193,14 +206,10 @@ function MultiselectDropdown() {
               {districts.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
             </select>
           </div>
-
-          {/* Image */}
           <div className="col-md-4">
             <input type="text" className="form-control" placeholder="Image URL"
               value={image} onChange={e => setImage(e.target.value)} />
           </div>
-
-          {/* Gender */}
           <div className="col-md-4">
             <label className="form-label">Gender</label>
             <div>
@@ -213,8 +222,6 @@ function MultiselectDropdown() {
               ))}
             </div>
           </div>
-
-          {/* Languages with checkboxes in dropdown */}
           <div className="col-md-4">
             <label className="form-label">Languages</label>
             <Select
@@ -229,7 +236,6 @@ function MultiselectDropdown() {
             />
           </div>
         </div>
-
         <button type="submit" className="btn btn-primary mt-3">
           {id ? "Update Employee" : "Add Employee"}
         </button>
@@ -240,7 +246,6 @@ function MultiselectDropdown() {
         )}
       </form>
 
-      {/* Employee Table */}
       <table className="table table-bordered table-striped">
         <thead>
           <tr>

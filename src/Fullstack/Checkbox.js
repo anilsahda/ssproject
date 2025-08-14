@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function Checkbox() {
   const [employees, setEmployees] = useState([]);
@@ -7,7 +8,11 @@ function Checkbox() {
   const [states, setStates] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [languages, setLanguages] = useState([]);
-  const genders = [{ id: 1, name: "Male" }, { id: 2, name: "Female" }, { id: 3, name: "Other" }];
+  const genders = [
+    { id: 1, name: "Male" },
+    { id: 2, name: "Female" },
+    { id: 3, name: "Other" }
+  ];
 
   const [id, setId] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -71,14 +76,19 @@ function Checkbox() {
       languages: selectedLanguages
     };
 
-    if (id) {
-      await axios.put(`${baseUrl}/${id}`, payload);
-    } else {
-      await axios.post(baseUrl, payload);
+    try {
+      if (id) {
+        await axios.put(`${baseUrl}/${id}`, payload);
+        Swal.fire("Updated!", "Employee updated successfully.", "success");
+      } else {
+        await axios.post(baseUrl, payload);
+        Swal.fire("Added!", "Employee added successfully.", "success");
+      }
+      resetForm();
+      loadEmployees();
+    } catch (error) {
+      Swal.fire("Error", "Something went wrong while saving.", "error");
     }
-
-    resetForm();
-    loadEmployees();
   };
 
   const handleEdit = (emp) => {
@@ -98,10 +108,25 @@ function Checkbox() {
   };
 
   const handleDelete = async (empId) => {
-    if (window.confirm("Delete this employee?")) {
-      await axios.delete(`${baseUrl}/${empId}`);
-      loadEmployees();
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This will permanently delete the employee.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axios.delete(`${baseUrl}/${empId}`);
+          loadEmployees();
+          Swal.fire("Deleted!", "Employee has been deleted.", "success");
+        } catch (error) {
+          Swal.fire("Error", "Could not delete employee.", "error");
+        }
+      }
+    });
   };
 
   return (
