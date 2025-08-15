@@ -18,10 +18,7 @@ function SuperHeader() {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-  `${process.env.REACT_APP_BASE_URL}/Auth/login`,
-  { email, password }
-);
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/Auth/login`, { email, password });
 
       if (response.data.statusCode === "200") {
         localStorage.setItem("token", response.data.token);
@@ -70,12 +67,6 @@ function SuperHeader() {
             <div>
               <strong>Helpline:</strong>{' '}
               <a href="tel:+911234567890" className="text-white text-decoration-none">+91 99903 64345</a>
-            </div>
-            <div>
-              <select className="form-select form-select-sm">
-                <option value="en">English</option>
-                <option value="hi">हिन्दी</option>
-              </select>
             </div>
 
             <div className="d-flex align-items-center gap-2">

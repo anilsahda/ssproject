@@ -8,10 +8,8 @@ import SuperHeader from "./Components/SuperHeader";
 import Sidebar from "./Components/Sidebar";
 import MultiselectDropdown from "./Fullstack/MultiselectDropdown";
 import CheckBox from "./Fullstack/Checkbox";
-import FacebookAuth from "./Fullstack/FacebookAuth";
-import GoogleAuth from "./Fullstack/GoogleAuth";
 import ImageUpload from "./Fullstack/ImageUpload";
-import JWTAuth from "./Fullstack/JWTAuth";
+import Authentication from "./Fullstack/Authentication";
 import Pagination from "./Fullstack/Pagination";
 import RadioButton from "./Fullstack/RadioButton";
 import Searching from "./Fullstack/Searching";
@@ -166,25 +164,40 @@ import Nextcountry from "./Next/Nextcountry";
 import Nextdistrict from "./Next/Nextdistrict";
 import Nextstate from "./Next/Nextstate";
 import Languages from "./Fullstack/Languages";
+import Import from "./Fullstack/Import";
+import Netlanguages from "./Dotnet/Netlanguages";
+import Nodelanguages from "./Node/Nodelanguages";
+import Javalanguages from "./Java/Javalanguages";
+import Nextlanguages from "./Next/Nextlanguages";
+import Reactlanguages from "./React/Reactlanguages";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
 
   return (
     <>
+{/* Header Section */}
       <div style={{ position: "sticky", top: 0, zIndex: 1000 }}>
         <SuperHeader />
         <Header setActiveMenu={setActiveMenu} />
       </div>
 
+      {/* Sidebar + Main Content */}
       <div className="d-flex" style={{ height: "calc(100vh - 100px)", overflow: "hidden" }}>
-        <Sidebar activeMenu={activeMenu} style={{ height: "100%", overflowY: "auto" }} />
+        {/* Sidebar with fixed width */}
+        <div style={{ width: "250px", minWidth: "250px", height: "100%", overflowY: "auto" }}>
+          <Sidebar activeMenu={activeMenu} />
+        </div>
+
+         {/* Main Content */}
         <div className="flex-grow-1 p-4" style={{ height: "100%", overflowY: "auto" }}>
           <Routes>
+            {/* Super Admin */}
             <Route path="/role" element={<Role />} />
             <Route path="/user" element={<User />} />
             <Route path="/userrole" element={<UserRole />} />
 
+            {/* Projects */}
             <Route path="/societymanagement" element={<SocietyManagement />} />
             <Route path="/jobportal" element={<JobPortal />} />
             <Route path="/employeepayroll" element={<EmployeePayroll />} />
@@ -200,13 +213,14 @@ function App() {
             <Route path="/radiobutton" element={<RadioButton />} />
             <Route path="/checkbox" element={<CheckBox />} />
             <Route path="/multiselectdropdown" element={<MultiselectDropdown />} />
-            <Route path="/facebookauth" element={<FacebookAuth />} />
-            <Route path="/googleauth" element={<GoogleAuth />} />
             <Route path="/imageupload" element={<ImageUpload />} />
-            <Route path="/jwtauth" element={<JWTAuth />} />
+            <Route path="/import" element={<Import />} />
+            <Route path="/authentication" element={<Authentication />} />
             <Route path="/pagination" element={<Pagination />} />
             <Route path="/searching" element={<Searching />} />
 
+            <Route path="/netprojectsetup" element={<Netprojectsetup />} />
+            <Route path="/netlanguages" element={<Netlanguages />} />
             <Route path="/netcountry" element={<Netcountry />} />
             <Route path="/netdistrict" element={<Netdistrict />} />
             <Route path="/netstate" element={<Netstate />} />
@@ -224,8 +238,9 @@ function App() {
             <Route path="/netradiobutton" element={<Netradiobutton />} />
             <Route path="/netsearching" element={<Netsearching />} />
             <Route path="/netquestions" element={<Netquestions />} />
-            <Route path="/netprojectsetup" element={<Netprojectsetup />} />
 
+            <Route path="/javaprojectsetup" element={<Javaprojectsetup />} />
+            <Route path="/javalanguage" element={<Javalanguages />} />
             <Route path="/javacountry" element={<Javacountry />} />
             <Route path="/javadistrict" element={<Javadistrict />} />
             <Route path="/javacheckbox" element={<Javacheckbox />} />
@@ -243,9 +258,9 @@ function App() {
             <Route path="/javaradiobutton" element={<Javaradiobutton />} />
             <Route path="/javasearching" element={<Javasearching />} />
             <Route path="/javaquestions" element={<Javaquestions />} />
-            <Route path="/javaprojectsetup" element={<Javaprojectsetup />} />
 
             <Route path="/nodeprojectsetup" element={<Nodeprojectsetup />} />
+            <Route path="/nodelanguage" element={<Nodelanguages />} />
             <Route path="/nodecountry" element={<Nodecountry />} />
             <Route path="/nodedistrict" element={<Nodedistrict />} />
             <Route path="/nodecheckbox" element={<Nodecheckbox />} />
@@ -321,6 +336,7 @@ function App() {
             <Route path="/devopsquestions" element={<Devopsquestions />} />
 
             <Route path="/reactprojectsetup" element={<Reactprojectsetup />} />
+            <Route path="/reactlanguages" element={<Reactlanguages />} />
             <Route path="/reactcountry" element={<Reactcountry />} />
             <Route path="/reactstate" element={<Reactstate />} />
             <Route path="/reactdistrict" element={<Reactdistrict />} />
@@ -339,6 +355,7 @@ function App() {
             <Route path="/reactquestions" element={<Reactquestions />} />
 
             <Route path="/nextprojectsetup" element={<Nextprojectsetup />} />
+            <Route path="/nextlanguages" element={<Nextlanguages />} />
             <Route path="/nextcountry" element={<Nextcountry />} />
             <Route path="/nextstate" element={<Nextstate />} />
             <Route path="/nextdistrict" element={<Nextdistrict />} />

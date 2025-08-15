@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-function Searching() {
+function Import() {
   const [students, setStudents] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [countries, setCountries] = useState([]);
@@ -29,6 +29,10 @@ function Searching() {
   const [image, setImage] = useState(null);
   const [searchText, setSearchText] = useState("");
 
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+
   const fileInputRef = useRef();
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -43,6 +47,7 @@ function Searching() {
     const res = await axios.get(`${baseUrl}/students`);
     setStudents(res.data);
     setFilteredStudents(res.data);
+    setCurrentPage(1);
   };
 
   const loadCountries = async () => {
@@ -136,6 +141,58 @@ function Searching() {
       std.mobile?.includes(text)
     );
     setFilteredStudents(filtered);
+    setCurrentPage(1);
+  };
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredStudents.length / pageSize);
+  const currentData = filteredStudents.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+
+  const renderPageNumbers = () => {
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(
+        <button
+          key={i}
+          className={`btn btn-sm me-1 ${currentPage === i ? 'btn-primary' : 'btn-outline-primary'}`}
+          onClick={() => setCurrentPage(i)}
+        >
+          {i}
+        </button>
+      );
+    }
+    return pages;
+  };
+
+  // CSV export function
+  const exportToCSV = () => {
+    if (filteredStudents.length === 0) {
+      Swal.fire("Info", "No students to export", "info");
+      return;
+    }
+
+    const headers = ["First Name", "Middle Name", "Last Name", "Email", "Mobile", "Country", "State", "District", "Gender"];
+    const rows = filteredStudents.map(std => [
+      std.firstName,
+      std.middleName || "",
+      std.lastName,
+      std.email || "",
+      std.mobile || "",
+      countries.find(c => c.id === std.countryId)?.name || "",
+      states.find(s => s.id === std.stateId)?.name || "",
+      districts.find(d => d.id === std.districtId)?.name || "",
+      genders.find(g => g.id === std.genderId)?.name || ""
+    ]);
+
+    const csvContent = [headers, ...rows].map(e => e.join(",")).join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "students.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -144,7 +201,17 @@ function Searching() {
 
       <div className="d-flex justify-content-between align-items-center mb-3">
         <input type="text" className="form-control w-50 me-2" placeholder="Search by name, email, mobile..." value={searchText} onChange={handleSearch} />
-        <button className="btn btn-success" onClick={() => { resetForm(); setModalOpen(true); }}>+ Add Student</button>
+        <div>
+          <button className="btn btn-success me-2" onClick={() => { resetForm(); setModalOpen(true); }}>+ Add Student</button>
+          <button className="btn btn-outline-primary" onClick={exportToCSV}>Export CSV</button>
+        </div>
+      </div>
+
+      <div className="d-flex justify-content-end mb-2">
+        <label className="me-2">Rows per page:</label>
+        <select className="form-select d-inline-block w-auto" value={pageSize} onChange={e=>setPageSize(Number(e.target.value))}>
+          {[5,10,15,20].map(size=> <option key={size} value={size}>{size}</option>)}
+        </select>
       </div>
 
       <div className="card shadow-sm">
@@ -156,7 +223,7 @@ function Searching() {
               </tr>
             </thead>
             <tbody>
-              {filteredStudents.map(std=>(
+              {currentData.map(std=>(
                 <tr key={std.id}>
                   <td>{`${std.firstName} ${std.middleName||""} ${std.lastName}`}</td>
                   <td>{std.email}</td>
@@ -171,13 +238,35 @@ function Searching() {
                   </td>
                 </tr>
               ))}
-              {filteredStudents.length === 0 && <tr><td colSpan="8" className="text-center py-3">No students found.</td></tr>}
+              {currentData.length === 0 && <tr><td colSpan="8" className="text-center py-3">No students found.</td></tr>}
             </tbody>
           </table>
         </div>
       </div>
 
-      {/* Modal */}
+      {totalPages > 1 && 
+      <div className="d-flex justify-content-center align-items-center mt-3">
+        <button 
+          className="btn btn-outline-primary btn-sm me-2"
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage(currentPage - 1)}
+          title="Previous"
+        >
+          <i className="bi bi-chevron-left"></i>
+        </button>
+
+        {renderPageNumbers()}
+
+        <button 
+          className="btn btn-outline-primary btn-sm ms-2"
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage(currentPage + 1)}
+          title="Next"
+        >
+          <i className="bi bi-chevron-right"></i>
+        </button>
+      </div>}
+
       {modalOpen &&
       <div className="modal fade show d-block" tabIndex="-1" style={{backgroundColor:"rgba(0,0,0,0.5)"}}>
         <div className="modal-dialog modal-lg modal-dialog-centered">
@@ -232,8 +321,9 @@ function Searching() {
           </div>
         </div>
       </div>}
+
     </div>
   );
 }
 
-export default Searching;
+export default Import;

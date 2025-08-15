@@ -32,7 +32,7 @@ function Sidebar({ activeMenu }) {
     <ul className="nav nav-pills flex-column gap-2">
         {role === "Interners" && activeMenu === "Project" && (
           <>
-          <SidebarButton to="/societymanagement" icon="bi-building" label="Society Management" />
+          <SidebarButton to="/societymanagement" icon="bi-building" label="Smart Society E-House" />
           <SidebarButton to="/jobportal" icon="bi-briefcase" label="Job Portal" />
           <SidebarButton to="/employeepayroll" icon="bi-cash-stack" label="Employee Payroll" />
           <SidebarButton to="/attendanceportal" icon="bi-calendar-check" label="Attendance Portal" />
@@ -54,15 +54,15 @@ function Sidebar({ activeMenu }) {
           <SidebarButton to="/imageupload" icon="bi-file-image" label="Image Upload" />
           <SidebarButton to="/searching" icon="bi-search" label="Searching" />
           <SidebarButton to="/pagination" icon="bi-list-nested" label="Pagination" />
-          <SidebarButton to="/jwtauth" icon="bi-shield-lock" label="JWT Auth" />
-          <SidebarButton to="/googleauth" icon="bi-google" label="Google Auth" />
-          <SidebarButton to="/facebookauth" icon="bi-facebook" label="Facebook Auth" />
+          <SidebarButton to="/import" icon="bi-list-nested" label="Import" />          
+          <SidebarButton to="/authentication" icon="bi-shield-lock" label="Authentication" />
             </>
           )}
 
           {role === "Interners" && activeMenu === "Dotnet" && (
             <>
             <SidebarButton to="/netprojectsetup" icon="bi-calendar-check" label=".Net Project Setup" />
+            <SidebarButton to="/netlanguages" icon="bi-ui-checks-grid" label=".Net Language" />
             <SidebarButton to="/netcountry" icon="bi-ui-checks-grid" label=".Net Country" />
             <SidebarButton to="/netstate" icon="bi-caret-down-square" label=".Net State" />
             <SidebarButton to="/netdistrict" icon="bi-diagram-3" label=".Net District" />
@@ -86,6 +86,7 @@ function Sidebar({ activeMenu }) {
           {role === "Interners" && activeMenu === "Springboot" && (
             <>
             <SidebarButton to="/javaprojectsetup" icon="bi-calendar-check" label="Java Project Setup" />
+            <SidebarButton to="/javalanguages" icon="bi-ui-checks-grid" label="Java Language" />
             <SidebarButton to="/javacountry" icon="bi-ui-checks-grid" label="Java Country" />
             <SidebarButton to="/javastate" icon="bi-caret-down-square" label="Java State" />
             <SidebarButton to="/javadistrict" icon="bi-diagram-3" label="Java District" />
@@ -109,6 +110,7 @@ function Sidebar({ activeMenu }) {
           {role === "Interners" && activeMenu === "Node" && (
             <>
             <SidebarButton to="/nodeprojectsetup" icon="bi-calendar-check" label="Node Project Setup" />
+            <SidebarButton to="/nodelanguages" icon="bi-ui-checks-grid" label="Node Language" />
             <SidebarButton to="/nodecountry" icon="bi-ui-checks-grid" label="Node Country" />
             <SidebarButton to="/nodestate" icon="bi-caret-down-square" label="Node State" />
             <SidebarButton to="/nodedistrict" icon="bi-diagram-3" label="Node District" />
@@ -208,6 +210,7 @@ function Sidebar({ activeMenu }) {
           {role === "Interners" && activeMenu === "React" && (
             <>
             <SidebarButton to="/reactprojectsetup" icon="bi-calendar-check" label="React Project Setup" />
+            <SidebarButton to="/reactlanguages" icon="bi-ui-checks-grid" label="React Language" />
             <SidebarButton to="/reactcountry" icon="bi-ui-checks-grid" label="React Country" />
             <SidebarButton to="/reactstate" icon="bi-caret-down-square" label="React State" />
             <SidebarButton to="/reactdistrict" icon="bi-diagram-3" label="React District" />
@@ -231,6 +234,7 @@ function Sidebar({ activeMenu }) {
           {role === "Interners" && activeMenu === "Next" && (
             <>
             <SidebarButton to="/nextprojectsetup" icon="bi-calendar-check" label="Next Project Setup" />
+            <SidebarButton to="/nextlanguages" icon="bi-ui-checks-grid" label="Next Language" />
             <SidebarButton to="/nextcountry" icon="bi-ui-checks-grid" label="Next Country" />
             <SidebarButton to="/nextstate" icon="bi-caret-down-square" label="Next State" />
             <SidebarButton to="/nextdistrict" icon="bi-diagram-3" label="Next District" />

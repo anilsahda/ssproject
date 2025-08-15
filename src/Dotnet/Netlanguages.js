@@ -1,21 +1,21 @@
 import React from "react";
 
-function Netcountry() {
+function Netlanguages() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">Country CRUD Operation</h1>
+        <h1 className="text-xl font-bold text-indigo-700">Language CRUD Operation</h1>
         <p className="text-gray-500 text-xs mt-1">
           A step-by-step guide to implementing CRUD functionality for the{" "}
-          <strong>Country</strong> entity in .NET Core with SQL Server.
+          <strong>Language</strong> entity in .NET Core with SQL Server.
         </p>
       </header>
 
       {/* Step 1: SQL Table */}
       <Section title="SQL Table" color="text-indigo-600">
         <CodeBlock>
-{`CREATE TABLE Country (
+{`CREATE TABLE Language (
     Id INT PRIMARY KEY IDENTITY(1,1),
     Name NVARCHAR(100) NOT NULL
 );`}
@@ -23,9 +23,9 @@ function Netcountry() {
       </Section>
 
       {/* Step 2: Model */}
-      <Section title="Model (Country.cs)" color="text-green-600">
+      <Section title="Model (Language.cs)" color="text-green-600">
         <CodeBlock>
-{`public class Country
+{`public class Language
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -39,7 +39,7 @@ function Netcountry() {
 {`public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-    public DbSet<Country> Countries { get; set; }
+    public DbSet<Language> Languages { get; set; }
 }`}
         </CodeBlock>
       </Section>
@@ -48,56 +48,56 @@ function Netcountry() {
       <Section title="Entity Framework Migrations" color="text-purple-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li>Open <b>Package Manager Console</b></li>
-          <li>Run: <code className="bg-gray-100 px-1 rounded">Add-Migration CountryTable</code></li>
+          <li>Run: <code className="bg-gray-100 px-1 rounded">Add-Migration LanguageTable</code></li>
           <li>Run: <code className="bg-gray-100 px-1 rounded">Update-Database</code></li>
         </ul>
       </Section>
 
       {/* Step 5: Controller */}
-      <Section title="Controller (CountriesController.cs)" color="text-red-600">
+      <Section title="Controller (LanguagesController.cs)" color="text-red-600">
         <CodeBlock>
 {`[Route("api/[controller]")]
 [ApiController]
-public class CountriesController : ControllerBase
+public class LanguagesController : ControllerBase
 {
     private readonly AppDbContext _context;
 
-    public CountriesController(AppDbContext context)
+    public LanguagesController(AppDbContext context)
     {
         _context = context;
     }
 
     [HttpGet]
-    public IEnumerable<Country> Get()
+    public IEnumerable<Language> Get()
     {
-        return _context.Countries.ToList();
+        return _context.Languages.ToList();
     }
 
     [HttpGet("{id}")]
-    public Country Get(int id)
+    public Language Get(int id)
     {
-        return _context.Countries.FirstOrDefault(c => c.Id == id);
+        return _context.Languages.FirstOrDefault(l => l.Id == id);
     }
 
     [HttpPost]
-    public void Post(Country country)
+    public void Post(Language language)
     {
-        _context.Countries.Add(country);
+        _context.Languages.Add(language);
         _context.SaveChanges();
     }
 
     [HttpPut("{id}")]
-    public void Put(int id, Country country)
+    public void Put(int id, Language language)
     {
-        _context.Entry(country).State = EntityState.Modified;
+        _context.Entry(language).State = EntityState.Modified;
         _context.SaveChanges();
     }
 
     [HttpDelete("{id}")]
     public void Delete(int id)
     {
-        var country = _context.Countries.FirstOrDefault(c => c.Id == id);
-        _context.Countries.Remove(country);
+        var language = _context.Languages.FirstOrDefault(l => l.Id == id);
+        _context.Languages.Remove(language);
         _context.SaveChanges();
     }
 }`}
@@ -107,11 +107,11 @@ public class CountriesController : ControllerBase
       {/* Step 6: API Endpoints */}
       <Section title="Example API Endpoints" color="text-blue-600">
         <ul className="list-disc ml-5 space-y-1 text-gray-700">
-          <li><code className="bg-gray-100 px-1 rounded">GET /api/countries</code> – Retrieves all countries</li>
-          <li><code className="bg-gray-100 px-1 rounded">GET /api/countries/{"{id}"}</code> – Retrieves a country by ID</li>
-          <li><code className="bg-gray-100 px-1 rounded">POST /api/countries</code> – Adds a new country</li>
-          <li><code className="bg-gray-100 px-1 rounded">PUT /api/countries/{"{id}"}</code> – Updates an existing country</li>
-          <li><code className="bg-gray-100 px-1 rounded">DELETE /api/countries/{"{id}"}</code> – Deletes a country</li>
+          <li><code className="bg-gray-100 px-1 rounded">GET /api/languages</code> – Retrieves all languages</li>
+          <li><code className="bg-gray-100 px-1 rounded">GET /api/languages/{"{id}"}</code> – Retrieves a language by ID</li>
+          <li><code className="bg-gray-100 px-1 rounded">POST /api/languages</code> – Adds a new language</li>
+          <li><code className="bg-gray-100 px-1 rounded">PUT /api/languages/{"{id}"}</code> – Updates an existing language</li>
+          <li><code className="bg-gray-100 px-1 rounded">DELETE /api/languages/{"{id}"}</code> – Deletes a language</li>
         </ul>
       </Section>
     </div>
@@ -134,9 +134,9 @@ function Section({ title, color, children }) {
 function CodeBlock({ children }) {
   return (
     <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">
-      {children}
+      <code>{children}</code>
     </pre>
   );
 }
 
-export default Netcountry;
+export default Netlanguages;
