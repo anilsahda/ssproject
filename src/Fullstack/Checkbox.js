@@ -14,7 +14,7 @@ function Checkbox() {
     { id: 3, name: "Other" }
   ];
 
-  const [id, setId] = useState("");
+  const [id, setId] = useState(0);
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -25,7 +25,6 @@ function Checkbox() {
   const [stateId, setStateId] = useState("");
   const [districtId, setDistrictId] = useState("");
   const [genderId, setGenderId] = useState("");
-  const [image, setImage] = useState("");
   const [selectedLanguages, setSelectedLanguages] = useState([]);
 
   const baseUrl = `${process.env.REACT_APP_BASE_URL}/Employees`;
@@ -43,7 +42,7 @@ function Checkbox() {
   };
 
   const resetForm = () => {
-    setId("");
+    setId(0);
     setFirstName("");
     setMiddleName("");
     setLastName("");
@@ -54,7 +53,6 @@ function Checkbox() {
     setStateId("");
     setDistrictId("");
     setGenderId("");
-    setImage("");
     setSelectedLanguages([]);
   };
 
@@ -72,13 +70,12 @@ function Checkbox() {
       stateId: stateId ? Number(stateId) : null,
       districtId: districtId ? Number(districtId) : null,
       genderId: genderId ? Number(genderId) : null,
-      image,
       languages: selectedLanguages
     };
 
     try {
       if (id) {
-        await axios.put(`${baseUrl}/${id}`, payload);
+        await axios.put(baseUrl, payload);
         Swal.fire("Updated!", "Employee updated successfully.", "success");
       } else {
         await axios.post(baseUrl, payload);
@@ -103,7 +100,6 @@ function Checkbox() {
     setStateId(emp.stateId);
     setDistrictId(emp.districtId);
     setGenderId(emp.genderId || "");
-    setImage(emp.image);
     setSelectedLanguages(emp.languages?.map(l => l.languageId) || []);
   };
 
@@ -183,11 +179,6 @@ function Checkbox() {
             </select>
           </div>
 
-          {/* Image */}
-          <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Image URL" value={image} onChange={e => setImage(e.target.value)} />
-          </div>
-
           {/* Gender */}
           <div className="col-md-4">
             <label className="form-label">Gender</label>
@@ -239,7 +230,6 @@ function Checkbox() {
             <th>District</th>
             <th>Gender</th>
             <th>Languages</th>
-            <th>Image</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -254,9 +244,6 @@ function Checkbox() {
               <td>{genders.find(g => g.id === emp.genderId)?.name}</td>
               <td>
                 {(emp.languages || []).map(lang => languages.find(l => l.id === lang.languageId)?.name).join(", ")}
-              </td>
-              <td>
-                {emp.image && <img src={emp.image} alt="Employee" style={{ width: "50px", height: "50px", objectFit: "cover" }} />}
               </td>
               <td>
                 <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(emp)}>Edit</button>
