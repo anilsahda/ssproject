@@ -8,11 +8,7 @@ function RadioButton() {
   const [states, setStates] = useState([]);
   const [districts, setDistricts] = useState([]);
 
-  const genders = [
-    { id: 1, name: "Male" },
-    { id: 2, name: "Female" },
-    { id: 3, name: "Other" }
-  ];
+  const genders = [{ id: 1, name: "Male" }, { id: 2, name: "Female" },{ id: 3, name: "Other" }];
 
   const [id, setId] = useState(0); // store numeric ID
   const [firstName, setFirstName] = useState("");
@@ -25,7 +21,6 @@ function RadioButton() {
   const [stateId, setStateId] = useState("");
   const [districtId, setDistrictId] = useState("");
   const [genderId, setGenderId] = useState(0);
-  const [image, setImage] = useState("");
 
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -84,7 +79,6 @@ function RadioButton() {
     setStateId("");
     setDistrictId("");
     setGenderId(0);
-    setImage("");
   };
 
   const handleSubmit = async (e) => {
@@ -101,8 +95,7 @@ function RadioButton() {
       countryId: countryId ? Number(countryId) : null,
       stateId: stateId ? Number(stateId) : null,
       districtId: districtId ? Number(districtId) : null,
-      genderId: genderId ? Number(genderId) : null,
-      image
+      genderId: genderId ? Number(genderId) : null
     };
 
     try {
@@ -136,7 +129,6 @@ function RadioButton() {
     setStateId(std.stateId);
     setDistrictId(std.districtId);
     setGenderId(std.genderId || 0);
-    setImage(std.image);
   };
 
   const handleDelete = (studentId) => {
@@ -226,11 +218,6 @@ function RadioButton() {
           </div>
 
           <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Image Name"
-              value={image} onChange={(e) => setImage(e.target.value)} />
-          </div>
-
-          <div className="col-md-4">
             <label className="form-label">Gender</label>
             <div>
               {genders.map((g) => (
@@ -264,7 +251,6 @@ function RadioButton() {
             <th>State</th>
             <th>District</th>
             <th>Gender</th>
-            <th>Image</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -277,7 +263,6 @@ function RadioButton() {
               <td>{states.find((s) => s.id === std.stateId)?.name}</td>
               <td>{districts.find((d) => d.id === std.districtId)?.name}</td>
               <td>{genders.find((g) => g.id === std.genderId)?.name}</td>
-              <td>{std.image}</td>
               <td>
                 <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(std)}>Edit</button>
                 <button className="btn btn-danger btn-sm" onClick={() => handleDelete(std.id)}>Delete</button>
