@@ -1,21 +1,31 @@
-import React from 'react';
+import React from "react";
 
 function Sqlcursor() {
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold">SQL Server Cursors</h1>
+    <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
+
+      {/* Header */}
+      <header className="border-b pb-3">
+        <h1 className="text-xl font-bold text-indigo-700">SQL Server Cursors</h1>
+        <p className="text-gray-500 text-xs mt-1">
+          Cursors allow you to iterate over a result set row by row, providing fine-grained control for row-based processing in SQL Server. 
+          While powerful, cursors can impact performance and should be used judiciously.
+        </p>
+      </header>
 
       {/* Cursor Basics */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">1. Cursor Basics</h2>
-        <p>Cursors are used to iterate through a result set row by row.</p>
-      </section>
+      <Section title="Cursor Basics" color="text-green-600">
+        <p>
+          A cursor is a database object used to traverse a set of rows returned by a query. Unlike standard set-based SQL operations, cursors allow row-by-row processing.
+          Cursors are typically used when operations require sequential row handling that cannot be done using a single query.
+        </p>
+      </Section>
 
-      {/* Cursor Example */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">2. Cursor Example with Student Table</h2>
-        <pre>
-          {`DECLARE @StudentName NVARCHAR(100);
+      {/* Cursor Example - Student Table */}
+      <Section title="Cursor Example: Iterating Over Student Table" color="text-blue-600">
+        <p>This example demonstrates how to fetch each student name from the Student table one by one:</p>
+        <CodeBlock>
+{`DECLARE @StudentName NVARCHAR(100);
 
 -- Declare cursor
 DECLARE StudentCursor CURSOR FOR
@@ -41,14 +51,14 @@ CLOSE StudentCursor;
 
 -- Deallocate cursor
 DEALLOCATE StudentCursor;`}
-        </pre>
-      </section>
+        </CodeBlock>
+      </Section>
 
-      {/* Cursor with Employee Table */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">3. Cursor Example with Employee Table</h2>
-        <pre>
-          {`DECLARE @EmployeeName NVARCHAR(100);
+      {/* Cursor Example - Employee Table */}
+      <Section title="Cursor Example: Iterating Over Employee Table" color="text-purple-600">
+        <p>This example shows row-by-row processing of Employee names:</p>
+        <CodeBlock>
+{`DECLARE @EmployeeName NVARCHAR(100);
 
 DECLARE EmployeeCursor CURSOR FOR
 SELECT EmployeeName FROM Employee;
@@ -66,20 +76,42 @@ END;
 
 CLOSE EmployeeCursor;
 DEALLOCATE EmployeeCursor;`}
-        </pre>
-      </section>
+        </CodeBlock>
+      </Section>
 
-      {/* Tips */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">4. Tips for Using Cursors</h2>
+      {/* Tips and Best Practices */}
+      <Section title="Tips & Best Practices for Using Cursors" color="text-teal-600">
         <ul className="list-disc ml-6">
-          <li>Cursors are slow for large datasets. Use set-based operations if possible.</li>
-          <li>Always CLOSE and DEALLOCATE cursors to free resources.</li>
-          <li>You can use <code>FAST_FORWARD</code> or <code>FOR READ_ONLY</code> for performance optimization.</li>
-          <li>Use cursors for row-by-row processing only when necessary.</li>
+          <li>Use cursors sparingly; set-based SQL operations are generally faster and more efficient.</li>
+          <li>Always <strong>CLOSE</strong> and <strong>DEALLOCATE</strong> cursors to release resources.</li>
+          <li>Consider using <code>FAST_FORWARD</code> or <code>FOR READ_ONLY</code> cursors to improve performance.</li>
+          <li>Use cursors only when row-by-row processing is unavoidable, such as complex business logic that cannot be expressed in a set-based query.</li>
+          <li>Document cursor usage in production scripts to avoid unexpected performance issues.</li>
         </ul>
-      </section>
+      </Section>
+
     </div>
+  );
+}
+
+/* Reusable Section Component */
+function Section({ title, color, children }) {
+  return (
+    <section className="mb-6">
+      <div className="flex items-center mb-2">
+        <strong className={`${color} text-lg`}>{title}</strong>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+/* Reusable Code Block Component */
+function CodeBlock({ children }) {
+  return (
+    <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">
+      <code>{children}</code>
+    </pre>
   );
 }
 

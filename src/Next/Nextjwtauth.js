@@ -1,11 +1,156 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { FaBook, FaLink, FaCheckCircle, FaGoogle, FaFacebookF } from "react-icons/fa";
 
 function Nextjwtauth() {
+  const sectionHeaderStyle = {
+    borderBottom: "2px solid #007bff",
+    paddingBottom: "5px",
+    marginBottom: "15px",
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    color: "#007bff",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  };
+
+  const preStyle = {
+    backgroundColor: "#f1f3f5",
+    fontFamily: "monospace",
+    fontSize: "0.95rem",
+    border: "1px solid #dee2e6",
+    padding: "15px",
+    borderRadius: "5px",
+    overflowX: "auto",
+    whiteSpace: "pre",
+  };
+
+  const [showLogin, setShowLogin] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/Auth/login`, { email, password });
+    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("role", response.data.role);
+    localStorage.setItem("userName", response.data.userName);
+    localStorage.setItem("userImageUrl", response.data.userImageUrl || "https://i.pravatar.cc/40");
+    setShowLogin(false);
+    setEmail("");
+    setPassword("");
+    navigate("/dashboard");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userImageUrl");
+    navigate("/");
+  };
+
   return (
-    <div>
-                        <h1>Next</h1>
+    <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
+      <div className="container bg-white p-5 shadow-sm rounded">
+        <h1 className="fw-bold mb-5 text-primary text-center">JWT Authentication Documentation</h1>
+
+        {/* Step 1 */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}><FaBook /> Step 1: State Management</div>
+          <pre style={preStyle}>
+{`const [showLogin, setShowLogin] = useState(false);
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const navigate = useNavigate();`}
+          </pre>
+        </section>
+
+        {/* Step 2 */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}><FaCheckCircle /> Step 2: Handle Login</div>
+          <pre style={preStyle}>
+{`const handleLoginSubmit = async (e) => {
+  e.preventDefault();
+  const response = await axios.post(\`\${process.env.REACT_APP_BASE_URL}/Auth/login\`, { email, password });
+  localStorage.setItem("token", response.data.token);
+  localStorage.setItem("role", response.data.role);
+  localStorage.setItem("userName", response.data.userName);
+  localStorage.setItem("userImageUrl", response.data.userImageUrl || "https://i.pravatar.cc/40");
+
+  setShowLogin(false);
+  setEmail('');
+  setPassword('');
+  navigate("/dashboard");
+};`}
+          </pre>
+        </section>
+
+        {/* Step 3 */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}><FaLink /> Step 3: Handle Logout</div>
+          <pre style={preStyle}>
+{`const handleLogout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("role");
+  localStorage.removeItem("userName");
+  localStorage.removeItem("userImageUrl");
+  navigate("/");
+};`}
+          </pre>
+        </section>
+
+        {/* Step 4 */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}><FaBook /> Step 4: Login Modal</div>
+          <pre style={preStyle}>
+{`{showLogin && (
+  <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.7)' }} onClick={() => setShowLogin(false)}>
+    <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "400px" }} onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content shadow rounded-3">
+        <div className="modal-header bg-primary text-white">
+          <h5 className="modal-title">Login</h5>
+          <button type="button" className="btn-close" onClick={() => setShowLogin(false)}></button>
+        </div>
+        <div className="modal-body">
+          <form onSubmit={handleLoginSubmit}>
+            <div className="mb-3">
+              <label className="form-label">Email</label>
+              <input type="text" className="form-control" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Password</label>
+              <input type="password" className="form-control" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div className="d-flex justify-content-center gap-2 mb-3">
+              <button type="button" className="btn btn-outline-danger btn-sm"><FaGoogle /></button>
+              <button type="button" className="btn btn-outline-primary btn-sm"><FaFacebookF /></button>
+            </div>
+            <button type="submit" className="btn btn-primary w-100">Login</button>
+          </form>
+        </div>
+      </div>
     </div>
-  )
+  </div> )}`}
+          </pre>
+        </section>
+
+        {/* Step 5 */}
+        <section>
+          <div style={sectionHeaderStyle}><FaBook /> Step 5: Summary</div>
+          <ul style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
+            <li>✅ JWT Authentication with Axios</li>
+            <li>🔐 Login & Logout</li>
+            <li>🌐 Social Login (Google, Facebook)</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  );
 }
 
 export default Nextjwtauth

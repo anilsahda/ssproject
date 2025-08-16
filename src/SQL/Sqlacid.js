@@ -1,89 +1,128 @@
-import React from 'react';
+import React from "react";
 
 function Sqlacid() {
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold">SQL ACID Properties</h1>
+    <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
 
-      {/* Introduction */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">1. Introduction</h2>
-        <p>
-          ACID properties ensure reliable processing of database transactions. ACID stands for <strong>Atomicity, Consistency, Isolation, and Durability</strong>.
+      {/* Header */}
+      <header className="border-b pb-3">
+        <h1 className="text-xl font-bold text-indigo-700">SQL ACID Properties</h1>
+        <p className="text-gray-500 text-xs mt-1">
+          ACID properties are the foundation of reliable database transactions. 
+          They ensure that database operations are processed in a safe, consistent, and predictable way.
+          ACID stands for <strong>Atomicity, Consistency, Isolation, and Durability</strong>.
         </p>
-      </section>
+      </header>
 
       {/* Atomicity */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">2. Atomicity</h2>
+      <Section title="Atomicity" color="text-green-600">
         <p>
-          Atomicity ensures that a transaction is treated as a single unit. Either all operations succeed, or none are applied.
+          It ensures that a transaction is treated as a single, indivisible unit of work. 
+          Either all steps succeed, or none are applied. This prevents situations where partial changes could corrupt the database.
         </p>
-        <pre>
-          {`-- Example
+        <p>
+          For example, when transferring money between accounts, both the debit and credit operations must succeed together. 
+          If one fails, the other is rolled back.
+        </p>
+        <CodeBlock>
+{`-- Atomicity Example
 BEGIN TRANSACTION;
 UPDATE Account SET Balance = Balance - 100 WHERE AccountID = 1;
 UPDATE Account SET Balance = Balance + 100 WHERE AccountID = 2;
--- If any update fails, rollback
-ROLLBACK; -- or COMMIT if successful`}
-        </pre>
-      </section>
+-- If any update fails, rollback the entire transaction
+ROLLBACK; -- or COMMIT if both succeed`}
+        </CodeBlock>
+      </Section>
 
       {/* Consistency */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">3. Consistency</h2>
+      <Section title="Consistency" color="text-orange-600">
         <p>
-          Consistency ensures that a transaction brings the database from one valid state to another, preserving all defined rules, constraints, and relationships.
+          It guarantees that a transaction moves the database from one valid state to another. 
+          All data rules, constraints, and relationships are preserved. The database never enters an invalid state.
         </p>
-        <pre>
-          {`-- Example: Foreign key constraint ensures consistency
+        <p>
+          For instance, foreign key and unique constraints ensure that references and uniqueness are maintained.
+        </p>
+        <CodeBlock>
+{`-- Consistency Example
 INSERT INTO Orders(OrderID, CustomerID) VALUES (101, 5);
--- If CustomerID 5 does not exist, the transaction fails`}
-        </pre>
-      </section>
+-- If CustomerID 5 does not exist, the transaction fails due to foreign key constraint`}
+        </CodeBlock>
+      </Section>
 
       {/* Isolation */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">4. Isolation</h2>
+      <Section title="Isolation" color="text-blue-600">
         <p>
-          Isolation ensures that concurrent transactions do not affect each other. Changes made in one transaction are not visible to others until committed.
+          It ensures that concurrent transactions do not interfere with each other. 
+          Each transaction sees a consistent view of the data, unaffected by others until committed.
         </p>
-        <pre>
-          {`-- Example: Transaction isolation levels
+        <p>
+          Isolation levels control how and when changes made by one transaction become visible to others. Common levels include Read Uncommitted, Read Committed, Repeatable Read, and Serializable.
+        </p>
+        <CodeBlock>
+{`-- Isolation Example: Preventing dirty reads
 SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
 
 BEGIN TRANSACTION;
--- Perform updates here
+-- Perform updates or reads
 COMMIT;`}
-        </pre>
-      </section>
+        </CodeBlock>
+      </Section>
 
       {/* Durability */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">5. Durability</h2>
+      <Section title="Durability" color="text-purple-600">
         <p>
-          Durability ensures that once a transaction is committed, its changes are permanent, even in case of system failure.
+          It ensures that once a transaction is committed, its changes are permanent. 
+          Even if the system crashes immediately after, committed data remains intact.
         </p>
-        <pre>
-          {`-- Example
+        <p>
+          Databases achieve durability by writing data to persistent storage and using transaction logs for recovery.
+        </p>
+        <CodeBlock>
+{`-- Durability Example
 BEGIN TRANSACTION;
 UPDATE Account SET Balance = Balance + 500 WHERE AccountID = 2;
 COMMIT;
--- Changes are permanent and safe even if the server crashes afterwards`}
-        </pre>
-      </section>
+-- Even if the server crashes, the update remains safe and permanent`}
+        </CodeBlock>
+      </Section>
 
       {/* Importance */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">6. Importance of ACID</h2>
-        <ul className="list-disc ml-6">
-          <li>Ensures data integrity and reliability.</li>
-          <li>Prevents partial updates that could corrupt data.</li>
-          <li>Supports safe concurrent access to the database.</li>
-          <li>Provides confidence in transactional systems like banking and e-commerce.</li>
+      <Section title="Importance of ACID" color="text-red-600">
+        <p>
+          ACID properties are critical for transactional systems where accuracy, reliability, and predictability are essential.
+        </p>
+        <ul className="list-disc ml-6 text-gray-700 space-y-1">
+          <li>Prevents data corruption by ensuring atomic operations.</li>
+          <li>Maintains database rules and constraints for consistent data.</li>
+          <li>Supports multiple users performing concurrent operations safely.</li>
+          <li>Essential for banking, e-commerce, reservation, and financial systems.</li>
+          <li>Ensures that committed changes survive failures, providing trust in the system.</li>
         </ul>
-      </section>
+      </Section>
+
     </div>
+  );
+}
+
+/* Reusable Section Component */
+function Section({ title, color, children }) {
+  return (
+    <section className="mb-6">
+      <div className="flex items-center mb-2">
+        <strong className={`${color} text-lg`}>{title}</strong>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+/* Reusable Code Block Component */
+function CodeBlock({ children }) {
+  return (
+    <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">
+      <code>{children}</code>
+    </pre>
   );
 }
 

@@ -49,7 +49,7 @@ function Netimageupload() {
       </Section>
 
       {/* Step 4: DTO */}
-      <Section title="Model (Employee.cs)" color="text-green-600">
+      <Section title="DTO (CustomerDTO.cs)" color="text-green-600">
         <CodeBlock>
 {`public class CustomerDTO
 {
@@ -88,9 +88,17 @@ public class CustomersController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public IActionResult GetCustomers()
     {
         return Ok(_context.Customers.ToList());
+    }
+
+    [HttpGet("{id}")]
+    public IActionResult GetCustomerById(int id)
+    {
+        var customer = _context.Customers.Find(id);
+        if (customer == null) return NotFound();
+        return Ok(customer);
     }
 
     [HttpPost("AddCustomer")]
@@ -133,7 +141,6 @@ public class CustomersController : ControllerBase
 
         if (custDto.Image != null)
         {
-            // Delete old image if exists
             if (!string.IsNullOrEmpty(customer.Image))
             {
                 string oldPath = Path.Combine(_env.WebRootPath, "api/Uploads", customer.Image);
@@ -143,7 +150,6 @@ public class CustomersController : ControllerBase
                 }
             }
 
-            // Save new image
             var fileName = $"{Guid.NewGuid()}{Path.GetExtension(custDto.Image.FileName)}";
             var path = Path.Combine(_env.WebRootPath, "api/Uploads", fileName);
             Directory.CreateDirectory(Path.GetDirectoryName(path));

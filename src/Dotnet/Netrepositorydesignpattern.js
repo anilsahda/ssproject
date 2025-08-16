@@ -1,29 +1,20 @@
 import React from "react";
 
 function Netrepositorydesignpattern() {
-  const codeStyle = "bg-gray-100 p-3 rounded my-2 overflow-x-auto text-sm";
-
   return (
-    <div className="p-6 bg-gray-50 min-h-screen text-gray-800 font-sans space-y-6">
+    <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
+
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-2xl font-bold text-indigo-700">Repository Design Pattern</h1>
+        <h1 className="text-xl font-bold text-indigo-700">Repository Design Pattern in .NET Core</h1>
+        <p className="text-gray-500 text-xs mt-1">
+          Full example using Repository Pattern in .NET Core with generic and specific repositories.
+        </p>
       </header>
 
-      {/* Overview */}
-      <section>
-        <h2 className="text-xl font-semibold text-indigo-600 mb-2">Overview</h2>
-        <p>
-          The Repository Pattern in Onion Architecture decouples data access from business logic,
-          enables easy unit testing via interfaces, and centralizes CRUD operations using a generic repository.
-        </p>
-      </section>
-
-      {/* Folder Structure */}
-      <section>
-        <h2 className="text-xl font-semibold text-indigo-600 mb-2">Folder Structure</h2>
-        <pre className={codeStyle}>
-{`/YourProject
+      {/* Step 1: Folder Structure */}
+      <Section title="Step 1: Project Folder Structure" color="text-yellow-600">
+        <CodeBlock>{`/YourProject
 ├── Core
 │   ├── Entities/Employee.cs
 │   └── Interfaces/IRepository.cs, IEmployeeRepository.cs
@@ -34,28 +25,22 @@ function Netrepositorydesignpattern() {
 │   └── EmployeeService.cs
 ├── API
 │   └── Controllers/EmployeeController.cs
-└── Program.cs`}
-        </pre>
-      </section>
+└── Program.cs`}</CodeBlock>
+      </Section>
 
-      {/* Core Layer */}
-      <section>
-        <h2 className="text-xl font-semibold text-indigo-600 mb-2">Core Layer</h2>
-
+      {/* Step 2: Core Layer */}
+      <Section title="Step 2: Core Layer" color="text-green-600">
         <h3 className="font-semibold">Entity</h3>
-        <pre className={codeStyle}>
-{`public class Employee
+        <CodeBlock>{`public class Employee
 {
     public int Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }
-}`}
-        </pre>
+}`}</CodeBlock>
 
         <h3 className="font-semibold">Generic Repository Interface</h3>
-        <pre className={codeStyle}>
-{`public interface IRepository<T> where T : class
+        <CodeBlock>{`public interface IRepository<T> where T : class
 {
     Task<IEnumerable<T>> GetAllAsync();
     Task<T> GetByIdAsync(int id);
@@ -63,36 +48,28 @@ function Netrepositorydesignpattern() {
     void Update(T entity);
     void Delete(T entity);
     Task SaveAsync();
-}`}
-        </pre>
+}`}</CodeBlock>
 
         <h3 className="font-semibold">Specific Repository Interface</h3>
-        <pre className={codeStyle}>
-{`public interface IEmployeeRepository : IRepository<Employee>
+        <CodeBlock>{`public interface IEmployeeRepository : IRepository<Employee>
 {
     Task<Employee> GetByEmailAsync(string email);
-}`}
-        </pre>
-      </section>
+}`}</CodeBlock>
+      </Section>
 
-      {/* Infrastructure Layer */}
-      <section>
-        <h2 className="text-xl font-semibold text-indigo-600 mb-2">Infrastructure Layer</h2>
-
+      {/* Step 3: Infrastructure Layer */}
+      <Section title="Step 3: Infrastructure Layer" color="text-purple-600">
         <h3 className="font-semibold">DbContext</h3>
-        <pre className={codeStyle}>
-{`public class ApplicationDbContext : DbContext
+        <CodeBlock>{`public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options) { }
 
     public DbSet<Employee> Employees { get; set; }
-}`}
-        </pre>
+}`}</CodeBlock>
 
         <h3 className="font-semibold">Generic Repository</h3>
-        <pre className={codeStyle}>
-{`public class Repository<T> : IRepository<T> where T : class
+        <CodeBlock>{`public class Repository<T> : IRepository<T> where T : class
 {
     private readonly ApplicationDbContext _context;
     private readonly DbSet<T> _dbSet;
@@ -109,12 +86,10 @@ function Netrepositorydesignpattern() {
     public void Update(T entity) => _dbSet.Update(entity);
     public void Delete(T entity) => _dbSet.Remove(entity);
     public async Task SaveAsync() => await _context.SaveChangesAsync();
-}`}
-        </pre>
+}`}</CodeBlock>
 
         <h3 className="font-semibold">Specific Repository</h3>
-        <pre className={codeStyle}>
-{`public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
+        <CodeBlock>{`public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
 {
     private readonly ApplicationDbContext _context;
 
@@ -127,22 +102,42 @@ function Netrepositorydesignpattern() {
     {
         return await _context.Employees.FirstOrDefaultAsync(e => e.Email == email);
     }
-}`}
-        </pre>
-      </section>
+}`}</CodeBlock>
+      </Section>
 
-      {/* Summary */}
-      <section>
-        <h2 className="text-xl font-semibold text-indigo-600 mb-2">Summary</h2>
-        <ul className="list-disc pl-5 space-y-1">
-          <li>Generic Repository (Repository&lt;T&gt;) handles standard CRUD.</li>
+      {/* Step 4: Summary */}
+      <Section title="Step 4: Summary" color="text-green-600">
+        <ul className="list-disc ml-6 text-gray-700 space-y-1">
+          <li>Generic Repository (Repository&lt;T&gt;) handles standard CRUD operations.</li>
           <li>Specific repositories provide custom queries like GetByEmailAsync.</li>
-          <li>Core layer contains interfaces and entities only.</li>
+          <li>Core layer contains entities and interfaces only.</li>
           <li>Infrastructure implements DbContext and repositories.</li>
           <li>API layer depends only on interfaces, following dependency inversion.</li>
         </ul>
-      </section>
+      </Section>
+
     </div>
+  );
+}
+
+/* Section Component */
+function Section({ title, color, children }) {
+  return (
+    <section className="space-y-2">
+      <div className="flex items-center mb-2">
+        <strong className={`${color}`}>{title}</strong>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+/* Code Block Component */
+function CodeBlock({ children }) {
+  return (
+    <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">
+      {children}
+    </pre>
   );
 }
 

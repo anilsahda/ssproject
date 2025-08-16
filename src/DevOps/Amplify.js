@@ -1,11 +1,9 @@
-import React from "react";
-
-function Cicdpipelines() {
+function Amplify() {
   return (
     <div className="p-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen font-sans text-gray-800 text-sm leading-relaxed">
       {/* Header */}
       <h1 className="text-xl font-bold text-indigo-700 border-b pb-2 mb-4 flex items-center">
-        🚀 Deploy React App using AWS Amplify – Step by Step
+        🚀 Deploy React App using AWS Amplify
       </h1>
 
       {/* 1. Prerequisites */}
@@ -117,4 +115,4 @@ frontend:
   );
 }
 
-export default Cicdpipelines;
+export default Amplify

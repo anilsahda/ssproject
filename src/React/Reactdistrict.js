@@ -6,7 +6,7 @@ function Reactdistrict() {
     borderBottom: "2px solid #007bff",
     paddingBottom: "5px",
     marginBottom: "15px",
-    fontSize: "1.4rem",
+    fontSize: "1.2rem",
     fontWeight: "bold",
     color: "#007bff",
     display: "flex",
@@ -18,241 +18,207 @@ function Reactdistrict() {
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
         <h1 className="fw-bold mb-5 text-primary text-center">
-          District CRUD Documentation (with Cascading Dropdowns)
+          Cascading Dropdown - React
         </h1>
 
-        {/* Introduction */}
+        {/* Step 1: State and Base URL */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaBook /> Introduction
+            <FaBook /> Step 1: State and Base URL
           </div>
-          <p style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-            This guide explains how to build a <strong>District Management</strong> feature in a
-            React application using Axios for API requests and Bootstrap for styling.
-            It includes cascading dropdowns for selecting <strong>Country</strong> and <strong>State</strong>
-            before adding or updating a district. The functionality covers Create, Read, Update, and Delete (CRUD) operations.
-          </p>
+          <pre style={preStyle}>{`const [districts, setDistricts] = useState([]);
+const [countries, setCountries] = useState([]);
+const [states, setStates] = useState([]);
+const [id, setId] = useState(0);
+const [name, setName] = useState("");
+const [countryId, setCountryId] = useState(0);
+const [stateId, setStateId] = useState(0);
+
+const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Districts\`;
+const countryUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;
+const stateUrl = \`\${process.env.REACT_APP_BASE_URL}/States\`;`}</pre>
         </section>
 
-        {/* API Endpoints */}
+        {/* Step 2: Load Data */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaLink /> API Endpoints
+            <FaLink /> Step 2: Load Data from APIs
           </div>
-          <table className="table table-bordered table-hover">
-            <thead className="table-light">
-              <tr>
-                <th>Method</th>
-                <th>Endpoint</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>GET</strong></td>
-                <td>/districts</td>
-                <td>Retrieve all districts</td>
-              </tr>
-              <tr>
-                <td><strong>POST</strong></td>
-                <td>/districts</td>
-                <td>Add a new district</td>
-              </tr>
-              <tr>
-                <td><strong>PUT</strong></td>
-                <td>/districts/:id</td>
-                <td>Update a district by ID</td>
-              </tr>
-              <tr>
-                <td><strong>DELETE</strong></td>
-                <td>/districts/:id</td>
-                <td>Delete a district by ID</td>
-              </tr>
-              <tr>
-                <td><strong>GET</strong></td>
-                <td>/countries</td>
-                <td>Retrieve all countries</td>
-              </tr>
-              <tr>
-                <td><strong>GET</strong></td>
-                <td>/states?countryId=<pre>
-{` ... d.id ... `}
-</pre></td>
-                <td>Retrieve states for a selected country</td>
-              </tr>
-            </tbody>
-          </table>
+          <pre style={preStyle}>{`useEffect(() => {
+  loadCountries();
+  loadStates();
+  loadDistricts();
+}, []);
+
+const loadCountries = () => {
+  axios.get(countryUrl).then(res => setCountries(res.data));
+};
+
+const loadStates = () => {
+  axios.get(stateUrl).then(res => setStates(res.data));
+};
+
+const loadDistricts = () => {
+  axios.get(baseUrl).then(res => setDistricts(res.data));
+};`}</pre>
         </section>
 
-        {/* Install Axios */}
+        {/* Step 3: Add / Update District */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaCheckCircle /> Install Axios
+            <FaCode /> Step 3: Add or Update District
           </div>
-          <pre
-            className="p-3 rounded"
-            style={{
-              backgroundColor: "#f1f3f5",
-              fontFamily: "monospace",
-              fontSize: "1rem",
-              border: "1px solid #dee2e6",
-            }}
-          >
-            npm install axios
-          </pre>
+          <pre style={preStyle}>{`const handleSave = () => {
+  if (name.trim() === "" || countryId === 0 || stateId === 0) {
+    Swal.fire("Validation Error", "All fields are required", "warning");
+    return;
+  }
+
+  const data = { id, name, countryId: parseInt(countryId), stateId: parseInt(stateId) };
+
+  if (id === 0) {
+    axios.post(baseUrl, data)
+      .then(() => { Swal.fire("Success", "District added successfully!", "success"); resetForm(); loadDistricts(); })
+      .catch(() => Swal.fire("Error", "Failed to add district", "error"));
+  } else {
+    axios.put(baseUrl, data)
+      .then(() => { Swal.fire("Success", "District updated successfully!", "success"); resetForm(); loadDistricts(); })
+      .catch(() => Swal.fire("Error", "Failed to update district", "error"));
+  }
+};`}</pre>
         </section>
 
-        {/* Example Code */}
+        {/* Step 4: Edit District */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaCode /> Example React Component
+            <FaBook /> Step 4: Edit District
           </div>
-          <pre
-            className="p-3 rounded"
-            style={{
-              backgroundColor: "#f8f9fa",
-              color: "#212529",
-              fontFamily: "'Fira Code', monospace",
-              fontSize: "0.95rem",
-              whiteSpace: "pre-wrap",
-              border: "1px solid #dee2e6",
-            }}
-          >
-{`import React, { useState, useEffect } from "react";
-import axios from "axios";
+          <pre style={preStyle}>{`const handleEdit = (district) => {
+  setId(district.id);
+  setName(district.name);
+  setCountryId(district.countryId);
+  setStateId(district.stateId);
+};`}</pre>
+        </section>
 
-function District() {
-  const [districts, setDistricts] = useState([]);
-  const [countries, setCountries] = useState([]);
-  const [states, setStates] = useState([]);
-  
-  const [name, setName] = useState("");
-  const [countryId, setCountryId] = useState("");
-  const [stateId, setStateId] = useState("");
-  const [editingId, setEditingId] = useState(null);
-
-  const districtApi = "http://localhost:5000/districts";
-  const countryApi = "http://localhost:5000/countries";
-  const stateApi = "http://localhost:5000/states";
-
-  useEffect(() => {
-    fetchDistricts();
-    fetchCountries();
-  }, []);
-
-  const fetchDistricts = async () => {
-    const res = await axios.get(districtApi);
-    setDistricts(res.data);
-  };
-
-  const fetchCountries = async () => {
-    const res = await axios.get(countryApi);
-    setCountries(res.data);
-  };
-
-  const fetchStatesByCountry = async (countryId) => {
-    if (!countryId) {
-      setStates([]);
-      return;
+        {/* Step 5: Delete District */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaLink /> Step 5: Delete District
+          </div>
+          <pre style={preStyle}>{`const handleDelete = (districtId) => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "This action cannot be undone.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it!"
+  }).then(result => {
+    if (result.isConfirmed) {
+      axios.delete(\`\${baseUrl}/\${districtId}\`)
+        .then(() => { Swal.fire("Deleted!", "District has been deleted.", "success"); loadDistricts(); })
+        .catch(() => Swal.fire("Error", "Failed to delete district", "error"));
     }
-    const res = await axios.get(\`\${stateApi}?countryId=\${countryId}\`);
-    setStates(res.data);
-  };
-
-  const handleCountryChange = (e) => {
-    const selectedCountry = e.target.value;
-    setCountryId(selectedCountry);
-    setStateId("");
-    fetchStatesByCountry(selectedCountry);
-  };
-
-  const addDistrict = async () => {
-    await axios.post(districtApi, { name, countryId, stateId });
-    resetForm();
-    fetchDistricts();
-  };
-
-  const updateDistrict = async () => {
-    await axios.put(\`\${districtApi}/\${editingId}\`, { name, countryId, stateId });
-    resetForm();
-    fetchDistricts();
-  };
-
-  const deleteDistrict = async (id) => {
-    await axios.delete(\`\${districtApi}/\${id}\`);
-    fetchDistricts();
-  };
-
-  const resetForm = () => {
-    setName("");
-    setCountryId("");
-    setStateId("");
-    setEditingId(null);
-    setStates([]);
-  };
-
-  return (
-    <div className="container">
-      <h2>Manage Districts</h2>
-      <input 
-        value={name} 
-        onChange={(e) => setName(e.target.value)} 
-        placeholder="District Name" 
-      />
-      <select value={countryId} onChange={handleCountryChange}>
-        <option value="">Select Country</option>
-        {countries.map((c) => (
-          <option key={c.id} value={c.id}>{c.name}</option>
-        ))}
-      </select>
-      <select value={stateId} onChange={(e) => setStateId(e.target.value)}>
-        <option value="">Select State</option>
-        {states.map((s) => (
-          <option key={s.id} value={s.id}>{s.name}</option>
-        ))}
-      </select>
-      <button onClick={editingId ? updateDistrict : addDistrict}>
-        {editingId ? "Update" : "Add"}
-      </button>
-      <ul>
-        {districts.map((d) => (
-          <li key={d.id}>
-            {d.name} - 
-            {countries.find(c => c.id === d.countryId)?.name || "Unknown"}, 
-            {states.find(s => s.id === d.stateId)?.name || "Unknown"}
-            <button onClick={() => { 
-              setName(d.name); 
-              setCountryId(d.countryId); 
-              fetchStatesByCountry(d.countryId);
-              setStateId(d.stateId); 
-              setEditingId(d.id); 
-            }}>Edit</button>
-            <button onClick={() => deleteDistrict(d.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-export default District;`}
-          </pre>
+  });
+};`}</pre>
         </section>
 
-        {/* Conclusion */}
+        {/* Step 6: Reset Form */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCheckCircle /> Step 6: Reset Form
+          </div>
+          <pre style={preStyle}>{`const resetForm = () => {
+  setId(0);
+  setName("");
+  setCountryId(0);
+  setStateId(0);
+};`}</pre>
+        </section>
+
+        {/* Step 7: JSX Form & Table */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCode /> Step 7: JSX Form & Table
+          </div>
+          <pre style={preStyle}>{`<div className="mb-3">
+  <!-- Select Country -->
+  <select value={countryId} onChange={e => { setCountryId(parseInt(e.target.value)); setStateId(0); }}>
+    <option value={0}>Select Country</option>
+    {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+  </select>
+
+  <!-- Select State -->
+  <select value={stateId} onChange={e => setStateId(parseInt(e.target.value))} disabled={countryId === 0}>
+    <option value={0}>Select State</option>
+    {states.filter(s => s.countryId === countryId).map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+  </select>
+
+  <!-- Input District Name -->
+  <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter District Name" />
+
+  <button onClick={handleSave}>{id === 0 ? "Add District" : "Update District"}</button>
+  <button onClick={resetForm}>Reset</button>
+</div>
+
+<table className="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Country</th>
+      <th>State</th>
+      <th>District</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {districts.length === 0 && <tr><td colSpan="5" className="text-center">No districts found.</td></tr>}
+    {districts.map(d => (
+      <tr key={d.id}>
+        <td>{d.id}</td>
+        <td>{countries.find(c => c.id === d.countryId)?.name}</td>
+        <td>{states.find(s => s.id === d.stateId)?.name}</td>
+        <td>{d.name}</td>
+        <td>
+          <button onClick={() => handleEdit(d)}>Edit</button>
+          <button onClick={() => handleDelete(d.id)}>Delete</button>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>`}</pre>
+        </section>
+
+        {/* Step 8: Summary */}
         <section>
           <div style={sectionHeaderStyle}>
-            <FaBook /> Conclusion
+            <FaBook /> Step 8: Summary
           </div>
-          <p style={{ fontSize: "1.05rem" }}>
-            This documentation provides a step-by-step guide to implementing CRUD
-            functionality for <strong>District Management</strong> with a cascading dropdown
-            for selecting country and state in a React application using Axios.
-          </p>
+          <ul style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
+            <li>✅ Full CRUD operations with Axios (GET, POST, PUT, DELETE)</li>
+            <li>🟡 SweetAlert2 used for notifications and delete confirmation</li>
+            <li>📝 Form handling with controlled components</li>
+            <li>📋 Dynamic table rendering of districts with Edit & Delete actions</li>
+            <li>⚡ State dropdown dynamically filtered by selected country</li>
+          </ul>
         </section>
       </div>
     </div>
   );
 }
+
+// Shared preStyle for code blocks
+const preStyle = {
+  backgroundColor: "#f1f3f5",
+  fontFamily: "monospace",
+  fontSize: "0.95rem",
+  border: "1px solid #dee2e6",
+  padding: "15px",
+  borderRadius: "5px",
+  overflowX: "auto",
+  whiteSpace: "pre",
+};
 
 export default Reactdistrict;

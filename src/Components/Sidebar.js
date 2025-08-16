@@ -70,6 +70,7 @@ function Sidebar({ activeMenu }) {
             <SidebarButton to="/netradiobutton" icon="bi-record-circle" label=".Net Radio Button" />
             <SidebarButton to="/netsearching" icon="bi-search" label=".Net Searching" />
             <SidebarButton to="/netpagination" icon="bi-list-nested" label=".Net Pagination" />
+            <SidebarButton to="/netexportcsv" icon="bi-list-nested" label=".Net Export CSV" />
             <SidebarButton to="/netcheckbox" icon="bi-check-square" label=".Net Checkbox" />
             <SidebarButton to="/netmultiselectdropdown" icon="bi-check2-square" label=".Net Multi Select Dropdown" />
             <SidebarButton to="/netjwtauth" icon="bi-shield-lock" label=".Net JWT Auth" />
@@ -150,15 +151,16 @@ function Sidebar({ activeMenu }) {
           {role === "Interners" && activeMenu === "SQL" && (
             <>
               <SidebarButton to="/sqlcrud" icon="bi-pencil-square" label="SQL CRUD" />
+              <SidebarButton to="/sqljoins" icon="bi-pencil-square" label="SQL Joins" />
               <SidebarButton to="/sqlstoredprocedure" icon="bi-gear" label="SQL Stored Procedure" />
               <SidebarButton to="/sqlfunctions" icon="bi-funnel" label="SQL Functions" />
-              <SidebarButton to="/sqltrigger" icon="bi-bell" label="SQL Trigger" />
-              <SidebarButton to="/sqlcursor" icon="bi-arrow-left-right" label="SQL Cursor" />
-              <SidebarButton to="/sqlprofiler" icon="bi-graph-up" label="SQL Profiler" />
               <SidebarButton to="/sqlacid" icon="bi-shield-check" label="SQL ACID" />
               <SidebarButton to="/sqlindexing" icon="bi-list-nested" label="SQL Indexing" />
               <SidebarButton to="/sqlnormalization" icon="bi-sliders" label="SQL Normalization" />
               <SidebarButton to="/sqlqueriescommands" icon="bi-terminal" label="SQL Queries Commands" />
+              <SidebarButton to="/sqlprofiler" icon="bi-graph-up" label="SQL Profiler" />
+              <SidebarButton to="/sqltrigger" icon="bi-bell" label="SQL Trigger" />
+              <SidebarButton to="/sqlcursor" icon="bi-arrow-left-right" label="SQL Cursor" />
               <SidebarButton to="/sqlquestions" icon="bi-question-circle" label="SQL Questions" />
             </>
           )}
@@ -195,16 +197,19 @@ function Sidebar({ activeMenu }) {
 
           {role === "Interners" && activeMenu === "DevOps" && (
             <>
-              <SidebarButton to="/cicdpipelines" icon="bi-arrow-repeat" label="CI-CD Pipelines" />
-              <SidebarButton to="/jenkins" icon="bi-gear-fill" label="Jenkins" />
-              <SidebarButton to="/docker" icon="bi-box" label="Docker" />
-              <SidebarButton to="/kubernetes" icon="bi-diagram-3-fill" label="Kubernetes" />
-              <SidebarButton to="/ansible" icon="bi-tools" label="Ansible" />
-              <SidebarButton to="/terraform" icon="bi-layers" label="Terraform" />
-              <SidebarButton to="/monitoring" icon="bi-graph-up-arrow" label="Monitoring & Logging" />
-              <SidebarButton to="/gitgithub" icon="bi-git" label="Git & GitHub" />
-              <SidebarButton to="/devopsbestpractices" icon="bi-stars" label="DevOps Best Practices" />
-              <SidebarButton to="/devopsquestions" icon="bi-question-circle" label="DevOps Questions" />
+            <SidebarButton to="/amplify" icon="bi-gear-fill" label="Amplify" />
+            <SidebarButton to="/jenkins" icon="bi-gear-fill" label="Jenkins Setup" />
+            <SidebarButton to="/cicdpipelinesreact" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - React" />
+            <SidebarButton to="/cicdpipelinesnext" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - Next" />
+            <SidebarButton to="/cicdpipelinesnode" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - Node" />
+            <SidebarButton to="/cicdpipelinesnetcore" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - .Net Core" />
+            <SidebarButton to="/docker" icon="bi-box-seam" label="Docker" />
+            <SidebarButton to="/kubernetes" icon="bi-diagram-3-fill" label="Kubernetes" />
+            <SidebarButton to="/ansible" icon="bi-tools" label="Ansible" />
+            <SidebarButton to="/terraform" icon="bi-layers" label="Terraform" />
+            <SidebarButton to="/monitoring" icon="bi-graph-up-arrow" label="Monitoring & Logging" />
+            <SidebarButton to="/github" icon="bi-git" label="Git & GitHub" />
+            <SidebarButton to="/devopsquestions" icon="bi-question-circle" label="DevOps Questions" />
             </>
           )}
 
@@ -222,8 +227,6 @@ function Sidebar({ activeMenu }) {
             <SidebarButton to="/reactsearching" icon="bi-search" label="React Searching" />
             <SidebarButton to="/reactpagination" icon="bi-list-nested" label="React Pagination" />
             <SidebarButton to="/reactjwtauth" icon="bi-shield-lock" label="React JWT Auth" />
-            <SidebarButton to="/reactgoogleauth" icon="bi-google" label="React Google Auth" />
-            <SidebarButton to="/reactfacebookauth" icon="bi-facebook" label="React Facebook Auth" />
             <SidebarButton to="/reactlocalstorage" icon="bi-layers" label="React Local Storage" />
             <SidebarButton to="/reactzustand" icon="bi-diagram-3-fill" label="React Zustand" />
             <SidebarButton to="/reactredux" icon="bi-terminal" label="React Redux" />
@@ -246,8 +249,6 @@ function Sidebar({ activeMenu }) {
             <SidebarButton to="/nextsearching" icon="bi-search" label="Next Searching" />
             <SidebarButton to="/nextpagination" icon="bi-list-nested" label="Next Pagination" />
             <SidebarButton to="/nextjwtauth" icon="bi-shield-lock" label="Next JWT Auth" />
-            <SidebarButton to="/nextgoogleauth" icon="bi-google" label="Next Google Auth" />
-            <SidebarButton to="/nextfacebookauth" icon="bi-facebook" label="Next Facebook Auth" />
             <SidebarButton to="/nextlocalstorage" icon="bi-layers" label="Next Local Storage" />
             <SidebarButton to="/nextzustand" icon="bi-diagram-3-fill" label="Next Zustand" />
             <SidebarButton to="/nextredux" icon="bi-terminal" label="Next Redux" />

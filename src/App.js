@@ -63,15 +63,12 @@ import Azuresql from "./Azure/Azuresql";
 import Azuremonitor from "./Azure/Azuremonitor";
 import Azurerbac from "./Azure/Azurerbac";
 import Azurequestions from "./Azure/Azurequestions";
-import Cicdpipelines from "./DevOps/Cicdpipelines";
 import Jenkins from "./DevOps/Jenkins";
 import Docker from "./DevOps/Docker";
 import Kubernetes from "./DevOps/Kubernetes";
 import Ansible from "./DevOps/Ansible";
 import Terraform from "./DevOps/Terraform";
 import Monitoring from "./DevOps/Monitoring";
-import Gitgithub from "./DevOps/Gitgithub";
-import Devopsbestpractices from "./DevOps/Devopsbestpractices";
 import Devopsquestions from "./DevOps/Devopsquestions";
 import Reactprojectsetup from "./React/Reactprojectsetup";
 import Reactmultiselectdropdown from "./React/Reactmultiselectdropdown";
@@ -80,8 +77,6 @@ import Reactcheckbox from "./React/Reactcheckbox";
 import Reactsearching from "./React/Reactsearching";
 import Reactpagination from "./React/Reactpagination";
 import Reactjwtauth from "./React/Reactjwtauth";
-import Reactgoogleauth from "./React/Reactgoogleauth";
-import Reactfacebookauth from "./React/Reactfacebookauth";
 import Reactlocalstorage from "./React/Reactlocalstorage";
 import Reactzustand from "./React/Reactzustand";
 import Reactredux from "./React/Reactredux";
@@ -93,8 +88,6 @@ import Nextcheckbox from "./Next/Nextcheckbox";
 import Nextsearching from "./Next/Nextsearching";
 import Nextpagination from "./Next/Nextpagination";
 import Nextjwtauth from "./Next/Nextjwtauth";
-import Nextgoogleauth from "./Next/Nextgoogleauth";
-import Nextfacebookauth from "./Next/Nextfacebookauth";
 import Nextlocalstorage from "./Next/Nextlocalstorage";
 import Nextzustand from "./Next/Nextzustand";
 import Nextredux from "./Next/Nextredux";
@@ -171,6 +164,15 @@ import Reactlanguages from "./React/Reactlanguages";
 import Exportcsv from "./Fullstack/Exportcsv";
 import Netonionarchitecture from "./Dotnet/Netonionarchitecture";
 import Netrepositorydesignpattern from "./Dotnet/Netrepositorydesignpattern";
+import Netexportcsv from "./Dotnet/Netexportcsv";
+import Sqljoins from "./SQL/Sqljoins";
+import Reactimageupload from "./React/Reactimageupload";
+import CicdpipelinesReact from "./DevOps/CicdpipelinesReact";
+import CicdpipelinesNext from "./DevOps/CicdpipelinesNext";
+import CicdpipelinesNode from "./DevOps/CicdpipelinesNode";
+import CicdpipelinesNetCore from "./DevOps/CicdpipelinesNetCore";
+import Amplify from "./DevOps/Amplify";
+import Github from "./DevOps/Github";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -237,6 +239,7 @@ function App() {
             <Route path="/netmultiselectdropdown" element={<Netmultiselectdropdown />} />
             <Route path="/netonionarchitecture" element={<Netonionarchitecture />} />
             <Route path="/netpagination" element={<Netpagination />} />
+            <Route path="/netexportcsv" element={<Netexportcsv />} />
             <Route path="/netradiobutton" element={<Netradiobutton />} />
             <Route path="/netsearching" element={<Netsearching />} />
             <Route path="/netquestions" element={<Netquestions />} />
@@ -293,15 +296,16 @@ function App() {
             <Route path="/dsaquestions" element={<Dsaquestions />} />
 
             <Route path="/sqlcrud" element={<Sqlcrud />} />
+            <Route path="/sqljoins" element={<Sqljoins />} />
             <Route path="/sqlstoredprocedure" element={<Sqlstoredprocedure />} />
             <Route path="/sqlfunctions" element={<Sqlfunctions />} />
-            <Route path="/sqltrigger" element={<Sqltrigger />} />
-            <Route path="/sqlcursor" element={<Sqlcursor />} />
-            <Route path="/sqlprofiler" element={<Sqlprofiler />} />
             <Route path="/sqlacid" element={<Sqlacid />} />
             <Route path="/sqlindexing" element={<Sqlindexing />} />
             <Route path="/sqlnormalization" element={<Sqlnormalization />} />
             <Route path="/sqlqueriescommands" element={<Sqlqueriescommands />} />
+            <Route path="/sqlprofiler" element={<Sqlprofiler />} />
+            <Route path="/sqltrigger" element={<Sqltrigger />} />
+            <Route path="/sqlcursor" element={<Sqlcursor />} />
             <Route path="/sqlquestions" element={<Sqlquestions />} />
 
             <Route path="/awsaccountsetup" element={<Awsaccountsetup />} />
@@ -325,16 +329,19 @@ function App() {
             <Route path="/azuremonitor" element={<Azuremonitor />} />
             <Route path="/azurerbac" element={<Azurerbac />} />
             <Route path="/azurequestions" element={<Azurequestions />} />
-           
-            <Route path="/cicdpipelines" element={<Cicdpipelines />} />
+
+            <Route path="/amplify" element={<Amplify />} />           
+            <Route path="/cicdpipelinesreact" element={<CicdpipelinesReact />} />
+            <Route path="/cicdpipelinesnext" element={<CicdpipelinesNext />} />
+            <Route path="/cicdpipelinesnode" element={<CicdpipelinesNode />} />
+            <Route path="/cicdpipelinesnetcore" element={<CicdpipelinesNetCore />} />                        
             <Route path="/jenkins" element={<Jenkins />} />
             <Route path="/docker" element={<Docker />} />
             <Route path="/kubernetes" element={<Kubernetes />} />
             <Route path="/ansible" element={<Ansible />} />
             <Route path="/terraform" element={<Terraform />} />
             <Route path="/monitoring" element={<Monitoring />} />
-            <Route path="/gitgithub" element={<Gitgithub />} />
-            <Route path="/devopsbestpractices" element={<Devopsbestpractices />} />
+            <Route path="/github" element={<Github />} />
             <Route path="/devopsquestions" element={<Devopsquestions />} />
 
             <Route path="/reactprojectsetup" element={<Reactprojectsetup />} />
@@ -345,11 +352,10 @@ function App() {
             <Route path="/reactmultiselectdropdown" element={<Reactmultiselectdropdown />} />
             <Route path="/reactradiobutton" element={<Reactradiobutton />} />
             <Route path="/reactcheckbox" element={<Reactcheckbox />} />
+            <Route path="/reactimageupload" element={<Reactimageupload />} />            
             <Route path="/reactsearching" element={<Reactsearching />} />
             <Route path="/reactpagination" element={<Reactpagination />} />
             <Route path="/reactjwtauth" element={<Reactjwtauth />} />
-            <Route path="/reactgoogleauth" element={<Reactgoogleauth />} />
-            <Route path="/reactfacebookauth" element={<Reactfacebookauth />} />
             <Route path="/reactlocalstorage" element={<Reactlocalstorage />} />
             <Route path="/reactzustand" element={<Reactzustand />} />
             <Route path="/reactredux" element={<Reactredux />} />
@@ -367,8 +373,6 @@ function App() {
             <Route path="/nextsearching" element={<Nextsearching />} />
             <Route path="/nextpagination" element={<Nextpagination />} />
             <Route path="/nextjwtauth" element={<Nextjwtauth />} />
-            <Route path="/nextgoogleauth" element={<Nextgoogleauth />} />
-            <Route path="/nextfacebookauth" element={<Nextfacebookauth />} />
             <Route path="/nextlocalstorage" element={<Nextlocalstorage />} />
             <Route path="/nextimageupload" element={<Nextimageupload />} />
             <Route path="/nextzustand" element={<Nextzustand />} />

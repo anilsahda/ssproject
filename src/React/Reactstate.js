@@ -6,7 +6,7 @@ function Reactstate() {
     borderBottom: "2px solid #007bff",
     paddingBottom: "5px",
     marginBottom: "15px",
-    fontSize: "1.4rem",
+    fontSize: "1.2rem",
     fontWeight: "bold",
     color: "#007bff",
     display: "flex",
@@ -18,204 +18,244 @@ function Reactstate() {
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
         <h1 className="fw-bold mb-5 text-primary text-center">
-          State CRUD Documentation (with Country Dropdown)
+          Dropdown - React
         </h1>
 
-        {/* Introduction */}
+        {/* Step 1: State and Base URL */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaBook /> Introduction
+            <FaBook /> Step 1: State and Base URL
           </div>
-          <p style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-            This guide explains how to build a <strong>State Management</strong> feature in a
-            React application using Axios for API requests and Bootstrap for styling.
-            It includes a dropdown for selecting a country when adding or updating a state.
-            The functionality covers Create, Read, Update, and Delete (CRUD) operations.
-          </p>
+          <pre style={preStyle}>{`const [countries, setCountries] = useState([]);
+const [states, setStates] = useState([]);
+const [id, setId] = useState(0);
+const [name, setName] = useState("");
+const [countryId, setCountryId] = useState("");
+const [loading, setLoading] = useState(false);
+
+const stateUrl = \`\${process.env.REACT_APP_BASE_URL}/States\`;
+const countryUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;`}</pre>
         </section>
 
-        {/* API Endpoints */}
+        {/* Step 2: Load States and Countries */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaLink /> API Endpoints
+            <FaLink /> Step 2: Load States and Countries from API
           </div>
-          <table className="table table-bordered table-hover">
-            <thead className="table-light">
-              <tr>
-                <th>Method</th>
-                <th>Endpoint</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>GET</strong></td>
-                <td>/states</td>
-                <td>Retrieve all states</td>
-              </tr>
-              <tr>
-                <td><strong>POST</strong></td>
-                <td>/states</td>
-                <td>Add a new state</td>
-              </tr>
-              <tr>
-                <td><strong>PUT</strong></td>
-                <td>/states/:id</td>
-                <td>Update a state by ID</td>
-              </tr>
-              <tr>
-                <td><strong>DELETE</strong></td>
-                <td>/states/:id</td>
-                <td>Delete a state by ID</td>
-              </tr>
-              <tr>
-                <td><strong>GET</strong></td>
-                <td>/countries</td>
-                <td>Retrieve all countries for dropdown</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+          <pre style={preStyle}>{`useEffect(() => {
+  loadStates();
+  loadCountries();
+}, []);
 
-        {/* Install Axios */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaCheckCircle /> Install Axios
-          </div>
-          <pre
-            className="p-3 rounded"
-            style={{
-              backgroundColor: "#f1f3f5",
-              fontFamily: "monospace",
-              fontSize: "1rem",
-              border: "1px solid #dee2e6",
-            }}
-          >
-            npm install axios
-          </pre>
-        </section>
-
-        {/* Example Code */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaCode /> Example React Component
-          </div>
-          <pre
-            className="p-3 rounded"
-            style={{
-              backgroundColor: "#f8f9fa",
-              color: "#212529",
-              fontFamily: "'Fira Code', monospace",
-              fontSize: "0.95rem",
-              whiteSpace: "pre-wrap",
-              border: "1px solid #dee2e6",
-            }}
-          >
-{`import React, { useState, useEffect } from "react";
-import axios from "axios";
-
-function State() {
-  const [states, setStates] = useState([]);
-  const [countries, setCountries] = useState([]);
-  const [name, setName] = useState("");
-  const [countryId, setCountryId] = useState("");
-  const [editingId, setEditingId] = useState(null);
-  
-  const stateApi = "http://localhost:5000/states";
-  const countryApi = "http://localhost:5000/countries";
-
-  useEffect(() => {
-    fetchStates();
-    fetchCountries();
-  }, []);
-
-  const fetchStates = async () => {
-    const res = await axios.get(stateApi);
+const loadStates = async () => {
+  try {
+    setLoading(true);
+    const res = await axios.get(stateUrl);
     setStates(res.data);
-  };
+  } catch {
+    toast("error", "Failed to load states");
+  } finally {
+    setLoading(false);
+  }
+};
 
-  const fetchCountries = async () => {
-    const res = await axios.get(countryApi);
+const loadCountries = async () => {
+  try {
+    const res = await axios.get(countryUrl);
     setCountries(res.data);
-  };
-
-  const addState = async () => {
-    await axios.post(stateApi, { name, countryId });
-    setName("");
-    setCountryId("");
-    fetchStates();
-  };
-
-  const updateState = async () => {
-    await axios.put(\`\${stateApi}/\${editingId}\`, { name, countryId });
-    setEditingId(null);
-    setName("");
-    setCountryId("");
-    fetchStates();
-  };
-
-  const deleteState = async (id) => {
-    await axios.delete(\`\${stateApi}/\${id}\`);
-    fetchStates();
-  };
-
-  return (
-    <div className="container">
-      <h2>Manage States</h2>
-      <input 
-        value={name} 
-        onChange={(e) => setName(e.target.value)} 
-        placeholder="State Name" 
-      />
-      <select 
-        value={countryId} 
-        onChange={(e) => setCountryId(e.target.value)}
-      >
-        <option value="">Select Country</option>
-        {countries.map((c) => (
-          <option key={c.id} value={c.id}>
-            {c.name}
-          </option>
-        ))}
-      </select>
-      <button onClick={editingId ? updateState : addState}>
-        {editingId ? "Update" : "Add"}
-      </button>
-      <ul>
-        {states.map((s) => (
-          <li key={s.id}>
-            {s.name} - {countries.find(c => c.id === s.countryId)?.name || "Unknown"}
-            <button onClick={() => { 
-              setName(s.name); 
-              setCountryId(s.countryId); 
-              setEditingId(s.id); 
-            }}>Edit</button>
-            <button onClick={() => deleteState(s.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-export default State;`}
-          </pre>
+  } catch {
+    toast("error", "Failed to load countries");
+  }
+};`}</pre>
         </section>
 
-        {/* Conclusion */}
+        {/* Step 3: Toast Notifications */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCheckCircle /> Step 3: Toast Notifications
+          </div>
+          <pre style={preStyle}>{`const toast = (icon, title) => {
+  Swal.fire({
+    toast: true,
+    position: "top-end",
+    icon,
+    title,
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true
+  });
+};`}</pre>
+        </section>
+
+        {/* Step 4: Add / Update State */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCode /> Step 4: Add or Update State
+          </div>
+          <pre style={preStyle}>{`const handleSave = async () => {
+  if (!name.trim()) {
+    toast("warning", "State name is required");
+    return;
+  }
+  if (!countryId) {
+    toast("warning", "Please select a country");
+    return;
+  }
+
+  const data = { id, name, countryId: parseInt(countryId) };
+  setLoading(true);
+
+  try {
+    if (id === 0) {
+      await axios.post(stateUrl, data);
+      toast("success", "State added");
+    } else {
+      await axios.put(stateUrl, data);
+      toast("success", "State updated");
+    }
+    resetForm();
+    loadStates();
+  } catch {
+    toast("error", id === 0 ? "Failed to add state" : "Failed to update state");
+  } finally {
+    setLoading(false);
+  }
+};`}</pre>
+        </section>
+
+        {/* Step 5: Edit State */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaBook /> Step 5: Edit State
+          </div>
+          <pre style={preStyle}>{`const handleEdit = (state) => {
+  setId(state.id);
+  setName(state.name);
+  setCountryId(state.countryId.toString());
+};`}</pre>
+        </section>
+
+        {/* Step 6: Delete State */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaLink /> Step 6: Delete State
+          </div>
+          <pre style={preStyle}>{`const handleDelete = (stateId) => {
+  Swal.fire({
+    title: "Delete this state?",
+    text: "This action cannot be undone.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it"
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        setLoading(true);
+        await axios.delete(\`\${stateUrl}/\${stateId}\`);
+        toast("success", "State deleted");
+        loadStates();
+      } catch {
+        toast("error", "Failed to delete state");
+      } finally {
+        setLoading(false);
+      }
+    }
+  });
+};`}</pre>
+        </section>
+
+        {/* Step 7: Reset Form */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCheckCircle /> Step 7: Reset Form
+          </div>
+          <pre style={preStyle}>{`const resetForm = () => {
+  setId(0);
+  setName("");
+  setCountryId("");
+};`}</pre>
+        </section>
+
+        {/* Step 8: JSX Form & Table */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCode /> Step 8: JSX Form & Table
+          </div>
+          <pre style={preStyle}>{`<div className="mb-3">
+  <!-- Input for State Name -->
+  <input type="text" className="form-control" placeholder="Enter State Name" value={name} onChange={e => setName(e.target.value)} />
+
+  <!-- Select for Country -->
+  <select className="form-control" value={countryId} onChange={e => setCountryId(e.target.value)}>
+    <option value="">Select Country</option>
+    {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+  </select>
+
+  <button className="btn btn-primary me-2" onClick={handleSave}>{id === 0 ? "Add State" : "Update State"}</button>
+  <button className="btn btn-secondary" onClick={resetForm}>Reset</button>
+</div>
+
+<table className="table table-bordered table-striped">
+  <thead className="table-light">
+    <tr>
+      <th>Id</th>
+      <th>State Name</th>
+      <th>Country</th>
+      <th style={{ width: "150px" }}>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {states.length > 0 ? (
+      states.map(s => (
+        <tr key={s.id}>
+          <td>{s.id}</td>
+          <td>{s.name}</td>
+          <td>{countries.find(c => c.id === s.countryId)?.name || ""}</td>
+          <td>
+            <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(s)}>Edit</button>
+            <button className="btn btn-danger btn-sm" onClick={() => handleDelete(s.id)}>Delete</button>
+          </td>
+        </tr>
+      ))
+    ) : (
+      <tr>
+        <td colSpan="4" className="text-center">No states found.</td>
+      </tr>
+    )}
+  </tbody>
+</table>`}</pre>
+        </section>
+
+        {/* Step 9: Summary */}
         <section>
           <div style={sectionHeaderStyle}>
-            <FaBook /> Conclusion
+            <FaBook /> Step 9: Summary
           </div>
-          <p style={{ fontSize: "1.05rem" }}>
-            This documentation provides a step-by-step guide to implementing CRUD
-            functionality for <strong>State Management</strong> with a linked <strong>Country dropdown</strong>
-            in a React application using Axios.
-          </p>
+          <ul style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
+            <li>✅ Full CRUD operations with Axios (GET, POST, PUT, DELETE)</li>
+            <li>🟡 SweetAlert2 used for toast notifications and delete confirmation</li>
+            <li>📝 Form handling with controlled components</li>
+            <li>📋 Dynamic table rendering of states with Edit & Delete actions</li>
+            <li>⚡ State is linked to a country via dropdown selection</li>
+          </ul>
         </section>
       </div>
     </div>
   );
 }
+
+// Shared preStyle for code blocks
+const preStyle = {
+  backgroundColor: "#f1f3f5",
+  fontFamily: "monospace",
+  fontSize: "0.95rem",
+  border: "1px solid #dee2e6",
+  padding: "15px",
+  borderRadius: "5px",
+  overflowX: "auto",
+  whiteSpace: "pre",
+};
 
 export default Reactstate;

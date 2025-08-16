@@ -1,199 +1,212 @@
-"use client";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect } from "react";
+import { FaBook, FaLink, FaCode, FaCheckCircle } from "react-icons/fa";
 
-function Nextcountry() {
-  // ✅ Load Bootstrap JS for modals & tooltips in Next.js
-  useEffect(() => {
-    require("bootstrap/dist/js/bootstrap.bundle.min.js");
-  }, []);
+export default function Nextcountry() {
+  const sectionHeaderStyle = {
+    borderBottom: "2px solid #007bff",
+    paddingBottom: "5px",
+    marginBottom: "15px",
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    color: "#007bff",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  };
 
   return (
-    <div className="container my-4">
-      <h1 className="mb-4 text-primary">📄 Country Management Component Documentation</h1>
+    <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
+      <div className="container bg-white p-5 shadow-sm rounded">
+        <h1 className="fw-bold mb-5 text-primary text-center">
+          CRUD Operation - Next.js
+        </h1>
 
-      {/* 1. Component Name */}
-      <section className="mb-5">
-        <h3>1. Component Name</h3>
-        <p>
-          <code>Country</code> (currently exported as <code>Crud</code> in code — recommend
-          renaming to <code>Country</code> for clarity).
-        </p>
-      </section>
+        {/* Step 1: State and Base URL */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaBook /> Step 1: State and Base URL
+          </div>
+          <pre style={preStyle}>{`const [countries, setCountries] = useState([]);
+const [id, setId] = useState(0);
+const [name, setName] = useState("");
+const baseUrl = \`\${process.env.NEXT_PUBLIC_BASE_URL}/Countries\`;`}</pre>
+        </section>
 
-      {/* 2. Purpose */}
-      <section className="mb-5">
-        <h3>2. Purpose</h3>
-        <p>
-          This component manages a <strong>list of countries</strong> with features for:
-        </p>
-        <ul>
-          <li>Adding new countries</li>
-          <li>Editing existing countries</li>
-          <li>Deleting countries</li>
-          <li>Viewing country details</li>
-          <li>Searching</li>
-          <li>Pagination</li>
-          <li>Exporting data as CSV</li>
-        </ul>
-      </section>
+        {/* Step 2: Load Countries */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaLink /> Step 2: Load Countries from API
+          </div>
+          <pre style={preStyle}>{`useEffect(() => {
+  loadCountries();
+}, []);
 
-      {/* 3. Technologies Used */}
-      <section className="mb-5">
-        <h3>3. Technologies Used</h3>
-        <ul>
-          <li>React Hooks: <code>useState</code>, <code>useEffect</code></li>
-          <li>Bootstrap for styling and modal design</li>
-          <li>SweetAlert2 (<code>swal</code>) for pop-ups</li>
-          <li>Blob API for CSV file download</li>
-        </ul>
-      </section>
+const loadCountries = () => {
+  axios.get(baseUrl).then((res) => setCountries(res.data));
+};`}</pre>
+        </section>
 
-      {/* 4. State Variables */}
-      <section className="mb-5">
-        <h3>4. State Variables</h3>
-        <table className="table table-bordered">
-          <thead>
-            <tr>
-              <th>State Variable</th>
-              <th>Type</th>
-              <th>Purpose</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>list</td><td>Array</td><td>Stores the list of countries</td></tr>
-            <tr><td>id</td><td>Number</td><td>Tracks the current editing/viewing country ID</td></tr>
-            <tr><td>name</td><td>String</td><td>Tracks the current country name for add/edit</td></tr>
-            <tr><td>addUpdateModal</td><td>Boolean</td><td>Controls Add/Edit modal</td></tr>
-            <tr><td>viewModal</td><td>Boolean</td><td>Controls View modal</td></tr>
-            <tr><td>searchTerm</td><td>String</td><td>Search filter term</td></tr>
-            <tr><td>currentPage</td><td>Number</td><td>Current page number</td></tr>
-            <tr><td>pageSize</td><td>Number</td><td>Number of items per page</td></tr>
-          </tbody>
-        </table>
-      </section>
+        {/* Step 3: Toast Notifications */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCheckCircle /> Step 3: Toast Notifications
+          </div>
+          <pre style={preStyle}>{`const toast = (icon, title) => {
+  Swal.fire({
+    toast: true,
+    position: "top-end",
+    icon,
+    title,
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true
+  });
+};`}</pre>
+        </section>
 
-      {/* 5. Lifecycle */}
-      <section className="mb-5">
-        <h3>5. Lifecycle</h3>
-        <pre className="bg-light p-3 border">
-{`useEffect(() => {
-  setList([{ id: 1, name: "India" }, { id: 2, name: "USA" }]);
-}, []);`}
-        </pre>
-      </section>
+        {/* Step 4: Save / Update Country */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCode /> Step 4: Add or Update Country
+          </div>
+          <pre style={preStyle}>{`const handleSave = () => {
+  const data = { id, name };
 
-      {/* 6. Functions */}
-      <section className="mb-5">
-        <h3>6. Functions</h3>
-        <h5>handleAddUpdate()</h5>
-        <pre className="bg-light p-3 border">
-{`const handleAddUpdate = () => {
   if (!name.trim()) {
-    swal("Validation Error", "Country name cannot be empty", "error");
+    toast("warning", "Country name required");
     return;
   }
-  if (id) {
-    setList(list.map(c => c.id === id ? { ...c, name } : c));
-    swal("Updated!", "Country updated successfully", "success");
-  } else {
-    setList([...list, { id: list.length + 1, name }]);
-    swal("Added!", "Country added successfully", "success");
-  }
-  setName("");
-  setId(null);
-  setAddUpdateModal(false);
-};`}
-        </pre>
 
-        <h5>handleDelete(id)</h5>
-        <pre className="bg-light p-3 border">
-{`const handleDelete = (id) => {
-  swal({
-    title: "Are you sure?",
-    text: "Once deleted, you will not be able to recover this entry!",
+  if (id === 0) {
+    axios.post(baseUrl, data).then(() => {
+      toast("success", "Country added");
+      resetForm();
+      loadCountries();
+    });
+  } else {
+    axios.put(baseUrl, data).then(() => {
+      toast("success", "Country updated");
+      resetForm();
+      loadCountries();
+    });
+  }
+};`}</pre>
+        </section>
+
+        {/* Step 5: Edit Country */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaBook /> Step 5: Edit Country
+          </div>
+          <pre style={preStyle}>{`const handleEdit = (country) => {
+  setId(country.id);
+  setName(country.name);
+};`}</pre>
+        </section>
+
+        {/* Step 6: Delete Country */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaLink /> Step 6: Delete Country
+          </div>
+          <pre style={preStyle}>{`const handleDelete = (countryId) => {
+  Swal.fire({
+    title: "Delete country?",
+    text: "This cannot be undone!",
     icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  }).then((willDelete) => {
-    if (willDelete) {
-      setList(list.filter(c => c.id !== id));
-      swal("Deleted!", "Country has been deleted!", "success");
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios.delete(\`\${baseUrl}/\${countryId}\`).then(() => {
+        toast("success", "Country deleted");
+        loadCountries();
+      });
     }
   });
-};`}
-        </pre>
+};`}</pre>
+        </section>
 
-        <h5>handleEdit(obj)</h5>
-        <pre className="bg-light p-3 border">
-{`const handleEdit = (obj) => {
-  setId(obj.id);
-  setName(obj.name);
-  setAddUpdateModal(true);
-};`}
-        </pre>
+        {/* Step 7: Reset Form */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCheckCircle /> Step 7: Reset Form
+          </div>
+          <pre style={preStyle}>{`const resetForm = () => {
+  setId(0);
+  setName("");
+};`}</pre>
+        </section>
 
-        <h5>handleView(obj)</h5>
-        <pre className="bg-light p-3 border">
-{`const handleView = (obj) => {
-  setId(obj.id);
-  setName(obj.name);
-  setViewModal(true);
-};`}
-        </pre>
+        {/* Step 8: Component JSX */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCode /> Step 8: Component JSX
+          </div>
+          <pre style={preStyle}>{`<div className="container mt-4">
+  <h2>Manage Countries</h2>
 
-        <h5>handleDownload()</h5>
-        <pre className="bg-light p-3 border">
-{`const handleDownload = () => {
-  const csvContent = "Id,Country\\n" + list.map(c => \`\${c.id},\${c.name}\`).join("\\n");
-  const blob = new Blob([csvContent], { type: "text/csv" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "countries.csv";
-  a.click();
-};`}
-        </pre>
-      </section>
+  <div className="mb-3">
+    <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} />
+  </div>
 
-      {/* 7. Filtering & Pagination */}
-      <section className="mb-5">
-        <h3>7. Filtering & Pagination</h3>
-        <pre className="bg-light p-3 border">
-{`const filteredList = list.filter(c => 
-  c.name.toLowerCase().includes(searchTerm.toLowerCase())
-);
+  <div className="mb-4">
+    <button className="btn btn-primary me-2" onClick={handleSave}>Save Country</button>
+    <button className="btn btn-secondary" onClick={resetForm}>Reset</button>
+  </div>
 
-const startIndex = (currentPage - 1) * pageSize;
-const paginatedList = filteredList.slice(startIndex, startIndex + pageSize);
+  <table className="table table-bordered table-striped">
+    <thead className="table-light">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {countries.map((c) => (
+        <tr key={c.id}>
+          <td>{c.id}</td>
+          <td>{c.name}</td>
+          <td>
+            <button className="btn btn-warning" onClick={() => handleEdit(c)}>Edit</button>
+            <button className="btn btn-danger" onClick={() => handleDelete(c.id)}>Delete</button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>`}</pre>
+        </section>
 
-const totalPages = Math.ceil(filteredList.length / pageSize);`}
-        </pre>
-      </section>
-
-      {/* 8. CSV Format */}
-      <section className="mb-5">
-        <h3>8. CSV Format</h3>
-        <pre className="bg-light p-3 border">
-{`Id,Country
-1,India
-2,USA
-...`}
-        </pre>
-      </section>
-
-      {/* 9. Improvements */}
-      <section className="mb-5">
-        <h3>9. Possible Improvements</h3>
-        <ul>
-          <li>Replace hardcoded initial data with API calls.</li>
-          <li>Extract modals into separate components.</li>
-          <li>Improve validation (avoid duplicates, max length).</li>
-          <li>Add sorting functionality.</li>
-        </ul>
-      </section>
+        {/* Step 9: Summary */}
+        <section>
+          <div style={sectionHeaderStyle}>
+            <FaBook /> Step 9: Summary
+          </div>
+          <ul style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
+            <li>✅ Full CRUD operations with Axios (GET, POST, PUT, DELETE)</li>
+            <li>🟡 SweetAlert2 used for toast notifications and delete confirmation</li>
+            <li>📝 Form handling with controlled components</li>
+            <li>📋 Dynamic table rendering of countries with Edit & Delete actions</li>
+            <li>🆔 Only <code>Id</code> and <code>Name</code> fields are used</li>
+          </ul>
+        </section>
+      </div>
     </div>
   );
 }
 
-export default Nextcountry;
+// Shared preStyle for all code blocks
+const preStyle = {
+  backgroundColor: "#f1f3f5",
+  fontFamily: "monospace",
+  fontSize: "0.95rem",
+  border: "1px solid #dee2e6",
+  padding: "15px",
+  borderRadius: "5px",
+  overflowX: "auto",
+  whiteSpace: "pre",
+};

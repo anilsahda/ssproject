@@ -6,7 +6,7 @@ function Reactcountry() {
     borderBottom: "2px solid #007bff",
     paddingBottom: "5px",
     marginBottom: "15px",
-    fontSize: "1.4rem",
+    fontSize: "1.2rem",
     fontWeight: "bold",
     color: "#007bff",
     display: "flex",
@@ -18,168 +18,197 @@ function Reactcountry() {
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
         <h1 className="fw-bold mb-5 text-primary text-center">
-          Country CRUD Documentation
+          CRUD Operation - React
         </h1>
 
-        {/* Introduction */}
+        {/* Step 1: State and Base URL */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaBook /> Introduction
+            <FaBook /> Step 1: State and Base URL
           </div>
-          <p style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-            This guide explains how to build a Country Management feature in a
-            React application using Axios for API requests and Bootstrap for
-            styling. The functionality includes Create, Read, Update, and Delete
-            (CRUD) operations.
-          </p>
+          <pre style={preStyle}>{`const [countries, setCountries] = useState([]);
+const [id, setId] = useState(0);
+const [name, setName] = useState("");
+const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;`}</pre>
         </section>
 
-        {/* API Endpoints */}
+        {/* Step 2: Load Countries */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaLink /> API Endpoints
+            <FaLink /> Step 2: Load Countries from API
           </div>
-          <table className="table table-bordered table-hover">
-            <thead className="table-light">
-              <tr>
-                <th>Method</th>
-                <th>Endpoint</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>GET</strong></td>
-                <td>/countries</td>
-                <td>Retrieve all countries</td>
-              </tr>
-              <tr>
-                <td><strong>POST</strong></td>
-                <td>/countries</td>
-                <td>Add a new country</td>
-              </tr>
-              <tr>
-                <td><strong>PUT</strong></td>
-                <td>/countries/:id</td>
-                <td>Update a country by ID</td>
-              </tr>
-              <tr>
-                <td><strong>DELETE</strong></td>
-                <td>/countries/:id</td>
-                <td>Delete a country by ID</td>
-              </tr>
-            </tbody>
-          </table>
+          <pre style={preStyle}>{`useEffect(() => {
+  loadCountries();
+}, []);
+
+const loadCountries = () => {
+  axios.get(baseUrl).then((res) => setCountries(res.data));
+};`}</pre>
         </section>
 
-        {/* Install Axios */}
+        {/* Step 3: Toast Notifications */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaCheckCircle /> Install Axios
+            <FaCheckCircle /> Step 3: Toast Notifications
           </div>
-          <pre
-            className="p-3 rounded"
-            style={{
-              backgroundColor: "#f1f3f5",
-              fontFamily: "monospace",
-              fontSize: "1rem",
-              border: "1px solid #dee2e6",
-            }}
-          >
-            npm install axios
-          </pre>
+          <pre style={preStyle}>{`const toast = (icon, title) => {
+  Swal.fire({
+    toast: true,
+    position: "top-end",
+    icon,
+    title,
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true
+  });
+};`}</pre>
         </section>
 
-        {/* Example Code */}
+        {/* Step 4: Save / Update Country */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaCode /> Example React Component
+            <FaCode /> Step 4: Add or Update Country
           </div>
-          <pre
-            className="p-3 rounded"
-            style={{
-              backgroundColor: "#f8f9fa",
-              color: "#212529",
-              fontFamily: "'Fira Code', monospace",
-              fontSize: "0.95rem",
-              whiteSpace: "pre-wrap",
-              border: "1px solid #dee2e6",
-            }}
-          >
-{`import React, { useState, useEffect } from "react";
-import axios from "axios";
+          <pre style={preStyle}>{`const handleSave = () => {
+  const data = { id, name };
 
-function Country() {
-  const [countries, setCountries] = useState([]);
-  const [name, setName] = useState("");
-  const [code, setCode] = useState("");
-  const [editingId, setEditingId] = useState(null);
-  const apiUrl = "http://localhost:5000/countries";
+  if (!name.trim()) {
+    toast("warning", "Country name required");
+    return;
+  }
 
-  useEffect(() => {
-    fetchCountries();
-  }, []);
-
-  const fetchCountries = async () => {
-    const res = await axios.get(apiUrl);
-    setCountries(res.data);
-  };
-
-  const addCountry = async () => {
-    await axios.post(apiUrl, { name, code });
-    fetchCountries();
-  };
-
-  const updateCountry = async () => {
-    await axios.put(\`\${apiUrl}/\${editingId}\`, { name, code });
-    setEditingId(null);
-    fetchCountries();
-  };
-
-  const deleteCountry = async (id) => {
-    await axios.delete(\`\${apiUrl}/\${id}\`);
-    fetchCountries();
-  };
-
-  return (
-    <div className="container">
-      <h2>Manage Countries</h2>
-      <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Country Name" />
-      <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="Country Code" />
-      <button onClick={editingId ? updateCountry : addCountry}>
-        {editingId ? "Update" : "Add"}
-      </button>
-      <ul>
-        {countries.map((c) => (
-          <li key={c.id}>
-            {c.name} ({c.code})
-            <button onClick={() => { setName(c.name); setCode(c.code); setEditingId(c.id); }}>Edit</button>
-            <button onClick={() => deleteCountry(c.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-export default Country;`}
-          </pre>
+  if (id === 0) {
+    axios.post(baseUrl, data).then(() => {
+      toast("success", "Country added");
+      resetForm();
+      loadCountries();
+    });
+  } else {
+    axios.put(baseUrl, data).then(() => {
+      toast("success", "Country updated");
+      resetForm();
+      loadCountries();
+    });
+  }
+};`}</pre>
         </section>
 
-        {/* Conclusion */}
+        {/* Step 5: Edit Country */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaBook /> Step 5: Edit Country
+          </div>
+          <pre style={preStyle}>{`const handleEdit = (country) => {
+  setId(country.id);
+  setName(country.name);
+};`}</pre>
+        </section>
+
+        {/* Step 6: Delete Country */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaLink /> Step 6: Delete Country
+          </div>
+          <pre style={preStyle}>{`const handleDelete = (countryId) => {
+  Swal.fire({
+    title: "Delete country?",
+    text: "This cannot be undone!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios.delete(\`\${baseUrl}/\${countryId}\`).then(() => {
+        toast("success", "Country deleted");
+        loadCountries();
+      });
+    }
+  });
+};`}</pre>
+        </section>
+
+        {/* Step 7: Reset Form */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCheckCircle /> Step 7: Reset Form
+          </div>
+          <pre style={preStyle}>{`const resetForm = () => {
+  setId(0);
+  setName("");
+};`}</pre>
+        </section>
+
+        {/* Step 8: Component JSX */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaCode /> Step 8: Component JSX
+          </div>
+          <pre style={preStyle}>{`<div className="container mt-4">
+  <h2>Manage Countries</h2>
+
+  <div className="mb-3">
+    <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} />
+  </div>
+
+  <div className="mb-4">
+    <button className="btn btn-primary me-2" onClick={handleSave}>Save Country</button>
+    <button className="btn btn-secondary" onClick={resetForm}>Reset</button>
+  </div>
+
+  <table className="table table-bordered table-striped">
+    <thead className="table-light">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {countries.map((c) => (
+        <tr key={c.id}>
+          <td>{c.id}</td>
+          <td>{c.name}</td>
+          <td>
+            <button className="btn btn-warning" onClick={() => handleEdit(c)}>Edit</button>
+            <button className="btn btn-danger" onClick={() => handleDelete(c.id)}>Delete</button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>`}</pre>
+        </section>
+
+        {/* Step 9: Summary */}
         <section>
           <div style={sectionHeaderStyle}>
-            <FaBook /> Conclusion
+            <FaBook /> Step 9: Summary
           </div>
-          <p style={{ fontSize: "1.05rem" }}>
-            This documentation provides a step-by-step guide to implementing
-            CRUD functionality for country management in a React application
-            using Axios.
-          </p>
+          <ul style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
+            <li>✅ Full CRUD operations with Axios (GET, POST, PUT, DELETE)</li>
+            <li>🟡 SweetAlert2 used for toast notifications and delete confirmation</li>
+            <li>📝 Form handling with controlled components</li>
+            <li>📋 Dynamic table rendering of countries with Edit & Delete actions</li>
+            <li>🆔 Only <code>Id</code> and <code>Name</code> fields are used</li>
+          </ul>
         </section>
       </div>
     </div>
   );
 }
+
+// Shared preStyle for all code blocks
+const preStyle = {
+  backgroundColor: "#f1f3f5",
+  fontFamily: "monospace",
+  fontSize: "0.95rem",
+  border: "1px solid #dee2e6",
+  padding: "15px",
+  borderRadius: "5px",
+  overflowX: "auto",
+  whiteSpace: "pre",
+};
 
 export default Reactcountry;

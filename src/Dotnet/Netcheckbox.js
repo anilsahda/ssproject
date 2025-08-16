@@ -253,11 +253,11 @@ public class EmployeesController : ControllerBase
       {/* Step 7: API Endpoints */}
       <Section title="Example API Endpoints" color="text-blue-600">
         <ul className="list-disc ml-5 space-y-1 text-gray-700">
-          <li><code className="bg-gray-100 px-1 rounded">GET /api/employees</code> – Retrieves all employees</li>
-          <li><code className="bg-gray-100 px-1 rounded">GET /api/employees/{"{id}"}</code> – Retrieves an employee by ID</li>
-          <li><code className="bg-gray-100 px-1 rounded">POST /api/employees</code> – Adds a new employee</li>
-          <li><code className="bg-gray-100 px-1 rounded">PUT /api/employees/{"{id}"}</code> – Updates an existing employee</li>
-          <li><code className="bg-gray-100 px-1 rounded">DELETE /api/employees/{"{id}"}</code> – Deletes an employee</li>
+          <li><code className="bg-gray-100 px-1 rounded">GET https://localhost:7070/api/employees</code> – Retrieves all employees</li>
+          <li><code className="bg-gray-100 px-1 rounded">GET https://localhost:7070/api/employees/{"{id}"}</code> – Retrieves an employee by ID</li>
+          <li><code className="bg-gray-100 px-1 rounded">POST https://localhost:7070/api/employees</code> – Adds a new employee</li>
+          <li><code className="bg-gray-100 px-1 rounded">PUT https://localhost:7070/api/employees</code> – Updates an existing employee</li>
+          <li><code className="bg-gray-100 px-1 rounded">DELETE https://localhost:7070/api/employees/{"{id}"}</code> – Deletes an employee</li>
         </ul>
       </Section>
     </div>

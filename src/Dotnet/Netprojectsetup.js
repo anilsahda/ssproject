@@ -119,7 +119,7 @@ app.Run();
           <strong className="text-blue-700 text-lg">Testing API</strong>
         </div>
         <ul className="list-disc ml-6 text-gray-800">
-          <li>Swagger UI: <code>https://localhost:5001/swagger/index.html</code></li>
+          <li>Swagger UI: <code>https://localhost:7070/swagger/index.html</code></li>
           <li>Postman: Test API endpoints</li>
           <li>Verify CRUD operations with sample data</li>
         </ul>

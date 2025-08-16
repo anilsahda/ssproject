@@ -1,32 +1,46 @@
-import React from 'react';
+import React from "react";
 
 function Sqlqueriescommands() {
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold">SQL Queries & Commands</h1>
+    <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
+
+      {/* Header */}
+      <header className="border-b pb-3">
+        <h1 className="text-xl font-bold text-indigo-700">SQL Queries & Commands</h1>
+        <p className="text-gray-500 text-xs mt-1">
+          SQL (Structured Query Language) is used to manage, manipulate, and query relational databases. SQL commands are categorized into <strong>DDL, DML, DCL, and TCL</strong>. 
+          Proper understanding of these commands is essential for database design, management, and querying.
+        </p>
+      </header>
 
       {/* Introduction */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">1. Introduction</h2>
+      <Section title="Introduction to SQL Commands" color="text-green-600">
         <p>
-          SQL (Structured Query Language) is used to manage and manipulate relational databases. SQL commands are categorized into DDL, DML, DCL, and TCL.
+          SQL commands can be grouped as follows:
+          <ul className="list-disc ml-6 mt-1">
+            <li><strong>DDL (Data Definition Language):</strong> Define or modify database structure.</li>
+            <li><strong>DML (Data Manipulation Language):</strong> Manage data inside tables.</li>
+            <li><strong>DCL (Data Control Language):</strong> Control access and permissions.</li>
+            <li><strong>TCL (Transaction Control Language):</strong> Manage database transactions.</li>
+          </ul>
         </p>
-      </section>
+      </Section>
 
       {/* DDL - Data Definition Language */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">2. DDL (Data Definition Language)</h2>
-        <p>Used to define or modify database structure.</p>
-        <pre>
-          {`-- Create Table
+      <Section title="DDL (Data Definition Language)" color="text-orange-600">
+        <p>
+          DDL commands are used to create, alter, and drop databases and tables. These commands define the schema of the database.
+        </p>
+        <CodeBlock>
+{`-- Create Table
 CREATE TABLE Student (
     StudentID INT PRIMARY KEY,
     StudentName NVARCHAR(100),
     Email NVARCHAR(100)
 );
 
--- Alter Table
-ALTER TABLE Student ADD Column Age INT;
+-- Alter Table: Add a new column
+ALTER TABLE Student ADD Age INT;
 
 -- Drop Table
 DROP TABLE Student;
@@ -36,15 +50,16 @@ CREATE DATABASE SchoolDB;
 
 -- Drop Database
 DROP DATABASE SchoolDB;`}
-        </pre>
-      </section>
+        </CodeBlock>
+      </Section>
 
       {/* DML - Data Manipulation Language */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">3. DML (Data Manipulation Language)</h2>
-        <p>Used to manage data within tables.</p>
-        <pre>
-          {`-- Insert Data
+      <Section title="DML (Data Manipulation Language)" color="text-blue-600">
+        <p>
+          DML commands are used to insert, update, delete, and retrieve data from tables. These are the most frequently used SQL commands.
+        </p>
+        <CodeBlock>
+{`-- Insert Data
 INSERT INTO Student (StudentID, StudentName, Email)
 VALUES (1, 'Anil', 'anil@example.com');
 
@@ -57,85 +72,122 @@ WHERE StudentID = 1;
 DELETE FROM Student
 WHERE StudentID = 1;
 
--- Select Data
+-- Select Data (Retrieve all rows)
 SELECT * FROM Student;
 
--- Select with WHERE
+-- Select with WHERE condition
 SELECT StudentName, Email
 FROM Student
 WHERE StudentID = 1;`}
-        </pre>
-      </section>
+        </CodeBlock>
+      </Section>
 
       {/* DCL - Data Control Language */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">4. DCL (Data Control Language)</h2>
-        <p>Used to control access to data.</p>
-        <pre>
-          {`-- Grant permission
+      <Section title="DCL (Data Control Language)" color="text-purple-600">
+        <p>
+          DCL commands control access to data in the database. They allow granting and revoking permissions to users or roles.
+        </p>
+        <CodeBlock>
+{`-- Grant permission
 GRANT SELECT, INSERT ON Student TO User1;
 
 -- Revoke permission
 REVOKE INSERT ON Student FROM User1;`}
-        </pre>
-      </section>
+        </CodeBlock>
+      </Section>
 
       {/* TCL - Transaction Control Language */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">5. TCL (Transaction Control Language)</h2>
-        <p>Used to manage transactions in the database.</p>
-        <pre>
-          {`-- Begin Transaction
+      <Section title="TCL (Transaction Control Language)" color="text-red-600">
+        <p>
+          TCL commands are used to manage transactions. A transaction is a sequence of operations executed as a single unit, ensuring ACID properties.
+        </p>
+        <CodeBlock>
+{`-- Begin a Transaction
 BEGIN TRANSACTION;
 
 -- Perform operations
 UPDATE Student SET Email='anil_new@example.com' WHERE StudentID=1;
 
--- Commit Transaction
+-- Commit changes
 COMMIT;
 
--- Rollback Transaction
+-- Rollback changes
 ROLLBACK;`}
-        </pre>
-      </section>
+        </CodeBlock>
+      </Section>
 
-      {/* Joins and Queries */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">6. Joins & Common Queries</h2>
-        <pre>
-          {`-- Inner Join
+      {/* Joins & Queries */}
+      <Section title="Joins & Common Queries" color="text-teal-600">
+        <p>
+          Joins are used to combine rows from two or more tables based on related columns.
+        </p>
+        <CodeBlock>
+{`-- Inner Join: Returns only matching rows
 SELECT s.StudentName, d.DistrictName
 FROM Student s
 JOIN District d ON s.DistrictID = d.DistrictID;
 
--- Left Join
+-- Left Join: Returns all rows from the left table plus matching rows from right table
 SELECT s.StudentName, d.DistrictName
 FROM Student s
 LEFT JOIN District d ON s.DistrictID = d.DistrictID;
 
--- Group By
+-- Group By: Aggregate rows based on a column
 SELECT DistrictID, COUNT(*) AS TotalStudents
 FROM Student
 GROUP BY DistrictID;
 
--- Order By
+-- Order By: Sort rows
 SELECT * FROM Student
 ORDER BY StudentName ASC;`}
-        </pre>
-      </section>
+        </CodeBlock>
+      </Section>
 
       {/* Aggregate Functions */}
-      <section>
-        <h2 className="text-2xl font-semibold mt-4">7. Aggregate Functions</h2>
-        <pre>
-          {`SELECT COUNT(*) AS TotalStudents FROM Student;
+      <Section title="Aggregate Functions" color="text-pink-600">
+        <p>
+          Aggregate functions perform calculations on multiple rows and return a single value.
+        </p>
+        <CodeBlock>
+{`-- Count total students
+SELECT COUNT(*) AS TotalStudents FROM Student;
+
+-- Maximum StudentID
 SELECT MAX(StudentID) AS MaxID FROM Student;
+
+-- Minimum StudentID
 SELECT MIN(StudentID) AS MinID FROM Student;
+
+-- Average StudentID
 SELECT AVG(StudentID) AS AverageID FROM Student;
+
+-- Sum of StudentIDs
 SELECT SUM(StudentID) AS TotalID FROM Student;`}
-        </pre>
-      </section>
+        </CodeBlock>
+      </Section>
+
     </div>
+  );
+}
+
+/* Reusable Section Component */
+function Section({ title, color, children }) {
+  return (
+    <section className="mb-6">
+      <div className="flex items-center mb-2">
+        <strong className={`${color} text-lg`}>{title}</strong>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+/* Reusable Code Block Component */
+function CodeBlock({ children }) {
+  return (
+    <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">
+      <code>{children}</code>
+    </pre>
   );
 }
 

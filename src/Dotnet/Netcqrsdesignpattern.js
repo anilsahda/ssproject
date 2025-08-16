@@ -4,7 +4,7 @@ function Netcqrsdesignpattern() {
 
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">CQRS Design Pattern in .NET Core - Full CRUD</h1>
+        <h1 className="text-xl font-bold text-indigo-700">CQRS Design Pattern in .NET Core</h1>
         <p className="text-gray-500 text-xs mt-1">
           Full CRUD example using CQRS (Command Query Responsibility Segregation) in .NET Core with MediatR, services, and repositories.
         </p>
