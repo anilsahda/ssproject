@@ -114,7 +114,6 @@ import Netjwtauth from "./Dotnet/Netjwtauth";
 import Netlogger from "./Dotnet/Netlogger";
 import Netmicroservices from "./Dotnet/Netmicroservices";
 import Netmultiselectdropdown from "./Dotnet/Netmultiselectdropdown";
-import Nextonionarchitecture from "./Next/Nextonionarchitecture";
 import Netpagination from "./Dotnet/Netpagination";
 import Netradiobutton from "./Dotnet/Netradiobutton";
 import Netsearching from "./Dotnet/Netsearching";
@@ -164,12 +163,14 @@ import Nextcountry from "./Next/Nextcountry";
 import Nextdistrict from "./Next/Nextdistrict";
 import Nextstate from "./Next/Nextstate";
 import Languages from "./Fullstack/Languages";
-import Import from "./Fullstack/Import";
 import Netlanguages from "./Dotnet/Netlanguages";
 import Nodelanguages from "./Node/Nodelanguages";
 import Javalanguages from "./Java/Javalanguages";
 import Nextlanguages from "./Next/Nextlanguages";
 import Reactlanguages from "./React/Reactlanguages";
+import Exportcsv from "./Fullstack/Exportcsv";
+import Netonionarchitecture from "./Dotnet/Netonionarchitecture";
+import Netrepositorydesignpattern from "./Dotnet/Netrepositorydesignpattern";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -214,7 +215,7 @@ function App() {
             <Route path="/checkbox" element={<CheckBox />} />
             <Route path="/multiselectdropdown" element={<MultiselectDropdown />} />
             <Route path="/imageupload" element={<ImageUpload />} />
-            <Route path="/import" element={<Import />} />
+            <Route path="/exportcsv" element={<Exportcsv />} />
             <Route path="/authentication" element={<Authentication />} />
             <Route path="/pagination" element={<Pagination />} />
             <Route path="/searching" element={<Searching />} />
@@ -226,6 +227,7 @@ function App() {
             <Route path="/netstate" element={<Netstate />} />
             <Route path="/netcheckbox" element={<Netcheckbox />} />
             <Route path="/netcqrsdesignpattern" element={<Netcqrsdesignpattern />} />
+            <Route path="/netrepositorydesignpattern" element={<Netrepositorydesignpattern />} />            
             <Route path="/netfacebookauth" element={<Netfacebookauth />} />
             <Route path="/netgoogleauth" element={<Netgoogleauth />} />
             <Route path="/netimageupload" element={<Netimageupload />} />
@@ -233,7 +235,7 @@ function App() {
             <Route path="/netlogger" element={<Netlogger />} />
             <Route path="/netmicroservices" element={<Netmicroservices />} />
             <Route path="/netmultiselectdropdown" element={<Netmultiselectdropdown />} />
-            <Route path="/netonionarchitecture" element={<Nextonionarchitecture />} />
+            <Route path="/netonionarchitecture" element={<Netonionarchitecture />} />
             <Route path="/netpagination" element={<Netpagination />} />
             <Route path="/netradiobutton" element={<Netradiobutton />} />
             <Route path="/netsearching" element={<Netsearching />} />

@@ -7,17 +7,17 @@ function Netlanguages() {
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Language CRUD Operation</h1>
         <p className="text-gray-500 text-xs mt-1">
-          A step-by-step guide to implementing CRUD functionality for the{" "}
-          <strong>Language</strong> entity in .NET Core with SQL Server.
+          A step-by-step guide to implementing CRUD functionality for the <strong>Language</strong> entity in .NET Core with SQL Server.
         </p>
       </header>
 
       {/* Step 1: SQL Table */}
       <Section title="SQL Table" color="text-indigo-600">
         <CodeBlock>
-{`CREATE TABLE Language (
+{`CREATE TABLE Language 
+(
     Id INT PRIMARY KEY IDENTITY(1,1),
-    Name NVARCHAR(100) NOT NULL
+    Name NVARCHAR(50) NOT NULL
 );`}
         </CodeBlock>
       </Section>
@@ -68,37 +68,40 @@ public class LanguagesController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<Language> Get()
+    public IActionResult GetLanguages()
     {
-        return _context.Languages.ToList();
+        return Ok(_context.Languages.ToList());
     }
 
     [HttpGet("{id}")]
-    public Language Get(int id)
+    public IActionResult GetLanguage(int id)
     {
-        return _context.Languages.FirstOrDefault(l => l.Id == id);
+        return Ok(_context.Languages.Find(id));
+    }
+
+    [HttpPut]
+    public IActionResult UpdateLanguage(Language language)
+    {
+        _context.Languages.Update(language);
+        _context.SaveChanges();
+        return Ok("Data updated successfully!");
     }
 
     [HttpPost]
-    public void Post(Language language)
+    public IActionResult AddLanguage(Language language)
     {
         _context.Languages.Add(language);
         _context.SaveChanges();
-    }
-
-    [HttpPut("{id}")]
-    public void Put(int id, Language language)
-    {
-        _context.Entry(language).State = EntityState.Modified;
-        _context.SaveChanges();
+        return Ok("Data added successfully!");
     }
 
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public IActionResult DeleteLanguageById(int id)
     {
-        var language = _context.Languages.FirstOrDefault(l => l.Id == id);
+        var language = _context.Languages.Find(id);
         _context.Languages.Remove(language);
         _context.SaveChanges();
+        return Ok("Data deleted successfully!");
     }
 }`}
         </CodeBlock>
@@ -107,11 +110,11 @@ public class LanguagesController : ControllerBase
       {/* Step 6: API Endpoints */}
       <Section title="Example API Endpoints" color="text-blue-600">
         <ul className="list-disc ml-5 space-y-1 text-gray-700">
-          <li><code className="bg-gray-100 px-1 rounded">GET /api/languages</code> – Retrieves all languages</li>
-          <li><code className="bg-gray-100 px-1 rounded">GET /api/languages/{"{id}"}</code> – Retrieves a language by ID</li>
-          <li><code className="bg-gray-100 px-1 rounded">POST /api/languages</code> – Adds a new language</li>
-          <li><code className="bg-gray-100 px-1 rounded">PUT /api/languages/{"{id}"}</code> – Updates an existing language</li>
-          <li><code className="bg-gray-100 px-1 rounded">DELETE /api/languages/{"{id}"}</code> – Deletes a language</li>
+          <li><code className="bg-gray-100 px-1 rounded">GET https://localhost:7070/api/Languages</code> – Retrieves all languages</li>
+          <li><code className="bg-gray-100 px-1 rounded">GET https://localhost:7070/api/Languages/{"{id}"}</code> – Retrieves a language by ID</li>
+          <li><code className="bg-gray-100 px-1 rounded">POST https://localhost:7070/api/Languages</code> – Adds a new language</li>
+          <li><code className="bg-gray-100 px-1 rounded">PUT https://localhost:7070/api/Languages</code> – Updates an existing language</li>
+          <li><code className="bg-gray-100 px-1 rounded">DELETE https://localhost:7070/api/Languages/{"{id}"}</code> – Deletes a language</li>
         </ul>
       </Section>
     </div>

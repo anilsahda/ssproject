@@ -7,15 +7,15 @@ function Netcountry() {
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Country CRUD Operation</h1>
         <p className="text-gray-500 text-xs mt-1">
-          A step-by-step guide to implementing CRUD functionality for the{" "}
-          <strong>Country</strong> entity in .NET Core with SQL Server.
+          A step-by-step guide to implementing CRUD functionality for the <strong>Country</strong> entity in .NET Core with SQL Server.
         </p>
       </header>
 
       {/* Step 1: SQL Table */}
       <Section title="SQL Table" color="text-indigo-600">
         <CodeBlock>
-{`CREATE TABLE Country (
+{`CREATE TABLE Country 
+(
     Id INT PRIMARY KEY IDENTITY(1,1),
     Name NVARCHAR(100) NOT NULL
 );`}
@@ -68,37 +68,40 @@ public class CountriesController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<Country> Get()
+    public IActionResult GetCountries()
     {
-        return _context.Countries.ToList();
+        return Ok(_context.Countries.ToList());
     }
 
     [HttpGet("{id}")]
-    public Country Get(int id)
+    public IActionResult GetCountry(int id)
     {
-        return _context.Countries.FirstOrDefault(c => c.Id == id);
+        return Ok(_context.Countries.Find(id));
+    }
+
+    [HttpPut]
+    public IActionResult UpdateCountry(Country country)
+    {
+        _context.Countries.Update(country);
+        _context.SaveChanges();
+        return Ok("Data updated successfully!");
     }
 
     [HttpPost]
-    public void Post(Country country)
+    public IActionResult AddCountry(Country country)
     {
         _context.Countries.Add(country);
         _context.SaveChanges();
-    }
-
-    [HttpPut("{id}")]
-    public void Put(int id, Country country)
-    {
-        _context.Entry(country).State = EntityState.Modified;
-        _context.SaveChanges();
+        return Ok("Data added successfully!");
     }
 
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public IActionResult DeleteCountryById(int id)
     {
-        var country = _context.Countries.FirstOrDefault(c => c.Id == id);
+        var country = _context.Countries.Find(id);
         _context.Countries.Remove(country);
         _context.SaveChanges();
+        return Ok("Data deleted successfully!");
     }
 }`}
         </CodeBlock>
@@ -107,11 +110,11 @@ public class CountriesController : ControllerBase
       {/* Step 6: API Endpoints */}
       <Section title="Example API Endpoints" color="text-blue-600">
         <ul className="list-disc ml-5 space-y-1 text-gray-700">
-          <li><code className="bg-gray-100 px-1 rounded">GET /api/countries</code> – Retrieves all countries</li>
-          <li><code className="bg-gray-100 px-1 rounded">GET /api/countries/{"{id}"}</code> – Retrieves a country by ID</li>
-          <li><code className="bg-gray-100 px-1 rounded">POST /api/countries</code> – Adds a new country</li>
-          <li><code className="bg-gray-100 px-1 rounded">PUT /api/countries/{"{id}"}</code> – Updates an existing country</li>
-          <li><code className="bg-gray-100 px-1 rounded">DELETE /api/countries/{"{id}"}</code> – Deletes a country</li>
+          <li><code className="bg-gray-100 px-1 rounded">GET https://localhost:7070/api/countries</code> – Retrieves all countries</li>
+          <li><code className="bg-gray-100 px-1 rounded">GET https://localhost:7070/api/countries/{"{id}"}</code> – Retrieves a country by ID</li>
+          <li><code className="bg-gray-100 px-1 rounded">POST https://localhost:7070/api/countries</code> – Adds a new country</li>
+          <li><code className="bg-gray-100 px-1 rounded">PUT https://localhost:7070/api/countries</code> – Updates an existing country</li>
+          <li><code className="bg-gray-100 px-1 rounded">DELETE https://localhost:7070/api/countries/{"{id}"}</code> – Deletes a country</li>
         </ul>
       </Section>
     </div>
@@ -134,7 +137,7 @@ function Section({ title, color, children }) {
 function CodeBlock({ children }) {
   return (
     <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">
-      {children}
+      <code>{children}</code>
     </pre>
   );
 }

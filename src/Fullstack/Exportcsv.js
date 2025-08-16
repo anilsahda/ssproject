@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-function Import() {
+function Exportcsv() {
   const [students, setStudents] = useState([]);
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
@@ -403,4 +403,4 @@ function Import() {
   );
 }
 
-export default Import;
+export default Exportcsv;
