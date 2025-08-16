@@ -32,17 +32,25 @@ function Pagination() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
+  const [totalRecords, setTotalRecords] = useState(0);
 
   useEffect(() => {
     loadStudents();
     loadCountries();
     loadStates();
     loadDistricts();
-  }, []);
+  }, [currentPage, pageSize]);
 
   const loadStudents = async () => {
-      const res = await axios.get(`${baseUrl}/students`);
-      setStudents(res.data);
+    try {
+      const res = await axios.get(
+        `${baseUrl}/students/paginated?pageNumber=${currentPage}&pageSize=${pageSize}`
+      );
+      setStudents(res.data.data);
+      setTotalRecords(res.data.totalRecords);
+    } catch (err) {
+      console.error("Error loading students", err);
+    }
   };
 
   const loadCountries = async () => {
@@ -118,7 +126,14 @@ function Pagination() {
   };
 
   const handleDelete = (studentId) => {
-    Swal.fire({title: "Are you sure?", text: "You won't be able to revert this!", icon: "warning", showCancelButton: true, confirmButtonText: "Yes, delete it!", cancelButtonText: "Cancel"}).then(async (result) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+    }).then(async (result) => {
       if (result.isConfirmed) {
         try {
           await axios.delete(`${baseUrl}/students/${studentId}`);
@@ -136,41 +151,56 @@ function Pagination() {
     e.preventDefault();
 
     if (!searchTerm.trim()) {
-      // empty → reload all
       loadStudents();
       return;
     }
 
-    const res = await axios.get(`${baseUrl}/students/search?query=${searchTerm}`);
+    const res = await axios.get(
+      `${baseUrl}/students/search?query=${searchTerm}`
+    );
     setStudents(res.data);
+    setTotalRecords(res.data.length);
   };
 
-  const totalPages = Math.ceil(students.length / pageSize);
-  const displayedStudents = students.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  const totalPages = Math.ceil(totalRecords / pageSize);
 
   return (
     <div className="container my-4">
       <h2 className="mb-4 text-primary">Student Management</h2>
 
       {/* Add Button */}
-      <button className="btn btn-success mb-3" onClick={() => setShowForm(true)}>+ Add Student</button>
+      <button
+        className="btn btn-success mb-3"
+        onClick={() => setShowForm(true)}
+      >
+        + Add Student
+      </button>
 
-      {/* Search */}
+      {/* Search & Page Size */}
       <div className="mb-3 d-flex justify-content-between align-items-center">
-      <form onSubmit={handleSearch} className="mb-4 d-flex gap-2">
-        <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="form-control" placeholder="Search by name, email, or country" />
-        <button type="submit" className="btn btn-primary">Search</button>
-      </form>
+        <form onSubmit={handleSearch} className="mb-4 d-flex gap-2">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="form-control"
+            placeholder="Search by name, email, or country"
+          />
+          <button type="submit" className="btn btn-primary">
+            Search
+          </button>
+        </form>
 
-        {/* Page Size Dropdown */}
         <div>
-          <label className="me-2"><strong>Records per page:</strong></label>
+          <label className="me-2">
+            <strong>Records per page:</strong>
+          </label>
           <select
             className="form-select d-inline-block w-auto"
             value={pageSize}
             onChange={(e) => {
               setPageSize(Number(e.target.value));
-              setCurrentPage(1); // reset to first page
+              setCurrentPage(1);
             }}
           >
             <option value={5}>5</option>
@@ -183,76 +213,137 @@ function Pagination() {
 
       {/* Modal Form */}
       {showForm && (
-        <div className="modal d-block" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+        <div
+          className="modal d-block"
+          style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+        >
           <div className="modal-dialog modal-lg modal-dialog-centered">
             <div className="modal-content p-3">
               <div className="modal-header">
-                <h5 className="modal-title">{id ? "Edit Student" : "Add New Student"}</h5>
-                <button type="button" className="btn-close" onClick={resetForm}></button>
+                <h5 className="modal-title">
+                  {id ? "Edit Student" : "Add New Student"}
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={resetForm}
+                ></button>
               </div>
               <div className="modal-body">
                 <form onSubmit={handleSubmit}>
                   <div className="row mb-2">
                     <div className="col">
-                      <input type="text" className="form-control" placeholder="First Name"
-                        value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="First Name"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        required
+                      />
                     </div>
                     <div className="col">
-                      <input type="text" className="form-control" placeholder="Middle Name"
-                        value={middleName} onChange={(e) => setMiddleName(e.target.value)} />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Middle Name"
+                        value={middleName}
+                        onChange={(e) => setMiddleName(e.target.value)}
+                      />
                     </div>
                     <div className="col">
-                      <input type="text" className="form-control" placeholder="Last Name"
-                        value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Last Name"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        required
+                      />
                     </div>
                   </div>
 
-                  {/* Address, Email, Mobile in Single Row */}
+                  {/* Address, Email, Mobile */}
                   <div className="row mb-2">
                     <div className="col">
-                      <input type="text" className="form-control" placeholder="Address"
-                        value={address} onChange={(e) => setAddress(e.target.value)} />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Address"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                      />
                     </div>
                     <div className="col">
-                      <input type="email" className="form-control" placeholder="Email"
-                        value={email} onChange={(e) => setEmail(e.target.value)} />
+                      <input
+                        type="email"
+                        className="form-control"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
                     </div>
                     <div className="col">
-                      <input type="text" className="form-control" placeholder="Mobile"
-                        value={mobile} onChange={(e) => setMobile(e.target.value)} />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Mobile"
+                        value={mobile}
+                        onChange={(e) => setMobile(e.target.value)}
+                      />
                     </div>
                   </div>
 
                   <div className="row mb-2">
                     <div className="col">
-                      <select className="form-control" value={countryId} onChange={(e) => setCountryId(e.target.value)}>
+                      <select
+                        className="form-control"
+                        value={countryId}
+                        onChange={(e) => setCountryId(e.target.value)}
+                      >
                         <option value="">Select Country</option>
                         {countries.map((c) => (
-                          <option key={c.id} value={c.id}>{c.name}</option>
+                          <option key={c.id} value={c.id}>
+                            {c.name}
+                          </option>
                         ))}
                       </select>
                     </div>
                     <div className="col">
-                      <select className="form-control" value={stateId} onChange={(e) => setStateId(e.target.value)}>
+                      <select
+                        className="form-control"
+                        value={stateId}
+                        onChange={(e) => setStateId(e.target.value)}
+                      >
                         <option value="">Select State</option>
                         {states.map((s) => (
-                          <option key={s.id} value={s.id}>{s.name}</option>
+                          <option key={s.id} value={s.id}>
+                            {s.name}
+                          </option>
                         ))}
                       </select>
                     </div>
                     <div className="col">
-                      <select className="form-control" value={districtId} onChange={(e) => setDistrictId(e.target.value)}>
+                      <select
+                        className="form-control"
+                        value={districtId}
+                        onChange={(e) => setDistrictId(e.target.value)}
+                      >
                         <option value="">Select District</option>
                         {districts.map((d) => (
-                          <option key={d.id} value={d.id}>{d.name}</option>
+                          <option key={d.id} value={d.id}>
+                            {d.name}
+                          </option>
                         ))}
                       </select>
                     </div>
                   </div>
 
-                  {/* Gender as Radio Buttons */}
+                  {/* Gender */}
                   <div className="mb-3">
-                    <label className="me-3"><strong>Gender:</strong></label>
+                    <label className="me-3">
+                      <strong>Gender:</strong>
+                    </label>
                     {genders.map((g) => (
                       <div className="form-check form-check-inline" key={g.id}>
                         <input
@@ -268,10 +359,18 @@ function Pagination() {
                     ))}
                   </div>
 
-                  {/* Save / Cancel Buttons Centered */}
+                  {/* Buttons */}
                   <div className="d-flex justify-content-center gap-3">
-                    <button type="submit" className="btn btn-primary">{id ? "Update" : "Save"}</button>
-                    <button type="button" className="btn btn-secondary" onClick={resetForm}>Cancel</button>
+                    <button type="submit" className="btn btn-primary">
+                      {id ? "Update" : "Save"}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={resetForm}
+                    >
+                      Cancel
+                    </button>
                   </div>
                 </form>
               </div>
@@ -294,7 +393,7 @@ function Pagination() {
           </tr>
         </thead>
         <tbody>
-          {displayedStudents.map((std) => (
+          {students.map((std) => (
             <tr key={std.id}>
               <td>{`${std.firstName} ${std.middleName || ""} ${std.lastName}`}</td>
               <td>{std.email}</td>
@@ -303,14 +402,26 @@ function Pagination() {
               <td>{districts.find((d) => d.id === std.districtId)?.name}</td>
               <td>{genders.find((g) => g.id === std.genderId)?.name}</td>
               <td>
-                <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(std)}>Edit</button>
-                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(std.id)}>Delete</button>
+                <button
+                  className="btn btn-warning btn-sm me-2"
+                  onClick={() => handleEdit(std)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="btn btn-danger btn-sm"
+                  onClick={() => handleDelete(std.id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
-          {displayedStudents.length === 0 && (
+          {students.length === 0 && (
             <tr>
-              <td colSpan="7" className="text-center text-muted">No matching records found</td>
+              <td colSpan="7" className="text-center text-muted">
+                No matching records found
+              </td>
             </tr>
           )}
         </tbody>
@@ -322,17 +433,17 @@ function Pagination() {
           <button
             className="btn btn-secondary me-2"
             disabled={currentPage === 1}
-            onClick={() => setCurrentPage(currentPage - 1)}
+            onClick={() => setCurrentPage((prev) => prev - 1)}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
-              <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L6.707 7l4.647 4.646a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708 0z"/>
-            </svg>
+            ◀
           </button>
 
           {[...Array(totalPages)].map((_, i) => (
             <button
               key={i}
-              className={`btn me-1 ${currentPage === i + 1 ? "btn-primary" : "btn-light"}`}
+              className={`btn me-1 ${
+                currentPage === i + 1 ? "btn-primary" : "btn-light"
+              }`}
               onClick={() => setCurrentPage(i + 1)}
             >
               {i + 1}
@@ -342,11 +453,9 @@ function Pagination() {
           <button
             className="btn btn-secondary ms-2"
             disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(currentPage + 1)}
+            onClick={() => setCurrentPage((prev) => prev + 1)}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
-              <path fillRule="evenodd" d="M4.646 14.354a.5.5 0 0 1 0-.708L9.293 9 4.646 4.354a.5.5 0 1 1 .708-.708l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708 0z"/>
-            </svg>
+            ▶
           </button>
         </div>
       )}
