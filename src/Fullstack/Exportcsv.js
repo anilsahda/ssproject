@@ -10,6 +10,12 @@ function Exportcsv() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showForm, setShowForm] = useState(false);
 
+  const genders = [
+    { id: 1, name: "Male" },
+    { id: 2, name: "Female" },
+    { id: 3, name: "Other" },
+  ];
+
   const [id, setId] = useState(0);
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
@@ -22,58 +28,44 @@ function Exportcsv() {
   const [districtId, setDistrictId] = useState("");
   const [genderId, setGenderId] = useState(0);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(5);
-
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
-  const genders = [
-    { id: 1, name: "Male" },
-    { id: 2, name: "Female" },
-    { id: 3, name: "Other" },
-  ];
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+  const [totalRecords, setTotalRecords] = useState(0);
 
   useEffect(() => {
     loadStudents();
     loadCountries();
     loadStates();
     loadDistricts();
-  }, []);
+  }, [currentPage, pageSize]);
 
   const loadStudents = async () => {
     try {
-      const res = await axios.get(`${baseUrl}/students`);
-      setStudents(res.data);
+      const res = await axios.get(
+        `${baseUrl}/students/paginated?pageNumber=${currentPage}&pageSize=${pageSize}`
+      );
+      setStudents(res.data.data);
+      setTotalRecords(res.data.totalRecords);
     } catch (err) {
-      console.error(err);
+      console.error("Error loading students", err);
     }
   };
 
   const loadCountries = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/countries`);
-      setCountries(res.data);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await axios.get(`${baseUrl}/countries`);
+    setCountries(res.data);
   };
 
   const loadStates = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/states`);
-      setStates(res.data);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await axios.get(`${baseUrl}/states`);
+    setStates(res.data);
   };
 
   const loadDistricts = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/districts`);
-      setDistricts(res.data);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await axios.get(`${baseUrl}/districts`);
+    setDistricts(res.data);
   };
 
   const resetForm = () => {
@@ -107,20 +99,15 @@ function Exportcsv() {
       genderId: genderId ? Number(genderId) : null,
     };
 
-    try {
-      if (id && id > 0) {
-        await axios.put(`${baseUrl}/students/${id}`, payload);
-        Swal.fire("Updated!", "Student record has been updated.", "success");
-      } else {
-        await axios.post(`${baseUrl}/students`, payload);
-        Swal.fire("Added!", "New student has been added.", "success");
-      }
-      resetForm();
-      loadStudents();
-    } catch (err) {
-      console.error(err);
-      Swal.fire("Error", "Something went wrong!", "error");
+    if (id && id > 0) {
+      await axios.put(`${baseUrl}/students`, payload);
+      Swal.fire("Updated!", "Student record has been updated.", "success");
+    } else {
+      await axios.post(`${baseUrl}/students`, payload);
+      Swal.fire("Added!", "New student has been added.", "success");
     }
+    resetForm();
+    loadStudents();
   };
 
   const handleEdit = (std) => {
@@ -160,66 +147,78 @@ function Exportcsv() {
     });
   };
 
-  const filteredStudents = students.filter((std) => {
-    const fullName = `${std.firstName} ${std.middleName || ""} ${std.lastName}`.toLowerCase();
-    return (
-      fullName.includes(searchTerm.toLowerCase()) ||
-      (std.email && std.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (countries.find((c) => c.id === std.countryId)?.name.toLowerCase() || "").includes(searchTerm.toLowerCase())
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    if (!searchTerm.trim()) {
+      loadStudents();
+      return;
+    }
+
+    const res = await axios.get(
+      `${baseUrl}/students/search?query=${searchTerm}`
     );
-  });
-
-  const totalPages = Math.ceil(filteredStudents.length / pageSize);
-  const displayedStudents = filteredStudents.slice((currentPage - 1) * pageSize, currentPage * pageSize);
-
-  const exportCSV = () => {
-    const headers = ["Name", "Email", "Country", "State", "District", "Gender"];
-    const rows = displayedStudents.map((std) => [
-      `${std.firstName} ${std.middleName || ""} ${std.lastName}`,
-      std.email,
-      countries.find((c) => c.id === std.countryId)?.name || "",
-      states.find((s) => s.id === std.stateId)?.name || "",
-      districts.find((d) => d.id === std.districtId)?.name || "",
-      genders.find((g) => g.id === std.genderId)?.name || "",
-    ]);
-
-    const csvContent = [headers, ...rows].map((e) => e.join(",")).join("\n");
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.setAttribute("download", "students.csv");
-    link.click();
+    setStudents(res.data);
+    setTotalRecords(res.data.length);
   };
 
+  const totalPages = Math.ceil(totalRecords / pageSize);
+
+  const handleExport = async () => {
+      const response = await axios.get("https://localhost:7070/api/students/export", { responseType: "blob" });
+      // Create a download link
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "students.csv");
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    };
+
+
   return (
-    <div className="container my-5">
-      {/* Top Line: Title + Buttons */}
-      <div className="d-flex flex-wrap align-items-center justify-content-between mb-3 gap-2">
-        <h2 className="mb-0 text-primary">Student Management</h2>
-        <div className="d-flex gap-2 flex-wrap">
-          <button className="btn btn-success" onClick={() => setShowForm(true)}>+ Add Student</button>
-          <button className="btn btn-info" onClick={exportCSV}>Export CSV</button>
+    <div className="container my-4">
+
+      {/* Buttons Row */}
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        {/* Header Left */}
+        <h2 className="text-primary mb-0">Student Management</h2>
+
+        {/* Buttons Right */}
+        <div className="d-flex gap-2">
+          <button className="btn btn-outline-primary btn-sm d-flex align-items-center gap-1 shadow-sm rounded-pill" onClick={() => setShowForm(true)}>
+            <i className="bi bi-person-plus"></i> Add Student
+          </button>
+
+          <button className="btn btn-outline-success btn-sm d-flex align-items-center gap-1 shadow-sm rounded-pill" onClick={handleExport}>
+            <i className="bi bi-download"></i> Export
+          </button>
         </div>
       </div>
 
-      {/* Search and Page Size */}
-      <div className="row g-3 mb-3">
-        <div className="col-md-6">
+
+      {/* Search & Page Size */}
+      <div className="mb-3 d-flex justify-content-between align-items-center">
+        <form onSubmit={handleSearch} className="mb-4 d-flex gap-2">
           <input
             type="text"
-            className="form-control"
-            placeholder="Search by name, email or country..."
             value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              setCurrentPage(1);
-            }}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="form-control"
+            placeholder="Search by name, email, or country"
           />
-        </div>
-        <div className="col-md-6 d-flex justify-content-md-end align-items-center gap-2">
-          <label className="mb-0"><strong>Records per page:</strong></label>
+          <button className="btn btn-outline-primary btn-sm d-flex align-items-center gap-1 shadow-sm rounded-pill">
+            Search
+          </button>
+        </form>
+
+        <div>
+          <label className="me-2">
+            <strong>Records per page:</strong>
+          </label>
           <select
-            className="form-select w-auto"
+            className="form-select d-inline-block w-auto"
             value={pageSize}
             onChange={(e) => {
               setPageSize(Number(e.target.value));
@@ -236,76 +235,137 @@ function Exportcsv() {
 
       {/* Modal Form */}
       {showForm && (
-        <div className="modal d-block" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+        <div
+          className="modal d-block"
+          style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+        >
           <div className="modal-dialog modal-lg modal-dialog-centered">
             <div className="modal-content p-3">
               <div className="modal-header">
-                <h5 className="modal-title">{id ? "Edit Student" : "Add New Student"}</h5>
-                <button type="button" className="btn-close" onClick={resetForm}></button>
+                <h5 className="modal-title">
+                  {id ? "Edit Student" : "Add New Student"}
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={resetForm}
+                ></button>
               </div>
               <div className="modal-body">
                 <form onSubmit={handleSubmit}>
                   <div className="row mb-2">
                     <div className="col">
-                      <input type="text" className="form-control" placeholder="First Name"
-                        value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="First Name"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        required
+                      />
                     </div>
                     <div className="col">
-                      <input type="text" className="form-control" placeholder="Middle Name"
-                        value={middleName} onChange={(e) => setMiddleName(e.target.value)} />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Middle Name"
+                        value={middleName}
+                        onChange={(e) => setMiddleName(e.target.value)}
+                      />
                     </div>
                     <div className="col">
-                      <input type="text" className="form-control" placeholder="Last Name"
-                        value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Last Name"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        required
+                      />
                     </div>
                   </div>
 
-                  {/* Address, Email, Mobile in Single Row */}
+                  {/* Address, Email, Mobile */}
                   <div className="row mb-2">
                     <div className="col">
-                      <input type="text" className="form-control" placeholder="Address"
-                        value={address} onChange={(e) => setAddress(e.target.value)} />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Address"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                      />
                     </div>
                     <div className="col">
-                      <input type="email" className="form-control" placeholder="Email"
-                        value={email} onChange={(e) => setEmail(e.target.value)} />
+                      <input
+                        type="email"
+                        className="form-control"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
                     </div>
                     <div className="col">
-                      <input type="text" className="form-control" placeholder="Mobile"
-                        value={mobile} onChange={(e) => setMobile(e.target.value)} />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Mobile"
+                        value={mobile}
+                        onChange={(e) => setMobile(e.target.value)}
+                      />
                     </div>
                   </div>
 
                   <div className="row mb-2">
                     <div className="col">
-                      <select className="form-control" value={countryId} onChange={(e) => setCountryId(e.target.value)}>
+                      <select
+                        className="form-control"
+                        value={countryId}
+                        onChange={(e) => setCountryId(e.target.value)}
+                      >
                         <option value="">Select Country</option>
                         {countries.map((c) => (
-                          <option key={c.id} value={c.id}>{c.name}</option>
+                          <option key={c.id} value={c.id}>
+                            {c.name}
+                          </option>
                         ))}
                       </select>
                     </div>
                     <div className="col">
-                      <select className="form-control" value={stateId} onChange={(e) => setStateId(e.target.value)}>
+                      <select
+                        className="form-control"
+                        value={stateId}
+                        onChange={(e) => setStateId(e.target.value)}
+                      >
                         <option value="">Select State</option>
                         {states.map((s) => (
-                          <option key={s.id} value={s.id}>{s.name}</option>
+                          <option key={s.id} value={s.id}>
+                            {s.name}
+                          </option>
                         ))}
                       </select>
                     </div>
                     <div className="col">
-                      <select className="form-control" value={districtId} onChange={(e) => setDistrictId(e.target.value)}>
+                      <select
+                        className="form-control"
+                        value={districtId}
+                        onChange={(e) => setDistrictId(e.target.value)}
+                      >
                         <option value="">Select District</option>
                         {districts.map((d) => (
-                          <option key={d.id} value={d.id}>{d.name}</option>
+                          <option key={d.id} value={d.id}>
+                            {d.name}
+                          </option>
                         ))}
                       </select>
                     </div>
                   </div>
 
-                  {/* Gender as Radio Buttons */}
+                  {/* Gender */}
                   <div className="mb-3">
-                    <label className="me-3"><strong>Gender:</strong></label>
+                    <label className="me-3">
+                      <strong>Gender:</strong>
+                    </label>
                     {genders.map((g) => (
                       <div className="form-check form-check-inline" key={g.id}>
                         <input
@@ -321,10 +381,18 @@ function Exportcsv() {
                     ))}
                   </div>
 
-                  {/* Save / Cancel Buttons Centered */}
+                  {/* Buttons */}
                   <div className="d-flex justify-content-center gap-3">
-                    <button type="submit" className="btn btn-primary">{id ? "Update" : "Save"}</button>
-                    <button type="button" className="btn btn-secondary" onClick={resetForm}>Cancel</button>
+                    <button type="submit" className="btn btn-primary">
+                      {id ? "Update" : "Save"}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={resetForm}
+                    >
+                      Cancel
+                    </button>
                   </div>
                 </form>
               </div>
@@ -334,68 +402,82 @@ function Exportcsv() {
       )}
 
       {/* Table */}
-      <div className="table-responsive">
-        <table className="table table-bordered table-striped mt-3 mb-0">
-          <thead className="table-dark">
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Country</th>
-              <th>State</th>
-              <th>District</th>
-              <th>Gender</th>
-              <th>Actions</th>
+      <table className="table table-bordered table-striped mt-3">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>District</th>
+            <th>Gender</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((std) => (
+            <tr key={std.id}>
+              <td>{`${std.firstName} ${std.middleName || ""} ${std.lastName}`}</td>
+              <td>{std.email}</td>
+              <td>{countries.find((c) => c.id === std.countryId)?.name}</td>
+              <td>{states.find((s) => s.id === std.stateId)?.name}</td>
+              <td>{districts.find((d) => d.id === std.districtId)?.name}</td>
+              <td>{genders.find((g) => g.id === std.genderId)?.name}</td>
+              <td>
+                <button
+                  className="btn btn-warning btn-sm me-2"
+                  onClick={() => handleEdit(std)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="btn btn-danger btn-sm"
+                  onClick={() => handleDelete(std.id)}
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {displayedStudents.map((std) => (
-              <tr key={std.id}>
-                <td>{`${std.firstName} ${std.middleName || ""} ${std.lastName}`}</td>
-                <td>{std.email}</td>
-                <td>{countries.find((c) => c.id === std.countryId)?.name}</td>
-                <td>{states.find((s) => s.id === std.stateId)?.name}</td>
-                <td>{districts.find((d) => d.id === std.districtId)?.name}</td>
-                <td>{genders.find((g) => g.id === std.genderId)?.name}</td>
-                <td>
-                  <button className="btn btn-warning btn-sm me-2 mb-1" onClick={() => handleEdit(std)}>Edit</button>
-                  <button className="btn btn-danger btn-sm mb-1" onClick={() => handleDelete(std.id)}>Delete</button>
-                </td>
-              </tr>
-            ))}
-            {displayedStudents.length === 0 && (
-              <tr>
-                <td colSpan="7" className="text-center text-muted">No matching records found</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+          ))}
+          {students.length === 0 && (
+            <tr>
+              <td colSpan="7" className="text-center text-muted">
+                No matching records found
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
 
-      {/* Pagination */}
+      {/* Pagination Controls */}
       {totalPages > 1 && (
-        <div className="d-flex justify-content-center mt-3 flex-wrap gap-2">
+        <div className="d-flex justify-content-center mt-3">
           <button
-            className="btn btn-secondary"
+            className="btn btn-secondary me-2"
             disabled={currentPage === 1}
-            onClick={() => setCurrentPage(currentPage - 1)}
+            onClick={() => setCurrentPage((prev) => prev - 1)}
           >
-            &#8592;
+            ◀
           </button>
+
           {[...Array(totalPages)].map((_, i) => (
             <button
               key={i}
-              className={`btn ${currentPage === i + 1 ? "btn-primary" : "btn-light"}`}
+              className={`btn me-1 ${
+                currentPage === i + 1 ? "btn-primary" : "btn-light"
+              }`}
               onClick={() => setCurrentPage(i + 1)}
             >
               {i + 1}
             </button>
           ))}
+
           <button
-            className="btn btn-secondary"
+            className="btn btn-secondary ms-2"
             disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(currentPage + 1)}
+            onClick={() => setCurrentPage((prev) => prev + 1)}
           >
-            &#8594;
+            ▶
           </button>
         </div>
       )}
