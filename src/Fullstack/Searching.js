@@ -106,7 +106,7 @@ function Searching() {
 
     try {
       if (id && id > 0) {
-        await axios.put(`${baseUrl}/students/${id}`, payload);
+        await axios.put(`${baseUrl}/students`, payload);
         Swal.fire("Updated!", "Student record has been updated.", "success");
       } else {
         await axios.post(`${baseUrl}/students`, payload);
@@ -157,14 +157,17 @@ function Searching() {
     });
   };
 
-  const filteredStudents = students.filter((std) => {
-    const fullName = `${std.firstName} ${std.middleName || ""} ${std.lastName}`.toLowerCase();
-    return (
-      fullName.includes(searchTerm.toLowerCase()) ||
-      (std.email && std.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (countries.find((c) => c.id === std.countryId)?.name.toLowerCase() || "").includes(searchTerm.toLowerCase())
-    );
-  });
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    if (!searchTerm.trim()) {
+      loadStudents();
+      return;
+    }
+
+    const res = await axios.get(`${baseUrl}/students/search?query=${searchTerm}`);
+    setStudents(res.data);
+  };
 
   return (
     <div className="container my-4">
@@ -172,19 +175,23 @@ function Searching() {
 
       {/* Add Button */}
       <button className="btn btn-success mb-3" onClick={() => setShowForm(true)}>
-       + Add Student
+        + Add Student
       </button>
 
-      {/* Search Bar */}
-      <div className="mb-3">
+      {/* Search */}
+      <form onSubmit={handleSearch} className="mb-3 d-flex">
         <input
           type="text"
-          className="form-control"
-          placeholder="Search by name, email or country..."
+          className="form-control me-2"
+          placeholder="Search by name, email, country, state, district, or gender"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-      </div>
+        <button className="btn btn-primary" type="submit">
+          Search
+        </button>
+      </form>
+
 
       {/* Modal Popup */}
       {showForm && (
@@ -299,7 +306,7 @@ function Searching() {
           </tr>
         </thead>
         <tbody>
-          {filteredStudents.map((std) => (
+          {students.map((std) => (
             <tr key={std.id}>
               <td>{`${std.firstName} ${std.middleName || ""} ${std.lastName}`}</td>
               <td>{std.email}</td>
@@ -313,7 +320,7 @@ function Searching() {
               </td>
             </tr>
           ))}
-          {filteredStudents.length === 0 && (
+          {students.length === 0 && (
             <tr>
               <td colSpan="7" className="text-center text-muted">
                 No matching records found

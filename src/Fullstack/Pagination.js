@@ -10,6 +10,12 @@ function Pagination() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showForm, setShowForm] = useState(false);
 
+  const genders = [
+    { id: 1, name: "Male" },
+    { id: 2, name: "Female" },
+    { id: 3, name: "Other" },
+  ];
+
   const [id, setId] = useState(0);
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
@@ -22,16 +28,10 @@ function Pagination() {
   const [districtId, setDistrictId] = useState("");
   const [genderId, setGenderId] = useState(0);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(5); // default records per page
-
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
-  const genders = [
-    { id: 1, name: "Male" },
-    { id: 2, name: "Female" },
-    { id: 3, name: "Other" },
-  ];
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
 
   useEffect(() => {
     loadStudents();
@@ -41,39 +41,23 @@ function Pagination() {
   }, []);
 
   const loadStudents = async () => {
-    try {
       const res = await axios.get(`${baseUrl}/students`);
       setStudents(res.data);
-    } catch (err) {
-      console.error(err);
-    }
   };
 
   const loadCountries = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/countries`);
-      setCountries(res.data);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await axios.get(`${baseUrl}/countries`);
+    setCountries(res.data);
   };
 
   const loadStates = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/states`);
-      setStates(res.data);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await axios.get(`${baseUrl}/states`);
+    setStates(res.data);
   };
 
   const loadDistricts = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/districts`);
-      setDistricts(res.data);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await axios.get(`${baseUrl}/districts`);
+    setDistricts(res.data);
   };
 
   const resetForm = () => {
@@ -107,20 +91,15 @@ function Pagination() {
       genderId: genderId ? Number(genderId) : null,
     };
 
-    try {
-      if (id && id > 0) {
-        await axios.put(`${baseUrl}/students/${id}`, payload);
-        Swal.fire("Updated!", "Student record has been updated.", "success");
-      } else {
-        await axios.post(`${baseUrl}/students`, payload);
-        Swal.fire("Added!", "New student has been added.", "success");
-      }
-      resetForm();
-      loadStudents();
-    } catch (err) {
-      console.error(err);
-      Swal.fire("Error", "Something went wrong!", "error");
+    if (id && id > 0) {
+      await axios.put(`${baseUrl}/students`, payload);
+      Swal.fire("Updated!", "Student record has been updated.", "success");
+    } else {
+      await axios.post(`${baseUrl}/students`, payload);
+      Swal.fire("Added!", "New student has been added.", "success");
     }
+    resetForm();
+    loadStudents();
   };
 
   const handleEdit = (std) => {
@@ -139,14 +118,7 @@ function Pagination() {
   };
 
   const handleDelete = (studentId) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "Cancel",
-    }).then(async (result) => {
+    Swal.fire({title: "Are you sure?", text: "You won't be able to revert this!", icon: "warning", showCancelButton: true, confirmButtonText: "Yes, delete it!", cancelButtonText: "Cancel"}).then(async (result) => {
       if (result.isConfirmed) {
         try {
           await axios.delete(`${baseUrl}/students/${studentId}`);
@@ -160,39 +132,35 @@ function Pagination() {
     });
   };
 
-  const filteredStudents = students.filter((std) => {
-    const fullName = `${std.firstName} ${std.middleName || ""} ${std.lastName}`.toLowerCase();
-    return (
-      fullName.includes(searchTerm.toLowerCase()) ||
-      (std.email && std.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (countries.find((c) => c.id === std.countryId)?.name.toLowerCase() || "").includes(searchTerm.toLowerCase())
-    );
-  });
+  const handleSearch = async (e) => {
+    e.preventDefault();
 
-  const totalPages = Math.ceil(filteredStudents.length / pageSize);
-  const displayedStudents = filteredStudents.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+    if (!searchTerm.trim()) {
+      // empty → reload all
+      loadStudents();
+      return;
+    }
+
+    const res = await axios.get(`${baseUrl}/students/search?query=${searchTerm}`);
+    setStudents(res.data);
+  };
+
+  const totalPages = Math.ceil(students.length / pageSize);
+  const displayedStudents = students.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   return (
     <div className="container my-4">
       <h2 className="mb-4 text-primary">Student Management</h2>
 
       {/* Add Button */}
-      <button className="btn btn-success mb-3" onClick={() => setShowForm(true)}>
-       + Add Student
-      </button>
+      <button className="btn btn-success mb-3" onClick={() => setShowForm(true)}>+ Add Student</button>
 
       {/* Search */}
       <div className="mb-3 d-flex justify-content-between align-items-center">
-        <input
-          type="text"
-          className="form-control w-50"
-          placeholder="Search by name, email or country..."
-          value={searchTerm}
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-            setCurrentPage(1);
-          }}
-        />
+      <form onSubmit={handleSearch} className="mb-4 d-flex gap-2">
+        <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="form-control" placeholder="Search by name, email, or country" />
+        <button type="submit" className="btn btn-primary">Search</button>
+      </form>
 
         {/* Page Size Dropdown */}
         <div>
