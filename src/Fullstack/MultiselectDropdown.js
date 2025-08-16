@@ -15,7 +15,7 @@ function MultiselectDropdown() {
     { id: 3, name: "Other" }
   ];
 
-  const [id, setId] = useState(0);
+  const [id, setId] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -44,7 +44,7 @@ function MultiselectDropdown() {
   };
 
   const resetForm = () => {
-    setId(0);
+    setId(null);
     setFirstName("");
     setMiddleName("");
     setLastName("");
@@ -62,7 +62,6 @@ function MultiselectDropdown() {
     e.preventDefault();
 
     const payload = {
-      id,
       firstName,
       middleName,
       lastName,
@@ -73,12 +72,12 @@ function MultiselectDropdown() {
       stateId: stateId ? Number(stateId) : null,
       districtId: districtId ? Number(districtId) : null,
       genderId: genderId ? Number(genderId) : null,
-      languages: selectedLanguages.map(lang => lang.value) // <--- array of integers
+      languages: selectedLanguages.map(lang => lang.value)
     };
 
     try {
-      if (id) {
-        await axios.put(baseUrl, payload);
+      if (id !== null) {
+        await axios.put(baseUrl, { ...payload, id });
         Swal.fire("Updated!", "Employee updated successfully.", "success");
       } else {
         await axios.post(baseUrl, payload);
@@ -225,8 +224,14 @@ function MultiselectDropdown() {
           </div>
         </div>
 
-        <button type="submit" className="btn btn-primary mt-3">{id ? "Update Employee" : "Add Employee"}</button>
-        {id && <button type="button" className="btn btn-secondary mt-3 ms-2" onClick={resetForm}>Cancel</button>}
+        <button type="submit" className="btn btn-primary mt-3">
+          {id !== null ? "Update Employee" : "Add Employee"}
+        </button>
+        {id !== null && (
+          <button type="button" className="btn btn-secondary mt-3 ms-2" onClick={resetForm}>
+            Cancel
+          </button>
+        )}
       </form>
 
       {/* Employee Table */}

@@ -14,7 +14,7 @@ function Checkbox() {
     { id: 3, name: "Other" }
   ];
 
-  const [id, setId] = useState(0);
+  const [id, setId] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -42,7 +42,7 @@ function Checkbox() {
   };
 
   const resetForm = () => {
-    setId(0);
+    setId(null);
     setFirstName("");
     setMiddleName("");
     setLastName("");
@@ -58,8 +58,8 @@ function Checkbox() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const payload = {
-      id,
       firstName,
       middleName,
       lastName,
@@ -74,10 +74,12 @@ function Checkbox() {
     };
 
     try {
-      if (id) {
-        await axios.put(baseUrl, payload);
+      if (id !== null) {
+        // Update Employee → send id
+        await axios.put(baseUrl, { ...payload, id });
         Swal.fire("Updated!", "Employee updated successfully.", "success");
       } else {
+        // Add Employee → no id in payload
         await axios.post(baseUrl, payload);
         Swal.fire("Added!", "Employee added successfully.", "success");
       }
@@ -197,13 +199,18 @@ function Checkbox() {
             <div>
               {languages.map(lang => (
                 <label key={lang.id} className="me-3">
-                  <input type="checkbox" checked={selectedLanguages.includes(lang.id)} onChange={e => {
-                    if (e.target.checked) {
-                      setSelectedLanguages([...selectedLanguages, lang.id]);
-                    } else {
-                      setSelectedLanguages(selectedLanguages.filter(l => l !== lang.id));
-                    }
-                  }} /> {lang.name}
+                  <input
+                    type="checkbox"
+                    checked={selectedLanguages.includes(lang.id)}
+                    onChange={e => {
+                      if (e.target.checked) {
+                        setSelectedLanguages([...selectedLanguages, lang.id]);
+                      } else {
+                        setSelectedLanguages(selectedLanguages.filter(l => l !== lang.id));
+                      }
+                    }}
+                  />{" "}
+                  {lang.name}
                 </label>
               ))}
             </div>
@@ -211,9 +218,9 @@ function Checkbox() {
         </div>
 
         <button type="submit" className="btn btn-primary mt-3">
-          {id ? "Update Employee" : "Add Employee"}
+          {id !== null ? "Update Employee" : "Add Employee"}
         </button>
-        {id && (
+        {id !== null && (
           <button type="button" className="btn btn-secondary mt-3 ms-2" onClick={resetForm}>
             Cancel
           </button>
@@ -243,7 +250,9 @@ function Checkbox() {
               <td>{districts.find(d => d.id === emp.districtId)?.name}</td>
               <td>{genders.find(g => g.id === emp.genderId)?.name}</td>
               <td>
-                {(emp.languages || []).map(lang => languages.find(l => l.id === lang.languageId)?.name).join(", ")}
+                {(emp.languages || [])
+                  .map(lang => languages.find(l => l.id === lang.languageId)?.name)
+                  .join(", ")}
               </td>
               <td>
                 <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(emp)}>Edit</button>
