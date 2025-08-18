@@ -3,7 +3,7 @@ function Netjwtauth() {
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">JWT Authentication in .NET Core API with React</h1>
+        <h1 className="text-xl font-bold text-indigo-700">JWT Authentication in .NET Core API</h1>
         <p className="text-gray-500 text-xs mt-1">
           Step-by-step guide to implement JWT-based authentication using .NET Core API and React frontend.
         </p>
@@ -12,8 +12,7 @@ function Netjwtauth() {
       {/* Step 1: Install JWT Package */}
       <Section title="Install JWT Package" color="text-indigo-600">
         <CodeBlock>
-{`// Using NuGet Package Manager
-Install-Package Microsoft.AspNetCore.Authentication.JwtBearer`}
+{`Install-Package Microsoft.AspNetCore.Authentication.JwtBearer`}
         </CodeBlock>
       </Section>
 
@@ -91,23 +90,23 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public IActionResult Login([FromBody] LoginDTO login)
     {
-        var user = _context.Users.FirstOrDefault(u => u.Username == login.Username && u.Password == login.Password);
-        if (user == null) return Unauthorized();
+      var user = _context.Users.FirstOrDefault(u => u.Username == login.Username && u.Password == login.Password);
+      if (user == null) return Unauthorized();
 
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(secretKey);
-        var tokenDescriptor = new SecurityTokenDescriptor
+      var tokenHandler = new JwtSecurityTokenHandler();
+      var key = Encoding.ASCII.GetBytes(secretKey);
+      var tokenDescriptor = new SecurityTokenDescriptor
+      {
+        Subject = new ClaimsIdentity(new Claim[]
         {
-            Subject = new ClaimsIdentity(new Claim[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username)
-            }),
-            Expires = DateTime.UtcNow.AddHours(2),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-        };
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        return Ok(new { Token = tokenHandler.WriteToken(token) });
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.Name, user.Username)
+        }),
+        Expires = DateTime.UtcNow.AddHours(2),
+        SigningCredentials=new SigningCredentials(new SymmetricSecurityKey(key),SecurityAlgorithms.HmacSha256Signature)
+      };
+      var token = tokenHandler.CreateToken(tokenDescriptor);
+      return Ok(new { Token = tokenHandler.WriteToken(token) });
     }
 }`}
         </CodeBlock>
@@ -125,34 +124,16 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post("/api/auth/login", { username, password });
-      localStorage.setItem("token", response.data.token);
-      alert("Login successful!");
-    } catch (err) {
-      alert("Invalid credentials");
-    }
+    const response = await axios.post("/api/auth/login", { username, password });
+    localStorage.setItem("token", response.data.token);
+    alert("Login successful!");
   };
 
   return (
     <form onSubmit={handleLogin} className="space-y-3">
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        className="border p-2 rounded w-full"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="border p-2 rounded w-full"
-      />
-      <button type="submit" className="bg-indigo-600 text-white px-4 py-2 rounded">
-        Login
-      </button>
+      <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <button type="submit">Login</button>
     </form>
   );
 }
@@ -161,16 +142,10 @@ export default Login;`}
         </CodeBlock>
       </Section>
 
-      {/* Step 6: Using JWT for API Calls */}
       <Section title="Using JWT for Authenticated API Calls" color="text-purple-600">
         <CodeBlock>
-{`// Example: Fetch Students with JWT
-const token = localStorage.getItem("token");
-const response = await axios.get("/api/students", {
-  headers: {
-    Authorization: \`Bearer \${token}\`
-  }
-});`}
+{`const token = localStorage.getItem("token");
+const response = await axios.get("/api/students", { headers: { Authorization: \`Bearer \${token}\`}});`}
         </CodeBlock>
       </Section>
 

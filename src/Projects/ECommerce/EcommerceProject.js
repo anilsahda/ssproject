@@ -1,6 +1,4 @@
-import React from 'react';
-
-function Ecommerce() {
+function EcommerceProject() {
   return (
     <div style={{ padding: '20px', lineHeight: '1.6' }}>
       <h1>E-Commerce Management System</h1>
@@ -104,4 +102,4 @@ function Ecommerce() {
   );
 }
 
-export default Ecommerce;
+export default EcommerceProject;

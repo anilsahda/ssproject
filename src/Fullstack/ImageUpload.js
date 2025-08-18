@@ -9,10 +9,10 @@ function ImageUpload() {
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [image, setImage] = useState(null);
-  const [existingImage, setExistingImage] = useState(null);
   const fileInputRef = useRef();
 
   const baseUrl = process.env.REACT_APP_BASE_URL;
+  const imageUrl = process.env.REACT_APP_IMAGE_UPLOAD_URL;
 
   useEffect(() => {
     loadCustomers();
@@ -31,7 +31,6 @@ function ImageUpload() {
     setEmail("");
     setMobile("");
     setImage(null);
-    setExistingImage(null);
     if (fileInputRef.current) fileInputRef.current.value = null;
   };
 
@@ -54,6 +53,7 @@ function ImageUpload() {
         await axios.post(`${baseUrl}/Customers/AddCustomer`, formData, { headers: { "Content-Type": "multipart/form-data" }});
         Swal.fire("Added!", "Customer added successfully.", "success");
       }
+
       resetForm();
       loadCustomers();
     };
@@ -64,20 +64,12 @@ function ImageUpload() {
     setEmail(cus.email);
     setMobile(cus.mobile);
     setImage(null);
-    setExistingImage(cus.image);
-    if (fileInputRef.current) fileInputRef.current.value = null;
+    if (fileInputRef.current)
+      fileInputRef.current.value = null;
   };
 
   const handleDelete = async (id) => {
-    const result = await Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!",
-    });
+    const result = await Swal.fire({ title: "Are you sure?", text: "You can't revert!", icon: "warning", showCancelButton: true, confirmButtonColor: "#d33", cancelButtonColor: "#3085d6", confirmButtonText: "Yes, delete it!" });
     if (result.isConfirmed) {
       await axios.delete(`${baseUrl}/Customers/${id}`);
       Swal.fire("Deleted!", "Customer has been deleted.", "success");
@@ -95,58 +87,19 @@ function ImageUpload() {
           </div>
 
           <div className="col-md-4">
-            <input type="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}
-            />
+            <input type="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
 
           <div className="col-md-4">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Mobile"
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
-            />
+            <input type="text" className="form-control" placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
           </div>
 
           <div className="col-md-4">
-            {/* Show existing image preview when editing */}
-            {id > 0 && existingImage && !image && (
-              <div className="mb-2">
-                <img
-                  src={`${baseUrl}/Uploads/${existingImage}`}
-                  alt="Current"
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    objectFit: "cover",
-                    borderRadius: "4px",
-                  }}
-                />
-              </div>
-            )}
-            <input
-              type="file"
-              ref={fileInputRef}
-              className="form-control"
-              accept="image/*"
-              onChange={handleImageChange}
-            />
+            <input type="file" ref={fileInputRef} className="form-control" accept="image/*" onChange={handleImageChange} />
           </div>
         </div>
 
-        <button type="submit" className="btn btn-primary mt-3">
-          {id > 0 ? "Update Customer" : "Add Customer"}
-        </button>
-        {id > 0 && (
-          <button
-            type="button"
-            className="btn btn-secondary mt-3 ms-2"
-            onClick={resetForm}
-          >
-            Cancel
-          </button>
-        )}
+        <button type="submit" className="btn btn-primary mt-3">Save Customer</button>
       </form>
 
       <table className="table table-bordered table-striped">
@@ -154,6 +107,7 @@ function ImageUpload() {
           <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Mobile</th>            
             <th>Image</th>
             <th>Actions</th>
           </tr>
@@ -163,34 +117,9 @@ function ImageUpload() {
             <tr key={cus.id}>
               <td>{cus.name}</td>
               <td>{cus.email}</td>
-              <td>
-                {cus.image && (
-                  <img
-                    src={`${baseUrl}/Uploads/${cus.image}`}
-                    alt="Customer"
-                    style={{
-                      width: "60px",
-                      height: "60px",
-                      objectFit: "cover",
-                      borderRadius: "4px",
-                    }}
-                  />
-                )}
-              </td>
-              <td>
-                <button
-                  className="btn btn-warning btn-sm me-2"
-                  onClick={() => handleEdit(cus)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => handleDelete(cus.id)}
-                >
-                  Delete
-                </button>
-              </td>
+              <td>{cus.mobile}</td>
+              <td><img src={`${imageUrl}${cus.image}`} style={{ width: "60px", height: "60px" }} /></td>
+              <td><button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(cus)}>Edit</button><button className="btn btn-danger btn-sm" onClick={() => handleDelete(cus.id)}>Delete</button></td>
             </tr>
           ))}
         </tbody>

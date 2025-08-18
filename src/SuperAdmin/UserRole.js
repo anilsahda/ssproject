@@ -58,10 +58,24 @@ function UserRole() {
     };
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BASE_URL}/UserRoles`).then((res) => setList(res.data));
-        axios.get(`${process.env.REACT_APP_BASE_URL}/Users`).then((res) => setUserList(res.data));
-        axios.get(`${process.env.REACT_APP_BASE_URL}/Roles`).then((res) => setRoleList(res.data));
-    }, [handleAddUpdate, handleDelete]);
+      fetchData();
+    }, []);
+
+    const fetchData = async () => {
+      try {
+        const [rolesRes, usersRes, roleListRes] = await Promise.all([
+          axios.get(`${process.env.REACT_APP_BASE_URL}/UserRoles`),
+          axios.get(`${process.env.REACT_APP_BASE_URL}/Users`),
+          axios.get(`${process.env.REACT_APP_BASE_URL}/Roles`)
+        ]);
+        setList(rolesRes.data);
+        setUserList(usersRes.data);
+        setRoleList(roleListRes.data);
+      } catch (err) {
+        console.error("API error:", err);
+      }
+    };
+
 
 
     const filteredList = list.filter(c => c.userId.toString().includes(searchTerm));

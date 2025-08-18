@@ -43,21 +43,17 @@ function District() {
     const data = { id, name, countryId: parseInt(countryId), stateId: parseInt(stateId) };
 
     if (id === 0) {
-      axios.post(baseUrl, data)
-        .then(() => {
+      axios.post(baseUrl, data).then(() => {
           Swal.fire("Success", "District added successfully!", "success");
           resetForm();
           loadDistricts();
-        })
-        .catch(() => Swal.fire("Error", "Failed to add district", "error"));
+        });
     } else {
-      axios.put(baseUrl, data)
-        .then(() => {
+      axios.put(baseUrl, data).then(() => {
           Swal.fire("Success", "District updated successfully!", "success");
           resetForm();
           loadDistricts();
-        })
-        .catch(() => Swal.fire("Error", "Failed to update district", "error"));
+        });
     }
   };
 
@@ -79,12 +75,10 @@ function District() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`${baseUrl}/${districtId}`)
-          .then(() => {
+        axios.delete(`${baseUrl}/${districtId}`).then(() => {
             Swal.fire("Deleted!", "District has been deleted.", "success");
             loadDistricts();
-          })
-          .catch(() => Swal.fire("Error", "Failed to delete district", "error"));
+          });
       }
     });
   };
@@ -102,41 +96,20 @@ function District() {
     <div className="container">
       <h2 className="mb-4">Manage Districts</h2>
       <div className="mb-3">
-        <select
-          className="form-select mb-2"
-          value={countryId}
-          onChange={(e) => {
-            setCountryId(parseInt(e.target.value));
-            setStateId(0);
-          }}
-        >
+        <select className="form-select mb-2" value={countryId} onChange={(e) => { setCountryId(parseInt(e.target.value)); setStateId(0)}}>
           <option value={0}>Select Country</option>
           {countries.map((c) => (
             <option key={c.id} value={c.id}>{c.name}</option>
           ))}
         </select>
-        <select
-          className="form-select mb-2"
-          value={stateId}
-          onChange={(e) => setStateId(parseInt(e.target.value))}
-          disabled={countryId === 0}
-        >
+        <select className="form-select mb-2" value={stateId} onChange={(e) => setStateId(parseInt(e.target.value))}>
           <option value={0}>Select State</option>
           {filteredStates.map((s) => (
             <option key={s.id} value={s.id}>{s.name}</option>
           ))}
         </select>
-        <input
-          type="text"
-          className="form-control mb-3"
-          placeholder="Enter District Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <button className="btn btn-primary me-2" onClick={handleSave}>
-          {id === 0 ? "Add District" : "Update District"}
-        </button>
-        <button className="btn btn-secondary" onClick={resetForm}>Reset</button>
+        <input type="text" className="form-control mb-3" placeholder="Enter District Name" value={name} onChange={(e) => setName(e.target.value)} />
+        <button className="btn btn-primary me-2" onClick={handleSave}>Save District</button>
       </div>
 
       <table className="table table-bordered table-striped">

@@ -14,10 +14,7 @@ function Netmultiselectdropdown() {
         <CodeBlock>
 {`CREATE TABLE Employee (
     Id INT PRIMARY KEY IDENTITY(1,1),
-    FirstName NVARCHAR(100) NOT NULL,
-    MiddleName NVARCHAR(100),
-    LastName NVARCHAR(100) NOT NULL,
-    Address NVARCHAR(250),
+    Name NVARCHAR(100) NOT NULL,
     Email NVARCHAR(150),
     Mobile NVARCHAR(20),
     CountryId INT NOT NULL,
@@ -45,10 +42,7 @@ function Netmultiselectdropdown() {
 {`public class Employee
 {
     public int Id { get; set; }
-    public string FirstName { get; set; }
-    public string MiddleName { get; set; }
-    public string LastName { get; set; }
-    public string Address { get; set; }
+    public string Name { get; set; }
     public string Email { get; set; }
     public string Mobile { get; set; }
     public int CountryId { get; set; }
@@ -88,10 +82,7 @@ function Netmultiselectdropdown() {
 {`public class EmployeeDTO
 {
     public int Id { get; set; }
-    public string FirstName { get; set; }
-    public string MiddleName { get; set; }
-    public string LastName { get; set; }
-    public string Address { get; set; }
+    public string Name { get; set; }
     public string Email { get; set; }
     public string Mobile { get; set; }
     public int CountryId { get; set; }
@@ -131,10 +122,7 @@ public class EmployeesController : ControllerBase
         var employees = _context.Employees.Select(e => new
         {
             e.Id,
-            e.FirstName,
-            e.MiddleName,
-            e.LastName,
-            e.Address,
+            e.Name,
             e.Email,
             e.Mobile,
             e.CountryId,
@@ -153,10 +141,7 @@ public class EmployeesController : ControllerBase
         var employee = _context.Employees.Where(e => e.Id == id).Select(e => new
         {
             e.Id,
-            e.FirstName,
-            e.MiddleName,
-            e.LastName,
-            e.Address,
+            e.Name,
             e.Email,
             e.Mobile,
             e.CountryId,
@@ -174,10 +159,7 @@ public class EmployeesController : ControllerBase
     {
         var employee = new Employee
         {
-            FirstName = employeedto.FirstName,
-            MiddleName = employeedto.MiddleName,
-            LastName = employeedto.LastName,
-            Address = employeedto.Address,
+            Name = employeedto.Name,
             Email = employeedto.Email,
             Mobile = employeedto.Mobile,
             CountryId = employeedto.CountryId,
@@ -206,10 +188,7 @@ public class EmployeesController : ControllerBase
     {
         var employee = new Employee();
         employee.Id = employeedto.Id;
-        employee.FirstName = employeedto.FirstName;
-        employee.MiddleName = employeedto.MiddleName;
-        employee.LastName = employeedto.LastName;
-        employee.Address = employeedto.Address;
+        employee.Name = employeedto.Name;
         employee.Email = employeedto.Email;
         employee.Mobile = employeedto.Mobile;
         employee.CountryId = employeedto.CountryId;

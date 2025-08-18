@@ -1,16 +1,40 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import Swal from "sweetalert2";
 
-function Checkbox() {
+function CheckboxStatic() {
+  // Static Data
+  const countries = [
+    { id: 1, name: "India" },
+    { id: 2, name: "USA" },
+    { id: 3, name: "UK" }
+  ];
+
+  const states = [
+    { id: 1, name: "Maharashtra" },
+    { id: 2, name: "California" },
+    { id: 3, name: "London" }
+  ];
+
+  const districts = [
+    { id: 1, name: "Pune" },
+    { id: 2, name: "Los Angeles" },
+    { id: 3, name: "Westminster" }
+  ];
+
+  const languages = [
+    { id: 1, name: "English" },
+    { id: 2, name: "Hindi" },
+    { id: 3, name: "Marathi" }
+  ];
+
+  const genders = [
+    { id: 1, name: "Male" },
+    { id: 2, name: "Female" },
+    { id: 3, name: "Other" }
+  ];
+
+  // States
   const [employees, setEmployees] = useState([]);
-  const [countries, setCountries] = useState([]);
-  const [states, setStates] = useState([]);
-  const [districts, setDistricts] = useState([]);
-  const [languages, setLanguages] = useState([]);
-
-  const genders = [{ id: 1, name: "Male" }, { id: 2, name: "Female" }, { id: 3, name: "Other" }];
-
   const [id, setId] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,24 +44,6 @@ function Checkbox() {
   const [districtId, setDistrictId] = useState("");
   const [genderId, setGenderId] = useState("");
   const [selectedLanguages, setSelectedLanguages] = useState([]);
-
-const baseUrl = `${process.env.REACT_APP_BASE_URL}/Employees`;
-const coutryUrl = `${process.env.REACT_APP_BASE_URL}/Countries`;
-const stateUrl = `${process.env.REACT_APP_BASE_URL}/States`;
-const districtUrl = `${process.env.REACT_APP_BASE_URL}/Districts`;
-const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
-
-  useEffect(() => {
-    loadEmployees();
-    axios.get(coutryUrl).then(res=>setCountries(res.data));
-    axios.get(stateUrl).then(res=>setStates(res.data));
-    axios.get(districtUrl).then(res=>setDistricts(res.data));
-    axios.get(languageUrl).then(res=>setLanguages(res.data));
-  }, []);
-
-  const loadEmployees = () => {
-    axios.get(baseUrl).then(res => setEmployees(res.data));
-  };
 
   const resetForm = () => {
     setId(null);
@@ -51,10 +57,11 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
     setSelectedLanguages([]);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const payload = {
+      id: id ?? Date.now(),
       name,
       email,
       mobile,
@@ -62,19 +69,18 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
       stateId: stateId ? Number(stateId) : null,
       districtId: districtId ? Number(districtId) : null,
       genderId: genderId ? Number(genderId) : null,
-      languages: selectedLanguages
+      languages: selectedLanguages.map(l => ({ languageId: l }))
     };
 
     if (id !== null) {
-      await axios.put(baseUrl, { ...payload, id });
+      setEmployees(employees.map(emp => (emp.id === id ? payload : emp)));
       Swal.fire("Updated!", "Employee updated successfully.", "success");
     } else {
-      await axios.post(baseUrl, payload);
+      setEmployees([...employees, payload]);
       Swal.fire("Added!", "Employee added successfully.", "success");
     }
 
     resetForm();
-    loadEmployees();
   };
 
   const handleEdit = (emp) => {
@@ -89,11 +95,18 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
     setSelectedLanguages(emp.languages?.map(l => l.languageId) || []);
   };
 
-  const handleDelete = async (empId) => {
-    Swal.fire({ title: "Are you sure?", text: "This will permanently delete the employee.", icon: "warning", showCancelButton: true, confirmButtonColor: "#d33", cancelButtonColor: "#3085d6", confirmButtonText: "Yes, delete it!" }).then(async (result) => {
+  const handleDelete = (empId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This will permanently delete the employee.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
       if (result.isConfirmed) {
-        await axios.delete(`${baseUrl}/${empId}`);
-        loadEmployees();
+        setEmployees(employees.filter(emp => emp.id !== empId));
         Swal.fire("Deleted!", "Employee has been deleted.", "success");
       }
     });
@@ -160,7 +173,9 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
             </div>
           </div>
         </div>
-        <button type="submit" className="btn btn-primary mt-3">{id !== null ? "Update Employee" : "Add Employee"}</button>
+        <button type="submit" className="btn btn-primary mt-3">
+          {id !== null ? "Update Employee" : "Add Employee"}
+        </button>
       </form>
 
       <table className="table table-bordered table-striped">
@@ -186,7 +201,10 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
               <td>{districts.find(d => d.id === emp.districtId)?.name}</td>
               <td>{genders.find(g => g.id === emp.genderId)?.name}</td>
               <td>{(emp.languages || []).map(lang => languages.find(l => l.id === lang.languageId)?.name).join(", ")}</td>
-              <td><button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(emp)}>Edit</button><button className="btn btn-danger btn-sm" onClick={() => handleDelete(emp.id)}>Delete</button></td>
+              <td>
+                <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(emp)}>Edit</button>
+                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(emp.id)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -195,4 +213,4 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
   );
 }
 
-export default Checkbox;
+export default CheckboxStatic;

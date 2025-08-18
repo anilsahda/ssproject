@@ -53,6 +53,20 @@ function Netprojectsetup() {
 
       <section>
         <div className="flex items-center mb-3">
+          <strong className="text-yellow-700 text-lg">Install Nuget Package</strong>
+        </div>
+<CodeBlock>
+        <ul className="list-disc ml-6 text-gray-800">
+          <li>Microsoft.EntityFrameworkCore</li>
+          <li>Microsoft.EntityFrameworkCore.SqlServer</li>
+          <li>Microsoft.EntityFrameworkCore.Tools</li>
+          <li>Microsoft.EntityFrameworkCore.Design</li>
+        </ul>
+ </CodeBlock>
+      </section>
+
+      <section>
+        <div className="flex items-center mb-3">
           <strong className="text-red-700 text-lg">Program.cs</strong>
         </div>
 <CodeBlock>
@@ -124,6 +138,30 @@ app.Run();
           <li>Verify CRUD operations with sample data</li>
         </ul>
       </section>
+
+      {/* 7. CORS Policy */}
+      <section>
+        <div className="flex items-center mb-3">
+          <strong className="text-blue-700 text-lg">Apply CORS Policy</strong>
+        </div>
+        <CodeBlock>
+        <pre className="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+{`//CORS Service
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+//CORS Middleware
+app.UseCors("AllowAll");`}
+        </pre>
+ </CodeBlock>
+      </section>      
     </div>
   );
 }

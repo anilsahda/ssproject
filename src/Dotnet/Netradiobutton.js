@@ -15,10 +15,7 @@ function Netradiobutton() {
 {`CREATE TABLE Student 
 (
     Id INT PRIMARY KEY IDENTITY(1,1),
-    FirstName NVARCHAR(100) NOT NULL,
-    MiddleName NVARCHAR(100),
-    LastName NVARCHAR(100) NOT NULL,
-    Address NVARCHAR(250),
+    Name NVARCHAR(100) NOT NULL,
     Email NVARCHAR(150),
     Mobile NVARCHAR(20),
     CountryId INT NOT NULL,
@@ -35,10 +32,7 @@ function Netradiobutton() {
 {`public class Student
 {
     public int Id { get; set; }
-    public string FirstName { get; set; }
-    public string MiddleName { get; set; }
-    public string LastName { get; set; }
-    public string Address { get; set; }
+    public string Name { get; set; }
     public string Email { get; set; }
     public string Mobile { get; set; }
     public int CountryId { get; set; }

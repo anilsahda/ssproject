@@ -1,6 +1,4 @@
-import React from 'react';
-
-function JobPortal() {
+function SmartJobsProject() {
   return (
     <div style={{ padding: '20px', lineHeight: '1.6' }}>
       <h1>Smart Job Portal</h1>
@@ -82,14 +80,15 @@ function JobPortal() {
           </tr>
           <tr>
             <td>Admin</td>
-            <td>Manage all jobs, users, applications, and reports</td>
+            <td>Verify job seeker profiles, Manage authenticity, Manage all jobs, users, applications, and reports</td>
           </tr>
           <tr>
             <td>Employer</td>
-            <td>Post jobs, manage applications, communicate with candidates</td>
+            <td>Post jobs, manage applications, communicate with candidates, Search/filter based on skills, education, experience, Download/view resumes.</td>
           </tr>
           <tr>
             <td>Job Seeker</td>
+            <td>Job Seekers can: Add multiple education qualifications, Add multiple skills, Add multiple experiences (internships, jobs).</td>
             <td>Search jobs, apply, and manage profile</td>
           </tr>
         </tbody>
@@ -113,4 +112,4 @@ function JobPortal() {
   );
 }
 
-export default JobPortal;
+export default SmartJobsProject;

@@ -17,9 +17,7 @@ function Reactradiobutton() {
   return (
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
-        <h1 className="fw-bold mb-5 text-primary text-center">
-          Radio Button - React
-        </h1>
+        <h1 className="fw-bold mb-5 text-primary text-center">Radio Button - React</h1>
 
         {/* Step 1: State and Base URL */}
         <section className="mb-5">
@@ -31,17 +29,14 @@ const [countries, setCountries] = useState([]);
 const [states, setStates] = useState([]);
 const [districts, setDistricts] = useState([]);
 const [id, setId] = useState(0);
-const [firstName, setFirstName] = useState("");
-const [middleName, setMiddleName] = useState("");
-const [lastName, setLastName] = useState("");
-const [address, setAddress] = useState("");
+const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [mobile, setMobile] = useState("");
 const [countryId, setCountryId] = useState("");
 const [stateId, setStateId] = useState("");
 const [districtId, setDistrictId] = useState("");
 const [genderId, setGenderId] = useState(0);
-const genders = [{ id: 1, name: "Male" }, { id: 2, name: "Female" }, { id: 3, name: "Other" }];
+const genders=[{ id: 1, name: "Male" },{ id: 2, name: "Female" },{ id: 3, name:"Other"}];
 const baseUrl = process.env.REACT_APP_BASE_URL;`}</pre>
         </section>
 
@@ -58,7 +53,7 @@ const baseUrl = process.env.REACT_APP_BASE_URL;`}</pre>
 }, []);
 
 const loadStudents = async () => {
-  const res = await axios.get(\`\${baseUrl}/students\`); // GET /students
+  const res = await axios.get(\`\${baseUrl}/students\`);
   setStudents(res.data);
 };
 
@@ -84,9 +79,9 @@ const loadDistricts = async () => {
             <FaCheckCircle /> Step 3: Toast Notifications
           </div>
           <pre style={preStyle}>{`const toast = (icon, title) => {
-  Swal.fire({
-    toast: true,
-    position: "top-end",
+  Swal.fire({ 
+    toast: true, 
+    position: "top-end", 
     icon,
     title,
     showConfirmButton: false,
@@ -106,10 +101,7 @@ const loadDistricts = async () => {
 
   const payload = {
     id,
-    firstName,
-    middleName,
-    lastName,
-    address,
+    name,
     email,
     mobile,
     countryId: countryId ? Number(countryId) : null,
@@ -138,10 +130,7 @@ const loadDistricts = async () => {
           </div>
           <pre style={preStyle}>{`const handleEdit = (std) => {
   setId(std.id);
-  setFirstName(std.firstName);
-  setMiddleName(std.middleName);
-  setLastName(std.lastName);
-  setAddress(std.address);
+  setName(std.name);
   setEmail(std.email);
   setMobile(std.mobile);
   setCountryId(std.countryId);
@@ -179,16 +168,11 @@ const loadDistricts = async () => {
           <div style={sectionHeaderStyle}>
             <FaCode /> Step 7: Component JSX
           </div>
-          <pre style={preStyle}>{`<form onSubmit={handleSubmit} className="mb-4">
-  <!-- Inputs for firstName, middleName, lastName, address, email, mobile -->
-  <input type="text" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} />
-  <input type="text" placeholder="Middle Name" value={middleName} onChange={e => setMiddleName(e.target.value)} />
-  <input type="text" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} />
-  <input type="text" placeholder="Address" value={address} onChange={e => setAddress(e.target.value)} />
-  <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-  <input type="text" placeholder="Mobile" value={mobile} onChange={e => setMobile(e.target.value)} />
+          <pre style={preStyle}>{`<form onSubmit={handleSubmit}>
+  <input type="text" value={name} onChange={e => setName(e.target.value)} />
+  <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+  <input type="text" value={mobile} onChange={e => setMobile(e.target.value)} />
 
-  <!-- Selects for country, state, district -->
   <select value={countryId} onChange={e => setCountryId(e.target.value)}>
     <option value="">Select Country</option>
     {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -204,16 +188,14 @@ const loadDistricts = async () => {
     {districts.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
   </select>
 
-  <!-- Radio buttons for gender -->
   {genders.map(g => (
     <label key={g.id}>
-      <input type="radio" name="gender" value={g.id} checked={genderId === g.id} onChange={e => setGenderId(Number(e.target.value))} />
-      {g.name}
+      <input type="radio" name="gender" value={g.id} checked={genderId === g.id} 
+            onChange={e => setGenderId(Number(e.target.value))} /> {g.name}
     </label>
   ))}
 
-  <button type="submit">{id > 0 ? "Update Student" : "Add Student"}</button>
-  <button type="button" onClick={resetForm}>Cancel</button>
+  <button type="submit">Save Student</button>
 </form>
 
 <table className="table table-bordered table-striped">
@@ -221,6 +203,7 @@ const loadDistricts = async () => {
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>Mobile</th>      
       <th>Country</th>
       <th>State</th>
       <th>District</th>
@@ -231,15 +214,16 @@ const loadDistricts = async () => {
   <tbody>
     {students.map(std => (
       <tr key={std.id}>
-        <td>{\`\${std.firstName} \${std.middleName || ""} \${std.lastName}\`}</td>
+        <td>{std.name}</td>
         <td>{std.email}</td>
+        <td>{std.mobile}</td>
         <td>{countries.find(c => c.id === std.countryId)?.name}</td>
         <td>{states.find(s => s.id === std.stateId)?.name}</td>
         <td>{districts.find(d => d.id === std.districtId)?.name}</td>
         <td>{genders.find(g => g.id === std.genderId)?.name}</td>
         <td>
-          <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(std)}>Edit</button>
-          <button className="btn btn-danger btn-sm" onClick={() => handleDelete(std.id)}>Delete</button>
+          <button className="btn btn-warning" onClick={()=>handleEdit(std)}>Edit</button>
+          <button onClick={() => handleDelete(std.id)}>Delete</button>
         </td>
       </tr>
     ))}

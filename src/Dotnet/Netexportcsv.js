@@ -27,13 +27,12 @@ public class CustomersController : ControllerBase
     public IActionResult ExportCsv()
     {
         var csv = new StringBuilder();
-        csv.AppendLine("Id, FirstName, Email, Mobile");
-
+        csv.AppendLine("Id, Name, Email, Mobile");
         var students = _context.Students.ToList();
 
         foreach (var student in students)
         {
-            csv.AppendLine($"{student.Id}, {student.FirstName}, {student.Email}, {student.Mobile}");
+            csv.AppendLine($"{student.Id}, {student.Name}, {student.Email}, {student.Mobile}");
         }
 
         var bytes = Encoding.UTF8.GetBytes(csv.ToString());
@@ -53,9 +52,9 @@ public class CustomersController : ControllerBase
       {/* Step 6: Output */}
       <Section title="Output (Sample CSV File)" color="text-purple-600">
         <CodeBlock>
-{`Id,Name,Email,Mobile
-1,John Doe,john@example.com,1234567890
-2,Jane Smith,jane@example.com,9876543210`}
+{`Id, Name, Email, Mobile
+1, John Doe, john@example.com, 1234567890
+2, Jane Smith, jane@example.com, 9876543210`}
         </CodeBlock>
       </Section>
     </div>

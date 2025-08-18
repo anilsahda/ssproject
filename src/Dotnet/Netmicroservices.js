@@ -1,18 +1,11 @@
-import React from "react";
-
 function Netmicroservices() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-      
-      {/* Header */}
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Microservices in .NET Core using Ocelot</h1>
-        <p className="text-gray-500 text-xs mt-1">
-          Guide to implement Microservices architecture with Ocelot API Gateway in .NET Core projects.
-        </p>
+        <p className="text-gray-500 text-xs mt-1">Guide to implement Microservices architecture with Ocelot API Gateway in .NET Core projects.</p>
       </header>
 
-      {/* Step 1: Overview */}
       <Section title="Overview" color="text-indigo-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li>Microservices break an application into multiple independently deployable services.</li>
@@ -21,7 +14,6 @@ function Netmicroservices() {
         </ul>
       </Section>
 
-      {/* Step 2: Solution Structure */}
       <Section title="Solution Structure" color="text-yellow-600">
         <CodeBlock>
 {`Solution
@@ -39,7 +31,6 @@ function Netmicroservices() {
         </CodeBlock>
       </Section>
 
-      {/* Step 3: Install Required Libraries */}
       <Section title="Install Required Libraries" color="text-green-600">
         <CodeBlock>
 {`// Install Ocelot API Gateway
@@ -53,7 +44,6 @@ Install-Package Serilog.AspNetCore`}
         </CodeBlock>
       </Section>
 
-      {/* Step 4: Project References */}
       <Section title="Project References" color="text-purple-600">
         <CodeBlock>
 {`// ApiGateway should reference Service projects if needed (e.g., shared DTOs)
@@ -62,7 +52,6 @@ Install-Package Serilog.AspNetCore`}
         </CodeBlock>
       </Section>
 
-      {/* Step 5: Configure appsettings.json */}
       <Section title="appsettings.json" color="text-blue-600">
         <CodeBlock>
 {`{
@@ -78,7 +67,6 @@ Install-Package Serilog.AspNetCore`}
         </CodeBlock>
       </Section>
 
-      {/* Step 6: Configure Program.cs */}
       <Section title="Program.cs" color="text-red-600">
         <CodeBlock>
 {`using Ocelot.DependencyInjection;
@@ -102,7 +90,6 @@ app.Run();`}
         </CodeBlock>
       </Section>
 
-      {/* Step 7: Example ocelot.json */}
       <Section title="Example ocelot.json" color="text-teal-600">
         <CodeBlock>
 {`{
@@ -131,11 +118,9 @@ app.Run();`}
         </CodeBlock>
       </Section>
 
-      {/* Step 8: Microservice Controllers Example */}
       <Section title="Microservice Controllers Example" color="text-orange-600">
         <CodeBlock>
-{`// UserService/Controllers/UserController.cs
-[ApiController]
+{`[ApiController]
 [Route("api/[controller]")]
 public class UserController : ControllerBase
 {
@@ -143,7 +128,6 @@ public class UserController : ControllerBase
     public IActionResult GetUsers() => Ok(new List<string> { "User1", "User2" });
 }
 
-// ProductService/Controllers/ProductController.cs
 [ApiController]
 [Route("api/[controller]")]
 public class ProductController : ControllerBase
@@ -154,7 +138,6 @@ public class ProductController : ControllerBase
         </CodeBlock>
       </Section>
 
-      {/* Step 9: Summary */}
       <Section title="Summary" color="text-green-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li>Ocelot acts as a gateway to route requests to individual microservices.</li>
@@ -167,7 +150,6 @@ public class ProductController : ControllerBase
   );
 }
 
-/* Reusable Section Component */
 function Section({ title, color, children }) {
   return (
     <section>
@@ -179,13 +161,8 @@ function Section({ title, color, children }) {
   );
 }
 
-/* Reusable Code Block Component */
 function CodeBlock({ children }) {
-  return (
-    <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">
-      {children}
-    </pre>
-  );
+  return (<pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">{children}</pre>);
 }
 
 export default Netmicroservices;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-function EmployeePayroll() {
+function EmployeePayrollProject() {
   return (
     <div style={{ padding: '20px', lineHeight: '1.6' }}>
       <h1>Employee Payroll Management System</h1>
@@ -107,4 +105,4 @@ function EmployeePayroll() {
   );
 }
 
-export default EmployeePayroll;
+export default EmployeePayrollProject;

@@ -1,16 +1,39 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import Swal from "sweetalert2";
 
-function Pagination() {
-  const [students, setStudents] = useState([]);
-  const [countries, setCountries] = useState([]);
-  const [states, setStates] = useState([]);
-  const [districts, setDistricts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [showForm, setShowForm] = useState(false);
+function PaginationStatic() {
+  const [students, setStudents] = useState([
+    { id: 1, name: "John Doe", email: "john@example.com", countryId: 1, stateId: 1, districtId: 1, genderId: 1 },
+    { id: 2, name: "Jane Smith", email: "jane@example.com", countryId: 1, stateId: 2, districtId: 2, genderId: 2 },
+    { id: 3, name: "Mike Ross", email: "mike@example.com", countryId: 2, stateId: 3, districtId: 3, genderId: 1 },
+    { id: 4, name: "Rachel Zane", email: "rachel@example.com", countryId: 2, stateId: 3, districtId: 2, genderId: 2 },
+    { id: 5, name: "Harvey Specter", email: "harvey@example.com", countryId: 3, stateId: 4, districtId: 1, genderId: 1 },
+  ]);
 
-  const genders = [{ id: 1, name: "Male" }, { id: 2, name: "Female" }, { id: 3, name: "Other" }];
+  const countries = [
+    { id: 1, name: "USA" },
+    { id: 2, name: "Canada" },
+    { id: 3, name: "UK" },
+  ];
+
+  const states = [
+    { id: 1, name: "California" },
+    { id: 2, name: "Texas" },
+    { id: 3, name: "Ontario" },
+    { id: 4, name: "London" },
+  ];
+
+  const districts = [
+    { id: 1, name: "District A" },
+    { id: 2, name: "District B" },
+    { id: 3, name: "District C" },
+  ];
+
+  const genders = [
+    { id: 1, name: "Male" },
+    { id: 2, name: "Female" },
+    { id: 3, name: "Other" },
+  ];
 
   const [id, setId] = useState(0);
   const [name, setName] = useState("");
@@ -20,40 +43,15 @@ function Pagination() {
   const [stateId, setStateId] = useState("");
   const [districtId, setDistrictId] = useState("");
   const [genderId, setGenderId] = useState(0);
-
-  const baseUrl = process.env.REACT_APP_BASE_URL;
+  const [showForm, setShowForm] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
-  const [totalRecords, setTotalRecords] = useState(0);
 
-  useEffect(() => {
-    loadStudents();
-    loadCountries();
-    loadStates();
-    loadDistricts();
-  }, [currentPage, pageSize]);
-
-  const loadStudents = async () => {
-    const res = await axios.get(`${baseUrl}/students/paginated?pageNumber=${currentPage}&pageSize=${pageSize}`);
-    setStudents(res.data.data);
-    setTotalRecords(res.data.totalRecords);
-  };
-
-  const loadCountries = async () => {
-    const res = await axios.get(`${baseUrl}/countries`);
-    setCountries(res.data);
-  };
-
-  const loadStates = async () => {
-    const res = await axios.get(`${baseUrl}/states`);
-    setStates(res.data);
-  };
-
-  const loadDistricts = async () => {
-    const res = await axios.get(`${baseUrl}/districts`);
-    setDistricts(res.data);
-  };
+  const totalRecords = students.length;
+  const totalPages = Math.ceil(totalRecords / pageSize);
+  const paginatedStudents = students.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   const resetForm = () => {
     setId(0);
@@ -67,10 +65,10 @@ function Pagination() {
     setShowForm(false);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = {
-      id,
+    const newStudent = {
+      id: id || students.length + 1,
       name,
       email,
       mobile,
@@ -81,14 +79,14 @@ function Pagination() {
     };
 
     if (id && id > 0) {
-      await axios.put(`${baseUrl}/students`, payload);
+      setStudents(students.map((s) => (s.id === id ? newStudent : s)));
       Swal.fire("Updated!", "Student record has been updated.", "success");
     } else {
-      await axios.post(`${baseUrl}/students`, payload);
+      setStudents([...students, newStudent]);
       Swal.fire("Added!", "New student has been added.", "success");
     }
+
     resetForm();
-    loadStudents();
   };
 
   const handleEdit = (std) => {
@@ -111,29 +109,27 @@ function Pagination() {
       showCancelButton: true,
       confirmButtonText: "Yes, delete it!",
       cancelButtonText: "Cancel",
-    }).then(async (result) => {
+    }).then((result) => {
       if (result.isConfirmed) {
-        await axios.delete(`${baseUrl}/students/${studentId}`);
-        loadStudents();
+        setStudents(students.filter((s) => s.id !== studentId));
         Swal.fire("Deleted!", "Student has been deleted.", "success");
       }
     });
   };
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-
     if (!searchTerm.trim()) {
-      loadStudents();
       return;
     }
-
-    const res = await axios.get(`${baseUrl}/students/search?query=${searchTerm}`);
-    setStudents(res.data);
-    setTotalRecords(res.data.length);
+    const filtered = students.filter(
+      (s) =>
+        s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        s.email.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setStudents(filtered);
+    setCurrentPage(1);
   };
-
-  const totalPages = Math.ceil(totalRecords / pageSize);
 
   return (
     <div className="container my-4">
@@ -142,19 +138,16 @@ function Pagination() {
 
       <div className="mb-3 d-flex justify-content-between align-items-center">
         <form onSubmit={handleSearch} className="mb-4 d-flex gap-2">
-          <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="form-control" placeholder="Search by name, email, or country" />
+          <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="form-control" placeholder="Search by name or email" />
           <button type="submit" className="btn btn-primary">Search</button>
         </form>
 
         <div>
-          <label className="me-2">
-            <strong>Records per page:</strong>
-          </label>
+          <label className="me-2"><strong>Records per page:</strong></label>
           <select className="form-select d-inline-block w-auto" value={pageSize} onChange={(e) => { setPageSize(Number(e.target.value)); setCurrentPage(1)}}>
             <option value={5}>5</option>
             <option value={10}>10</option>
             <option value={20}>20</option>
-            <option value={50}>50</option>
           </select>
         </div>
       </div>
@@ -203,9 +196,7 @@ function Pagination() {
                   </div>
 
                   <div className="mb-3">
-                    <label className="me-3">
-                      <strong>Gender:</strong>
-                    </label>
+                    <label className="me-3"><strong>Gender:</strong></label>
                     {genders.map((g) => (
                       <div className="form-check form-check-inline" key={g.id}>
                         <input className="form-check-input" type="radio" name="gender" value={g.id} checked={genderId === g.id} onChange={() => setGenderId(g.id)} />
@@ -237,7 +228,7 @@ function Pagination() {
           </tr>
         </thead>
         <tbody>
-          {students.map((std) => (
+          {paginatedStudents.map((std) => (
             <tr key={std.id}>
               <td>{std.name}</td>
               <td>{std.email}</td>
@@ -262,7 +253,9 @@ function Pagination() {
       {totalPages > 1 && (
         <div className="d-flex justify-content-center mt-3">
           <button className="btn btn-secondary me-2" disabled={currentPage === 1} onClick={() => setCurrentPage((prev) => prev - 1)}> ◀ </button>
-          {[...Array(totalPages)].map((_, i) => (<button key={i} className={`btn me-1 ${ currentPage === i + 1 ? "btn-primary" : "btn-light" }`} onClick={() => setCurrentPage(i + 1)}>{i + 1}</button>))}
+          {[...Array(totalPages)].map((_, i) => (
+            <button key={i} className={`btn me-1 ${ currentPage === i + 1 ? "btn-primary" : "btn-light" }`} onClick={() => setCurrentPage(i + 1)}>{i + 1}</button>
+          ))}
           <button className="btn btn-secondary ms-2" disabled={currentPage === totalPages} onClick={() => setCurrentPage((prev) => prev + 1)}> ▶ </button>
         </div>
       )}
@@ -270,4 +263,4 @@ function Pagination() {
   );
 }
 
-export default Pagination;
+export default PaginationStatic;

@@ -1,15 +1,37 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
+import Select, { components } from "react-select";
 import Swal from "sweetalert2";
 
-function Checkbox() {
+function MultiselectDropdownStatic() {
   const [employees, setEmployees] = useState([]);
-  const [countries, setCountries] = useState([]);
-  const [states, setStates] = useState([]);
-  const [districts, setDistricts] = useState([]);
-  const [languages, setLanguages] = useState([]);
 
-  const genders = [{ id: 1, name: "Male" }, { id: 2, name: "Female" }, { id: 3, name: "Other" }];
+  const countries = [
+    { id: 1, name: "India" },
+    { id: 2, name: "USA" }
+  ];
+
+  const states = [
+    { id: 1, name: "Maharashtra" },
+    { id: 2, name: "California" }
+  ];
+
+  const districts = [
+    { id: 1, name: "Pune" },
+    { id: 2, name: "Los Angeles" }
+  ];
+
+  const languages = [
+    { id: 1, name: "English" },
+    { id: 2, name: "Hindi" },
+    { id: 3, name: "Marathi" },
+    { id: 4, name: "Spanish" }
+  ];
+
+  const genders = [
+    { id: 1, name: "Male" },
+    { id: 2, name: "Female" },
+    { id: 3, name: "Other" }
+  ];
 
   const [id, setId] = useState(null);
   const [name, setName] = useState("");
@@ -20,24 +42,6 @@ function Checkbox() {
   const [districtId, setDistrictId] = useState("");
   const [genderId, setGenderId] = useState("");
   const [selectedLanguages, setSelectedLanguages] = useState([]);
-
-const baseUrl = `${process.env.REACT_APP_BASE_URL}/Employees`;
-const coutryUrl = `${process.env.REACT_APP_BASE_URL}/Countries`;
-const stateUrl = `${process.env.REACT_APP_BASE_URL}/States`;
-const districtUrl = `${process.env.REACT_APP_BASE_URL}/Districts`;
-const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
-
-  useEffect(() => {
-    loadEmployees();
-    axios.get(coutryUrl).then(res=>setCountries(res.data));
-    axios.get(stateUrl).then(res=>setStates(res.data));
-    axios.get(districtUrl).then(res=>setDistricts(res.data));
-    axios.get(languageUrl).then(res=>setLanguages(res.data));
-  }, []);
-
-  const loadEmployees = () => {
-    axios.get(baseUrl).then(res => setEmployees(res.data));
-  };
 
   const resetForm = () => {
     setId(null);
@@ -51,10 +55,11 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
     setSelectedLanguages([]);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const payload = {
+      id: id !== null ? id : Date.now(),
       name,
       email,
       mobile,
@@ -62,56 +67,80 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
       stateId: stateId ? Number(stateId) : null,
       districtId: districtId ? Number(districtId) : null,
       genderId: genderId ? Number(genderId) : null,
-      languages: selectedLanguages
+      languages: selectedLanguages.map(lang => ({ languageId: lang.value }))
     };
 
     if (id !== null) {
-      await axios.put(baseUrl, { ...payload, id });
+      setEmployees(employees.map(emp => (emp.id === id ? payload : emp)));
       Swal.fire("Updated!", "Employee updated successfully.", "success");
     } else {
-      await axios.post(baseUrl, payload);
+      setEmployees([...employees, payload]);
       Swal.fire("Added!", "Employee added successfully.", "success");
     }
 
     resetForm();
-    loadEmployees();
   };
 
   const handleEdit = (emp) => {
     setId(emp.id);
     setName(emp.name);
-    setEmail(emp.email);
-    setMobile(emp.mobile);
-    setCountryId(emp.countryId);
-    setStateId(emp.stateId);
-    setDistrictId(emp.districtId);
+    setEmail(emp.email || "");
+    setMobile(emp.mobile || "");
+    setCountryId(emp.countryId || "");
+    setStateId(emp.stateId || "");
+    setDistrictId(emp.districtId || "");
     setGenderId(emp.genderId || "");
-    setSelectedLanguages(emp.languages?.map(l => l.languageId) || []);
+
+    const preselected = (emp.languages || []).map(l => {
+      const lang = languages.find(lang => lang.id === l.languageId);
+      return lang ? { value: lang.id, label: lang.name } : null;
+    }).filter(Boolean);
+
+    setSelectedLanguages(preselected);
   };
 
-  const handleDelete = async (empId) => {
-    Swal.fire({ title: "Are you sure?", text: "This will permanently delete the employee.", icon: "warning", showCancelButton: true, confirmButtonColor: "#d33", cancelButtonColor: "#3085d6", confirmButtonText: "Yes, delete it!" }).then(async (result) => {
+  const handleDelete = (empId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This action cannot be undone!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!"
+    }).then(result => {
       if (result.isConfirmed) {
-        await axios.delete(`${baseUrl}/${empId}`);
-        loadEmployees();
-        Swal.fire("Deleted!", "Employee has been deleted.", "success");
+        setEmployees(employees.filter(emp => emp.id !== empId));
+        Swal.fire("Deleted!", "Employee has been deleted successfully.", "success");
       }
     });
   };
 
+  // Custom checkbox for react-select
+  const Option = (props) => (
+    <components.Option {...props}>
+      <input type="checkbox" checked={props.isSelected} readOnly style={{ marginRight: 8 }} />
+      <label>{props.label}</label>
+    </components.Option>
+  );
+
   return (
     <div className="container my-4">
       <h2 className="mb-4 text-primary">Employee Management</h2>
+
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="row g-3">
           <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Name" value={name} onChange={e => setName(e.target.value)} required />
+            <input type="text" className="form-control" placeholder="Name"
+              value={name} onChange={e => setName(e.target.value)} required />
           </div>
           <div className="col-md-4">
-            <input type="email" className="form-control" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+            <input type="email" className="form-control" placeholder="Email"
+              value={email} onChange={e => setEmail(e.target.value)} />
           </div>
           <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Mobile" value={mobile} onChange={e => setMobile(e.target.value)} />
+            <input type="text" className="form-control" placeholder="Mobile"
+              value={mobile} onChange={e => setMobile(e.target.value)} />
           </div>
           <div className="col-md-4">
             <select className="form-select" value={countryId} onChange={e => setCountryId(e.target.value)}>
@@ -136,31 +165,30 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
             <div>
               {genders.map(g => (
                 <label key={g.id} className="me-3">
-                  <input type="radio" name="gender" value={g.id} checked={Number(genderId) === g.id} onChange={e => setGenderId(e.target.value)} /> {g.name}
+                  <input type="radio" name="gender" value={g.id}
+                    checked={Number(genderId) === g.id}
+                    onChange={e => setGenderId(e.target.value)} /> {g.name}
                 </label>
               ))}
             </div>
           </div>
           <div className="col-md-4">
             <label className="form-label">Languages</label>
-            <div>
-              {languages.map(lang => (
-                <label key={lang.id} className="me-3">
-                  <input type="checkbox" checked={selectedLanguages.includes(lang.id)}
-                    onChange={e => {
-                      if (e.target.checked) {
-                        setSelectedLanguages([...selectedLanguages, lang.id]);
-                      } else {
-                        setSelectedLanguages(selectedLanguages.filter(l => l !== lang.id));
-                      }
-                    }} />{" "}
-                  {lang.name}
-                </label>
-              ))}
-            </div>
+            <Select
+              options={languages.map(lang => ({ value: lang.id, label: lang.name }))}
+              isMulti
+              closeMenuOnSelect={false}
+              hideSelectedOptions={false}
+              components={{ Option }}
+              onChange={setSelectedLanguages}
+              value={selectedLanguages}
+              placeholder="Select Languages..."
+            />
           </div>
         </div>
-        <button type="submit" className="btn btn-primary mt-3">{id !== null ? "Update Employee" : "Add Employee"}</button>
+        <button type="submit" className="btn btn-primary mt-3">
+          {id !== null ? "Update Employee" : "Add Employee"}
+        </button>
       </form>
 
       <table className="table table-bordered table-striped">
@@ -168,6 +196,7 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
           <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Mobile</th>
             <th>Country</th>
             <th>State</th>
             <th>District</th>
@@ -181,12 +210,16 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
             <tr key={emp.id}>
               <td>{emp.name}</td>
               <td>{emp.email}</td>
+              <td>{emp.mobile}</td>
               <td>{countries.find(c => c.id === emp.countryId)?.name}</td>
               <td>{states.find(s => s.id === emp.stateId)?.name}</td>
               <td>{districts.find(d => d.id === emp.districtId)?.name}</td>
               <td>{genders.find(g => g.id === emp.genderId)?.name}</td>
-              <td>{(emp.languages || []).map(lang => languages.find(l => l.id === lang.languageId)?.name).join(", ")}</td>
-              <td><button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(emp)}>Edit</button><button className="btn btn-danger btn-sm" onClick={() => handleDelete(emp.id)}>Delete</button></td>
+              <td>{(emp.languages || []).map(l => languages.find(lang => lang.id === l.languageId)?.name).filter(Boolean).join(", ")}</td>
+              <td>
+                <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(emp)}>Edit</button>
+                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(emp.id)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -195,4 +228,4 @@ const languageUrl = `${process.env.REACT_APP_BASE_URL}/Languages`;
   );
 }
 
-export default Checkbox;
+export default MultiselectDropdownStatic;

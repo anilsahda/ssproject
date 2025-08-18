@@ -10,9 +10,9 @@ function Sidebar({ activeMenu }) {
     setRole(localStorage.getItem("role"));
   }, [location]);
 
-   if (!["Interners", "Super Admin"].includes(role)) {
-    return null;
-  }
+  //  if (!["Intern Developer", "Super Admin"].includes(role)) {
+  //   return null;
+  // }
   
   return (
 <div
@@ -30,21 +30,39 @@ function Sidebar({ activeMenu }) {
 >
   <div className="d-flex flex-column gap-2">
     <ul className="nav nav-pills flex-column gap-2">
-        {role === "Interners" && activeMenu === "Project" && (
+        {activeMenu === "Project" && (
           <>
-          <SidebarButton to="/societymanagement" icon="bi-building" label="Smart Society E-House" />
-          <SidebarButton to="/jobportal" icon="bi-briefcase" label="Job Portal" />
-          <SidebarButton to="/employeepayroll" icon="bi-cash-stack" label="Employee Payroll" />
-          <SidebarButton to="/attendanceportal" icon="bi-calendar-check" label="Attendance Portal" />
-          <SidebarButton to="/ecommerce" icon="bi-cart4" label="E-commerce" />
-          <SidebarButton to="/digitallibrary" icon="bi-book" label="Digital Library" />
-          <SidebarButton to="/hospitalmanagement" icon="bi-hospital" label="Hospital Management" />
+          <SidebarButton to="/digitallibraryproject" icon="bi-book" label="Digital Library" />
+          <SidebarButton to="/employeepayrollproject" icon="bi-cash-stack" label="Employee Payroll" />
+          <SidebarButton to="/attendanceportalproject" icon="bi-calendar-check" label="Attendance Portal" />
+          <SidebarButton to="/ecommerceproject" icon="bi-cart4" label="SS E-Eommerce" />
+          <SidebarButton to="/smarthouseproject" icon="bi-building" label="SS Smart House" />
+          <SidebarButton to="/smartjobsproject" icon="bi-briefcase" label="SS Smart Jobs" />
+          <SidebarButton to="/smartcaregiverproject" icon="bi-hospital" label="Smart Caregiver" />
           </>
         )}
 
-        {role === "Interners" && activeMenu === "Fullstack" && (
+        {/*{role === "Intern Developer" && activeMenu === "Fullstack" && ( */}
+        {activeMenu === "Fullstack" && (
           <>
-          <SidebarButton to="/language" icon="bi-ui-checks-grid" label="Language" />
+          <SidebarButton to="/languagestatic" icon="bi-ui-checks-grid" label="Language" />
+          <SidebarButton to="/countrystatic" icon="bi-ui-checks-grid" label="Country" />
+          <SidebarButton to="/statestatic" icon="bi-caret-down-square" label="State" />
+          <SidebarButton to="/districtstatic" icon="bi-diagram-3" label="District" />
+          <SidebarButton to="/imageuploadstatic" icon="bi-file-image" label="Image Upload" />
+          <SidebarButton to="/radiobuttonstatic" icon="bi-record-circle" label="Radio Button" />
+          <SidebarButton to="/searchingstatic" icon="bi-search" label="Searching" />
+          <SidebarButton to="/paginationstatic" icon="bi-list-nested" label="Pagination" />
+          <SidebarButton to="/exportcsvstatic" icon="bi-list-nested" label="Export CSV" />          
+          <SidebarButton to="/checkboxstatic" icon="bi-check-square" label="Checkbox" />
+          <SidebarButton to="/multiselectdropdownstatic" icon="bi-check2-square" label="Multi Select Dropdown" />
+          <SidebarButton to="/authenticationstatic" icon="bi-shield-lock" label="Authentication" />
+            </>
+          )}
+
+        {role === "Intern Developer" && activeMenu === "Fullstack" && (
+          <>
+          <SidebarButton to="/language" icon="bi-ui-checks-grid" label="Languages" />
           <SidebarButton to="/country" icon="bi-ui-checks-grid" label="Country" />
           <SidebarButton to="/state" icon="bi-caret-down-square" label="State" />
           <SidebarButton to="/district" icon="bi-diagram-3" label="District" />
@@ -59,7 +77,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "Interners" && activeMenu === "Dotnet" && (
+          {activeMenu === "Dotnet" && (
             <>
             <SidebarButton to="/netprojectsetup" icon="bi-calendar-check" label=".Net Project Setup" />
             <SidebarButton to="/netlanguages" icon="bi-ui-checks-grid" label=".Net Language" />
@@ -85,43 +103,45 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "Interners" && activeMenu === "Springboot" && (
+          {activeMenu === "Springboot" && (
             <>
             <SidebarButton to="/javaprojectsetup" icon="bi-calendar-check" label="Java Project Setup" />
             <SidebarButton to="/javalanguages" icon="bi-ui-checks-grid" label="Java Language" />
             <SidebarButton to="/javacountry" icon="bi-ui-checks-grid" label="Java Country" />
             <SidebarButton to="/javastate" icon="bi-caret-down-square" label="Java State" />
             <SidebarButton to="/javadistrict" icon="bi-diagram-3" label="Java District" />
-            <SidebarButton to="/javaradiobutton" icon="bi-record-circle" label="Java Radio Button" />
-            <SidebarButton to="/javacheckbox" icon="bi-check-square" label="Java Checkbox" />
-            <SidebarButton to="/javamultiselectdropdown" icon="bi-check2-square" label="Java Multi Select Dropdown" />
             <SidebarButton to="/javaimageupload" icon="bi-file-image" label="Java Image Upload" />
+            <SidebarButton to="/javaradiobutton" icon="bi-record-circle" label="Java Radio Button" />
             <SidebarButton to="/javasearching" icon="bi-search" label="Java Searching" />
             <SidebarButton to="/javapagination" icon="bi-list-nested" label="Java Pagination" />
+            <SidebarButton to="/javaexportcsv" icon="bi-list-nested" label="Java Export CSV" />
+            <SidebarButton to="/javacheckbox" icon="bi-check-square" label="Java Checkbox" />
+            <SidebarButton to="/javamultiselectdropdown" icon="bi-check2-square" label="Java Multi Select Dropdown" />
             <SidebarButton to="/javajwtauth" icon="bi-shield-lock" label="Java JWT Auth" />
             <SidebarButton to="/javagoogleauth" icon="bi-google" label="Java Google Auth" />
             <SidebarButton to="/javafacebookauth" icon="bi-facebook" label="Java Facebook Auth" />
             <SidebarButton to="/javaonionarchitecture" icon="bi-layers" label="Java Onion Architecture" />
-            <SidebarButton to="/javacqrsdesignpattern" icon="bi-diagram-3-fill" label="Java CQRS Design Pattern" />
             <SidebarButton to="/javalogger" icon="bi-terminal" label="Java Logger" />
             <SidebarButton to="/javamicroservices" icon="bi-boxes" label="Java Microservices" />
+            <SidebarButton to="/javacqrsdesignpattern" icon="bi-diagram-3-fill" label="Java CQRS Design Pattern" />
             <SidebarButton to="/javaquestions" icon="bi-calendar-check" label="Java Questions" />
             </>
           )}
 
-          {role === "Interners" && activeMenu === "Node" && (
+          {activeMenu === "Node" && (
             <>
             <SidebarButton to="/nodeprojectsetup" icon="bi-calendar-check" label="Node Project Setup" />
             <SidebarButton to="/nodelanguages" icon="bi-ui-checks-grid" label="Node Language" />
             <SidebarButton to="/nodecountry" icon="bi-ui-checks-grid" label="Node Country" />
             <SidebarButton to="/nodestate" icon="bi-caret-down-square" label="Node State" />
             <SidebarButton to="/nodedistrict" icon="bi-diagram-3" label="Node District" />
-            <SidebarButton to="/noderadiobutton" icon="bi-record-circle" label="Node Radio Button" />
-            <SidebarButton to="/nodecheckbox" icon="bi-check-square" label="Node Checkbox" />
-            <SidebarButton to="/nodemultiselectdropdown" icon="bi-check2-square" label="Node Multi Select Dropdown" />
             <SidebarButton to="/nodeimageupload" icon="bi-file-image" label="Node Image Upload" />
+            <SidebarButton to="/noderadiobutton" icon="bi-record-circle" label="Node Radio Button" />
             <SidebarButton to="/nodesearching" icon="bi-search" label="Node Searching" />
             <SidebarButton to="/nodepagination" icon="bi-list-nested" label="Node Pagination" />
+            <SidebarButton to="/nodeexportcsv" icon="bi-list-nested" label="Node Export CSV" />
+            <SidebarButton to="/nodecheckbox" icon="bi-check-square" label="Node Checkbox" />
+            <SidebarButton to="/nodemultiselectdropdown" icon="bi-check2-square" label="Node Multi Select Dropdown" />
             <SidebarButton to="/nodejwtauth" icon="bi-shield-lock" label="Node JWT Auth" />
             <SidebarButton to="/nodegoogleauth" icon="bi-google" label="Node Google Auth" />
             <SidebarButton to="/nodefacebookauth" icon="bi-facebook" label="Node Facebook Auth" />
@@ -131,7 +151,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "Interners" && activeMenu === "DSA" && (
+          {activeMenu === "DSA" && (
             <>
               <SidebarButton to="/array" icon="bi-bricks" label="Array" />
               <SidebarButton to="/arraylist" icon="bi-card-list" label="ArrayList" />
@@ -148,7 +168,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "Interners" && activeMenu === "SQL" && (
+          {activeMenu === "SQL" && (
             <>
               <SidebarButton to="/sqlcrud" icon="bi-pencil-square" label="SQL CRUD" />
               <SidebarButton to="/sqljoins" icon="bi-pencil-square" label="SQL Joins" />
@@ -165,7 +185,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "Interners" && activeMenu === "AWS" && (
+          {activeMenu === "AWS" && (
             <>
               <SidebarButton to="/awsaccountsetup" icon="bi-person-gear" label="AWS Account Setup" />
               <SidebarButton to="/awsiam" icon="bi-person-lock" label="AWS IAM" />
@@ -179,7 +199,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "Interners" && activeMenu === "Azure" && (
+          {activeMenu === "Azure" && (
             <>
               <SidebarButton to="/azureaccountsetup" icon="bi-person-gear" label="Azure Account Setup" />
               <SidebarButton to="/azureblobstorage" icon="bi-bucket" label="Azure Blob Storage" />
@@ -195,7 +215,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "Interners" && activeMenu === "DevOps" && (
+          {activeMenu === "DevOps" && (
             <>
             <SidebarButton to="/amplify" icon="bi-gear-fill" label="Amplify" />
             <SidebarButton to="/jenkins" icon="bi-gear-fill" label="Jenkins Setup" />
@@ -213,17 +233,17 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "Interners" && activeMenu === "React" && (
+          {activeMenu === "React" && (
             <>
             <SidebarButton to="/reactprojectsetup" icon="bi-calendar-check" label="React Project Setup" />
             <SidebarButton to="/reactlanguages" icon="bi-ui-checks-grid" label="React Language" />
             <SidebarButton to="/reactcountry" icon="bi-ui-checks-grid" label="React Country" />
             <SidebarButton to="/reactstate" icon="bi-caret-down-square" label="React State" />
             <SidebarButton to="/reactdistrict" icon="bi-diagram-3" label="React District" />
+            <SidebarButton to="/reactimageupload" icon="bi-file-image" label="React Image Upload" />
             <SidebarButton to="/reactradiobutton" icon="bi-record-circle" label="React Radio Button" />
             <SidebarButton to="/reactcheckbox" icon="bi-check-square" label="React Checkbox" />
             <SidebarButton to="/reactmultiselectdropdown" icon="bi-check2-square" label="React Multi Select Dropdown" />
-            <SidebarButton to="/reactimageupload" icon="bi-file-image" label="React Image Upload" />
             <SidebarButton to="/reactsearching" icon="bi-search" label="React Searching" />
             <SidebarButton to="/reactpagination" icon="bi-list-nested" label="React Pagination" />
             <SidebarButton to="/reactjwtauth" icon="bi-shield-lock" label="React JWT Auth" />
@@ -235,7 +255,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "Interners" && activeMenu === "Next" && (
+          {activeMenu === "Next" && (
             <>
             <SidebarButton to="/nextprojectsetup" icon="bi-calendar-check" label="Next Project Setup" />
             <SidebarButton to="/nextlanguages" icon="bi-ui-checks-grid" label="Next Language" />
@@ -282,7 +302,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "SMS Admin" && (
+          {role === "Smart House Admin" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -332,7 +352,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "SMS Owner" && (
+          {role === "Smart House Owner" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -347,7 +367,22 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "JPS Admin" && (
+          {role === "Smart House Tenant" && (
+            <>
+              <li className="nav-item">
+                <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
+                  <i className="bi bi-speedometer2 me-2"></i> Search Villa
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/smsownercomplain" className={`nav-link d-flex align-items-center ${location.pathname === "/smsownercomplain" ? "active" : "text-light"}`}>
+                  <i className="bi bi-buildings me-2"></i> Message
+                </Link>
+              </li>
+            </>
+          )}
+
+          {role === "Smart Jobs Admin" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -372,7 +407,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}          
 
-          {role === "JPS Employer" && (
+          {role === "Smart Jobs Company" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -402,7 +437,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "JPS Employee" && (
+          {role === "Smart Jobs Seeker" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -422,7 +457,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "EPS Admin" && (
+          {role === "Employee Payroll Admin" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -467,7 +502,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "EPS Employee" && (
+          {role === "Employee Payroll Employee" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -492,7 +527,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "APS Admin" && (
+          {role === "Attendance Portal Admin" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -542,7 +577,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "APS Staff" && (
+          {role === "Attendance Portal Staff" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -592,7 +627,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "APS Student" && (
+          {role === "Attendance Portal Student" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -617,7 +652,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "ECS Admin" && (
+          {role === "ECommerce Admin" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -662,7 +697,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "ECS Buyer" && (
+          {role === "ECommerce Buyer" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -687,7 +722,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "DLS Admin" && (
+          {role === "Digital Library Admin" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -747,7 +782,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "DLS Student" && (
+          {role === "Digital Library Student" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
@@ -767,105 +802,36 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {role === "MS Admin" && (
-            <>
-              <li className="nav-item">
-                <Link to="/newaccount" className={`nav-link d-flex align-items-center ${location.pathname === "/newaccount" ? "active" : "text-light"}`}>
-                  <i className="bi bi-speedometer2 me-2"></i> New Account
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/activeaccount" className={`nav-link d-flex align-items-center ${location.pathname === "/activeaccount" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Active Account
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/deactiveaccount" className={`nav-link d-flex align-items-center ${location.pathname === "/deactiveaccount" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Deactive Account
-                </Link>
-              </li>              
-            </>
-          )}
-
-          {role === "MS Member" && (
+          {role === "Smart Caregiver Admin" && (
             <>
               <li className="nav-item">
                 <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
                   <i className="bi bi-speedometer2 me-2"></i> Dashboard
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/message" className={`nav-link d-flex align-items-center ${location.pathname === "/message" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Message
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/profilealert" className={`nav-link d-flex align-items-center ${location.pathname === "/profilealert" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Profile Alert
-                </Link>
-              </li>              
             </>
           )}
 
-          {role === "HMS Admin" && (
+          {role === "Smart Caregiver Staff" && (
             <>
               <li className="nav-item">
-                <Link to="/room" className={`nav-link d-flex align-items-center ${location.pathname === "/room" ? "active" : "text-light"}`}>
-                  <i className="bi bi-speedometer2 me-2"></i> Add Room
+                <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
+                  <i className="bi bi-speedometer2 me-2"></i> Dashboard
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/doctor" className={`nav-link d-flex align-items-center ${location.pathname === "/doctor" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Add Doctor
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/patient" className={`nav-link d-flex align-items-center ${location.pathname === "/patient" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Add Patient
-                </Link>
-              </li>              
-              <li className="nav-item">
-                <Link to="/bill" className={`nav-link d-flex align-items-center ${location.pathname === "/bill" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Bill
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/payment" className={`nav-link d-flex align-items-center ${location.pathname === "/payment" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Payment
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/reports" className={`nav-link d-flex align-items-center ${location.pathname === "/reports" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Reports
-                </Link>
-              </li>              
             </>
           )}
 
-          {role === "MSS Admin" && (
+          {role === "Smart Caregiver Patient" && (
             <>
               <li className="nav-item">
-                <Link to="/stock" className={`nav-link d-flex align-items-center ${location.pathname === "/stock" ? "active" : "text-light"}`}>
-                  <i className="bi bi-speedometer2 me-2"></i> Add Stock
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/company" className={`nav-link d-flex align-items-center ${location.pathname === "/company" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Add Company
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/client" className={`nav-link d-flex align-items-center ${location.pathname === "/client" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Add Client
-                </Link>
-              </li>              
-              <li className="nav-item">
-                <Link to="/sell" className={`nav-link d-flex align-items-center ${location.pathname === "/sell" ? "active" : "text-light"}`}>
-                  <i className="bi bi-house-door-fill me-2"></i> Sell
+                <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
+                  <i className="bi bi-speedometer2 me-2"></i> Dashboard
                 </Link>
               </li>
             </>
           )}
+
         </ul>
       </div>
     </div>

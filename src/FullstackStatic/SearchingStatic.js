@@ -1,17 +1,38 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
+import { useState } from "react";
 
-function Searching() {
-  const [students, setStudents] = useState([]);
-  const [countries, setCountries] = useState([]);
-  const [states, setStates] = useState([]);
-  const [districts, setDistricts] = useState([]);
+function SearchingStatic() {
+  // Static data
+  const countries = [
+    { id: 1, name: "India" },
+    { id: 2, name: "USA" },
+    { id: 3, name: "UK" },
+  ];
+  const states = [
+    { id: 1, name: "Maharashtra" },
+    { id: 2, name: "California" },
+    { id: 3, name: "London" },
+  ];
+  const districts = [
+    { id: 1, name: "Pune" },
+    { id: 2, name: "Los Angeles" },
+    { id: 3, name: "Westminster" },
+  ];
+  const genders = [
+    { id: 1, name: "Male" },
+    { id: 2, name: "Female" },
+    { id: 3, name: "Other" },
+  ];
+
+  // Dummy student list
+  const [students, setStudents] = useState([
+    { id: 1, name: "Aarav", email: "aarav@mail.com", mobile: "9999999999", countryId: 1, stateId: 1, districtId: 1, genderId: 1 },
+    { id: 2, name: "Sophia", email: "sophia@mail.com", mobile: "8888888888", countryId: 2, stateId: 2, districtId: 2, genderId: 2 },
+  ]);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [showForm, setShowForm] = useState(false);
 
-  const genders = [{ id: 1, name: "Male" }, { id: 2, name: "Female" }, { id: 3, name: "Other" }];
-
+  // Form state
   const [id, setId] = useState(0);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,35 +42,7 @@ function Searching() {
   const [districtId, setDistrictId] = useState("");
   const [genderId, setGenderId] = useState(0);
 
-  const baseUrl = process.env.REACT_APP_BASE_URL;
-
-  useEffect(() => {
-    loadStudents();
-    loadCountries();
-    loadStates();
-    loadDistricts();
-  }, []);
-
-  const loadStudents = async () => {
-    const res = await axios.get(`${baseUrl}/students`);
-    setStudents(res.data);
-  };
-
-  const loadCountries = async () => {
-    const res = await axios.get(`${baseUrl}/countries`);
-    setCountries(res.data);
-  };
-
-  const loadStates = async () => {
-    const res = await axios.get(`${baseUrl}/states`);
-    setStates(res.data);
-  };
-
-  const loadDistricts = async () => {
-    const res = await axios.get(`${baseUrl}/districts`);
-    setDistricts(res.data);
-  };
-
+  // Reset form
   const resetForm = () => {
     setId(0);
     setName("");
@@ -62,31 +55,31 @@ function Searching() {
     setShowForm(false);
   };
 
-  const handleSubmit = async (e) => {
+  // Save / Update student
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = {
-      id,
+    const newStudent = {
+      id: id || Date.now(),
       name,
       email,
       mobile,
-      countryId: countryId ? Number(countryId) : null,
-      stateId: stateId ? Number(stateId) : null,
-      districtId: districtId ? Number(districtId) : null,
-      genderId: genderId ? Number(genderId) : null,
+      countryId: Number(countryId),
+      stateId: Number(stateId),
+      districtId: Number(districtId),
+      genderId,
     };
 
-    if (id && id > 0) {
-      await axios.put(`${baseUrl}/students`, payload);
-      Swal.fire("Updated!", "Student record has been updated.", "success");
+    if (id) {
+      setStudents(students.map((s) => (s.id === id ? newStudent : s)));
+      alert("Student updated successfully!");
     } else {
-      await axios.post(`${baseUrl}/students`, payload);
-      Swal.fire("Added!", "New student has been added.", "success");
+      setStudents([...students, newStudent]);
+      alert("New student added!");
     }
-
     resetForm();
-    loadStudents();
   };
 
+  // Edit
   const handleEdit = (std) => {
     setId(std.id);
     setName(std.name || "");
@@ -99,44 +92,38 @@ function Searching() {
     setShowForm(true);
   };
 
+  // Delete
   const handleDelete = (studentId) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "Cancel",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        await axios.delete(`${baseUrl}/students/${studentId}`);
-        loadStudents();
-        Swal.fire("Deleted!", "Student has been deleted.", "success");
-      }
-    });
-  };
-
-  const handleSearch = async (e) => {
-    e.preventDefault();
-
-    if (!searchTerm.trim()) {
-      loadStudents();
-      return;
+    if (window.confirm("Are you sure you want to delete this student?")) {
+      setStudents(students.filter((s) => s.id !== studentId));
     }
-
-    const res = await axios.get(`${baseUrl}/students/search?query=${searchTerm}`);
-    setStudents(res.data);
   };
+
+  // Search
+  const filteredStudents = students.filter((s) => {
+    const query = searchTerm.toLowerCase();
+    return (
+      s.name.toLowerCase().includes(query) ||
+      s.email.toLowerCase().includes(query) ||
+      countries.find((c) => c.id === s.countryId)?.name.toLowerCase().includes(query) ||
+      states.find((st) => st.id === s.stateId)?.name.toLowerCase().includes(query) ||
+      districts.find((d) => d.id === s.districtId)?.name.toLowerCase().includes(query) ||
+      genders.find((g) => g.id === s.genderId)?.name.toLowerCase().includes(query)
+    );
+  });
 
   return (
     <div className="container my-4">
       <h2 className="mb-4 text-primary">Student Management</h2>
       <button className="btn btn-success mb-3" onClick={() => setShowForm(true)}>+ Add Student</button>
-      <form onSubmit={handleSearch} className="mb-3 d-flex">
-        <input type="text" className="form-control me-2" placeholder="Search by name, email, country, state, district, or gender" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+
+      {/* Search box */}
+      <form onSubmit={(e) => e.preventDefault()} className="mb-3 d-flex">
+        <input type="text" className="form-control me-2" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         <button className="btn btn-primary" type="submit">Search</button>
       </form>
 
+      {/* Modal Form */}
       {showForm && (
         <div className="modal d-block" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
           <div className="modal-dialog modal-lg modal-dialog-centered">
@@ -148,15 +135,9 @@ function Searching() {
               <div className="modal-body">
                 <form onSubmit={handleSubmit}>
                   <div className="row mb-2">
-                    <div className="col">
-                      <input type="text" className="form-control" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-                    </div>
-                    <div className="col">
-                      <input type="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    <div className="col">
-                      <input type="text" className="form-control" placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
-                    </div>
+                    <div className="col"><input type="text" className="form-control" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required /></div>
+                    <div className="col"><input type="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} /></div>
+                    <div className="col"><input type="text" className="form-control" placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} /></div>
                   </div>
 
                   <div className="row mb-2">
@@ -214,7 +195,7 @@ function Searching() {
           </tr>
         </thead>
         <tbody>
-          {students.map((std) => (
+          {filteredStudents.map((std) => (
             <tr key={std.id}>
               <td>{std.name}</td>
               <td>{std.email}</td>
@@ -228,7 +209,7 @@ function Searching() {
               </td>
             </tr>
           ))}
-          {students.length === 0 && (
+          {filteredStudents.length === 0 && (
             <tr>
               <td colSpan="7" className="text-center text-muted">No matching records found</td>
             </tr>
@@ -239,4 +220,4 @@ function Searching() {
   );
 }
 
-export default Searching;
+export default SearchingStatic;

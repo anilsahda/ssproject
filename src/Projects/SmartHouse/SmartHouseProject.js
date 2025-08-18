@@ -1,6 +1,4 @@
-import React from 'react';
-
-function SocietyManagement() {
+function SmartHouseProject() {
   return (
     <div>
       <h1>Smart Society E-Housing</h1>
@@ -121,4 +119,4 @@ function SocietyManagement() {
   );
 }
 
-export default SocietyManagement;
+export default SmartHouseProject;

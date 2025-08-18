@@ -9,17 +9,11 @@ function MultiselectDropdown() {
   const [states, setStates] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [languages, setLanguages] = useState([]);
-  const genders = [
-    { id: 1, name: "Male" },
-    { id: 2, name: "Female" },
-    { id: 3, name: "Other" }
-  ];
+
+  const genders = [ { id: 1, name: "Male" }, { id: 2, name: "Female" }, { id: 3, name: "Other" }];
 
   const [id, setId] = useState(null);
-  const [firstName, setFirstName] = useState("");
-  const [middleName, setMiddleName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [address, setAddress] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [countryId, setCountryId] = useState("");
@@ -30,7 +24,6 @@ function MultiselectDropdown() {
 
   const baseUrl = `${process.env.REACT_APP_BASE_URL}/Employees`;
 
-  // Load initial data
   useEffect(() => {
     loadEmployees();
     axios.get(`${process.env.REACT_APP_BASE_URL}/Countries`).then(res => setCountries(res.data));
@@ -45,10 +38,7 @@ function MultiselectDropdown() {
 
   const resetForm = () => {
     setId(null);
-    setFirstName("");
-    setMiddleName("");
-    setLastName("");
-    setAddress("");
+    setName("");
     setEmail("");
     setMobile("");
     setCountryId("");
@@ -62,10 +52,7 @@ function MultiselectDropdown() {
     e.preventDefault();
 
     const payload = {
-      firstName,
-      middleName,
-      lastName,
-      address,
+      name,
       email,
       mobile,
       countryId: countryId ? Number(countryId) : null,
@@ -75,28 +62,21 @@ function MultiselectDropdown() {
       languages: selectedLanguages.map(lang => lang.value)
     };
 
-    try {
-      if (id !== null) {
-        await axios.put(baseUrl, { ...payload, id });
-        Swal.fire("Updated!", "Employee updated successfully.", "success");
-      } else {
-        await axios.post(baseUrl, payload);
-        Swal.fire("Added!", "Employee added successfully.", "success");
-      }
-      resetForm();
-      loadEmployees();
-    } catch (error) {
-      Swal.fire("Error", "Something went wrong while saving.", "error");
-      console.error(error.response?.data || error.message);
+    if (id !== null) {
+      await axios.put(baseUrl, { ...payload, id });
+      Swal.fire("Updated!", "Employee updated successfully.", "success");
+    } else {
+      await axios.post(baseUrl, payload);
+      Swal.fire("Added!", "Employee added successfully.", "success");
     }
+
+    resetForm();
+    loadEmployees();
   };
 
   const handleEdit = (emp) => {
     setId(emp.id);
-    setFirstName(emp.firstName);
-    setMiddleName(emp.middleName || "");
-    setLastName(emp.lastName);
-    setAddress(emp.address || "");
+    setName(emp.name);
     setEmail(emp.email || "");
     setMobile(emp.mobile || "");
     setCountryId(emp.countryId || "");
@@ -113,24 +93,11 @@ function MultiselectDropdown() {
   };
 
   const handleDelete = async (empId) => {
-    const result = await Swal.fire({
-      title: "Are you sure?",
-      text: "This action cannot be undone!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!"
-    });
-
+    const result = await Swal.fire({ title: "Are you sure?", text: "This action cannot be undone!", icon: "warning", showCancelButton: true, confirmButtonColor: "#d33", cancelButtonColor: "#3085d6", confirmButtonText: "Yes, delete it!" });
     if (result.isConfirmed) {
-      try {
-        await axios.delete(`${baseUrl}/${empId}`);
-        loadEmployees();
-        Swal.fire("Deleted!", "Employee has been deleted successfully.", "success");
-      } catch (err) {
-        Swal.fire("Error", "Failed to delete employee.", "error");
-      }
+      await axios.delete(`${baseUrl}/${empId}`);
+      loadEmployees();
+      Swal.fire("Deleted!", "Employee has been deleted successfully.", "success");
     }
   };
 
@@ -148,55 +115,33 @@ function MultiselectDropdown() {
 
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="row g-3">
-          {/* Name Fields */}
           <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} required />
+            <input type="text" className="form-control" placeholder="First Name" value={name} onChange={e => setName(e.target.value)} required />
           </div>
-          <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Middle Name" value={middleName} onChange={e => setMiddleName(e.target.value)} />
-          </div>
-          <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} required />
-          </div>
-
-          {/* Address */}
-          <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Address" value={address} onChange={e => setAddress(e.target.value)} />
-          </div>
-
-          {/* Email & Mobile */}
           <div className="col-md-4">
             <input type="email" className="form-control" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
           </div>
           <div className="col-md-4">
             <input type="text" className="form-control" placeholder="Mobile" value={mobile} onChange={e => setMobile(e.target.value)} />
           </div>
-
-          {/* Country */}
           <div className="col-md-4">
             <select className="form-select" value={countryId} onChange={e => setCountryId(e.target.value)}>
               <option value="">Select Country</option>
               {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
             </select>
           </div>
-
-          {/* State */}
           <div className="col-md-4">
             <select className="form-select" value={stateId} onChange={e => setStateId(e.target.value)}>
               <option value="">Select State</option>
               {states.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
             </select>
           </div>
-
-          {/* District */}
           <div className="col-md-4">
             <select className="form-select" value={districtId} onChange={e => setDistrictId(e.target.value)}>
               <option value="">Select District</option>
               {districts.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
             </select>
           </div>
-
-          {/* Gender */}
           <div className="col-md-4">
             <label className="form-label">Gender</label>
             <div>
@@ -207,11 +152,9 @@ function MultiselectDropdown() {
               ))}
             </div>
           </div>
-
-          {/* Languages */}
           <div className="col-md-4">
             <label className="form-label">Languages</label>
-            <Select
+            <Select 
               options={languages.map(lang => ({ value: lang.id, label: lang.name }))}
               isMulti
               closeMenuOnSelect={false}
@@ -223,23 +166,15 @@ function MultiselectDropdown() {
             />
           </div>
         </div>
-
-        <button type="submit" className="btn btn-primary mt-3">
-          {id !== null ? "Update Employee" : "Add Employee"}
-        </button>
-        {id !== null && (
-          <button type="button" className="btn btn-secondary mt-3 ms-2" onClick={resetForm}>
-            Cancel
-          </button>
-        )}
+        <button type="submit" className="btn btn-primary mt-3">Save Employee</button>
       </form>
 
-      {/* Employee Table */}
       <table className="table table-bordered table-striped">
         <thead>
           <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Mobile</th>
             <th>Country</th>
             <th>State</th>
             <th>District</th>
@@ -253,14 +188,13 @@ function MultiselectDropdown() {
             <tr key={emp.id}>
               <td>{`${emp.firstName} ${emp.middleName || ""} ${emp.lastName}`}</td>
               <td>{emp.email}</td>
+              <td>{emp.mobile}</td>
               <td>{countries.find(c => c.id === emp.countryId)?.name}</td>
               <td>{states.find(s => s.id === emp.stateId)?.name}</td>
               <td>{districts.find(d => d.id === emp.districtId)?.name}</td>
               <td>{genders.find(g => g.id === emp.genderId)?.name}</td>
               <td>{(emp.languages || []).map(l => languages.find(lang => lang.id === l.languageId)?.name).filter(Boolean).join(", ")}</td>
-              <td>
-                <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(emp)}>Edit</button>
-                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(emp.id)}>Delete</button>
+              <td><button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(emp)}>Edit</button><button className="btn btn-danger btn-sm" onClick={() => handleDelete(emp.id)}>Delete</button>
               </td>
             </tr>
           ))}

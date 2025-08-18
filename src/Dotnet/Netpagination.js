@@ -3,15 +3,14 @@ function Netpagination() {
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">Pagination in .NET Core API with React</h1>
+        <h1 className="text-xl font-bold text-indigo-700">Pagination in .NET Core API</h1>
         <p className="text-gray-500 text-xs mt-1">Guide to implement pagination for any entity like Student and Employee using a .NET Core API and React.</p>
       </header>
 
       {/* Step 1: Backend - API Controller */}
       <Section title="Backend - API Controller" color="text-indigo-600">
         <CodeBlock>
-{`// Paginated Students API
-[Route("api/[controller]")]
+{`[Route("api/[controller]")]
 [ApiController]
 public class StudentsController : ControllerBase
 {
@@ -93,18 +92,18 @@ function StudentPagination() {
         <thead>
           <tr className="bg-gray-100">
             <th className="border px-2 py-1">Id</th>
-            <th className="border px-2 py-1">First Name</th>
-            <th className="border px-2 py-1">Last Name</th>
+            <th className="border px-2 py-1">Name</th>
             <th className="border px-2 py-1">Email</th>
+            <th className="border px-2 py-1">Mobile</th>
           </tr>
         </thead>
         <tbody>
           {students.map((student) => (
             <tr key={student.id}>
               <td className="border px-2 py-1">{student.id}</td>
-              <td className="border px-2 py-1">{student.firstName}</td>
-              <td className="border px-2 py-1">{student.lastName}</td>
+              <td className="border px-2 py-1">{student.name}</td>
               <td className="border px-2 py-1">{student.email}</td>
+              <td className="border px-2 py-1">{student.mobile}</td>
             </tr>
           ))}
         </tbody>

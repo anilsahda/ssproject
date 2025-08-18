@@ -149,7 +149,7 @@ const loadCountries = () => {
   <h2>Manage Countries</h2>
 
   <div className="mb-3">
-    <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} />
+    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
   </div>
 
   <div className="mb-4">
@@ -171,8 +171,8 @@ const loadCountries = () => {
           <td>{c.id}</td>
           <td>{c.name}</td>
           <td>
-            <button className="btn btn-warning" onClick={() => handleEdit(c)}>Edit</button>
-            <button className="btn btn-danger" onClick={() => handleDelete(c.id)}>Delete</button>
+              <button onClick={() => handleEdit(c)}>Edit</button>
+              <button onClick={() => handleDelete(c.id)}>Delete</button>
           </td>
         </tr>
       ))}

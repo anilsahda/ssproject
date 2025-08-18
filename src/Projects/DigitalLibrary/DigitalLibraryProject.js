@@ -1,6 +1,4 @@
-import React from 'react';
-
-function DigitalLibrary() {
+function DigitalLibraryProject() {
   return (
     <div style={{ padding: '20px', lineHeight: '1.6' }}>
       <h1>Digital Library Management System</h1>
@@ -103,4 +101,4 @@ function DigitalLibrary() {
   );
 }
 
-export default DigitalLibrary;
+export default DigitalLibraryProject;

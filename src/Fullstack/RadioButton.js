@@ -10,11 +10,8 @@ function RadioButton() {
 
   const genders = [{ id: 1, name: "Male" }, { id: 2, name: "Female" },{ id: 3, name: "Other" }];
 
-  const [id, setId] = useState(0); // store numeric ID
-  const [firstName, setFirstName] = useState("");
-  const [middleName, setMiddleName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [address, setAddress] = useState("");
+  const [id, setId] = useState(0);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [countryId, setCountryId] = useState("");
@@ -32,47 +29,28 @@ function RadioButton() {
   }, []);
 
   const loadStudents = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/students`);
-      setStudents(res.data);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await axios.get(`${baseUrl}/students`);
+    setStudents(res.data);
   };
 
   const loadCountries = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/countries`);
-      setCountries(res.data);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await axios.get(`${baseUrl}/countries`);
+    setCountries(res.data);
   };
 
   const loadStates = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/states`);
-      setStates(res.data);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await axios.get(`${baseUrl}/states`);
+    setStates(res.data);
   };
 
   const loadDistricts = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/districts`);
-      setDistricts(res.data);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await axios.get(`${baseUrl}/districts`);
+    setDistricts(res.data);
   };
 
   const resetForm = () => {
     setId(0);
-    setFirstName("");
-    setMiddleName("");
-    setLastName("");
-    setAddress("");
+    setName("");
     setEmail("");
     setMobile("");
     setCountryId("");
@@ -86,10 +64,7 @@ function RadioButton() {
 
     const payload = {
       id,
-      firstName,
-      middleName,
-      lastName,
-      address,
+      name,
       email,
       mobile,
       countryId: countryId ? Number(countryId) : null,
@@ -98,31 +73,21 @@ function RadioButton() {
       genderId: genderId ? Number(genderId) : null
     };
 
-    try {
-      if (id && id > 0) {
-        // Update existing student
-        await axios.put(`${baseUrl}/students`, payload);
-        Swal.fire("Updated!", "Student record has been updated.", "success");
-      } else {
-        // Add new student
-        await axios.post(`${baseUrl}/students`, payload);
-        Swal.fire("Added!", "New student has been added.", "success");
-      }
-
-      resetForm();
-      loadStudents();
-    } catch (err) {
-      console.error(err);
-      Swal.fire("Error", "Something went wrong!", "error");
+    if (id && id > 0) {
+      await axios.put(`${baseUrl}/students`, payload);
+      Swal.fire("Updated!", "Student record has been updated.", "success");
+    } else {
+      await axios.post(`${baseUrl}/students`, payload);
+      Swal.fire("Added!", "New student has been added.", "success");
     }
+
+    resetForm();
+    loadStudents();
   };
 
   const handleEdit = (std) => {
     setId(std.id);
-    setFirstName(std.firstName);
-    setMiddleName(std.middleName);
-    setLastName(std.lastName);
-    setAddress(std.address);
+    setName(std.name);
     setEmail(std.email);
     setMobile(std.mobile);
     setCountryId(std.countryId);
@@ -141,14 +106,9 @@ function RadioButton() {
       cancelButtonText: "Cancel"
     }).then(async (result) => {
       if (result.isConfirmed) {
-        try {
-          await axios.delete(`${baseUrl}/students/${studentId}`);
-          loadStudents();
-          Swal.fire("Deleted!", "Student has been deleted.", "success");
-        } catch (err) {
-          console.error(err);
-          Swal.fire("Error", "Delete failed!", "error");
-        }
+        await axios.delete(`${baseUrl}/students/${studentId}`);
+        loadStudents();
+        Swal.fire("Deleted!", "Student has been deleted.", "success");
       }
     });
   };
@@ -160,36 +120,16 @@ function RadioButton() {
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="row g-3">
           <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="First Name"
-              value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+            <input type="text" className="form-control" placeholder="First Name" value={name} onChange={(e) => setName(e.target.value)} required />
           </div>
           <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Middle Name"
-              value={middleName} onChange={(e) => setMiddleName(e.target.value)} />
+            <input type="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Last Name"
-              value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+            <input type="text" className="form-control" placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
           </div>
-
           <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Address"
-              value={address} onChange={(e) => setAddress(e.target.value)} />
-          </div>
-
-          <div className="col-md-4">
-            <input type="email" className="form-control" placeholder="Email"
-              value={email} onChange={(e) => setEmail(e.target.value)} />
-          </div>
-
-          <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Mobile"
-              value={mobile} onChange={(e) => setMobile(e.target.value)} />
-          </div>
-
-          <div className="col-md-4">
-            <select className="form-select" value={countryId}
-              onChange={(e) => setCountryId(e.target.value)}>
+            <select className="form-select" value={countryId} onChange={(e) => setCountryId(e.target.value)}>
               <option value="">Select Country</option>
               {countries.map((c) => (
                 <option key={c.id} value={c.id}>{c.name}</option>
@@ -198,22 +138,16 @@ function RadioButton() {
           </div>
 
           <div className="col-md-4">
-            <select className="form-select" value={stateId}
-              onChange={(e) => setStateId(e.target.value)}>
+            <select className="form-select" value={stateId} onChange={(e) => setStateId(e.target.value)}>
               <option value="">Select State</option>
-              {states.map((s) => (
-                <option key={s.id} value={s.id}>{s.name}</option>
-              ))}
+              {states.map((s) => (<option key={s.id} value={s.id}>{s.name}</option>))}
             </select>
           </div>
 
           <div className="col-md-4">
-            <select className="form-select" value={districtId}
-              onChange={(e) => setDistrictId(e.target.value)}>
+            <select className="form-select" value={districtId} onChange={(e) => setDistrictId(e.target.value)}>
               <option value="">Select District</option>
-              {districts.map((d) => (
-                <option key={d.id} value={d.id}>{d.name}</option>
-              ))}
+              {districts.map((d) => (<option key={d.id} value={d.id}>{d.name}</option>))}
             </select>
           </div>
 
@@ -222,24 +156,14 @@ function RadioButton() {
             <div>
               {genders.map((g) => (
                 <label key={g.id} className="me-3">
-                  <input type="radio" name="gender" value={g.id}
-                    checked={genderId === g.id}
-                    onChange={(e) => setGenderId(Number(e.target.value))} /> {g.name}
+                  <input type="radio" name="gender" value={g.id} checked={genderId === g.id} onChange={(e) => setGenderId(Number(e.target.value))} /> {g.name}
                 </label>
               ))}
             </div>
           </div>
         </div>
 
-        <button type="submit" className="btn btn-primary mt-3">
-          {id > 0 ? "Update Student" : "Add Student"}
-        </button>
-        {id > 0 && (
-          <button type="button" className="btn btn-secondary mt-3 ms-2"
-            onClick={resetForm}>
-            Cancel
-          </button>
-        )}
+        <button type="submit" className="btn btn-primary mt-3">Save Student</button>
       </form>
 
       <table className="table table-bordered table-striped">
@@ -247,6 +171,7 @@ function RadioButton() {
           <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Mobile</th>
             <th>Country</th>
             <th>State</th>
             <th>District</th>
@@ -257,8 +182,9 @@ function RadioButton() {
         <tbody>
           {students.map((std) => (
             <tr key={std.id}>
-              <td>{`${std.firstName} ${std.middleName || ""} ${std.lastName}`}</td>
+              <td>{std.name}</td>
               <td>{std.email}</td>
+              <td>{std.mobile}</td>
               <td>{countries.find((c) => c.id === std.countryId)?.name}</td>
               <td>{states.find((s) => s.id === std.stateId)?.name}</td>
               <td>{districts.find((d) => d.id === std.districtId)?.name}</td>

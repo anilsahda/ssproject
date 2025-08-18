@@ -47,13 +47,12 @@ const navigate = useNavigate();`}</pre>
           </div>
           <pre style={preStyle}>{`const handleLoginSubmit = async (e) => {
   e.preventDefault();
-  const response = await axios.post(\`\${process.env.REACT_APP_BASE_URL}/Auth/login\`, { email, password });
+  const response = await axios.post(
+            \`\${process.env.REACT_APP_BASE_URL}/Auth/login\`,{email,password});
     localStorage.setItem("token", response.data.token);
     localStorage.setItem("role", response.data.role);
     localStorage.setItem("userName", response.data.userName);
-    localStorage.setItem("userImageUrl", response.data.userImageUrl || "https://i.pravatar.cc/40");
 
-    setShowLogin(false);
     setEmail('');
     setPassword('');
     navigate("/dashboard");
@@ -69,7 +68,6 @@ const navigate = useNavigate();`}</pre>
   localStorage.removeItem("token");
   localStorage.removeItem("role");
   localStorage.removeItem("userName");
-  localStorage.removeItem("userImageUrl");
   navigate("/");
 };`}</pre>
         </section>
@@ -79,26 +77,26 @@ const navigate = useNavigate();`}</pre>
   <div style={sectionHeaderStyle}>
     <FaBook /> Step 6: Login Modal
   </div>
-  <pre style={preStyle}>{`<div className="modal d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.7)' }} onClick={() => setShowLogin(false)}>
-    <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "400px" }} onClick={(e) => e.stopPropagation()}>
+  <pre style={preStyle}>{`<div className="modal d-block" tabIndex="-1" onClick={() => setShowLogin(false)}>
+    <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
       <div className="modal-content shadow rounded-3">
         <div className="modal-header bg-primary text-white">
           <h5 className="modal-title">Login</h5>
-          <button type="button" className="btn-close" onClick={() => setShowLogin(false)}></button>
+          <button className="btn-close" onClick={() => setShowLogin(false)}></button>
         </div>
         <div className="modal-body">
           <form onSubmit={handleLoginSubmit}>
             <div className="mb-3">
               <label className="form-label">Email</label>
-              <input type="text" className="form-control" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
+             <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} />
             </div>
             <div className="mb-3">
               <label className="form-label">Password</label>
-              <input type="password" className="form-control" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
+    <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
             </div>
             <div className="d-flex justify-content-center gap-2 mb-3">
-              <button type="button" className="btn btn-outline-danger btn-sm"><FaGoogle /></button>
-              <button type="button" className="btn btn-outline-primary btn-sm"><FaFacebookF /></button>
+              <button className="btn btn-outline-danger btn-sm"><FaGoogle /></button>
+              <button className="btn btn-outline-primary btn-sm"><FaFacebookF /></button>
             </div>
             <button type="submit" className="btn btn-primary w-100">Login</button>
           </form>

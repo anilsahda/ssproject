@@ -1,16 +1,10 @@
 function Netcqrsdesignpattern() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-
-      {/* Header */}
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">CQRS Design Pattern in .NET Core</h1>
-        <p className="text-gray-500 text-xs mt-1">
-          Full CRUD example using CQRS (Command Query Responsibility Segregation) in .NET Core with MediatR, services, and repositories.
-        </p>
+        <p className="text-gray-500 text-xs mt-1">Full CRUD example using CQRS (Command Query Responsibility Segregation) in .NET Core with MediatR, services, and repositories.</p>
       </header>
-
-      {/* Step 1: Folder Structure */}
       <Section title="Project Folder Structure" color="text-yellow-600">
         <CodeBlock>
 {`Domain/
@@ -51,11 +45,9 @@ API/
         </CodeBlock>
       </Section>
 
-      {/* Step 2: Domain Layer */}
       <Section title="Domain Layer Example" color="text-green-600">
         <CodeBlock>
-{`// Domain/Entities/Student.cs
-public class Student
+{`public class Student
 {
     public int Id { get; set; }
     public string FirstName { get; set; }
@@ -63,16 +55,13 @@ public class Student
     public Gender Gender { get; set; }
 }
 
-// Domain/Enums/Gender.cs
 public enum Gender { Male, Female, Other }`}
         </CodeBlock>
       </Section>
 
-      {/* Step 3: Application Layer */}
       <Section title="Application Layer (Interfaces, DTOs, Services)" color="text-purple-600">
         <CodeBlock>
-{`// Application/Interfaces/IStudentRepository.cs
-public interface IStudentRepository
+{`public interface IStudentRepository
 {
     Task<List<Student>> GetAllAsync();
     Task<Student> GetByIdAsync(int id);
@@ -81,7 +70,6 @@ public interface IStudentRepository
     Task DeleteAsync(int id);
 }
 
-// Application/DTOs/StudentDTO.cs
 public class StudentDTO
 {
     public string FirstName { get; set; }
@@ -89,7 +77,6 @@ public class StudentDTO
     public Gender Gender { get; set; }
 }
 
-// Application/Services/StudentService.cs
 public class StudentService
 {
     private readonly IStudentRepository _repository;
@@ -104,11 +91,9 @@ public class StudentService
         </CodeBlock>
       </Section>
 
-      {/* Step 4: Commands */}
       <Section title="Commands" color="text-red-600">
         <CodeBlock>
-{`// Application/Commands/CreateStudentCommand.cs
-using MediatR;
+{`using MediatR;
 public class CreateStudentCommand : IRequest<int>
 {
     public string FirstName { get; set; }
@@ -116,7 +101,6 @@ public class CreateStudentCommand : IRequest<int>
     public Gender Gender { get; set; }
 }
 
-// Application/Commands/UpdateStudentCommand.cs
 using MediatR;
 public class UpdateStudentCommand : IRequest
 {
@@ -126,7 +110,6 @@ public class UpdateStudentCommand : IRequest
     public Gender Gender { get; set; }
 }
 
-// Application/Commands/DeleteStudentCommand.cs
 using MediatR;
 public class DeleteStudentCommand : IRequest
 {
@@ -135,11 +118,9 @@ public class DeleteStudentCommand : IRequest
         </CodeBlock>
       </Section>
 
-      {/* Step 5: Command Handlers */}
       <Section title="Command Handlers" color="text-purple-600">
         <CodeBlock>
-{`// Application/Handlers/CreateStudentCommandHandler.cs
-public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommand, int>
+{`public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommand, int>
 {
     private readonly IStudentRepository _repository;
     public CreateStudentCommandHandler(IStudentRepository repository) { _repository = repository; }
@@ -152,7 +133,6 @@ public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommand,
     }
 }
 
-// Application/Handlers/UpdateStudentCommandHandler.cs
 public class UpdateStudentCommandHandler : IRequestHandler<UpdateStudentCommand>
 {
     private readonly IStudentRepository _repository;
@@ -172,7 +152,6 @@ public class UpdateStudentCommandHandler : IRequestHandler<UpdateStudentCommand>
     }
 }
 
-// Application/Handlers/DeleteStudentCommandHandler.cs
 public class DeleteStudentCommandHandler : IRequestHandler<DeleteStudentCommand>
 {
     private readonly IStudentRepository _repository;
@@ -187,15 +166,12 @@ public class DeleteStudentCommandHandler : IRequestHandler<DeleteStudentCommand>
         </CodeBlock>
       </Section>
 
-      {/* Step 6: Query & Handler */}
       <Section title="Query & Handler" color="text-blue-600">
         <CodeBlock>
-{`// Application/Queries/GetStudentsQuery.cs
-using MediatR;
+{`using MediatR;
 using System.Collections.Generic;
 public class GetStudentsQuery : IRequest<List<StudentDTO>> { }
 
-// Application/Handlers/GetStudentsQueryHandler.cs
 public class GetStudentsQueryHandler : IRequestHandler<GetStudentsQuery, List<StudentDTO>>
 {
     private readonly StudentService _service;
@@ -209,17 +185,14 @@ public class GetStudentsQueryHandler : IRequestHandler<GetStudentsQuery, List<St
         </CodeBlock>
       </Section>
 
-      {/* Step 7: Infrastructure Layer */}
       <Section title="Infrastructure Layer Example" color="text-green-600">
         <CodeBlock>
-{`// Infrastructure/Data/AppDbContext.cs
-public class AppDbContext : DbContext
+{`public class AppDbContext : DbContext
 {
     public DbSet<Student> Students { get; set; }
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 }
 
-// Infrastructure/Repositories/StudentRepository.cs
 public class StudentRepository : IStudentRepository
 {
     private readonly AppDbContext _context;
@@ -237,7 +210,6 @@ public class StudentRepository : IStudentRepository
         </CodeBlock>
       </Section>
 
-      {/* Step 8: API Layer */}
       <Section title="API Layer Example" color="text-purple-600">
         <CodeBlock>
 {`[ApiController]
@@ -282,7 +254,6 @@ app.Run();`}
         </CodeBlock>
       </Section>
 
-      {/* Step 9: Summary */}
       <Section title="Summary" color="text-green-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li>Full CRUD using CQRS: Create, Read, Update, Delete.</li>
@@ -297,7 +268,6 @@ app.Run();`}
   );
 }
 
-/* Reusable Section Component */
 function Section({ title, color, children }) {
   return (
     <section>
@@ -309,7 +279,6 @@ function Section({ title, color, children }) {
   );
 }
 
-/* Reusable Code Block Component */
 function CodeBlock({ children }) {
   return (
     <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">

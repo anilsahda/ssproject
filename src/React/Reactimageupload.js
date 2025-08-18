@@ -40,10 +40,10 @@ const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [mobile, setMobile] = useState("");
 const [image, setImage] = useState(null);
-const [existingImage, setExistingImage] = useState(null);
 const fileInputRef = useRef();
 
-const baseUrl = process.env.REACT_APP_BASE_URL;`}</pre>
+const baseUrl = process.env.REACT_APP_BASE_URL;
+const imageUrl = process.env.REACT_APP_IMAGE_UPLOAD_URL;`}</pre>
         </section>
 
         {/* Step 2: Load Customers */}
@@ -80,8 +80,8 @@ const loadCustomers = async () => {
   setEmail("");
   setMobile("");
   setImage(null);
-  setExistingImage(null);
-  if (fileInputRef.current) fileInputRef.current.value = null;
+  if (fileInputRef.current) 
+    fileInputRef.current.value = null;
 };`}</pre>
         </section>
 
@@ -101,14 +101,10 @@ const loadCustomers = async () => {
   if (image) formData.append("image", image);
 
   if (id && id > 0) {
-    await axios.put(\`\${baseUrl}/Customers/UpdateCustomer\`, formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    await axios.put(\`\${baseUrl}/Customers/UpdateCustomer\`,formData,{headers:{"Content-Type":"multipart/form-data"}});
     Swal.fire("Updated!", "Customer updated successfully.", "success");
   } else {
-    await axios.post(\`\${baseUrl}/Customers/AddCustomer\`, formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    await axios.post(\`\${baseUrl}/Customers/AddCustomer\`, formData, {headers:{"Content-Type":"multipart/form-data"}});
     Swal.fire("Added!", "Customer added successfully.", "success");
   }
 
@@ -128,8 +124,8 @@ const loadCustomers = async () => {
   setEmail(cus.email);
   setMobile(cus.mobile);
   setImage(null);
-  setExistingImage(cus.image);
-  if (fileInputRef.current) fileInputRef.current.value = null;
+  if (fileInputRef.current) 
+    fileInputRef.current.value = null;
 };`}</pre>
         </section>
 
@@ -162,20 +158,11 @@ const loadCustomers = async () => {
             <FaCode /> Step 8: Form JSX
           </div>
           <pre style={preStyle}>{`<form onSubmit={handleSubmit} encType="multipart/form-data">
-  <!-- Inputs for Name, Email, Mobile -->
-  <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} required />
-  <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-  <input type="text" placeholder="Mobile" value={mobile} onChange={e => setMobile(e.target.value)} />
-
-  <!-- File input for Image -->
-  <!-- Show existing image preview when editing -->
-  {id > 0 && existingImage && !image && (
-    <img src={\`\${baseUrl}/Uploads/\${existingImage}\`} alt="Current" width={60} height={60} />
-  )}
+  <input type="text" value={name} onChange={e => setName(e.target.value)} required />
+  <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+  <input type="text" value={mobile} onChange={e => setMobile(e.target.value)} />
   <input type="file" ref={fileInputRef} accept="image/*" onChange={handleImageChange} />
-
-  <button type="submit">{id > 0 ? "Update Customer" : "Add Customer"}</button>
-  {id > 0 && <button type="button" onClick={resetForm}>Cancel</button>}
+  <button type="submit">Save Customer</button>
 </form>`}</pre>
         </section>
 
@@ -185,31 +172,19 @@ const loadCustomers = async () => {
             <FaCode /> Step 9: Customer Table JSX
           </div>
           <pre style={preStyle}>{`<table>
-  <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Image</th>
-      <th>Actions</th>
+      <th>Name</th><th>Email</th><th>Mobile</th><th>Image</th><th>Actions</th>
     </tr>
-  </thead>
-  <tbody>
-    {customers.map(cus => (
-      <tr key={cus.id}>
-        <td>{cus.name}</td>
-        <td>{cus.email}</td>
-        <td>
-          {cus.image && (
-            <img src={\`\${baseUrl}/Uploads/\${cus.image}\`} alt="Customer" width={60} height={60} />
-          )}
-        </td>
-        <td>
-          <button onClick={() => handleEdit(cus)}>Edit</button>
-          <button onClick={() => handleDelete(cus.id)}>Delete</button>
-        </td>
-      </tr>
+    {customers.map(c => (
+    <tr key={c.id}>
+      <td>{c.name}</td>
+      <td>{c.email}</td>
+      <td>{c.mobile}</td>
+      <td><img src={\`\${imageUrl}\${c.image}\`} style={{width:"60px",height:"60px"}}/></td>
+      <td><button onClick={()=>handleEdit(c)}>Edit</button>
+          <button onClick={()=>handleDelete(c.id)}>Delete</button></td>
+    </tr>
     ))}
-  </tbody>
 </table>`}</pre>
         </section>
 

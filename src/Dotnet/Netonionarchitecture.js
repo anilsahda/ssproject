@@ -1,16 +1,11 @@
 function Netonionarchitecture() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-
-      {/* Header */}
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Onion Architecture in .NET Core API</h1>
-        <p className="text-gray-500 text-xs mt-1">
-          Complete CRUD example for Student entity using Onion Architecture.
-        </p>
+        <p className="text-gray-500 text-xs mt-1">Complete CRUD example for Student entity using Onion Architecture.</p>
       </header>
 
-      {/* Step 1: Folder Structure */}
       <Section title="Step 1: Folder Structure" color="text-yellow-600">
         <CodeBlock>
 {`Domain/
@@ -42,11 +37,9 @@ API/
         </CodeBlock>
       </Section>
 
-      {/* Step 2: Domain Layer */}
       <Section title="Step 2: Domain Layer" color="text-green-600">
         <CodeBlock>
-{`// Domain/Entities/Student.cs
-public class Student
+{`public class Student
 {
     public int Id { get; set; }
     public string FirstName { get; set; }
@@ -55,7 +48,6 @@ public class Student
     public Address Address { get; set; }
 }
 
-// Domain/Enums/Gender.cs
 public enum Gender
 {
     Male,
@@ -63,7 +55,6 @@ public enum Gender
     Other
 }
 
-// Domain/ValueObjects/Address.cs
 public class Address
 {
     public string Street { get; set; }
@@ -74,14 +65,10 @@ public class Address
         </CodeBlock>
       </Section>
 
-      {/* Step 3: Application Layer */}
       <Section title="Step 3: Application Layer" color="text-purple-600">
-        <p className="text-gray-700">
-          Interface and service for CRUD operations.
-        </p>
+        <p className="text-gray-700">Interface and service for CRUD operations.</p>
         <CodeBlock>
-{`// Application/Interfaces/IStudentRepository.cs
-public interface IStudentRepository
+{`public interface IStudentRepository
 {
     IEnumerable<Student> GetAll();
     Student GetById(int id);
@@ -90,7 +77,6 @@ public interface IStudentRepository
     void Delete(int id);
 }
 
-// Application/DTOs/StudentDTO.cs
 public class StudentDTO
 {
     public string FirstName { get; set; }
@@ -99,7 +85,6 @@ public class StudentDTO
     public Address Address { get; set; }
 }
 
-// Application/Services/StudentService.cs
 public class StudentService
 {
     private readonly IStudentRepository _repository;
@@ -153,17 +138,14 @@ public class StudentService
         </CodeBlock>
       </Section>
 
-      {/* Step 4: Infrastructure Layer */}
       <Section title="Step 4: Infrastructure Layer" color="text-blue-600">
         <CodeBlock>
-{`// Infrastructure/Data/AppDbContext.cs
-public class AppDbContext : DbContext
+{`public class AppDbContext : DbContext
 {
     public DbSet<Student> Students { get; set; }
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
 }
 
-// Infrastructure/Repositories/StudentRepository.cs
 public class StudentRepository : IStudentRepository
 {
     private readonly AppDbContext _context;
@@ -197,11 +179,9 @@ public class StudentRepository : IStudentRepository
         </CodeBlock>
       </Section>
 
-      {/* Step 5: API Layer */}
       <Section title="Step 5: API Layer" color="text-red-600">
         <CodeBlock>
-{`// API/Controllers/StudentsController.cs
-[ApiController]
+{`[ApiController]
 [Route("api/[controller]")]
 public class StudentsController : ControllerBase
 {
@@ -254,7 +234,6 @@ app.Run();`}
         </CodeBlock>
       </Section>
 
-      {/* Step 6: Summary */}
       <Section title="Step 6: Summary" color="text-green-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li>Full CRUD (Create, Read, Update, Delete) example implemented using Onion Architecture.</li>
@@ -264,12 +243,10 @@ app.Run();`}
           <li>API layer exposes endpoints and uses services via DI.</li>
         </ul>
       </Section>
-
     </div>
   );
 }
 
-/* Reusable Section Component */
 function Section({ title, color, children }) {
   return (
     <section>
@@ -281,13 +258,8 @@ function Section({ title, color, children }) {
   );
 }
 
-/* Reusable Code Block Component */
 function CodeBlock({ children }) {
-  return (
-    <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">
-      {children}
-    </pre>
-  );
+  return (<pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">{children}</pre>);
 }
 
 export default Netonionarchitecture;

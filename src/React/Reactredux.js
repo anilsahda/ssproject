@@ -40,61 +40,40 @@ function Reactredux() {
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 1: Handle Login
           </div>
-          <pre style={preStyle}>{`const handleLoginSubmit = async (email, password) => {
-  try {
-    const response = await axios.post(\`\${process.env.REACT_APP_BASE_URL}/Auth/login\`, { email, password });
-    
-    if(response.data.statusCode === "200") {
-      // Dispatch login action to Redux store
-      dispatch(loginUser({
-        token: response.data.token,
-        role: response.data.role,
-        userName: response.data.userName,
-        userImageUrl: response.data.userImageUrl || "https://i.pravatar.cc/40"
-      }));
+          <pre style={preStyle}>{`const handleLoginSubmit = async (email, pass) => {
+const res=await axios.post(\`\${process.env.REACT_APP_BASE_URL}/Auth/login\`,{email,pass});
+  if(res.data.statusCode === "200") {
+    dispatch(loginUser({
+      token: res.data.token,
+      role: res.data.role,
+      userName: res.data.userName
+    }));
 
-      // Clear form or redirect
-      setEmail('');
-      setPassword('');
-      navigate("/dashboard");
-    } else {
-      alert("Login failed");
-    }
-  } catch (error) {
-    console.error("Login error:", error);
+    setEmail('');
+    setPassword('');
+    navigate("/dashboard");
+  } else {
+    alert("Login failed");
   }
 };`}</pre>
         </section>
 
-        {/* Step 2: Check Login Status */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaBook /> Step 2: Check Login Status
+            <FaBook /> Step 2: Access User Info
           </div>
-          <pre style={preStyle}>{`// Check if user is logged in
-const isLoggedIn = !!auth.token; // true if token exists in Redux store, false otherwise`}</pre>
-        </section>
-
-        {/* Step 3: Access User Info */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaBook /> Step 3: Access User Info
-          </div>
-          <pre style={preStyle}>{`const userName = auth.userName;       // Get user name from Redux
+          <pre style={preStyle}>{`const userName = auth.userName;         // Get user name from Redux
 const role = auth.role;                 // Get user role
-const token = auth.token;               // Get JWT token
-const userImageUrl = auth.userImageUrl; // Get profile image URL`}</pre>
+const token = auth.token;               // Get JWT token`}</pre>
         </section>
 
-        {/* Step 4: Handle Logout */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaLink /> Step 4: Handle Logout
+            <FaLink /> Step 3: Handle Logout
           </div>
           <pre style={preStyle}>{`const handleLogout = () => {
-  // Dispatch logout action to Redux store
   dispatch(logoutUser());
-  navigate("/"); // Redirect to login or home page
+  navigate("/");
 };`}</pre>
         </section>
 

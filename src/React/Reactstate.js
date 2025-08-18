@@ -31,7 +31,6 @@ const [states, setStates] = useState([]);
 const [id, setId] = useState(0);
 const [name, setName] = useState("");
 const [countryId, setCountryId] = useState("");
-const [loading, setLoading] = useState(false);
 
 const stateUrl = \`\${process.env.REACT_APP_BASE_URL}/States\`;
 const countryUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;`}</pre>
@@ -48,24 +47,13 @@ const countryUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;`}</pre>
 }, []);
 
 const loadStates = async () => {
-  try {
-    setLoading(true);
-    const res = await axios.get(stateUrl);
-    setStates(res.data);
-  } catch {
-    toast("error", "Failed to load states");
-  } finally {
-    setLoading(false);
-  }
+  const res = await axios.get(stateUrl);
+  setStates(res.data);
 };
 
 const loadCountries = async () => {
-  try {
-    const res = await axios.get(countryUrl);
-    setCountries(res.data);
-  } catch {
-    toast("error", "Failed to load countries");
-  }
+  const res = await axios.get(countryUrl);
+  setCountries(res.data);
 };`}</pre>
         </section>
 
@@ -103,23 +91,18 @@ const loadCountries = async () => {
   }
 
   const data = { id, name, countryId: parseInt(countryId) };
-  setLoading(true);
 
-  try {
-    if (id === 0) {
-      await axios.post(stateUrl, data);
-      toast("success", "State added");
-    } else {
-      await axios.put(stateUrl, data);
-      toast("success", "State updated");
-    }
-    resetForm();
-    loadStates();
-  } catch {
-    toast("error", id === 0 ? "Failed to add state" : "Failed to update state");
-  } finally {
-    setLoading(false);
+  if (id === 0) {
+    await axios.post(stateUrl, data);
+    toast("success", "State added");
+  } else {
+    await axios.put(stateUrl, data);
+    toast("success", "State updated");
   }
+
+  resetForm();
+  loadStates();
+
 };`}</pre>
         </section>
 
@@ -151,16 +134,9 @@ const loadCountries = async () => {
     confirmButtonText: "Yes, delete it"
   }).then(async (result) => {
     if (result.isConfirmed) {
-      try {
-        setLoading(true);
-        await axios.delete(\`\${stateUrl}/\${stateId}\`);
-        toast("success", "State deleted");
-        loadStates();
-      } catch {
-        toast("error", "Failed to delete state");
-      } finally {
-        setLoading(false);
-      }
+      await axios.delete(\`\${stateUrl}/\${stateId}\`);
+      toast("success", "State deleted");
+      loadStates();
     }
   });
 };`}</pre>
@@ -184,17 +160,12 @@ const loadCountries = async () => {
             <FaCode /> Step 8: JSX Form & Table
           </div>
           <pre style={preStyle}>{`<div className="mb-3">
-  <!-- Input for State Name -->
-  <input type="text" className="form-control" placeholder="Enter State Name" value={name} onChange={e => setName(e.target.value)} />
-
-  <!-- Select for Country -->
-  <select className="form-control" value={countryId} onChange={e => setCountryId(e.target.value)}>
+  <input type="text" value={name} onChange={e => setName(e.target.value)} />
+  <select value={countryId} onChange={e => setCountryId(e.target.value)}>
     <option value="">Select Country</option>
     {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
   </select>
-
-  <button className="btn btn-primary me-2" onClick={handleSave}>{id === 0 ? "Add State" : "Update State"}</button>
-  <button className="btn btn-secondary" onClick={resetForm}>Reset</button>
+  <button className="btn btn-primary me-2" onClick={handleSave}>Save State</button>
 </div>
 
 <table className="table table-bordered table-striped">
@@ -203,27 +174,21 @@ const loadCountries = async () => {
       <th>Id</th>
       <th>State Name</th>
       <th>Country</th>
-      <th style={{ width: "150px" }}>Actions</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    {states.length > 0 ? (
-      states.map(s => (
+    {states.map(s => (
         <tr key={s.id}>
           <td>{s.id}</td>
           <td>{s.name}</td>
           <td>{countries.find(c => c.id === s.countryId)?.name || ""}</td>
           <td>
-            <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(s)}>Edit</button>
-            <button className="btn btn-danger btn-sm" onClick={() => handleDelete(s.id)}>Delete</button>
+            <button onClick={() => handleEdit(s)}>Edit</button>
+            <button onClick={() => handleDelete(s.id)}>Delete</button>
           </td>
         </tr>
-      ))
-    ) : (
-      <tr>
-        <td colSpan="4" className="text-center">No states found.</td>
-      </tr>
-    )}
+      ))}
   </tbody>
 </table>`}</pre>
         </section>

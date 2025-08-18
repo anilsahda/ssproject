@@ -1,6 +1,4 @@
-import React from 'react';
-
-function AttendancePortal() {
+function AttendancePortalProject() {
   return (
     <div style={{ padding: '20px', lineHeight: '1.6' }}>
       <h1>Employee Attendance Portal</h1>
@@ -104,4 +102,4 @@ function AttendancePortal() {
   );
 }
 
-export default AttendancePortal;
+export default AttendancePortalProject;

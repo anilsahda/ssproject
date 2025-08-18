@@ -28,8 +28,6 @@ function Reactsearching() {
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
         <h1 className="fw-bold mb-5 text-primary text-center">Searching - React</h1>
-
-        {/* Step 1: State Management */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 1: State Management
@@ -42,10 +40,7 @@ const [searchTerm, setSearchTerm] = useState("");
 const [showForm, setShowForm] = useState(false);
 
 const [id, setId] = useState(0);
-const [firstName, setFirstName] = useState("");
-const [middleName, setMiddleName] = useState("");
-const [lastName, setLastName] = useState("");
-const [address, setAddress] = useState("");
+const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [mobile, setMobile] = useState("");
 const [countryId, setCountryId] = useState("");
@@ -53,16 +48,11 @@ const [stateId, setStateId] = useState("");
 const [districtId, setDistrictId] = useState("");
 const [genderId, setGenderId] = useState(0);
 
-const genders = [
-  { id: 1, name: "Male" },
-  { id: 2, name: "Female" },
-  { id: 3, name: "Other" },
-];
+const genders=[{id: 1, name: "Male" },{ id: 2, name: "Female" },{ id: 3, name: "Other"}];
 
 const baseUrl = process.env.REACT_APP_BASE_URL;`}</pre>
         </section>
 
-        {/* Step 2: Load Data */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 2: Load Students, Countries, States, Districts
@@ -74,23 +64,34 @@ const baseUrl = process.env.REACT_APP_BASE_URL;`}</pre>
   loadDistricts();
 }, []);
 
-const loadStudents = async () => { ... };
-const loadCountries = async () => { ... };
-const loadStates = async () => { ... };
-const loadDistricts = async () => { ... };`}</pre>
+const loadStudents = async () => {
+  const res = await axios.get(\`\${baseUrl}/students\`);
+  setStudents(res.data);
+};
+
+const loadCountries = async () => {
+  const res = await axios.get(\`\${baseUrl}/countries\`);
+  setCountries(res.data);
+};
+
+const loadStates = async () => {
+  const res = await axios.get(\`\${baseUrl}/states\`);
+  setStates(res.data);
+};
+
+const loadDistricts = async () => {
+  const res = await axios.get(\`\${baseUrl}/districts\`);
+  setDistricts(res.data);
+};`}</pre>
         </section>
 
-        {/* Step 3: Reset Form */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 3: Reset Form
           </div>
           <pre style={preStyle}>{`const resetForm = () => {
   setId(0);
-  setFirstName("");
-  setMiddleName("");
-  setLastName("");
-  setAddress("");
+  setName("");
   setEmail("");
   setMobile("");
   setCountryId("");
@@ -101,7 +102,6 @@ const loadDistricts = async () => { ... };`}</pre>
 };`}</pre>
         </section>
 
-        {/* Step 4: Add / Update Student */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCode /> Step 4: Add or Update Student
@@ -109,13 +109,16 @@ const loadDistricts = async () => { ... };`}</pre>
           <pre style={preStyle}>{`const handleSubmit = async (e) => {
   e.preventDefault();
   const payload = {
-    id, firstName, middleName, lastName,
-    address, email, mobile,
+    id, 
+    name, 
+    email, 
+    mobile,
     countryId: countryId ? Number(countryId) : null,
     stateId: stateId ? Number(stateId) : null,
     districtId: districtId ? Number(districtId) : null,
     genderId: genderId ? Number(genderId) : null,
   };
+
   if (id && id > 0) {
     await axios.put(\`\${baseUrl}/students\`, payload);
     Swal.fire("Updated!", "Student record has been updated.", "success");
@@ -123,22 +126,19 @@ const loadDistricts = async () => { ... };`}</pre>
     await axios.post(\`\${baseUrl}/students\`, payload);
     Swal.fire("Added!", "New student has been added.", "success");
   }
+
   resetForm();
   loadStudents();
 };`}</pre>
         </section>
 
-        {/* Step 5: Edit Student */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 5: Edit Student
           </div>
           <pre style={preStyle}>{`const handleEdit = (std) => {
   setId(std.id);
-  setFirstName(std.firstName || "");
-  setMiddleName(std.middleName || "");
-  setLastName(std.lastName || "");
-  setAddress(std.address || "");
+  setName(std.name || "");
   setEmail(std.email || "");
   setMobile(std.mobile || "");
   setCountryId(std.countryId || "");
@@ -149,7 +149,6 @@ const loadDistricts = async () => { ... };`}</pre>
 };`}</pre>
         </section>
 
-        {/* Step 6: Delete Student */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 6: Delete Student
@@ -196,86 +195,59 @@ const loadDistricts = async () => { ... };`}</pre>
   </div>
   <pre style={preStyle}>{`{showForm && (
   <div className="modal d-block">
-    <!-- Modal Content -->
     <form onSubmit={handleSubmit}>
-      <!-- Inputs: First, Middle, Last Name -->
       <div className="row mb-2">
         <div className="col">
-          <input type="text" className="form-control" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div className="col">
-          <input type="text" className="form-control" placeholder="Middle Name" value={middleName} onChange={(e) => setMiddleName(e.target.value)} />
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div className="col">
-          <input type="text" className="form-control" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+          <input type="text" value={mobile} onChange={(e)=> setMobile(e.target.value)} />
         </div>
       </div>
 
-      <!-- Address, Email, Mobile -->
       <div className="row mb-2">
         <div className="col">
-          <input type="text" className="form-control" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
-        </div>
-        <div className="col">
-          <input type="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div className="col">
-          <input type="text" className="form-control" placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
-        </div>
-      </div>
-
-      <!-- Country, State, District selects -->
-      <div className="row mb-2">
-        <div className="col">
-          <select className="form-control" value={countryId} onChange={(e) => setCountryId(e.target.value)}>
+          <select value={countryId} onChange={(e) => setCountryId(e.target.value)}>
             <option value="">Select Country</option>
             {countries.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
           </select>
         </div>
         <div className="col">
-          <select className="form-control" value={stateId} onChange={(e) => setStateId(e.target.value)}>
+          <select value={stateId} onChange={(e) => setStateId(e.target.value)}>
             <option value="">Select State</option>
             {states.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}
           </select>
         </div>
         <div className="col">
-          <select className="form-control" value={districtId} onChange={(e) => setDistrictId(e.target.value)}>
+          <select value={districtId} onChange={(e) => setDistrictId(e.target.value)}>
             <option value="">Select District</option>
             {districts.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
           </select>
         </div>
       </div>
 
-      <!-- Gender radio buttons -->
       <div className="mb-3">
         <label className="me-3"><strong>Gender:</strong></label>
         {genders.map((g) => (
           <div className="form-check form-check-inline" key={g.id}>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="gender"
-              value={g.id}
-              checked={genderId === g.id}
-              onChange={() => setGenderId(g.id)}
-            />
+            <input type="radio" name="gender" value={g.id} checked={genderId===g.id} 
+                                                  onChange={()=>setGenderId(g.id)} />
             <label className="form-check-label">{g.name}</label>
           </div>
         ))}
       </div>
 
-      {/* Save / Cancel Buttons */}
       <div className="d-flex justify-content-center gap-3">
-        <button type="submit" className="btn btn-primary">{id ? "Update" : "Save"}</button>
-        <button type="button" className="btn btn-secondary" onClick={resetForm}>Cancel</button>
+        <button type="submit" className="btn btn-primary">{id?"Update" : "Save"}</button>
       </div>
     </form>
   </div>
 )}`}</pre>
 </section>
 
-
-        {/* Step 9: Table JSX */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCode /> Step 9: Students Table JSX
@@ -285,6 +257,7 @@ const loadDistricts = async () => { ... };`}</pre>
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>Mobile</th>
       <th>Country</th>
       <th>State</th>
       <th>District</th>
@@ -295,8 +268,9 @@ const loadDistricts = async () => { ... };`}</pre>
   <tbody>
     {students.map(std => (
       <tr key={std.id}>
-        <td>{\`\${std.firstName} \${std.middleName || ""} \${std.lastName}\`}</td>
+        <td>{std.name}</td>
         <td>{std.email}</td>
+        <td>{std.mobile}</td>        
         <td>{countries.find(c => c.id === std.countryId)?.name}</td>
         <td>{states.find(s => s.id === std.stateId)?.name}</td>
         <td>{districts.find(d => d.id === std.districtId)?.name}</td>
@@ -311,7 +285,6 @@ const loadDistricts = async () => { ... };`}</pre>
 </table>`}</pre>
         </section>
 
-        {/* Step 10: Summary */}
         <section>
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 10: Summary

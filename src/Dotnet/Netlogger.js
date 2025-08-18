@@ -1,18 +1,11 @@
-import React from "react";
-
 function Netlogger() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-      
-      {/* Header */}
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Logging in .NET Core API</h1>
-        <p className="text-gray-500 text-xs mt-1">
-          Guide to implement logging in .NET Core API using built-in ILogger, different log levels, and external providers.
-        </p>
+        <p className="text-gray-500 text-xs mt-1">Guide to implement logging in .NET Core API using built-in ILogger, different log levels, and external providers.</p>
       </header>
 
-      {/* Step 1: Overview */}
       <Section title="Overview" color="text-indigo-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li>Use built-in <b>ILogger</b> interface for logging in .NET Core.</li>
@@ -21,7 +14,6 @@ function Netlogger() {
         </ul>
       </Section>
 
-      {/* Step 2: Configure Logging in Program.cs */}
       <Section title="Configure Logging in Program.cs" color="text-green-600">
         <CodeBlock>
 {`var builder = WebApplication.CreateBuilder(args);
@@ -40,7 +32,6 @@ app.Run();`}
         </CodeBlock>
       </Section>
 
-      {/* Step 3: Inject ILogger into Controller */}
       <Section title="Inject ILogger into Controller" color="text-yellow-600">
         <CodeBlock>
 {`using Microsoft.AspNetCore.Mvc;
@@ -77,7 +68,6 @@ public class StudentsController : ControllerBase
         </CodeBlock>
       </Section>
 
-      {/* Step 4: Logging Levels */}
       <Section title="Logging Levels" color="text-red-600">
         <CodeBlock>
 {`_logger.LogTrace("Trace level message");
@@ -89,7 +79,6 @@ _logger.LogCritical("Critical level message");`}
         </CodeBlock>
       </Section>
 
-      {/* Step 5: External Logging Providers */}
       <Section title="External Logging Providers (Optional)" color="text-blue-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li><b>File Logging</b> using <code>Serilog</code> or <code>NLog</code></li>
@@ -98,7 +87,6 @@ _logger.LogCritical("Critical level message");`}
         </ul>
       </Section>
 
-      {/* Step 6: Summary */}
       <Section title="Summary" color="text-purple-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li>ILogger provides a flexible and built-in way to log events in .NET Core.</li>
@@ -110,7 +98,6 @@ _logger.LogCritical("Critical level message");`}
   );
 }
 
-/* Reusable Section Component */
 function Section({ title, color, children }) {
   return (
     <section>
@@ -122,13 +109,8 @@ function Section({ title, color, children }) {
   );
 }
 
-/* Reusable Code Block Component */
 function CodeBlock({ children }) {
-  return (
-    <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">
-      {children}
-    </pre>
-  );
+  return (<pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">{children}</pre>);
 }
 
-export default Netlogger
+export default Netlogger;

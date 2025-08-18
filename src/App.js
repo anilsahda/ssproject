@@ -13,13 +13,6 @@ import Authentication from "./Fullstack/Authentication";
 import Pagination from "./Fullstack/Pagination";
 import RadioButton from "./Fullstack/RadioButton";
 import Searching from "./Fullstack/Searching";
-import SocietyManagement from "./Projects/SocietyManagement";
-import JobPortal from "./Projects/JobPortal";
-import EmployeePayroll from "./Projects/EmployeePayroll";
-import AttendancePortal from "./Projects/AttendancePortal";
-import Ecommerce from "./Projects/Ecommerce";
-import DigitalLibrary from "./Projects/DigitalLibrary";
-import HospitalManagement from "./Projects/HospitalManagement";
 import Array from "./DSA/Array";
 import Arraylist from "./DSA/Arraylist";
 import List from "./DSA/List";
@@ -173,6 +166,25 @@ import CicdpipelinesNode from "./DevOps/CicdpipelinesNode";
 import CicdpipelinesNetCore from "./DevOps/CicdpipelinesNetCore";
 import Amplify from "./DevOps/Amplify";
 import Github from "./DevOps/Github";
+import SmartHouseProject from "./Projects/SmartHouse/SmartHouseProject";
+import EmployeePayrollProject from "./Projects/EmployeePayroll/EmployeePayrollProject";
+import AttendancePortalProject from "./Projects/AttendancePortal/AttendancePortalProject";
+import EcommerceProject from "./Projects/ECommerce/EcommerceProject";
+import DigitalLibraryProject from "./Projects/DigitalLibrary/DigitalLibraryProject";
+import SmartCaregiverProject from "./Projects/SmartCaregiver/SmartCaregiverProject";
+import SmartJobsProject from "./Projects/SmartJobs/SmartJobsProject";
+import LanguagesStatic from "./FullstackStatic/LanguagesStatic";
+import CountryStatic from "./FullstackStatic/CountryStatic";
+import StateStatic from "./FullstackStatic/StateStatic";
+import DistrictStatic from "./FullstackStatic/DistrictStatic";
+import RadioButtonStatic from "./FullstackStatic/RadioButtonStatic";
+import MultiselectDropdownStatic from "./FullstackStatic/MultiselectDropdownStatic";
+import AuthenticationStatic from "./FullstackStatic/AuthenticationStatic";
+import PaginationStatic from "./FullstackStatic/PaginationStatic";
+import SearchingStatic from "./FullstackStatic/SearchingStatic";
+import ImageUploadStatic from "./FullstackStatic/ImageUploadStatic";
+import ExportcsvStatic from "./FullstackStatic/ExportcsvStatic";
+import CheckboxStatic from "./FullstackStatic/CheckboxStatic";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -201,14 +213,29 @@ function App() {
             <Route path="/userrole" element={<UserRole />} />
 
             {/* Projects */}
-            <Route path="/societymanagement" element={<SocietyManagement />} />
-            <Route path="/jobportal" element={<JobPortal />} />
-            <Route path="/employeepayroll" element={<EmployeePayroll />} />
-            <Route path="/attendanceportal" element={<AttendancePortal />} />
-            <Route path="/ecommerce" element={<Ecommerce />} />
-            <Route path="/digitallibrary" element={<DigitalLibrary />} />
-            <Route path="/hospitalmanagement" element={<HospitalManagement />} />
+            <Route path="/smarthouseproject" element={<SmartHouseProject />} />
+            <Route path="/smartjobsproject" element={<SmartJobsProject />} />
+            <Route path="/employeepayrollproject" element={<EmployeePayrollProject />} />
+            <Route path="/attendanceportalproject" element={<AttendancePortalProject />} />
+            <Route path="/ecommerceproject" element={<EcommerceProject />} />
+            <Route path="/digitallibraryproject" element={<DigitalLibraryProject />} />
+            <Route path="/smartcaregiverproject" element={<SmartCaregiverProject />} />
 
+            {/* Fulstack Static */}
+            <Route path="/languagestatic" element={<LanguagesStatic />} />
+            <Route path="/countrystatic" element={<CountryStatic />} />
+            <Route path="/statestatic" element={<StateStatic />} />
+            <Route path="/districtstatic" element={<DistrictStatic />} />
+            <Route path="/radiobuttonstatic" element={<RadioButtonStatic />} />
+            <Route path="/checkboxstatic" element={<CheckboxStatic />} />
+            <Route path="/multiselectdropdownstatic" element={<MultiselectDropdownStatic />} />
+            <Route path="/imageuploadstatic" element={<ImageUploadStatic />} />
+            <Route path="/exportcsvstatic" element={<ExportcsvStatic />} />
+            <Route path="/authenticationstatic" element={<AuthenticationStatic />} />
+            <Route path="/paginationstatic" element={<PaginationStatic />} />
+            <Route path="/searchingstatic" element={<SearchingStatic />} />
+
+            {/* Fulstack */}
             <Route path="/language" element={<Languages />} />
             <Route path="/country" element={<Country />} />
             <Route path="/state" element={<State />} />

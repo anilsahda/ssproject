@@ -8,8 +8,8 @@ export default function Dotnetquestions() {
         <b>1. What is .NET?</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`.NET is a free, cross-platform, open-source developer platform by Microsoft for building web, desktop, mobile, cloud, and IoT applications.
-Example: You can create a web API using ASP.NET Core.`}
+{`.NET is a free, cross-platform, open-source developer platform by Microsoft for building web, desktop, 
+mobile, cloud, and IoT applications. Example: You can create a web API using ASP.NET Core.`}
           </code>
         </pre>
       </section>
@@ -19,7 +19,8 @@ Example: You can create a web API using ASP.NET Core.`}
         <b>2. What is CLR in .NET?</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`CLR (Common Language Runtime) is the virtual machine component of .NET responsible for managing memory, thread execution, and garbage collection.
+{`CLR (Common Language Runtime) is the virtual machine component of .NET responsible for managing memory, 
+thread execution, and garbage collection. 
 Example: When a C# program runs, CLR executes the compiled IL (Intermediate Language).`}
           </code>
         </pre>
@@ -41,7 +42,7 @@ Example: int in C# is interoperable with Integer in VB.NET because of CTS.`}
         <b>4. What is CLS in .NET?</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`CLS (Common Language Specification) is a set of rules that ensures interoperability between .NET languages.
+{`CLS (Common Language Specification) is a set of rules that ensures interoperability between .NET language.
 Example: A method defined in C# can be used in VB.NET if it follows CLS rules.`}
           </code>
         </pre>

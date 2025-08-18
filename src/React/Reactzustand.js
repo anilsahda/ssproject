@@ -29,7 +29,6 @@ function Reactzustand() {
       <div className="container bg-white p-5 shadow-sm rounded">
         <h1 className="fw-bold mb-5 text-primary text-center">Zustand: Login & Logout</h1>
 
-        {/* Step 1: Create Auth Store */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 1: Create Auth Store
@@ -40,22 +39,13 @@ const useAuthStore = create((set) => ({
   token: null,
   userName: null,
   role: null,
-  login: (data) => set({
-    token: data.token,
-    userName: data.userName,
-    role: data.role
-  }),
-  logout: () => set({
-    token: null,
-    userName: null,
-    role: null
-  }),
+  login: (data) => set({ token: data.token, userName: data.userName, role: data.role }),
+  logout: () => set({ token: null, userName: null, role: null })
 }));
 
 export default useAuthStore;`}</pre>
         </section>
 
-        {/* Step 2: Login Function */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 2: Login Function
@@ -65,22 +55,9 @@ import axios from 'axios';
 
 const { login } = useAuthStore();
 
-const handleLoginSubmit = async (email, password) => {
-  try {
-    const response = await axios.post(\`\${process.env.REACT_APP_BASE_URL}/Auth/login\`, { email, password });
-    if(response.data.statusCode === "200") {
-      // Save user info in Zustand store
-      login({
-        token: response.data.token,
-        userName: response.data.userName,
-        role: response.data.role
-      });
-    } else {
-      alert("Login failed");
-    }
-  } catch (error) {
-    console.error("Login error:", error);
-  }
+const handleLoginSubmit = async (email, pass) => {
+ const res=await axios.post(\`\${process.env.REACT_APP_BASE_URL}/Auth/login\`,{email,pass});
+ login({ token: res.data.token, userName: res.data.userName, role: res.data.role });
 };`}</pre>
         </section>
 
@@ -94,7 +71,7 @@ const handleLoginSubmit = async (email, password) => {
 const { logout } = useAuthStore();
 
 const handleLogout = () => {
-  logout();  // Clear user info from Zustand store
+  logout();
 };`}</pre>
         </section>
 
@@ -110,14 +87,7 @@ function Profile() {
 
   return (
     <div>
-      {token ? (
-        <div>
-          <h3>Welcome, {userName}</h3>
-          <p>Role: {role}</p>
-        </div>
-      ) : (
-        <p>Please login to continue</p>
-      )}
+      {token ? (<h3>Welcome, {userName}</h3><p>Role: {role}</p>) : (<p>Please login</p>)}
     </div>
   );
 }
