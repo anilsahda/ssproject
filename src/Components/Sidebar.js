@@ -277,6 +277,25 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
+          {/* {activeMenu === "Angular" && (
+            <>
+            <SidebarButton to="/angularprojectsetup" icon="bi-calendar-check" label="Angular Project Setup" />
+            <SidebarButton to="/angularlanguages" icon="bi-ui-checks-grid" label="Angular Language" />
+            <SidebarButton to="/angularcountry" icon="bi-ui-checks-grid" label="Angular Country" />
+            <SidebarButton to="/angularstate" icon="bi-caret-down-square" label="Angular State" />
+            <SidebarButton to="/angulardistrict" icon="bi-diagram-3" label="Angular District" />
+            <SidebarButton to="/angularradiobutton" icon="bi-record-circle" label="Angular Radio Button" />
+            <SidebarButton to="/angularcheckbox" icon="bi-check-square" label="Angular Checkbox" />
+            <SidebarButton to="/angularmultiselectdropdown" icon="bi-check2-square" label="Angular Multi Select Dropdown" />
+            <SidebarButton to="/angularimageupload" icon="bi-file-image" label="Angular Image Upload" />
+            <SidebarButton to="/angularsearching" icon="bi-search" label="Angular Searching" />
+            <SidebarButton to="/angularpagination" icon="bi-list-nested" label="Angular Pagination" />
+            <SidebarButton to="/angularjwtauth" icon="bi-shield-lock" label="Angular JWT Auth" />
+            <SidebarButton to="/angularlocalstorage" icon="bi-layers" label="Angular Local Storage" />
+            <SidebarButton to="/angularquestions" icon="bi-calendar-check" label="Angular Questions" />
+            </>
+          )} */}
+
           {role === "Super Admin" && (
             <>
               <li className="nav-item">

@@ -185,6 +185,20 @@ import SearchingStatic from "./FullstackStatic/SearchingStatic";
 import ImageUploadStatic from "./FullstackStatic/ImageUploadStatic";
 import ExportcsvStatic from "./FullstackStatic/ExportcsvStatic";
 import CheckboxStatic from "./FullstackStatic/CheckboxStatic";
+import Angularprojectsetup from "./Angular/Angularprojectsetup";
+import Angularlanguages from "./Angular/Angularlanguages";
+import Angularcountry from "./Angular/Angularcountry";
+import Angularstate from "./Angular/Angularstate";
+import Angulardistrict from "./Angular/Angulardistrict";
+import Angularmultiselectdropdown from "./Angular/Angularmultiselectdropdown";
+import Angularradiobutton from "./Angular/Angularradiobutton";
+import Angularcheckbox from "./Angular/Angularcheckbox";
+import Angularimageupload from "./Angular/Angularimageupload";
+import Angularsearching from "./Angular/Angularsearching";
+import Angularpagination from "./Angular/Angularpagination";
+import Angularjwtauth from "./Angular/Angularjwtauth";
+import Angularlocalstorage from "./Angular/Angularlocalstorage";
+import Angularquestions from "./Angular/Angularquestions";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -407,6 +421,20 @@ function App() {
             <Route path="/nextreducer" element={<Nextreducer />} />
             <Route path="/nextquestions" element={<Nextquestions />} />
 
+            <Route path="/angularprojectsetup" element={<Angularprojectsetup />} />
+            <Route path="/angularlanguages" element={<Angularlanguages />} />
+            <Route path="/angularcountry" element={<Angularcountry />} />
+            <Route path="/angularstate" element={<Angularstate />} />
+            <Route path="/angulardistrict" element={<Angulardistrict />} />
+            <Route path="/angularmultiselectdropdown" element={<Angularmultiselectdropdown />} />
+            <Route path="/angularradiobutton" element={<Angularradiobutton />} />
+            <Route path="/angularcheckbox" element={<Angularcheckbox />} />
+            <Route path="/angularimageupload" element={<Angularimageupload />} />            
+            <Route path="/angularsearching" element={<Angularsearching />} />
+            <Route path="/angularpagination" element={<Angularpagination />} />
+            <Route path="/angularjwtauth" element={<Angularjwtauth />} />
+            <Route path="/angularlocalstorage" element={<Angularlocalstorage />} />
+            <Route path="/angularquestions" element={<Angularquestions />} />
           </Routes>
         </div>
       </div>

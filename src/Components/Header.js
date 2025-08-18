@@ -45,6 +45,9 @@ function Header({ setActiveMenu }) {
             <li className="nav-item">
               <button className="btn btn-sm nav-btn btn-primary" onClick={() => setActiveMenu("Next")}>Next</button>
             </li>
+            <li className="nav-item">
+              <button className="btn btn-sm nav-btn btn-danger" onClick={() => setActiveMenu("Angular")}>Angular</button>
+            </li>
           </ul>
         </div>
       </div>
