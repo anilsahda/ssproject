@@ -1,5 +1,3 @@
-import React from "react";
-
 function Sqlqueriescommands() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
@@ -7,19 +5,16 @@ function Sqlqueriescommands() {
       {/* Header */}
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">SQL Queries & Commands</h1>
-        <p className="text-gray-500 text-xs mt-1">
-          SQL (Structured Query Language) is used to manage, manipulate, and query relational databases. SQL commands are categorized into <strong>DDL, DML, DCL, and TCL</strong>. 
-          Proper understanding of these commands is essential for database design, management, and querying.
-        </p>
+        <p className="text-gray-500 text-xs mt-1">SQL is used to manage, manipulate, and query relational databases. SQL commands are categorized into <strong>DDL, DML, DCL, and TCL</strong>. Proper understanding of these commands is essential for database design, management, and querying.</p>
       </header>
 
       {/* Introduction */}
       <Section title="Introduction to SQL Commands" color="text-green-600">
-        <p>
-          SQL commands can be grouped as follows:
+        <p>SQL commands can be grouped as follows:
           <ul className="list-disc ml-6 mt-1">
             <li><strong>DDL (Data Definition Language):</strong> Define or modify database structure.</li>
-            <li><strong>DML (Data Manipulation Language):</strong> Manage data inside tables.</li>
+            <li><strong>DML (Data Manipulation Language):</strong> Manage write operations on data inside tables.</li>
+            <li><strong>DQL (Data Query Language):</strong> Manage read operations on data inside tables.</li>            
             <li><strong>DCL (Data Control Language):</strong> Control access and permissions.</li>
             <li><strong>TCL (Transaction Control Language):</strong> Manage database transactions.</li>
           </ul>
@@ -28,9 +23,7 @@ function Sqlqueriescommands() {
 
       {/* DDL - Data Definition Language */}
       <Section title="DDL (Data Definition Language)" color="text-orange-600">
-        <p>
-          DDL commands are used to create, alter, and drop databases and tables. These commands define the schema of the database.
-        </p>
+        <p>DDL commands are used to create, alter, and drop databases and tables. These commands define the schema of the database.</p>
         <CodeBlock>
 {`-- Create Table
 CREATE TABLE Student (
@@ -55,38 +48,34 @@ DROP DATABASE SchoolDB;`}
 
       {/* DML - Data Manipulation Language */}
       <Section title="DML (Data Manipulation Language)" color="text-blue-600">
-        <p>
-          DML commands are used to insert, update, delete, and retrieve data from tables. These are the most frequently used SQL commands.
-        </p>
+        <p>DML commands are used to insert, update, and delete data from tables. These are the most frequently used SQL commands.</p>
         <CodeBlock>
 {`-- Insert Data
-INSERT INTO Student (StudentID, StudentName, Email)
-VALUES (1, 'Anil', 'anil@example.com');
+INSERT INTO Student VALUES (1, 'Anil', 'anil@example.com');
 
 -- Update Data
-UPDATE Student
-SET Email = 'anilk@example.com'
-WHERE StudentID = 1;
+UPDATE Student SET Email = 'anilk@example.com' WHERE StudentID = 1;
 
 -- Delete Data
-DELETE FROM Student
-WHERE StudentID = 1;
+DELETE FROM Student WHERE StudentID = 1;`}
+        </CodeBlock>
+      </Section>
 
--- Select Data (Retrieve all rows)
+      {/* DQL - Data Query Language */}
+      <Section title="DQL (Data Query Language)" color="text-blue-600">
+        <p>DQL commands are used to retrieve data from tables. These are the most frequently used SQL commands.</p>
+        <CodeBlock>
+{`-- Select Data (Retrieve all rows)
 SELECT * FROM Student;
 
 -- Select with WHERE condition
-SELECT StudentName, Email
-FROM Student
-WHERE StudentID = 1;`}
+SELECT StudentName, Email FROM Student WHERE StudentID = 1;`}
         </CodeBlock>
       </Section>
 
       {/* DCL - Data Control Language */}
       <Section title="DCL (Data Control Language)" color="text-purple-600">
-        <p>
-          DCL commands control access to data in the database. They allow granting and revoking permissions to users or roles.
-        </p>
+        <p>DCL commands control access to data in the database. They allow granting and revoking permissions to users or roles.</p>
         <CodeBlock>
 {`-- Grant permission
 GRANT SELECT, INSERT ON Student TO User1;
@@ -98,9 +87,7 @@ REVOKE INSERT ON Student FROM User1;`}
 
       {/* TCL - Transaction Control Language */}
       <Section title="TCL (Transaction Control Language)" color="text-red-600">
-        <p>
-          TCL commands are used to manage transactions. A transaction is a sequence of operations executed as a single unit, ensuring ACID properties.
-        </p>
+        <p>TCL commands are used to manage transactions. A transaction is a sequence of operations executed as a single unit, ensuring ACID properties.</p>
         <CodeBlock>
 {`-- Begin a Transaction
 BEGIN TRANSACTION;
@@ -118,28 +105,22 @@ ROLLBACK;`}
 
       {/* Joins & Queries */}
       <Section title="Joins & Common Queries" color="text-teal-600">
-        <p>
-          Joins are used to combine rows from two or more tables based on related columns.
-        </p>
+        <p>Joins are used to combine rows from two or more tables based on related columns.</p>
         <CodeBlock>
 {`-- Inner Join: Returns only matching rows
-SELECT s.StudentName, d.DistrictName
-FROM Student s
+SELECT s.StudentName, d.DistrictName FROM Student s
 JOIN District d ON s.DistrictID = d.DistrictID;
 
 -- Left Join: Returns all rows from the left table plus matching rows from right table
-SELECT s.StudentName, d.DistrictName
-FROM Student s
+SELECT s.StudentName, d.DistrictName FROM Student s
 LEFT JOIN District d ON s.DistrictID = d.DistrictID;
 
 -- Group By: Aggregate rows based on a column
-SELECT DistrictID, COUNT(*) AS TotalStudents
-FROM Student
+SELECT DistrictID, COUNT(*) AS TotalStudents FROM Student
 GROUP BY DistrictID;
 
 -- Order By: Sort rows
-SELECT * FROM Student
-ORDER BY StudentName ASC;`}
+SELECT * FROM Student ORDER BY StudentName ASC;`}
         </CodeBlock>
       </Section>
 

@@ -5,7 +5,7 @@ function Sqlcrud() {
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">SQL CRUD Operations</h1>
         <p className="text-gray-500 text-xs mt-1">
-          Step-by-step guide for creating <strong>tables</strong> and performing <strong>CRUD operations</strong> on multiple entities like Skills, Qualification, Language, Country, State, District, Customer, Student, Employee, Role, User, etc.
+          Creating <strong>tables</strong> and performing <strong>CRUD operations</strong> on multiple entities like Skills, Qualification, Language, Country, State, District, Customer, Student, Employee, Role, User, etc.
         </p>
       </header>
 
@@ -20,7 +20,7 @@ function Sqlcrud() {
         </CodeBlock>
         <CodeBlock>
 {`-- CRUD Examples
-INSERT INTO Skills (Name) VALUES ('C#'), ('Java'), ('Python');
+INSERT INTO Skills VALUES ('C#'), ('Java'), ('Python');
 SELECT * FROM Skills;
 UPDATE Skills SET Name = 'JavaScript' WHERE Id = 2;
 DELETE FROM Skills WHERE Id = 3;`}
@@ -38,7 +38,7 @@ DELETE FROM Skills WHERE Id = 3;`}
         </CodeBlock>
         <CodeBlock>
 {`-- CRUD Examples
-INSERT INTO Qualification (Name) VALUES ('B.Tech'), ('MBA');
+INSERT INTO Qualification VALUES ('B.Tech'), ('MBA');
 SELECT * FROM Qualification;
 UPDATE Qualification SET Name = 'MCA' WHERE Id = 1;
 DELETE FROM Qualification WHERE Id = 2;`}
@@ -56,7 +56,7 @@ DELETE FROM Qualification WHERE Id = 2;`}
         </CodeBlock>
         <CodeBlock>
 {`-- CRUD Examples
-INSERT INTO Language (Name) VALUES ('English'), ('Hindi'), ('French');
+INSERT INTO Language VALUES ('English'), ('Hindi'), ('French');
 SELECT * FROM Language;
 UPDATE Language SET Name = 'German' WHERE Id = 3;
 DELETE FROM Language WHERE Id = 2;`}
@@ -89,9 +89,9 @@ CREATE TABLE District
         </CodeBlock>
         <CodeBlock>
 {`-- CRUD Examples
-INSERT INTO Country (Name) VALUES ('India'), ('USA');
-INSERT INTO State (Name, CountryId) VALUES ('Karnataka', 1), ('California', 2);
-INSERT INTO District (Name, CountryId, StateId) VALUES ('Bangalore', 1, 1);
+INSERT INTO Country VALUES ('India'), ('USA');
+INSERT INTO State VALUES ('Karnataka', 1), ('California', 2);
+INSERT INTO District VALUES ('Bangalore', 1, 1);
 SELECT * FROM Country;
 SELECT * FROM State WHERE CountryId = 1;
 SELECT * FROM District WHERE StateId = 1;
@@ -114,7 +114,7 @@ DELETE FROM District WHERE Id = 1;`}
         </CodeBlock>
         <CodeBlock>
 {`-- CRUD Examples
-INSERT INTO Customer (Name, Email, Mobile, Image) VALUES ('John Doe','john@example.com','1234567890','john.png');
+INSERT INTO Customer VALUES ('John Doe','john@example.com','1234567890','john.png');
 SELECT * FROM Customer;
 UPDATE Customer SET Mobile = '9876543210' WHERE Id = 1;
 DELETE FROM Customer WHERE Id = 1;`}
@@ -156,8 +156,7 @@ CREATE TABLE Employee
         </CodeBlock>
         <CodeBlock>
 {`-- CRUD Examples
-INSERT INTO Student (FirstName, LastName, Email, Mobile, CountryId, StateId, DistrictId, GenderId) 
-VALUES ('Alice','Johnson','alice@example.com','5551112222',1,1,1,1);
+INSERT INTO Student VALUES ('Alice','Johnson','alice@example.com','5551112222',1,1,1,1);
 SELECT * FROM Student;
 UPDATE Student SET Address = 'New Address' WHERE Id = 1;
 DELETE FROM Student WHERE Id = 1;`}
@@ -176,7 +175,7 @@ DELETE FROM Student WHERE Id = 1;`}
         </CodeBlock>
         <CodeBlock>
 {`-- CRUD Examples
-INSERT INTO EmployeeLanguage (EmployeeId, LanguageId) VALUES (1,1);
+INSERT INTO EmployeeLanguage VALUES (1,1);
 SELECT * FROM EmployeeLanguage;
 UPDATE EmployeeLanguage SET LanguageId = 2 WHERE Id = 1;
 DELETE FROM EmployeeLanguage WHERE Id = 1;`}
@@ -209,9 +208,9 @@ CREATE TABLE UserRole
         </CodeBlock>
         <CodeBlock>
 {`-- CRUD Examples
-INSERT INTO Role (Name) VALUES ('Admin'), ('User');
-INSERT INTO [User] (Name, Email, Password) VALUES ('Anil','anil@example.com','12345');
-INSERT INTO UserRole (UserId, RoleId) VALUES (1,1);
+INSERT INTO Role VALUES ('Admin'), ('User');
+INSERT INTO [User] VALUES ('Anil','anil@example.com','12345');
+INSERT INTO UserRole VALUES (1,1);
 
 SELECT * FROM Role;
 SELECT * FROM [User];

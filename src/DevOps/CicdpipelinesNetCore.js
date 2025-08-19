@@ -1,7 +1,7 @@
 export default function CicdpipelinesNetCore() {
   return (
     <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif', lineHeight: '1.6' }}>
-      <h2>📘 Jenkins CI/CD Pipeline for .NET Core API (Step-by-Step)</h2>
+      <h2>📘 Jenkins CI/CD Pipeline for .NET Core API</h2>
 
       {/* Step 1 */}
       <section>

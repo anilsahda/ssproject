@@ -19,7 +19,7 @@ CREATE PROCEDURE sp_AddSkill
   @Name NVARCHAR(150)
 AS
 BEGIN
-  INSERT INTO Skills (Name) VALUES (@Name);
+  INSERT INTO Skills VALUES (@Name);
 END
 
 -- Get All Skills
@@ -55,7 +55,7 @@ END`}
   @Name NVARCHAR(150)
 AS
 BEGIN
-  INSERT INTO Qualification (Name) VALUES (@Name);
+  INSERT INTO Qualification VALUES (@Name);
 END
 
 CREATE PROCEDURE sp_GetQualifications
@@ -88,7 +88,7 @@ END`}
   @Name NVARCHAR(150)
 AS
 BEGIN
-  INSERT INTO Language (Name) VALUES (@Name);
+  INSERT INTO Language VALUES (@Name);
 END
 
 CREATE PROCEDURE sp_GetLanguages
@@ -122,7 +122,7 @@ CREATE PROCEDURE sp_AddCountry
     @Name NVARCHAR(150)
 AS 
 BEGIN 
-    INSERT INTO Country (Name) VALUES (@Name); 
+    INSERT INTO Country VALUES (@Name); 
 END
 
 CREATE PROCEDURE sp_GetCountries
@@ -137,7 +137,7 @@ CREATE PROCEDURE sp_AddState
     @CountryId INT
 AS 
 BEGIN 
-    INSERT INTO State (Name, CountryId) VALUES (@Name, @CountryId); 
+    INSERT INTO State VALUES (@Name, @CountryId); 
 END
 
 CREATE PROCEDURE sp_GetStatesByCountry 
@@ -153,7 +153,7 @@ CREATE PROCEDURE sp_AddDistrict
     @CountryId INT, 
     @StateId INT
 AS 
-    BEGIN INSERT INTO District (Name, CountryId, StateId) VALUES (@Name, @CountryId, @StateId); 
+    BEGIN INSERT INTO District VALUES (@Name, @CountryId, @StateId); 
 END
 
 CREATE PROCEDURE sp_GetDistrictsByState 
@@ -175,7 +175,7 @@ END`}
   @Image NVARCHAR(250)
 AS
 BEGIN
-  INSERT INTO Customer (Name, Email, Mobile, Image) VALUES (@Name, @Email, @Mobile, @Image);
+  INSERT INTO Customer VALUES (@Name, @Email, @Mobile, @Image);
 END
 
 CREATE PROCEDURE sp_GetCustomers
@@ -221,8 +221,7 @@ CREATE PROCEDURE sp_AddStudent
   @GenderId INT
 AS
 BEGIN
-  INSERT INTO Student (FirstName, MiddleName, LastName, Address, Email, Mobile, CountryId, StateId, DistrictId, GenderId)
-  VALUES (@FirstName, @MiddleName, @LastName, @Address, @Email, @Mobile, @CountryId, @StateId, @DistrictId, @GenderId);
+  INSERT INTO Student VALUES (@FirstName, @MiddleName, @LastName, @Address, @Email, @Mobile, @CountryId, @StateId, @DistrictId, @GenderId);
 END
 
 CREATE PROCEDURE sp_GetStudents
@@ -245,8 +244,7 @@ CREATE PROCEDURE sp_AddEmployee
   @GenderId INT
 AS
 BEGIN
-  INSERT INTO Employee (FirstName, MiddleName, LastName, Address, Email, Mobile, CountryId, StateId, DistrictId, GenderId)
-  VALUES (@FirstName, @MiddleName, @LastName, @Address, @Email, @Mobile, @CountryId, @StateId, @DistrictId, @GenderId);
+  INSERT INTO Employee VALUES (@FirstName, @MiddleName, @LastName, @Address, @Email, @Mobile, @CountryId, @StateId, @DistrictId, @GenderId);
 END
 
 CREATE PROCEDURE sp_GetEmployees
@@ -265,7 +263,7 @@ END`}
   @LanguageId INT
 AS
 BEGIN
-  INSERT INTO EmployeeLanguage (EmployeeId, LanguageId) VALUES (@EmployeeId, @LanguageId);
+  INSERT INTO EmployeeLanguage VALUES (@EmployeeId, @LanguageId);
 END
 
 CREATE PROCEDURE sp_GetEmployeeLanguages
@@ -284,7 +282,7 @@ CREATE PROCEDURE sp_AddRole
     @Name NVARCHAR(150)
 AS 
 BEGIN 
-    INSERT INTO Role (Name) VALUES (@Name); 
+    INSERT INTO Role VALUES (@Name); 
 END
 
 CREATE PROCEDURE sp_GetRoles
@@ -312,7 +310,7 @@ CREATE PROCEDURE sp_AddUserRole
     @RoleId INT
 AS 
 BEGIN 
-    INSERT INTO UserRole (UserId, RoleId) VALUES (@UserId, @RoleId); 
+    INSERT INTO UserRole VALUES (@UserId, @RoleId); 
 END
 
 CREATE PROCEDURE sp_GetUserRoles

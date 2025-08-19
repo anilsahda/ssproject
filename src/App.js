@@ -201,6 +201,7 @@ import Angularlocalstorage from "./Angular/Angularlocalstorage";
 import Angularquestions from "./Angular/Angularquestions";
 import Javaexportcsv from "./Java/Javaexportcsv";
 import Nodeexportcsv from "./Node/Nodeexportcsv";
+import CicdpipelinesJava from "./DevOps/CicdpipelinesJava";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -379,7 +380,8 @@ function App() {
             <Route path="/cicdpipelinesreact" element={<CicdpipelinesReact />} />
             <Route path="/cicdpipelinesnext" element={<CicdpipelinesNext />} />
             <Route path="/cicdpipelinesnode" element={<CicdpipelinesNode />} />
-            <Route path="/cicdpipelinesnetcore" element={<CicdpipelinesNetCore />} />                        
+            <Route path="/cicdpipelinesnetcore" element={<CicdpipelinesNetCore />} />
+            <Route path="/cicdpipelinesjava" element={<CicdpipelinesJava />} />
             <Route path="/jenkins" element={<Jenkins />} />
             <Route path="/docker" element={<Docker />} />
             <Route path="/kubernetes" element={<Kubernetes />} />

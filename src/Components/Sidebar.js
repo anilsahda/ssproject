@@ -223,6 +223,7 @@ function Sidebar({ activeMenu }) {
             <SidebarButton to="/cicdpipelinesnext" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - Next" />
             <SidebarButton to="/cicdpipelinesnode" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - Node" />
             <SidebarButton to="/cicdpipelinesnetcore" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - .Net Core" />
+            <SidebarButton to="/cicdpipelinesjava" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - SpringBoot" />
             <SidebarButton to="/docker" icon="bi-box-seam" label="Docker" />
             <SidebarButton to="/kubernetes" icon="bi-diagram-3-fill" label="Kubernetes" />
             <SidebarButton to="/ansible" icon="bi-tools" label="Ansible" />
