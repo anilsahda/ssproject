@@ -16,6 +16,7 @@ npm i react-router-dom
 npm i bootstrap
 npm i bootstrap-icons
 npm i react-bootstrap-icons
+npm i react-select
 npm i sweetalert2`}
           </code>
         </pre>
