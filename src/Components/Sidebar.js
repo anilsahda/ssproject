@@ -131,7 +131,7 @@ function Sidebar({ activeMenu }) {
           {activeMenu === "Node" && (
             <>
             <SidebarButton to="/nodeprojectsetup" icon="bi-calendar-check" label="Node Project Setup" />
-            <SidebarButton to="/nodelanguages" icon="bi-ui-checks-grid" label="Node Language" />
+            <SidebarButton to="/nodelanguage" icon="bi-ui-checks-grid" label="Node Language" />
             <SidebarButton to="/nodecountry" icon="bi-ui-checks-grid" label="Node Country" />
             <SidebarButton to="/nodestate" icon="bi-caret-down-square" label="Node State" />
             <SidebarButton to="/nodedistrict" icon="bi-diagram-3" label="Node District" />

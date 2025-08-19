@@ -1,7 +1,7 @@
 export default function Dotnetquestions() {
   return (
     <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif', lineHeight: '1.6' }}>
-      <h2>📘 .NET 100 Questions & Answers</h2>
+      <h2>📘 .NET Interview Questions & Answers</h2>
 
       {/* Question 1 */}
       <section>

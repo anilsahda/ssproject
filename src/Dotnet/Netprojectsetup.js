@@ -1,73 +1,57 @@
 function Netprojectsetup() {
   return (
     <div className="p-6 space-y-8 bg-gray-50 min-h-screen">
-      <h2 className="text-4xl font-extrabold text-indigo-700 border-b-4 border-indigo-300 pb-3">.NET Core API Project Setup</h2>
+      <h2 className="text-4xl font-extrabold text-indigo-700 border-b-4 border-indigo-300 pb-3">
+        .NET Core API Project Setup
+      </h2>
 
-      <section>
-        <div className="flex items-center mb-3">
-          <strong className="text-indigo-700 text-lg">Prerequisites</strong>
-        </div>
- <CodeBlock>
-        <ul className="list-disc ml-6 text-gray-800">
-          <li>Visual Studio 2022 Community</li>
-          <li>SQL Server / MySQL / PostgreSQL</li>
-        </ul>
-  </CodeBlock>
-      </section>
+      <SectionBlock title="Prerequisites" color="indigo">
+        <CodeBlock>
+          <ul className="list-disc ml-6 text-gray-800">
+            <li>Visual Studio 2022 Community</li>
+            <li>SQL Server / MySQL / PostgreSQL</li>
+          </ul>
+        </CodeBlock>
+      </SectionBlock>
 
-      <section>
-        <div className="flex items-center mb-3">
-          <strong className="text-green-700 text-lg">1. Steps to Create a .NET Core API Project</strong>
-        </div>
-<CodeBlock>
-        <ol className="list-decimal ml-6 text-gray-800">
-          <li>Open <b>Visual Studio 2022</b></li>
-          <li>Click <b>Create a New Project</b></li>
-          <li>Search <b>ASP.NET Core Web API</b> and select it</li>
-          <li>Click <b>Next</b></li>
-          <li>Enter Project Name</li>
-          <li>Click <b>Next</b></li>
-          <li>Click <b>Create</b></li>
-        </ol>
-</CodeBlock>
-      </section>
+      <SectionBlock title="1. Steps to Create a .NET Core API Project" color="green">
+        <CodeBlock>
+          <ol className="list-decimal ml-6 text-gray-800">
+            <li>Open <b>Visual Studio 2022</b></li>
+            <li>Click <b>Create a New Project</b></li>
+            <li>Search <b>ASP.NET Core Web API</b> and select it</li>
+            <li>Click <b>Next</b></li>
+            <li>Enter Project Name</li>
+            <li>Click <b>Next</b></li>
+            <li>Click <b>Create</b></li>
+          </ol>
+        </CodeBlock>
+      </SectionBlock>
 
-      <section>
-        <div className="flex items-center mb-3">
-          <strong className="text-yellow-700 text-lg">2. Install Nuget Package</strong>
-        </div>
-<CodeBlock>
-        <ul className="list-disc ml-6 text-gray-800">
-          <li>Microsoft.EntityFrameworkCore</li>
-          <li>Microsoft.EntityFrameworkCore.Tools</li>
-          <li>Microsoft.EntityFrameworkCore.Design</li>
-          <li>Microsoft.EntityFrameworkCore.SqlServer</li>
-          <li>Pomelo.EntityFrameworkCore.MySql</li>
-          <li>Npgsql.EntityFrameworkCore.PostgreSQL</li>
-        </ul>
- </CodeBlock>
-      </section>
+      <SectionBlock title="2. Install Nuget Package" color="yellow">
+        <CodeBlock>
+          <ul className="list-disc ml-6 text-gray-800">
+            <li>Microsoft.EntityFrameworkCore</li>
+            <li>Microsoft.EntityFrameworkCore.Tools</li>
+            <li>Microsoft.EntityFrameworkCore.Design</li>
+            <li>Microsoft.EntityFrameworkCore.SqlServer</li>
+            <li>Pomelo.EntityFrameworkCore.MySql</li>
+            <li>Npgsql.EntityFrameworkCore.PostgreSQL</li>
+          </ul>
+        </CodeBlock>
+      </SectionBlock>
 
-      <section>
-        <div className="flex items-center mb-3">
-          <strong className="text-purple-700 text-lg">3. Create AppDbContext.cs in Data Folder</strong>
-        </div>
-<CodeBlock>
-        <pre className="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+      <SectionBlock title="3. Create AppDbContext.cs in Data Folder" color="purple">
+        <CodeBlock>
 {`public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 }`}
-        </pre>
- </CodeBlock>
-      </section>
+        </CodeBlock>
+      </SectionBlock>
 
-      <section>
-        <div className="flex items-center mb-3">
-          <strong className="text-red-700 text-lg">4. Program.cs</strong>
-        </div>
-<CodeBlock>
-        <pre className="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+      <SectionBlock title="4. Program.cs" color="red">
+        <CodeBlock>
 {`using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -76,8 +60,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configure DbContext
-builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon")));
-//builder.Services.AddDbContext<AppDbContext>(options=>options.UseMySql(MySqlConnection,ServerVersion.AutoDetect(MySqlCon)));
+builder.Services.AddDbContext<AppDbContext>(options => 
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon")));
+//builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(MySqlConnection, ServerVersion.AutoDetect(MySqlCon)));
 //builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(PostgresCon));
 
 builder.Services.AddCors(options =>
@@ -100,18 +85,12 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-app.Run();
-`}
-        </pre>
- </CodeBlock>
-      </section>
+app.Run();`}
+        </CodeBlock>
+      </SectionBlock>
 
-      <section>
-        <div className="flex items-center mb-3">
-          <strong className="text-purple-700 text-lg">appsettings.json</strong>
-        </div>
-<CodeBlock>
-        <pre className="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+      <SectionBlock title="appsettings.json" color="purple">
+        <CodeBlock>
 {`{
   "ConnectionStrings": {
     "SqlCon": "Server=ANIL;Database=CrudDb;Trusted_Connection=True;TrustServerCertificate=True;",
@@ -119,23 +98,44 @@ app.Run();
     "PostgresCon": "Host=localhost;Port=5432;Database=CrudDb;Username=postgres;Password=password"
   }
 }`}
-        </pre>
- </CodeBlock>
-      </section>
+        </CodeBlock>
+      </SectionBlock>
 
-      {/* 6. Testing API */}
-      <section>
-        <div className="flex items-center mb-3">
-          <strong className="text-blue-700 text-lg">Testing API</strong>
-        </div>
+      <SectionBlock title="Testing API" color="blue">
         <ul className="list-disc ml-6 text-gray-800">
           <li><code>Press F5 to test in Swagger</code></li>
         </ul>
-      </section>
+      </SectionBlock>
     </div>
   );
 }
 
-function CodeBlock({ children }) {return (<pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">{children}</pre>);}
+function SectionBlock({ title, color, children }) {
+  const textColor = {
+    indigo: "text-indigo-700",
+    green: "text-green-700",
+    yellow: "text-yellow-700",
+    red: "text-red-700",
+    purple: "text-purple-700",
+    blue: "text-blue-700",
+  }[color] || "text-gray-700";
+
+  return (
+    <section>
+      <div className="flex items-center mb-3">
+        <strong className={`${textColor} text-lg`}>{title}</strong>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function CodeBlock({ children }) {
+  return (
+    <pre className="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto">
+      {children}
+    </pre>
+  );
+}
 
 export default Netprojectsetup;

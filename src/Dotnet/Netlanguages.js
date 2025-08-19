@@ -1,5 +1,3 @@
-import React from "react";
-
 function Netlanguages() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
