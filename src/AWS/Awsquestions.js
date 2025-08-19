@@ -3,8 +3,9 @@ export default function Awsquestions() {
   const preStyle = { background: '#f5f5f5', padding: '1rem', overflowX: 'auto', borderRadius: '5px' };
 
   const qaList = [
-{ q: "1. What is Cloud Computing?", a: `Cloud computing delivers IT resources (compute, storage, databases, networking, etc.) over the internet with pay-as-you-go pricing.
-Example: Instead of buying physical servers, you use AWS, Azure, or GCP to run your applications.` },
+{ q: "1. What is Cloud Computing?", a: `Cloud computing means using IT resources like servers, storage, databases and networking 
+over the internet, and you pay only for what you use.
+Example: Instead of buying physical servers, you use AWS, Azure or Google cloud to run our applications.` },
     { q: "2. What are the types of cloud models?", a: `Public Cloud = Services over the internet (AWS, Azure, GCP).
 Private Cloud = Dedicated infrastructure for one organization.
 Hybrid Cloud = Mix of public + private.
@@ -30,8 +31,8 @@ Example: Deploy EC2 in multiple AZs for high availability.` },
     { q: "10. What is Serverless Computing?", a: `Serverless lets you run code without managing servers.
 Example: AWS Lambda executes a function when an S3 file is uploaded.` },
 
-    { q: "11. What is AWS?", a: `AWS (Amazon Web Services) is a cloud platform providing on-demand compute, storage, database, networking, and many other services.
-Example: You can launch EC2 instances instead of buying physical servers, or use S3 to store files like images, videos, or backups.` },
+    { q: "11. What is AWS?", a: `AWS is a cloud platform providing on-demand compute, storage, database, networking and many other services
+Example:We can launch EC2 instance instead of buying physical server or use S3 to store file, image, video` },
     { q: "12. What is EC2?", a: `EC2 (Elastic Compute Cloud) provides scalable virtual servers in the cloud.
 Example: Launch a Linux server in minutes to host a website or run a backend service.` },
     { q: "13. What is S3?", a: `S3 (Simple Storage Service) is object storage for storing any amount of data with high availability.
@@ -40,9 +41,9 @@ Example: Store user-uploaded profile pictures, videos, or log backups with secur
 Example: Create a user with read-only access to S3 buckets without giving full admin privileges.` },
     { q: "15. Difference between Security Groups and NACLs", a: `Security Groups (SG) = instance-level firewall, stateful.
 NACL (Network ACL) = subnet-level firewall, stateless.
-Example: Use SG to allow HTTP/HTTPS to a web server, and NACL to block traffic from a malicious IP at subnet level.` },
+Examp:Use SG to allow HTTP/HTTPS to web server and NACL to block traffic from malicious IP at subnet level` },
     { q: "16. What is VPC?", a: `VPC (Virtual Private Cloud) allows you to launch AWS resources in an isolated virtual network.
-Example: Launch EC2 instances in private subnets, use NAT gateway for internet access, and control routing.` },
+Example: Launch EC2 instances in private subnets, use NAT gateway for internet access and control routing.` },
     { q: "17. What is Lambda?", a: `Lambda is a serverless compute service that runs code in response to events without managing servers.
 Example: Trigger a Lambda function when a new file is uploaded to S3 to generate thumbnails automatically.` },
     { q: "18. What is DynamoDB?", a: `DynamoDB is a fully managed NoSQL database that provides fast, predictable performance at any scale.
@@ -50,10 +51,9 @@ Example: Use DynamoDB to store user session data for a high-traffic web applicat
     { q: "19. Difference between RDS and DynamoDB", a: `RDS = relational database (MySQL, PostgreSQL), structured data.
 DynamoDB = NoSQL, key-value or document-based, scalable.
 Example: Use RDS for accounting transactions, DynamoDB for storing user preferences or logs.` },
-    { q: "20. What is CloudWatch?", a: `CloudWatch monitors AWS resources and applications in real-time. You can track metrics, logs, and set alarms.
+    { q: "20. What is CloudWatch?", a: `CloudWatch monitors AWS resources and applications in real-time. We can track metrics, logs and set alarms
 Example: Set a CloudWatch alarm to notify when EC2 CPU usage exceeds 80%.` },
 
-    // Added 40 more
     { q: "21. What is Elastic Load Balancer (ELB)?", a: `ELB automatically distributes incoming application traffic across multiple targets.
 Example: Distribute requests across multiple EC2 instances for high availability.` },
     { q: "22. What is Auto Scaling?", a: `Auto Scaling automatically adjusts the number of EC2 instances to handle traffic.
@@ -88,56 +88,40 @@ Example: Encrypt S3 objects or RDS databases using KMS-managed keys.` },
     { q: "36. Difference between EBS and S3", a: `EBS = block storage (attached to EC2).
 S3 = object storage (independent, global access).
 Example: Use EBS for database storage, S3 for static files like images.` },
-    { q: "37. What is NAT Gateway?", a: `NAT Gateway allows private subnet instances to access the internet.
-Example: Update software on private EC2 instances without exposing them to the internet.` },
-    { q: "38. What is Transit Gateway?", a: `Transit Gateway connects multiple VPCs and on-premises networks.
+    { q: "37. What is Transit Gateway?", a: `Transit Gateway connects multiple VPCs and on-premises networks.
 Example: Central hub to connect VPCs across regions.` },
-    { q: "39. What is AWS Direct Connect?", a: `Direct Connect establishes a dedicated network connection from on-premises to AWS.
-Example: Low-latency connection for financial applications.` },
-    { q: "40. What is AWS WAF?", a: `Web Application Firewall protects applications against common web exploits.
+    { q: "38. What is AWS WAF?", a: `Web Application Firewall protects applications against common web exploits.
 Example: Block SQL injection or XSS attacks on your web app.` },
 
-    { q: "41. What is AWS Shield?", a: `AWS Shield provides DDoS protection.
+    { q: "39. What is AWS Shield?", a: `AWS Shield provides DDoS protection.
 Example: Protects your website from large-scale DDoS attacks.` },
-    { q: "42. What is Step Functions?", a: `Step Functions coordinate multiple AWS services into workflows.
-Example: Orchestrate Lambda functions for order processing.` },
-    { q: "43. What is AWS Batch?", a: `AWS Batch runs batch computing jobs at any scale.
+    { q: "40. What is AWS Batch?", a: `AWS Batch runs batch computing jobs at any scale.
 Example: Process millions of images in parallel.` },
-    { q: "44. What is AWS CodePipeline?", a: `CodePipeline automates CI/CD workflows.
-Example: Build, test, and deploy code changes automatically.` },
-    { q: "45. What is AWS CodeDeploy?", a: `CodeDeploy automates code deployment to EC2, Lambda, or on-premises servers.
+    { q: "41. What is AWS CodeDeploy?", a: `CodeDeploy automates code deployment to EC2, Lambda, or on-premises servers.
 Example: Deploy a new version of an application with zero downtime.` },
-    { q: "46. What is AWS CodeBuild?", a: `CodeBuild compiles source code, runs tests, and produces build artifacts.
+    { q: "42. What is AWS CodeBuild?", a: `CodeBuild compiles source code, runs tests, and produces build artifacts.
 Example: Build a Java application from GitHub repo.` },
-    { q: "47. What is AWS CodeCommit?", a: `CodeCommit is a Git-based source control service.
+    { q: "43. What is AWS CodeCommit?", a: `CodeCommit is a Git-based source control service.
 Example: Store source code in a private Git repository.` },
-    { q: "48. What is AWS Secrets Manager?", a: `Secrets Manager securely stores and rotates credentials.
+    { q: "44. What is AWS Secrets Manager?", a: `Secrets Manager securely stores and rotates credentials.
 Example: Store DB passwords and rotate them automatically.` },
-    { q: "49. What is AWS Config?", a: `Config tracks AWS resource configuration changes.
+    { q: "45. What is AWS Config?", a: `Config tracks AWS resource configuration changes.
 Example: Identify non-compliant S3 buckets without encryption.` },
-    { q: "450. What is AWS Inspector?", a: `Inspector is a security assessment tool.
+    { q: "46. What is AWS Inspector?", a: `Inspector is a security assessment tool.
 Example: Scan EC2 instances for vulnerabilities.` },
 
-    { q: "51. What is AWS Trusted Advisor?", a: `Trusted Advisor gives recommendations on cost, performance, and security.
+    { q: "47. What is AWS Trusted Advisor?", a: `Trusted Advisor gives recommendations on cost, performance, and security.
 Example: Suggests unused EC2 instances to terminate for cost savings.` },
-    { q: "52. What is AWS Cost Explorer?", a: `Cost Explorer helps analyze and visualize AWS spending.
+    { q: "48. What is AWS Cost Explorer?", a: `Cost Explorer helps analyze and visualize AWS spending.
 Example: Track monthly costs and forecast future expenses.` },
-    { q: "53. What is Spot Instance?", a: `Spot Instances are unused EC2 capacity at a discounted price.
+    { q: "49. What is Spot Instance?", a: `Spot Instances are unused EC2 capacity at a discounted price.
 Example: Run non-critical workloads like batch jobs at low cost.` },
-    { q: "54. What is Reserved Instance?", a: `Reserved Instances offer discounted EC2 pricing for 1 or 3 years.
-Example: Commit to long-term workloads like production servers.` },
-    { q: "55. What is On-Demand Instance?", a: `On-Demand Instances are pay-as-you-go EC2 pricing.
+    { q: "50. What is On-Demand Instance?", a: `On-Demand Instances are pay-as-you-go EC2 pricing.
 Example: Run development servers without long-term commitments.` },
-    { q: "56. What is AWS Elastic IP?", a: `Elastic IP is a static IPv4 address for EC2.
+    { q: "51. What is AWS Elastic IP?", a: `Elastic IP is a static IPv4 address for EC2.
 Example: Keep the same IP even after restarting instances.` },
-    { q: "57. What is Multi-AZ in RDS?", a: `Multi-AZ provides high availability by replicating RDS to another AZ.
-Example: Failover automatically if the primary database goes down.` },
-    { q: "58. What is Read Replica in RDS?", a: `Read Replica improves performance by offloading read queries.
-Example: Scale read-heavy applications.` },
-    { q: "59. What is AWS Aurora?", a: `Aurora is a high-performance managed relational database compatible with MySQL/PostgreSQL.
+    { q: "52. What is AWS Aurora?", a: `Aurora is a high-performance managed relational database compatible with MySQL/PostgreSQL.
 Example: Use Aurora for faster performance compared to standard RDS.` },
-    { q: "60. What is AWS Global Accelerator?", a: `Global Accelerator improves performance by routing traffic through AWS global network.
-Example: Low-latency global access for applications.` },
   ];
 
   return (
