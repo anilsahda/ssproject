@@ -21,7 +21,6 @@ function Reactcountry() {
           CRUD Operation - React
         </h1>
 
-        {/* Step 1: State and Base URL */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 1: State and Base URL
@@ -32,7 +31,6 @@ const [name, setName] = useState("");
 const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;`}</pre>
         </section>
 
-        {/* Step 2: Load Countries */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 2: Load Countries from API
@@ -46,7 +44,6 @@ const loadCountries = () => {
 };`}</pre>
         </section>
 
-        {/* Step 3: Toast Notifications */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 3: Toast Notifications
@@ -64,7 +61,6 @@ const loadCountries = () => {
 };`}</pre>
         </section>
 
-        {/* Step 4: Save / Update Country */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCode /> Step 4: Add or Update Country
@@ -78,22 +74,15 @@ const loadCountries = () => {
   }
 
   if (id === 0) {
-    axios.post(baseUrl, data).then(() => {
-      toast("success", "Country added");
-      resetForm();
-      loadCountries();
-    });
+    axios.post(baseUrl, data).then(() => { toast("success", "Country added")});
   } else {
-    axios.put(baseUrl, data).then(() => {
-      toast("success", "Country updated");
-      resetForm();
-      loadCountries();
-    });
+    axios.put(baseUrl, data).then(() => { toast("success", "Country updated")});
   }
+  resetForm();
+  loadCountries();
 };`}</pre>
         </section>
 
-        {/* Step 5: Edit Country */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 5: Edit Country
@@ -104,7 +93,6 @@ const loadCountries = () => {
 };`}</pre>
         </section>
 
-        {/* Step 6: Delete Country */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 6: Delete Country
@@ -120,16 +108,13 @@ const loadCountries = () => {
     confirmButtonText: "Yes"
   }).then((result) => {
     if (result.isConfirmed) {
-      axios.delete(\`\${baseUrl}/\${countryId}\`).then(() => {
-        toast("success", "Country deleted");
-        loadCountries();
-      });
+      axios.delete(\`\${baseUrl}/\${countryId}\`).then(()=>{toast("success","Country deleted")});
+      loadCountries();
     }
   });
 };`}</pre>
         </section>
 
-        {/* Step 7: Reset Form */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 7: Reset Form
@@ -140,25 +125,24 @@ const loadCountries = () => {
 };`}</pre>
         </section>
 
-        {/* Step 8: Component JSX */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCode /> Step 8: Component JSX
           </div>
-          <pre style={preStyle}>{`<div className="container mt-4">
+          <pre style={preStyle}>{`<div>
   <h2>Manage Countries</h2>
 
-  <div className="mb-3">
+  <div>
     <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
   </div>
 
-  <div className="mb-4">
-    <button className="btn btn-primary me-2" onClick={handleSave}>Save Country</button>
-    <button className="btn btn-secondary" onClick={resetForm}>Reset</button>
+  <div>
+    <button onClick={handleSave}>Save Country</button>
+    <button onClick={resetForm}>Reset</button>
   </div>
 
-  <table className="table table-bordered table-striped">
-    <thead className="table-light">
+  <table>
+    <thead>
       <tr>
         <th>Id</th>
         <th>Name</th>
@@ -181,7 +165,6 @@ const loadCountries = () => {
 </div>`}</pre>
         </section>
 
-        {/* Step 9: Summary */}
         <section>
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 9: Summary
@@ -199,7 +182,6 @@ const loadCountries = () => {
   );
 }
 
-// Shared preStyle for all code blocks
 const preStyle = {
   backgroundColor: "#f1f3f5",
   fontFamily: "monospace",

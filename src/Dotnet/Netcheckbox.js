@@ -1,15 +1,10 @@
 function Netcheckbox() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-      {/* Header */}
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Checkbox Integration in .Net Core API</h1>
-        <p className="text-gray-500 text-xs mt-1">
-          Step-by-step guide to implementing CRUD functionality for the <strong>Employee</strong> entity in .NET Core with SQL Server.
-        </p>
+        <p className="text-gray-500 text-xs mt-1">Implementing CRUD functionality for the <strong>Employee</strong> entity in .NET Core with SQL Server.</p>
       </header>
-
-      {/* Step 1: SQL Table */}
       <Section title="SQL Table" color="text-indigo-600">
         <CodeBlock>
 {`CREATE TABLE Employee (
@@ -36,7 +31,6 @@ function Netcheckbox() {
         </CodeBlock>
       </Section>
 
-      {/* Step 2: Model */}
       <Section title="Model (Employee.cs)" color="text-green-600">
         <CodeBlock>
 {`public class Employee
@@ -64,7 +58,6 @@ function Netcheckbox() {
         </CodeBlock>
       </Section>
 
-      {/* Step 3: DbContext */}
       <Section title="DbContext (AppDbContext.cs)" color="text-yellow-600">
         <CodeBlock>
 {`public class AppDbContext : DbContext
@@ -76,7 +69,6 @@ function Netcheckbox() {
         </CodeBlock>
       </Section>
 
-      {/* Step 4: DTO */}
       <Section title="Model (Employee.cs)" color="text-green-600">
         <CodeBlock>
 {`public class EmployeeDTO
@@ -94,7 +86,6 @@ function Netcheckbox() {
         </CodeBlock>
       </Section>
 
-      {/* Step 5: EF Migrations */}
       <Section title="Entity Framework Migrations" color="text-purple-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li>Open <b>Package Manager Console</b></li>
@@ -103,7 +94,6 @@ function Netcheckbox() {
         </ul>
       </Section>
 
-      {/* Step 6: Controller */}
       <Section title="Controller (EmployeesController.cs)" color="text-red-600">
         <CodeBlock>
 {`[Route("api/[controller]")]
@@ -229,7 +219,6 @@ public class EmployeesController : ControllerBase
         </CodeBlock>
       </Section>
 
-      {/* Step 7: API Endpoints */}
       <Section title="Example API Endpoints" color="text-blue-600">
         <ul className="list-disc ml-5 space-y-1 text-gray-700">
           <li><code className="bg-gray-100 px-1 rounded">GET https://localhost:7070/api/employees</code> – Retrieves all employees</li>
@@ -243,14 +232,7 @@ public class EmployeesController : ControllerBase
   );
 }
 
-/* Reusable Section Component */
-function Section({ title, color, children }) {
-  return (<section><div className="flex items-center mb-2"><strong className={`${color}`}>{title}</strong></div>{children}</section>);
-}
-
-/* Reusable Code Block Component */
-function CodeBlock({ children }) {
-  return (<pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">{children}</pre>);
-}
+function Section({ title, color, children }) { return (<section><div className="flex items-center mb-2"><strong className={`${color}`}>{title}</strong></div>{children}</section>)}
+function CodeBlock({ children }) { return (<pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">{children}</pre>)}
 
 export default Netcheckbox;

@@ -1,8 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaBook, FaLink, FaCode, FaCheckCircle } from "react-icons/fa";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
 
 function Reactlanguages() {
   const sectionHeaderStyle = {
@@ -20,11 +17,8 @@ function Reactlanguages() {
   return (
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
-        <h1 className="fw-bold mb-5 text-primary text-center">
-          CRUD Operation - React
-        </h1>
+        <h1 className="fw-bold mb-5 text-primary text-center">CRUD Operation - React</h1>
 
-        {/* Step 1: State and Base URL */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 1: State and Base URL
@@ -35,7 +29,6 @@ const [name, setName] = useState("");
 const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Languages\`;`}</pre>
         </section>
 
-        {/* Step 2: Load Languages */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 2: Load Languages from API
@@ -49,7 +42,6 @@ const loadLanguages = () => {
 };`}</pre>
         </section>
 
-        {/* Step 3: Toast Notifications */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 3: Toast Notifications
@@ -67,7 +59,6 @@ const loadLanguages = () => {
 };`}</pre>
         </section>
 
-        {/* Step 4: Save / Update Language */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCode /> Step 4: Add or Update Language
@@ -81,22 +72,16 @@ const loadLanguages = () => {
   }
 
   if (id === 0) {
-    axios.post(baseUrl, data).then(() => {
-      toast("success", "Language added");
-      resetForm();
-      loadLanguages();
-    });
+    axios.post(baseUrl, data).then(() => { toast("success", "Language added")});
   } else {
-    axios.put(baseUrl, data).then(() => {
-      toast("success", "Language updated");
-      resetForm();
-      loadLanguages();
-    });
+    axios.put(baseUrl, data).then(() => { toast("success", "Language updated")});
   }
+
+  resetForm();
+  loadLanguages();
 };`}</pre>
         </section>
 
-        {/* Step 5: Edit Language */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 5: Edit Language
@@ -107,7 +92,6 @@ const loadLanguages = () => {
 };`}</pre>
         </section>
 
-        {/* Step 6: Delete Language */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 6: Delete Language
@@ -123,16 +107,13 @@ const loadLanguages = () => {
     confirmButtonText: "Yes"
   }).then((result) => {
     if (result.isConfirmed) {
-      axios.delete(\`\${baseUrl}/\${langId}\`).then(() => {
-        toast("success", "Language deleted");
-        loadLanguages();
-      });
+      axios.delete(\`\${baseUrl}/\${langId}\`).then(()=>{toast("success","Language deleted")});
+      loadLanguages();
     }
   });
 };`}</pre>
         </section>
 
-        {/* Step 7: Reset Form */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 7: Reset Form
@@ -143,21 +124,20 @@ const loadLanguages = () => {
 };`}</pre>
         </section>
 
-        {/* Step 8: Component JSX */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCode /> Step 8: Component JSX
           </div>
           <pre style={preStyle}>{`<div className="container mt-4">
   <h2>Manage Languages</h2>
-  <div className="mb-3">
+  <div>
     <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
   </div>
   <div className="mb-4">
-    <button className="btn btn-primary me-2" onClick={handleSave}>Save Language</button>
+    <button onClick={handleSave}>Save Language</button>
   </div>
-  <table className="table table-bordered table-striped">
-    <thead className="table-light">
+  <table>
+    <thead>
       <tr>
         <th>Id</th>
         <th>Name</th>
@@ -180,7 +160,6 @@ const loadLanguages = () => {
 </div>`}</pre>
         </section>
 
-        {/* Step 9: Summary */}
         <section>
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 9: Summary
@@ -197,7 +176,6 @@ const loadLanguages = () => {
   );
 }
 
-// Shared preStyle for all code blocks
 const preStyle = {
   backgroundColor: "#f1f3f5",
   fontFamily: "monospace",

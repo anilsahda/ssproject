@@ -1,13 +1,11 @@
 function Netsearching() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-      {/* Header */}
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Search Functionality in .NET Core API</h1>
         <p className="text-gray-500 text-xs mt-1">Guide to implement search functionality for any entity like Student and Employee using a .NET Core API and React.</p>
       </header>
 
-      {/* Step 1: Backend - API Controller */}
       <Section title="Backend - API Controller" color="text-indigo-600">
         <CodeBlock>
 {`[Route("api/[controller]")]
@@ -32,14 +30,12 @@ public class StudentsController : ControllerBase
         </CodeBlock>
       </Section>
 
-      {/* Step 2: API Endpoint */}
       <Section title="API Endpoint" color="text-green-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li><code className="bg-gray-100 px-1 rounded">GET https://localhost:7070/api/students/search?query=John</code> – Retrieves students matching the search query</li>
         </ul>
       </Section>
 
-      {/* Step 3: Frontend - React Component */}
       <Section title="Frontend - React Component" color="text-yellow-600">
         <CodeBlock>
 {`import React, { useState, useEffect } from "react";
@@ -66,27 +62,27 @@ function StudentSearch() {
 
   return (
     <div>
-      <form onSubmit={handleSearch} className="mb-4">
+      <form onSubmit={handleSearch}>
         <input type="text" value={query} onChange={(e)=>setQuery(e.target.value)} className="form-control"/>
         <button type="submit" className="btn btn-primary">Search</button>
       </form>
 
-      <table className="table-auto w-full border border-gray-300">
+      <table>
         <thead>
-          <tr className="bg-gray-100">
-            <th className="border px-2 py-1">Id</th>
-            <th className="border px-2 py-1">Name</th>
-            <th className="border px-2 py-1">Email</th>
-            <th className="border px-2 py-1">Mobile</th>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
           </tr>
         </thead>
         <tbody>
           {students.map((student) => (
             <tr key={student.id}>
-              <td className="border px-2 py-1">{student.id}</td>
-              <td className="border px-2 py-1">{student.name}</td>
-              <td className="border px-2 py-1">{student.email}</td>
-              <td className="border px-2 py-1">{student.mobile}</td>
+              <td>{student.id}</td>
+              <td>{student.name}</td>
+              <td>{student.email}</td>
+              <td>{student.mobile}</td>
             </tr>
           ))}
         </tbody>
@@ -99,7 +95,6 @@ export default StudentSearch;`}
         </CodeBlock>
       </Section>
 
-      {/* Step 4: Summary */}
       <Section title="Summary" color="text-purple-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li>Backend uses a GET endpoint with a query string parameter to filter results.</li>
@@ -111,14 +106,7 @@ export default StudentSearch;`}
   );
 }
 
-/* Reusable Section Component */
-function Section({ title, color, children }) {
-  return (<section><div className="flex items-center mb-2"><strong className={`${color}`}>{title}</strong></div>{children}</section>);
-}
-
-/* Reusable Code Block Component */
-function CodeBlock({ children }) {
-  return (<pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">{children}</pre>);
-}
+function Section({ title, color, children }) { return (<section><div className="flex items-center mb-2"><strong className={`${color}`}>{title}</strong></div>{children}</section>)}
+function CodeBlock({ children }) { return (<pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">{children}</pre>)}
 
 export default Netsearching;

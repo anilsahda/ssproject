@@ -17,11 +17,7 @@ function Reactdistrict() {
   return (
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
-        <h1 className="fw-bold mb-5 text-primary text-center">
-          Cascading Dropdown - React
-        </h1>
-
-        {/* Step 1: State and Base URL */}
+        <h1 className="fw-bold mb-5 text-primary text-center">Cascading Dropdown - React</h1>
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 1: State and Base URL
@@ -39,7 +35,6 @@ const countryUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;
 const stateUrl = \`\${process.env.REACT_APP_BASE_URL}/States\`;`}</pre>
         </section>
 
-        {/* Step 2: Load Data */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 2: Load Data from APIs
@@ -77,14 +72,13 @@ const loadDistricts = () => {
   const data = { id, name, countryId: parseInt(countryId), stateId: parseInt(stateId) };
 
   if (id === 0) {
-    axios.post(baseUrl, data)
-      .then(() => { Swal.fire("Success", "District added successfully!", "success"); resetForm(); loadDistricts(); })
-      .catch(() => Swal.fire("Error", "Failed to add district", "error"));
+    axios.post(baseUrl, data).then(() => { Swal.fire("Success", "District added successfully!", "success")});
   } else {
-    axios.put(baseUrl, data)
-      .then(() => { Swal.fire("Success", "District updated successfully!", "success"); resetForm(); loadDistricts(); })
-      .catch(() => Swal.fire("Error", "Failed to update district", "error"));
+    axios.put(baseUrl, data).then(() => { Swal.fire("Success", "District updated successfully!", "success")});
   }
+
+  resetForm(); 
+  loadDistricts();
 };`}</pre>
         </section>
 
@@ -117,9 +111,9 @@ const loadDistricts = () => {
     confirmButtonText: "Yes, delete it!"
   }).then(result => {
     if (result.isConfirmed) {
-      axios.delete(\`\${baseUrl}/\${districtId}\`)
-        .then(() => { Swal.fire("Deleted!", "District has been deleted.", "success"); loadDistricts(); })
-        .catch(() => Swal.fire("Error", "Failed to delete district", "error"));
+      axios.delete(\`\${baseUrl}/\${districtId}\`); 
+      Swal.fire("Deleted!", "District has been deleted.", "success");
+      loadDistricts();
     }
   });
 };`}</pre>
@@ -144,26 +138,22 @@ const loadDistricts = () => {
             <FaCode /> Step 7: JSX Form & Table
           </div>
           <pre style={preStyle}>{`<div className="mb-3">
-  <!-- Select Country -->
-  <select value={countryId} onChange={e => { setCountryId(parseInt(e.target.value)); setStateId(0); }}>
+  <select value={countryId} onChange={e => { setCountryId(parseInt(e.target.value)); setStateId(0);}}>
     <option value={0}>Select Country</option>
     {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
   </select>
 
-  <!-- Select State -->
-  <select value={stateId} onChange={e => setStateId(parseInt(e.target.value))} disabled={countryId === 0}>
+  <select value={stateId} onChange={e => setStateId(parseInt(e.target.value))} disabled={countryId===0}>
     <option value={0}>Select State</option>
-    {states.filter(s => s.countryId === countryId).map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+    {states.filter(s=>s.countryId===countryId).map(s=><option key={s.id} value={s.id}>{s.name}</option>)}
   </select>
 
-  <!-- Input District Name -->
-  <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter District Name" />
+  <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="District Name" />
 
-  <button onClick={handleSave}>{id === 0 ? "Add District" : "Update District"}</button>
-  <button onClick={resetForm}>Reset</button>
+  <button onClick={handleSave}>Save District</button>
 </div>
 
-<table className="table table-bordered table-striped">
+<table>
   <thead>
     <tr>
       <th>Id</th>
@@ -174,7 +164,7 @@ const loadDistricts = () => {
     </tr>
   </thead>
   <tbody>
-    {districts.length === 0 && <tr><td colSpan="5" className="text-center">No districts found.</td></tr>}
+    {districts.length === 0 && <tr><td colSpan="5">No districts found.</td></tr>}
     {districts.map(d => (
       <tr key={d.id}>
         <td>{d.id}</td>
@@ -191,7 +181,6 @@ const loadDistricts = () => {
 </table>`}</pre>
         </section>
 
-        {/* Step 8: Summary */}
         <section>
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 8: Summary
@@ -209,7 +198,6 @@ const loadDistricts = () => {
   );
 }
 
-// Shared preStyle for code blocks
 const preStyle = {
   backgroundColor: "#f1f3f5",
   fontFamily: "monospace",

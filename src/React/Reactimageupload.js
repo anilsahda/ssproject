@@ -173,7 +173,11 @@ const loadCustomers = async () => {
           </div>
           <pre style={preStyle}>{`<table>
     <tr>
-      <th>Name</th><th>Email</th><th>Mobile</th><th>Image</th><th>Actions</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>Image</th>
+      <th>Actions</th>
     </tr>
     {customers.map(c => (
     <tr key={c.id}>

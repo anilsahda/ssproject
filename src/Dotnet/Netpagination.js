@@ -1,13 +1,11 @@
 function Netpagination() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-      {/* Header */}
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Pagination in .NET Core API</h1>
-        <p className="text-gray-500 text-xs mt-1">Guide to implement pagination for any entity like Student and Employee using a .NET Core API and React.</p>
+        <p className="text-gray-500 text-xs mt-1">Implement pagination for any entity like Student and Employee using a .NET Core API and React.</p>
       </header>
 
-      {/* Step 1: Backend - API Controller */}
       <Section title="Backend - API Controller" color="text-indigo-600">
         <CodeBlock>
 {`[Route("api/[controller]")]
@@ -43,16 +41,13 @@ public class StudentsController : ControllerBase
         </CodeBlock>
       </Section>
 
-      {/* Step 2: API Endpoint */}
       <Section title="API Endpoint" color="text-green-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
-          <li>
-            <code className="bg-gray-100 px-1 rounded">GET https://localhost:7070/api/students/paginated?pageNumber=1&pageSize=10</code> – Retrieves students for page 1 with 10 records per page
-          </li>
+          <li><code className="bg-gray-100 px-1 rounded">GET https://localhost:7070/api/students/paginated?pageNumber=1&pageSize=10</code></li>
+          <li>Retrieves students for page 1 with 10 records per page</li>
         </ul>
       </Section>
 
-      {/* Step 3: Frontend - React Component */}
       <Section title="Frontend - React Component" color="text-yellow-600">
         <CodeBlock>
 {`import React, { useState, useEffect } from "react";
@@ -78,9 +73,9 @@ function StudentPagination() {
 
   return (
     <div>
-      <div className="mb-4">
+      <div>
         <label>Page Size: </label>
-        <select value={pageSize} onChange={(e)=>setPageSize(Number(e.target.value))} className="border p-1 ml-2">
+        <select value={pageSize} onChange={(e)=>setPageSize(Number(e.target.value))}>
           <option value={5}>5</option>
           <option value={10}>10</option>
           <option value={20}>20</option>
@@ -88,29 +83,29 @@ function StudentPagination() {
         </select>
       </div>
 
-      <table className="table-auto w-full border border-gray-300 mb-4">
+      <table>
         <thead>
-          <tr className="bg-gray-100">
-            <th className="border px-2 py-1">Id</th>
-            <th className="border px-2 py-1">Name</th>
-            <th className="border px-2 py-1">Email</th>
-            <th className="border px-2 py-1">Mobile</th>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
           </tr>
         </thead>
         <tbody>
           {students.map((student) => (
             <tr key={student.id}>
-              <td className="border px-2 py-1">{student.id}</td>
-              <td className="border px-2 py-1">{student.name}</td>
-              <td className="border px-2 py-1">{student.email}</td>
-              <td className="border px-2 py-1">{student.mobile}</td>
+              <td>{student.id}</td>
+              <td>{student.name}</td>
+              <td>{student.email}</td>
+              <td>{student.mobile}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
-    <div className="flex space-x-2">
-      <button onClick={()=>setPageNumber(Math.max(pageNumber-1,1))} className="bg-gray-50 px-3 py-1">Prev</button>
+    <div>
+      <button onClick={()=>setPageNumber(Math.max(pageNumber-1,1))}>Prev</button>
       <span>Page {pageNumber} of {totalPages}</span>
       <button onClick={()=>setPageNumber(Math.min(pageNumber + 1, totalPages))} rounded">Next</button>
     </div>
@@ -122,7 +117,6 @@ export default StudentPagination;`}
         </CodeBlock>
       </Section>
 
-      {/* Step 4: Summary */}
       <Section title="Summary" color="text-purple-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li>Backend uses `Skip` and `Take` to implement pagination.</li>
@@ -134,25 +128,7 @@ export default StudentPagination;`}
   );
 }
 
-/* Reusable Section Component */
-function Section({ title, color, children }) {
-  return (
-    <section>
-      <div className="flex items-center mb-2">
-        <strong className={`${color}`}>{title}</strong>
-      </div>
-      {children}
-    </section>
-  );
-}
-
-/* Reusable Code Block Component */
-function CodeBlock({ children }) {
-  return (
-    <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">
-      {children}
-    </pre>
-  );
-}
+function Section({ title, color, children }) { return (<section><div className="flex items-center mb-2"><strong className={`${color}`}>{title}</strong></div>{children}</section>)}
+function CodeBlock({ children }) { return ( <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">{children} </pre>)}
 
 export default Netpagination;

@@ -9,16 +9,13 @@ export default function Reactprojectsetup() {
           <code>
 {`npm create vite@latest myapp -- --template react-ts
 cd myapp
-npm i
+npm install
 npm run dev
 npm install axios
 npm i react-router-dom
 npm i bootstrap
 npm i bootstrap-icons
-npm i lucide-react
-npm i react-bootstrap
-npm i react-icons
-npm i react-select
+npm i react-bootstrap-icons
 npm i sweetalert2`}
           </code>
         </pre>
@@ -32,7 +29,7 @@ npm i sweetalert2`}
 ├── src/
 │   ├── pages/
 │   │   ├── Home.tsx
-│   │   └── About.tsx
+│   │   └── Country.tsx
 │   ├── components/
 │   │   ├── Header.tsx
 │   │   ├── Footer.tsx
@@ -40,19 +37,20 @@ npm i sweetalert2`}
 │   ├── App.tsx
 │   └── main.tsx
 ├── public/
-└── index.html`}
+│   └── index.html
+└── .env`}
           </code>
         </pre>
       </section>
 
       <section>
-        <b>🔹 Home.tsx</b>
+        <b>3.🔹 Home.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`function Home() {
   return (
     <main>
-      <h1>Welcome to Home Page</h1>
+      <h1>Welcom to Home Page</h1>
     </main>
   );
 }
@@ -61,23 +59,34 @@ export default Home`}
           </code>
         </pre>
 
-        <b>🔹 About.tsx</b>
+        <b>4.🔹 Country.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`function About() {
+{`function Country() {
   return (
-    <>
-      <b>About Page</b>
-      <p>This is the about page of the static website.</p>
-    </>
+    <div className="container mt-4">
+      <h1 className="mb-4">Manage Country</h1>
+      <form>
+        <div className="row mb-3">
+          <div className="col-md-6">
+            <input type="text" placeholder="Enter country name" className="form-control" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-6">
+            <button type="submit" className="btn btn-primary">Add Country</button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 }
 
-export default About`}
+export default Country`}
           </code>
         </pre>
 
-        <b>🧩 Header.tsx</b>
+        <b>5.🧩 Header.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`import { Link } from 'react-router-dom';
@@ -88,7 +97,7 @@ function Header() {
       <h1>My App</h1>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <Link to="/country">Country</Link>
       </nav>
     </header>
   );
@@ -98,13 +107,13 @@ export default Header`}
           </code>
         </pre>
 
-        <b>🧩 Footer.tsx</b>
+        <b>6.🧩 Footer.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`function Footer() {
   return (
     <footer>
-      <p>&copy; {new Date().getFullYear()} My Static Site</p>
+      <p>&copy; {new Date().getFullYear()} Shiwansh Intern</p>
     </footer>
   );
 }
@@ -113,12 +122,12 @@ export default Footer`}
           </code>
         </pre>
 
-        <b>🧩 Layout.tsx</b>
+        <b>7.🧩 Layout.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`import Header from './Header';
 import Footer from './Footer';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 function Layout({ children }: { children: ReactNode }) {
   return (
@@ -134,13 +143,13 @@ export default Layout`}
           </code>
         </pre>
 
-        <b>🔹 App.tsx</b>
+        <b>8.🔹 App.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import About from './pages/About';
+import Country from './pages/Country';
 
 function App() {
   return (
@@ -148,7 +157,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/country" element={<Country />} />
         </Routes>
       </Layout>
     </Router>
@@ -159,7 +168,7 @@ export default App;`}
           </code>
         </pre>
 
-        <b>🔹 main.tsx</b>
+        <b>9.🔹 main.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`import React from 'react';

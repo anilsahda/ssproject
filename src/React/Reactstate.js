@@ -17,11 +17,7 @@ function Reactstate() {
   return (
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
-        <h1 className="fw-bold mb-5 text-primary text-center">
-          Dropdown - React
-        </h1>
-
-        {/* Step 1: State and Base URL */}
+        <h1 className="fw-bold mb-5 text-primary text-center">Dropdown - React</h1>
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 1: State and Base URL
@@ -36,7 +32,6 @@ const stateUrl = \`\${process.env.REACT_APP_BASE_URL}/States\`;
 const countryUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;`}</pre>
         </section>
 
-        {/* Step 2: Load States and Countries */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 2: Load States and Countries from API
@@ -57,7 +52,6 @@ const loadCountries = async () => {
 };`}</pre>
         </section>
 
-        {/* Step 3: Toast Notifications */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 3: Toast Notifications
@@ -102,11 +96,9 @@ const loadCountries = async () => {
 
   resetForm();
   loadStates();
-
 };`}</pre>
         </section>
 
-        {/* Step 5: Edit State */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 5: Edit State
@@ -118,7 +110,6 @@ const loadCountries = async () => {
 };`}</pre>
         </section>
 
-        {/* Step 6: Delete State */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 6: Delete State
@@ -142,7 +133,6 @@ const loadCountries = async () => {
 };`}</pre>
         </section>
 
-        {/* Step 7: Reset Form */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 7: Reset Form
@@ -154,7 +144,6 @@ const loadCountries = async () => {
 };`}</pre>
         </section>
 
-        {/* Step 8: JSX Form & Table */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCode /> Step 8: JSX Form & Table
@@ -165,11 +154,11 @@ const loadCountries = async () => {
     <option value="">Select Country</option>
     {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
   </select>
-  <button className="btn btn-primary me-2" onClick={handleSave}>Save State</button>
+  <button onClick={handleSave}>Save State</button>
 </div>
 
-<table className="table table-bordered table-striped">
-  <thead className="table-light">
+<table>
+  <thead>
     <tr>
       <th>Id</th>
       <th>State Name</th>
@@ -193,7 +182,6 @@ const loadCountries = async () => {
 </table>`}</pre>
         </section>
 
-        {/* Step 9: Summary */}
         <section>
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 9: Summary
@@ -211,7 +199,6 @@ const loadCountries = async () => {
   );
 }
 
-// Shared preStyle for code blocks
 const preStyle = {
   backgroundColor: "#f1f3f5",
   fontFamily: "monospace",

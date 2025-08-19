@@ -1,15 +1,11 @@
 function Netimageupload() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-      {/* Header */}
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Image Upload in .Net Core API</h1>
-        <p className="text-gray-500 text-xs mt-1">
-          Step-by-step guide to implementing CRUD functionality for the <strong>Customer</strong> entity in .NET Core with SQL Server.
-        </p>
+        <p className="text-gray-500 text-xs mt-1">Step-by-step guide to implementing CRUD functionality for the <strong>Customer</strong> entity in .NET Core with SQL Server.</p>
       </header>
 
-      {/* Step 1: SQL Table */}
       <Section title="SQL Table" color="text-indigo-600">
         <CodeBlock>
 {`CREATE TABLE Customer 
@@ -23,7 +19,6 @@ function Netimageupload() {
         </CodeBlock>
       </Section>
 
-      {/* Step 2: Model */}
       <Section title="Model (Customer.cs)" color="text-green-600">
         <CodeBlock>
 {`public class Customer
@@ -62,7 +57,6 @@ function Netimageupload() {
         </CodeBlock>
       </Section>
 
-      {/* Step 5: EF Migrations */}
       <Section title="Entity Framework Migrations" color="text-purple-600">
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
           <li>Open <b>Package Manager Console</b></li>
@@ -71,7 +65,6 @@ function Netimageupload() {
         </ul>
       </Section>
 
-      {/* Step 6: Controller */}
       <Section title="Controller (CustomersController.cs)" color="text-red-600">
         <CodeBlock>
 {`[Route("api/[controller]")]
@@ -96,9 +89,7 @@ public class CustomersController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult GetCustomerById(int id)
     {
-        var customer = _context.Customers.Find(id);
-        if (customer == null) return NotFound();
-        return Ok(customer);
+        return Ok(_context.Customers.Find(id));
     }
 
     [HttpPost("AddCustomer")]
@@ -133,8 +124,6 @@ public class CustomersController : ControllerBase
     public async Task<IActionResult> UpdateCustomer([FromForm] CustomerDTO custDto)
     {
         var customer = await _context.Customers.FindAsync(custDto.Id);
-        if (customer == null) return NotFound();
-
         customer.Name = custDto.Name;
         customer.Email = custDto.Email;
         customer.Mobile = custDto.Mobile;
@@ -169,8 +158,6 @@ public class CustomersController : ControllerBase
     public IActionResult DeleteCustomer(int id)
     {
         var customer = _context.Customers.Find(id);
-        if (customer == null) return NotFound();
-
         if (!string.IsNullOrEmpty(customer.Image))
         {
             string filePath = Path.Combine(_env.WebRootPath, "api/Uploads", customer.Image);
@@ -188,14 +175,11 @@ public class CustomersController : ControllerBase
         </CodeBlock>
       </Section>
 
-      {/* Step 7: Program.cs */}
       <Section title="Program.cs" color="text-green-600">
         <CodeBlock>
 {`app.UseStaticFiles();`}
         </CodeBlock>
       </Section>
-
-      {/* Step 8: API Endpoints */}
       <Section title="Example API Endpoints" color="text-blue-600">
         <ul className="list-disc ml-5 space-y-1 text-gray-700">
           <li><code className="bg-gray-100 px-1 rounded">GET https://localhost:7070/api/customers</code> – Retrieves all customers</li>
@@ -209,25 +193,7 @@ public class CustomersController : ControllerBase
   );
 }
 
-/* Reusable Section Component */
-function Section({ title, color, children }) {
-  return (
-    <section>
-      <div className="flex items-center mb-2">
-        <strong className={`${color}`}>{title}</strong>
-      </div>
-      {children}
-    </section>
-  );
-}
-
-/* Reusable Code Block Component */
-function CodeBlock({ children }) {
-  return (
-    <pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5">
-      <code>{children}</code>
-    </pre>
-  );
-}
+function Section({ title, color, children }) {return (<section><div className="flex items-center mb-2"><strong className={`${color}`}>{title}</strong></div>{children}</section>)}
+function CodeBlock({ children }) { return (<pre className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm overflow-x-auto text-[12px] leading-5"><code>{children}</code></pre>);}
 
 export default Netimageupload;
