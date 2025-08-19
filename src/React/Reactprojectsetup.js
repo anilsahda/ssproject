@@ -192,7 +192,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <li>🧩 Modular component structure</li>
           <li>📄 Page routing with <code>react-router-dom</code></li>
           <li>✅ Consistent layout with shared Header and Footer</li>
-          <li>Git Url: https://github.com/anilsahda/SSFullstackUI.git</li>
+          <li>🔗 Git URL:{" "}<a href="https://github.com/anilsahda/SSFullstackUI.git" target="_blank" rel="noopener noreferrer">https://github.com/anilsahda/SSFullstackUI.git</a></li>
         </ul>
       </section>
     </div>
