@@ -8,7 +8,7 @@ export default function Devopsquestions() {
         <b>1. What is DevOps?</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`DevOps is a combination of Development and Operations aimed at collaboration, automation, and continuous delivery.
+{`DevOps means Development and Operations aimed at collaboration, automation and continuous delivery.
 Example: Using CI/CD pipelines to automatically build, test, and deploy code.`}
           </code>
         </pre>
@@ -33,7 +33,7 @@ Example: Web app release cycle reduced from 2 weeks to 2 days using CI/CD pipeli
         <b>3. What is Continuous Integration (CI)?</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`CI is the process where developers merge code frequently into a shared repository and automated builds/tests are run.
+{`CI is the process where developers merge code frequently into repository and build/test run automatically.
 Example: Jenkins pipeline triggers on every Git push to build and test code automatically.`}
           </code>
         </pre>
@@ -171,7 +171,7 @@ Example: Jenkinsfile defines steps: Checkout → Build → Test → Deploy.`}
         <b>15. What is Docker?</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`Docker is a containerization platform that packages applications and dependencies into portable containers.
+{`Docker is a containerization platform that packages applications and dependencies into portable container.
 Example: docker run -p 3000:3000 myapp runs a React app in a container.`}
           </code>
         </pre>
