@@ -1,11 +1,11 @@
-function SmartJobsProject() {
+function SSJobs() {
   return (
     <div style={{ padding: '20px', lineHeight: '1.6' }}>
-      <h1>Smart Job Portal</h1>
+      <h1>SS Jobs</h1>
 
       <h2>Project Overview</h2>
       <p>
-        The <strong>Smart Job Portal</strong> is a web-based application designed to connect job seekers and employers efficiently. 
+        The <strong>SS Jobs</strong> is a web-based application designed to connect job seekers and employers efficiently. 
         It allows users to search and apply for jobs, and employers to post jobs and manage applications.
       </p>
       <ul>
@@ -112,4 +112,4 @@ function SmartJobsProject() {
   );
 }
 
-export default SmartJobsProject;
+export default SSJobs;

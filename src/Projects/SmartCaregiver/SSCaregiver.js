@@ -1,16 +1,13 @@
-function SmartCaregiverProject() {
+function SSCaregiver() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">Caregiver Management System</h1>
+        <h1 className="text-xl font-bold text-indigo-700">SS Caregiver</h1>
       </header>
 
       <section>
         <h2 className="text-lg font-semibold text-indigo-600">Project Overview</h2>
-        <p>
-          The <strong>Caregiver Management System</strong> is a web-based application designed to simplify caregiver
-          service management. It helps track caregivers, patients, and service requests efficiently.
-        </p>
+        <p>The <strong>SS Caregiver</strong> is a web-based application designed to simplify caregiver service management. It helps track caregivers, patients, and service requests efficiently.</p>
         <ul className="list-disc list-inside mt-2 space-y-1">
           <li>Caregivers can register and provide their services (elderly care, babysitting, nursing, etc.).</li>
           <li>Patients (or families) can search for caregivers and request services.</li>
@@ -142,4 +139,4 @@ function SmartCaregiverProject() {
   );
 }
 
-export default SmartCaregiverProject;
+export default SSCaregiver;

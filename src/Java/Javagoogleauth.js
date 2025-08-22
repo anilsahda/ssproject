@@ -4,10 +4,21 @@ function Javagoogleauth() {
       {/* Header */}
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Google Authentication in Spring Boot API</h1>
-        <p className="text-gray-500 text-xs mt-1">
-          Step-by-step guide to implement Google OAuth2 authentication in a Spring Boot backend with React frontend.
-        </p>
+        <p className="text-gray-500 text-xs mt-1">Step-by-step guide to implement Google OAuth2 authentication in a Spring Boot backend with React frontend.</p>
       </header>
+
+      <Section title="✅ Steps to create Google OAuth Client and register your app with Google" color="text-blue-600">
+        <ul className="list-disc ml-6 text-gray-700 space-y-1">
+          <li>Go to Google Developer Console</li>
+          <li>Create a New Project</li>
+          <li>Navigate to OAuth Consent Screen</li>
+          <li>Choose External</li>
+          <li>Fill in App Name, Support Email and Save</li>
+          <li>Go to Credentials → Create Credentials → OAuth Client ID</li>
+          <li>Application Type: Web application and add Add http://localhost:5000/signin-google as Authorized redirect URI</li>
+          <li>Copy the Client ID and Client Secret</li>
+        </ul>
+      </Section>
 
       {/* Step 1: Dependencies */}
       <Section title="Add Maven Dependencies" color="text-indigo-600">

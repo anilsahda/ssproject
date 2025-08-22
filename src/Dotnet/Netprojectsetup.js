@@ -37,6 +37,7 @@ function Netprojectsetup() {
             <li>Microsoft.EntityFrameworkCore.SqlServer</li>
             <li>Pomelo.EntityFrameworkCore.MySql</li>
             <li>Npgsql.EntityFrameworkCore.PostgreSQL</li>
+            <li>MongoDB.Driver</li>
           </ul>
         </CodeBlock>
       </SectionBlock>
@@ -59,11 +60,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure DbContext
-builder.Services.AddDbContext<AppDbContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon")));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon")));
 //builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(MySqlConnection, ServerVersion.AutoDetect(MySqlCon)));
 //builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(PostgresCon));
+
+builder.Services.AddSingleton<IMongoClient>(sp => { return new MongoClient(builder.Configuration.GetConnectionString("MongoCon")); });
+builder.Services.AddSingleton(sp =>
+{
+    var client = sp.GetRequiredService<IMongoClient>();
+    return client.GetDatabase(builder.Configuration.GetValue<string>("MongoDatabase"));
+});
 
 builder.Services.AddCors(options =>
 {
@@ -93,10 +99,12 @@ app.Run();`}
         <CodeBlock>
 {`{
   "ConnectionStrings": {
-    "SqlCon": "Server=ANIL;Database=CrudDb;Trusted_Connection=True;TrustServerCertificate=True;",
-    "MySqlCon": "Server=localhost;Port=3306;Database=CrudDb;User=root;Password=password;TreatTinyAsBoolean=true",
-    "PostgresCon": "Host=localhost;Port=5432;Database=CrudDb;Username=postgres;Password=password"
-  }
+    "SqlCon": "Server=ANIL;Database=CRUDDB;Trusted_Connection=True;TrustServerCertificate=True;",
+    "MySqlCon": "Server=localhost;Port=3306;Database=CRUDDB;User=root;Password=password;TreatTinyAsBoolean=true",
+    "PostgresCon": "Host=localhost;Port=5432;Database=CRUDDB;Username=postgres;Password=password",
+    "MongoCon": "mongodb://localhost:27017"
+    },
+    "MongoDatabase": "CRUDDB"
 }`}
         </CodeBlock>
       </SectionBlock>

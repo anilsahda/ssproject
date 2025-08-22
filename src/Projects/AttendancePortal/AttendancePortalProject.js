@@ -1,11 +1,11 @@
-function AttendancePortalProject() {
+function SSAttendancePortal() {
   return (
     <div style={{ padding: '20px', lineHeight: '1.6' }}>
       <h1>Employee Attendance Portal</h1>
 
       <h2>Project Overview</h2>
       <p>
-        The <strong>Employee Attendance Portal</strong> is a web-based application designed to manage employee attendance efficiently. 
+        The <strong>SS Attendance Portal</strong> is a web-based application designed to manage employee attendance efficiently. 
         It allows HR and employees to track working hours, leave, and attendance reports in a simple and automated way.
       </p>
 
@@ -102,4 +102,4 @@ function AttendancePortalProject() {
   );
 }
 
-export default AttendancePortalProject;
+export default SSAttendancePortal;

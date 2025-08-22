@@ -166,13 +166,6 @@ import CicdpipelinesNode from "./DevOps/CicdpipelinesNode";
 import CicdpipelinesNetCore from "./DevOps/CicdpipelinesNetCore";
 import Amplify from "./DevOps/Amplify";
 import Github from "./DevOps/Github";
-import SmartHouseProject from "./Projects/SmartHouse/SmartHouseProject";
-import EmployeePayrollProject from "./Projects/EmployeePayroll/EmployeePayrollProject";
-import AttendancePortalProject from "./Projects/AttendancePortal/AttendancePortalProject";
-import EcommerceProject from "./Projects/ECommerce/EcommerceProject";
-import DigitalLibraryProject from "./Projects/DigitalLibrary/DigitalLibraryProject";
-import SmartCaregiverProject from "./Projects/SmartCaregiver/SmartCaregiverProject";
-import SmartJobsProject from "./Projects/SmartJobs/SmartJobsProject";
 import LanguagesStatic from "./FullstackStatic/LanguagesStatic";
 import CountryStatic from "./FullstackStatic/CountryStatic";
 import StateStatic from "./FullstackStatic/StateStatic";
@@ -202,6 +195,17 @@ import Angularquestions from "./Angular/Angularquestions";
 import Javaexportcsv from "./Java/Javaexportcsv";
 import Nodeexportcsv from "./Node/Nodeexportcsv";
 import CicdpipelinesJava from "./DevOps/CicdpipelinesJava";
+import SSLogistrics from "./Projects/Logistrics/SSLogistrics";
+import SSBanking from "./Projects/Banking/SSBanking";
+import SSECommerce from "./Projects/ECommerce/EcommerceProject";
+import SSDigitalLibrary from "./Projects/DigitalLibrary/DigitalLibraryProject";
+import SSEmployeePayroll from "./Projects/EmployeePayroll/SSEmployeePayroll";
+import SSAttendancePortal from "./Projects/AttendancePortal/AttendancePortalProject";
+import SSEHouse from "./Projects/SmartHouse/SmartHouseProject";
+import SSJobs from "./Projects/SmartJobs/SmartJobsProject";
+import SSHealthInsurance from "./Projects/HealthInsurance/SSHealthInsurance";
+import SSCaregiver from "./Projects/SmartCaregiver/SSCaregiver";
+import SSLoanApp from "./Projects/LoanApp/SSLoanApp";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -230,13 +234,19 @@ function App() {
             <Route path="/userrole" element={<UserRole />} />
 
             {/* Projects */}
-            <Route path="/smarthouseproject" element={<SmartHouseProject />} />
-            <Route path="/smartjobsproject" element={<SmartJobsProject />} />
-            <Route path="/employeepayrollproject" element={<EmployeePayrollProject />} />
-            <Route path="/attendanceportalproject" element={<AttendancePortalProject />} />
-            <Route path="/ecommerceproject" element={<EcommerceProject />} />
-            <Route path="/digitallibraryproject" element={<DigitalLibraryProject />} />
-            <Route path="/smartcaregiverproject" element={<SmartCaregiverProject />} />
+            <Route path="/ssdigitallibrary" element={<SSDigitalLibrary />} />
+            <Route path="/ssemployeepayroll" element={<SSEmployeePayroll />} />
+            <Route path="/ssattendanceportal" element={<SSAttendancePortal />} />
+            <Route path="/ssecommerce" element={<SSECommerce />} />
+            <Route path="/ssehouse" element={<SSEHouse />} />
+            <Route path="/ssjobs" element={<SSJobs />} />
+            <Route path="/sscaregiver" element={<SSCaregiver />} />
+            <Route path="/sshealthinsurance" element={<SSHealthInsurance />} />
+            <Route path="/sslogistrics" element={<SSLogistrics />} />
+            <Route path="/ssbanking" element={<SSBanking />} />
+            <Route path="/ssloanapp" element={<SSLoanApp />} />            
+
+
 
             {/* Fulstack Static */}
             <Route path="/languagestatic" element={<LanguagesStatic />} />

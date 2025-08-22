@@ -32,13 +32,17 @@ function Sidebar({ activeMenu }) {
     <ul className="nav nav-pills flex-column gap-2">
         {activeMenu === "Project" && (
           <>
-          <SidebarButton to="/digitallibraryproject" icon="bi-book" label="Digital Library" />
-          <SidebarButton to="/employeepayrollproject" icon="bi-cash-stack" label="Employee Payroll" />
-          <SidebarButton to="/attendanceportalproject" icon="bi-calendar-check" label="Attendance Portal" />
-          <SidebarButton to="/ecommerceproject" icon="bi-cart4" label="SS E-Eommerce" />
-          <SidebarButton to="/smarthouseproject" icon="bi-building" label="SS Smart House" />
-          <SidebarButton to="/smartjobsproject" icon="bi-briefcase" label="SS Smart Jobs" />
-          <SidebarButton to="/smartcaregiverproject" icon="bi-hospital" label="Smart Caregiver" />
+          <SidebarButton to="/ssdigitallibrary" icon="bi-book" label="SS Digital Library" />
+          <SidebarButton to="/ssemployeepayroll" icon="bi-cash-stack" label="SS Employee Payroll" />
+          <SidebarButton to="/ssattendanceportal" icon="bi-calendar-check" label="SS Attendance Portal" />
+          <SidebarButton to="/ssecommerce" icon="bi-cart4" label="SS E-Eommerce" />
+          <SidebarButton to="/ssehouse" icon="bi-building" label="SS E-House" />
+          <SidebarButton to="/ssjobs" icon="bi-briefcase" label="SS Jobs" />
+          <SidebarButton to="/sscaregiver" icon="bi-hospital" label="SS Caregiver" />
+          <SidebarButton to="/sshealthinsurance" icon="bi-hospital" label="SS Health Insurance" />
+          <SidebarButton to="/sslogistrics" icon="bi-hospital" label="SS Logistics" />
+          <SidebarButton to="/ssbanking" icon="bi-hospital" label="SS Banking" />
+          <SidebarButton to="/ssloanapp" icon="bi-hospital" label="SS Loan App" />
           </>
         )}
 
@@ -278,7 +282,7 @@ function Sidebar({ activeMenu }) {
             </>
           )}
 
-          {/* {activeMenu === "Angular" && (
+          {activeMenu === "Angular" && (
             <>
             <SidebarButton to="/angularprojectsetup" icon="bi-calendar-check" label="Angular Project Setup" />
             <SidebarButton to="/angularlanguages" icon="bi-ui-checks-grid" label="Angular Language" />
@@ -295,7 +299,7 @@ function Sidebar({ activeMenu }) {
             <SidebarButton to="/angularlocalstorage" icon="bi-layers" label="Angular Local Storage" />
             <SidebarButton to="/angularquestions" icon="bi-calendar-check" label="Angular Questions" />
             </>
-          )} */}
+          )}
 
           {role === "Super Admin" && (
             <>

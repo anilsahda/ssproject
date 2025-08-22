@@ -1,11 +1,11 @@
-function SmartHouseProject() {
+function SSEHouse() {
   return (
     <div>
-      <h1>Smart Society E-Housing</h1>
+      <h1>SS E-Housing</h1>
 
       <h2>Project Overview</h2>
       <p>
-        The <strong>Smart Society E-Housing</strong> is a web-based application designed to simplify society management.
+        The <strong>SS E-Housing</strong> is a web-based application designed to simplify society management.
         It helps track societies, houses, and members efficiently.
       </p>
       <ul>
@@ -119,4 +119,4 @@ function SmartHouseProject() {
   );
 }
 
-export default SmartHouseProject;
+export default SSEHouse;

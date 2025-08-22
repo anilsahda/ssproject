@@ -3,10 +3,21 @@ function Netgoogleauth() {
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Google Authentication in .NET Core API</h1>
-        <p className="text-gray-500 text-xs mt-1">
-          Step-by-step guide to implement Google OAuth authentication using .NET Core API and React frontend.
-        </p>
+        <p className="text-gray-500 text-xs mt-1">Step-by-step guide to implement Google OAuth authentication using .NET Core API and React frontend.</p>
       </header>
+
+      <Section title="✅ Steps to create Google OAuth Client and register your app with Google" color="text-blue-600">
+        <ul className="list-disc ml-6 text-gray-700 space-y-1">
+          <li>Go to Google Developer Console</li>
+          <li>Create a New Project</li>
+          <li>Navigate to OAuth Consent Screen</li>
+          <li>Choose External</li>
+          <li>Fill in App Name, Support Email and Save</li>
+          <li>Go to Credentials → Create Credentials → OAuth Client ID</li>
+          <li>Application Type: Web application and add Add http://localhost:5000/signin-google as Authorized redirect URI</li>
+          <li>Copy the Client ID and Client Secret</li>
+        </ul>
+      </Section>
 
       <Section title="Install Required Packages" color="text-indigo-600">
         <CodeBlock>

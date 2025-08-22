@@ -1,14 +1,10 @@
-function DigitalLibraryProject() {
+function SSDigitalLibrary() {
   return (
     <div style={{ padding: '20px', lineHeight: '1.6' }}>
       <h1>Digital Library Management System</h1>
 
       <h2>Project Overview</h2>
-      <p>
-        The <strong>Digital Library Management System</strong> is a web-based application designed to manage library resources efficiently. 
-        It allows users to access books, journals, and other digital content online, while administrators manage the library catalog and user access.
-      </p>
-
+      <p>The <strong>SS Digital Library</strong> is a web-based application designed to manage library resources efficiently. It allows users to access books, journals, and other digital content online, while administrators manage the library catalog and user access.</p>
       <h2>Technology Stack</h2>
       <ul>
         <li>Front-End: React / Next.js</li>
@@ -18,7 +14,6 @@ function DigitalLibraryProject() {
       </ul>
 
       <h2>Modules and Functionalities</h2>
-
       <h3>1. Super Admin Module</h3>
       <ul>
         <li>Manage roles and permissions (Admin, Librarian, User)</li>
@@ -101,4 +96,4 @@ function DigitalLibraryProject() {
   );
 }
 
-export default DigitalLibraryProject;
+export default SSDigitalLibrary;

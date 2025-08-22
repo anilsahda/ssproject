@@ -1,14 +1,9 @@
-function EcommerceProject() {
+function SSECommerce() {
   return (
     <div style={{ padding: '20px', lineHeight: '1.6' }}>
-      <h1>E-Commerce Management System</h1>
-
+      <h1>SS E-Commerce</h1>
       <h2>Project Overview</h2>
-      <p>
-        The <strong>E-Commerce Management System</strong> is a web-based application designed to manage online sales, products, orders, and customers. 
-        It provides an easy-to-use platform for sellers to manage their online store and for buyers to browse and purchase products.
-      </p>
-
+      <p>The <strong>SS E-Commerce</strong> is a web-based application designed to manage online sales, products, orders, and customers. It provides an easy-to-use platform for sellers to manage their online store and for buyers to browse and purchase products.</p>
       <h2>Technology Stack</h2>
       <ul>
         <li>Front-End: React / Next.js</li>
@@ -16,22 +11,18 @@ function EcommerceProject() {
         <li>Database: SQL Server</li>
         <li>Cloud Platform: AWS</li>
       </ul>
-
       <h2>Modules and Functionalities</h2>
-
       <h3>1. Super Admin Module</h3>
       <ul>
         <li>Manage roles and permissions (Admin, Seller, Customer)</li>
         <li>Manage system users and assign roles</li>
       </ul>
-
       <h3>2. Admin Module</h3>
       <ul>
         <li>Manage all products, categories, and inventory</li>
         <li>Monitor seller activity and generate reports</li>
         <li>Approve or reject seller requests</li>
       </ul>
-
       <h3>3. Seller Module</h3>
       <ul>
         <li>Add, update, and remove products</li>
@@ -39,7 +30,6 @@ function EcommerceProject() {
         <li>View orders and process shipments</li>
         <li>Generate sales reports</li>
       </ul>
-
       <h3>4. Customer Module</h3>
       <ul>
         <li>Browse products by category or search</li>
@@ -47,7 +37,6 @@ function EcommerceProject() {
         <li>Track orders and view order history</li>
         <li>Provide feedback or reviews for products</li>
       </ul>
-
       <h2>System Workflow</h2>
       <ol>
         <li>Super Admin → manages roles and system users</li>
@@ -55,7 +44,6 @@ function EcommerceProject() {
         <li>Seller → adds products, manages inventory, processes orders</li>
         <li>Customer → browses products, places orders, and tracks deliveries</li>
       </ol>
-
       <h2>Roles & Responsibilities</h2>
       <table border="1" cellPadding="5" cellSpacing="0">
         <thead>
@@ -102,4 +90,4 @@ function EcommerceProject() {
   );
 }
 
-export default EcommerceProject;
+export default SSECommerce;

@@ -1,14 +1,9 @@
-function EmployeePayrollProject() {
+function SSEmployeePayroll() {
   return (
     <div style={{ padding: '20px', lineHeight: '1.6' }}>
-      <h1>Employee Payroll Management System</h1>
-
+      <h1>SS Employee Payroll</h1>
       <h2>Project Overview</h2>
-      <p>
-        The <strong>Employee Payroll Management System</strong> is a web-based application designed to manage employee salaries, deductions, bonuses, and other payroll-related operations efficiently. 
-        It automates payroll calculations and helps HR and finance teams maintain accurate records.
-      </p>
-
+      <p>The <strong>SS Employee Payroll</strong> is a web-based application designed to manage employee salaries, deductions, bonuses, and other payroll-related operations efficiently. It automates payroll calculations and helps HR and finance teams maintain accurate records.</p>
       <h2>Technology Stack</h2>
       <ul>
         <li>Front-End: React / Next.js</li>
@@ -16,16 +11,13 @@ function EmployeePayrollProject() {
         <li>Database: SQL Server</li>
         <li>Cloud Platform: AWS</li>
       </ul>
-
       <h2>Modules and Functionalities</h2>
-
       <h3>1. Super Admin Module</h3>
       <p>The Super Admin manages users and roles.</p>
       <ul>
         <li>Create, update, and delete roles (Admin, HR, Employee)</li>
         <li>Manage system users and assign roles</li>
       </ul>
-
       <h3>2. Admin Module</h3>
       <p>Admin oversees the entire payroll system.</p>
       <ul>
@@ -33,7 +25,6 @@ function EmployeePayrollProject() {
         <li>Manage employees, salary structures, and payroll schedules</li>
         <li>Generate payroll reports and analytics</li>
       </ul>
-
       <h3>3. HR / Payroll Manager Module</h3>
       <p>HR or Payroll Manager handles payroll processing for employees.</p>
       <ul>
@@ -42,7 +33,6 @@ function EmployeePayrollProject() {
         <li>Upload employee details and salary changes</li>
         <li>Manage leave, overtime, and other adjustments</li>
       </ul>
-
       <h3>4. Employee Module</h3>
       <p>Employees can view and download their payroll information.</p>
       <ul>
@@ -50,7 +40,6 @@ function EmployeePayrollProject() {
         <li>Download payslips in PDF format</li>
         <li>Update personal information and bank details</li>
       </ul>
-
       <h2>System Workflow</h2>
       <ol>
         <li>Super Admin → manages roles and users</li>
@@ -58,7 +47,6 @@ function EmployeePayrollProject() {
         <li>HR/Payroll Manager → calculates and processes monthly payroll</li>
         <li>Employee → views and downloads payslips</li>
       </ol>
-
       <h2>Roles & Responsibilities</h2>
       <table border="1" cellPadding="5" cellSpacing="0">
         <thead>
@@ -105,4 +93,4 @@ function EmployeePayrollProject() {
   );
 }
 
-export default EmployeePayrollProject;
+export default SSEmployeePayroll;
