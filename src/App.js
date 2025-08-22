@@ -206,6 +206,7 @@ import SSJobs from "./Projects/SmartJobs/SmartJobsProject";
 import SSHealthInsurance from "./Projects/HealthInsurance/SSHealthInsurance";
 import SSCaregiver from "./Projects/SmartCaregiver/SSCaregiver";
 import SSLoanApp from "./Projects/LoanApp/SSLoanApp";
+import SSIntern from "./Fullstack/SSIntern";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -261,7 +262,8 @@ function App() {
             <Route path="/authenticationstatic" element={<AuthenticationStatic />} />
             <Route path="/paginationstatic" element={<PaginationStatic />} />
             <Route path="/searchingstatic" element={<SearchingStatic />} />
-
+            <Route path="/ssintern" element={<SSIntern />} />
+            
             {/* Fulstack */}
             <Route path="/language" element={<Languages />} />
             <Route path="/country" element={<Country />} />

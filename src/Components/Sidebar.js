@@ -61,6 +61,7 @@ function Sidebar({ activeMenu }) {
           <SidebarButton to="/checkboxstatic" icon="bi-check-square" label="Checkbox" />
           <SidebarButton to="/multiselectdropdownstatic" icon="bi-check2-square" label="Multi Select Dropdown" />
           <SidebarButton to="/authenticationstatic" icon="bi-shield-lock" label="Authentication" />
+          <SidebarButton to="/ssintern" icon="bi-shield-lock" label="1-Week Intern" />          
             </>
           )}
 
