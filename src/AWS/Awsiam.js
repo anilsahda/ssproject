@@ -100,17 +100,6 @@ to AWS services and resources for your users.`}
           </code>
         </pre>
       </section>
-
-      <section>
-        <b>8. ✅ Summary</b>
-        <ul>
-          <li>🔐 IAM manages users, groups, roles, and permissions</li>
-          <li>🛡 Attach policies for access control</li>
-          <li>🔑 Secure accounts using MFA</li>
-          <li>📄 Roles allow services to access resources securely</li>
-          <li>⚡ Fine-grained access control with custom policies</li>
-        </ul>
-      </section>
     </div>
   );
 }

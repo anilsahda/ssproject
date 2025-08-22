@@ -73,16 +73,6 @@ or managing servers. You pay only for the compute time you consume.`}
           </code>
         </pre>
       </section>
-
-      <section>
-        <b>7. ✅ Summary</b>
-        <ul>
-          <li>⚡ Lambda is serverless, pay-per-use function execution</li>
-          <li>🔒 Permissions are controlled via IAM roles</li>
-          <li>🌐 Can be triggered by events like API Gateway, S3, DynamoDB</li>
-          <li>🛠 Supports multiple runtimes and environment configuration</li>
-        </ul>
-      </section>
     </div>
   );
 }

@@ -48,50 +48,6 @@ export default function Awsaccountsetup() {
           </code>
         </pre>
       </section>
-
-      <section>
-        <b>4. 🌐 Set Up AWS CLI</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`1. Install AWS CLI: https://aws.amazon.com/cli/
-   - Windows: msiexec installer
-   - Mac: brew install awscli
-   - Linux: package manager or bundled installer
-2. Verify installation:
-   aws --version
-3. Configure CLI with IAM user credentials:
-   aws configure
-   - AWS Access Key ID: <from CSV>
-   - AWS Secret Access Key: <from CSV>
-   - Default region: us-east-1 (or preferred)
-   - Default output format: json`}
-          </code>
-        </pre>
-      </section>
-
-      <section>
-        <b>5. 🛠 Test AWS CLI Setup</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`# List S3 buckets
-aws s3 ls
-
-# Check IAM user info
-aws iam get-user`}
-          </code>
-        </pre>
-      </section>
-
-      <section>
-        <b>6. ✅ Summary</b>
-        <ul>
-          <li>☁️ AWS account created with free tier</li>
-          <li>🔑 IAM user with admin access created</li>
-          <li>🔒 MFA enabled for security</li>
-          <li>🖥 AWS CLI installed and configured</li>
-          <li>🛠 Verified access using AWS CLI commands</li>
-        </ul>
-      </section>
     </div>
   );
 }

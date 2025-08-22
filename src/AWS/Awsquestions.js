@@ -1,9 +1,11 @@
+import React, { useState } from 'react';
+
 export default function Awsquestions() {
-  const sectionStyle = { marginBottom: '2rem' };
+  const sectionStyle = { marginBottom: '1rem' };
   const preStyle = { background: '#f5f5f5', padding: '1rem', overflowX: 'auto', borderRadius: '5px' };
 
   const qaList = [
-{ q: "1. Here’s a roadmap to Start Learning for beginners!", a: `
+    { q: "1. Here’s a roadmap to Start Learning for beginners!", a: `
 ✅ Understand basics of cloud (IaaS, PaaS, SaaS, public/private/hybrid).
 ✅ Learn about AWS | Azure | GCP (choose one first, usually AWS).
 ✅ Hands-on practice:
@@ -143,23 +145,47 @@ Example: Run development servers without long-term commitments.` },
     { q: "49. What is AWS Elastic IP?", a: `Elastic IP is a static IPv4 address for EC2.
 Example: Keep the same IP even after restarting instances.` },
     { q: "50. What is AWS Aurora?", a: `Aurora is a high-performance managed relational database compatible with MySQL/PostgreSQL.
-Example: Use Aurora for faster performance compared to standard RDS.` },
+Example: Use Aurora for faster performance compared to standard RDS.` }
   ];
 
   return (
     <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif', lineHeight: '1.6' }}>
-      <h2>📚 Top 50 Cloud Internview Questions & Answers</h2>
+      <h2>📚 Top 50 Cloud Interview Questions & Answers</h2>
 
       {qaList.map((item, index) => (
-        <section key={index} style={sectionStyle}>
+        <ToggleSection key={index} title={item.q}>
           <pre style={preStyle}>
-            <code>
-              <b>{item.q}</b>
-              {"\n"}{item.a}
-            </code>
+            <code>{item.a}</code>
           </pre>
-        </section>
+        </ToggleSection>
       ))}
     </div>
+  );
+}
+
+/* Toggleable Section Component */
+function ToggleSection({ title, children }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <section style={{ marginBottom: '1rem' }}>
+      <div
+        onClick={() => setIsOpen(!isOpen)}
+        style={{
+          cursor: 'pointer',
+          fontWeight: 'bold',
+          display: 'flex',
+          alignItems: 'center',
+          color: '#2c3e50',
+          backgroundColor: '#f0f0f0',
+          padding: '0.5rem 1rem',
+          borderRadius: '4px',
+        }}
+      >
+        <span style={{ marginRight: '0.5rem' }}>{isOpen ? '▲' : '▼'}</span>
+        {title}
+      </div>
+      {isOpen && <div style={{ marginTop: '0.5rem' }}>{children}</div>}
+    </section>
   );
 }

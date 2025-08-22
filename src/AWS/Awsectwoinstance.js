@@ -1,4 +1,3 @@
-
 export default function Awsectwoinstance() {
   return (
     <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif', lineHeight: '1.6' }}>
@@ -44,29 +43,7 @@ in the cloud. You can launch, configure, and manage these servers as needed.`}
       </section>
 
       <section>
-        <b>4. 💾 Add Storage</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`1. Root volume: Default 8 GB (can increase if needed)
-2. Volume type: General Purpose SSD (gp3)
-3. Click "Next: Add Tags"`}
-          </code>
-        </pre>
-      </section>
-
-      <section>
-        <b>5. 🏷 Add Tags</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`1. Key: Name
-2. Value: MyEC2Instance
-3. Click "Next: Configure Security Group"`}
-          </code>
-        </pre>
-      </section>
-
-      <section>
-        <b>6. 🔒 Configure Security Group</b>
+        <b>4. 🔒 Configure Security Group</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`1. Create a new security group
@@ -82,7 +59,7 @@ in the cloud. You can launch, configure, and manage these servers as needed.`}
       </section>
 
       <section>
-        <b>7. 🔑 Launch Instance</b>
+        <b>5. 🔑 Launch Instance</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`1. Click "Launch"
@@ -95,7 +72,7 @@ in the cloud. You can launch, configure, and manage these servers as needed.`}
       </section>
 
       <section>
-        <b>8. 🌐 Connect to EC2 Instance</b>
+        <b>6. 🌐 Connect to EC2 Instance</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`1. Go to EC2 -> Instances -> Select your instance
@@ -105,16 +82,6 @@ in the cloud. You can launch, configure, and manage these servers as needed.`}
    ssh -i "my-key.pem" ec2-user@<Public-IP>
 4. You are now connected to your EC2 instance`}</code>
         </pre>
-      </section>
-
-      <section>
-        <b>9. ✅ Summary</b>
-        <ul>
-          <li>🖥️ Launch virtual servers (instances) in AWS cloud</li>
-          <li>💾 Configure storage, network, and security</li>
-          <li>🔑 Use key pair for secure SSH access</li>
-          <li>🌐 Connect to instance and manage via terminal</li>
-        </ul>
       </section>
     </div>
   );

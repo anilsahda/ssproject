@@ -81,17 +81,6 @@ You can define your own IP address range, subnets, route tables, and gateways.`}
           </code>
         </pre>
       </section>
-
-      <section>
-        <b>7. 🔹 Summary</b>
-        <ul>
-          <li>🌐 VPC isolates your AWS resources in a private network</li>
-          <li>🏷 Create subnets (public/private) and route tables</li>
-          <li>🔗 Attach Internet Gateway for public subnet internet access</li>
-          <li>🛡 Configure security groups for traffic control</li>
-          <li>⚡ Supports launching EC2, RDS, Lambda inside VPC</li>
-        </ul>
-      </section>
     </div>
   );
 }

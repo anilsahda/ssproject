@@ -76,17 +76,6 @@ It provides metrics, logs, and alarms for your AWS resources and applications.`}
           </code>
         </pre>
       </section>
-
-      <section>
-        <b>7. 🔹 Summary</b>
-        <ul>
-          <li>📊 CloudWatch monitors AWS resources and applications</li>
-          <li>📝 Collects metrics, logs, and custom events</li>
-          <li>⏰ Create alarms to trigger notifications</li>
-          <li>📈 Build dashboards for real-time monitoring</li>
-          <li>🔍 Use Logs Insights to analyze and query logs</li>
-        </ul>
-      </section>
     </div>
   );
 }
