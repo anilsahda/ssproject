@@ -39,11 +39,7 @@ const [districtId, setDistrictId] = useState("");
 const [genderId, setGenderId] = useState("");
 const [selectedLanguages, setSelectedLanguages] = useState([]);
 
-const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Employees\`;
-const coutryUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;
-const stateUrl = \`\${process.env.REACT_APP_BASE_URL}/States\`;
-const districtUrl = \`\${process.env.REACT_APP_BASE_URL}/Districts\`;
-const languageUrl = \`\${process.env.REACT_APP_BASE_URL}/Languages\`;`}</pre>
+const baseUrl = "https://localhost:7070/api/Employees";`}</pre>
         </section>
 
         <section className="mb-5">
@@ -52,10 +48,10 @@ const languageUrl = \`\${process.env.REACT_APP_BASE_URL}/Languages\`;`}</pre>
           </div>
           <pre style={preStyle}>{`useEffect(() => {
   loadEmployees();
-  axios.get(coutryUrl).then(res=>setCountries(res.data));
-  axios.get(stateUrl).then(res=>setStates(res.data));
-  axios.get(districtUrl).then(res=>setDistricts(res.data));
-  axios.get(languageUrl).then(res=>setLanguages(res.data));
+  axios.get(\`\${baseUrl}/countries\`).then(res=>setCountries(res.data));
+  axios.get(\`\${baseUrl}/states\`).then(res=>setStates(res.data));
+  axios.get(\`\${baseUrl}/districts\`).then(res=>setDistricts(res.data));
+  axios.get(\`\${baseUrl}/languages\`).then(res=>setLanguages(res.data));
 }, []);
 
 const loadEmployees = () => {
@@ -98,10 +94,10 @@ const loadEmployees = () => {
   };
 
   if (id !== null) {
-    await axios.put(baseUrl, { ...payload, id });
+    await axios.put(\`\${baseUrl}/employees\`, { ...payload, id });
     Swal.fire("Updated!", "Employee updated successfully.", "success");
   } else {
-    await axios.post(baseUrl, payload);
+    await axios.post(\`\${baseUrl}/employees\`, payload);
     Swal.fire("Added!", "Employee added successfully.", "success");
   }
 
@@ -149,7 +145,7 @@ const loadEmployees = () => {
   });
 
   if (result.isConfirmed) {
-    await axios.delete(\`\${baseUrl}/\${empId}\`);
+    await axios.delete(\`\${baseUrl}/employees/\${empId}\`);
     loadEmployees();
     Swal.fire("Deleted!", "Employee has been deleted successfully.", "success");
   }

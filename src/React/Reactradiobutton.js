@@ -37,7 +37,7 @@ const [stateId, setStateId] = useState("");
 const [districtId, setDistrictId] = useState("");
 const [genderId, setGenderId] = useState(0);
 const genders=[{ id: 1, name: "Male" },{ id: 2, name: "Female" },{ id: 3, name:"Other"}];
-const baseUrl = process.env.REACT_APP_BASE_URL;`}</pre>
+const baseUrl = "https://localhost:7071/api";`}</pre>
         </section>
 
         {/* Step 2: Load Data */}

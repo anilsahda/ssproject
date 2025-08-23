@@ -26,7 +26,7 @@ function Reactlanguages() {
           <pre style={preStyle}>{`const [languages, setLanguages] = useState([]);
 const [id, setId] = useState(0);
 const [name, setName] = useState("");
-const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Languages\`;`}</pre>
+const baseUrl = "https://localhost:7070/api";`}</pre>
         </section>
 
         <section className="mb-5">
@@ -38,7 +38,7 @@ const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Languages\`;`}</pre>
 }, []);
 
 const loadLanguages = () => {
-  axios.get(baseUrl).then((res) => setLanguages(res.data));
+  axios.get(\`\${baseUrl}/languages\`).then((res) => setLanguages(res.data));
 };`}</pre>
         </section>
 
@@ -72,9 +72,9 @@ const loadLanguages = () => {
   }
 
   if (id === 0) {
-    axios.post(baseUrl, data).then(() => { toast("success", "Language added")});
+    axios.post(\`\${baseUrl}/languages\`, data).then(() => { toast("success", "Language added")});
   } else {
-    axios.put(baseUrl, data).then(() => { toast("success", "Language updated")});
+    axios.put(\`\${baseUrl}/languages\`, data).then(() => { toast("success", "Language updated")});
   }
 
   resetForm();
@@ -107,7 +107,7 @@ const loadLanguages = () => {
     confirmButtonText: "Yes"
   }).then((result) => {
     if (result.isConfirmed) {
-      axios.delete(\`\${baseUrl}/\${langId}\`).then(()=>{toast("success","Language deleted")});
+      axios.delete(\`\${baseUrl}/languages/\${langId}\`).then(()=>{toast("success","Language deleted")});
       loadLanguages();
     }
   });

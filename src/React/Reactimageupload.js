@@ -42,8 +42,8 @@ const [mobile, setMobile] = useState("");
 const [image, setImage] = useState(null);
 const fileInputRef = useRef();
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
-const imageUrl = process.env.REACT_APP_IMAGE_UPLOAD_URL;`}</pre>
+const baseUrl = "https://localhost:7071/api/Customers;
+const imageUrl = "https://localhost:7071/api/Uploads";`}</pre>
         </section>
 
         {/* Step 2: Load Customers */}

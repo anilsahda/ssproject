@@ -30,9 +30,7 @@ const [name, setName] = useState("");
 const [countryId, setCountryId] = useState(0);
 const [stateId, setStateId] = useState(0);
 
-const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Districts\`;
-const countryUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;
-const stateUrl = \`\${process.env.REACT_APP_BASE_URL}/States\`;`}</pre>
+const baseUrl = "https://localhost:7071/api";`}</pre>
         </section>
 
         <section className="mb-5">
@@ -46,15 +44,15 @@ const stateUrl = \`\${process.env.REACT_APP_BASE_URL}/States\`;`}</pre>
 }, []);
 
 const loadCountries = () => {
-  axios.get(countryUrl).then(res => setCountries(res.data));
+  axios.get(\`\${baseUrl}/Countries\`).then(res => setCountries(res.data));
 };
 
 const loadStates = () => {
-  axios.get(stateUrl).then(res => setStates(res.data));
+  axios.get(\`\${baseUrl}/States\`).then(res => setStates(res.data));
 };
 
 const loadDistricts = () => {
-  axios.get(baseUrl).then(res => setDistricts(res.data));
+  axios.get(\`\${baseUrl}/Districts\`).then(res => setDistricts(res.data));
 };`}</pre>
         </section>
 
@@ -72,9 +70,9 @@ const loadDistricts = () => {
   const data = { id, name, countryId: parseInt(countryId), stateId: parseInt(stateId) };
 
   if (id === 0) {
-    axios.post(baseUrl, data).then(() => { Swal.fire("Success", "District added successfully!", "success")});
+    axios.post(\`\${baseUrl}/Districts\`, data).then(() => { Swal.fire("Success", "District added successfully!", "success")});
   } else {
-    axios.put(baseUrl, data).then(() => { Swal.fire("Success", "District updated successfully!", "success")});
+    axios.put(\`\${baseUrl}/Districts\`, data).then(() => { Swal.fire("Success", "District updated successfully!", "success")});
   }
 
   resetForm(); 
@@ -111,7 +109,7 @@ const loadDistricts = () => {
     confirmButtonText: "Yes, delete it!"
   }).then(result => {
     if (result.isConfirmed) {
-      axios.delete(\`\${baseUrl}/\${districtId}\`); 
+      axios.delete(\`\${baseUrl}/countries/\${districtId}\`); 
       Swal.fire("Deleted!", "District has been deleted.", "success");
       loadDistricts();
     }

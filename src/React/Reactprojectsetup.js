@@ -36,10 +36,7 @@ npm i sweetalert2`}
 │   │   ├── Footer.tsx
 │   │   └── Layout.tsx
 │   ├── App.tsx
-│   └── main.tsx
-├── public/
-│   └── index.html
-└── .env`}
+│   └── main.tsx`}
           </code>
         </pre>
       </section>

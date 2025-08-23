@@ -55,7 +55,7 @@ const [totalRecords, setTotalRecords] = useState(0);
 
 const genders=[{id:1, name: "Male" }, { id: 2, name: "Female" },{ id: 3, name: "Other"}];
 
-const baseUrl = process.env.REACT_APP_BASE_URL;`}</pre>
+const baseUrl = "https://localhost:7070/api";`}</pre>
         </section>
 
         <section className="mb-5">
@@ -63,8 +63,7 @@ const baseUrl = process.env.REACT_APP_BASE_URL;`}</pre>
             <FaLink /> Step 2: Load Students, Countries, States, Districts
           </div>
           <pre style={preStyle}>{`const loadStudents = async () => {
-  const res = await axios.get(
-  \`\${baseUrl}/students/paginated?pageNumber=\${currentPage}&pageSize=\${pageSize}\`);
+  const res = await axios.get(\`\${baseUrl}/students/paginated?pageNumber=\${currentPage}&pageSize=\${pageSize}\`);
   setStudents(res.data.data);
   setTotalRecords(res.data.totalRecords);
 };

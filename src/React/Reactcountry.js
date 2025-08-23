@@ -28,7 +28,7 @@ function Reactcountry() {
           <pre style={preStyle}>{`const [countries, setCountries] = useState([]);
 const [id, setId] = useState(0);
 const [name, setName] = useState("");
-const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;`}</pre>
+const baseUrl = "https://localhost:7071/api";`}</pre>
         </section>
 
         <section className="mb-5">
@@ -40,7 +40,7 @@ const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;`}</pre>
 }, []);
 
 const loadCountries = () => {
-  axios.get(baseUrl).then((res) => setCountries(res.data));
+  axios.get(\`\${baseUrl}/countries\`).then((res) => setCountries(res.data));
 };`}</pre>
         </section>
 
@@ -74,9 +74,9 @@ const loadCountries = () => {
   }
 
   if (id === 0) {
-    axios.post(baseUrl, data).then(() => { toast("success", "Country added")});
+    axios.post(\`\${baseUrl}/countries\`, data).then(() => { toast("success", "Country added")});
   } else {
-    axios.put(baseUrl, data).then(() => { toast("success", "Country updated")});
+    axios.put(\`\${baseUrl}/countries\`, data).then(() => { toast("success", "Country updated")});
   }
   resetForm();
   loadCountries();
@@ -108,7 +108,7 @@ const loadCountries = () => {
     confirmButtonText: "Yes"
   }).then((result) => {
     if (result.isConfirmed) {
-      axios.delete(\`\${baseUrl}/\${countryId}\`).then(()=>{toast("success","Country deleted")});
+      axios.delete(\`\${baseUrl}/countries/\${countryId}\`).then(()=>{toast("success","Country deleted")});
       loadCountries();
     }
   });

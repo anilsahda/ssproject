@@ -28,8 +28,7 @@ const [id, setId] = useState(0);
 const [name, setName] = useState("");
 const [countryId, setCountryId] = useState("");
 
-const stateUrl = \`\${process.env.REACT_APP_BASE_URL}/States\`;
-const countryUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;`}</pre>
+const baseUrl = "https://localhost:7071/api";`}</pre>
         </section>
 
         <section className="mb-5">
@@ -42,12 +41,12 @@ const countryUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;`}</pre>
 }, []);
 
 const loadStates = async () => {
-  const res = await axios.get(stateUrl);
+  const res = await axios.get(\`\${baseUrl}/states\`);
   setStates(res.data);
 };
 
 const loadCountries = async () => {
-  const res = await axios.get(countryUrl);
+  const res = await axios.get(\`\${baseUrl}/states\`);
   setCountries(res.data);
 };`}</pre>
         </section>
@@ -87,10 +86,10 @@ const loadCountries = async () => {
   const data = { id, name, countryId: parseInt(countryId) };
 
   if (id === 0) {
-    await axios.post(stateUrl, data);
+    await axios.post(\`\${baseUrl}/states\`, data);
     toast("success", "State added");
   } else {
-    await axios.put(stateUrl, data);
+    await axios.put(\`\${baseUrl}/states\`, data);
     toast("success", "State updated");
   }
 
@@ -125,7 +124,7 @@ const loadCountries = async () => {
     confirmButtonText: "Yes, delete it"
   }).then(async (result) => {
     if (result.isConfirmed) {
-      await axios.delete(\`\${stateUrl}/\${stateId}\`);
+      await axios.delete(\`\${stateUrl}/states\${stateId}\`);
       toast("success", "State deleted");
       loadStates();
     }
