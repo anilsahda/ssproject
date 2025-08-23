@@ -3,12 +3,12 @@ import { FaBook, FaLink, FaCode, FaCheckCircle } from "react-icons/fa";
 
 function Angularcountry() {
   const sectionHeaderStyle = {
-    borderBottom: "2px solid #007bff",
+    borderBottom: "2px solid #28a745",
     paddingBottom: "5px",
     marginBottom: "15px",
     fontSize: "1.2rem",
     fontWeight: "bold",
-    color: "#007bff",
+    color: "#28a745",
     display: "flex",
     alignItems: "center",
     gap: "8px",
@@ -17,148 +17,142 @@ function Angularcountry() {
   return (
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
-        <h1 className="fw-bold mb-5 text-primary text-center">
-          CRUD Operation - React
+        <h1 className="fw-bold mb-5 text-success text-center">
+          CRUD Operation - Angular
         </h1>
 
-        {/* Step 1: State and Base URL */}
+        {/* Step 1: Create Model */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaBook /> Step 1: State and Base URL
+            <FaBook /> Step 1: Create Country Model
           </div>
-          <pre style={preStyle}>{`const [countries, setCountries] = useState([]);
-const [id, setId] = useState(0);
-const [name, setName] = useState("");
-const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;`}</pre>
+          <pre style={preStyle}>{`export interface Country {
+  id: number;
+  name: string;
+}`}</pre>
         </section>
 
-        {/* Step 2: Load Countries */}
+        {/* Step 2: Create Service */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaLink /> Step 2: Load Countries from API
+            <FaLink /> Step 2: Create Country Service
           </div>
-          <pre style={preStyle}>{`useEffect(() => {
-  loadCountries();
-}, []);
+          <pre style={preStyle}>{`@Injectable({
+  providedIn: 'root'
+})
+export class CountryService {
+  private baseUrl = environment.apiUrl + '/Countries';
 
-const loadCountries = () => {
-  axios.get(baseUrl).then((res) => setCountries(res.data));
-};`}</pre>
+  constructor(private http: HttpClient) {}
+
+  getAll(): Observable<Country[]> {
+    return this.http.get<Country[]>(this.baseUrl);
+  }
+
+  create(country: Country): Observable<any> {
+    return this.http.post(this.baseUrl, country);
+  }
+
+  update(country: Country): Observable<any> {
+    return this.http.put(this.baseUrl, country);
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(\`\${this.baseUrl}/\${id}\`);
+  }
+}`}</pre>
         </section>
 
-        {/* Step 3: Toast Notifications */}
+        {/* Step 3: Component Setup */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaCheckCircle /> Step 3: Toast Notifications
+            <FaCheckCircle /> Step 3: Component Setup
           </div>
-          <pre style={preStyle}>{`const toast = (icon, title) => {
-  Swal.fire({
-    toast: true,
-    position: "top-end",
-    icon,
-    title,
-    showConfirmButton: false,
-    timer: 2000,
-    timerProgressBar: true
-  });
-};`}</pre>
+          <pre style={preStyle}>{`export class CountryComponent implements OnInit {
+  countries: Country[] = [];
+  id: number = 0;
+  name: string = "";
+
+  constructor(private countryService: CountryService) {}
+
+  ngOnInit(): void {
+    this.loadCountries();
+  }
+
+  loadCountries() {
+    this.countryService.getAll().subscribe(data => this.countries = data);
+  }
+}`}</pre>
         </section>
 
-        {/* Step 4: Save / Update Country */}
+        {/* Step 4: Save / Update */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaCode /> Step 4: Add or Update Country
+            <FaCode /> Step 4: Save or Update Country
           </div>
-          <pre style={preStyle}>{`const handleSave = () => {
-  const data = { id, name };
-
-  if (!name.trim()) {
-    toast("warning", "Country name required");
+          <pre style={preStyle}>{`saveCountry() {
+  if (!this.name.trim()) {
+    alert("Country name required");
     return;
   }
 
-  if (id === 0) {
-    axios.post(baseUrl, data).then(() => {
-      toast("success", "Country added");
-      resetForm();
-      loadCountries();
+  const data: Country = { id: this.id, name: this.name };
+
+  if (this.id === 0) {
+    this.countryService.create(data).subscribe(() => {
+      alert("Country added");
+      this.resetForm();
+      this.loadCountries();
     });
   } else {
-    axios.put(baseUrl, data).then(() => {
-      toast("success", "Country updated");
-      resetForm();
-      loadCountries();
+    this.countryService.update(data).subscribe(() => {
+      alert("Country updated");
+      this.resetForm();
+      this.loadCountries();
     });
   }
-};`}</pre>
+}`}</pre>
         </section>
 
-        {/* Step 5: Edit Country */}
+        {/* Step 5: Edit & Delete */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaBook /> Step 5: Edit Country
+            <FaBook /> Step 5: Edit & Delete Country
           </div>
-          <pre style={preStyle}>{`const handleEdit = (country) => {
-  setId(country.id);
-  setName(country.name);
-};`}</pre>
+          <pre style={preStyle}>{`editCountry(country: Country) {
+  this.id = country.id;
+  this.name = country.name;
+}
+
+deleteCountry(id: number) {
+  if (confirm("Delete this country?")) {
+    this.countryService.delete(id).subscribe(() => {
+      alert("Country deleted");
+      this.loadCountries();
+    });
+  }
+}`}</pre>
         </section>
 
-        {/* Step 6: Delete Country */}
+        {/* Step 6: Template (HTML) */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaLink /> Step 6: Delete Country
+            <FaLink /> Step 6: Component Template (HTML)
           </div>
-          <pre style={preStyle}>{`const handleDelete = (countryId) => {
-  Swal.fire({
-    title: "Delete country?",
-    text: "This cannot be undone!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#d33",
-    cancelButtonColor: "#3085d6",
-    confirmButtonText: "Yes"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      axios.delete(\`\${baseUrl}/\${countryId}\`).then(() => {
-        toast("success", "Country deleted");
-        loadCountries();
-      });
-    }
-  });
-};`}</pre>
-        </section>
-
-        {/* Step 7: Reset Form */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaCheckCircle /> Step 7: Reset Form
-          </div>
-          <pre style={preStyle}>{`const resetForm = () => {
-  setId(0);
-  setName("");
-};`}</pre>
-        </section>
-
-        {/* Step 8: Component JSX */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaCode /> Step 8: Component JSX
-          </div>
-          <pre style={preStyle}>{`<div className="container mt-4">
+          <pre style={preStyle}>{`<div class="container mt-4">
   <h2>Manage Countries</h2>
 
-  <div className="mb-3">
-    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+  <div class="mb-3">
+    <input type="text" [(ngModel)]="name" placeholder="Country name" class="form-control"/>
   </div>
 
-  <div className="mb-4">
-    <button className="btn btn-primary me-2" onClick={handleSave}>Save Country</button>
-    <button className="btn btn-secondary" onClick={resetForm}>Reset</button>
+  <div class="mb-4">
+    <button class="btn btn-success me-2" (click)="saveCountry()">Save</button>
+    <button class="btn btn-secondary" (click)="resetForm()">Reset</button>
   </div>
 
-  <table className="table table-bordered table-striped">
-    <thead className="table-light">
+  <table class="table table-bordered table-striped">
+    <thead class="table-light">
       <tr>
         <th>Id</th>
         <th>Name</th>
@@ -166,32 +160,30 @@ const loadCountries = () => {
       </tr>
     </thead>
     <tbody>
-      {countries.map((c) => (
-        <tr key={c.id}>
-          <td>{c.id}</td>
-          <td>{c.name}</td>
-          <td>
-              <button onClick={() => handleEdit(c)}>Edit</button>
-              <button onClick={() => handleDelete(c.id)}>Delete</button>
-          </td>
-        </tr>
-      ))}
+      <tr *ngFor="let c of countries">
+        <td>{{c.id}}</td>
+        <td>{{c.name}}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="editCountry(c)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteCountry(c.id)">Delete</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>`}</pre>
         </section>
 
-        {/* Step 9: Summary */}
+        {/* Step 7: Summary */}
         <section>
           <div style={sectionHeaderStyle}>
-            <FaBook /> Step 9: Summary
+            <FaCheckCircle /> Step 7: Summary
           </div>
           <ul style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-            <li>✅ Full CRUD operations with Axios (GET, POST, PUT, DELETE)</li>
-            <li>🟡 SweetAlert2 used for toast notifications and delete confirmation</li>
-            <li>📝 Form handling with controlled components</li>
-            <li>📋 Dynamic table rendering of countries with Edit & Delete actions</li>
-            <li>🆔 Only <code>Id</code> and <code>Name</code> fields are used</li>
+            <li>✅ Full CRUD operations with Angular HttpClient</li>
+            <li>🟢 Two-way binding using <code>ngModel</code></li>
+            <li>📝 Service layer handles API calls</li>
+            <li>📋 Bootstrap UI table for displaying countries</li>
+            <li>🆔 Model contains only <code>id</code> and <code>name</code></li>
           </ul>
         </section>
       </div>
@@ -199,7 +191,7 @@ const loadCountries = () => {
   );
 }
 
-// Shared preStyle for all code blocks
+// Shared style for all code blocks
 const preStyle = {
   backgroundColor: "#f1f3f5",
   fontFamily: "monospace",

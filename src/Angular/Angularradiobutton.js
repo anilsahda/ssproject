@@ -3,74 +3,95 @@ import { FaBook, FaLink, FaCode, FaCheckCircle } from "react-icons/fa";
 
 function Angularradiobutton() {
   const sectionHeaderStyle = {
-    borderBottom: "2px solid #007bff",
+    borderBottom: "2px solid #17a2b8",
     paddingBottom: "5px",
     marginBottom: "15px",
     fontSize: "1.2rem",
     fontWeight: "bold",
-    color: "#007bff",
+    color: "#17a2b8",
     display: "flex",
     alignItems: "center",
     gap: "8px",
   };
 
   return (
-    <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
+    <div
+      style={{
+        backgroundColor: "#f8f9fa",
+        minHeight: "100vh",
+        padding: "40px 20px",
+      }}
+    >
       <div className="container bg-white p-5 shadow-sm rounded">
-        <h1 className="fw-bold mb-5 text-primary text-center">Radio Button - React</h1>
+        <h1 className="fw-bold mb-5 text-info text-center">
+          Radio Button - Angular (Student Form)
+        </h1>
 
-        {/* Step 1: State and Base URL */}
+        {/* Step 1: Component Properties */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaBook /> Step 1: State and Base URL
+            <FaBook /> Step 1: Define Properties in Component
           </div>
-          <pre style={preStyle}>{`const [students, setStudents] = useState([]);
-const [countries, setCountries] = useState([]);
-const [states, setStates] = useState([]);
-const [districts, setDistricts] = useState([]);
-const [id, setId] = useState(0);
-const [name, setName] = useState("");
-const [email, setEmail] = useState("");
-const [mobile, setMobile] = useState("");
-const [countryId, setCountryId] = useState("");
-const [stateId, setStateId] = useState("");
-const [districtId, setDistrictId] = useState("");
-const [genderId, setGenderId] = useState(0);
-const genders=[{ id: 1, name: "Male" },{ id: 2, name: "Female" },{ id: 3, name:"Other"}];
-const baseUrl = process.env.REACT_APP_BASE_URL;`}</pre>
+          <pre style={preStyle}>{`students: any[] = [];
+countries: any[] = [];
+states: any[] = [];
+districts: any[] = [];
+id: number = 0;
+name: string = "";
+email: string = "";
+mobile: string = "";
+countryId: string = "";
+stateId: string = "";
+districtId: string = "";
+genderId: number = 0;
+
+genders = [
+  { id: 1, name: "Male" },
+  { id: 2, name: "Female" },
+  { id: 3, name: "Other" }
+];
+
+studentUrl = environment.apiUrl + "/students";
+countryUrl = environment.apiUrl + "/countries";
+stateUrl = environment.apiUrl + "/states";
+districtUrl = environment.apiUrl + "/districts";`}</pre>
         </section>
 
         {/* Step 2: Load Data */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaLink /> Step 2: Load Data from APIs
+            <FaLink /> Step 2: Load Data
           </div>
-          <pre style={preStyle}>{`useEffect(() => {
-  loadStudents();
-  loadCountries();
-  loadStates();
-  loadDistricts();
-}, []);
+          <pre style={preStyle}>{`ngOnInit(): void {
+  this.loadStudents();
+  this.loadCountries();
+  this.loadStates();
+  this.loadDistricts();
+}
 
-const loadStudents = async () => {
-  const res = await axios.get(\`\${baseUrl}/students\`);
-  setStudents(res.data);
-};
+loadStudents() {
+  this.http.get(this.studentUrl).subscribe((res: any) => {
+    this.students = res;
+  });
+}
 
-const loadCountries = async () => {
-  const res = await axios.get(\`\${baseUrl}/countries\`);
-  setCountries(res.data);
-};
+loadCountries() {
+  this.http.get(this.countryUrl).subscribe((res: any) => {
+    this.countries = res;
+  });
+}
 
-const loadStates = async () => {
-  const res = await axios.get(\`\${baseUrl}/states\`);
-  setStates(res.data);
-};
+loadStates() {
+  this.http.get(this.stateUrl).subscribe((res: any) => {
+    this.states = res;
+  });
+}
 
-const loadDistricts = async () => {
-  const res = await axios.get(\`\${baseUrl}/districts\`);
-  setDistricts(res.data);
-};`}</pre>
+loadDistricts() {
+  this.http.get(this.districtUrl).subscribe((res: any) => {
+    this.districts = res;
+  });
+}`}</pre>
         </section>
 
         {/* Step 3: Toast Notifications */}
@@ -78,49 +99,50 @@ const loadDistricts = async () => {
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 3: Toast Notifications
           </div>
-          <pre style={preStyle}>{`const toast = (icon, title) => {
-  Swal.fire({ 
-    toast: true, 
-    position: "top-end", 
+          <pre style={preStyle}>{`toast(icon: any, title: string) {
+  Swal.fire({
+    toast: true,
+    position: "top-end",
     icon,
     title,
     showConfirmButton: false,
     timer: 2000,
     timerProgressBar: true
   });
-};`}</pre>
+}`}</pre>
         </section>
 
-        {/* Step 4: Save / Update Student */}
+        {/* Step 4: Save / Update */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCode /> Step 4: Add or Update Student
           </div>
-          <pre style={preStyle}>{`const handleSubmit = async (e) => {
-  e.preventDefault();
-
+          <pre style={preStyle}>{`handleSave() {
   const payload = {
-    id,
-    name,
-    email,
-    mobile,
-    countryId: countryId ? Number(countryId) : null,
-    stateId: stateId ? Number(stateId) : null,
-    districtId: districtId ? Number(districtId) : null,
-    genderId: genderId ? Number(genderId) : null
+    id: this.id,
+    name: this.name,
+    email: this.email,
+    mobile: this.mobile,
+    countryId: this.countryId ? parseInt(this.countryId) : null,
+    stateId: this.stateId ? parseInt(this.stateId) : null,
+    districtId: this.districtId ? parseInt(this.districtId) : null,
+    genderId: this.genderId || 0
   };
 
-  if (id > 0) {
-    await axios.put(\`\${baseUrl}/students\`, payload);
-    Swal.fire("Updated!", "Student record has been updated.", "success");
+  if (this.id === 0) {
+    this.http.post(this.studentUrl, payload).subscribe(() => {
+      this.toast("success", "Student added");
+      this.resetForm();
+      this.loadStudents();
+    });
   } else {
-    await axios.post(\`\${baseUrl}/students\`, payload);
-    Swal.fire("Added!", "New student has been added.", "success");
+    this.http.put(this.studentUrl, payload).subscribe(() => {
+      this.toast("success", "Student updated");
+      this.resetForm();
+      this.loadStudents();
+    });
   }
-
-  resetForm();
-  loadStudents();
-};`}</pre>
+}`}</pre>
         </section>
 
         {/* Step 5: Edit Student */}
@@ -128,16 +150,16 @@ const loadDistricts = async () => {
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 5: Edit Student
           </div>
-          <pre style={preStyle}>{`const handleEdit = (std) => {
-  setId(std.id);
-  setName(std.name);
-  setEmail(std.email);
-  setMobile(std.mobile);
-  setCountryId(std.countryId);
-  setStateId(std.stateId);
-  setDistrictId(std.districtId);
-  setGenderId(std.genderId || 0);
-};`}</pre>
+          <pre style={preStyle}>{`handleEdit(std: any) {
+  this.id = std.id;
+  this.name = std.name;
+  this.email = std.email;
+  this.mobile = std.mobile;
+  this.countryId = std.countryId?.toString() || "";
+  this.stateId = std.stateId?.toString() || "";
+  this.districtId = std.districtId?.toString() || "";
+  this.genderId = std.genderId || 0;
+}`}</pre>
         </section>
 
         {/* Step 6: Delete Student */}
@@ -145,65 +167,66 @@ const loadDistricts = async () => {
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 6: Delete Student
           </div>
-          <pre style={preStyle}>{`const handleDelete = (studentId) => {
+          <pre style={preStyle}>{`handleDelete(studentId: number) {
   Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
+    title: "Delete this student?",
+    text: "This action cannot be undone.",
     icon: "warning",
     showCancelButton: true,
-    confirmButtonText: "Yes, delete it!",
-    cancelButtonText: "Cancel"
-  }).then(async (result) => {
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it"
+  }).then((result) => {
     if (result.isConfirmed) {
-      await axios.delete(\`\${baseUrl}/students/\${studentId}\`);
-      loadStudents();
-      Swal.fire("Deleted!", "Student has been deleted.", "success");
+      this.http.delete(\`\${this.studentUrl}/\${studentId}\`).subscribe(() => {
+        this.toast("success", "Student deleted");
+        this.loadStudents();
+      });
     }
   });
-};`}</pre>
+}`}</pre>
         </section>
 
-        {/* Step 7: Component JSX */}
+        {/* Step 7: Angular Template */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaCode /> Step 7: Component JSX
+            <FaCode /> Step 7: Angular Template
           </div>
-          <pre style={preStyle}>{`<form onSubmit={handleSubmit}>
-  <input type="text" value={name} onChange={e => setName(e.target.value)} />
-  <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-  <input type="text" value={mobile} onChange={e => setMobile(e.target.value)} />
+          <pre style={preStyle}>{`<form>
+  <input type="text" class="form-control mb-2" [(ngModel)]="name" name="name" placeholder="Enter name" />
+  <input type="email" class="form-control mb-2" [(ngModel)]="email" name="email" placeholder="Enter email" />
+  <input type="text" class="form-control mb-2" [(ngModel)]="mobile" name="mobile" placeholder="Enter mobile" />
 
-  <select value={countryId} onChange={e => setCountryId(e.target.value)}>
+  <select class="form-select mb-2" [(ngModel)]="countryId" name="countryId">
     <option value="">Select Country</option>
-    {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+    <option *ngFor="let c of countries" [value]="c.id">{{c.name}}</option>
   </select>
 
-  <select value={stateId} onChange={e => setStateId(e.target.value)}>
+  <select class="form-select mb-2" [(ngModel)]="stateId" name="stateId">
     <option value="">Select State</option>
-    {states.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+    <option *ngFor="let s of states" [value]="s.id">{{s.name}}</option>
   </select>
 
-  <select value={districtId} onChange={e => setDistrictId(e.target.value)}>
+  <select class="form-select mb-2" [(ngModel)]="districtId" name="districtId">
     <option value="">Select District</option>
-    {districts.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+    <option *ngFor="let d of districts" [value]="d.id">{{d.name}}</option>
   </select>
 
-  {genders.map(g => (
-    <label key={g.id}>
-      <input type="radio" name="gender" value={g.id} checked={genderId === g.id} 
-            onChange={e => setGenderId(Number(e.target.value))} /> {g.name}
+  <div class="mb-3">
+    <label class="me-3" *ngFor="let g of genders">
+      <input type="radio" name="gender" [value]="g.id" [(ngModel)]="genderId" /> {{g.name}}
     </label>
-  ))}
+  </div>
 
-  <button type="submit">Save Student</button>
+  <button type="button" class="btn btn-info" (click)="handleSave()">Save Student</button>
 </form>
 
-<table className="table table-bordered table-striped">
+<table class="table table-bordered table-striped mt-3">
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Mobile</th>      
+      <th>Mobile</th>
       <th>Country</th>
       <th>State</th>
       <th>District</th>
@@ -212,21 +235,19 @@ const loadDistricts = async () => {
     </tr>
   </thead>
   <tbody>
-    {students.map(std => (
-      <tr key={std.id}>
-        <td>{std.name}</td>
-        <td>{std.email}</td>
-        <td>{std.mobile}</td>
-        <td>{countries.find(c => c.id === std.countryId)?.name}</td>
-        <td>{states.find(s => s.id === std.stateId)?.name}</td>
-        <td>{districts.find(d => d.id === std.districtId)?.name}</td>
-        <td>{genders.find(g => g.id === std.genderId)?.name}</td>
-        <td>
-          <button className="btn btn-warning" onClick={()=>handleEdit(std)}>Edit</button>
-          <button onClick={() => handleDelete(std.id)}>Delete</button>
-        </td>
-      </tr>
-    ))}
+    <tr *ngFor="let s of students">
+      <td>{{s.name}}</td>
+      <td>{{s.email}}</td>
+      <td>{{s.mobile}}</td>
+      <td>{{countries.find(c => c.id === s.countryId)?.name}}</td>
+      <td>{{states.find(st => st.id === s.stateId)?.name}}</td>
+      <td>{{districts.find(d => d.id === s.districtId)?.name}}</td>
+      <td>{{genders.find(g => g.id === s.genderId)?.name}}</td>
+      <td>
+        <button class="btn btn-warning btn-sm me-2" (click)="handleEdit(s)">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="handleDelete(s.id)">Delete</button>
+      </td>
+    </tr>
   </tbody>
 </table>`}</pre>
         </section>
@@ -237,11 +258,11 @@ const loadDistricts = async () => {
             <FaBook /> Step 8: Summary
           </div>
           <ul style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-            <li>✅ Full CRUD operations with Axios (GET, POST, PUT, DELETE)</li>
-            <li>🟡 SweetAlert2 used for notifications and delete confirmation</li>
-            <li>📝 Form handling with controlled components</li>
-            <li>📋 Dynamic table rendering of students with Edit & Delete actions</li>
-            <li>⚡ Gender selection via radio buttons</li>
+            <li>✅ Full CRUD operations with Angular HttpClient</li>
+            <li>🟡 SweetAlert2 for toast & confirmation</li>
+            <li>📝 Two-way binding with ngModel</li>
+            <li>📋 Dropdowns for Country, State, District</li>
+            <li>⚡ Gender selection using radio buttons</li>
           </ul>
         </section>
       </div>
@@ -249,7 +270,7 @@ const loadDistricts = async () => {
   );
 }
 
-// Shared preStyle for all code blocks
+// Shared preStyle
 const preStyle = {
   backgroundColor: "#f1f3f5",
   fontFamily: "monospace",

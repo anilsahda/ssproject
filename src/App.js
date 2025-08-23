@@ -42,7 +42,6 @@ import Awsectwoinstance from "./AWS/Awsectwoinstance";
 import Awsthreebucket from "./AWS/Awsthreebucket";
 import Awslambda from "./AWS/Awslambda";
 import Awsdynamodb from "./AWS/Awsdynamodb";
-import Awsvpc from "./AWS/Awsvpc";
 import Awscloudwatch from "./AWS/Awscloudwatch";
 import Awsquestions from "./AWS/Awsquestions";
 import Azureaccountsetup from "./Azure/Azureaccountsetup";
@@ -164,7 +163,6 @@ import CicdpipelinesReact from "./DevOps/CicdpipelinesReact";
 import CicdpipelinesNext from "./DevOps/CicdpipelinesNext";
 import CicdpipelinesNode from "./DevOps/CicdpipelinesNode";
 import CicdpipelinesNetCore from "./DevOps/CicdpipelinesNetCore";
-import Amplify from "./DevOps/Amplify";
 import Github from "./DevOps/Github";
 import LanguagesStatic from "./FullstackStatic/LanguagesStatic";
 import CountryStatic from "./FullstackStatic/CountryStatic";
@@ -207,6 +205,8 @@ import SSHealthInsurance from "./Projects/HealthInsurance/SSHealthInsurance";
 import SSCaregiver from "./Projects/SmartCaregiver/SSCaregiver";
 import SSLoanApp from "./Projects/LoanApp/SSLoanApp";
 import SSIntern from "./Fullstack/SSIntern";
+import Awsrds from "./AWS/Awsrds";
+import Amplify from "./AWS/Amplify";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -372,7 +372,8 @@ function App() {
             <Route path="/awsthreebucket" element={<Awsthreebucket />} />
             <Route path="/awslambda" element={<Awslambda />} />
             <Route path="/awsdynamodb" element={<Awsdynamodb />} />
-            <Route path="/awsvpc" element={<Awsvpc />} />
+            <Route path="/awsrds" element={<Awsrds />} />
+            <Route path="/amplify" element={<Amplify />} />
             <Route path="/awscloudwatch" element={<Awscloudwatch />} />
             <Route path="/awsquestions" element={<Awsquestions />} />
 
@@ -388,7 +389,6 @@ function App() {
             <Route path="/azurerbac" element={<Azurerbac />} />
             <Route path="/azurequestions" element={<Azurequestions />} />
 
-            <Route path="/amplify" element={<Amplify />} />           
             <Route path="/cicdpipelinesreact" element={<CicdpipelinesReact />} />
             <Route path="/cicdpipelinesnext" element={<CicdpipelinesNext />} />
             <Route path="/cicdpipelinesnode" element={<CicdpipelinesNode />} />

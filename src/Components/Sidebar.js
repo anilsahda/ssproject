@@ -198,7 +198,8 @@ function Sidebar({ activeMenu }) {
               <SidebarButton to="/awsthreebucket" icon="bi-bucket" label="AWS S3 Bucket" />
               <SidebarButton to="/awslambda" icon="bi-lightning-charge" label="AWS Lambda" />
               <SidebarButton to="/awsdynamodb" icon="bi-database" label="AWS Dynamo DB" />
-              <SidebarButton to="/awsvpc" icon="bi-diagram-3-fill" label="AWS VPC" />
+              <SidebarButton to="/awsrds" icon="bi-database-fill" label="AWS RDS" />
+              <SidebarButton to="/amplify" icon="bi-gear-fill" label="Amplify" />
               <SidebarButton to="/awscloudwatch" icon="bi-eye" label="AWS Cloud Watch" />
               <SidebarButton to="/awsquestions" icon="bi-question-circle" label="AWS Questions" />
             </>
@@ -222,7 +223,6 @@ function Sidebar({ activeMenu }) {
 
           {activeMenu === "DevOps" && (
             <>
-            <SidebarButton to="/amplify" icon="bi-gear-fill" label="Amplify" />
             <SidebarButton to="/jenkins" icon="bi-gear-fill" label="Jenkins Setup" />
             <SidebarButton to="/cicdpipelinesreact" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - React" />
             <SidebarButton to="/cicdpipelinesnext" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - Next" />

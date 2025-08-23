@@ -1,13 +1,14 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { FaBook, FaLink, FaCode, FaCheckCircle } from "react-icons/fa";
 
 function Angularmultiselectdropdown() {
   const sectionHeaderStyle = {
-    borderBottom: "2px solid #007bff",
+    borderBottom: "2px solid #17a2b8",
     paddingBottom: "5px",
     marginBottom: "15px",
     fontSize: "1.2rem",
     fontWeight: "bold",
-    color: "#007bff",
+    color: "#17a2b8",
     display: "flex",
     alignItems: "center",
     gap: "8px",
@@ -16,204 +17,205 @@ function Angularmultiselectdropdown() {
   return (
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
-        <h1 className="fw-bold mb-5 text-primary text-center">Multi-Select Dropdown - React</h1>
+        <h1 className="fw-bold mb-5 text-info text-center">Multi-Select Dropdown - Angular</h1>
 
+        {/* Step 1: Component Properties */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaBook /> Step 1: State and Base URL
+            <FaBook /> Step 1: Component Properties
           </div>
-          <pre style={preStyle}>{`const [employees, setEmployees] = useState([]);
-const [countries, setCountries] = useState([]);
-const [states, setStates] = useState([]);
-const [districts, setDistricts] = useState([]);
-const [languages, setLanguages] = useState([]);
-const [genders]=useState([{id:1,name:"Male"},{id:2,name:"Female"},{id:3,name:"Other"}]);
+          <pre style={preStyle}>{`employees: any[] = [];
+countries: any[] = [];
+states: any[] = [];
+districts: any[] = [];
+languages: any[] = [];
+genders = [
+  { id: 1, name: 'Male' },
+  { id: 2, name: 'Female' },
+  { id: 3, name: 'Other' }
+];
 
-const [id, setId] = useState(null);
-const [name, setName] = useState("");
-const [email, setEmail] = useState("");
-const [mobile, setMobile] = useState("");
-const [countryId, setCountryId] = useState("");
-const [stateId, setStateId] = useState("");
-const [districtId, setDistrictId] = useState("");
-const [genderId, setGenderId] = useState("");
-const [selectedLanguages, setSelectedLanguages] = useState([]);
+id: number | null = null;
+name: string = '';
+email: string = '';
+mobile: string = '';
+countryId: string = '';
+stateId: string = '';
+districtId: string = '';
+genderId: string = '';
+selectedLanguages: number[] = [];
 
-const baseUrl = \`\${process.env.REACT_APP_BASE_URL}/Employees\`;
-const coutryUrl = \`\${process.env.REACT_APP_BASE_URL}/Countries\`;
-const stateUrl = \`\${process.env.REACT_APP_BASE_URL}/States\`;
-const districtUrl = \`\${process.env.REACT_APP_BASE_URL}/Districts\`;
-const languageUrl = \`\${process.env.REACT_APP_BASE_URL}/Languages\`;`}</pre>
+baseUrl = environment.apiUrl;`}</pre>
         </section>
 
+        {/* Step 2: Load Data */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 2: Load Data from API
           </div>
-          <pre style={preStyle}>{`useEffect(() => {
-  loadEmployees();
-  axios.get(coutryUrl).then(res=>setCountries(res.data));
-  axios.get(stateUrl).then(res=>setStates(res.data));
-  axios.get(districtUrl).then(res=>setDistricts(res.data));
-  axios.get(languageUrl).then(res=>setLanguages(res.data));
-}, []);
+          <pre style={preStyle}>{`ngOnInit(): void {
+  this.loadEmployees();
+  this.http.get(\`\${this.baseUrl}/Countries\`).subscribe(res => this.countries = res as any[]);
+  this.http.get(\`\${this.baseUrl}/States\`).subscribe(res => this.states = res as any[]);
+  this.http.get(\`\${this.baseUrl}/Districts\`).subscribe(res => this.districts = res as any[]);
+  this.http.get(\`\${this.baseUrl}/Languages\`).subscribe(res => this.languages = res as any[]);
+}
 
-const loadEmployees = () => {
-  axios.get(baseUrl).then(res => setEmployees(res.data));
-};`}</pre>
+loadEmployees() {
+  this.http.get(\`\${this.baseUrl}/Employees\`).subscribe((res: any) => {
+    this.employees = res;
+  });
+}`}</pre>
         </section>
 
+        {/* Step 3: Reset Form */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 3: Reset Form
           </div>
-          <pre style={preStyle}>{`const resetForm = () => {
-  setId(null);
-  setName("");
-  setEmail("");
-  setMobile("");
-  setCountryId("");
-  setStateId("");
-  setDistrictId("");
-  setGenderId("");
-  setSelectedLanguages([]);
-};`}</pre>
+          <pre style={preStyle}>{`resetForm() {
+  this.id = null;
+  this.name = '';
+  this.email = '';
+  this.mobile = '';
+  this.countryId = '';
+  this.stateId = '';
+  this.districtId = '';
+  this.genderId = '';
+  this.selectedLanguages = [];
+}`}</pre>
         </section>
 
+        {/* Step 4: Add or Update */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaCode /> Step 4: Add or Update Employee
           </div>
-          <pre style={preStyle}>{`const handleSubmit = async (e) => {
-  e.preventDefault();
+          <pre style={preStyle}>{`handleSave() {
   const payload = {
-    name,
-    email,
-    mobile,
-    countryId: countryId ? Number(countryId) : null,
-    stateId: stateId ? Number(stateId) : null,
-    districtId: districtId ? Number(districtId) : null,
-    genderId: genderId ? Number(genderId) : null,
-    languages: selectedLanguages.map(lang => lang.value)
+    id: this.id,
+    name: this.name,
+    email: this.email,
+    mobile: this.mobile,
+    countryId: this.countryId ? Number(this.countryId) : null,
+    stateId: this.stateId ? Number(this.stateId) : null,
+    districtId: this.districtId ? Number(this.districtId) : null,
+    genderId: this.genderId ? Number(this.genderId) : null,
+    languages: this.selectedLanguages
   };
 
-  if (id !== null) {
-    await axios.put(baseUrl, { ...payload, id });
-    Swal.fire("Updated!", "Employee updated successfully.", "success");
+  if (this.id === null) {
+    this.http.post(\`\${this.baseUrl}/Employees\`, payload).subscribe(() => {
+      Swal.fire('Added!', 'Employee added successfully.', 'success');
+      this.resetForm();
+      this.loadEmployees();
+    });
   } else {
-    await axios.post(baseUrl, payload);
-    Swal.fire("Added!", "Employee added successfully.", "success");
+    this.http.put(\`\${this.baseUrl}/Employees\`, payload).subscribe(() => {
+      Swal.fire('Updated!', 'Employee updated successfully.', 'success');
+      this.resetForm();
+      this.loadEmployees();
+    });
   }
-
-  resetForm();
-  loadEmployees();
-};`}</pre>
+}`}</pre>
         </section>
 
+        {/* Step 5: Edit */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 5: Edit Employee
           </div>
-          <pre style={preStyle}>{`const handleEdit = (emp) => {
-  setId(emp.id);
-  setName(emp.name);
-  setEmail(emp.email || "");
-  setMobile(emp.mobile || "");
-  setCountryId(emp.countryId || "");
-  setStateId(emp.stateId || "");
-  setDistrictId(emp.districtId || "");
-  setGenderId(emp.genderId || "");
+          <pre style={preStyle}>{`handleEdit(emp: any) {
+  this.id = emp.id;
+  this.name = emp.name;
+  this.email = emp.email || '';
+  this.mobile = emp.mobile || '';
+  this.countryId = emp.countryId?.toString() || '';
+  this.stateId = emp.stateId?.toString() || '';
+  this.districtId = emp.districtId?.toString() || '';
+  this.genderId = emp.genderId?.toString() || '';
 
-  const preselected = (emp.languages || []).map(l => {
-    const lang = languages.find(lang => lang.id === l.languageId);
-    return lang ? { value: lang.id, label: lang.name } : null;
-  }).filter(Boolean);
-
-  setSelectedLanguages(preselected);
-};`}</pre>
+  this.selectedLanguages = (emp.languages || []).map((l: any) => l.languageId);
+}`}</pre>
         </section>
 
+        {/* Step 6: Delete */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 6: Delete Employee
           </div>
-          <pre style={preStyle}>{`const handleDelete = async (empId) => {
-  const result = await Swal.fire({
-    title: "Are you sure?",
-    text: "This action cannot be undone!",
-    icon: "warning",
+          <pre style={preStyle}>{`handleDelete(empId: number) {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'This action cannot be undone!',
+    icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: "#d33",
-    cancelButtonColor: "#3085d6",
-    confirmButtonText: "Yes, delete it!"
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.http.delete(\`\${this.baseUrl}/Employees/\${empId}\`).subscribe(() => {
+        Swal.fire('Deleted!', 'Employee has been deleted successfully.', 'success');
+        this.loadEmployees();
+      });
+    }
   });
-
-  if (result.isConfirmed) {
-    await axios.delete(\`\${baseUrl}/\${empId}\`);
-    loadEmployees();
-    Swal.fire("Deleted!", "Employee has been deleted successfully.", "success");
-  }
-};`}</pre>
+}`}</pre>
         </section>
 
+        {/* Step 7: Template */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaCheckCircle /> Step 7: Custom Checkbox Option
+            <FaCode /> Step 7: Angular Template (HTML)
           </div>
-          <pre style={preStyle}>{`const Option = (props) => (
-  <components.Option {...props}>
-    <input type="checkbox" checked={props.isSelected} readOnly style={{ marginRight: 8 }} />
-    <label>{props.label}</label>
-  </components.Option>
-);`}</pre>
-        </section>
+          <pre style={preStyle}>{`<form (ngSubmit)="handleSave()">
+  <input type="text" [(ngModel)]="name" name="name" placeholder="Name" required />
+  <input type="email" [(ngModel)]="email" name="email" placeholder="Email" />
+  <input type="text" [(ngModel)]="mobile" name="mobile" placeholder="Mobile" />
 
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaCode /> Step 8: Form & Table JSX
-          </div>
-          <pre style={preStyle}>{`<form onSubmit = {handleSubmit}>
-  <input type="text" value={name} onChange={e => setName(e.target.value)} required />
-  <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-  <input type="text" value={mobile} onChange={e => setMobile(e.target.value)} />
-
-  <select value={countryId} onChange={e => setCountryId(e.target.value)}>
+  <select [(ngModel)]="countryId" name="countryId">
     <option value="">Select Country</option>
+    <option *ngFor="let c of countries" [value]="c.id">{{c.name}}</option>
   </select>
-  <select value={stateId} onChange={e => setStateId(e.target.value)}>
+
+  <select [(ngModel)]="stateId" name="stateId">
     <option value="">Select State</option>
+    <option *ngFor="let s of states" [value]="s.id">{{s.name}}</option>
   </select>
-  <select value={districtId} onChange={e => setDistrictId(e.target.value)}>
+
+  <select [(ngModel)]="districtId" name="districtId">
     <option value="">Select District</option>
+    <option *ngFor="let d of districts" [value]="d.id">{{d.name}}</option>
   </select>
 
-  <label>Gender</label>
-  <input type="radio" name="gender" value="1" /> Male
-  <input type="radio" name="gender" value="2" /> Female
-  <input type="radio" name="gender" value="3" /> Other
+  <label *ngFor="let g of genders">
+    <input type="radio" name="gender" [value]="g.id" [(ngModel)]="genderId" /> {{g.name}}
+  </label>
 
-  <Select options = {languages.map(lang => ({ value: lang.id, label: lang.name }))}
-    isMulti
-    closeMenuOnSelect = {false}
-    hideSelectedOptions = {false}
-    components = {{ Option }}
-    onChange = {setSelectedLanguages}
-    value = {selectedLanguages}
-    placeholder = "Select Languages" />
+  <label>Languages</label>
+  <ng-select [items]="languages" 
+             bindLabel="name" 
+             bindValue="id" 
+             [(ngModel)]="selectedLanguages" 
+             [multiple]="true" 
+             placeholder="Select Languages">
+  </ng-select>
 
   <button type="submit">Save Employee</button>
 </form>`}</pre>
         </section>
 
+        {/* Step 8: Summary */}
         <section>
           <div style={sectionHeaderStyle}>
-            <FaBook /> Step 9: Summary
+            <FaBook /> Step 8: Summary
           </div>
           <ul style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-            <li>✅ Full CRUD with Axios (GET, POST, PUT, DELETE)</li>
+            <li>✅ Full CRUD with Angular HttpClient</li>
             <li>🟡 SweetAlert2 for notifications & confirmations</li>
-            <li>📝 Form handling with controlled components</li>
-            <li>📋 Multi-select dropdown using react-select with checkboxes</li>
+            <li>📝 Form handling with ngModel binding</li>
+            <li>📋 Multi-select dropdown using ng-select</li>
             <li>⚡ Dynamic rendering of employees with Edit & Delete</li>
           </ul>
         </section>
@@ -222,6 +224,15 @@ const loadEmployees = () => {
   );
 }
 
-const preStyle = { backgroundColor: "#f1f3f5", fontFamily: "monospace", fontSize: "0.95rem", border: "1px solid #dee2e6", padding: "15px", borderRadius: "5px", overflowX: "auto", whiteSpace: "pre" };
+const preStyle = { 
+  backgroundColor: "#f1f3f5", 
+  fontFamily: "monospace", 
+  fontSize: "0.95rem", 
+  border: "1px solid #dee2e6", 
+  padding: "15px", 
+  borderRadius: "5px", 
+  overflowX: "auto", 
+  whiteSpace: "pre" 
+};
 
 export default Angularmultiselectdropdown;

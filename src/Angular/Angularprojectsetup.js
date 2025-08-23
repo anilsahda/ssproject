@@ -1,25 +1,22 @@
 export default function Angularprojectsetup() {
   return (
     <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif', lineHeight: '1.6' }}>
-      <h2>📘 React Project Setup</h2>
+      <h2>📘 Angular Project Setup</h2>
 
       <section>
         <b>1. ✅ Project Initialization</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`npm create vite@latest myapp -- --template react-ts
+{`npm install -g @angular/cli
+ng new myapp
 cd myapp
-npm i
-npm run dev
-npm install axios
-npm i react-router-dom
-npm i bootstrap
-npm i bootstrap-icons
-npm i lucide-react
-npm i react-bootstrap
-npm i react-icons
-npm i react-select
-npm i sweetalert2`}
+ng serve --open
+
+# Install common packages
+npm install bootstrap
+npm install bootstrap-icons
+npm install sweetalert2
+npm install axios`}
           </code>
         </pre>
       </section>
@@ -30,147 +27,150 @@ npm i sweetalert2`}
           <code>
 {`myapp/
 ├── src/
-│   ├── pages/
-│   │   ├── Home.tsx
-│   │   └── About.tsx
-│   ├── components/
-│   │   ├── Header.tsx
-│   │   ├── Footer.tsx
-│   │   └── Layout.tsx
-│   ├── App.tsx
-│   └── main.tsx
-├── public/
-└── index.html`}
+│   ├── app/
+│   │   ├── pages/
+│   │   │   ├── home/
+│   │   │   │   └── home.component.ts
+│   │   │   └── about/
+│   │   │       └── about.component.ts
+│   │   ├── components/
+│   │   │   ├── header/
+│   │   │   │   └── header.component.ts
+│   │   │   ├── footer/
+│   │   │   │   └── footer.component.ts
+│   │   │   └── layout/
+│   │   │       └── layout.component.ts
+│   │   ├── app-routing.module.ts
+│   │   └── app.component.ts
+│   └── index.html`}
           </code>
         </pre>
       </section>
 
       <section>
-        <b>🔹 Home.tsx</b>
+        <b>🔹 HomeComponent</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`function Home() {
-  return (
+{`import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  template: \`
     <main>
       <h1>Welcome to Home Page</h1>
     </main>
-  );
-}
-
-export default Home`}
+  \`
+})
+export class HomeComponent { }`}
           </code>
         </pre>
 
-        <b>🔹 About.tsx</b>
+        <b>🔹 AboutComponent</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`function About() {
-  return (
-    <>
-      <b>About Page</b>
-      <p>This is the about page of the static website.</p>
-    </>
-  );
-}
+{`import { Component } from '@angular/core';
 
-export default About`}
+@Component({
+  selector: 'app-about',
+  template: \`
+    <b>About Page</b>
+    <p>This is the about page of the Angular app.</p>
+  \`
+})
+export class AboutComponent { }`}
           </code>
         </pre>
 
-        <b>🧩 Header.tsx</b>
+        <b>🧩 HeaderComponent</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`import { Link } from 'react-router-dom';
+{`import { Component } from '@angular/core';
 
-function Header() {
-  return (
+@Component({
+  selector: 'app-header',
+  template: \`
     <header>
-      <h1>My App</h1>
+      <h1>My Angular App</h1>
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <a routerLink="/">Home</a>
+        <a routerLink="/about">About</a>
       </nav>
     </header>
-  );
-}
-
-export default Header`}
+  \`
+})
+export class HeaderComponent { }`}
           </code>
         </pre>
 
-        <b>🧩 Footer.tsx</b>
+        <b>🧩 FooterComponent</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`function Footer() {
-  return (
+{`import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-footer',
+  template: \`
     <footer>
-      <p>&copy; {new Date().getFullYear()} My Static Site</p>
+      <p>&copy; {{year}} My Angular Site</p>
     </footer>
-  );
-}
-
-export default Footer`}
+  \`
+})
+export class FooterComponent {
+  year = new Date().getFullYear();
+}`}
           </code>
         </pre>
 
-        <b>🧩 Layout.tsx</b>
+        <b>🧩 LayoutComponent</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`import Header from './Header';
-import Footer from './Footer';
-import { ReactNode } from 'react';
+{`import { Component } from '@angular/core';
 
-function Layout({ children }: { children: ReactNode }) {
-  return (
-    <>
-      <Header />
-      <main>{children}</main>
-      <Footer />
-    </>
-  );
-}
-
-export default Layout`}
+@Component({
+  selector: 'app-layout',
+  template: \`
+    <app-header></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  \`
+})
+export class LayoutComponent { }`}
           </code>
         </pre>
 
-        <b>🔹 App.tsx</b>
+        <b>🔹 AppRoutingModule</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import About from './pages/About';
+{`import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
 
-function App() {
-  return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </Layout>
-    </Router>
-  );
-}
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent }
+];
 
-export default App;`}
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }`}
           </code>
         </pre>
 
-        <b>🔹 main.tsx</b>
+        <b>🔹 AppComponent</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+{`import { Component } from '@angular/core';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);`}
+@Component({
+  selector: 'app-root',
+  template: '<app-layout></app-layout>'
+})
+export class AppComponent { }`}
           </code>
         </pre>
       </section>
@@ -178,10 +178,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <section>
         <b>✅ Summary</b>
         <ul>
-          <li>⚛️ React + Vite project initialized</li>
-          <li>🧩 Modular component structure</li>
-          <li>📄 Page routing with <code>react-router-dom</code></li>
-          <li>✅ Consistent layout with shared Header and Footer</li>
+          <li>⚡ Angular project created with <code>@angular/cli</code></li>
+          <li>🧩 Modular component structure (pages + layout)</li>
+          <li>📄 Routing with <code>RouterModule</code></li>
+          <li>✅ Shared Header and Footer with Layout component</li>
         </ul>
       </section>
     </div>

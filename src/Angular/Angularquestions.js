@@ -27,275 +27,150 @@ function Angularquestions() {
   return (
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
-        <h1 className="fw-bold mb-5 text-primary text-center">React Interview Q&A</h1>
+        <h1 className="fw-bold mb-5 text-primary text-center">Angular Interview Q&A</h1>
 
         {/* Q1 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q1: What is React and why is it used?
+            <FaQuestionCircle /> Q1: What is Angular and why is it used?
           </div>
-          <p>React is a JavaScript library for building reusable UI components and managing state efficiently.</p>
-          <pre style={preStyle}>{`import React from 'react';
+          <p>Angular is a TypeScript-based framework for building dynamic single-page applications with reusable components and services.</p>
+          <pre style={preStyle}>{`import { Component } from '@angular/core';
 
-function HelloWorld() {
-  return <h1>Hello, World!</h1>;
-}
-
-export default HelloWorld;`}</pre>
+@Component({
+  selector: 'app-root',
+  template: '<h1>Hello Angular</h1>'
+})
+export class AppComponent {}`}</pre>
         </section>
 
         {/* Q2 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q2: What is Next.js and why is it used?
+            <FaQuestionCircle /> Q2: What are Angular Modules?
           </div>
-          <p>Next.js is a React framework that supports server-side rendering (SSR), static site generation (SSG), and API routes for better performance and SEO.</p>
-          <pre style={preStyle}>{`// pages/index.js
-export default function Home() {
-  return <h1>Welcome to Next.js!</h1>;
-}`}</pre>
+          <p>Modules (NgModules) organize an Angular app into cohesive blocks of functionality and help with lazy loading and dependency injection.</p>
+          <pre style={preStyle}>{`import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}`}</pre>
         </section>
 
         {/* Q3 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q3: What is the difference between CSR and SSR?
+            <FaQuestionCircle /> Q3: What is Angular CLI?
           </div>
-          <p>CSR renders pages on the client (browser), while SSR renders on the server and sends fully populated HTML to the client.</p>
+          <p>Angular CLI is a command-line tool to initialize, develop, scaffold, and maintain Angular applications efficiently.</p>
         </section>
 
         {/* Q4 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q4: What are React Hooks?
+            <FaQuestionCircle /> Q4: What is Data Binding in Angular?
           </div>
-          <p>Hooks are functions to use state and lifecycle features in functional components.</p>
-          <pre style={preStyle}>{`import React, { useState, useEffect } from 'react';
-
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log(count);
-  }, [count]);
-
-  return <button onClick={() => setCount(count + 1)}>Increment</button>;
-}`}</pre>
+          <p>Data binding is a mechanism to coordinate communication between the component class and the template, including one-way and two-way bindings.</p>
         </section>
 
         {/* Q5 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q5: Difference between useEffect and useLayoutEffect?
+            <FaQuestionCircle /> Q5: Difference between Components and Directives?
           </div>
-          <p>useEffect runs after painting, useLayoutEffect runs synchronously after DOM updates but before painting.</p>
+          <p>Components are directives with templates used to render UI. Directives modify the DOM or behavior of elements without their own templates.</p>
         </section>
 
         {/* Q6 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q6: What is a React component?
+            <FaQuestionCircle /> Q6: What are Angular Services?
           </div>
-          <p>A React component is a reusable piece of UI, either a function or class, that returns JSX.</p>
+          <p>Services are singleton classes used to share data or logic across components via dependency injection.</p>
+          <pre style={preStyle}>{`import { Injectable } from '@angular/core';
+
+@Injectable({ providedIn: 'root' })
+export class DataService {
+  getData() { return [1,2,3]; }
+}`}</pre>
         </section>
 
         {/* Q7 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q7: Difference between state and props in React?
+            <FaQuestionCircle /> Q7: What is Dependency Injection in Angular?
           </div>
-          <p>State is local to a component and can change over time. Props are passed from parent to child and are read-only.</p>
+          <p>Dependency Injection is a design pattern where a class receives its dependencies from an external source rather than creating them itself.</p>
         </section>
 
         {/* Q8 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q8: What is context in React?
+            <FaQuestionCircle /> Q8: What is Angular Router?
           </div>
-          <p>Context allows passing data through the component tree without manually passing props at every level.</p>
+          <p>Angular Router enables navigation between views and supports lazy loading, guards, and route parameters.</p>
         </section>
 
         {/* Q9 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q9: Difference between React Router and Next.js routing?
+            <FaQuestionCircle /> Q9: What is Angular Forms Module?
           </div>
-          <p>React Router is client-side routing. Next.js provides file-based routing with SSR and SSG support.</p>
+          <p>Angular provides Template-driven and Reactive forms modules for handling user input, validation, and form events.</p>
         </section>
 
         {/* Q10 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q10: What is getStaticProps in Next.js?
+            <FaQuestionCircle /> Q10: What are Angular Pipes?
           </div>
-          <p>getStaticProps fetches data at build time for static site generation.</p>
-          <pre style={preStyle}>{`export async function getStaticProps() {
-  return { props: { message: "Static page content" } };
-}
-
-export default function Home({ message }) {
-  return <h1>{message}</h1>;
-}`}</pre>
+          <p>Pipes are used to transform data in templates, such as formatting dates, currencies, or custom transformations.</p>
+          <pre style={preStyle}>{`{{ birthday | date:'fullDate' }}`}</pre>
         </section>
 
         {/* Q11 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q11: What is getServerSideProps?
+            <FaQuestionCircle /> Q11: Difference between ngIf and ngFor?
           </div>
-          <p>getServerSideProps fetches data on every request (SSR).</p>
+          <p>ngIf conditionally renders elements. ngFor renders a list of elements by iterating over a collection.</p>
         </section>
 
         {/* Q12 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q12: Difference between getStaticPaths and getServerSideProps?
+            <FaQuestionCircle /> Q12: What is Angular Lifecycle Hooks?
           </div>
-          <p>getStaticPaths defines dynamic routes for SSG. getServerSideProps runs at request time for SSR.</p>
+          <p>Lifecycle hooks are methods like ngOnInit, ngOnDestroy, ngAfterViewInit called at specific stages of a component's lifecycle.</p>
         </section>
 
         {/* Q13 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q13: What is a Higher-Order Component (HOC)?
+            <FaQuestionCircle /> Q13: Difference between Observable and Promise in Angular?
           </div>
-          <p>An HOC is a function that takes a component and returns an enhanced component.</p>
+          <p>Observable can emit multiple values over time and can be canceled. Promise emits a single value and cannot be canceled.</p>
         </section>
 
         {/* Q14 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q14: What is React.memo?
+            <FaQuestionCircle /> Q14: What is Angular HttpClient?
           </div>
-          <p>React.memo is a higher-order component that prevents unnecessary re-renders of functional components.</p>
+          <p>HttpClient is a service to perform HTTP requests and handle responses with observables.</p>
         </section>
 
         {/* Q15 */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q15: What is the difference between controlled and uncontrolled components?
+            <FaQuestionCircle /> Q15: Difference between Angular and AngularJS?
           </div>
-          <p>Controlled components have their state controlled by React. Uncontrolled components use DOM to manage state.</p>
-        </section>
-
-        {/* Q16 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q16: What is the difference between props.children and render props?
-          </div>
-          <p>props.children is JSX between component tags. Render props is a function prop used to render dynamic content.</p>
-        </section>
-
-        {/* Q17 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q17: What is Redux and when to use it with React?
-          </div>
-          <p>Redux is a state management library. Use it for large applications with complex state that needs to be shared across components.</p>
-        </section>
-
-        {/* Q18 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q18: Difference between useReducer and Redux?
-          </div>
-          <p>useReducer is a React hook for local component state. Redux manages global state across the app.</p>
-        </section>
-
-        {/* Q19 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q19: What are React Fragments?
-          </div>
-          <p>Fragments let you group multiple elements without adding extra nodes to the DOM.</p>
-        </section>
-
-        {/* Q20 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q20: What is Next.js Image Component?
-          </div>
-          <p>Next.js Image component optimizes images automatically with lazy loading and resizing.</p>
-        </section>
-
-        {/* Q21 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q21: What is client-side rendering (CSR) in Next.js?
-          </div>
-          <p>CSR in Next.js renders components entirely on the browser after the initial HTML is loaded.</p>
-        </section>
-
-        {/* Q22 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q22: Difference between Link and anchor tag in Next.js?
-          </div>
-          <p>Link enables client-side navigation without page reload. Anchor tag triggers full page reload.</p>
-        </section>
-
-        {/* Q23 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q23: What is ISR (Incremental Static Regeneration)?
-          </div>
-          <p>ISR allows static pages to be regenerated in the background at runtime without rebuilding the whole app.</p>
-        </section>
-
-        {/* Q24 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q24: What are React Portals?
-          </div>
-          <p>Portals allow rendering a child component into a DOM node outside the parent component hierarchy.</p>
-        </section>
-
-        {/* Q25 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q25: Difference between useRef and createRef?
-          </div>
-          <p>useRef persists across renders in functional components. createRef is used in class components and creates a new ref each render.</p>
-        </section>
-
-        {/* Q26 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q26: What is React Suspense?
-          </div>
-          <p>Suspense allows components to "wait" for something (like lazy-loaded components or data) before rendering.</p>
-        </section>
-
-        {/* Q27 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q27: What is Next.js API Route?
-          </div>
-          <p>API routes in Next.js allow backend code to be written in the /pages/api directory to handle server-side logic.</p>
-        </section>
-
-        {/* Q28 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q28: Difference between dynamic imports and React.lazy?
-          </div>
-          <p>Both load components asynchronously. Next.js dynamic imports support SSR and more optimizations compared to React.lazy.</p>
-        </section>
-
-        {/* Q29 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q29: What is shallow routing in Next.js?
-          </div>
-          <p>Shallow routing allows changing the URL without running getServerSideProps or getStaticProps again.</p>
-        </section>
-
-        {/* Q30 */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}>
-            <FaQuestionCircle /> Q30: Difference between Next.js Head component and HTML head tag?
-          </div>
-          <p>Next.js Head component allows dynamic manipulation of the document head for each page while supporting SSR/SSG.</p>
+          <p>Angular is a TypeScript-based modern framework with components and modules. AngularJS is JavaScript-based with controllers and $scope.</p>
         </section>
 
       </div>

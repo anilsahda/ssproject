@@ -1,4 +1,4 @@
-import { FaBook, FaLink, FaCheckCircle } from "react-icons/fa";
+import { FaBook, FaLink, FaCheckCircle, FaGoogle, FaFacebookF } from "react-icons/fa";
 
 function Angularjwtauth() {
   const sectionHeaderStyle = {
@@ -27,96 +27,97 @@ function Angularjwtauth() {
   return (
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
-        <h1 className="fw-bold mb-5 text-primary text-center">Authentication</h1>
+        <h1 className="fw-bold mb-5 text-primary text-center">JWT Authentication - Angular</h1>
 
         {/* Step 1: State Management */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 1: State Management
           </div>
-          <pre style={preStyle}>{`const [showLogin, setShowLogin] = useState(false);
-const [email, setEmail] = useState('');
-const [password, setPassword] = useState('');
-const navigate = useNavigate();`}</pre>
+          <pre style={preStyle}>{`// Angular component state
+email: string = '';
+password: string = '';
+showLogin: boolean = false;
+
+// Inject Router and HttpClient in constructor
+constructor(private http: HttpClient, private router: Router) { }`}</pre>
         </section>
 
         {/* Step 2: Handle Login */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaCheckCircle /> Step 3: Handle Login
+            <FaCheckCircle /> Step 2: Handle Login
           </div>
-          <pre style={preStyle}>{`const handleLoginSubmit = async (e) => {
-  e.preventDefault();
-  const response = await axios.post(
-            \`\${process.env.REACT_APP_BASE_URL}/Auth/login\`,{email,password});
-    localStorage.setItem("token", response.data.token);
-    localStorage.setItem("role", response.data.role);
-    localStorage.setItem("userName", response.data.userName);
-
-    setEmail('');
-    setPassword('');
-    navigate("/dashboard");
-};`}</pre>
+          <pre style={preStyle}>{`handleLogin() {
+  const payload = { email: this.email, password: this.password };
+  this.http.post<any>(\`\${environment.apiBaseUrl}/Auth/login\`, payload)
+    .subscribe(res => {
+      localStorage.setItem('token', res.token);
+      localStorage.setItem('role', res.role);
+      localStorage.setItem('userName', res.userName);
+      this.email = '';
+      this.password = '';
+      this.router.navigate(['/dashboard']);
+    });
+}`}</pre>
         </section>
 
-        {/* Step 4: Handle Logout */}
+        {/* Step 3: Handle Logout */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaLink /> Step 4: Handle Logout
+            <FaLink /> Step 3: Handle Logout
           </div>
-          <pre style={preStyle}>{`const handleLogout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("role");
-  localStorage.removeItem("userName");
-  navigate("/");
-};`}</pre>
+          <pre style={preStyle}>{`handleLogout() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('role');
+  localStorage.removeItem('userName');
+  this.router.navigate(['/']);
+}`}</pre>
         </section>
 
-{/* Step 5: Login Modal */}
-<section className="mb-5">
-  <div style={sectionHeaderStyle}>
-    <FaBook /> Step 6: Login Modal
-  </div>
-  <pre style={preStyle}>{`<div className="modal d-block" tabIndex="-1" onClick={() => setShowLogin(false)}>
-    <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
-      <div className="modal-content shadow rounded-3">
-        <div className="modal-header bg-primary text-white">
-          <h5 className="modal-title">Login</h5>
-          <button className="btn-close" onClick={() => setShowLogin(false)}></button>
-        </div>
-        <div className="modal-body">
-          <form onSubmit={handleLoginSubmit}>
-            <div className="mb-3">
-              <label className="form-label">Email</label>
-             <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Password</label>
-    <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-            </div>
-            <div className="d-flex justify-content-center gap-2 mb-3">
-              <button className="btn btn-outline-danger btn-sm"><FaGoogle /></button>
-              <button className="btn btn-outline-primary btn-sm"><FaFacebookF /></button>
-            </div>
-            <button type="submit" className="btn btn-primary w-100">Login</button>
-          </form>
-        </div>
+        {/* Step 4: Login Modal */}
+        <section className="mb-5">
+          <div style={sectionHeaderStyle}>
+            <FaBook /> Step 4: Login Modal
+          </div>
+          <pre style={preStyle}>{`<div class="modal" [ngClass]="{'d-block': showLogin}" (click)="showLogin=false">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-content shadow rounded-3">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Login</h5>
+        <button class="btn-close" (click)="showLogin=false"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="handleLogin()">
+          <div class="mb-3">
+            <label>Email</label>
+            <input type="text" [(ngModel)]="email" name="email"/>
+          </div>
+          <div class="mb-3">
+            <label>Password</label>
+            <input type="password" [(ngModel)]="password" name="password"/>
+          </div>
+          <div class="d-flex justify-content-center gap-2 mb-3">
+            <button class="btn btn-outline-danger btn-sm"><FaGoogle /></button>
+            <button class="btn btn-outline-primary btn-sm"><FaFacebookF /></button>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
       </div>
     </div>
   </div>
-`}</pre>
-</section>
+</div>`}</pre>
+        </section>
 
-
-        {/* Step 6: Summary */}
+        {/* Step 5: Summary */}
         <section>
           <div style={sectionHeaderStyle}>
-            <FaBook /> Step 8: Summary
+            <FaBook /> Summary
           </div>
           <ul style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-            <li>✅ JWT Authentication with Axios</li>
+            <li>✅ JWT Authentication with Angular HttpClient</li>
             <li>🔐 Login & Logout</li>
-            <li>🌐 Social Login (Google, Facebook)</li>
+            <li>🌐 Optional Social Login (Google, Facebook)</li>
           </ul>
         </section>
       </div>

@@ -1,13 +1,14 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { FaBook, FaLink, FaCode, FaCheckCircle } from "react-icons/fa";
 
 function Angularimageupload() {
   const sectionHeaderStyle = {
-    borderBottom: "2px solid #007bff",
+    borderBottom: "2px solid #17a2b8",
     paddingBottom: "5px",
     marginBottom: "15px",
     fontSize: "1.2rem",
     fontWeight: "bold",
-    color: "#007bff",
+    color: "#17a2b8",
     display: "flex",
     alignItems: "center",
     gap: "8px",
@@ -27,23 +28,23 @@ function Angularimageupload() {
   return (
     <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
-        <h1 className="fw-bold mb-5 text-primary text-center">Image Upload - React</h1>
+        <h1 className="fw-bold mb-5 text-info text-center">Image Upload - Angular</h1>
 
-        {/* Step 1: State and Base URL */}
+        {/* Step 1: Component Properties */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaBook /> Step 1: State and Base URL
+            <FaBook /> Step 1: Component Properties
           </div>
-          <pre style={preStyle}>{`const [customers, setCustomers] = useState([]);
-const [id, setId] = useState(0);
-const [name, setName] = useState("");
-const [email, setEmail] = useState("");
-const [mobile, setMobile] = useState("");
-const [image, setImage] = useState(null);
-const fileInputRef = useRef();
+          <pre style={preStyle}>{`customers: any[] = [];
+id: number = 0;
+name: string = '';
+email: string = '';
+mobile: string = '';
+imageFile: File | null = null;
+@ViewChild('fileInput') fileInputRef: ElementRef;
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
-const imageUrl = process.env.REACT_APP_IMAGE_UPLOAD_URL;`}</pre>
+baseUrl = environment.apiUrl;
+imageUrl = environment.imageUploadUrl;`}</pre>
         </section>
 
         {/* Step 2: Load Customers */}
@@ -51,14 +52,13 @@ const imageUrl = process.env.REACT_APP_IMAGE_UPLOAD_URL;`}</pre>
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 2: Load Customers
           </div>
-          <pre style={preStyle}>{`useEffect(() => {
-  loadCustomers();
-}, []);
+          <pre style={preStyle}>{`ngOnInit() {
+  this.loadCustomers();
+}
 
-const loadCustomers = async () => {
-  const res = await axios.get(\`\${baseUrl}/customers\`);
-  setCustomers(res.data);
-};`}</pre>
+loadCustomers() {
+  this.http.get(\`\${this.baseUrl}/customers\`).subscribe(res => this.customers = res as any[]);
+}`}</pre>
         </section>
 
         {/* Step 3: Image Handling */}
@@ -66,7 +66,11 @@ const loadCustomers = async () => {
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 3: Image Handling
           </div>
-          <pre style={preStyle}>{`const handleImageChange = (e) => setImage(e.target.files[0]);`}</pre>
+          <pre style={preStyle}>{`onFileChange(event: any) {
+  if (event.target.files && event.target.files.length > 0) {
+    this.imageFile = event.target.files[0];
+  }
+}`}</pre>
         </section>
 
         {/* Step 4: Reset Form */}
@@ -74,15 +78,14 @@ const loadCustomers = async () => {
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 4: Reset Form
           </div>
-          <pre style={preStyle}>{`const resetForm = () => {
-  setId(0);
-  setName("");
-  setEmail("");
-  setMobile("");
-  setImage(null);
-  if (fileInputRef.current) 
-    fileInputRef.current.value = null;
-};`}</pre>
+          <pre style={preStyle}>{`resetForm() {
+  this.id = 0;
+  this.name = '';
+  this.email = '';
+  this.mobile = '';
+  this.imageFile = null;
+  if (this.fileInputRef) this.fileInputRef.nativeElement.value = null;
+}`}</pre>
         </section>
 
         {/* Step 5: Add / Update Customer */}
@@ -90,27 +93,24 @@ const loadCustomers = async () => {
           <div style={sectionHeaderStyle}>
             <FaCode /> Step 5: Add or Update Customer
           </div>
-          <pre style={preStyle}>{`const handleSubmit = async (e) => {
-  e.preventDefault();
+          <pre style={preStyle}>{`handleSubmit() {
   const formData = new FormData();
-  formData.append("id", id);
-  formData.append("name", name);
-  formData.append("email", email);
-  formData.append("mobile", mobile);
+  formData.append('id', this.id.toString());
+  formData.append('name', this.name);
+  formData.append('email', this.email);
+  formData.append('mobile', this.mobile);
+  if (this.imageFile) formData.append('image', this.imageFile);
 
-  if (image) formData.append("image", image);
+  const request = this.id && this.id > 0 ?
+    this.http.put(\`\${this.baseUrl}/Customers/UpdateCustomer\`, formData) :
+    this.http.post(\`\${this.baseUrl}/Customers/AddCustomer\`, formData);
 
-  if (id && id > 0) {
-    await axios.put(\`\${baseUrl}/Customers/UpdateCustomer\`,formData,{headers:{"Content-Type":"multipart/form-data"}});
-    Swal.fire("Updated!", "Customer updated successfully.", "success");
-  } else {
-    await axios.post(\`\${baseUrl}/Customers/AddCustomer\`, formData, {headers:{"Content-Type":"multipart/form-data"}});
-    Swal.fire("Added!", "Customer added successfully.", "success");
-  }
-
-  resetForm();
-  loadCustomers();
-};`}</pre>
+  request.subscribe(() => {
+    Swal.fire(this.id > 0 ? 'Updated!' : 'Added!', 'Customer saved successfully.', 'success');
+    this.resetForm();
+    this.loadCustomers();
+  });
+}`}</pre>
         </section>
 
         {/* Step 6: Edit Customer */}
@@ -118,15 +118,14 @@ const loadCustomers = async () => {
           <div style={sectionHeaderStyle}>
             <FaBook /> Step 6: Edit Customer
           </div>
-          <pre style={preStyle}>{`const handleEdit = (cus) => {
-  setId(cus.id);
-  setName(cus.name);
-  setEmail(cus.email);
-  setMobile(cus.mobile);
-  setImage(null);
-  if (fileInputRef.current) 
-    fileInputRef.current.value = null;
-};`}</pre>
+          <pre style={preStyle}>{`handleEdit(customer: any) {
+  this.id = customer.id;
+  this.name = customer.name;
+  this.email = customer.email;
+  this.mobile = customer.mobile;
+  this.imageFile = null;
+  if (this.fileInputRef) this.fileInputRef.nativeElement.value = null;
+}`}</pre>
         </section>
 
         {/* Step 7: Delete Customer */}
@@ -134,57 +133,59 @@ const loadCustomers = async () => {
           <div style={sectionHeaderStyle}>
             <FaLink /> Step 7: Delete Customer
           </div>
-          <pre style={preStyle}>{`const handleDelete = async (id) => {
-  const result = await Swal.fire({
-    title: "Are you sure?",
+          <pre style={preStyle}>{`handleDelete(id: number) {
+  Swal.fire({
+    title: 'Are you sure?',
     text: "You won't be able to revert this!",
-    icon: "warning",
+    icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: "#d33",
-    cancelButtonColor: "#3085d6",
-    confirmButtonText: "Yes, delete it!"
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(result => {
+    if (result.isConfirmed) {
+      this.http.delete(\`\${this.baseUrl}/Customers/\${id}\`).subscribe(() => {
+        Swal.fire('Deleted!', 'Customer has been deleted.', 'success');
+        this.loadCustomers();
+      });
+    }
   });
-  if (result.isConfirmed) {
-    await axios.delete(\`\${baseUrl}/Customers/\${id}\`);
-    Swal.fire("Deleted!", "Customer has been deleted.", "success");
-    loadCustomers();
-  }
-};`}</pre>
+}`}</pre>
         </section>
 
-        {/* Step 8: Form JSX */}
+        {/* Step 8: Form HTML */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaCode /> Step 8: Form JSX
+            <FaCode /> Step 8: Form HTML
           </div>
-          <pre style={preStyle}>{`<form onSubmit={handleSubmit} encType="multipart/form-data">
-  <input type="text" value={name} onChange={e => setName(e.target.value)} required />
-  <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-  <input type="text" value={mobile} onChange={e => setMobile(e.target.value)} />
-  <input type="file" ref={fileInputRef} accept="image/*" onChange={handleImageChange} />
+          <pre style={preStyle}>{`<form (ngSubmit)="handleSubmit()" enctype="multipart/form-data">
+  <input type="text" [(ngModel)]="name" name="name" placeholder="Name" required />
+  <input type="email" [(ngModel)]="email" name="email" placeholder="Email" />
+  <input type="text" [(ngModel)]="mobile" name="mobile" placeholder="Mobile" />
+  <input type="file" #fileInput (change)="onFileChange($event)" accept="image/*" />
   <button type="submit">Save Customer</button>
 </form>`}</pre>
         </section>
 
-        {/* Step 9: Customer Table JSX */}
+        {/* Step 9: Customer Table HTML */}
         <section className="mb-5">
           <div style={sectionHeaderStyle}>
-            <FaCode /> Step 9: Customer Table JSX
+            <FaCode /> Step 9: Customer Table HTML
           </div>
           <pre style={preStyle}>{`<table>
-    <tr>
-      <th>Name</th><th>Email</th><th>Mobile</th><th>Image</th><th>Actions</th>
-    </tr>
-    {customers.map(c => (
-    <tr key={c.id}>
-      <td>{c.name}</td>
-      <td>{c.email}</td>
-      <td>{c.mobile}</td>
-      <td><img src={\`\${imageUrl}\${c.image}\`} style={{width:"60px",height:"60px"}}/></td>
-      <td><button onClick={()=>handleEdit(c)}>Edit</button>
-          <button onClick={()=>handleDelete(c.id)}>Delete</button></td>
-    </tr>
-    ))}
+  <tr>
+    <th>Name</th><th>Email</th><th>Mobile</th><th>Image</th><th>Actions</th>
+  </tr>
+  <tr *ngFor="let c of customers">
+    <td>{{c.name}}</td>
+    <td>{{c.email}}</td>
+    <td>{{c.mobile}}</td>
+    <td><img [src]="imageUrl + c.image" width="60" height="60"/></td>
+    <td>
+      <button (click)="handleEdit(c)">Edit</button>
+      <button (click)="handleDelete(c.id)">Delete</button>
+    </td>
+  </tr>
 </table>`}</pre>
         </section>
 
@@ -194,10 +195,10 @@ const loadCustomers = async () => {
             <FaBook /> Step 10: Summary
           </div>
           <ul style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-            <li>✅ CRUD operations with Axios</li>
+            <li>✅ CRUD operations with Angular HttpClient</li>
             <li>🖼️ Image upload using FormData and file input</li>
-            <li>📝 Form handling with controlled components</li>
-            <li>⚡ Preview existing image while editing</li>
+            <li>📝 Form handling with ngModel binding</li>
+            <li>⚡ Preview uploaded image while editing</li>
             <li>🔔 SweetAlert2 for notifications & confirmations</li>
           </ul>
         </section>
