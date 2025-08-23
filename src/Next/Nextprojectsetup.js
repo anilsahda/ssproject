@@ -26,8 +26,12 @@ npm run dev`}
 │   ├── page.tsx          // Home page
 │   └── country/
 │       └── page.tsx      // Country page
+│
 └── components/
-    └── Layout.tsx`}
+    ├── Header.tsx        // Header page
+    ├── Layout.tsx        // Layout page
+    └── Footer.tsx        // Footer page
+    `}      
           </code>
         </pre>
       </section>
