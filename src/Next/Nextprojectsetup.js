@@ -50,13 +50,48 @@ npm run dev`}
         <b>🔹 Country Page (country/page.tsx)</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`export default function Country() {
+{`"use client";
+
+import { useState } from "react";
+
+export default function page() {
+    const [countries, setCountries] = useState([{'id': 1, 'name': 'India'}]);
   return (
-    <main>
-      <h1>Country Page</h1>
-      <p>This is the country page of the Next app.</p>
-    </main>
-  );
+<div className="container mt-4">
+  <h2>Manage Countries</h2>
+
+  <div className="mb-3">
+    <input type="text" className="form-control" />
+  </div>
+
+  <div className="mb-4">
+    <button className="btn btn-primary me-2">Save Country</button>
+    <button className="btn btn-secondary">Reset</button>
+  </div>
+
+  <table className="table table-bordered table-striped">
+    <thead className="table-light">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {countries.map((c) => (
+        <tr key={c.id}>
+          <td>{c.id}</td>
+          <td>{c.name}</td>
+          <td>
+            <button className="btn btn-warning">Edit</button>
+            <button className="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+  )
 }`}
           </code>
         </pre>
