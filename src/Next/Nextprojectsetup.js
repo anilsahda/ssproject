@@ -22,11 +22,10 @@ npm run dev`}
           <code>
 {`myapp/
 ├── app/
-│   ├── layout.tsx    // App layout
-│   └── globals.css   
-├── page.tsx          // Home page
+│   ├── layout.tsx        // App layout
+│   ├── page.tsx          // Home page
 │   └── country/
-│       └── page.tsx  // Country page
+│       └── page.tsx      // Country page
 └── components/
     └── Layout.tsx`}
           </code>
