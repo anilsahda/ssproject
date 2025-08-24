@@ -74,82 +74,161 @@ await dynamodb.delete({
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>{`{
   "AWS": {
-    "AccessKey": "YOUR_ACCESS_KEY",
-    "SecretKey": "YOUR_SECRET_KEY",
-    "Region": "us-east-1"
+    "Profile": "default",
+    "Region": "REGION_NAME",
+    "AccessKey": "YOUR_AWS_ACCESS_KEY",
+    "SecretKey": "YOUR_AWS_SECRET_KEY",
+    "S3BucketName": "YOUR_BUCKET_NAME"
   }
 }`}</code>
         </pre>
 
         📁 <b>Model: Country.cs</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>{`using Amazon.DynamoDBv2.DataModel;
+          <code>{`[DynamoDBTable("Countries")]
+    public class Countries
+    {
+        [DynamoDBHashKey]
+        public int Id { get; set; }
 
-[DynamoDBTable("Countries")]
-public class Country
-{
-    [DynamoDBHashKey] // Partition key
-    public string Id { get; set; }
+        [DynamoDBProperty]
+        public string Name { get; set; }
 
-    [DynamoDBProperty]
-    public string Name { get; set; }
-}`}</code>
+        [DynamoDBProperty]
+        public string Image { get; set; }
+    }`}</code>
         </pre>
 
         🚀 <b>Controller: CountryController.cs</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>{`using Microsoft.AspNetCore.Mvc;
-using Amazon.DynamoDBv2;
+          <code>{`using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
+using Amazon.S3;
+using Amazon.S3.Transfer;
 
-[ApiController]
 [Route("api/[controller]")]
-public class CountriesController : ControllerBase
+[ApiController]
+public class CountriesDynamoDbController : ControllerBase
 {
+    private readonly IAmazonDynamoDB _dynamoDb;
+    private readonly IAmazonS3 _s3Client;
+    private readonly string _bucketName;
     private readonly DynamoDBContext _dbContext;
-    public CountriesController(IAmazonDynamoDB dynamoDB)
+
+    public CountriesDynamoDbController(IAmazonDynamoDB dynamoDb, IAmazonS3 s3Client,IConfiguration config)
     {
-        _dbContext = new DynamoDBContext(dynamoDB);
+        _dynamoDb = dynamoDb;
+        _s3Client = s3Client;
+        _dbContext = new DynamoDBContext(_dynamoDb);
+        _bucketName = config["AWS:S3BucketName"];
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetCountries()
+    {
+        return Ok(await _dbContext.ScanAsync<Countries>(new List<ScanCondition>()).GetRemainingAsync());
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> Get(string id)
+    public async Task<IActionResult> GetCountry(string id)
     {
-        return Ok(await _dbContext.LoadAsync<Country>(id));
+        return Ok(await _dbContext.LoadAsync<Countries>(id));
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Country country)
+    public async Task<IActionResult> AddCountry([FromForm] CountryDTO country)
     {
-        await _dbContext.SaveAsync(country);
-        return Ok("Country created successfully!");
+        var fileName = $"{Guid.NewGuid()}{Path.GetExtension(country.Image.FileName)}";
+        using (var newMemoryStream = new MemoryStream())
+        {
+            await country.Image.CopyToAsync(newMemoryStream);
+            var uploadRequest = new TransferUtilityUploadRequest
+            {
+                InputStream = newMemoryStream,
+                Key = fileName,
+                BucketName = _bucketName,
+                ContentType = country.Image.ContentType
+            };
+
+            var transferUtility = new TransferUtility(_s3Client);
+            await transferUtility.UploadAsync(uploadRequest);
+        }
+
+        var newCountry = new Countries
+        {
+            Id = country.Id,
+            Name = country.Name,
+            Image = fileName
+        };
+
+        await _dbContext.SaveAsync(newCountry);
+        return Ok(newCountry);
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update(Country country)
+    public async Task<IActionResult> UpdateCountry([FromForm] CountryDTO country)
     {
-        await _dbContext.SaveAsync(country);
-        return Ok("Country updated.");
+        var existingCountry = await _dbContext.LoadAsync<Countries>(country.Id);
+        var fileName = $"{Guid.NewGuid()}{Path.GetExtension(country.Image.FileName)}";
+
+        using (var newMemoryStream = new MemoryStream())
+        {
+            await country.Image.CopyToAsync(newMemoryStream);
+            var uploadRequest = new TransferUtilityUploadRequest
+            {
+                InputStream = newMemoryStream,
+                Key = fileName,
+                BucketName = _bucketName,
+                ContentType = country.Image.ContentType
+            };
+
+            var transferUtility = new TransferUtility(_s3Client);
+            await transferUtility.UploadAsync(uploadRequest);
+        }
+
+        existingCountry.Name = country.Name;
+        existingCountry.Image = fileName;
+
+        await _dbContext.SaveAsync(existingCountry);
+        return Ok("Data updated successfully!");
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> DeleteCountryById(int id)
     {
-        await _dbContext.DeleteAsync<Country>(id);
-        return Ok("Country deleted.");
+        var country = await _dbContext.LoadAsync<Countries>(id);
+
+        await _s3Client.DeleteObjectAsync(_bucketName, country.Image);
+        await _dbContext.DeleteAsync<Countries>(id);
+
+        return Ok("Data deleted successfully!");
     }
 }`}</code>
         </pre>
 
         ⚙️ <b>Register AWS in Program.cs</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>{`using Amazon.DynamoDBv2;
+          <code>{`using Amazon;
+using Amazon.DynamoDBv2;
+using Amazon.S3;
 
 var awsConfig = builder.Configuration.GetSection("AWS");
-var credentials = new BasicAWSCredentials(awsConfig["AccessKey"], awsConfig["SecretKey"]);
-var region = RegionEndpoint.GetBySystemName(awsConfig["Region"]);
 
-builder.Services.AddSingleton<IAmazonDynamoDB>(sp => new AmazonDynamoDBClient(credentials, region));`}</code>
+// Register DynamoDB client
+builder.Services.AddSingleton<IAmazonDynamoDB>(sp =>
+{
+  return new AmazonDynamoDBClient(awsConfig["AccessKey"],
+                                  awsConfig["SecretKey"],
+                                  RegionEndpoint.GetBySystemName(awsConfig["Region"]));
+});
+
+// Register S3 client
+builder.Services.AddSingleton<IAmazonS3>(sp =>
+{
+    return new AmazonS3Client(awsConfig["AccessKey"],
+                              awsConfig["SecretKey"],
+                              RegionEndpoint.GetBySystemName(awsConfig["Region"]));
+});`}</code>
         </pre>
 
         <Section title="API Endpoints" color="text-blue-600">

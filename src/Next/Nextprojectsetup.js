@@ -220,6 +220,16 @@ export default function Layout({ children }: { children: ReactNode }) {
           </code>
         </pre>
       </section>
+ 
+       <section>
+        <b>✅ Summary</b>
+        <ul>
+          <li>⚛️ Next project initialized</li>
+          <li>🧩 Modular component structure</li>
+          <li>✅ Consistent layout with shared Header and Footer</li>
+          <li>🔗 React Git URL: <a href="https://github.com/anilsahda/ssfullstacknextui.git" target="_blank" rel="noopener noreferrer">https://github.com/anilsahda/SSFullstackUI.git</a></li>
+        </ul>
+      </section>
     </div>
   );
 }

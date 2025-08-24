@@ -92,11 +92,12 @@ await s3.deleteObject({
 public class S3Controller : ControllerBase
 {
     private readonly IAmazonS3 _s3Client;
-    private const string bucketName = "mybucket";
+    private readonly string _bucketName;
 
-    public S3Controller(IAmazonS3 s3Client)
+    public S3Controller(IAmazonS3 s3Client, , IConfiguration config)
     {
         _s3Client = s3Client;
+        _bucketName = config["AWS:S3BucketName"];
     }
 
     [HttpPost("upload")]
