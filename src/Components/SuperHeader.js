@@ -212,25 +212,20 @@ function SuperHeader() {
           <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "1000px" }} onClick={(e) => e.stopPropagation()}>
             <div className="modal-content shadow rounded-3">
               <div className="modal-header bg-primary text-white">
-                <h5 className="modal-title">Login</h5>
-                <button type="button" className="btn-close" onClick={() => setShowIntern(false)}></button>
+                <h1 className="fw-bold display-7 text-default">🚀 Employment Program</h1><button type="button" className="btn-close" onClick={() => setShowIntern(false)}></button>
               </div>
               <div className="modal-body">
                 <div className="container py-5">
                   {/* Header */}
                   <div className="text-center mb-5">
-                    <h1 className="fw-bold display-5 text-primary">🚀 Employment Program</h1>
                     <div className="mt-3">
                       <span className="badge bg-primary fs-6 me-2">Fullstack Engineer</span>
                       <span className="badge bg-primary fs-6 me-2">DevOps Engineer</span>
                       <span className="badge bg-primary fs-6">AI-ML Engineer</span>
                     </div>
-                    <p className="text-muted mt-4 fs-5">
-                      A career-launching program designed to make you{" "}
-                      <strong>industry-ready</strong> with hands-on experience in{" "}
-                      <strong>Back-End, Front-End, Database, and Cloud</strong>.  
-                      Gain practical exposure, expert mentorship, and career support to secure your dream job.
-                    </p>
+<p className="text-muted mt-4 fs-5">
+  A career-focused program to make you <strong>industry-ready</strong> with hands-on experience and guided by experts to secure your dream job in <strong>Fullstack, DevOps & Cloud Engineering</strong>.
+</p>
                   </div>
 
                   {/* Info Section */}
