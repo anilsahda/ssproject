@@ -112,6 +112,13 @@ node server.js`}
   );
 }
 
+      <section>
+        <b>✅ Summary</b>
+        <ul>
+          <li>🔗 React Git URL: <a href="https://github.com/rajuramkeshmpp/CrudDynmodbNodeAPI.git" target="_blank" rel="noopener noreferrer">https://github.com/rajuramkeshmpp/CrudDynmodbNodeAPI.git</a></li>
+        </ul>
+      </section>
+
 function SectionBlock({ title, color, children }) {
   const textColor = {
     indigo: "text-indigo-700",

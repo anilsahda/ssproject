@@ -69,9 +69,9 @@ function SuperHeader() {
             <div className="d-flex align-items-center gap-2">
               {!isLoggedIn ? (
                 <>
-                  <button className="btn btn-outline-light me-2" onClick={() => setShowIntern(true)}>
+                  {/* <button className="btn btn-outline-light me-2" onClick={() => setShowIntern(true)}>
                     Intern Program
-                  </button>
+                  </button> */}
                   <button className="btn btn-outline-light me-2" onClick={() => setShowSignup(true)}>
                     <FaUser className="me-1" />
                   </button>

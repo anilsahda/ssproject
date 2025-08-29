@@ -12,81 +12,143 @@ export default function Jenkins() {
 wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
 sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 sudo apt update
-sudo apt install jenkins
+sudo apt install jenkins -y
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
-# Access Jenkins: http://localhost:8080`}
+sudo systemctl status jenkins  # Check if running
+Access Jenkins Web UI: http://localhost:8080 or http://<server-ip>:8080 if remote
+Fetch initial admin password: sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Copy the password and use it to unlock Jenkins`}
           </code>
         </pre>
       </section>
 
       {/* 2. Common Jenkins Plugins */}
       <section>
-        <b>2. 📦 Install Required Plugins</b>
+        <b>2. 📦 Install Required Plugins After Login</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`- Git plugin
-- Pipeline
+{`Click “Install Suggested Plugins”.
+If manual:
+- Git Plugin (for Git operations)
+- Pipeline (for Jenkinsfile pipelines)
 - GitHub Integration
-- NodeJS Plugin
-- MSBuild Plugin (.NET Core)
-- Docker Pipeline Plugin
-- Email Extension (optional)` }
+- NodeJS Plugin (for Node/React/Next builds)
+- MSBuild Plugin (.NET Core builds)
+- Docker Pipeline Plugin (for Docker builds)
+- Email Extension (optional for notifications)` }
           </code>
         </pre>
       </section>
 
       {/* 3. Credentials */}
       <section>
-        <b>3. 🔑 Configure Credentials</b>
+        <b>3. 🔑 Configure Jenkins Credentials</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`# Add credentials in Jenkins:
-- GitHub / GitLab access token
-- AWS (Access Key & Secret)
-- Docker Registry (optional)
-- .NET NuGet feed credentials (if needed)` }
+{`# Step 3.1: Add GitHub / GitLab Token:
+- Go to Jenkins → Manage Jenkins → Credentials → Global → Add Credentials
+- Type: Secret Text
+- Enter GitHub Access Token
+- ID: github-token
+
+# Step 3.2: Add SSH Key for Servers:
+- Go to Jenkins → Manage Jenkins → Credentials → Global → Add Credentials
+- Type: SSH Username with private key
+- Username: server user (e.g., ubuntu)
+- Private Key: Paste your ~/.ssh/id_rsa
+- ID: server-ssh-key
+
+# Step 3.3: Add Docker Registry Credentials (if deploying Docker images):
+- Username, Password/API key for Docker Hub or AWS ECR
+
+# Step 3.4: Add AWS Credentials:
+- ID: aws-credentials
+- Access Key & Secret Key` }
           </code>
         </pre>
       </section>
 
-      {/* 4. .NET Core API Pipeline */}
+      {/* 4. Configure SSH Host Key Checking */}
       <section>
-        <b>4. ⚡ .NET Core API Pipeline (Jenkinsfile)</b>
+        <b>4. 📦 Configure SSH Host Key Checking</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`To allow Jenkins to connect to remote servers via SSH: ssh-keyscan -H server_ip >> ~/.ssh/known_hosts
+- Replace server_ip with your target server
+- This ensures the first connection does not fail due to host key verification`}
+          </code>
+        </pre>
+      </section>
+
+      {/* 5. Configure SSH Host Key Checking */}
+      <section>
+        <b>5. 📦 Install SSH Agent Plugin in Jenkins</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`- Navigate to Manage Jenkins → Manage Plugins → Available → SSH Agent
+- Use it in your pipeline to load private key for deployments
+
+Example in Jenkinsfile:
+stage('Deploy') {
+  steps {
+    sshagent(['server-ssh-key']) {
+      sh 'scp -r ./publish user@server:/var/www/dotnet-api'
+    }
+  }
+}`}
+          </code>
+        </pre>
+      </section>
+
+      {/* 6. Configure GitHub Webhook */}
+      <section>
+        <b>6. 📦 Configure GitHub Webhook</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`- Go to your GitHub repository → Settings → Webhooks → Add webhook
+- Payload URL: http://<jenkins-server>:8080/github-webhook/
+- Content type: application/json
+- Events: Just the push event (or customize)
+- Click Add webhook`}
+          </code>
+        </pre>
+      </section>
+
+      {/* 7. Configure GitHub Webhook */}
+      <section>
+        <b>7. 📦 Enable SCM Polling (Optional)</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`If you prefer polling instead of webhooks:
+- In Jenkins pipeline job → Build Triggers → Poll SCM
+- Add schedule: H/5 * * * * (poll every 5 minutes)`}
+          </code>
+        </pre>
+      </section>
+
+
+
+      {/* 8. .NET Core API Pipeline */}
+      <section>
+        <b>8. ⚡ .NET Core API Pipeline via Jenkinsfile</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`pipeline {
   agent any
   stages {
     stage('Checkout') {
-      steps {
-        git 'https://github.com/username/dotnet-api.git'
-      }
+      steps { git url: 'https://github.com/username/dotnet-api.git', credentialsId: 'github-token' }
     }
-    stage('Restore') {
-      steps {
-        sh 'dotnet restore'
-      }
-    }
-    stage('Build') {
-      steps {
-        sh 'dotnet build --configuration Release'
-      }
-    }
-    stage('Test') {
-      steps {
-        sh 'dotnet test'
-      }
-    }
-    stage('Publish') {
-      steps {
-        sh 'dotnet publish -c Release -o ./publish'
-      }
-    }
+    stage('Restore') { steps { sh 'dotnet restore' } }
+    stage('Build') { steps { sh 'dotnet build --configuration Release' } }
+    stage('Test') { steps { sh 'dotnet test' } }
+    stage('Publish') { steps { sh 'dotnet publish -c Release -o ./publish' } }
     stage('Deploy') {
       steps {
-        # Example deployment to server
-        sh 'scp -r ./publish user@server:/var/www/dotnet-api'
+        sshagent(['server-ssh-key']) {
+          sh 'scp -r ./publish user@server:/var/www/dotnet-api'
+        }
       }
     }
   }
@@ -94,14 +156,15 @@ sudo systemctl enable jenkins
     success { echo '✅ .NET Core API CI/CD Successful' }
     failure { echo '❌ Build Failed!' }
   }
-}`}
+}
+`}
           </code>
         </pre>
       </section>
 
-      {/* 5. Node.js API Pipeline */}
+      {/* 9. Node.js API Pipeline */}
       <section>
-        <b>5. ⚡ Node.js API Pipeline</b>
+        <b>9. ⚡ Node.js API Pipeline via Jenkinsfile</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`pipeline {
@@ -134,9 +197,9 @@ sudo systemctl enable jenkins
         </pre>
       </section>
 
-      {/* 6. React App Pipeline */}
+      {/* 10. React App Pipeline */}
       <section>
-        <b>6. ⚡ React App Pipeline</b>
+        <b>10. ⚡ React App Pipeline via Jenkinsfile</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`pipeline {
@@ -166,9 +229,9 @@ sudo systemctl enable jenkins
         </pre>
       </section>
 
-      {/* 7. Next.js App Pipeline */}
+      {/* 11. Next.js App Pipeline */}
       <section>
-        <b>7. ⚡ Next.js App Pipeline</b>
+        <b>11. ⚡ Next.js App Pipeline via Jenkinsfile</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`pipeline {
@@ -201,7 +264,37 @@ sudo systemctl enable jenkins
         </pre>
       </section>
 
-      {/* 8. Summary */}
+      {/* 12. Steps to Create a Pipeline Job in Jenkins */}
+      <section>
+        <b>12. ⚡ Steps to Create a Pipeline Job in Jenkins</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`- Jenkins Dashboard → New Item
+- Name your pipeline → select Pipeline
+- Under Pipeline Definition, choose Pipeline script from SCM
+- SCM: Git
+- Repository URL: Your repo URL
+- Credentials: github-token
+- Branch: main (or default branch)
+- Script Path: Jenkinsfile
+- Save & Build`}
+          </code>
+        </pre>
+      </section>
+
+      {/* 13. Validate the Pipeline */}
+      <section>
+        <b>13. ⚡ Validate the Pipeline</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`- Check Build History → Console Output
+- Ensure all stages (Checkout, Build, Test, Deploy) succeed
+- Verify deployed code on the server`}
+          </code>
+        </pre>
+      </section>
+
+      {/* 15. Summary */}
       <section>
         <b>✅ Summary</b>
         <ul>

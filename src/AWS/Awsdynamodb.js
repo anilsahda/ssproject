@@ -138,31 +138,32 @@ public class CountriesDynamoDbController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> AddCountry([FromForm] CountryDTO country)
     {
-        var fileName = $"{Guid.NewGuid()}{Path.GetExtension(country.Image.FileName)}";
+        var fileName = $"{Guid.NewGuid()}{Path.GetExtension(countrydto.Image.FileName)}";
         using (var newMemoryStream = new MemoryStream())
         {
-            await country.Image.CopyToAsync(newMemoryStream);
+            await countrydto.Image.CopyToAsync(newMemoryStream);
             var uploadRequest = new TransferUtilityUploadRequest
             {
                 InputStream = newMemoryStream,
                 Key = fileName,
                 BucketName = _bucketName,
-                ContentType = country.Image.ContentType
+                ContentType = countrydto.Image.ContentType
             };
 
             var transferUtility = new TransferUtility(_s3Client);
             await transferUtility.UploadAsync(uploadRequest);
         }
 
-        var newCountry = new Countries
+        var countries = await _dbContext.ScanAsync<Countries>(new List<ScanCondition>()).GetRemainingAsync();
+        var country = new Countries
         {
-            Id = country.Id,
-            Name = country.Name,
+            Id = countries.OrderByDescending(c => c.Id).FirstOrDefault().Id + 1,
+            Name = countrydto.Name,
             Image = fileName
         };
 
-        await _dbContext.SaveAsync(newCountry);
-        return Ok(newCountry);
+        await _dbContext.SaveAsync(country);
+        return Ok(country);
     }
 
     [HttpPut]
