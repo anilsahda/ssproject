@@ -247,8 +247,8 @@ function Sidebar({ activeMenu }) {
             <SidebarButton to="/reactdistrict" icon="bi-diagram-3" label="React District" />
             <SidebarButton to="/reactimageupload" icon="bi-file-image" label="React Image Upload" />
             <SidebarButton to="/reactradiobutton" icon="bi-record-circle" label="React Radio Button" />
-            <SidebarButton to="/reactcheckbox" icon="bi-check-square" label="React Checkbox" />
-            <SidebarButton to="/reactmultiselectdropdown" icon="bi-check2-square" label="React Multi Select Dropdown" />
+            {/* <SidebarButton to="/reactcheckbox" icon="bi-check-square" label="React Checkbox" />
+            <SidebarButton to="/reactmultiselectdropdown" icon="bi-check2-square" label="React Multi Select Dropdown" /> */}
             <SidebarButton to="/reactsearching" icon="bi-search" label="React Searching" />
             <SidebarButton to="/reactpagination" icon="bi-list-nested" label="React Pagination" />
             <SidebarButton to="/reactjwtauth" icon="bi-shield-lock" label="React JWT Auth" />
@@ -268,8 +268,8 @@ function Sidebar({ activeMenu }) {
             <SidebarButton to="/nextstate" icon="bi-caret-down-square" label="Next State" />
             <SidebarButton to="/nextdistrict" icon="bi-diagram-3" label="Next District" />
             <SidebarButton to="/nextradiobutton" icon="bi-record-circle" label="Next Radio Button" />
-            <SidebarButton to="/nextcheckbox" icon="bi-check-square" label="Next Checkbox" />
-            <SidebarButton to="/nextmultiselectdropdown" icon="bi-check2-square" label="Next Multi Select Dropdown" />
+            {/* <SidebarButton to="/nextcheckbox" icon="bi-check-square" label="Next Checkbox" />
+            <SidebarButton to="/nextmultiselectdropdown" icon="bi-check2-square" label="Next Multi Select Dropdown" /> */}
             <SidebarButton to="/nextimageupload" icon="bi-file-image" label="Next Image Upload" />
             <SidebarButton to="/nextsearching" icon="bi-search" label="Next Searching" />
             <SidebarButton to="/nextpagination" icon="bi-list-nested" label="Next Pagination" />
