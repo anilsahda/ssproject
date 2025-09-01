@@ -119,8 +119,8 @@ function SSHotel() {
         platform for hotel operations. It ensures smooth interaction between admins, managers, 
         staff, and customers, making hotel management seamless and efficient.
       </p>
-        <p>🔗 Live Demo URL: <a href="https://sng-hotels.netlify.app/" target="_blank" rel="noopener noreferrer">SS Hotel</a></p>
-        <p>🔗 React Git URL: <a href="https://github.com/sngwebs786/HOTEL-MANAGEMENT-SYSTEM.git" target="_blank" rel="noopener noreferrer">https://github.com/sngwebs786/HOTEL-MANAGEMENT-SYSTEM.git</a></p>
+        <p>🔗 Live Demo URL: <a href="https://ss-hotels.netlify.app/" target="_blank" rel="noopener noreferrer">SS Hotel</a></p>
+        <p>🔗 React Git URL: <a href="https://github.com/anilsahda/sshotel.git" target="_blank" rel="noopener noreferrer">https://github.com/anilsahda/sshotel.git</a></p>
     </div>
   );
 }

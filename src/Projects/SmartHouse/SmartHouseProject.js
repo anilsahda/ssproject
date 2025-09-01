@@ -118,7 +118,7 @@ function SSEHouse() {
 
         <p>🔗 Live Demo URL: <a href="https://codewithsadee.github.io/homeverse/" target="_blank" rel="noopener noreferrer">SS Villa</a></p>
         <p>🔗 Live Demo URL: <a href="https://real-estate-4.vercel.app/" target="_blank" rel="noopener noreferrer">SS Real Estate</a></p>        
-        <p>🔗 React Git URL: <a href="https://github.com/tumon-art/real_estate.git" target="_blank" rel="noopener noreferrer">https://github.com/tumon-art/real_estate.git</a></p>
+        <p>🔗 React Git URL: <a href="https://github.com/anilsahda/ssrealestate.git" target="_blank" rel="noopener noreferrer">https://github.com/anilsahda/ssrealestate.git</a></p>
     </div>
   );
 }

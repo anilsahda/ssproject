@@ -131,7 +131,7 @@ function HealthCare() {
           management for hospitals and clinics.
         </p>
         <p>🔗 Live Demo URL: <a href="https://sshealthcare.netlify.app/" target="_blank" rel="noopener noreferrer">SS Health Care</a></p>
-        <p>🔗 React Git URL: <a href="https://github.com/akshybhosale/health_cares.git" target="_blank" rel="noopener noreferrer">https://github.com/akshybhosale/health_cares.git</a></p>
+        <p>🔗 React Git URL: <a href="https://github.com/anilsahda/sshealthcare.git" target="_blank" rel="noopener noreferrer">https://github.com/anilsahda/sshealthcare.git</a></p>
       </section>
     </div>
   );
