@@ -32,6 +32,8 @@ function Sidebar({ activeMenu }) {
     <ul className="nav nav-pills flex-column gap-2">
         {activeMenu === "Project" && (
           <>
+          <SidebarButton to="/sshotel" icon="bi-book" label="SS Hotel" />
+          <SidebarButton to="/sshealthcare" icon="bi-book" label="SS Health Care" />          
           <SidebarButton to="/ssdigitallibrary" icon="bi-book" label="SS Digital Library" />
           <SidebarButton to="/ssemployeepayroll" icon="bi-cash-stack" label="SS Employee Payroll" />
           <SidebarButton to="/ssattendanceportal" icon="bi-calendar-check" label="SS Attendance Portal" />

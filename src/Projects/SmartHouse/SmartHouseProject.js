@@ -115,6 +115,10 @@ function SSEHouse() {
         The <strong>Smart Society E-Housing System</strong> makes society management efficient, transparent, and user-friendly. 
         It allows seamless communication between admins, owners, and users, making house rental, sale, and complaint management fast and organized.
       </p>
+
+        <p>🔗 Live Demo URL: <a href="https://codewithsadee.github.io/homeverse/" target="_blank" rel="noopener noreferrer">SS Villa</a></p>
+        <p>🔗 Live Demo URL: <a href="https://real-estate-4.vercel.app/" target="_blank" rel="noopener noreferrer">SS Real Estate</a></p>        
+        <p>🔗 React Git URL: <a href="https://github.com/tumon-art/real_estate.git" target="_blank" rel="noopener noreferrer">https://github.com/tumon-art/real_estate.git</a></p>
     </div>
   );
 }

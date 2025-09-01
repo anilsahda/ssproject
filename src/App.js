@@ -207,6 +207,8 @@ import SSLoanApp from "./Projects/LoanApp/SSLoanApp";
 import SSIntern from "./Fullstack/SSIntern";
 import Awsrds from "./AWS/Awsrds";
 import Amplify from "./AWS/Amplify";
+import SSHotel from "./Projects/SSHotel/SSHotel";
+import HealthCare from "./Projects/HealthCare/HealthCare";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -235,6 +237,8 @@ function App() {
             <Route path="/userrole" element={<UserRole />} />
 
             {/* Projects */}
+            <Route path="/sshotel" element={<SSHotel />} />
+            <Route path="/sshealthcare" element={<HealthCare />} />
             <Route path="/ssdigitallibrary" element={<SSDigitalLibrary />} />
             <Route path="/ssemployeepayroll" element={<SSEmployeePayroll />} />
             <Route path="/ssattendanceportal" element={<SSAttendancePortal />} />
@@ -245,7 +249,7 @@ function App() {
             <Route path="/sshealthinsurance" element={<SSHealthInsurance />} />
             <Route path="/sslogistrics" element={<SSLogistrics />} />
             <Route path="/ssbanking" element={<SSBanking />} />
-            <Route path="/ssloanapp" element={<SSLoanApp />} />            
+            <Route path="/ssloanapp" element={<SSLoanApp />} />
 
 
 
