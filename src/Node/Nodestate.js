@@ -7,7 +7,7 @@ function Nodestate() {
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">State CRUD Operation</h1>
         <p className="text-gray-500 text-xs mt-1">
-          Step-by-step guide to implementing CRUD functionality for the <strong>State</strong> entity in <strong>Node.js</strong> with <strong>MongoDB</strong>.
+          Implementing CRUD functionality for the <strong>State</strong> entity in <strong>Node.js</strong> with <strong>MongoDB</strong>.
         </p>
       </header>
 

@@ -5,8 +5,7 @@ function Noderadiobutton() {
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-green-700">Radio Button Integration in Node.js API</h1>
         <p className="text-gray-500 text-xs mt-1">
-          Step-by-step guide to implementing <strong>Radio Button</strong> for <strong>Gender</strong> field in a{" "}
-          <strong>Student</strong> entity using <strong>Node.js + Express + MongoDB</strong>.
+          Implementing <strong>Radio Button</strong> for <strong>Gender</strong> field in a <strong>Student</strong> entity using <strong>Node.js + Express + MongoDB</strong>.
         </p>
       </header>
 

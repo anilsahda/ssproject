@@ -4,8 +4,7 @@ function Nodeimageupload() {
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-green-700">Image Upload in Node.js + MongoDB API</h1>
         <p className="text-gray-500 text-xs mt-1">
-          Step-by-step guide to implementing CRUD functionality for the <strong>Customer</strong> entity using{" "}
-          <code>Express</code>, <code>Mongoose</code>, and <code>Multer</code>.
+          Implementing CRUD functionality for the <strong>Customer</strong> entity using <code>Express</code>, <code>Mongoose</code>, and <code>Multer</code>.
         </p>
       </header>
 

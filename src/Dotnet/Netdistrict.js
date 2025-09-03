@@ -7,7 +7,7 @@ function Netdistrict() {
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">District CRUD Operation</h1>
         <p className="text-gray-500 text-xs mt-1">
-          Step-by-step guide to implementing CRUD functionality for the <strong>District</strong> entity in .NET Core with SQL Server.
+          Implementing CRUD functionality for the <strong>District</strong> entity in .NET Core with SQL Server.
         </p>
       </header>
 

@@ -7,8 +7,7 @@ function Nodecountry() {
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Country CRUD Operation</h1>
         <p className="text-gray-500 text-xs mt-1">
-          Imimplementing CRUD functionality for the{" "}
-          <strong>Country</strong> entity in <strong>Node.js (Express) with MongoDB</strong>.
+          Implementing CRUD functionality for the <strong>Country</strong> entity in <strong>Node.js (Express) with MongoDB</strong>.
         </p>
       </header>
 

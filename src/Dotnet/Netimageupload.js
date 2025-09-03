@@ -3,7 +3,7 @@ function Netimageupload() {
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Image Upload in .Net Core API</h1>
-        <p className="text-gray-500 text-xs mt-1">Step-by-step guide to implementing CRUD functionality for the <strong>Customer</strong> entity in .NET Core with SQL Server.</p>
+        <p className="text-gray-500 text-xs mt-1">Implementing CRUD functionality for the <strong>Customer</strong> entity in .NET Core with SQL Server.</p>
       </header>
 
       <Section title="SQL Table" color="text-indigo-600">

@@ -3,7 +3,7 @@ function Netfacebookauth() {
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Facebook Authentication in .NET Core API</h1>
-        <p className="text-gray-500 text-xs mt-1">Step-by-step guide to implement Facebook OAuth authentication using .NET Core API and React frontend.</p>
+        <p className="text-gray-500 text-xs mt-1">Implement Facebook OAuth authentication using .NET Core API and React frontend.</p>
       </header>
 
       <Section title="✅ Steps to create Facebook OAuth Client and register your app with Facebook" color="text-blue-600">

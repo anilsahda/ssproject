@@ -4,7 +4,7 @@ function Nodesearching() {
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Search Functionality in Node.js API (MongoDB)</h1>
         <p className="text-gray-500 text-xs mt-1">
-          Step-by-step guide to implement search functionality for entities like <strong>Student</strong> or <strong>Employee</strong> 
+          Implement search functionality for entities like <strong>Student</strong> or <strong>Employee</strong> 
           using <strong>Node.js + Express + MongoDB</strong> backend and a React frontend.
         </p>
       </header>

@@ -3,7 +3,7 @@ function Netlogger() {
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Logging in .NET Core API</h1>
-        <p className="text-gray-500 text-xs mt-1">Guide to implement logging in .NET Core API using built-in ILogger, different log levels, and external providers.</p>
+        <p className="text-gray-500 text-xs mt-1">Implement logging in .NET Core API using built-in ILogger, different log levels, and external providers.</p>
       </header>
 
       <Section title="Overview" color="text-indigo-600">

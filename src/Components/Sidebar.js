@@ -89,6 +89,7 @@ function Sidebar({ activeMenu }) {
             <SidebarButton to="/netlanguages" icon="bi-ui-checks-grid" label=".Net Language" />
             <SidebarButton to="/netcountry" icon="bi-ui-checks-grid" label=".Net Country" />
             <SidebarButton to="/netstate" icon="bi-caret-down-square" label=".Net State" />
+            <SidebarButton to="/netemployee" icon="bi-caret-down-square" label="Interface" />            
             <SidebarButton to="/netdistrict" icon="bi-diagram-3" label=".Net District" />
             <SidebarButton to="/netimageupload" icon="bi-file-image" label=".Net Image Upload" />
             <SidebarButton to="/netradiobutton" icon="bi-record-circle" label=".Net Radio Button" />
@@ -116,6 +117,7 @@ function Sidebar({ activeMenu }) {
             <SidebarButton to="/javacountry" icon="bi-ui-checks-grid" label="Java Country" />
             <SidebarButton to="/javastate" icon="bi-caret-down-square" label="Java State" />
             <SidebarButton to="/javadistrict" icon="bi-diagram-3" label="Java District" />
+            <SidebarButton to="/javaemployee" icon="bi-diagram-3" label="Interface" />
             <SidebarButton to="/javaimageupload" icon="bi-file-image" label="Java Image Upload" />
             <SidebarButton to="/javaradiobutton" icon="bi-record-circle" label="Java Radio Button" />
             <SidebarButton to="/javasearching" icon="bi-search" label="Java Searching" />
@@ -141,6 +143,7 @@ function Sidebar({ activeMenu }) {
             <SidebarButton to="/nodecountry" icon="bi-ui-checks-grid" label="Node Country" />
             <SidebarButton to="/nodestate" icon="bi-caret-down-square" label="Node State" />
             <SidebarButton to="/nodedistrict" icon="bi-diagram-3" label="Node District" />
+            <SidebarButton to="/nodeemployee" icon="bi-diagram-3" label="Interface" />
             <SidebarButton to="/nodeimageupload" icon="bi-file-image" label="Node Image Upload" />
             <SidebarButton to="/noderadiobutton" icon="bi-record-circle" label="Node Radio Button" />
             <SidebarButton to="/nodesearching" icon="bi-search" label="Node Searching" />

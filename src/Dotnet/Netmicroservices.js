@@ -3,7 +3,7 @@ function Netmicroservices() {
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Microservices in .NET Core using Ocelot</h1>
-        <p className="text-gray-500 text-xs mt-1">Guide to implement Microservices architecture with Ocelot API Gateway in .NET Core projects.</p>
+        <p className="text-gray-500 text-xs mt-1">Implement Microservices architecture with Ocelot API Gateway in .NET Core projects.</p>
       </header>
 
       <Section title="Overview" color="text-indigo-600">

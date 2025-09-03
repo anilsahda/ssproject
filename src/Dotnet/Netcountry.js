@@ -7,7 +7,7 @@ function Netcountry() {
       <header className="border-b pb-3">
         <h1 className="text-xl font-bold text-indigo-700">Country CRUD Operation</h1>
         <p className="text-gray-500 text-xs mt-1">
-          A step-by-step guide to implementing CRUD functionality for the <strong>Country</strong> entity in .NET Core with SQL Server.
+          Implementing CRUD functionality for the <strong>Country</strong> entity in .NET Core with SQL Server.
         </p>
       </header>
 

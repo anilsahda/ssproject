@@ -209,6 +209,9 @@ import Awsrds from "./AWS/Awsrds";
 import Amplify from "./AWS/Amplify";
 import SSHotel from "./Projects/SSHotel/SSHotel";
 import HealthCare from "./Projects/HealthCare/HealthCare";
+import Netemployee from "./Dotnet/Netemployee";
+import Javaemployee from "./Java/Javaemployee";
+import Nodeemployee from "./Node/Nodeemployee";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -287,6 +290,7 @@ function App() {
             <Route path="/netcountry" element={<Netcountry />} />
             <Route path="/netdistrict" element={<Netdistrict />} />
             <Route path="/netstate" element={<Netstate />} />
+            <Route path="/netemployee" element={<Netemployee />} />
             <Route path="/netcheckbox" element={<Netcheckbox />} />
             <Route path="/netcqrsdesignpattern" element={<Netcqrsdesignpattern />} />
             <Route path="/netrepositorydesignpattern" element={<Netrepositorydesignpattern />} />            
@@ -311,6 +315,7 @@ function App() {
             <Route path="/javacheckbox" element={<Javacheckbox />} />
             <Route path="/javacqrsdesignpattern" element={<Javacqrsdesignpattern />} />
             <Route path="/javastate" element={<Javastate  />} />
+            <Route path="/javaemployee" element={<Javaemployee />} />
             <Route path="/javafacebookauth" element={<Javafacebookauth />} />
             <Route path="/javagoogleauth" element={<Javagoogleauth />} />
             <Route path="/javaimageupload" element={<Javaimageupload />} />
@@ -329,6 +334,7 @@ function App() {
             <Route path="/nodelanguage" element={<Nodelanguages />} />
             <Route path="/nodecountry" element={<Nodecountry />} />
             <Route path="/nodedistrict" element={<Nodedistrict />} />
+            <Route path="/nodeemployee" element={<Nodeemployee />} />
             <Route path="/nodecheckbox" element={<Nodecheckbox />} />
             <Route path="/nodefacebookauth" element={<Nodefacebookauth />} />
             <Route path="/nodegoogleauth" element={<Nodegoogleauth />} />
