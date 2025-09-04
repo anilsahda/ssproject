@@ -182,22 +182,22 @@ export default function SuperAdminLayout({ children }: { children: React.ReactNo
           <nav>
             <ul className="nav nav-pills flex-column gap-1">
               <li>
-                <Link href="/admin" className="nav-link d-flex align-items-center gap-2 sidebar-link active">
+                <Link href="/superadmin" className="nav-link d-flex align-items-center gap-2 sidebar-link active">
                   <MdDashboard size={18} className="text-info" /> Dashboard
                 </Link>
               </li>
               <li>
-                <Link href="/admin/users" className="nav-link d-flex align-items-center gap-2 sidebar-link">
+                <Link href="/superadmin/users" className="nav-link d-flex align-items-center gap-2 sidebar-link">
                   <FaUsers size={16} className="text-warning" /> Users
                 </Link>
               </li>
               <li>
-                <Link href="/admin/role" className="nav-link d-flex align-items-center gap-2 sidebar-link">
+                <Link href="/superadmin/role" className="nav-link d-flex align-items-center gap-2 sidebar-link">
                   <FaUserShield size={16} className="text-success" /> Role
                 </Link>
               </li>
               <li>
-                <Link href="/admin/userrole" className="nav-link d-flex align-items-center gap-2 sidebar-link">
+                <Link href="/superadmin/userrole" className="nav-link d-flex align-items-center gap-2 sidebar-link">
                   <FiUserCheck size={16} className="text-primary" /> User Role
                 </Link>
               </li>
@@ -217,11 +217,11 @@ export default function SuperAdminLayout({ children }: { children: React.ReactNo
       </section>
 
       <section>
-        <b>7.🔹 app/(admin)/admin/page.tsx</b>
+        <b>7.🔹 app/(superadmin)/superadmin/page.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`export default function AdminDashboard() {
-  return <h3>Admin Dashboard</h3>;
+{`export default function SuperAdminDashboard() {
+  return <h3>Super Admin Dashboard</h3>;
 }`}
           </code>
         </pre>
