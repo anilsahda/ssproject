@@ -187,15 +187,15 @@ const loadCountries = async () => {
             <FaCode /> Step 8: JSX Form & Table
           </div>
           <pre style={preStyle}>{`<div className="mb-3">
-  <input type="text" className="form-control" placeholder="Enter State Name" value={name} onChange={e => setName(e.target.value)} />
+  <input type="text" value={name} onChange={e => setName(e.target.value)} />
 
-  <select className="form-control" value={countryId} onChange={e => setCountryId(e.target.value)}>
+  <select  value = {countryId} onChange = {e => setCountryId(e.target.value)}>
     <option value="">Select Country</option>
-    {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+    {countries.map(c => <option key = {c.id} value = {c.id}>{c.name}</option>)}
   </select>
 
-  <button className="btn btn-primary me-2" onClick={handleSave}>{id === 0 ? "Add State" : "Update State"}</button>
-  <button className="btn btn-secondary" onClick={resetForm}>Reset</button>
+  <button className="btn  me-2" onClick = {handleSave}>Add State</button>
+  <button className="btn btn-secondary" onClick = {resetForm}>Reset</button>
 </div>
 
 <table className="table table-bordered table-striped">
@@ -215,8 +215,8 @@ const loadCountries = async () => {
           <td>{s.name}</td>
           <td>{countries.find(c => c.id === s.countryId)?.name || ""}</td>
           <td>
-            <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(s)}>Edit</button>
-            <button className="btn btn-danger btn-sm" onClick={() => handleDelete(s.id)}>Delete</button>
+          <button className="btn btn-sm me-2" onClick={() => handleEdit(s)}>Edit</button>
+          <button className="btn btn-sm" onClick={()=>handleDelete(s.id)}>Delete</button>
           </td>
         </tr>
       ))

@@ -149,7 +149,7 @@ const loadLanguages = () => {
   <h2>Manage Languages</h2>
 
   <div className="mb-3">
-    <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} />
+    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
   </div>
 
   <div className="mb-4">
@@ -171,8 +171,8 @@ const loadLanguages = () => {
           <td>{lang.id}</td>
           <td>{lang.name}</td>
           <td>
-            <button className="btn btn-warning" onClick={() => handleEdit(lang)}>Edit</button>
-            <button className="btn btn-danger" onClick={() => handleDelete(lang.id)}>Delete</button>
+            <button onClick={() => handleEdit(lang)}>Edit</button>
+            <button onClick={() => handleDelete(lang.id)}>Delete</button>
           </td>
         </tr>
       ))}

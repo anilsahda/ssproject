@@ -268,6 +268,7 @@ function Sidebar({ activeMenu }) {
           {activeMenu === "Next" && (
             <>
             <SidebarButton to="/nextprojectsetup" icon="bi-calendar-check" label="Next Project Setup" />
+            <SidebarButton to="/nextmultilayout" icon="bi-calendar-check" label="Next Multi-Layout" />
             <SidebarButton to="/nextlanguages" icon="bi-ui-checks-grid" label="Next Language" />
             <SidebarButton to="/nextcountry" icon="bi-ui-checks-grid" label="Next Country" />
             <SidebarButton to="/nextstate" icon="bi-caret-down-square" label="Next State" />

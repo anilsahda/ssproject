@@ -164,12 +164,12 @@ const loadCustomers = async () => {
             <FaCode /> Step 8: Form JSX
           </div>
           <pre style={preStyle}>{`<form onSubmit={handleSubmit} encType="multipart/form-data">
-  <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} required />
-  <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-  <input type="text" placeholder="Mobile" value={mobile} onChange={e => setMobile(e.target.value)} />
+  <input type="text" value={name} onChange={e => setName(e.target.value)} required />
+  <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+  <input type="text" value={mobile} onChange={e => setMobile(e.target.value)} />
 
   {id > 0 && existingImage && !image && (
-    <img src={\`\${baseUrl}/Uploads/\${existingImage}\`} alt="Current" width={60} height={60} />
+    <img src={\`\${baseUrl}/Uploads/\${existingImage}\`} width={60} height={60} />
   )}
   <input type="file" ref={fileInputRef} accept="image/*" onChange={handleImageChange} />
 
@@ -199,7 +199,7 @@ const loadCustomers = async () => {
         <td>{cus.email}</td>
         <td>
           {cus.image && (
-            <img src={\`\${baseUrl}/Uploads/\${cus.image}\`} alt="Customer" width={60} height={60} />
+            <img src={\`\${baseUrl}/Uploads/\${cus.image}\`} width={60} height={60} />
           )}
         </td>
         <td>

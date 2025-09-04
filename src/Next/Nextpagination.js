@@ -156,43 +156,43 @@ const loadDistricts = async () => {
         <form onSubmit={handleSubmit}>
           <div className="row mb-2">
             <div className="col">
-              <input type="text" className="form-control" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+              <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
             </div>
             <div className="col">
-              <input type="text" className="form-control" placeholder="Middle Name" value={middleName} onChange={(e) => setMiddleName(e.target.value)} />
+              <input type="text" value={middleName} onChange={(e)=>setMiddleName(e.target.value)}/>
             </div>
             <div className="col">
-              <input type="text" className="form-control" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
-            </div>
-          </div>
-
-          <div className="row mb-2">
-            <div className="col">
-              <input type="text" className="form-control" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
-            </div>
-            <div className="col">
-              <input type="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </div>
-            <div className="col">
-              <input type="text" className="form-control" placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
+              <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
             </div>
           </div>
 
           <div className="row mb-2">
             <div className="col">
-              <select className="form-control" value={countryId} onChange={(e) => setCountryId(e.target.value)}>
+              <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+            </div>
+            <div className="col">
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="col">
+              <input type="text" value={mobile} onChange={(e) => setMobile(e.target.value)} />
+            </div>
+          </div>
+
+          <div className="row mb-2">
+            <div className="col">
+              <select value={countryId} onChange={(e) => setCountryId(e.target.value)}>
                 <option value="">Select Country</option>
                 {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
               </select>
             </div>
             <div className="col">
-              <select className="form-control" value={stateId} onChange={(e) => setStateId(e.target.value)}>
+              <select value={stateId} onChange={(e) => setStateId(e.target.value)}>
                 <option value="">Select State</option>
                 {states.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
               </select>
             </div>
             <div className="col">
-              <select className="form-control" value={districtId} onChange={(e) => setDistrictId(e.target.value)}>
+              <select value={districtId} onChange={(e) => setDistrictId(e.target.value)}>
                 <option value="">Select District</option>
                 {districts.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
               </select>
@@ -203,7 +203,8 @@ const loadDistricts = async () => {
             <label className="me-3"><strong>Gender:</strong></label>
             {genders.map(g => (
               <div className="form-check form-check-inline" key={g.id}>
-                <input className="form-check-input" type="radio" name="gender" value={g.id} checked={genderId === g.id} onChange={() => setGenderId(g.id)} />
+                <input className="form-check-input" type="radio" name="gender" value={g.id} 
+                    checked={genderId === g.id} onChange={() => setGenderId(g.id)} />
                 <label className="form-check-label">{g.name}</label>
               </div>
             ))}
@@ -246,12 +247,12 @@ const loadDistricts = async () => {
         <td>{districts.find(d => d.id === std.districtId)?.name}</td>
         <td>{genders.find(g => g.id === std.genderId)?.name}</td>
         <td>
-          <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(std)}>Edit</button>
-          <button className="btn btn-danger btn-sm" onClick={() => handleDelete(std.id)}>Delete</button>
+          <button className="btn btn-sm me-2" onClick={() => handleEdit(std)}>Edit</button>
+          <button className="btn btn-sm" onClick={()=>handleDelete(std.id)}>Delete</button>
         </td>
       </tr>
     ))}
-    {students.length === 0 && <tr><td colSpan="7" className="text-center text-muted">No matching records found</td></tr>}
+{students.length===0 && <tr><td colSpan="7" className="text-center">No data found</td></tr>}
   </tbody>
 </table>`}
           </pre>
@@ -267,9 +268,9 @@ const loadDistricts = async () => {
   <div className="d-flex justify-content-center mt-3">
     <button className="btn btn-secondary me-2" disabled={currentPage === 1} onClick={() => setCurrentPage(prev => prev - 1)}>◀</button>
     {[...Array(totalPages)].map((_, i) => (
-      <button key={i} className={\`btn me-1 \${currentPage === i+1 ? "btn-primary" : "btn-light"}\`} onClick={() => setCurrentPage(i+1)}>{i+1}</button>
+      <button key={i} className={\`btn me-1 \${currentPage===i+1?"btn-primary":"btn-light"}\`} onClick={()=>setCurrentPage(i+1)}>{i+1}</button>
     ))}
-    <button className="btn btn-secondary ms-2" disabled={currentPage === totalPages} onClick={() => setCurrentPage(prev => prev + 1)}>▶</button>
+    <button className="btn btn-secondary ms-2" disabled={currentPage===totalPages} onClick={() => setCurrentPage(prev=>prev +1)}>▶</button>
   </div>
 )}`}
           </pre>

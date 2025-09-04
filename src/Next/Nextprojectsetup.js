@@ -9,6 +9,7 @@ export default function NextProjectSetup() {
           <code>
 {`npx create-next-app@latest myapp --ts
 cd myapp
+code .
 npm install bootstrap
 npm install react-icons
 npm run dev`}
@@ -17,27 +18,7 @@ npm run dev`}
       </section>
 
       <section>
-        <b>2. 📁 Folder Structure</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`myapp/
-├── app/
-│   ├── layout.tsx        // App layout
-│   ├── page.tsx          // Home page
-│   └── country/
-│       └── page.tsx      // Country page
-│
-└── components/
-    ├── Header.tsx        // Header page
-    ├── Layout.tsx        // Layout page
-    └── Footer.tsx        // Footer page
-    `}      
-          </code>
-        </pre>
-      </section>
-
-      <section>
-        <b>🔹 Home Page (page.tsx)</b>
+        <b>2.🔹 Home Page (app / page.tsx)</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`export default function Home() {
@@ -49,118 +30,44 @@ npm run dev`}
 }`}
           </code>
         </pre>
+      </section>
 
-        <b>🔹 Country Page (country/page.tsx)</b>
+      <section>
+        <b>3. 🧩 App Layout (app / layout.tsx)</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`"use client";
 
-import { useState } from "react";
-
-export default function page() {
-    const [countries, setCountries] = useState([{'id': 1, 'name': 'India'}]);
-  return (
-<div className="container mt-4">
-  <h2>Manage Countries</h2>
-
-  <div className="mb-3">
-    <input type="text" className="form-control" />
-  </div>
-
-  <div className="mb-4">
-    <button className="btn btn-primary me-2">Save Country</button>
-    <button className="btn btn-secondary">Reset</button>
-  </div>
-
-  <table className="table table-bordered table-striped">
-    <thead className="table-light">
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {countries.map((c) => (
-        <tr key={c.id}>
-          <td>{c.id}</td>
-          <td>{c.name}</td>
-          <td>
-            <button className="btn btn-warning">Edit</button>
-            <button className="btn btn-danger">Delete</button>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-  )
-}`}
-          </code>
-        </pre>
-
-        <b>🧩 Header.tsx</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`import Link from 'next/link';
-
-export default function Header() {
-  return (
-    <header>
-      <h1>My Next App</h1>
-      <nav>
-        <Link href="/">Home</Link>
-        <Link href="/country">Country</Link>
-      </nav>
-    </header>
-  );
-}`}
-          </code>
-        </pre>
-
-        <b>🧩 Footer.tsx</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`export default function Footer() {
-  return (
-    <footer>
-      <p>&copy; {new Date().getFullYear()} My Next App</p>
-    </footer>
-  );
-}`}
-          </code>
-        </pre>
-
-        <b>🧩 Components Layout (components/layout.tsx)</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`import { ReactNode } from 'react';
-import Header from './Header';
-import Footer from './Footer';
-
-export default function Layout({ children }: { children: ReactNode }) {
-  return (
-    <>
-      <Header />
-      <main>{children}</main>
-      <Footer />
-    </>
-  );
-}`}
-          </code>
-        </pre>
-
-        <b>🔹 App Layout (app/layout.tsx)</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`import Layout from '../components/Layout';
+import Link from "next/link";
+import { FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
     <html lang="en">
       <body>
-        <Layout>{children}</Layout>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
+          <div className="container-fluid">
+            <Link href="/" className="navbar-brand fw-bold fs-4">🌐 SS App</Link>
+            <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" 
+            aria-controls="navbarNav" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li className="nav-item"><Link href="/" className="nav-link px-3 fw-semibold">Home</Link></li>
+                  <li className="nav-item"><Link href="/about" className="nav-link px-3 fw-semibold">About</Link></li>
+              </ul>
+
+              <div className="d-flex align-items-center gap-2">
+                <Link href="/login" className="btn btn-light btn-sm rounded-pill px-3 fw-bold">Login</Link>
+                <Link href="/register" className="btn btn-outline-light btn-sm rounded-pill px-3 fw-bold">Register</Link>
+                <a href="#" className="btn btn-light btn-sm rounded-circle d-flex text-danger"><FaGoogle /></a>
+                <a href="#" className="btn btn-light btn-sm rounded-circle d-flex text-primary"><FaFacebook /></a>
+                <a href="#" className="btn btn-light btn-sm rounded-circle d-flex text-primary"><FaLinkedin /></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      <main className="container mt-4">{children}</main>
       </body>
     </html>
   );
@@ -169,58 +76,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </pre>
       </section>
 
-      <section>
-        <b>🧩 For Better look and feel update (components/layout.tsx)</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`"use client";
-
-import { ReactNode } from "react";
-import Link from "next/link";
-import { FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
-
-export default function Layout({ children }: { children: ReactNode }) {
-  return (
-    <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
-        <div className="container-fluid">
-          <Link href="/" className="navbar-brand fw-bold fs-4">🌐 SS App</Link>
-          <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span></button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              {[
-                { href: "/", label: "Home" },
-                { href: "/language", label: "Language" },
-                { href: "/country", label: "Country" },
-                { href: "/state", label: "State" },
-                { href: "/district", label: "District" },
-              ].map((item) => (
-                <li className="nav-item" key={item.href}>
-                  <Link href={item.href} className="nav-link px-3 fw-semibold">{item.label}</Link>
-                </li>
-              ))}
-            </ul>
-
-            <div className="d-flex align-items-center gap-2">
-              <Link href="/login" className="btn btn-light btn-sm rounded-pill px-3 fw-bold">Login</Link>
-              <Link href="/register" className="btn btn-outline-light btn-sm rounded-pill px-3 fw-bold">Register</Link>
-              <a href="#" className="btn btn-light btn-sm rounded-circle d-flex text-danger"><FaGoogle /></a>
-              <a href="#" className="btn btn-light btn-sm rounded-circle d-flex text-primary"><FaFacebook /></a>
-              <a href="#" className="btn btn-light btn-sm rounded-circle d-flex text-primary"><FaLinkedin /></a>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <main className="container mt-4">{children}</main>
-    </>
-  );
-}`}
-          </code>
-        </pre>
-      </section>
- 
        <section>
         <b>✅ Summary</b>
         <ul>

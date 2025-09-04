@@ -212,6 +212,7 @@ import HealthCare from "./Projects/HealthCare/HealthCare";
 import Netemployee from "./Dotnet/Netemployee";
 import Javaemployee from "./Java/Javaemployee";
 import Nodeemployee from "./Node/Nodeemployee";
+import NextMultiLayout from "./Next/NextMultiLayout";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -432,6 +433,7 @@ function App() {
             <Route path="/reactquestions" element={<Reactquestions />} />
 
             <Route path="/nextprojectsetup" element={<Nextprojectsetup />} />
+            <Route path="/nextmultilayout" element={<NextMultiLayout />} />
             <Route path="/nextlanguages" element={<Nextlanguages />} />
             <Route path="/nextcountry" element={<Nextcountry />} />
             <Route path="/nextstate" element={<Nextstate />} />

@@ -1,8 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaBook, FaLink, FaCode, FaCheckCircle } from "react-icons/fa";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
 
 export default function Nextdistrict() {
   const sectionHeaderStyle = {
@@ -81,13 +78,15 @@ const loadDistricts = () => {
 
   if (id === 0) {
     axios.post(baseUrl, data)
-      .then(() => { Swal.fire("Success", "District added successfully!", "success"); resetForm(); loadDistricts(); })
+      .then(() => { Swal.fire("Success", "District added successfully!", "success");})
       .catch(() => Swal.fire("Error", "Failed to add district", "error"));
   } else {
     axios.put(baseUrl, data)
-      .then(() => { Swal.fire("Success", "District updated successfully!", "success"); resetForm(); loadDistricts(); })
+      .then(() => { Swal.fire("Success", "District updated successfully!", "success");})
       .catch(() => Swal.fire("Error", "Failed to update district", "error"));
   }
+  resetForm(); 
+  loadDistricts();
 };`}</pre>
         </section>
 
@@ -121,9 +120,10 @@ const loadDistricts = () => {
   }).then(result => {
     if (result.isConfirmed) {
       axios.delete(\`\${baseUrl}/\${districtId}\`)
-        .then(() => { Swal.fire("Deleted!", "District has been deleted.", "success"); loadDistricts(); })
+        .then(() => { Swal.fire("Deleted!", "District has been deleted.", "success");})
         .catch(() => Swal.fire("Error", "Failed to delete district", "error"));
     }
+  loadDistricts();
   });
 };`}</pre>
         </section>
@@ -152,12 +152,12 @@ const loadDistricts = () => {
     {countries.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
   </select>
 
-  <select value={stateId} onChange={e => setStateId(parseInt(e.target.value))} disabled={countryId === 0}>
+  <select value={stateId} onChange={e => setStateId(parseInt(e.target.value))} disabled={countryId===0}>
     <option value={0}>Select State</option>
-    {states.filter(s => s.countryId === countryId).map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+    {states.filter(s=>s.countryId===countryId).map(s=><option key={s.id} value={s.id}>{s.name}</option>)}
   </select>
 
-  <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter District Name" />
+  <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter Name" />
 
   <button onClick={handleSave}>{id === 0 ? "Add District" : "Update District"}</button>
   <button onClick={resetForm}>Reset</button>
@@ -174,7 +174,7 @@ const loadDistricts = () => {
     </tr>
   </thead>
   <tbody>
-    {districts.length === 0 && <tr><td colSpan="5" className="text-center">No districts found.</td></tr>}
+    {districts.length === 0 && <tr><td colSpan="5" className="text-center">No districts found</td></tr>}
     {districts.map(d => (
       <tr key={d.id}>
         <td>{d.id}</td>

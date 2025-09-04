@@ -44,7 +44,7 @@ const [countryId, setCountryId] = useState("");
 const [stateId, setStateId] = useState("");
 const [districtId, setDistrictId] = useState("");
 const [genderId, setGenderId] = useState(0);
-const genders = [{ id: 1, name: "Male" }, { id: 2, name: "Female" }, { id: 3, name: "Other" }];
+const genders = [{ id: 1, name: "Male" }, { id: 2, name: "Female"}, {id:3,name:"Other"}];
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;`}</pre>
         </section>
 
@@ -184,12 +184,12 @@ const loadDistricts = async () => {
           </div>
           <pre style={preStyle}>{`<form onSubmit={handleSubmit} className="mb-4">
   <!-- Inputs -->
-  <input type="text" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} />
-  <input type="text" placeholder="Middle Name" value={middleName} onChange={e => setMiddleName(e.target.value)} />
-  <input type="text" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} />
-  <input type="text" placeholder="Address" value={address} onChange={e => setAddress(e.target.value)} />
-  <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-  <input type="text" placeholder="Mobile" value={mobile} onChange={e => setMobile(e.target.value)} />
+  <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} />
+  <input type="text" value={middleName} onChange={e => setMiddleName(e.target.value)} />
+  <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} />
+  <input type="text" value={address} onChange={e => setAddress(e.target.value)} />
+  <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+  <input type="text" value={mobile} onChange={e => setMobile(e.target.value)} />
 
   <!-- Selects -->
   <select value={countryId} onChange={e => setCountryId(e.target.value)}>
@@ -208,7 +208,8 @@ const loadDistricts = async () => {
   <!-- Radio buttons for gender -->
   {genders.map(g => (
     <label key={g.id}>
-      <input type="radio" name="gender" value={g.id} checked={genderId === g.id} onChange={e => setGenderId(Number(e.target.value))} />
+      <input type="radio" name="gender" value = {g.id} checked = {genderId === g.id} 
+              onChange={e => setGenderId(Number(e.target.value))} />
       {g.name}
     </label>
   ))}
@@ -239,8 +240,8 @@ const loadDistricts = async () => {
         <td>{districts.find(d => d.id === std.districtId)?.name}</td>
         <td>{genders.find(g => g.id === std.genderId)?.name}</td>
         <td>
-          <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(std)}>Edit</button>
-          <button className="btn btn-danger btn-sm" onClick={() => handleDelete(std.id)}>Delete</button>
+          <button className="btn btn-sm me-2" onClick={()=>handleEdit(std)}>Edit</button>
+          <button className="btn btn-sm" onClick={()=>handleDelete(std.id)}>Dele</button>
         </td>
       </tr>
     ))}

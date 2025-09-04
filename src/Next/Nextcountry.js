@@ -149,12 +149,11 @@ const loadCountries = () => {
   <h2>Manage Countries</h2>
 
   <div className="mb-3">
-    <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} />
+    <input type="text" className="form-control" />
   </div>
 
   <div className="mb-4">
-    <button className="btn btn-primary me-2" onClick={handleSave}>Save Country</button>
-    <button className="btn btn-secondary" onClick={resetForm}>Reset</button>
+    <button className="btn btn-primary me-2">Save Country</button>
   </div>
 
   <table className="table table-bordered table-striped">
@@ -166,16 +165,14 @@ const loadCountries = () => {
       </tr>
     </thead>
     <tbody>
-      {countries.map((c) => (
-        <tr key={c.id}>
-          <td>{c.id}</td>
-          <td>{c.name}</td>
-          <td>
-            <button className="btn btn-warning" onClick={() => handleEdit(c)}>Edit</button>
-            <button className="btn btn-danger" onClick={() => handleDelete(c.id)}>Delete</button>
-          </td>
-        </tr>
-      ))}
+      <tr>
+        <td>1</td>
+        <td>India</td>
+        <td>
+          <button className="btn btn-warning">Edit</button>
+          <button className="btn btn-danger">Delete</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>`}</pre>
