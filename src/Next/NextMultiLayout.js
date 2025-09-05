@@ -233,7 +233,7 @@ export default function SuperAdminLayout({ children }: { children: React.ReactNo
           <li>⚛️ Next project initialized</li>
           <li>🧩 Modular component structure</li>
           <li>✅ Consistent layout with shared Header and Footer</li>
-          <li>🔗 React Git URL: <a href="https://github.com/anilsahda/ssfullstacknextui.git" target="_blank" rel="noopener noreferrer">https://github.com/anilsahda/SSFullstackUI.git</a></li>
+          <li>🔗 Next Git URL: <a href="https://github.com/anilsahda/ssui.git" target="_blank" rel="noopener noreferrer">https://github.com/anilsahda/ssui.git</a></li>
         </ul>
       </section>
     </div>
