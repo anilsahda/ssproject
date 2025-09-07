@@ -53,7 +53,7 @@ function SSJobs() {
       </ul>
 
       <section>
-        <b>Digital Library Layout</b>
+        <b>SS Jobs</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
             <code>
 {`app

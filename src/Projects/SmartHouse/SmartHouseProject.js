@@ -1,13 +1,8 @@
 function SSEHouse() {
   return (
     <div>
-      <h1>SS E-Housing</h1>
-
-      <h2>Project Overview</h2>
-      <p>
-        The <strong>SS E-Housing</strong> is a web-based application designed to simplify society management.
-        It helps track societies, houses, and members efficiently.
-      </p>
+      <h3>Project Overview</h3>
+      <p>The <strong>SS E-Housing</strong> is a web-based application designed to simplify society management. It helps track societies, houses, and members efficiently.</p>
       <ul>
         <li>Members (house owners) can advertise houses for rent or sale.</li>
         <li>Users can search houses and contact owners.</li>
@@ -15,7 +10,7 @@ function SSEHouse() {
         <li>Admins can manage societies, houses, and complaints effectively.</li>
       </ul>
 
-      <h2>Technology Stack</h2>
+      <b>Technology Stack</b>
       <ul>
         <li>Front-End: React / Next.js</li>
         <li>Back-End: .NET Core | Spring Boot | Node.js</li>
@@ -23,9 +18,9 @@ function SSEHouse() {
         <li>Cloud Platform: AWS</li>
       </ul>
 
-      <h2>Modules and Functionalities</h2>
+      <h3>Modules and Functionalities</h3>
 
-      <h3>1. Super Admin Module</h3>
+      <b>1. Super Admin Module</b>
       <p>The Super Admin has the highest level of access and controls roles and users.</p>
       <ul>
         <li>Role Management: Create, update, delete roles (Admin, Owner, User)</li>
@@ -33,7 +28,7 @@ function SSEHouse() {
       </ul>
       <p><em>Example:</em> Super Admin creates a new Admin account and assigns the role.</p>
 
-      <h3>2. Admin Module</h3>
+      <b>2. Admin Module</b>
       <p>Admin manages societies, houses, members, and complaints.</p>
       <ul>
         <li>Admin Login</li>
@@ -45,7 +40,7 @@ function SSEHouse() {
       </ul>
       <p><em>Example:</em> Admin adds "Sunshine Society", creates 15 houses, and assigns them to members.</p>
 
-      <h3>3. Owner Module</h3>
+      <b>3. Owner Module</b>
       <p>Owners are members who own houses in a society.</p>
       <ul>
         <li>Login using credentials</li>
@@ -56,7 +51,7 @@ function SSEHouse() {
       </ul>
       <p><em>Example:</em> An owner lists a 2BHK for rent and gets messages from potential tenants.</p>
 
-      <h3>4. User Module</h3>
+      <b>4. User Module</b>
       <p>Users are visitors who search for houses to rent or buy.</p>
       <ul>
         <li>Search Houses by society or owner name</li>
@@ -65,56 +60,53 @@ function SSEHouse() {
       </ul>
       <p><em>Example:</em> A user searches in "Sunshine Society", finds a 2BHK for rent, and contacts the owner.</p>
 
-      <h2>System Workflow</h2>
-      <ol>
-        <li>Super Admin → creates roles → adds users → assigns roles</li>
-        <li>Admin → creates societies → adds houses → allocates houses → manages complaints → generates reports</li>
-        <li>Owner → logs in → advertises houses → manages complaints → receives messages</li>
-        <li>User → searches houses → checks availability → contacts owners</li>
-      </ol>
-
-      <h2>Roles & Responsibilities</h2>
-      <table border="1" cellPadding="5" cellSpacing="0">
-        <thead>
-          <tr>
-            <th>Role</th>
-            <th>Responsibilities</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Super Admin</td>
-            <td>Create/manage roles and users, assign roles</td>
-          </tr>
-          <tr>
-            <td>Admin</td>
-            <td>Manage societies, houses, owners, complaints, and generate reports</td>
-          </tr>
-          <tr>
-            <td>Owner</td>
-            <td>Advertise houses, manage account and complaints, receive messages from users</td>
-          </tr>
-          <tr>
-            <td>User</td>
-            <td>Search houses, view details, contact owners</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>Key Features for Students</h2>
-      <ul>
-        <li>All operations online: advertise houses, search, submit complaints</li>
-        <li>Role-Based Access: Super Admin → Admin → Owner → User</li>
-        <li>Reports & Tracking: Admin can track complaints and house availability efficiently</li>
-        <li>Cloud-Ready: AWS deployment ensures accessibility and scalability</li>
-        <li>Easy to Use: Simplifies renting, buying, and managing houses in a society</li>
-      </ul>
-
-      <h2>Conclusion</h2>
-      <p>
-        The <strong>Smart Society E-Housing System</strong> makes society management efficient, transparent, and user-friendly. 
-        It allows seamless communication between admins, owners, and users, making house rental, sale, and complaint management fast and organized.
-      </p>
+      <section>
+        <b>SS House</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+            <code>
+{`app
+├─ layout.tsx                 // RootLayout (providers, html/body)
+├─ (main)/
+│  ├─ layout.tsx              // MainLayout (public site)
+│  ├─ page.tsx                // Home page
+│  ├─ about/page.tsx
+│  ├─ search/page.tsx
+│  ├─ rentlist/page.tsx
+│  ├─ selllist/page.tsx
+│  ├─ contact/page.tsx
+│  ├─ login/page.tsx
+│  └─ register/page.tsx
+│
+├─ (superadmin)/superadmin
+│  ├─ layout.tsx              // SuperAdminLayout
+│  ├─ page.tsx                // Super Admin Dashboard
+│  ├─ user/page.tsx
+│  ├─ role/page.tsx
+│  └─ userrole/page.tsx
+│
+├─ (admin)/admin
+│  ├─ layout.tsx              // AdminLayout
+│  ├─ page.tsx                // Admin Dashboard
+│  ├─ society/page.tsx
+│  ├─ house/page.tsx
+│  ├─ housereport/page.tsx
+│  ├─ allocatehouse/page.tsx
+│  ├─ memberreport/page.tsx
+│  ├─ complain/page.tsx
+│  ├─ sellhousereport/page.tsx
+│  └─ renthousereport/page.tsx
+│
+└─ (owner)/owner
+    ├─ layout.tsx           // OwnerLayout
+    ├─ page.tsx             // Owner Dashboard
+    ├─ societylist/page.tsx
+    ├─ rentnow/page.tsx
+    ├─ sellnow/page.tsx
+    ├─ message/page.tsx
+    └─ complain/page.tsx`}
+            </code>
+        </pre>
+      </section>
 
         <p>🔗 Live Demo URL: <a href="https://codewithsadee.github.io/homeverse/" target="_blank" rel="noopener noreferrer">SS Villa</a></p>
         <p>🔗 Live Demo URL: <a href="https://real-estate-4.vercel.app/" target="_blank" rel="noopener noreferrer">SS Real Estate</a></p>        
