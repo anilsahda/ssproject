@@ -40,11 +40,8 @@ function Sidebar({ activeMenu }) {
           <SidebarButton to="/ssecommerce" icon="bi-cart4" label="SS E-Eommerce" />
           <SidebarButton to="/ssehouse" icon="bi-building" label="SS E-House" />
           <SidebarButton to="/ssjobs" icon="bi-briefcase" label="SS Jobs" />
-          <SidebarButton to="/sscaregiver" icon="bi-hospital" label="SS Caregiver" />
           <SidebarButton to="/sshealthinsurance" icon="bi-hospital" label="SS Health Insurance" />
           <SidebarButton to="/sslogistrics" icon="bi-hospital" label="SS Logistics" />
-          <SidebarButton to="/ssbanking" icon="bi-hospital" label="SS Banking" />
-          <SidebarButton to="/ssloanapp" icon="bi-hospital" label="SS Loan App" />
           </>
         )}
 

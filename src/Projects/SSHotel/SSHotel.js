@@ -1,14 +1,8 @@
 function SSHotel() {
   return (
     <div>
-      <h1>SS Hotels</h1>
-
-      <h2>Project Overview</h2>
-      <p>
-        The <strong>SS Hotels</strong> is a web-based hotel management and booking system. 
-        It helps manage hotels, rooms, staff, and bookings efficiently while providing 
-        a smooth experience for customers.
-      </p>
+      <h3>Project Overview</h3>
+      <p>The <strong>SS Hotels</strong> is a web-based hotel management and booking system. It helps manage hotels, rooms, staff, and bookings efficiently while providing a smooth experience for customers.</p>
       <ul>
         <li>Guests can search and book rooms online.</li>
         <li>Admins can manage hotels, rooms, and staff.</li>
@@ -16,17 +10,27 @@ function SSHotel() {
         <li>Customers can submit feedback and complaints online.</li>
       </ul>
 
-      <h2>Technology Stack</h2>
+      <b>Technology Stack</b>
       <ul>
-        <li>Front-End: React / Next.js</li>
-        <li>Back-End: .NET Core | Spring Boot | Node.js</li>
+        <li>Front-End: React | Next.js | Angular | Vue</li>
+        <li>Back-End: .NET Core | Spring Boot | Node.js | DJango</li>
         <li>Database: SQL Server</li>
-        <li>Cloud Platform: AWS</li>
+        <li>Cloud Platform: AWS | Azure</li>
       </ul>
 
-      <h2>Modules and Functionalities</h2>
+      <h3>Modules and Functionalities</h3>
+      
+      <b>1. Main Module</b>
+      <ul>
+        <li>Home</li>
+        <li>About</li>        
+        <li>Rooms</li>        
+        <li>Contact Us</li>
+        <li>Login</li>
+        <li>Register</li>
+      </ul>
 
-      <h3>1. Super Admin Module</h3>
+      <b>2. Super Admin Module</b>
       <p>The Super Admin has the highest authority, managing roles, permissions, and hotel branches.</p>
       <ul>
         <li>Role Management: Create/update/delete roles (Admin, Manager, Customer)</li>
@@ -35,7 +39,7 @@ function SSHotel() {
       </ul>
       <p><em>Example:</em> Super Admin adds a new "SS Hotels - Mumbai" branch and assigns an Admin.</p>
 
-      <h3>2. Admin Module</h3>
+      <b>3. Admin Module</b>
       <p>Admin manages hotel operations and staff.</p>
       <ul>
         <li>Admin Login</li>
@@ -44,13 +48,6 @@ function SSHotel() {
         <li>Staff Management: Add/update staff details and assign roles</li>
         <li>Booking Management: Monitor bookings and cancellations</li>
         <li>Reports: Generate reports on occupancy, revenue, and complaints</li>
-      </ul>
-      <p><em>Example:</em> Admin adds 50 rooms in "SS Hotels - Delhi" and assigns staff to manage reception.</p>
-
-      <h3>3. Manager Module</h3>
-      <p>Managers oversee hotel operations at the branch level.</p>
-      <ul>
-        <li>Login with manager credentials</li>
         <li>Booking Management: Approve/modify guest bookings</li>
         <li>Complaint Management: View and resolve guest complaints</li>
         <li>Staff Monitoring: Track staff attendance and duties</li>
@@ -58,7 +55,7 @@ function SSHotel() {
       </ul>
       <p><em>Example:</em> A manager reviews complaints, assigns them to staff, and updates resolution status.</p>
 
-      <h3>4. Customer Module</h3>
+      <b>4. Customer Module</b>
       <p>Customers can explore hotels, book rooms, and give feedback.</p>
       <ul>
         <li>Search Hotels by city or hotel name</li>
@@ -66,59 +63,45 @@ function SSHotel() {
         <li>Book or cancel reservations</li>
         <li>Submit feedback or complaints</li>
       </ul>
-      <p><em>Example:</em> A customer searches for "SS Hotels - Goa", books a deluxe room, and submits feedback after checkout.</p>
 
-      <h2>System Workflow</h2>
-      <ol>
-        <li>Super Admin → creates roles → adds users → assigns hotel branches</li>
-        <li>Admin → manages hotels, rooms, staff → monitors bookings → generates reports</li>
-        <li>Manager → handles branch-level bookings, complaints, and daily operations</li>
-        <li>Customer → searches hotels → books rooms → provides feedback</li>
-      </ol>
+      <section>
+        <b>SS Hotel</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+            <code>
+{`app
+├─ layout.tsx                 // RootLayout (providers, html/body)
+├─ (main)/
+│  ├─ layout.tsx              // MainLayout (public site)
+│  ├─ page.tsx                // Home page
+│  ├─ about/page.tsx
+│  ├─ rooms/page.tsx
+│  ├─ contact/page.tsx
+│  ├─ login/page.tsx
+│  └─ register/page.tsx
+│
+├─ (superadmin)/superadmin
+│  ├─ layout.tsx              // SuperAdminLayout
+│  ├─ page.tsx                // Super Admin Dashboard
+│  ├─ user/page.tsx
+│  ├─ role/page.tsx
+│  └─ userrole/page.tsx
+│
+├─ (admin)/admin
+│  ├─ layout.tsx              // AdminLayout
+│  ├─ page.tsx                // Admin Dashboard
+│  ├─ roomtype/page.tsx
+│  ├─ roomprice/page.tsx
+│  ├─ room/page.tsx
+│  └─ bookings/page.tsx
+│
+└─ (customer)/customer
+    ├─ layout.tsx           // CustomerLayout
+    ├─ page.tsx             // Customer Dashboard
+    └─ bookings/page.tsx`}
+            </code>
+        </pre>
+      </section>
 
-      <h2>Roles & Responsibilities</h2>
-      <table border="1" cellPadding="5" cellSpacing="0">
-        <thead>
-          <tr>
-            <th>Role</th>
-            <th>Responsibilities</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Super Admin</td>
-            <td>Manage roles, users, and hotel branches</td>
-          </tr>
-          <tr>
-            <td>Admin</td>
-            <td>Manage hotels, rooms, staff, bookings, and reports</td>
-          </tr>
-          <tr>
-            <td>Manager</td>
-            <td>Oversee branch operations, handle complaints, track staff</td>
-          </tr>
-          <tr>
-            <td>Customer</td>
-            <td>Search hotels, book/cancel rooms, provide feedback</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>Key Features</h2>
-      <ul>
-        <li>End-to-End Hotel Management: Hotels, rooms, bookings, staff, and complaints</li>
-        <li>Role-Based Access: Super Admin → Admin → Manager → Customer</li>
-        <li>Reports & Analytics: Track revenue, occupancy, and complaints efficiently</li>
-        <li>Cloud-Ready: AWS deployment ensures scalability and availability</li>
-        <li>User-Friendly: Easy online booking, cancellation, and feedback system</li>
-      </ul>
-
-      <h2>Conclusion</h2>
-      <p>
-        The <strong>SS Hotels Management System</strong> provides a complete, scalable, and user-friendly 
-        platform for hotel operations. It ensures smooth interaction between admins, managers, 
-        staff, and customers, making hotel management seamless and efficient.
-      </p>
         <p>🔗 Live Demo URL: <a href="https://ss-hotels.netlify.app/" target="_blank" rel="noopener noreferrer">SS Hotel</a></p>
         <p>🔗 React Git URL: <a href="https://github.com/anilsahda/sshotel.git" target="_blank" rel="noopener noreferrer">https://github.com/anilsahda/sshotel.git</a></p>
     </div>

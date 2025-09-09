@@ -11,22 +11,29 @@ function SSJobs() {
 
       <b>Technology Stack</b>
       <ul>
-        <li>Front-End: React / Next.js</li>
-        <li>Back-End: .NET Core | Spring Boot | Node.js</li>
+        <li>Front-End: React | Next.js | Angular | Vue</li>
+        <li>Back-End: .NET Core | Spring Boot | Node.js | DJango</li>
         <li>Database: SQL Server</li>
-        <li>Cloud Platform: AWS</li>
+        <li>Cloud Platform: AWS | Azure</li>
       </ul>
 
-      <h3>Modules and Functionalities</h3>
+      <h2>Modules and Functionalities</h2>
+      <b>1. Main Module</b>
+      <ul>
+        <li>Home, About and Jobs</li>
+        <li>Contact Us</li>
+        <li>Login</li>
+        <li>Register</li>
+      </ul>
 
-      <b>1. Super Admin Module</b>
+      <b>2. Super Admin Module</b>
       <p>The Super Admin manages users and roles.</p>
       <ul>
         <li>Create, update, and delete roles (Admin, Employer, Job Seeker)</li>
         <li>Manage users and assign roles</li>
       </ul>
 
-      <b>2. Admin Module</b>
+      <b>3. Admin Module</b>
       <p>Admin manages the entire job portal system.</p>
       <ul>
         <li>Login with secure credentials</li>
@@ -34,7 +41,7 @@ function SSJobs() {
         <li>Generate system reports</li>
       </ul>
 
-      <b>3. Employer Module</b>
+      <b>4. Employer Module</b>
       <p>Employers can post jobs and manage applications.</p>
       <ul>
         <li>Post new job openings</li>
@@ -43,7 +50,7 @@ function SSJobs() {
         <li>Send messages to applicants</li>
       </ul>
 
-      <b>4. Job Seeker Module</b>
+      <b>5. Job Seeker Module</b>
       <p>Job seekers can search and apply for jobs.</p>
       <ul>
         <li>Create and manage personal profiles</li>

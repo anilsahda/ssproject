@@ -194,7 +194,6 @@ import Javaexportcsv from "./Java/Javaexportcsv";
 import Nodeexportcsv from "./Node/Nodeexportcsv";
 import CicdpipelinesJava from "./DevOps/CicdpipelinesJava";
 import SSLogistrics from "./Projects/Logistrics/SSLogistrics";
-import SSBanking from "./Projects/Banking/SSBanking";
 import SSECommerce from "./Projects/ECommerce/EcommerceProject";
 import SSDigitalLibrary from "./Projects/DigitalLibrary/DigitalLibraryProject";
 import SSEmployeePayroll from "./Projects/EmployeePayroll/SSEmployeePayroll";
@@ -202,8 +201,6 @@ import SSAttendancePortal from "./Projects/AttendancePortal/AttendancePortalProj
 import SSEHouse from "./Projects/SmartHouse/SmartHouseProject";
 import SSJobs from "./Projects/SmartJobs/SmartJobsProject";
 import SSHealthInsurance from "./Projects/HealthInsurance/SSHealthInsurance";
-import SSCaregiver from "./Projects/SmartCaregiver/SSCaregiver";
-import SSLoanApp from "./Projects/LoanApp/SSLoanApp";
 import SSIntern from "./Fullstack/SSIntern";
 import Awsrds from "./AWS/Awsrds";
 import Amplify from "./AWS/Amplify";
@@ -249,12 +246,8 @@ function App() {
             <Route path="/ssecommerce" element={<SSECommerce />} />
             <Route path="/ssehouse" element={<SSEHouse />} />
             <Route path="/ssjobs" element={<SSJobs />} />
-            <Route path="/sscaregiver" element={<SSCaregiver />} />
             <Route path="/sshealthinsurance" element={<SSHealthInsurance />} />
             <Route path="/sslogistrics" element={<SSLogistrics />} />
-            <Route path="/ssbanking" element={<SSBanking />} />
-            <Route path="/ssloanapp" element={<SSLoanApp />} />
-
 
 
             {/* Fulstack Static */}
