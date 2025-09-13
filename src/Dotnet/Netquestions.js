@@ -119,6 +119,111 @@ Example: app.UseAuthentication(), app.UseAuthorization(), app.UseCors().`}
         </pre>
       </section>
 
+      {/* Question 11 */}
+      <section>
+        <b>11. What is one to one relationship?</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`public class User
+{
+    public int Id { get; set; }
+    public string Username { get; set; }
+    public UserProfile UserProfile { get; set; }
+}
+
+public class UserProfile
+{
+    public int Id { get; set; }
+    public string Address { get; set; }
+    public int UserId { get; set; }
+    public User User { get; set; }
+}
+
+public DbSet<User> Users { get; set; }
+public DbSet<UserProfile> UserProfiles { get; set; }
+
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<User>()
+        .HasOne(u => u.UserProfile)
+        .WithOne(p => p.User)
+        .HasForeignKey<UserProfile>(p => p.UserId);
+}`}
+          </code>
+        </pre>
+      </section>
+
+      {/* Question 12 */}
+      <section>
+        <b>12. What is one to many relationship?</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`public class Category
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public ICollection<Product> Products { get; set; }
+}
+
+public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int CategoryId { get; set; }  // FK
+    public Category Category { get; set; }
+}
+
+public class AppDbContext : DbContext
+{
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Product> Products { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Product>()
+            .HasOne(p => p.Category)       // Each Product has one Category
+            .WithMany(c => c.Products)     // Each Category has many Products
+            .HasForeignKey(p => p.CategoryId);
+    }
+}`}
+          </code>
+        </pre>
+      </section>      
+
+      {/* Question 13 */}
+      <section>
+        <b>13. What is many to many relationship?</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`public class Student
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public ICollection<Course> Courses { get; set; }
+}
+
+public class Course
+{
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public ICollection<Student> Students { get; set; }
+}
+
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Student>()
+        .HasMany(s => s.Courses)
+        .WithMany(c => c.Students)
+        .UsingEntity<Dictionary<string, object>>(
+            "StudentCourse",
+            j => j.HasOne<Course>().WithMany().HasForeignKey("CourseId"),
+            j => j.HasOne<Student>().WithMany().HasForeignKey("StudentId")
+        );
+}`}
+          </code>
+        </pre>
+      </section>      
+
     </div>
   );
 }
