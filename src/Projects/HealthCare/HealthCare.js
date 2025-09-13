@@ -1,140 +1,178 @@
-function HealthCare() {
+function SSHealthCarePortal() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-      <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">SS HealthCare</h1>
-      </header>
-
       {/* Project Overview */}
       <section>
-        <h2 className="text-lg font-semibold text-indigo-600">Project Overview</h2>
+        <h2 className="text-xl font-bold mb-2">Project Overview</h2>
         <p>
-          The <strong>SS HealthCare</strong> is an enterprise-grade web application designed to
-          simplify and automate <strong>hospital, clinic, and healthcare service management</strong>. 
-          It enables organizations to manage <strong>patients, doctors, staff, appointments, billing, 
-          pharmacy, and reporting</strong> at scale.
+          The <strong>SS Health Care Portal</strong> is a modern web-based
+          application designed for hospitals, clinics, and healthcare
+          institutions. It provides a centralized platform for managing doctors,
+          nurses, patients, appointments, billing, prescriptions, and medical
+          reports. The system ensures improved efficiency, transparency, and
+          better patient care with role-based dashboards for administrators,
+          doctors, nurses, and patients.
         </p>
       </section>
 
       {/* Technology Stack */}
       <section>
-        <h2 className="text-lg font-semibold text-indigo-600">Technology Stack</h2>
-        <ul className="list-disc list-inside">
-          <li><strong>Front-End:</strong> React / Next.js</li>
-          <li><strong>Back-End:</strong> .NET Core | Spring Boot | Node.js</li>
-          <li><strong>Database:</strong> SQL Server (Enterprise Schema)</li>
-          <li><strong>Cloud Platform:</strong> AWS (RDS, S3, EC2, Lambda, CloudWatch)</li>
+        <h2 className="text-xl font-bold mb-2">Technology Stack</h2>
+        <ul className="list-disc pl-5">
+          <li>Front-End: React | Next.js | Angular | Vue</li>
+          <li>Back-End: .NET Core | Spring Boot | Node.js | Django</li>
+          <li>Database: SQL Server | MySQL | PostgreSQL</li>
+          <li>Cloud Platform: AWS | Azure</li>
         </ul>
       </section>
 
-      {/* Modules */}
+      {/* Modules and Functionalities */}
       <section>
-        <h2 className="text-lg font-semibold text-indigo-600">Modules and Functionalities</h2>
-        <ul className="list-disc list-inside ml-4 space-y-1">
-          <li>Super Admin: Role & User Management, System Configuration</li>
-          <li>Admin: Patient & Staff Management, Departments, Reports</li>
-          <li>Doctor: Profile, Availability, Appointments, Prescriptions</li>
-          <li>Patient: Registration, Appointments, Medical Records, Billing</li>
-          <li>Pharmacy & Billing: Inventory, Invoices, Payments</li>
-          <li>Enterprise: Compliance, Notifications, Audit Logs</li>
+        <h2 className="text-xl font-bold mb-2">Modules and Functionalities</h2>
+
+        <b>1. Main Module</b>
+        <ul className="list-disc pl-5 mb-4">
+          <li>Home, About, and Services</li>
+          <li>Contact Us</li>
+          <li>Login / Register</li>
+          <li>Hospital Information & Departments</li>
+        </ul>
+
+        <b>2. Super Admin Module</b>
+        <ul className="list-disc pl-5 mb-4">
+          <li>Manage system users and roles (Admin, Doctor, Nurse, Patient)</li>
+          <li>Define access permissions</li>
+          <li>Monitor overall hospital activities</li>
+        </ul>
+
+        <b>3. Admin Module</b>
+        <ul className="list-disc pl-5 mb-4">
+          <li>Manage doctors, nurses, and patients</li>
+          <li>Manage departments (Cardiology, Orthopedics, etc.)</li>
+          <li>Handle appointments and hospital schedules</li>
+          <li>Generate hospital-level reports and billing</li>
+          <li>Manage inventory of medicines & equipment</li>
+        </ul>
+
+        <b>4. Doctor Module</b>
+        <ul className="list-disc pl-5 mb-4">
+          <li>View and manage appointments</li>
+          <li>Access and update patient records</li>
+          <li>Issue prescriptions and medical notes</li>
+          <li>Upload patient reports and test results</li>
+        </ul>
+
+        <b>5. Nurse Module</b>
+        <ul className="list-disc pl-5 mb-4">
+          <li>View assigned patients</li>
+          <li>Update daily patient care reports</li>
+          <li>Follow doctor’s instructions for treatment</li>
+          <li>Manage shift schedules</li>
+        </ul>
+
+        <b>6. Patient Module</b>
+        <ul className="list-disc pl-5 mb-4">
+          <li>Book and manage appointments</li>
+          <li>View prescriptions and treatment history</li>
+          <li>Check billing & payments</li>
+          <li>Access lab reports and medical records</li>
+          <li>Update personal profile and health information</li>
         </ul>
       </section>
 
-      {/* Database Tables */}
+      {/* Healthcare Portal Layout */}
       <section>
-        <h2 className="text-lg font-semibold text-indigo-600">Database Tables & Fields</h2>
-
-        <div className="space-y-6 mt-4">
-          {/* Users & Roles */}
-          <div>
-            <h3 className="font-bold text-indigo-700">1. Users & Roles</h3>
-            <ul className="list-disc list-inside ml-4">
-              <li><strong>Users:</strong> UserId, Username, PasswordHash, Email, Phone, FirstName, LastName, DateOfBirth, Gender, UserType, CreatedAt, UpdatedAt</li>
-              <li><strong>Roles:</strong> RoleId, RoleName, Description</li>
-              <li><strong>UserRoles:</strong> UserRoleId, UserId (FK), RoleId (FK)</li>
-            </ul>
-          </div>
-
-          {/* Patient Management */}
-          <div>
-            <h3 className="font-bold text-indigo-700">2. Patient Management</h3>
-            <ul className="list-disc list-inside ml-4">
-              <li><strong>Patients:</strong> PatientId, UserId (FK), MedicalRecordNumber, EmergencyContact, BloodGroup, Allergies, ChronicConditions, Notes</li>
-              <li><strong>MedicalRecords:</strong> RecordId, PatientId (FK), Diagnosis, Prescriptions, LabResults, CreatedBy, CreatedAt</li>
-            </ul>
-          </div>
-
-          {/* Doctor Management */}
-          <div>
-            <h3 className="font-bold text-indigo-700">3. Doctor & Staff Management</h3>
-            <ul className="list-disc list-inside ml-4">
-              <li><strong>Doctors:</strong> DoctorId, UserId (FK), Specialization, Department, ExperienceYears, Availability, Status</li>
-              <li><strong>Staff:</strong> StaffId, UserId (FK), Department, Role, ShiftType, Status</li>
-            </ul>
-          </div>
-
-          {/* Appointments */}
-          <div>
-            <h3 className="font-bold text-indigo-700">4. Appointments & Scheduling</h3>
-            <ul className="list-disc list-inside ml-4">
-              <li><strong>Appointments:</strong> AppointmentId, PatientId (FK), DoctorId (FK), ScheduleDate, TimeSlot, Status, Notes</li>
-              <li><strong>Schedules:</strong> ScheduleId, DoctorId (FK), AvailableFrom, AvailableTo, Location, Status</li>
-            </ul>
-          </div>
-
-          {/* Billing */}
-          <div>
-            <h3 className="font-bold text-indigo-700">5. Billing & Payments</h3>
-            <ul className="list-disc list-inside ml-4">
-              <li><strong>Invoices:</strong> InvoiceId, PatientId (FK), GeneratedDate, DueDate, TotalAmount, Status</li>
-              <li><strong>Payments:</strong> PaymentId, InvoiceId (FK), PaymentDate, Method, AmountPaid, TransactionReference</li>
-            </ul>
-          </div>
-
-          {/* Pharmacy */}
-          <div>
-            <h3 className="font-bold text-indigo-700">6. Pharmacy & Inventory</h3>
-            <ul className="list-disc list-inside ml-4">
-              <li><strong>Medicines:</strong> MedicineId, Name, Category, Stock, UnitPrice, ExpiryDate</li>
-              <li><strong>PharmacySales:</strong> SaleId, PatientId (FK), MedicineId (FK), Quantity, TotalAmount, SaleDate</li>
-            </ul>
-          </div>
-
-          {/* Compliance & Auditing */}
-          <div>
-            <h3 className="font-bold text-indigo-700">7. Compliance & Auditing</h3>
-            <ul className="list-disc list-inside ml-4">
-              <li><strong>AuditLogs:</strong> AuditId, UserId (FK), Action, Entity, EntityId, Timestamp, IPAddress</li>
-              <li><strong>Incidents:</strong> IncidentId, PatientId (FK), StaffId (FK), Date, Description, ReportedBy (FK), ActionTaken</li>
-            </ul>
-          </div>
-
-          {/* System Config */}
-          <div>
-            <h3 className="font-bold text-indigo-700">8. System & Notifications</h3>
-            <ul className="list-disc list-inside ml-4">
-              <li><strong>Settings:</strong> SettingId, Key, Value</li>
-              <li><strong>Notifications:</strong> NotificationId, UserId (FK), Message, Type, Status, CreatedAt</li>
-            </ul>
-          </div>
-        </div>
+        <b>Healthcare Portal Layout</b>
+        <pre
+          style={{
+            background: "#f5f5f5",
+            padding: "1rem",
+            overflowX: "auto",
+          }}
+        >
+          <code>
+{`app
+├─ layout.tsx                       // RootLayout (providers, html/body)
+├─ (main)/
+│  ├─ layout.tsx                    // Public/Main Layout (marketing site)
+│  ├─ page.tsx                      // Home Page
+│  ├─ about/page.tsx
+│  ├─ services/page.tsx
+│  ├─ contact/page.tsx
+│  ├─ login/page.tsx
+│  └─ register/page.tsx
+│
+├─ (superadmin)/superadmin
+│  ├─ layout.tsx              // SuperAdminLayout
+│  ├─ page.tsx                // Super Admin Dashboard
+│  ├─ user/page.tsx
+│  ├─ role/page.tsx
+│  └─ userrole/page.tsx
+│
+├─ (admin)/admin
+│  ├─ layout.tsx                    // AdminLayout (Hospital Admin)
+│  ├─ page.tsx                      // Admin Dashboard
+│  ├─ doctor/page.tsx               // Manage doctors in hospital
+│  ├─ nurse/page.tsx                // Manage nurses/staff
+│  ├─ patient/page.tsx              // Manage patients
+│  ├─ appointment/page.tsx          // Appointment management
+│  ├─ department/page.tsx           // Manage departments
+│  ├─ billing/page.tsx              // Billing & invoices
+│  ├─ report/page.tsx               // Hospital reports
+│  └─ inventory/page.tsx            // Medicine/Equipment inventory
+│
+├─ (doctor)/doctor
+│  ├─ layout.tsx                    // DoctorLayout
+│  ├─ page.tsx                      // Doctor Dashboard
+│  ├─ appointments/page.tsx         // View/manage appointments
+│  ├─ patients/page.tsx             // View assigned patients
+│  ├─ prescriptions/page.tsx        // Create/manage prescriptions
+│  └─ reports/page.tsx              // Patient reports / test results
+│
+├─ (nurse)/nurse
+│  ├─ layout.tsx                    // NurseLayout
+│  ├─ page.tsx                      // Nurse Dashboard
+│  ├─ patients/page.tsx             // Assigned Patients
+│  ├─ schedule/page.tsx             // Nurse Shift Schedule
+│  └─ reports/page.tsx              // Patient Care Reports
+│
+└─ (patient)/patient
+   ├─ layout.tsx                    // PatientLayout
+   ├─ page.tsx                      // Patient Dashboard
+   ├─ profile/page.tsx              // My account/profile
+   ├─ appointments/page.tsx         // Book/manage appointments
+   ├─ prescriptions/page.tsx        // View prescriptions
+   ├─ billing/page.tsx              // My bills/payments
+   └─ reports/page.tsx              // Lab reports/history`}
+          </code>
+        </pre>
       </section>
 
-      {/* Conclusion */}
+      {/* Links */}
       <section>
-        <h2 className="text-lg font-semibold text-indigo-600">Conclusion</h2>
         <p>
-          The <strong>SS HealthCare Management System</strong> uses an 
-          <strong> enterprise-level relational schema</strong> to handle patients, 
-          doctors, appointments, billing, pharmacy, and compliance. 
-          The modular design ensures scalability, security, and efficient 
-          management for hospitals and clinics.
+          🔗 <strong>Live Demo URL:</strong>{" "}
+          <a
+            href="https://sshealthcare.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SS Health Care
+          </a>
         </p>
-        <p>🔗 Live Demo URL: <a href="https://sshealthcare.netlify.app/" target="_blank" rel="noopener noreferrer">SS Health Care</a></p>
-        <p>🔗 React Git URL: <a href="https://github.com/anilsahda/sshealthcare.git" target="_blank" rel="noopener noreferrer">https://github.com/anilsahda/sshealthcare.git</a></p>
+        <p>
+          🔗 <strong>React Git URL:</strong>{" "}
+          <a
+            href="https://github.com/anilsahda/sshealthcare.git"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://github.com/anilsahda/sshealthcare.git
+          </a>
+        </p>
       </section>
     </div>
   );
 }
 
-export default HealthCare
+export default SSHealthCarePortal;
