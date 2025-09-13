@@ -265,7 +265,7 @@ function SuperHeader() {
       <div className="row mb-5">
         <div className="col-md-12 text-center mb-4">
           <h2 className="fw-bold text-primary">✨ Why Join This Training?</h2>
-          <p className="text-muted fs-6">
+          <p className="text-muted fs-6 text-center">
             A program designed to transform <strong>freshers</strong> into{" "}
             <strong>job-ready professionals</strong> with hands-on expertise.
           </p>
@@ -284,17 +284,32 @@ function SuperHeader() {
                 ✅ Onion / Clean Architecture <br />
                 ✅ Strong Confidence <br />
                 ✅ Agile Methodlogy <br />
-                ✅ AWS and Azure Services
+                ✅ AWS and Azure Services <br />
+                ✅ Version Control Github
               </>
             ),
           },
           {
-            title: "🧑‍🏫 WFO (Work From Office)",
-            desc: "Direct join within 4 months at Shiwansh Solutions",
+            title: "🧑‍🏫 Work From Office",
+            desc: (
+              <>
+                ✅ Eligible to join full-time within 4 months at Shiwansh Solutions <br />
+                ✅ Opportunity to work directly with senior developers <br />
+                ✅ Direct company exposure with office culture, teamwork and daily stand-ups <br />
+                ✅ Immediate guidance and feedback for faster learning and professional growth <br />
+              </>
+            ),
           },
           {
-            title: "🎯 WFH (Work From Home)",
-            desc: "Join anytime after 4 months based on performance & interview at Shiwansh Solutions",
+            title: "🎯 Work From Home",
+            desc: (
+              <>
+                ✅ Join anytime after 3 months on the basis of performance reviews and interviews <br />
+                ✅ Flexible working option for those who prefer remote learning and development <br />
+                ✅ Gain virtual project exposure while collaborating with teams <br />
+                ✅ Opportunity to join full-time remote roles at Shiwansh Solution<br />
+              </>
+            ),
           },
         ].map((item, index) => (
           <div className="col-md-4" key={index}>
