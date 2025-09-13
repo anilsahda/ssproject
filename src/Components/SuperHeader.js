@@ -261,37 +261,50 @@ function SuperHeader() {
                           </div>
                         </div>
 
-                        {/* Why Join */}
-                        <div className="row mb-5">
-                          <div className="col-md-12 text-center mb-4">
-                            <h2 className="fw-bold text-primary">✨ Why Join This Programs?</h2>
-                            <p className="text-muted fs-6 text-center">
-                              A program crafted to transform <strong>freshers</strong> into <strong>job-ready professionals</strong> with hands-on skills.
-                            </p>
-                          </div>
+      {/* Why Join */}
+      <div className="row mb-5">
+        <div className="col-md-12 text-center mb-4">
+          <h2 className="fw-bold text-primary">✨ Why Join This Training?</h2>
+          <p className="text-muted fs-6">
+            A program designed to transform <strong>freshers</strong> into{" "}
+            <strong>job-ready professionals</strong> with hands-on expertise.
+          </p>
+        </div>
 
-                          {[
-                            {
-                              title: "💻 Live Projects",
-                              desc: "Hands-on coding, project deployment, microservices and real-world design patterns.",
-                            },
-                            {
-                              title: "🧑‍🏫 Mentorship",
-                              desc: "Direct guidance from our software engineers, professionals and code reviews.",
-                            },
-                            {
-                              title: "🎯 Career Launch",
-                              desc: "Resume building, mock interviews and direct job opportunities to right candidates.",
-                            },
-                          ].map((item, index) => (
-                            <div className="col-md-4" key={index}>
-                              <div className="card shadow-sm h-100 p-4 border-0 rounded-4 hover-shadow">
-                                <h5 className="fw-bold">{item.title}</h5>
-                                <p className="text-muted">{item.desc}</p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
+        {[
+          {
+            title: "💻 Hands-on Experience",
+            desc: (
+              <>
+                ✅ Work on Scratch Live Projects <br />
+                ✅ Work on Existing Live Projects <br />
+                ✅ Exposure to NoSQL & RDBMS <br />
+                ✅ Microservices Implementation <br />
+                ✅ Apply Design Patterns <br />
+                ✅ Onion / Clean Architecture <br />
+                ✅ Strong Confidence <br />
+                ✅ Agile Methodlogy <br />
+                ✅ AWS and Azure Services
+              </>
+            ),
+          },
+          {
+            title: "🧑‍🏫 WFO (Work From Office)",
+            desc: "Direct join within 4 months at Shiwansh Solutions",
+          },
+          {
+            title: "🎯 WFH (Work From Home)",
+            desc: "Join anytime after 4 months based on performance & interview at Shiwansh Solutions",
+          },
+        ].map((item, index) => (
+          <div className="col-md-4" key={index}>
+            <div className="card shadow-sm h-100 p-4 border-0 rounded-4 hover-shadow">
+              <h5 className="fw-bold">{item.title}</h5>
+              <p className="text-muted">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
                           {/* Program Info */}
                           <div className="row justify-content-center">

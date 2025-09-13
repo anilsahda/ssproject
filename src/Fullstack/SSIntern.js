@@ -6,10 +6,10 @@ function SSIntern() {
       {/* Header */}
       <div className="text-center mb-5">
         <h1 className="fw-bold display-5 text-primary mb-3">
-          🚀 3-Month Job-Oriented Training Program for IT Freshers
+          🚀 3 – 6 Months Job-Oriented Training Program for IT Freshers
         </h1>
         <p className="text-muted fs-5">
-          Get <strong>Job-Ready</strong> with in-demand skills & real-time
+          Get <strong>Job-Ready</strong> with in-demand skills & real-world
           experience. <br />
           🎯 Designed for <strong>Fresh Graduates</strong> &{" "}
           <strong>Job Seekers</strong> in Tech.
@@ -71,23 +71,38 @@ function SSIntern() {
         <div className="col-md-12 text-center mb-4">
           <h2 className="fw-bold text-primary">✨ Why Join This Training?</h2>
           <p className="text-muted fs-6">
-            A program crafted to transform <strong>freshers</strong> into{" "}
-            <strong>job-ready professionals</strong> with hands-on skills.
+            A program designed to transform <strong>freshers</strong> into{" "}
+            <strong>job-ready professionals</strong> with hands-on expertise.
           </p>
         </div>
 
         {[
           {
             title: "💻 Practical Learning",
-            desc: "Hands-on coding, project deployment, and real-world assignments instead of just theory.",
+            desc: (
+              <>
+                ✅ 100% Opportunities <br />
+                ✅ Experience Letter + Hands-on Experience <br />
+                ✅ Work on Scratch Live Projects <br />
+                ✅ Work on Existing Live Projects <br />
+                ✅ Exposure to NoSQL and RDBMS <br />
+                ✅ Microservices Implementation <br />
+                ✅ Apply Design Patterns <br />
+                ✅ Onion / Clean Architecture <br />
+                ✅ Strong Confidence & Thinking Skills <br />
+                ✅ Aware of Company Environment <br />
+                ✅ Cloud Integration: AWS S3 Bucket, Azure, Lambda Functions,
+                Deployment, RDS
+              </>
+            ),
           },
           {
-            title: "🧑‍🏫 Mentorship",
-            desc: "Direct guidance from industry experts, 1:1 mentorship, and code reviews.",
+            title: "🧑‍🏫 WFO (Work From Office)",
+            desc: "Direct join within 4 months at Shiwansh Solutions",
           },
           {
-            title: "🎯 Career Launch",
-            desc: "Resume building, mock interviews, and direct job referrals to kick-start your career.",
+            title: "🎯 WFH (Work From Home)",
+            desc: "Join anytime after 4 months based on performance & interview at Shiwansh Solutions",
           },
         ].map((item, index) => (
           <div className="col-md-4" key={index}>
@@ -106,7 +121,7 @@ function SSIntern() {
             <h4 className="fw-bold mb-3 text-primary">📌 Program Details</h4>
             <ul className="list-group list-group-flush fs-6">
               <li className="list-group-item py-3">
-                🕒 <strong>Duration:</strong> 3 Months
+                🕒 <strong>Duration:</strong> 3 – 6 Months
               </li>
               <li className="list-group-item py-3">
                 💻 <strong>Mode:</strong> Remote | Hybrid | Office
