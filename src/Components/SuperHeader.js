@@ -16,6 +16,14 @@ function SuperHeader() {
     setIsLoggedIn(!!localStorage.getItem('token'));
   }, []);
 
+useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntern(true);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -207,8 +215,8 @@ function SuperHeader() {
       )}
 
       {/* Login Modal */}
-      {showIntern && (
-        <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.7)' }} onClick={() => setShowLogin(false)}>
+ {showIntern && (
+        <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.7)' }} onClick={() => setShowIntern(false)}>
           <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "1000px" }} onClick={(e) => e.stopPropagation()}>
             <div className="modal-content shadow rounded-3">
               <div className="modal-header bg-primary text-white">

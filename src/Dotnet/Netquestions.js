@@ -214,8 +214,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
     modelBuilder.Entity<Student>()
         .HasMany(s => s.Courses)
         .WithMany(c => c.Students)
-        .UsingEntity<Dictionary<string, object>>(
-            "StudentCourse",
+        .UsingEntity<Dictionary<string, object>>("StudentCourse",
             j => j.HasOne<Course>().WithMany().HasForeignKey("CourseId"),
             j => j.HasOne<Student>().WithMany().HasForeignKey("StudentId")
         );

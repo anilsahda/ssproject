@@ -17,16 +17,21 @@ function Sidebar({ activeMenu }) {
   return (
 <div
   className="maxHeight"
-  style={{
-    width: "250px",
-    overflowY: "auto",
-    background: "linear-gradient(180deg, #0f2027, #203a43, #2c5364)",
-    padding: "1.5rem 1rem",
-    paddingTop: "2rem",
-    paddingBottom: "4rem",
-    color: "#fff",
-    boxShadow: "2px 0 5px rgba(0,0,0,0.3)"
-  }}
+style={{
+      width: "250px",
+      height: "100vh", // full viewport height
+      position: "fixed", // make it sticky
+      top: 100,
+      left: 0,
+      overflowY: "auto", // scroll inside sidebar
+      background: "linear-gradient(180deg, #0f2027, #203a43, #2c5364)",
+      padding: "1.5rem 1rem",
+      paddingTop: "2rem",
+      paddingBottom: "4rem",
+      color: "#fff",
+      boxShadow: "2px 0 5px rgba(0,0,0,0.3)",
+      zIndex: 1000 // keep it above other elements
+    }}
 >
   <div className="d-flex flex-column gap-2">
     <ul className="nav nav-pills flex-column gap-2">
