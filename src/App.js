@@ -210,6 +210,22 @@ import Netemployee from "./Dotnet/Netemployee";
 import Javaemployee from "./Java/Javaemployee";
 import Nodeemployee from "./Node/Nodeemployee";
 import NextMultiLayout from "./Next/NextMultiLayout";
+import PythonProjectSetup from "./Python/Pythonprojectsetup";
+import Pythoncheckbox from "./Python/Pythoncheckbox";
+import Pythoncountry from "./Python/Pythoncountry";
+import Pythonlanguages from "./Python/Pythonlanguages";
+import Pythonstate from "./Python/Pythonstate";
+import Pythondistrict from "./Python/Pythondistrict";
+import Pythonimageupload from "./Python/Pythonimageupload";
+import Pythonradiobutton from "./Python/Pythonradiobutton";
+import Pythonsearching from "./Python/Pythonsearching";
+import Pythonpagination from "./Python/Pythonpagination";
+import Pythonexportcsv from "./Python/Pythonexportcsv";
+import Pythonmultiselectdropdown from "./Python/Pythonmultiselectdropdown";
+import Pythonjwtauth from "./Python/Pythonjwtauth";
+import Pythonquestions from "./Python/Pythonquestions";
+import Pythongoogleauth from "./Python/Pythongoogleauth";
+import Pythonfacebookauth from "./Python/Pythonfacebookauth";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -301,6 +317,29 @@ function App() {
             <Route path="/netradiobutton" element={<Netradiobutton />} />
             <Route path="/netsearching" element={<Netsearching />} />
             <Route path="/netquestions" element={<Netquestions />} />
+
+            <Route path="/pythonprojectsetup" element={<PythonProjectSetup />} />
+            <Route path="/pythonlanguages" element={<Pythonlanguages />} />
+            <Route path="/pythoncountry" element={<Pythoncountry />} />
+            <Route path="/pythondistrict" element={<Pythondistrict />} />
+            <Route path="/pythonstate" element={<Pythonstate />} />
+            <Route path="/pythonemployee" element={<Netemployee />} />
+            <Route path="/pythoncheckbox" element={<Pythoncheckbox />} />
+            <Route path="/pythoncqrsdesignpattern" element={<Netcqrsdesignpattern />} />
+            <Route path="/pythonrepositorydesignpattern" element={<Netrepositorydesignpattern />} />            
+            <Route path="/pythonfacebookauth" element={<Pythonfacebookauth />} />
+            <Route path="/pythongoogleauth" element={<Pythongoogleauth />} />
+            <Route path="/pythonimageupload" element={<Pythonimageupload />} />
+            <Route path="/pythonjwtauth" element={<Pythonjwtauth />} />
+            <Route path="/pythonlogger" element={<Netlogger />} />
+            <Route path="/pythonmicroservices" element={<Netmicroservices />} />
+            <Route path="/pythonmultiselectdropdown" element={<Pythonmultiselectdropdown />} />
+            <Route path="/pythononionarchitecture" element={<Netonionarchitecture />} />
+            <Route path="/pythonpagination" element={<Pythonpagination />} />
+            <Route path="/pythonexportcsv" element={<Pythonexportcsv />} />
+            <Route path="/pythonradiobutton" element={<Pythonradiobutton />} />
+            <Route path="/pythonsearching" element={<Pythonsearching />} />
+            <Route path="/pythonquestions" element={<Pythonquestions />} />            
 
             <Route path="/javaprojectsetup" element={<Javaprojectsetup />} />
             <Route path="/javalanguages" element={<Javalanguages />} />

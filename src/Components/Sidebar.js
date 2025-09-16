@@ -112,6 +112,32 @@ style={{
             </>
           )}
 
+          {activeMenu === "Python" && (
+            <>
+            <SidebarButton to="/pythonprojectsetup" icon="bi-calendar-check" label="Python Project Setup" />
+            <SidebarButton to="/pythonlanguages" icon="bi-ui-checks-grid" label="Python Language" />
+            <SidebarButton to="/pythoncountry" icon="bi-ui-checks-grid" label="Python Country" />
+            <SidebarButton to="/pythonstate" icon="bi-caret-down-square" label="Python State" />
+            <SidebarButton to="/pythondistrict" icon="bi-diagram-3" label="Python District" />
+            <SidebarButton to="/pythonimageupload" icon="bi-file-image" label="Python Image Upload" />
+            <SidebarButton to="/pythonradiobutton" icon="bi-record-circle" label="Python Radio Button" />
+            <SidebarButton to="/pythonsearching" icon="bi-search" label="Python Searching" />
+            <SidebarButton to="/pythonpagination" icon="bi-list-nested" label="Python Pagination" />
+            <SidebarButton to="/pythonexportcsv" icon="bi-list-nested" label="Python Export CSV" />
+            <SidebarButton to="/pythoncheckbox" icon="bi-check-square" label="Python Checkbox" />
+            <SidebarButton to="/pythonmultiselectdropdown" icon="bi-check2-square" label="Python Multi Select Dropdown" />
+            <SidebarButton to="/pythonjwtauth" icon="bi-shield-lock" label="Python JWT Auth" />
+            <SidebarButton to="/pythongoogleauth" icon="bi-google" label="Python Google Auth" />
+            <SidebarButton to="/pythonfacebookauth" icon="bi-facebook" label="Python Facebook Auth" />
+            <SidebarButton to="/pythononionarchitecture" icon="bi-layers" label="Python Onion Architecture" />
+            <SidebarButton to="/pythonlogger" icon="bi-terminal" label="Python Logger" />
+            <SidebarButton to="/pythonmicroservices" icon="bi-boxes" label="Python Microservices" />
+            <SidebarButton to="/pythoncqrsdesignpattern" icon="bi-diagram-3-fill" label="Python CQRS Design Pattern" />
+            <SidebarButton to="/pythonrepositorydesignpattern" icon="bi-diagram-3-fill" label="Python Repository Design Pattern" />
+            <SidebarButton to="/pythonquestions" icon="bi-calendar-check" label="Python Questions" />
+            </>
+          )}
+
           {activeMenu === "Springboot" && (
             <>
             <SidebarButton to="/javaprojectsetup" icon="bi-calendar-check" label="Java Project Setup" />
