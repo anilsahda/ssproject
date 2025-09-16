@@ -19,7 +19,7 @@ function Sidebar({ activeMenu }) {
   className="maxHeight"
 style={{
       width: "250px",
-      height: "100vh", // full viewport height
+      height: "90vh", // full viewport height
       position: "fixed", // make it sticky
       top: 100,
       left: 0,
