@@ -1,13 +1,8 @@
+import { useState } from 'react';
+
 function Sqlquestions() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-
-      {/* Header */}
-      <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">50 Hot SQL Interview Questions with Examples</h1>
-        <p className="text-gray-500 text-xs mt-1">All questions are in <strong>bold</strong> with answers and examples for better understanding.</p>
-      </header>
-
       <section className="space-y-6">
         <Question q="1. What is SQL?" a="SQL (Structured Query Language) is used to interact with relational databases for storing, updating, and retrieving data." example={`-- Retrieve all students\nSELECT * FROM Student;`} />
         <Question q="2. Types of SQL commands?" a="SQL commands are categorized into DDL, DML, DCL, and TCL." example={`-- DDL: CREATE TABLE\nCREATE TABLE Student(StudentID INT PRIMARY KEY, StudentName NVARCHAR(100));\n-- DML: INSERT INTO\nINSERT INTO Student VALUES(1,'Anil');\n-- DCL: GRANT\nGRANT SELECT ON Student TO User1;\n-- TCL: COMMIT\nCOMMIT;`} />
@@ -64,14 +59,28 @@ function Sqlquestions() {
   );
 }
 
-/* Reusable Question Component */
+/* Reusable Question Component with Toggle */
 function Question({ q, a, example }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-      <p className="font-semibold text-gray-700">{q}</p>
-      <p className="mt-1 text-gray-800">{a}</p>
-      {example && (
-        <pre className="bg-gray-100 p-2 mt-2 rounded overflow-x-auto text-[12px]">{example}</pre>
+    <div className="bg-white p-1 rounded-lg">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="btn btn-primary focus:outline-none"
+      >
+        {q}
+      </button>
+
+      {isOpen && (
+        <div className="mt-2 text-gray-800">
+          <p>{a}</p>
+          {example && (
+            <pre className="bg-gray-100 p-2 mt-2 rounded overflow-x-auto text-[12px] whitespace-pre-wrap">
+              {example}
+            </pre>
+          )}
+        </div>
       )}
     </div>
   );

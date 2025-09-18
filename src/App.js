@@ -226,6 +226,7 @@ import Pythonjwtauth from "./Python/Pythonjwtauth";
 import Pythonquestions from "./Python/Pythonquestions";
 import Pythongoogleauth from "./Python/Pythongoogleauth";
 import Pythonfacebookauth from "./Python/Pythonfacebookauth";
+import Netaspnetquestion from "./Dotnet/Netaspnetquestion";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -317,7 +318,7 @@ function App() {
             <Route path="/netradiobutton" element={<Netradiobutton />} />
             <Route path="/netsearching" element={<Netsearching />} />
             <Route path="/netquestions" element={<Netquestions />} />
-
+            <Route path="/netaspnetquestion" element={<Netaspnetquestion />} />
             <Route path="/pythonprojectsetup" element={<PythonProjectSetup />} />
             <Route path="/pythonlanguages" element={<Pythonlanguages />} />
             <Route path="/pythoncountry" element={<Pythoncountry />} />

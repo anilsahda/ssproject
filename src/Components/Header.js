@@ -10,9 +10,6 @@ function Header({ setActiveMenu }) {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-0 d-flex gap-2 align-items-center flex-wrap">
             <li className="nav-item">
-              <a  className="btn btn-sm btn-projects nav-btn" href="/QA.html" target="_blank" rel="noopener noreferrer">QA</a>
-            </li>
-            <li className="nav-item">
               <button className="btn btn-sm btn-projects nav-btn" onClick={() => setActiveMenu("Project")}>Projects</button>
             </li>
             <li className="nav-item">
