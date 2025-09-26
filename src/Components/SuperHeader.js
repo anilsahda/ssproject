@@ -220,7 +220,7 @@ useEffect(() => {
           <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "1000px" }} onClick={(e) => e.stopPropagation()}>
             <div className="modal-content shadow rounded-3">
               <div className="modal-header bg-primary text-white">
-                <h3 className="fw-bold display-7 w-100 text-center m-0">🚀 2 - 4 Months Job-Oriented Program</h3>
+                <h3 className="fw-bold display-7 w-100 text-center m-0">🚀 6-Months Software Engineer's Intern | Probation Program</h3>
                 <button type="button" className="btn-close btn-close-white" onClick={() => setShowIntern(false)}></button>
               </div>
               <div className="modal-body">
@@ -232,126 +232,130 @@ useEffect(() => {
                       <span className="badge bg-primary fs-6 me-2">DevOps Engineer</span>
                       <span className="badge bg-primary fs-6">AI-ML Engineer</span>
                     </div>
-                  <p className="text-muted mt-4">
-                    A career-focused program to make you <strong>industry-ready</strong> with hands-on experience in <strong>Fullstack, DevOps & Cloud Engineering</strong>.
-                  </p>
                 </div>
                   <div className="container">
-                         <hr className="w-25 mx-auto my-4 border-2 border-primary" />
+                    <div className="row justify-content-center mt-5">
+                      <div className="col-lg-10">
+                        <h4 className="fw-bold text-primary mb-3 text-center">📌 Program Structure</h4>
+                        <div className="table-responsive">
+                          <table className="table table-bordered table-hover align-middle text-center shadow-sm rounded">
+                            <thead className="table-primary">
+                              <tr>
+                                <th>Mode</th>
+                                <th>Designation</th>
+                                <th>Salary</th>
+                                <th style={{ width: '25%' }}>Benefits & Facilities</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>🌐 Work From Home</td>
+                                <td>🧑‍💻 Intern Developer<br />(Intern)</td>
+                                <td>❌ No Salary</td>
+                                <td className="text-start">
+                                  <ul className="list-unstyled mb-0">
+                                    <li>✅ Internship Letter</li>
+                                  </ul>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>🏢 Work From Office</td>
+                                <td>💼 Software Engineer (Probation)</td>
+                                <td>💰 ₹4,000 – ₹12,000 / month</td>
+                                <td className="text-start">
+                                  <ul className="list-unstyled mb-0">
+                                    <li>✅ Appointment Letter</li>
+                                    <li>✅ Experience Letter</li>
+                                    <li>✅ Relieving Letter</li>
+                                    <li>✅ Salary Certificate</li>
+                                    <li>✅ Salary Account</li>
+                                  </ul>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                      <hr className="w-25 mx-auto my-4 border-2 border-primary" />
                         <div className="row justify-content-center mb-5">
                           <div className="col-md-10">
                             <div className="card shadow-lg border-0 p-4 rounded-4">
-                              <h4 className="fw-bold mb-3 text-primary">💡 What You'll Learn</h4>
                               <ul className="list-group list-group-flush fs-6">
                                 <li className="list-group-item py-3">
                                   🔧 <strong>Back-End Development :</strong> MERNStack | .NET Core | Spring Boot | Python
                                 </li>
                                 <li className="list-group-item py-3">
-                                  🧠 <strong>Object-Oriented Programming : </strong>Classes, Inheritance, Polymorphism, Encapsulation
+                                  🗃️ <strong>Database & Cloud :</strong> SQL Server, MySQL, PostgreSQL, MongoDB, DynamoDB, AWS, Azure
                                 </li>
                                 <li className="list-group-item py-3">
-                                  🗃️ <strong>Databases</strong> SQL Server, MySQL, PostgreSQL, MongoDB, DynamoDB
-                                </li>
-                                <li className="list-group-item py-3">
-                                  ☁️ <strong>Cloud Fundamentals : </strong>Hands-on with AWS / Azure / GCP + Project Deployment
-                                </li>
-                                <li className="list-group-item py-3">
-                                  🛠️ <strong>Live Industry Projects : </strong>Real-time projects | Git/GitHub | Agile Collaboration
-                                </li>
-                                <li className="list-group-item py-3">
-                                  📁 <strong>Professional Portfolio :</strong> Resume, GitHub, LinkedIn, Project Demos + Portfolio Website
-                                </li>
-                                <li className="list-group-item py-3">
-                                  🎤 <strong>Mock Interviews & Career Guidance</strong>
+                                  🛠️ <strong>Live Industry Projects : </strong>Real-time projects | Git/GitHub | Agile Collaboration | Portfolio
                                 </li>
                               </ul>
                             </div>
                           </div>
                         </div>
 
-      {/* Why Join */}
-      <div className="row mb-5">
-        <div className="col-md-12 text-center mb-4">
-          <h2 className="fw-bold text-primary">✨ Why Join This Training?</h2>
-          <p className="text-muted fs-6 text-center">
-            A program designed to transform <strong>freshers</strong> into{" "}
-            <strong>job-ready professionals</strong> with hands-on expertise.
-          </p>
-        </div>
+                    {/* Why Join */}
+                    <div className="row mb-5">
+                      <div className="col-md-12 text-center mb-4">
+                        <h2 className="fw-bold text-primary">✨ Why Join This Program?</h2>
+                        <p className="text-muted fs-6 text-center">
+                          A program designed to transform <strong>freshers</strong> into{" "}
+                          <strong>job-ready professionals</strong> with hands-on expertise.
+                        </p>
+                      </div>
 
-        {[
-          {
-            title: "💻 Hands-on Experience",
-            desc: (
-              <>
-                ✅ Work on Scratch Live Projects <br />
-                ✅ Work on Existing Live Projects <br />
-                ✅ Exposure to NoSQL & RDBMS <br />
-                ✅ Microservices Implementation <br />
-                ✅ Apply Design Patterns <br />
-                ✅ Onion / Clean Architecture <br />
-                ✅ Strong Confidence <br />
-                ✅ Agile Methodlogy <br />
-                ✅ AWS and Azure Services <br />
-                ✅ Version Control Github
-              </>
-            ),
-          },
-          {
-            title: "🧑‍🏫 Work From Office",
-            desc: (
-              <>
-                ✅ Eligible to join full-time within 4 months at Shiwansh Solutions <br />
-                ✅ Opportunity to work directly with senior developers <br />
-                ✅ Direct company exposure with office culture, teamwork and daily stand-ups <br />
-                ✅ Immediate guidance and feedback for faster learning and professional growth <br />
-              </>
-            ),
-          },
-          {
-            title: "🎯 Work From Home",
-            desc: (
-              <>
-                ✅ Join anytime after 3 months on the basis of performance reviews and interviews <br />
-                ✅ Flexible working option for those who prefer remote learning and development <br />
-                ✅ Gain virtual project exposure while collaborating with teams <br />
-                ✅ Opportunity to join full-time remote roles at Shiwansh Solution<br />
-              </>
-            ),
-          },
-        ].map((item, index) => (
-          <div className="col-md-4" key={index}>
-            <div className="card shadow-sm h-100 p-4 border-0 rounded-4 hover-shadow">
-              <h5 className="fw-bold">{item.title}</h5>
-              <p className="text-muted">{item.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-                          {/* Program Info */}
-                          <div className="row justify-content-center">
-                            <div className="col-md-8">
-                              <div className="card shadow-lg border-0 p-4 rounded-4 text-center bg-light">
-                                <h4 className="fw-bold mb-3 text-primary">📌 Program Details</h4>
-                                <ul className="list-group list-group-flush fs-6">
-                                  <li className="list-group-item py-3">
-                                    🕒 <strong>Duration:</strong> 2 - 4 Months
-                                  </li>
-                                  <li className="list-group-item py-3">
-                                    💻 <strong>Mode:</strong> Remote | Hybrid | Office
-                                  </li>
-                                  <li className="list-group-item py-3">
-                                    📅 <strong>Schedule:</strong> Monday – Friday
-                                  </li>
-                                  <li className="list-group-item py-3">
-                                    ⏰ <strong>Timings:</strong> 10:00 AM – 6:00 PM
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
+                      {[
+                        {
+                          title: "💻 Hands-on Experience",
+                          desc: (
+                            <>
+                              ✅ Work on Scratch Live Projects <br />
+                              ✅ Work on Existing Live Projects <br />
+                              ✅ Exposure to NoSQL & RDBMS <br />
+                              ✅ Microservices Implementation <br />
+                              ✅ Apply Design Patterns <br />
+                              ✅ Onion / Clean Architecture <br />
+                              ✅ Strong Confidence <br />
+                              ✅ Agile Methodlogy <br />
+                              ✅ AWS and Azure Services <br />
+                              ✅ Version Control Github
+                            </>
+                          ),
+                        },
+                        {
+                          title: "🧑‍🏫 Work From Office",
+                          desc: (
+                            <>
+                              ✅ You can be eligible to join full-time at Shiwansh Solutions <br />
+                              ✅ Opportunities to work directly with senior developers <br />
+                              ✅ Direct company exposure with office culture, teamwork and daily stand-ups <br />
+                              ✅ Immediate guidance & feedback for faster professional growth <br />                
+                            </>
+                          ),
+                        },
+                        {
+                          title: "🎯 Work From Home",
+                          desc: (
+                            <>
+                              ✅ Direct joining anytime on the basis of performance & subsequent interviews<br />
+                              ✅ Flexible working option for those who prefer remote learning and development <br />
+                              ✅ Gain virtual project exposure while collaborating with teams <br />
+                              ✅ Opportunity to join full-time remote roles at Shiwansh Solution<br />
+                            </>
+                          ),
+                        },
+                      ].map((item, index) => (
+                        <div className="col-md-4" key={index}>
+                          <div className="card shadow-sm h-100 p-4 border-0 rounded-4 hover-shadow">
+                            <h5 className="fw-bold">{item.title}</h5>
+                            <p className="text-muted">{item.desc}</p>
                           </div>
                         </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
