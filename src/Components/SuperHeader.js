@@ -220,7 +220,7 @@ useEffect(() => {
           <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "1000px" }} onClick={(e) => e.stopPropagation()}>
             <div className="modal-content shadow rounded-3">
               <div className="modal-header bg-primary text-white">
-                <h3 className="fw-bold display-7 w-100 text-center m-0">🚀 6-Months Software Engineer's Intern | Probation Program</h3>
+                <h3 className="fw-bold display-7 w-100 text-center m-0">🚀 6-Months Software Engineer's Probation Program</h3>
                 <button type="button" className="btn-close btn-close-white" onClick={() => setShowIntern(false)}></button>
               </div>
               <div className="modal-body">
@@ -236,7 +236,6 @@ useEffect(() => {
                   <div className="container">
                     <div className="row justify-content-center mt-5">
                       <div className="col-lg-10">
-                        <h4 className="fw-bold text-primary mb-3 text-center">📌 Program Structure</h4>
                         <div className="table-responsive">
                           <table className="table table-bordered table-hover align-middle text-center shadow-sm rounded">
                             <thead className="table-primary">
