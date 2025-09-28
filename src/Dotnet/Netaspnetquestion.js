@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../Netaspnetquestion.css';
+import '../index.css';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 const questions = [

@@ -49,7 +49,10 @@ function Header({ setActiveMenu }) {
               <button className="btn btn-sm nav-btn btn-primary" onClick={() => setActiveMenu("Next")}>Next</button>
             </li>
             <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-danger" onClick={() => setActiveMenu("Angular")}>Angular</button>
+              <button className="btn btn-sm nav-btn btn-dark" onClick={() => setActiveMenu("Angular")}>Angular</button>
+            </li>
+            <li className="nav-item">
+              <button className="btn btn-sm nav-btn btn-danger" onClick={() => setActiveMenu("MessageBroker")}>Message Broker</button>
             </li>
           </ul>
         </div>

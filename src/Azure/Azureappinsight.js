@@ -8,7 +8,7 @@ export default function Azureappinsight() {
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`Azure Application Insights is an Application Performance Management (APM) service.
-It helps you monitor live applications, detect performance issues, track usage,
+It help us to monitor live applications, detect performance issues, track usage,
 and diagnose errors with powerful analytics.`}
           </code>
         </pre>

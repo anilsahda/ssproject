@@ -3,51 +3,27 @@ import React from "react";
 function Sqlindexing() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-
-      {/* Header */}
-      <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">SQL Server Indexing</h1>
-        <p className="text-gray-500 text-xs mt-1">
-          Indexes in SQL Server improve query performance by allowing faster data retrieval.
-          They work like a book index, helping the database locate rows efficiently. 
-          Proper indexing can significantly enhance performance for large tables.
-        </p>
-      </header>
-
-      {/* Introduction */}
-      <Section title="Introduction to Indexing" color="text-green-600">
-        <p>
-          Indexes speed up data retrieval from a table at the cost of additional storage and slower writes. 
-          Think of it as a book index: it points directly to the page where information is located instead of scanning the entire book.
-        </p>
-      </Section>
-
-      {/* Types of Indexes */}
-      <Section title="Types of Indexes" color="text-orange-600">
-        <ul className="list-disc ml-6 space-y-1">
-          <li>
-            <strong>Clustered Index:</strong> Determines the physical order of data in a table. Each table can have only one clustered index.
-          </li>
-          <li>
-            <strong>Non-Clustered Index:</strong> A separate structure from the table that points to the physical rows. A table can have multiple non-clustered indexes.
-          </li>
-          <li>
-            <strong>Unique Index:</strong> Ensures the uniqueness of values in one or more columns.
-          </li>
-          <li>
-            <strong>Composite Index:</strong> An index on multiple columns to optimize multi-column searches.
-          </li>
-          <li>
-            <strong>Full-Text Index:</strong> Specialized index used for searching text-based data efficiently.
-          </li>
-        </ul>
-      </Section>
+        <p className="text-gray-500 text-xs mt-1"><b>Indexing</b> is a data structure that helps us to improve the speed of retrieving specific data from tables.</p>
+        <p><strong>Clustered Index:</strong> Cluster Index is a type of index that determines the physical order in which the actual data will be stored in a table. When Clustered Index is apply on a specific column during the creation of new table the actual data is inserted into that column in a sorted order. This helps us to retrieve data faster because data is stored in a specific order. Cluster Index can have only one in a table. A clustered index can be created on a single column or multiple columns. In most databases the primary key creates a clustered index by default.</p>
+        <p><b>When to Use Clustered Indexes?</b><br />
+✅When frequently search for ranges of value like between date<br />
+✅When query use ORDER BY or sorting on a particular column.<br />
+✅When data retrieval speed is important for specific column<br />
+When NOT to Use Clustered Indexes?<br />
+❌When frequently INSERT, UPDATE or DELETE operations occur on indexed column as reordering data can be expensive.<br />
+❌When deal with non-sequential data like GUID as primary key</p>
+        <p><strong>Non-Clustered Index:</strong> doesn't sort physical data like Cluster Index. It means it doesn't affect the physical order of data and creates a separate structure that maintains pointer or reference to the actual data. When we define Non-Cluster Index it creates a special table which stores the copy of indexed columns along with a pointer that refers to the location of the actual data in the table. We can create more than one Non-Cluster Index. We can create maximum 999 Non-Clustered Index.</p>
+        <p><b>When to Use Non-Clustered Indexes?</b></p>
+        <p>✅When filter by a column that is not the primary key like email<br />
+✅When multiple frequently searched columns as we can have multiple non-clustered indexes<br />
+✅When we need to improve JOIN|WHERE clause performance<br />
+When NOT to Use Non-Clustered Indexes?<br />
+❌When frequently INSERT, UPDATE, DELETE operations occurs as maintaining indexes increases overhead<br />
+❌When column is boolean like isActive as indexing it provides little benefit.<br />
+❌When excessive indexes increase storage and slow down write</p>
 
       {/* Creating Indexes */}
       <Section title="Creating Indexes" color="text-blue-600">
-        <p>
-          Indexes can be created on one or more columns. Clustered indexes affect physical row order; non-clustered indexes create a separate lookup structure.
-        </p>
         <CodeBlock>
 {`-- Create Clustered Index
 CREATE CLUSTERED INDEX IDX_StudentID
@@ -55,15 +31,7 @@ ON Student(Id);
 
 -- Create Non-Clustered Index
 CREATE NONCLUSTERED INDEX IDX_StudentName
-ON Student(FirstName);
-
--- Create Unique Index
-CREATE UNIQUE INDEX IDX_UniqueEmail
-ON Student(Email);
-
--- Create Composite Index
-CREATE NONCLUSTERED INDEX IDX_Student_District
-ON Student(FirstName, DistrictId);`}
+ON Student(FirstName);`}
         </CodeBlock>
       </Section>
 
@@ -86,10 +54,7 @@ DROP INDEX IDX_StudentName ON Student;`}
         </p>
         <CodeBlock>
 {`-- Example: Query optimized by index
-SELECT FirstName, Email
-FROM Student
-WHERE DistrictId = 1
-ORDER BY FirstName;`}
+SELECT FirstName, Email FROM Student WHERE DistrictId = 1 ORDER BY FirstName;`}
         </CodeBlock>
       </Section>
 

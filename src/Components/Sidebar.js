@@ -215,10 +215,11 @@ style={{
               <SidebarButton to="/sqlacid" icon="bi-shield-check" label="SQL ACID" />
               <SidebarButton to="/sqlindexing" icon="bi-list-nested" label="SQL Indexing" />
               <SidebarButton to="/sqlnormalization" icon="bi-sliders" label="SQL Normalization" />
-              <SidebarButton to="/sqlqueriescommands" icon="bi-terminal" label="SQL Queries Commands" />
+              <SidebarButton to="/sqlqueriescommands" icon="bi-terminal" label="SQL Commands" />
               <SidebarButton to="/sqlprofiler" icon="bi-graph-up" label="SQL Profiler" />
               <SidebarButton to="/sqltrigger" icon="bi-bell" label="SQL Trigger" />
               <SidebarButton to="/sqlcursor" icon="bi-arrow-left-right" label="SQL Cursor" />
+              <SidebarButton to="/sqlrelationships" icon="bi-arrow-left-right" label="SQL Relationships" />
               <SidebarButton to="/sqlquestions" icon="bi-question-circle" label="SQL Questions" />
             </>
           )}
@@ -333,6 +334,15 @@ style={{
             <SidebarButton to="/angularjwtauth" icon="bi-shield-lock" label="Angular JWT Auth" />
             <SidebarButton to="/angularlocalstorage" icon="bi-layers" label="Angular Local Storage" />
             <SidebarButton to="/angularquestions" icon="bi-calendar-check" label="Angular Questions" />
+            </>
+          )}
+
+          {activeMenu === "MessageBroker" && (
+            <>
+            <SidebarButton to="/kafka" icon="bi-calendar-check" label="Apache Kafka" />
+            <SidebarButton to="/rabbitmq" icon="bi-ui-checks-grid" label="RabbitMQ" />
+            <SidebarButton to="/azureservicebus" icon="bi-ui-checks-grid" label="Azure Service Bus" />
+            <SidebarButton to="/sqs" icon="bi-caret-down-square" label="Simple Queue Services" />
             </>
           )}
 

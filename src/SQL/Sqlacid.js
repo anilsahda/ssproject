@@ -6,19 +6,15 @@ function Sqlacid() {
 
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">SQL ACID Properties</h1>
         <p className="text-gray-500 text-xs mt-1">
-          ACID properties are the foundation of reliable database transactions. 
-          They ensure that database operations are processed in a safe, consistent, and predictable way.
-          ACID stands for <strong>Atomicity, Consistency, Isolation, and Durability</strong>.
+          <b>ACID</b> is used to maintain the database consistency before and after a transaction. Transaction is a single logical unit which is used to modify the data through read write operations like insert, update, delete and retrieve the data.
         </p>
       </header>
 
       {/* Atomicity */}
       <Section title="Atomicity" color="text-green-600">
         <p>
-          It ensures that a transaction is treated as a single, indivisible unit of work. 
-          Either all steps succeed, or none are applied. This prevents situations where partial changes could corrupt the database.
+          Atomicity means a transaction can be treated as a single. Either all the operations will be completed successfully or nothing will be performed. Means If any part of the transaction fails, the entire transaction is rolled back in original state.
         </p>
         <p>
           For example, when transferring money between accounts, both the debit and credit operations must succeed together. 
@@ -36,10 +32,7 @@ ROLLBACK; -- or COMMIT if both succeed`}
 
       {/* Consistency */}
       <Section title="Consistency" color="text-orange-600">
-        <p>
-          It guarantees that a transaction moves the database from one valid state to another. 
-          All data rules, constraints, and relationships are preserved. The database never enters an invalid state.
-        </p>
+        <p>Consistency means a transaction takes the database from one consistent state to another consistent state. Database should be in consistent state before and after the transaction executed.</p>
         <p>
           For instance, foreign key and unique constraints ensure that references and uniqueness are maintained.
         </p>
@@ -52,13 +45,7 @@ INSERT INTO Orders(OrderID, CustomerID) VALUES (101, 5);
 
       {/* Isolation */}
       <Section title="Isolation" color="text-blue-600">
-        <p>
-          It ensures that concurrent transactions do not interfere with each other. 
-          Each transaction sees a consistent view of the data, unaffected by others until committed.
-        </p>
-        <p>
-          Isolation levels control how and when changes made by one transaction become visible to others. Common levels include Read Uncommitted, Read Committed, Repeatable Read, and Serializable.
-        </p>
+        <p>Isolation means multiple transactions can execute concurrently without interfaring with each other. Each transaction must be isolated from other transactions until it's completed.</p>
         <CodeBlock>
 {`-- Isolation Example: Preventing dirty reads
 SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
@@ -71,13 +58,7 @@ COMMIT;`}
 
       {/* Durability */}
       <Section title="Durability" color="text-purple-600">
-        <p>
-          It ensures that once a transaction is committed, its changes are permanent. 
-          Even if the system crashes immediately after, committed data remains intact.
-        </p>
-        <p>
-          Databases achieve durability by writing data to persistent storage and using transaction logs for recovery.
-        </p>
+        <p>Durability means the data remains consistent and accurate, even system failure or crash. It guarantees that committed transactions are durable and will be recovered without data loss.</p>
         <CodeBlock>
 {`-- Durability Example
 BEGIN TRANSACTION;

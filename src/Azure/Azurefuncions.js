@@ -6,8 +6,8 @@ export default function Azurefuncions() {
       <section>
         <b>1. ✅ What is Azure Functions?</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>{`Azure Functions is a serverless compute service that lets you run event-driven code
-without managing infrastructure. You pay only for the execution time your code uses.`}
+          <code>{`Azure Functions is a serverless compute service that is used to run event-driven code
+without managing infrastructure. We pay only for the execution time of our code uses.`}
           </code>
         </pre>
       </section>

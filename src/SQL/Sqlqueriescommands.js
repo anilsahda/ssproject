@@ -1,16 +1,7 @@
 function Sqlqueriescommands() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
-
-      {/* Header */}
-      <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">SQL Queries & Commands</h1>
-        <p className="text-gray-500 text-xs mt-1">SQL is used to manage, manipulate, and query relational databases. SQL commands are categorized into <strong>DDL, DML, DCL, and TCL</strong>. Proper understanding of these commands is essential for database design, management, and querying.</p>
-      </header>
-
-      {/* Introduction */}
-      <Section title="Introduction to SQL Commands" color="text-green-600">
-        <p>SQL commands can be grouped as follows:
+        <p><b>SQL Command</b> is a standard programming language used to manage and manipulate relational databases.SQL allows you to perform a variety of tasks, such as retrieving, inserting, updating, and deleting data, as well as defining and modifying database structures.SQL works on relational databases, where data is organized in tables, and each table consists of rows and columns.
           <ul className="list-disc ml-6 mt-1">
             <li><strong>DDL (Data Definition Language):</strong> Define or modify database structure.</li>
             <li><strong>DML (Data Manipulation Language):</strong> Manage write operations on data inside tables.</li>
@@ -19,9 +10,7 @@ function Sqlqueriescommands() {
             <li><strong>TCL (Transaction Control Language):</strong> Manage database transactions.</li>
           </ul>
         </p>
-      </Section>
 
-      {/* DDL - Data Definition Language */}
       <Section title="DDL (Data Definition Language)" color="text-orange-600">
         <p>DDL commands are used to create, alter, and drop databases and tables. These commands define the schema of the database.</p>
         <CodeBlock>

@@ -3,25 +3,8 @@ import React from "react";
 function Sqlnormalization() {
   return (
     <div className="p-6 space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen text-sm text-gray-800 font-sans">
+      <p className="text-gray-500 text-xs mt-1"><b>Normalization</b> is the way of organizing structured data in the database efficiently. It includes the creation of tables, establishing relationships between them, and defining rules for those relationships. Inconsistency and redundancy can be check based on these rules.</p>
 
-      {/* Header */}
-      <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">SQL Normalization</h1>
-        <p className="text-gray-500 text-xs mt-1">
-          Normalization is the process of organizing data in a database to reduce redundancy, avoid anomalies, and improve data integrity. 
-          It involves dividing a database into multiple related tables and defining relationships using primary and foreign keys.
-        </p>
-      </header>
-
-      {/* Introduction */}
-      <Section title="Introduction to Normalization" color="text-green-600">
-        <p>
-          The main goal of normalization is to structure a database efficiently. By eliminating redundant data and ensuring that each piece of information is stored in one place, 
-          normalization makes the database easier to maintain and query.
-        </p>
-      </Section>
-
-      {/* Benefits */}
       <Section title="Benefits of Normalization" color="text-orange-600">
         <ul className="list-disc ml-6 space-y-1">
           <li>Reduces data redundancy and avoids duplicate data storage.</li>
@@ -36,7 +19,7 @@ function Sqlnormalization() {
       <Section title="Normal Forms" color="text-blue-600">
         <ul className="list-disc ml-6 space-y-1">
           <li>
-            <strong>1st Normal Form (1NF):</strong> Each column contains atomic values; no repeating groups or arrays.
+            <strong>1st Normal Form (1NF):</strong> A relation is in first normal form if every attribute in that relation is a single-valued attribute. If a relation contains a composite or multi-valued attribute, it violates the first normal form.
           </li>
           <li>
             <strong>2nd Normal Form (2NF):</strong> Must satisfy 1NF, and all non-key columns must be fully dependent on the primary key.

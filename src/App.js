@@ -227,6 +227,11 @@ import Pythonquestions from "./Python/Pythonquestions";
 import Pythongoogleauth from "./Python/Pythongoogleauth";
 import Pythonfacebookauth from "./Python/Pythonfacebookauth";
 import Netaspnetquestion from "./Dotnet/Netaspnetquestion";
+import Kafka from "./MessageBroker/Kafka";
+import RabbitMQ from "./MessageBroker/RabbitMQ";
+import SQS from "./MessageBroker/SQS";
+import AzureServiceBus from "./MessageBroker/AzureServiceBus";
+import Relationships from "./SQL/Relationships.js";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -408,6 +413,7 @@ function App() {
             <Route path="/sqlprofiler" element={<Sqlprofiler />} />
             <Route path="/sqltrigger" element={<Sqltrigger />} />
             <Route path="/sqlcursor" element={<Sqlcursor />} />
+            <Route path="/sqlrelationships" element={<Relationships />} />
             <Route path="/sqlquestions" element={<Sqlquestions />} />
 
             <Route path="/awsaccountsetup" element={<Awsaccountsetup />} />
@@ -498,6 +504,12 @@ function App() {
             <Route path="/angularjwtauth" element={<Angularjwtauth />} />
             <Route path="/angularlocalstorage" element={<Angularlocalstorage />} />
             <Route path="/angularquestions" element={<Angularquestions />} />
+
+            {/* Message Broker */}
+            <Route path="/kafka" element={<Kafka />} />
+            <Route path="/rabbitmq" element={<RabbitMQ />} />
+            <Route path="/sqs" element={<SQS />} />
+            <Route path="/azureservicebus" element={<AzureServiceBus />} />            
           </Routes>
         </div>
       </div>
