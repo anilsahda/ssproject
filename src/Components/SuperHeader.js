@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { FaUser, FaSignInAlt, FaGoogle, FaFacebookF, FaTwitter } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import '../hiring.css';
 
 function SuperHeader() {
   const [showIntern, setShowIntern] = useState(false);
@@ -219,141 +220,74 @@ useEffect(() => {
         <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.7)' }} onClick={() => setShowIntern(false)}>
           <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "1000px" }} onClick={(e) => e.stopPropagation()}>
             <div className="modal-content shadow rounded-3">
-              <div className="modal-header bg-primary text-white">
-                <h3 className="fw-bold display-7 w-100 text-center m-0">🚀 6-Months Software Engineer's Probation Program</h3>
-                <button type="button" className="btn-close btn-close-white" onClick={() => setShowIntern(false)}></button>
-              </div>
               <div className="modal-body">
                 <div className="container">
-                  {/* Header */}
-                  <div className="text-center">
-                    <div className="mt-3">
-                      <span className="badge bg-primary fs-6 me-2">Fullstack Engineer</span>
-                      <span className="badge bg-primary fs-6 me-2">DevOps Engineer</span>
-                      <span className="badge bg-primary fs-6">AI-ML Engineer</span>
-                    </div>
-                </div>
+                <header className="header">
+                    <h1>🚀 Hiring: Junior Software Engineers</h1>
+                    <p style={{ textAlign: 'center' }}>Join our Probation Program and work on Live Projects</p>
+                  </header>
+
                   <div className="container">
-                    <div className="row justify-content-center mt-5">
-                      <div className="col-lg-10">
-                        <div className="table-responsive">
-                          <table className="table table-bordered table-hover align-middle text-center shadow-sm rounded">
-                            <thead className="table-primary">
-                              <tr>
-                                <th>Mode</th>
-                                <th>Designation</th>
-                                <th>Salary</th>
-                                <th style={{ width: '25%' }}>Benefits & Facilities</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>🌐 Work From Home</td>
-                                <td>🧑‍💻 Intern Developer<br />(Intern)</td>
-                                <td>❌ No Salary</td>
-                                <td className="text-start">
-                                  <ul className="list-unstyled mb-0">
-                                    <li>✅ Internship Letter</li>
-                                  </ul>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>🏢 Work From Office</td>
-                                <td>💼 Software Engineer (Probation)</td>
-                                <td>💰 ₹4,000 – ₹12,000 / month</td>
-                                <td className="text-start">
-                                  <ul className="list-unstyled mb-0">
-                                    <li>✅ Appointment Letter</li>
-                                    <li>✅ Experience Letter</li>
-                                    <li>✅ Relieving Letter</li>
-                                    <li>✅ Salary Certificate</li>
-                                    <li>✅ Salary Account</li>
-                                  </ul>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                      <hr className="w-25 mx-auto my-4 border-2 border-primary" />
-                        <div className="row justify-content-center mb-5">
-                          <div className="col-md-10">
-                            <div className="card shadow-lg border-0 p-4 rounded-4">
-                              <ul className="list-group list-group-flush fs-6">
-                                <li className="list-group-item py-3">
-                                  🔧 <strong>Back-End Development :</strong> MERNStack | .NET Core | Spring Boot | Python
-                                </li>
-                                <li className="list-group-item py-3">
-                                  🗃️ <strong>Database & Cloud :</strong> SQL Server, MySQL, PostgreSQL, MongoDB, DynamoDB, AWS, Azure
-                                </li>
-                                <li className="list-group-item py-3">
-                                  🛠️ <strong>Live Industry Projects : </strong>Real-time projects | Git/GitHub | Agile Collaboration | Portfolio
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
+                    <section>
+                      <h2>📍 Locations</h2>
+                      <p style={{ textAlign: 'center' }}><strong>Mohali</strong> & <strong>Dehradun</strong> (based on client/project requirements)</p>
+                      <p style={{ textAlign: 'center' }}><em>Note: Candidates may be relocated between branches during probation as per project needs.</em></p>
+                    </section>
 
-                    {/* Why Join */}
-                    <div className="row mb-5">
-                      <div className="col-md-12 text-center mb-4">
-                        <h2 className="fw-bold text-primary">✨ Why Join This Program?</h2>
-                        <p className="text-muted fs-6 text-center">
-                          A program designed to transform <strong>freshers</strong> into{" "}
-                          <strong>job-ready professionals</strong> with hands-on expertise.
-                        </p>
-                      </div>
+                    <section>
+                      <h2>💼 Role & Designation</h2>
+                      <p style={{ textAlign: 'center' }}><strong>Junior Software Engineer</strong> (Probation)</p>
+                    </section>
 
-                      {[
-                        {
-                          title: "💻 Hands-on Experience",
-                          desc: (
-                            <>
-                              ✅ Work on Scratch Live Projects <br />
-                              ✅ Work on Existing Live Projects <br />
-                              ✅ Exposure to NoSQL & RDBMS <br />
-                              ✅ Microservices Implementation <br />
-                              ✅ Apply Design Patterns <br />
-                              ✅ Onion / Clean Architecture <br />
-                              ✅ Strong Confidence <br />
-                              ✅ Agile Methodlogy <br />
-                              ✅ AWS and Azure Services <br />
-                              ✅ Version Control Github
-                            </>
-                          ),
-                        },
-                        {
-                          title: "🧑‍🏫 Work From Office",
-                          desc: (
-                            <>
-                              ✅ You can be eligible to join full-time at Shiwansh Solutions <br />
-                              ✅ Opportunities to work directly with senior developers <br />
-                              ✅ Direct company exposure with office culture, teamwork and daily stand-ups <br />
-                              ✅ Immediate guidance & feedback for faster professional growth <br />                
-                            </>
-                          ),
-                        },
-                        {
-                          title: "🎯 Work From Home",
-                          desc: (
-                            <>
-                              ✅ Direct joining anytime on the basis of performance & subsequent interviews<br />
-                              ✅ Flexible working option for those who prefer remote learning and development <br />
-                              ✅ Gain virtual project exposure while collaborating with teams <br />
-                              ✅ Opportunity to join full-time remote roles at Shiwansh Solution<br />
-                            </>
-                          ),
-                        },
-                      ].map((item, index) => (
-                        <div className="col-md-4" key={index}>
-                          <div className="card shadow-sm h-100 p-4 border-0 rounded-4 hover-shadow">
-                            <h5 className="fw-bold">{item.title}</h5>
-                            <p className="text-muted">{item.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                    <section>
+                      <h2>💸 Salary Structure</h2>
+                      <p style={{ textAlign: 'center' }}><strong>During Probation Period :</strong> ₹4k</p>
+                      <p style={{ textAlign: 'center' }}><strong>Post - Probation Salary :</strong> ₹12k</p>
+                      <p style={{ textAlign: 'center' }}><strong>Revised Salary After 6 Months :</strong>  ₹15k - 25k</p>
+                    </section>
+
+                    <section>
+                      <h2>📝 Appointment Process</h2>
+                      <p style={{ textAlign: 'center' }}>Appointment letter will be issued once candidates confirm their joining date & complete 1-week assessment test.</p>
+                    </section>
+
+                    <section>
+                      <h2>📊 Mode Comparison</h2>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Mode</th>
+                            <th>Designation</th>
+                            <th>Salary</th>
+                            <th>Benefits & Facilities</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>🌐 Work From Home</td>
+                            <td>🧑‍💻 Intern Developer<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Internship)</td>
+                            <td>❌ Unpaid</td>
+                            <td>✅ Internship Letter</td>
+                          </tr>
+                          <tr>
+                            <td>🏢 Work From Office</td>
+                            <td>💼 Junior Software Engineer<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Probation)</td>
+                            <td>💰 ₹4,000 – ₹12,000</td>
+                            <td>
+                              ✅ Appointment Letter<br />
+                              ✅ Experience Letter<br />
+                              ✅ Relieving Letter<br />
+                              ✅ Salary Certificate<br />
+                              ✅ Salary Account
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                    <section>
+                      <h2>📩 Ready to Launch Your Career?</h2>
+                      <p style={{ textAlign: 'center' }}>Apply now and become a part of a team that values <strong>learning</strong>, <strong>growth</strong> and <strong>real impact</strong>.</p>
+                    </section>
                   </div>
                 </div>
               </div>
