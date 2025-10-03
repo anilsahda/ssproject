@@ -40,7 +40,13 @@ function Reactredux() {
           <div style={sectionHeaderStyle}>
             <FaCheckCircle /> Step 1: Handle Login
           </div>
-          <pre style={preStyle}>{`const handleLoginSubmit = async (email, pass) => {
+          <pre style={preStyle}>{`import { useDispatch, useSelector } from 'react-redux';
+import { loginUser, logoutUser } from './authReducer';
+
+const dispatch = useDispatch();
+const auth = useSelector(state => state.auth);
+
+const handleLoginSubmit = async (email, pass) => {
 const res=await axios.post(\`\${process.env.REACT_APP_BASE_URL}/Auth/login\`,{email,pass});
   if(res.data.statusCode === "200") {
     dispatch(loginUser({

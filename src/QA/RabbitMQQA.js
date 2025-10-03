@@ -1,25 +1,29 @@
 import '../index.css';
 import { useState } from 'react';
 
-export default function RabbitMQ() {
+export default function RabbitMQQA() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isCodeOpen, setIsCodeOpen] = useState(false);  
-  const [popupContent, setPopupContent] = useState('');
+  const [popupContent, setPopupContent] = useState(null);
 
-  const handleOpenPopup = (content) => {
-    setPopupContent(content);
+  const renderPopupContent = (text, code) => (
+    <div>
+      {text && <p>{text}</p>}
+      {code && (
+        <pre className="popup-code">
+          <code>{code}</code>
+        </pre>
+      )}
+    </div>
+  );
+
+  const handleOpenPopup = (text, code = '') => {
+    setPopupContent(renderPopupContent(text, code));
     setIsOpen(true);
-  };
-
-  const handleOpenCodePopup = (content) => {
-    setPopupContent(content);
-    setIsCodeOpen(true);
   };
 
   const handleClosePopup = () => {
     setIsOpen(false);
-    setIsCodeOpen(false);
-    setPopupContent('');
+    setPopupContent(null);
   };
 
   return (
@@ -162,7 +166,7 @@ MQTT/AMQP/STOMP protocol support`)
       >RabbitMQ Plugins</button>
     <br />
       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenCodePopup(`const amqp = require('amqplib');
+          handleOpenPopup(`producer.js`,`const amqp = require('amqplib');
 
 async function produce() {
   const connection = await amqp.connect('amqp://localhost');
@@ -187,7 +191,7 @@ produce().catch(console.error);`)
       >producer.js</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenCodePopup(`const amqp = require('amqplib');
+          handleOpenPopup(`consumerA.js`,`const amqp = require('amqplib');
 
 async function consumeAnalytics() {
   const connection = await amqp.connect('amqp://localhost');
@@ -206,7 +210,7 @@ consumeAnalytics().catch(console.error);`)
       >consumerA.js</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenCodePopup(`const amqp = require('amqplib');
+          handleOpenPopup(`consumerB.js`,`const amqp = require('amqplib');
 
 async function consumeEmail() {
   const connection = await amqp.connect('amqp://localhost');
@@ -225,7 +229,7 @@ consumeEmail().catch(console.error);`)
       >consumerB.js</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenCodePopup(`version: '3'
+          handleOpenPopup(`docker-compose.yml`,`version: '3'
 services:
   rabbitmq:
     image: rabbitmq:3-management
@@ -240,26 +244,14 @@ services:
       >docker-compose.yml</button>
 
 
-        {/* Text Popup */}
-        {isOpen && (
+      {/* Popup */}
+      {isOpen && (
         <div className="popup-overlay" onClick={handleClosePopup}>
-            <div className="popup-content scrollable-popup" onClick={(e) => e.stopPropagation()}>
-            <div className="popup-text">{popupContent}</div>
-            </div>
+          <div className="popup-content scrollable-popup" onClick={(e) => e.stopPropagation()}>
+            {popupContent}
+          </div>
         </div>
-        )}
-
-        {/* Code Popup */}
-        {isCodeOpen && (
-        <div className="popup-overlay" onClick={handleClosePopup}>
-            <div className="popup-content scrollable-popup" onClick={(e) => e.stopPropagation()}>
-            <pre className="popup-code">
-                <code>{popupContent}</code>
-            </pre>
-            </div>
-        </div>
-        )}
-      
+      )}
     </div>
   );
 }

@@ -1,25 +1,29 @@
 import '../index.css';
 import { useState } from 'react';
 
-export default function AzureServiceBus() {
+export default function AzureServiceBusQA() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isCodeOpen, setIsCodeOpen] = useState(false);  
-  const [popupContent, setPopupContent] = useState('');
+  const [popupContent, setPopupContent] = useState(null);
 
-  const handleOpenPopup = (content) => {
-    setPopupContent(content);
+  const renderPopupContent = (text, code) => (
+    <div>
+      {text && <p>{text}</p>}
+      {code && (
+        <pre className="popup-code">
+          <code>{code}</code>
+        </pre>
+      )}
+    </div>
+  );
+
+  const handleOpenPopup = (text, code = '') => {
+    setPopupContent(renderPopupContent(text, code));
     setIsOpen(true);
-  };
-
-  const handleOpenCodePopup = (content) => {
-    setPopupContent(content);
-    setIsCodeOpen(true);
   };
 
   const handleClosePopup = () => {
     setIsOpen(false);
-    setIsCodeOpen(false);
-    setPopupContent('');
+    setPopupContent(null);
   };
 
   return (
@@ -142,7 +146,7 @@ Service Bus Explorer`)
 <button
   className="btn btn-success me-2 mb-2"
   onClick={() =>
-    handleOpenCodePopup(`const { ServiceBusClient } = require("@azure/service-bus");
+    handleOpenPopup(`producer.js`,`const { ServiceBusClient } = require("@azure/service-bus");
 
 const connectionString = "<YOUR_SERVICE_BUS_CONNECTION_STRING>";
 const topicName1 = "user-events1";
@@ -170,14 +174,12 @@ const run = async () => {
 
 run().catch(console.error);`)
   }
->
-  producer.js
-</button>
+>producer.js</button>
 
       <button
   className="btn btn-success me-2 mb-2"
   onClick={() =>
-    handleOpenCodePopup(`const { ServiceBusClient } = require("@azure/service-bus");
+    handleOpenPopup(`consumerA.js`,`const { ServiceBusClient } = require("@azure/service-bus");
 
 const connectionString = "<YOUR_SERVICE_BUS_CONNECTION_STRING>";
 const topicName = "user-events1";
@@ -202,14 +204,12 @@ const run = async () => {
 
 run().catch(console.error);`)
   }
->
-  consumerA.js
-</button>
+>consumerA.js</button>
 
 <button
   className="btn btn-success me-2 mb-2"
   onClick={() =>
-    handleOpenCodePopup(`const { ServiceBusClient } = require("@azure/service-bus");
+    handleOpenPopup(`consumerB.js`,`const { ServiceBusClient } = require("@azure/service-bus");
 
 const connectionString = "<YOUR_SERVICE_BUS_CONNECTION_STRING>";
 const topicName = "user-events2";
@@ -233,15 +233,13 @@ const run = async () => {
 
 run().catch(console.error);`)
   }
->
-  consumerB.js
-</button>
+>consumerB.js</button>
 
 
 <button
   className="btn btn-success me-2 mb-2"
   onClick={() =>
-    handleOpenCodePopup(`# Azure Service Bus is fully managed — no Docker setup required.
+    handleOpenPopup(`docker-compose.yml`,`# Azure Service Bus is fully managed — no Docker setup required.
 
 # Instead of running Kafka and Zookeeper locally, you:
 # 1. Create a Service Bus Namespace in Azure.
@@ -274,26 +272,14 @@ az servicebus subscription create --resource-group myResourceGroup --namespace-n
   docker-compose.yml
 </button>
 
-        {/* Text Popup */}
-        {isOpen && (
+      {/* Popup */}
+      {isOpen && (
         <div className="popup-overlay" onClick={handleClosePopup}>
-            <div className="popup-content scrollable-popup" onClick={(e) => e.stopPropagation()}>
-            <div className="popup-text">{popupContent}</div>
-            </div>
+          <div className="popup-content scrollable-popup" onClick={(e) => e.stopPropagation()}>
+            {popupContent}
+          </div>
         </div>
-        )}
-
-        {/* Code Popup */}
-        {isCodeOpen && (
-        <div className="popup-overlay" onClick={handleClosePopup}>
-            <div className="popup-content scrollable-popup" onClick={(e) => e.stopPropagation()}>
-            <pre className="popup-code">
-                <code>{popupContent}</code>
-            </pre>
-            </div>
-        </div>
-        )}
-      
+      )}
     </div>
   );
 }

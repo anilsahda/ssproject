@@ -4,7 +4,7 @@ function Reactjwtauth() {
   const sectionHeaderStyle = {
     borderBottom: "2px solid #007bff",
     paddingBottom: "5px",
-    marginBottom: "15px",
+    marginBottom: "5px",
     fontSize: "1.2rem",
     fontWeight: "bold",
     color: "#007bff",
@@ -18,14 +18,14 @@ function Reactjwtauth() {
     fontFamily: "monospace",
     fontSize: "0.95rem",
     border: "1px solid #dee2e6",
-    padding: "15px",
+    padding: "5px",
     borderRadius: "5px",
     overflowX: "auto",
     whiteSpace: "pre",
   };
 
   return (
-    <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "40px 20px" }}>
+    <div style={{ backgroundColor: "#f8f9fa", minHeight: "100vh", padding: "5px 5px" }}>
       <div className="container bg-white p-5 shadow-sm rounded">
         <h1 className="fw-bold mb-5 text-primary text-center">Authentication</h1>
 
@@ -47,8 +47,7 @@ const navigate = useNavigate();`}</pre>
           </div>
           <pre style={preStyle}>{`const handleLoginSubmit = async (e) => {
   e.preventDefault();
-  const response = await axios.post(
-            \`\${process.env.REACT_APP_BASE_URL}/Auth/login\`,{email,password});
+  const response = await axios.post(\`\${process.env.REACT_APP_BASE_URL}/Auth/login\`,{email,password});
     localStorage.setItem("token", response.data.token);
     localStorage.setItem("role", response.data.role);
     localStorage.setItem("userName", response.data.userName);

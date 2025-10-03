@@ -109,7 +109,6 @@ style={{
             <SidebarButton to="/netcqrsdesignpattern" icon="bi-diagram-3-fill" label=".Net CQRS Design Pattern" />
             <SidebarButton to="/netrepositorydesignpattern" icon="bi-diagram-3-fill" label="Repository Design Pattern" />
             <SidebarButton to="/netquestions" icon="bi-calendar-check" label=".Net Questions" />
-            <SidebarButton to="/netaspnetquestion" icon="bi-calendar-check" label="Web Forms Questions" />
             </>
           )}
 
@@ -282,12 +281,11 @@ style={{
             <SidebarButton to="/reactdistrict" icon="bi-diagram-3" label="React District" />
             <SidebarButton to="/reactimageupload" icon="bi-file-image" label="React Image Upload" />
             <SidebarButton to="/reactradiobutton" icon="bi-record-circle" label="React Radio Button" />
-            {/* <SidebarButton to="/reactcheckbox" icon="bi-check-square" label="React Checkbox" />
-            <SidebarButton to="/reactmultiselectdropdown" icon="bi-check2-square" label="React Multi Select Dropdown" /> */}
+            <SidebarButton to="/reactcheckbox" icon="bi-check-square" label="React Checkbox" />
+            <SidebarButton to="/reactmultiselectdropdown" icon="bi-check2-square" label="React Multi Select Dropdown" />
             <SidebarButton to="/reactsearching" icon="bi-search" label="React Searching" />
             <SidebarButton to="/reactpagination" icon="bi-list-nested" label="React Pagination" />
             <SidebarButton to="/reactjwtauth" icon="bi-shield-lock" label="React JWT Auth" />
-            <SidebarButton to="/reactlocalstorage" icon="bi-layers" label="React Local Storage" />
             <SidebarButton to="/reactzustand" icon="bi-diagram-3-fill" label="React Zustand" />
             <SidebarButton to="/reactredux" icon="bi-terminal" label="React Redux" />
             <SidebarButton to="/reactreducer" icon="bi-boxes" label="React Reducer" />
@@ -304,13 +302,12 @@ style={{
             <SidebarButton to="/nextstate" icon="bi-caret-down-square" label="Next State" />
             <SidebarButton to="/nextdistrict" icon="bi-diagram-3" label="Next District" />
             <SidebarButton to="/nextradiobutton" icon="bi-record-circle" label="Next Radio Button" />
-            {/* <SidebarButton to="/nextcheckbox" icon="bi-check-square" label="Next Checkbox" />
-            <SidebarButton to="/nextmultiselectdropdown" icon="bi-check2-square" label="Next Multi Select Dropdown" /> */}
+            <SidebarButton to="/nextcheckbox" icon="bi-check-square" label="Next Checkbox" />
+            <SidebarButton to="/nextmultiselectdropdown" icon="bi-check2-square" label="Next Multi Select Dropdown" />
             <SidebarButton to="/nextimageupload" icon="bi-file-image" label="Next Image Upload" />
             <SidebarButton to="/nextsearching" icon="bi-search" label="Next Searching" />
             <SidebarButton to="/nextpagination" icon="bi-list-nested" label="Next Pagination" />
             <SidebarButton to="/nextjwtauth" icon="bi-shield-lock" label="Next JWT Auth" />
-            <SidebarButton to="/nextlocalstorage" icon="bi-layers" label="Next Local Storage" />
             <SidebarButton to="/nextzustand" icon="bi-diagram-3-fill" label="Next Zustand" />
             <SidebarButton to="/nextredux" icon="bi-terminal" label="Next Redux" />
             <SidebarButton to="/nextreducer" icon="bi-boxes" label="Next Reducer" />
@@ -332,17 +329,20 @@ style={{
             <SidebarButton to="/angularsearching" icon="bi-search" label="Angular Searching" />
             <SidebarButton to="/angularpagination" icon="bi-list-nested" label="Angular Pagination" />
             <SidebarButton to="/angularjwtauth" icon="bi-shield-lock" label="Angular JWT Auth" />
-            <SidebarButton to="/angularlocalstorage" icon="bi-layers" label="Angular Local Storage" />
             <SidebarButton to="/angularquestions" icon="bi-calendar-check" label="Angular Questions" />
             </>
           )}
 
-          {activeMenu === "MessageBroker" && (
+          {activeMenu === "QA" && (
             <>
-            <SidebarButton to="/kafka" icon="bi-calendar-check" label="Apache Kafka" />
-            <SidebarButton to="/rabbitmq" icon="bi-ui-checks-grid" label="RabbitMQ" />
-            <SidebarButton to="/azureservicebus" icon="bi-ui-checks-grid" label="Azure Service Bus" />
-            <SidebarButton to="/sqs" icon="bi-caret-down-square" label="Simple Queue Services" />
+            <SidebarButton to="/sqlqa" icon="bi-caret-down-square" label="SQL Server" />
+            <SidebarButton to="/dotnetqa" icon="bi-caret-down-square" label="Dotnet" />
+            <SidebarButton to="/reactqa" icon="bi-caret-down-square" label="React" />
+            <SidebarButton to="/angularqa" icon="bi-caret-down-square" label="Angular" />
+            <SidebarButton to="/kafkaqa" icon="bi-calendar-check" label="Apache Kafka" />
+            <SidebarButton to="/rabbitmqqa" icon="bi-ui-checks-grid" label="RabbitMQ" />
+            <SidebarButton to="/azureservicebusqa" icon="bi-ui-checks-grid" label="Service Bus" />
+            <SidebarButton to="/netaspnetquestion" icon="bi-calendar-check" label="Web Forms" />
             </>
           )}
 

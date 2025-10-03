@@ -36,8 +36,7 @@ function Reactreducer() {
 {`const initialState = {
   token: null,
   userName: null,
-  role: null,
-  userImageUrl: null
+  role: null
 };`}
           </pre>
         </section>
@@ -55,16 +54,14 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         token: action.payload.token,
         userName: action.payload.userName,
-        role: action.payload.role,
-        userImageUrl: action.payload.userImageUrl
+        role: action.payload.role
       };
     case LOGOUT_USER:
       return {
         ...state,
         token: null,
         userName: null,
-        role: null,
-        userImageUrl: null
+        role: null
       };
     default:
       return state;
@@ -85,24 +82,6 @@ export const authReducer = (state = initialState, action) => {
 export const logoutUser = () => ({
   type: LOGOUT_USER
 });`}
-          </pre>
-        </section>
-
-        {/* Step 4: Usage in Component */}
-        <section className="mb-5">
-          <div style={sectionHeaderStyle}><FaBook /> Step 4: Usage in Component</div>
-          <pre style={preStyle}>
-{`import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, logoutUser } from './authReducer';
-
-const dispatch = useDispatch();
-const auth = useSelector(state => state.auth);
-
-// Login
-dispatch(loginUser({ token, userName, role, userImageUrl }));
-
-// Logout
-dispatch(logoutUser());`}
           </pre>
         </section>
 

@@ -69,7 +69,6 @@ import Reactcheckbox from "./React/Reactcheckbox";
 import Reactsearching from "./React/Reactsearching";
 import Reactpagination from "./React/Reactpagination";
 import Reactjwtauth from "./React/Reactjwtauth";
-import Reactlocalstorage from "./React/Reactlocalstorage";
 import Reactzustand from "./React/Reactzustand";
 import Reactredux from "./React/Reactredux";
 import Reactquestions from "./React/Reactquestions";
@@ -80,7 +79,6 @@ import Nextcheckbox from "./Next/Nextcheckbox";
 import Nextsearching from "./Next/Nextsearching";
 import Nextpagination from "./Next/Nextpagination";
 import Nextjwtauth from "./Next/Nextjwtauth";
-import Nextlocalstorage from "./Next/Nextlocalstorage";
 import Nextzustand from "./Next/Nextzustand";
 import Nextredux from "./Next/Nextredux";
 import Nextreducer from "./Next/Nextreducer";
@@ -188,7 +186,6 @@ import Angularimageupload from "./Angular/Angularimageupload";
 import Angularsearching from "./Angular/Angularsearching";
 import Angularpagination from "./Angular/Angularpagination";
 import Angularjwtauth from "./Angular/Angularjwtauth";
-import Angularlocalstorage from "./Angular/Angularlocalstorage";
 import Angularquestions from "./Angular/Angularquestions";
 import Javaexportcsv from "./Java/Javaexportcsv";
 import Nodeexportcsv from "./Node/Nodeexportcsv";
@@ -227,11 +224,14 @@ import Pythonquestions from "./Python/Pythonquestions";
 import Pythongoogleauth from "./Python/Pythongoogleauth";
 import Pythonfacebookauth from "./Python/Pythonfacebookauth";
 import Netaspnetquestion from "./Dotnet/Netaspnetquestion";
-import Kafka from "./MessageBroker/Kafka";
-import RabbitMQ from "./MessageBroker/RabbitMQ";
-import SQS from "./MessageBroker/SQS";
-import AzureServiceBus from "./MessageBroker/AzureServiceBus";
 import Relationships from "./SQL/Relationships.js";
+import KafkaQA from "./QA/KafkaQA";
+import RabbitMQQA from "./QA/RabbitMQQA";
+import SQLQA from "./QA/SQLQA";
+import AzureServiceBusQA from "./QA/AzureServiceBusQA";
+import AngularQA from "./QA/AngularQA";
+import ReactQA from "./QA/ReactQA";
+import DotnetQA from "./QA/DotnetQA";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -465,7 +465,6 @@ function App() {
             <Route path="/reactsearching" element={<Reactsearching />} />
             <Route path="/reactpagination" element={<Reactpagination />} />
             <Route path="/reactjwtauth" element={<Reactjwtauth />} />
-            <Route path="/reactlocalstorage" element={<Reactlocalstorage />} />
             <Route path="/reactzustand" element={<Reactzustand />} />
             <Route path="/reactredux" element={<Reactredux />} />
             <Route path="/reactreducer" element={<Reactreducer />} />
@@ -483,7 +482,6 @@ function App() {
             <Route path="/nextsearching" element={<Nextsearching />} />
             <Route path="/nextpagination" element={<Nextpagination />} />
             <Route path="/nextjwtauth" element={<Nextjwtauth />} />
-            <Route path="/nextlocalstorage" element={<Nextlocalstorage />} />
             <Route path="/nextimageupload" element={<Nextimageupload />} />
             <Route path="/nextzustand" element={<Nextzustand />} />
             <Route path="/nextredux" element={<Nextredux />} />
@@ -502,14 +500,16 @@ function App() {
             <Route path="/angularsearching" element={<Angularsearching />} />
             <Route path="/angularpagination" element={<Angularpagination />} />
             <Route path="/angularjwtauth" element={<Angularjwtauth />} />
-            <Route path="/angularlocalstorage" element={<Angularlocalstorage />} />
             <Route path="/angularquestions" element={<Angularquestions />} />
 
             {/* Message Broker */}
-            <Route path="/kafka" element={<Kafka />} />
-            <Route path="/rabbitmq" element={<RabbitMQ />} />
-            <Route path="/sqs" element={<SQS />} />
-            <Route path="/azureservicebus" element={<AzureServiceBus />} />            
+            <Route path="/kafkaqa" element={<KafkaQA />} />
+            <Route path="/rabbitmqqa" element={<RabbitMQQA />} />
+            <Route path="/azureservicebusqa" element={<AzureServiceBusQA />} />            
+            <Route path="/sqlqa" element={<SQLQA />} />
+            <Route path="/reactqa" element={<ReactQA />} />
+            <Route path="/angularqa" element={<AngularQA />} />
+            <Route path="/dotnetqa" element={<DotnetQA />} />
           </Routes>
         </div>
       </div>

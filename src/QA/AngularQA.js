@@ -1,25 +1,29 @@
 import '../index.css';
 import { useState } from 'react';
 
-export default function Kafka() {
+export default function AngularQA() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isCodeOpen, setIsCodeOpen] = useState(false);  
-  const [popupContent, setPopupContent] = useState('');
+  const [popupContent, setPopupContent] = useState(null);
 
-  const handleOpenPopup = (content) => {
-    setPopupContent(content);
+  const renderPopupContent = (text, code) => (
+    <div>
+      {text && <p>{text}</p>}
+      {code && (
+        <pre className="popup-code">
+          <code>{code}</code>
+        </pre>
+      )}
+    </div>
+  );
+
+  const handleOpenPopup = (text, code = '') => {
+    setPopupContent(renderPopupContent(text, code));
     setIsOpen(true);
-  };
-
-  const handleOpenCodePopup = (content) => {
-    setPopupContent(content);
-    setIsCodeOpen(true);
   };
 
   const handleClosePopup = () => {
     setIsOpen(false);
-    setIsCodeOpen(false);
-    setPopupContent('');
+    setPopupContent(null);
   };
 
   return (
@@ -140,7 +144,7 @@ Leader election`)
       >ZooKeeper</button>
     <br />
       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenCodePopup(`const { Kafka } = require("kafkajs");
+          handleOpenPopup(`producer.js`, `const { Kafka } = require("kafkajs");
 const kafka = new Kafka(
 { 
     clientId:"demo-producer",
@@ -171,7 +175,7 @@ run().catch(console.error);`)
       >producer.js</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenCodePopup(`const { Kafka } = require("kafkajs");
+          handleOpenPopup(`consumerA.js`, `const { Kafka } = require("kafkajs");
 
 const kafka = new Kafka({
   clientId: "analytics-service",
@@ -196,7 +200,7 @@ run().catch(console.error);`)
       >consumerA.js</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenCodePopup(`const { Kafka } = require("kafkajs");
+          handleOpenPopup(`consumerB.js`, `const { Kafka } = require("kafkajs");
 
 const kafka = new Kafka({
   clientId: "email-service",
@@ -221,7 +225,7 @@ run().catch(console.error);`)
       >consumerB.js</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenCodePopup(`services:
+          handleOpenPopup(`docker-compose.yml`, `services:
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
     environment:
@@ -245,26 +249,14 @@ run().catch(console.error);`)
       >docker-compose.yml</button>            
 
 
-        {/* Text Popup */}
-        {isOpen && (
+      {/* Popup */}
+      {isOpen && (
         <div className="popup-overlay" onClick={handleClosePopup}>
-            <div className="popup-content scrollable-popup" onClick={(e) => e.stopPropagation()}>
-            <div className="popup-text">{popupContent}</div>
-            </div>
+          <div className="popup-content scrollable-popup" onClick={(e) => e.stopPropagation()}>
+            {popupContent}
+          </div>
         </div>
-        )}
-
-        {/* Code Popup */}
-        {isCodeOpen && (
-        <div className="popup-overlay" onClick={handleClosePopup}>
-            <div className="popup-content scrollable-popup" onClick={(e) => e.stopPropagation()}>
-            <pre className="popup-code">
-                <code>{popupContent}</code>
-            </pre>
-            </div>
-        </div>
-        )}
-      
+      )}
     </div>
   );
 }
