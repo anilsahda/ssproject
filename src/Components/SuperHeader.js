@@ -277,7 +277,7 @@ useEffect(() => {
                           </tr>
                           <tr>
                             <td>🏢 Work From Office</td>
-                            <td>💼 Junior Software Engineer</td>
+                            <td>💼 Junior Software Engineer<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Confirmed)</td>
                             <td>💰 ₹12,000 – ₹16,000</td>
                             <td>
                               ✅ Appointment Letter<br />
