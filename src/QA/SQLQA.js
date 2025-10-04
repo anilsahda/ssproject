@@ -2,22 +2,18 @@ import '../index.css';
 import { useState } from 'react';
 
 export default function SQLQA() {
-  const [isOpen, setIsOpen] = useState(false);
+const [isOpen, setIsOpen] = useState(false);
   const [popupContent, setPopupContent] = useState(null);
 
-  const renderPopupContent = (text, code) => (
+  const renderPopupContent = (text, jsxContent) => (
     <div>
       {text && <p>{text}</p>}
-      {code && (
-        <pre className="popup-code">
-          <code>{code}</code>
-        </pre>
-      )}
+      {jsxContent && <div className="popup-code">{jsxContent}</div>}
     </div>
   );
 
-  const handleOpenPopup = (text, code = '') => {
-    setPopupContent(renderPopupContent(text, code));
+  const handleOpenPopup = (text, jsxContent = null) => {
+    setPopupContent(renderPopupContent(text, jsxContent));
     setIsOpen(true);
   };
 
@@ -110,19 +106,28 @@ Code varchar(3) NOT NULL;`)
         }
       >Data Types</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`Numeric data types are used to store numbers both integers and floating-point numbers. For example
-INT Used to store whole numbers (without decimals).
-TINYINT A very small integer value. Range: -128 to 127 (or 0 to 255 for unsigned).
-SMALLINT Used for smaller integer values. Range: -32768 to 32767.
-MEDIUMINT Used for medium-size integer values. Range: -8,388,608 to 8,388,607.
-BIGINT Used for larger integer values. Range: -9,223,372,036,854,775, 808 to 9,223,372,036,854,775,807.
-DECIMAL Used to store fixed-point numbers with a specified number of digits after the decimal point.
-Example: DECIMAL(10, 2) stores numbers with 10 digits, 2 of which are after the decimal point (e.g., 12345678.90).
-FLOAT Used to store single-precision floating-point numbers.
-DOUBLE Used for double-precision floating-point numbers.`)
+<button
+        className="btn btn-primary me-2 mb-2"
+        onClick={() =>
+          handleOpenPopup(
+            null,
+            <>
+              Numeric data types are used to store numbers — both integers and floating-point values.<br /><br />
+              <strong>INT</strong>: Used to store whole numbers (without decimals).<br />
+              <strong>TINYINT</strong>: A very small integer value. Range: -128 to 127 (or 0 to 255 for unsigned).<br />
+              <strong>SMALLINT</strong>: Used for smaller integer values. Range: -32,768 to 32,767.<br />
+              <strong>MEDIUMINT</strong>: Used for medium-size integer values. Range: -8,388,608 to 8,388,607.<br />
+              <strong>BIGINT</strong>: Used for very large integer values. Range: -9 quintillion to +9 quintillion.<br />
+              <strong>DECIMAL</strong>: Fixed-point number with precision. <br />
+              Example: <code>DECIMAL(10, 2)</code> stores numbers with 10 digits, 2 of which are after the decimal (e.g., 12345678.90).<br />
+              <strong>FLOAT</strong>: Single-precision floating-point number.<br />
+              <strong>DOUBLE</strong>: Double-precision floating-point number.<br />
+            </>
+          )
         }
-      >Numeric</button>
+      >
+        Numeric
+      </button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(`Date & Time Type These data types are used to store date and time values. For example
@@ -256,7 +261,10 @@ run().catch(console.error);`)
       {/* Popup */}
       {isOpen && (
         <div className="popup-overlay" onClick={handleClosePopup}>
-          <div className="popup-content scrollable-popup" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="popup-content scrollable-popup"
+            onClick={(e) => e.stopPropagation()}
+          >
             {popupContent}
           </div>
         </div>

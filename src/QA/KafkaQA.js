@@ -143,12 +143,14 @@ Leader election`)
         }
       >ZooKeeper</button>
     <br />
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(`producer.js`, `const { Kafka } = require("kafkajs");
-const kafka = new Kafka(
-{ 
-    clientId:"demo-producer",
-    brokers: ["localhost:9092"]
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    `producer.js`, 
+    `const { Kafka } = require("kafkajs");
+
+const kafka = new Kafka({
+  clientId: "demo-producer",
+  brokers: ["localhost:9092"]
 });
 
 const producer = kafka.producer();
@@ -157,22 +159,28 @@ const run = async () => {
   await producer.connect();
 
   setInterval(async () => {
-    const event = { userId: 1, action: "login" };
-    const event1 = { userId: 2, action: "hi, how r u?" };
+    const event1 = { userId: 1, action: "login" };
+    const event2 = { userId: 2, action: "hi, how r u?" };
 
-    await producer.send({ topic: "user-events1", 
-        messages: [{ value: JSON.stringify(event1) }]});
+    await producer.send({ 
+      topic: "user-events1", 
+      messages: [{ value: JSON.stringify(event1) }]
+    });
 
-        await producer.send({ topic: "user-events2", 
-        messages: [{ value: JSON.stringify(event2) }]});
+    await producer.send({ 
+      topic: "user-events2", 
+      messages: [{ value: JSON.stringify(event2) }]
+    });
 
-        console.log("Produced:", event);
+    console.log("Produced:", event1);
   }, 2000);
 };
 
-run().catch(console.error);`)
-        }
-      >producer.js</button>
+run().catch(console.error);`
+  )
+}>
+  producer.js
+</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(`consumerA.js`, `const { Kafka } = require("kafkajs");

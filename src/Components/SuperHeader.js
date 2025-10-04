@@ -241,9 +241,9 @@ useEffect(() => {
 
                     <section>
                       <h2>💸 Salary Structure</h2>
-                      <p style={{ textAlign: 'center' }}><strong>During Probation Period :</strong> ₹4k</p>
-                      <p style={{ textAlign: 'center' }}><strong>Post - Probation Salary :</strong> ₹12k</p>
-                      <p style={{ textAlign: 'center' }}><strong>Revised Salary After 6 Months :</strong>  ₹15k - 25k</p>
+                      <p style={{ textAlign: 'center' }}><strong>During Probation Period :</strong> ₹4,000 - 8,000</p>
+                      <p style={{ textAlign: 'center' }}><strong>Post - Probation Salary :</strong> ₹12,000 - 16,000</p>
+                      <p style={{ textAlign: 'center' }}><strong>Revised Salary After 6 Months :</strong>  ₹16,000 - 24,000</p>
                     </section>
 
                     <section>
@@ -264,21 +264,27 @@ useEffect(() => {
                         </thead>
                         <tbody>
                           <tr>
-                            <td>🌐 Work From Home</td>
-                            <td>🧑‍💻 Intern Developer<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Internship)</td>
-                            <td>❌ Unpaid</td>
-                            <td>✅ Internship Letter</td>
+                            <td>🏢 Work From Office</td>
+                            <td>💼 Junior Software Engineer<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Probation)</td>
+                            <td>💰 ₹4,000 – ₹8,000<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(If stay in SS Villa)</td>
+                            <td>
+                              ✅ Appointment Letter<br />
+                              ✅ Salary Account<br />
+                              ✅ Salary Certificate<br />
+                              ✅ Experience Letter<br />
+                              ✅ Relieving Letter
+                            </td>
                           </tr>
                           <tr>
                             <td>🏢 Work From Office</td>
-                            <td>💼 Junior Software Engineer<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Probation)</td>
-                            <td>💰 ₹4,000 – ₹12,000</td>
+                            <td>💼 Junior Software Engineer</td>
+                            <td>💰 ₹12,000 – ₹16,000</td>
                             <td>
                               ✅ Appointment Letter<br />
-                              ✅ Experience Letter<br />
-                              ✅ Relieving Letter<br />
+                              ✅ Salary Account<br />
                               ✅ Salary Certificate<br />
-                              ✅ Salary Account
+                              ✅ Experience Letter<br />
+                              ✅ Relieving Letter
                             </td>
                           </tr>
                         </tbody>
