@@ -160,7 +160,7 @@ Code varchar(3) NOT NULL;`)
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Alternate Key</strong> When multiple keys are added except Primary Key then all keys are called Alternate Keys except Primary Key.</p>)
         }
-      >Alternate Key</button><br />
+      >Alternat Key</button><br />
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Data Types</strong> define the type of data that can be stored in a column of a table. SQL supports a wide range of data types, and they can be categorized into several types based on their usage. For Example: Numeric, String, Boolean, Binary etc.</p>)
@@ -353,7 +353,7 @@ ON Employees(Name, Email)`)
           handleOpenPopup(<p><strong>INNER JOIN</strong> retrieves only the matching rows between two tables based on a specified condition. If there is no match, the row is excluded from the result.</p>,  `SELECT e.Name, d.DepartmentName FROM Employee e
 INNER JOIN Department d ON e.DepartmentID = d.DepartmentID;`)
         }
-      >Inner Join</button>
+      >Inner</button>
 
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>LEFT JOIN</strong> returns all rows from the left table and the matching rows from the right table. If there is no match in the right table, NULL values are returned for those columns.</p>, `SELECT e.Name, d.DepartmentName FROM Employee e
@@ -488,7 +488,7 @@ modelBuilder.Entity<Student>()
 	REFERENCES Employee(EmployeeId)
 );`)
         }
-      >Self-Referencing</button>
+      >Self-Reference</button>
 
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Temporary Tables</strong> are quite similar to Permanent Tables in the database. Permanent Tables are created in a specific database and persist until the database exists. Temporary Tables are created in the tempdb and are automatically deleted when they are no longer in use.</p>)
@@ -763,7 +763,37 @@ WHERE Status = 'Active';
 
 SELECT * FROM ActiveCustomers;`)
         }
-      >View</button>
+      >View</button><br />
+
+       <button className="btn btn-danger me-2 mb-2" onClick={() =>
+          handleOpenPopup(null, `WITH cte AS 
+(
+  SELECT Name, 
+  ROW_NUMBER() OVER(PARTITION BY Name ORDER BY Name) row_num
+  FROM employee
+)	
+SELECT * FROM cte WHERE row_num > 1;
+
+//Using subqueries
+SELECT Name, COUNT(Id) AS Duplicate FROM Employee 
+GROUP BY Name
+HAVING COUNT(Name) > 1;`)
+        }
+      >Duplicate Name</button>
+
+       <button className="btn btn-danger me-2 mb-2" onClick={() =>
+          handleOpenPopup(null, `with cte as
+(SELECT Name, Salary, 
+RANK() OVER(ORDER BY Salary DESC) sal_rank from Employees)
+select * from cte where sal_rank = 2
+
+//Using subquery
+SELECT Name, Salary FROM 
+   (SELECT Name, Salary, RANK() OVER (ORDER BY Salary DESC) 
+   AS sal_rank FROM Employee) AS ranked_salaries 
+WHERE sal_rank = 2;`)
+        }
+      >Highest Salary</button>
 
       {/* Popup */}
       {isOpen && (
