@@ -391,7 +391,171 @@ class Program
     }
 }`)
         }
-      >Multicast</button>                  
+      >Multicast</button>
+
+       <button className="btn btn-warning me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Dependency Injection</strong> helps us to build applications more cleaner, more testable and more maintanable. It separates the concerns of constructing objects and using them. It is a design pattern where an object's dependencies are provided from outside, rather than the object creating itself. Benefits of DI:<br />
+<strong>Loose Coupling</strong> reduce dependencies between components and makes them more modular and easier to manage.<br />
+<strong>Improved Testability</strong> enables easy unit testing by allowing mock dependencies.<br />
+<strong>Scalability and Maintainability</strong> code becomes easier to extend and modify without breaking existing implementations.<br />
+<strong>Better Code Organization</strong> promotes a clean separation of concerns and improves the architecture.<br />
+<strong>Automatic Dependency Management</strong> DI container handles the lifecycle of dependencies, reducing boilerplate code.
+There are four key concepts of DI like IServiceCollection, IServiceProvider, Key-Typed Services, IEnumerable Services</p>,
+`Types of Dependency Injection:
+
+1. Dependencies are passed as parameters in Constructor
+
+private readonly IOrderRepository _orderRepo;
+    public OrderService(IOrderRepository orderRepo)
+    {
+        _orderRepo = orderRepo;
+    }
+
+    2. Dependencies are passed as parameters to Methods
+
+public void ProcessOrder(int id,IOrderRepository orderRepo)
+{
+	var order = orderRepo.GetOrder(id);
+}
+
+3. Dependencies are set via Properties.
+
+public IOrderRepository OrderRepository { get; set; }
+public void ProcessOrder(int orderId)
+{
+	var order = OrderRepository?.GetOrder(orderId);
+}`)
+        }
+      >DI</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>IServiceCollection</strong> is a central part of Dependency Injection. It is a container that is used to register services and their lifetimes like Singleton, Scoped, Transient. DI is a collection of service descriptors that define how services are resolved.<br />
+Common methods of IServiceCollection are<br />
+<strong>AddSingleton&lt;Service, Implementation&gt;()</strong>: creates a single instance of the service when it is first requested and reusest that same instance in all the places where that service is needed. Memory leaks in this service will build up over time and also memory efficient as they are created once reused everywhere.<br />
+<strong>AddScoped&lt;Service, Implementation&gt;()</strong>: with every new HTTP request creates a new instance. Within the same HTTP request, if the service is required in multiple places then the same instance is provided for the entire scope of that HTTP request.<br />
+<strong>AddTransient&lt;Service, Implementation&gt;()</strong>: a new instance is created every time whether it is in the scope of the same HTTP request or across different HTTP requests. Transient create every time new instance so it will use more memory and Resources and can have a negative impact on performance. So we can use this for the lightweight service.</p>)
+        }
+      >IServiceCollection</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>IServiceProvider </strong> is the resolver in the DI system which is used to retrieve services registered in the IServiceCollection. It acts as the runtime engine that delivers dependencies to our application. When the application runs, the IServiceProvider resolves services based on the registrations in IServiceCollection.<br /> <strong>BuildServiceProvider()</strong> converts the IServiceCollection into an IServiceProvider and GetService() resolves the service of type T. In most of the cases DI automatically call GetService() and automatically resolves dependencies.</p>)
+        }
+      >IServiceProvider </button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Key-Typed Services</strong> is used to register multiple implementations of the same service interface and differentiate between them by a key. This is useful when we need different behaviors from the same interface.</p>,
+            `//Registering Key-Typed Services
+public interface ILogger
+{
+    void Log(string msg);
+}
+public class FileLogger : ILogger
+{
+   public void Log(string msg)=>Console.Write($"FileLog:{msg}");
+}
+
+public class DBLogger : ILogger
+{
+    public void Log(string msg)=>Console.WriteLine($"DBLog:{msg}");
+}
+services.AddSingleton<ILogger,FileLogger>("File");
+services.AddSingleton<ILogger,DBLogger>("DB");
+
+//Resolving Key-Typed Services
+public class LoggerFactory
+{
+  private readonly IServiceProvider _provider;
+  public LoggerFactory(IServiceProvider provider)
+  {
+      _provider = provider;
+  }
+  public ILogger GetLogger(string key)
+  {
+    return key switch
+    {
+     "File"=>_provider.GetService<FileLogger>(),
+     "DB" => _provider.GetService<DBLogger>(),
+   _ => throw new InvalidOperationException("Invalid key")
+    };
+  }
+}`
+          )
+        }
+      >Key-Typed</button>
+
+        <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Key Concepts of IEnumerable Services</strong><br />
+<strong>Strategy Pattern</strong>: encapsulates behaviors and makes them interchangeable at runtime. Each algorithm is isolated within its own class.<br />
+<strong>Factory Method</strong>: provides a way to instantiate objects dynamically based on runtime conditions.<br />
+<strong>IEnumerable</strong> is used to inject multiple implementations of a IService into a class. It provides a way to access all registered implementations, enabling the consumer to iterate over the services and select the appropriate implementation based on specific needs.
+</p>,
+`//DI with Strategy Pattern n Factory Method
+public interface INotification
+{
+    void Send(string msg);
+}
+
+// Concrete strategies
+public class EmailNotification:INotification
+{
+    public void Send(string msg)
+    {
+        Console.WriteLine($"Email Notification:{msg}");
+    }
+}
+
+public class SmsNotification:INotification
+{
+    public void Send(string msg)
+    {
+        Console.WriteLine($"SMS Notification:{msg}");
+    }
+}
+
+// Factory for creating notifications
+public static class NotificationFactory
+{
+    public static INotification Create(string type)
+    {
+        return type switch
+        {
+            "Email" => new EmailNotification(),
+            "SMS" => new SmsNotification(),
+            _ => throw new NotImplementedException()
+        };
+    }
+}
+
+// Context class
+public class NotificationService
+{
+    private INotification _notification;
+    public void SetNotification(string type)
+    {
+        _notification=NotificationFactory.Create(type);
+    }
+    public void Notify(string msg)
+    {
+        _notification?.Send(msg);
+    }
+}
+
+// Client code
+class Program
+{
+    static void Main(string[] args)
+    {
+        var notifService=new NotificationService();
+        // Set different notification strategies
+        notifService.SetNotification("Email");
+        notifService.Notify("Welcome service!");
+
+        notifService.SetNotification("SMS");
+        notifService.Notify("Order shipped!");
+    }
+}`)
+        }
+      >IEnumerable</button><br />
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Design Patterns</strong> are a reusable solution to common software design problems that repeatedly occur in real-world application development. It is a template of how to solve problems that can be used in many situations.<br />
@@ -407,15 +571,6 @@ Behavioral: Chain of Responsibility, Command, Interpreter, Iterator, Mediator, M
         }
       >Abstract Factory</button>
       
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Builder Design Pattern</strong> is a creational pattern that is used to construct complex objects step by step. It allows you to create different representations of an object using the same construction code.<br />
-We can use the Builder Pattern<br />
-When an object has many optional parameters or complex configurations.<br />
-When object creation requires multiple steps.<br />
-When you need immutable or read-only objects.</p>)
-        }
-      >Builder</button>
-
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>CQRS (Command Query Responsibility Segregation)</strong> is a design pattern that separates read and write operations for a data store. This separation improves scalability, performance, and maintainability in applications. CQRS is often implemented with MediatR, event sourcing, and sometimes combined with the Clean Architecture pattern.<br />
 Key Components of CQRS<br />
@@ -782,552 +937,98 @@ private readonly IOrderService _orderService;
     }`
           )
         }
-      >Onion</button>
+      >Onion</button><br />
 
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Dependency Injection</strong> helps us to build applications more cleaner, more testable and more maintanable. It separates the concerns of constructing objects and using them. It is a design pattern where an object's dependencies are provided from outside, rather than the object creating itself. Benefits of DI:<br />
-<strong>Loose Coupling</strong> reduce dependencies between components and makes them more modular and easier to manage.<br />
-<strong>Improved Testability</strong> enables easy unit testing by allowing mock dependencies.<br />
-<strong>Scalability and Maintainability</strong> code becomes easier to extend and modify without breaking existing implementations.<br />
-<strong>Better Code Organization</strong> promotes a clean separation of concerns and improves the architecture.<br />
-<strong>Automatic Dependency Management</strong> DI container handles the lifecycle of dependencies, reducing boilerplate code.
-There are four key concepts of DI like IServiceCollection, IServiceProvider, Key-Typed Services, IEnumerable Services</p>,
-`Types of Dependency Injection:
-
-1. Dependencies are passed as parameters in Constructor
-
-private readonly IOrderRepository _orderRepo;
-    public OrderService(IOrderRepository orderRepo)
-    {
-        _orderRepo = orderRepo;
-    }
-
-    2. Dependencies are passed as parameters to Methods
-
-public void ProcessOrder(int id,IOrderRepository orderRepo)
-{
-	var order = orderRepo.GetOrder(id);
-}
-
-3. Dependencies are set via Properties.
-
-public IOrderRepository OrderRepository { get; set; }
-public void ProcessOrder(int orderId)
-{
-	var order = OrderRepository?.GetOrder(orderId);
-}`)
+          handleOpenPopup(<p><strong>Entity Framework</strong></p>)
         }
-      >DI</button>
+      >Entity Framework</button>
 
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>IServiceCollection</strong> is a central part of Dependency Injection. It is a container that is used to register services and their lifetimes like Singleton, Scoped, Transient. DI is a collection of service descriptors that define how services are resolved.<br />
-Common methods of IServiceCollection are<br />
-<strong>AddSingleton&lt;Service, Implementation&gt;()</strong>: creates a single instance of the service when it is first requested and reusest that same instance in all the places where that service is needed. Memory leaks in this service will build up over time and also memory efficient as they are created once reused everywhere.<br />
-<strong>AddScoped&lt;Service, Implementation&gt;()</strong>: with every new HTTP request creates a new instance. Within the same HTTP request, if the service is required in multiple places then the same instance is provided for the entire scope of that HTTP request.<br />
-<strong>AddTransient&lt;Service, Implementation&gt;()</strong>: a new instance is created every time whether it is in the scope of the same HTTP request or across different HTTP requests. Transient create every time new instance so it will use more memory and Resources and can have a negative impact on performance. So we can use this for the lightweight service.</p>)
+          handleOpenPopup(<p>SaveChanges()	Saves all changes made in the context to the database.<br />
+SaveChangesAsync()	Async version of SaveChanges().<br />
+Add()	Marks a single entity as Added.<br />
+AddAsync()	Async version of Add().<br />
+AddRange()	Adds multiple entities to the context.<br />
+AddRangeAsync()	Async version of AddRange().<br />
+Update()	Marks the entire entity as Modified.<br />
+UpdateRange()	Updates multiple entities.<br />
+Remove()	Marks the entity as Deleted.<br />
+RemoveRange()	Deletes multiple entities.<br />
+Attach()	Attaches an entity to the context without marking it as Modified.<br />
+AttachRange()	Attaches multiple entities.<br />
+Entry(entity)	Gets metadata and state information about an entity.</p>)
         }
-      >IServiceCollection</button>
+      >DbContext</button>
 
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>IServiceProvider </strong> is the resolver in the DI system which is used to retrieve services registered in the IServiceCollection. It acts as the runtime engine that delivers dependencies to our application. When the application runs, the IServiceProvider resolves services based on the registrations in IServiceCollection.<br /> <strong>BuildServiceProvider()</strong> converts the IServiceCollection into an IServiceProvider and GetService() resolves the service of type T. In most of the cases DI automatically call GetService() and automatically resolves dependencies.</p>)
+          handleOpenPopup(<p>Find(key)	Finds an entity with the given primary key.<br />
+FindAsync(key)	Async version of Find().<br />
+FirstOrDefault()	Returns the first element or default value.<br />
+FirstOrDefaultAsync()	Async version.<br />
+SingleOrDefault()	Returns a single element or default, throws if more than one match.<br />
+SingleOrDefaultAsync()	Async version.<br />
+ToList()	Converts query to a list.<br />
+ToListAsync()	Async version.<br />
+Where(predicate)	Filters entities based on condition.<br />
+Any()	Checks if any elements match a condition.<br />
+AnyAsync()	Async version.<br />
+All()	Checks if all elements satisfy a condition.<br />
+Count()	Counts number of elements.<br />
+CountAsync()	Async version.</p>)
         }
-      >IServiceProvider </button>
+      >DbSet</button>
 
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Key-Typed Services</strong> is used to register multiple implementations of the same service interface and differentiate between them by a key. This is useful when we need different behaviors from the same interface.</p>,
-            `//Registering Key-Typed Services
-public interface ILogger
-{
-    void Log(string msg);
-}
-public class FileLogger : ILogger
-{
-   public void Log(string msg)=>Console.Write($"FileLog:{msg}");
-}
-
-public class DBLogger : ILogger
-{
-    public void Log(string msg)=>Console.WriteLine($"DBLog:{msg}");
-}
-services.AddSingleton<ILogger,FileLogger>("File");
-services.AddSingleton<ILogger,DBLogger>("DB");
-
-//Resolving Key-Typed Services
-public class LoggerFactory
-{
-  private readonly IServiceProvider _provider;
-  public LoggerFactory(IServiceProvider provider)
-  {
-      _provider = provider;
-  }
-  public ILogger GetLogger(string key)
-  {
-    return key switch
-    {
-     "File"=>_provider.GetService<FileLogger>(),
-     "DB" => _provider.GetService<DBLogger>(),
-   _ => throw new InvalidOperationException("Invalid key")
-    };
-  }
-}`
-          )
+          handleOpenPopup(<p>Select()	Projects each element into a new form.<br />
+Include()	Eager loads related entities.<br />
+ThenInclude()	Used after Include() for nested relationships.<br />
+OrderBy() / OrderByDescending()	Sorts elements.<br />
+GroupBy()	Groups elements by key.<br />
+Take(n)	Takes first n elements.<br />
+TakeWhile(n)<br />
+Skip(n)	Skips first n elements.<br />
+SkipWhile(n)<br />
+Distinct()	Returns distinct elements.</p>)
         }
-      >Key-Typed</button>
-
-        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Key Concepts of IEnumerable Services</strong><br />
-<strong>Strategy Pattern</strong>: encapsulates behaviors and makes them interchangeable at runtime. Each algorithm is isolated within its own class.<br />
-<strong>Factory Method</strong>: provides a way to instantiate objects dynamically based on runtime conditions.<br />
-<strong>IEnumerable</strong> is used to inject multiple implementations of a IService into a class. It provides a way to access all registered implementations, enabling the consumer to iterate over the services and select the appropriate implementation based on specific needs.
-</p>,
-`//DI with Strategy Pattern n Factory Method
-public interface INotification
-{
-    void Send(string msg);
-}
-
-// Concrete strategies
-public class EmailNotification:INotification
-{
-    public void Send(string msg)
-    {
-        Console.WriteLine($"Email Notification:{msg}");
-    }
-}
-
-public class SmsNotification:INotification
-{
-    public void Send(string msg)
-    {
-        Console.WriteLine($"SMS Notification:{msg}");
-    }
-}
-
-// Factory for creating notifications
-public static class NotificationFactory
-{
-    public static INotification Create(string type)
-    {
-        return type switch
-        {
-            "Email" => new EmailNotification(),
-            "SMS" => new SmsNotification(),
-            _ => throw new NotImplementedException()
-        };
-    }
-}
-
-// Context class
-public class NotificationService
-{
-    private INotification _notification;
-    public void SetNotification(string type)
-    {
-        _notification=NotificationFactory.Create(type);
-    }
-    public void Notify(string msg)
-    {
-        _notification?.Send(msg);
-    }
-}
-
-// Client code
-class Program
-{
-    static void Main(string[] args)
-    {
-        var notifService=new NotificationService();
-        // Set different notification strategies
-        notifService.SetNotification("Email");
-        notifService.Notify("Welcome service!");
-
-        notifService.SetNotification("SMS");
-        notifService.Notify("Order shipped!");
-    }
-}`)
-        }
-      >IEnumerable</button><br />
-
-       <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Exception Handling</strong> is very common for software applications to get errors and exceptions when executing code. If these errors are not handled properly, the application may crash and we may not know the root cause of the problem. Exception handling is the method of catching and recording these errors in code so that we can fix them. Usually, errors and exceptions are stored in log files or databases.</p>)
-        }
-      >Exception Handling</button>
+      >Querying</button>
 
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>finally block</strong> is used to clean up resources used in the try block, regardless of whether an exception occurs. The "finalize" method is used to perform cleanup on unmanaged resources held by an object. It is also known as a destructor.</p>)
+          handleOpenPopup(<p>ChangeTracker.Entries()	Returns all tracked entity entries.<br />
+ChangeTracker.HasChanges()	Checks if there are pending changes.<br />
+ChangeTracker.DetectChanges()	Manually triggers change detection.</p>)
         }
-      >finally</button>
+      >Change Tracking</button>
 
-        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Finalize()</strong> is called by the Garbage Collector before an object that is eligible for collection is reclaimed. Garbage collector will take the responsibility to deallocate the memory for the unreferenced object. The Garbage Collector calls this method at some point after there are no longer valid references to that object in memory.<br />
-The framework does not guarantee that when this will happen, we can force for Garbage Collection but it will hurt performance of a program. Finalize() belongs to the Object class and it will be called by the runtime.</p>)
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>FromSqlRaw(sql)	Executes a raw SQL query and returns entities.<br />
+FromSqlInterpolated($"sql")	SQL with interpolation (parameter safe).<br />
+ExecuteSqlRaw()	Executes raw SQL for non-query (INSERT, UPDATE, DELETE).<br />
+ExecuteSqlInterpolated()	Interpolated version of ExecuteSqlRaw()</p>)
         }
-      >Finalize()</button>
+      >Raw SQL</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>throw</strong> preserves the stack trace (the stack trace will point to the method that caused the exception in the first place) while <strong>throw ex</strong> does not preserve the stack trace (we will lose the information about the method that caused the exception in the first place. It will seem like the exception was thrown from the place of its catching and re-throwing).</p>)
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Database.Migrate()	Applies pending migrations.<br />
+Database.EnsureCreated()	Creates the DB if it doesn't exist.<br />
+Database.EnsureDeleted()	Deletes the database.<br />
+Database.BeginTransaction()	Starts a manual transaction.<br />
+Database.ExecuteSqlRaw()	Runs raw SQL.</p>)
         }
-      >throw vs throw ex</button>
+      >Database</button><br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>throw new Exception</strong> provides additional context with a new exception message while preserving the original exception as an inner exception.</p>)
-        }
-      >throw new Exception</button>
-
-       <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Global Exception Handler</strong> is used to catch and handle unhandled exceptions across the entire application. This approach depends on whether we're working with a console applications, ASP.NET Core, or Windows Forms.<br />
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Exception Handling</strong> is the method of catching and recording these errors in code so that we can fix them. Usually, errors and exceptions are stored in log files or databases. If these errors are not handled properly, the application may crash and we may not know the root cause of the problem.<br />
+<strong>finally</strong> is used to clean up resources used in the try block when an exception occurs. The finalize method is used to perform cleanup on unmanaged resources held by an object. It is also known as a destructor.<br />
+<strong>Finalize</strong> is called by the Garbage Collector before an object that is eligible for collection is reclaimed. Garbage collector will take the responsibility to deallocate the memory for the unreferenced object.<br />
+<strong>throw</strong> preserves the stack trace which point to the method that caused the exception in the first place while <strong>throw ex</strong> does not preserve the stack trace and we lose the information about the method that caused the exception in the first place.<br />
+<strong>throw new Exception</strong> provides additional context with a new exception message while preserving the original exception as an inner exception.<br />
+<strong>Global Exception Handler</strong> is used to catch and handle unhandled exceptions across the entire application. This approach depends on whether we're working with a console applications, .Net Core or Windows Forms.<br />
 <strong>Console Applications</strong>:
 <strong>AppDomain.CurrentDomain.UnhandledException</strong> is used to handle exceptions globally at the application domain level.<br />
-<strong>.NET Core</strong>: middleware is used to handle exceptions globally.</p>,
-`public class ExceptionHandlingMiddleware
-{
-  private readonly RequestDelegate _next;
-private readonly ILogger<ExceptionHandlingMiddleware> _logger;
-
-  public ExceptionHandlingMiddleware(RequestDelegate next,
-	ILogger<ExceptionHandlingMiddleware> logger)
-  {
-        _next = next;
-        _logger = logger;
-  }
-
-    public async Task Invoke(HttpContext context)
-    {
-        try
-        {
-            await _next(context);
+<strong>.NET Core</strong>: middleware is used to handle exceptions globally.</p>)
         }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex,"Unhandled exception");
-            await HandleExceptionAsync(context, ex);
-        }
-    }
-
-    private static Task HandleExceptionAsync(
-	HttpContext context,Exception exception)
-    {
-        context.Response.StatusCode = 
-		(int)HttpStatusCode.InternalServerError;
-        context.Response.ContentType="application/json";
-        return context.Response.WriteAsync(new 
-		{ error = exception.Message }.ToString());
-    }
-}
-
-// Register Middleware in Program.cs
-public static class ExceptionMiddlewareExtensions
-{
-    public static void UseExceptionHandlingMiddleware(
-	this IApplicationBuilder app)
-    {
-        app.UseMiddleware<ExceptionHandlingMiddleware>();
-    }
-}
-
-app.UseExceptionHandlingMiddleware();`)
-        }
-      >Temporary Tables</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Local Temporary Tables</strong> are similar to permanent tables and it is created with single hash "#". They are visible only to the connection that creates it and are deleted when the connection is closed.</p>, `CREATE TABLE #Emp (Id INT, Name VARCHAR(25))`)
-        }
-      >Local</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Global Temporary Tables</strong> are also similar to Local Temporary Tables and it is creted with double hash value "##". They are visible to all connections of SQL Server and only destroyed when the last connection referencing the table is closed.</p>, `CREATE TABLE ##Emp (Id INT, Name VARCHAR(25))`)
-        }
-      >Global</button>
-
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Trigger</strong> is a stored procedure which automatically executes when special event occurs in database. Automatic Execution is the main key feature which fires automatically when we perform database operation like INSERT, UPDATE or DELETE.
-There are 3 types of Trigger</p>)
-        }
-      >Trigger</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>DDL Triggers</strong> respond to DDL events like CREATE, ALTER, DROP, GRANT, DENY, REVOKE etc. It allow to track changes in the structure of the database. The trigger will prevent any table creation, alteration, or deletion in the database.</p>, `CREATE TRIGGER prevent_table_creation
-ON DATABASE
-FOR CREATE_TABLE, ALTER_TABLE, DROP_TABLE
-AS 
-BEGIN
-PRINT 'you can not create, drop, alter table';
-ROLLBACK;
-END;`)
-        }
-      >DDL</button>
-      
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>DML Triggers</strong> are automatically invoked when an INSERT, UPDATE or DELETE statement is executed.</p>, `CREATE TRIGGER prevent_update
-ON students
-FOR UPDATE
-AS
-BEGIN
-PRINT 'You can not insert, update and delete';
-ROLLBACK;
-END;`)
-        }
-      >DML</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Logon Triggers</strong> are useful for monitoring user sessions or restricting user access to the database. It can be used for tracking login activities, put the restriction on logins, or limiting the number of sessions for a particular login.</p>, `CREATE TRIGGER track_logon
-ON LOGON
-AS
-BEGIN
-PRINT 'A new user has logged in.';
-END;`)
-        }
-      >Logon</button><br />
-
-        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>CTE</strong> is a tool which is used to simplify complex queries and makes them more readable. CTE allows us to break down complicated logic into manageable parts by defining temporary result sets that can be referenced multiple times.<br />
-CTE is a temporary result set that is defined and used within the execution scope of a SELECT, INSERT, UPDATE, or DELETE statement. CTEs are defined using the WITH clause and can be referenced multiple times within the main SQL query. This makes CTEs a great alternative to subqueries to perform the same operation multiple times or create recursive queries.</p>, `WITH AvgSalaryByDept AS (
-  SELECT Depart,AVG(Sal) AS AvgSal FROM Emp
-  GROUP BY Depart
-)
-SELECT * FROM AvgSalaryByDept;`)
-        }
-      >CTE</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Cursor</strong> Cursor is a database object which is used to iterate in a result set row by row. For example</p>, `DECLARE @name VARCHAR(50) /* Declare Variable */
-
-DECLARE db_cursor CURSOR FOR  /*Declare Cursor Name*/
-SELECT name from Students 
-WHERE parent_name IN ('Sara', 'Ansh')
-
-OPEN db_cursor /*Open cursor & Fetch data into @name*/
-FETCH next
-FROM db_cursor
-INTO @name
-
-CLOSE db_cursor /*Close cursor+deallocate resources*/
-DEALLOCATE db_cursor`)
-        }
-      >Cursor</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Deadlock</strong>: occurs when two or more transactions are unable to the proceed because each transaction is waiting for the other to the release locks on resources.<br />
-<strong>We can Avoid Deadlocks:</strong><br />
-Minimize transactions size and transaction times.<br />
-Always acces servr objct in same order each time<br />
-Avoid cursors that require usr input while runing.<br />
-Use NoLock and RowLock to prevent locking<br />
-Reduce lock time in application.</p>)
-        }
-      >Deadlock</button>
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>SQL Debugging</strong>: Open the Visual Studio.NET and continue without code<br />
-Connect to SQLServer in Visual Studio<br />
-Menu Tools-&lt;SQL Server-&lt;New Query<br />
-Enter Sql Server Connection Data<br />
-In script write script or Invoke the Stored procedure<br />
-F9 or double click left of code line for out the break point<br />
-In menu SQL-&lt; Execute with debugger<br />
-With F11 trace line By line</p>)
-        }
-      >Debugging</button>
-
-        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>IdentityCurrent</strong> the ident_current(table_name) returns the last identity created for specific table or view in any session.</p>, `CREATE TABLE Employees (
-    EmployeeID INT IDENTITY(1,1),
-    EmployeeName NVARCHAR(100)
-);
-
-Insert into Employees table
-INSERT INTO Employees (EmployeeName)
-VALUES ('John Doe');
-
-Insert into Orders table
-INSERT INTO Orders (EmployeeID, OrderDate)
-VALUES (1, '2025-03-28');
-
-Retrieve the last identity value
- generated for the Employees table
-SELECT IDENT_CURRENT('Employees') AS LastEmployeeID;`)
-        }
-      >IdentityCurrent</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>MERGE</strong> Statement combines insert, update and delete statements into one single query. It is used to perform insert, update and delete operations on a target table based on the results of JOIN with a source table. This allows users to synchronize two tables by performing operations on one table based on results from the second table.
-MERGE statement compares data between a source table and a target table based on specified key fields. It performs actions like inserting new records, updating existing ones and deleting records.</p>, 
-`MERGE INTO Employees AS target
-USING SalaryUpdates AS source
-ON target.EmployeeID = source.EmployeeID
-WHEN MATCHED THEN
-    UPDATE SET target.Salary = source.NewSalary
-WHEN NOT MATCHED BY TARGET THEN
-    INSERT (EmployeeID, Name, Salary)
-    VALUES (source.EmployeeID, 'Unknown', source.NewSalary);`)
-        }
-      >MERGE</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>OLTP</strong> (Online Transaction Processing) is a class which supports in transaction-oriented programs. OLTP maintains the concurrency and follow a decentralized architecture to avoid single points of failure.</p>)
-        }
-      >OLTP</button>
-      
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>OLAP</strong> (Online Analytical Processing) is a class which is used in low frequency online transactions. Queries are too complex and involve a bunch of aggregations.</p>)
-        }
-      >OLAP</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Indexing</strong>: help us to retrieve data faster in a faster way.<br />
-<strong>Avoid SELECT *</strong>: Retrieve only the required columns to improve performance<br />
-<strong>Optimize JOINs</strong>: Use proper join to avoid duplicates and improve queries<br />
-<strong>Minimize Subqueries</strong>: Replace complex|nested subqueries with joins or CTEs<br />
-<strong>Avoid Unnecessary Data Retrieval</strong>: Use filters like WHERE clauses to fetch only relevant data.<br />
-<strong>Use SP Instead of Dynamic Query</strong> as SP are precompiled and more secure<br />
-<strong>Use SQL Profiler</strong>: Monitor query performance to identify bottlenecks.<br />
-<strong>Use Appropriate Data Type</strong> to improve storage efficiency & process speed<br />
-<strong>Use EXISTS() Instead of COUNT()</strong> as EXISTS() is generally faster.<br />
-<strong>Partitioning</strong> split large table into small and manageable within same server<br />
-<strong>Sharding</strong> distributes data across multiple servers to balance the load.<br />
-<strong>Normalize Tables</strong>: Eliminate redundancy and improve data consistency.<br />
-<strong>Reduce Use of Wildcards</strong>: Avoid wildcard characters to allow index usage<br />
-<strong>Use UNION ALL Instead of UNION</strong> as it does not eliminate duplicate rows.<br />
-<strong>Implement Pagination</strong> use TAKE, SKIP, LIMIT, OFFSET to improve performance</p>)
-        }
-      >Optimize</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Function</strong> must return a value while <strong>Procedure</strong> may or not return values.<br />
-<strong>Function</strong> will allow only Select statements. <strong>Procedure</strong> can have select statements as well as DML statements such as insert, update, delete.<br />
-<strong>Function</strong> allow only input parameters. <strong>Procedure</strong> allow input and output both parameters.<br />
-<strong>Function</strong> does not allow try-catch blocks. But <strong>Procedure</strong> allow exception handling like try catch blocks.<br />
-Transactions are not allowed within <strong>Function</strong> while <strong>Procedure</strong> allow transactions.<br />
-<strong>Function</strong> can be call in Procedure. <strong>Procedure</strong> can not be call in <strong>Function</strong>. Functions can be called from a select statement.</p>)
-        }
-      >Procedure vs Function</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>&#64;&#64;Rowcount</strong> is a system variable that is used to return the number of rows that are affected by the last executed statement.</p>)
-        }
-      >&#64;&#64;Rowcount</button>
-
-        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>&#64;&#64;IDENTITY</strong> return the last identity value generated in any table in the current session. It is not limited to a specific scope. IDENT_CURRENT is not limited by scope and session and it is limited to a specified table.</p>, `CREATE TABLE Employees (
-    EmployeeID INT IDENTITY(1,1),
-    EmployeeName NVARCHAR(100)
-);
-
-Insert a new row
-INSERT INTO Employees (EmployeeName)
-VALUES ('John Doe');
-
-Retrieve the last inserted identity
- value using @@IDENTITY
-SELECT @@IDENTITY AS LastIdentityValue;`)
-        }
-      >&#64;&#64;IDENTITY</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>NOLOCK</strong> is used when we need to run a heavy query on a table, retrieve data from a table that constantly updates, or when we don't know how many records our query will retrieve and how it will affect the database. When we use the NOLOCK hint, our query is not blocked by other processes because it ignores any locks when reading data from tables.</p>, `SELECT Name, Email, Mobile FROM Employee WITH (NOLOCK)
-WHERE Name = 'Rakesh';`)
-        }
-      >NOLOCK</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ROW_NUMBER()</strong> assigns a unique sequence number to each row within a result set or partition of data. Unlike <strong>RANK()</strong> and <strong>DENSE_RANK(), ROW_NUMBER()</strong> does not allow ties—even if rows have the same values, each gets a unique row number.</p>,
-        `SELECT Name, Score,
-ROW_NUMBER() OVER (ORDER BY Score DESC) AS RowNum
-FROM Students;
-Name	Score	RowNum
-Alice	95	1
-Bob	95	2
-Carol	90	3
-David	85	4`)
-        }
-      >Row_Number</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Both <strong>RANK()</strong> and <strong>DENSE_RANK()</strong> are used to assign a ranking number to rows within a partition of a result set.<br />
-          <strong>RANK()</strong> adds gaps in the ranking when there are ties. If two rows have the same rank, the next rank is skipped.<br />
-          <strong>DENSE_RANK()</strong> does not skip ranks when there are ties.</p>, 
-          `SELECT * RANK() OVER (ORDER BY Score DESC) AS Rank
-FROM Students;
-
-SELECT * DENSE_RANK() OVER (ORDER BY Score DESC) AS
-DenseRank FROM Students;`)
-        }
-      >Rank vs Dense Rank</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>SCOPE_IDENTITY</strong> return the last identity value generated in any table in the current session. It returns the value only within the current scope.</p>, `CREATE TABLE Employees
-(Id INT IDENTITY(1,1), Name NVARCHAR(100));
-
-CREATE TABLE Orders (Id INT IDENTITY(1,1),
-    EmployeeID INT, OrderDate DATE
-);
-Insert a new row into Employees
-INSERT INTO Employees (Name) VALUES ('John Doe');
-Insert a new row into Orders
-INSERT INTO Orders (Id, OrderDate)
-VALUES (SCOPE_IDENTITY(), '2025-03-28');
-
-Retrieve last inserted value by SCOPE_IDENTITY()
-SELECT SCOPE_IDENTITY() AS LastEmployeeID;`)
-        }
-      >SCOPE_IDENTITY</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Sequence</strong> is a user-defined object that generates a sequence of numeric values. Unlike Identity which is tied to a specific table column Sequence can be used across multiple tables and queries.</p>, `CREATE SEQUENCE unique_num
-	AS INT
-	START WITH 1
-	INCREMENT BY 1; 
-
-CREATE TABLE Country
-(
-	Id INT PRIMARY KEY,
-	Name varchar(50)
-); 
-INSERT INTO Country 
-VALUES(NEXT VALUE FOR dbo.unique_num, 'USA');`)
-        }
-      >Sequence</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>View</strong> is a virtual table based on the result of a select query. It does not store data physically, but stores the SQL query itself.<br />
-Views can be updated using INSERT, UPDATE, DELETE—only if it is updatable.<br />
-<strong>A view is typically not updatable if it includes</strong>:<br />
-Aggregate functions (SUM, AVG), DISTINCT, GROUP BY, Subqueries, Joins</p>, `CREATE VIEW ActiveCustomers AS
-SELECT CustomerID, Name, Email FROM Customers
-WHERE Status = 'Active';
-
-SELECT * FROM ActiveCustomers;`)
-        }
-      >View</button><br />
-
-       <button className="btn btn-danger me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `WITH cte AS 
-(
-  SELECT Name, 
-  ROW_NUMBER() OVER(PARTITION BY Name ORDER BY Name) row_num
-  FROM employee
-)	
-SELECT * FROM cte WHERE row_num > 1;
-
-//Using subqueries
-SELECT Name, COUNT(Id) AS Duplicate FROM Employee 
-GROUP BY Name
-HAVING COUNT(Name) > 1;`)
-        }
-      >Duplicate Name</button>
-
-       <button className="btn btn-danger me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `with cte as
-(SELECT Name, Salary, 
-RANK() OVER(ORDER BY Salary DESC) sal_rank from Employees)
-select * from cte where sal_rank = 2
-
-//Using subquery
-SELECT Name, Salary FROM 
-   (SELECT Name, Salary, RANK() OVER (ORDER BY Salary DESC) 
-   AS sal_rank FROM Employee) AS ranked_salaries 
-WHERE sal_rank = 2;`)
-        }
-      >Highest Salary</button>
+      >Exception Handling</button>
 
       {/* Popup */}
       {isOpen && (
