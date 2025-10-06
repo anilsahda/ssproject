@@ -182,6 +182,7 @@ export class AppComponent { }`}
           <li>🧩 Modular component structure (pages + layout)</li>
           <li>📄 Routing with <code>RouterModule</code></li>
           <li>✅ Shared Header and Footer with Layout component</li>
+          <li>🔗 React Git URL: <a href="https://github.com/anilsahda/Angular-Project.git" target="_blank" rel="noopener noreferrer">https://github.com/anilsahda/Angular-Project.git</a></li>
         </ul>
       </section>
     </div>
