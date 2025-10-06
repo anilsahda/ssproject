@@ -940,7 +940,14 @@ private readonly IOrderService _orderService;
       >Onion</button><br />
 
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Entity Framework</strong></p>)
+          handleOpenPopup(<p><strong>Entity Framework</strong> is an ORM for .NET which allow .NET developers to work with a database using .NET objects, eliminating the need for most of the data-access code that you'd otherwise write manually like SQL.<br />
+          Benefits of Using Entity Framework<br />
+Feature	Benefit<br />
+Productivity	No need to write SQL or stored procedures.<br />
+Maintainability	Clean separation of concerns and code-first approach.<br />
+LINQ Support	Write queries in C# using strong typing and IntelliSense.<br />
+Migration Support	Handles schema evolution in a controlled way.<br />
+Cross-Platform	Works on Windows, Linux, macOS via .NET Core/.NET 5/6/7+.</p>)
         }
       >Entity Framework</button>
 

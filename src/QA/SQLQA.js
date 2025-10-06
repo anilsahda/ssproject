@@ -24,6 +24,226 @@ const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
+        <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>CTE</strong> is a tool which is used to simplify complex queries and makes them more readable. CTE allows us to break down complicated logic into manageable parts by defining temporary result sets that can be referenced multiple times.<br />
+CTE is a temporary result set that is defined and used within the execution scope of a SELECT, INSERT, UPDATE, or DELETE statement. CTEs are defined using the WITH clause and can be referenced multiple times within the main SQL query. This makes CTEs a great alternative to subqueries to perform the same operation multiple times or create recursive queries.</p>, `WITH AvgSalaryByDept AS (
+  SELECT Depart,AVG(Sal) AS AvgSal FROM Emp
+  GROUP BY Depart
+)
+SELECT * FROM AvgSalaryByDept;`)
+        }
+      >CTE</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Cursor</strong> Cursor is a database object which is used to iterate in a result set row by row. For example</p>, `DECLARE @name VARCHAR(50) /* Declare Variable */
+
+DECLARE db_cursor CURSOR FOR  /*Declare Cursor Name*/
+SELECT name from Students 
+WHERE parent_name IN ('Sara', 'Ansh')
+
+OPEN db_cursor /*Open cursor & Fetch data into @name*/
+FETCH next
+FROM db_cursor
+INTO @name
+
+CLOSE db_cursor /*Close cursor+deallocate resources*/
+DEALLOCATE db_cursor`)
+        }
+      >Cursor</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Deadlock</strong>: occurs when two or more transactions are unable to the proceed because each transaction is waiting for the other to the release locks on resources.<br />
+<strong>We can Avoid Deadlocks:</strong><br />
+Minimize transactions size and transaction times.<br />
+Always acces servr objct in same order each time<br />
+Avoid cursors that require usr input while runing.<br />
+Use NoLock and RowLock to prevent locking<br />
+Reduce lock time in application.</p>)
+        }
+      >Deadlock</button>
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>SQL Debugging</strong>: Open the Visual Studio.NET and continue without code<br />
+Connect to SQLServer in Visual Studio<br />
+Menu Tools-&lt;SQL Server-&lt;New Query<br />
+Enter Sql Server Connection Data<br />
+In script write script or Invoke the Stored procedure<br />
+F9 or double click left of code line for out the break point<br />
+In menu SQL-&lt; Execute with debugger<br />
+With F11 trace line By line</p>)
+        }
+      >Debugging</button>
+
+        <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>IdentityCurrent</strong> the ident_current(table_name) returns the last identity created for specific table or view in any session.</p>, `CREATE TABLE Employees (
+    EmployeeID INT IDENTITY(1,1),
+    EmployeeName NVARCHAR(100)
+);
+
+Insert into Employees table
+INSERT INTO Employees (EmployeeName)
+VALUES ('John Doe');
+
+Insert into Orders table
+INSERT INTO Orders (EmployeeID, OrderDate)
+VALUES (1, '2025-03-28');
+
+Retrieve the last identity value
+ generated for the Employees table
+SELECT IDENT_CURRENT('Employees') AS LastEmployeeID;`)
+        }
+      >IdentityCurrent</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>MERGE</strong> Statement combines insert, update and delete statements into one single query. It is used to perform insert, update and delete operations on a target table based on the results of JOIN with a source table. This allows users to synchronize two tables by performing operations on one table based on results from the second table.
+MERGE statement compares data between a source table and a target table based on specified key fields. It performs actions like inserting new records, updating existing ones and deleting records.</p>, 
+`MERGE INTO Employees AS target
+USING SalaryUpdates AS source
+ON target.EmployeeID = source.EmployeeID
+WHEN MATCHED THEN
+    UPDATE SET target.Salary = source.NewSalary
+WHEN NOT MATCHED BY TARGET THEN
+    INSERT (EmployeeID, Name, Salary)
+    VALUES (source.EmployeeID, 'Unknown', source.NewSalary);`)
+        }
+      >MERGE</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>OLTP</strong> (Online Transaction Processing) is a class which supports in transaction-oriented programs. OLTP maintains the concurrency and follow a decentralized architecture to avoid single points of failure.</p>)
+        }
+      >OLTP</button>
+      
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>OLAP</strong> (Online Analytical Processing) is a class which is used in low frequency online transactions. Queries are too complex and involve a bunch of aggregations.</p>)
+        }
+      >OLAP</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Indexing</strong>: help us to retrieve data faster in a faster way.<br />
+<strong>Avoid SELECT *</strong>: Retrieve only the required columns to improve performance<br />
+<strong>Optimize JOINs</strong>: Use proper join to avoid duplicates and improve queries<br />
+<strong>Minimize Subqueries</strong>: Replace complex|nested subqueries with joins or CTEs<br />
+<strong>Avoid Unnecessary Data Retrieval</strong>: Use filters like WHERE clauses to fetch only relevant data.<br />
+<strong>Use SP Instead of Dynamic Query</strong> as SP are precompiled and more secure<br />
+<strong>Use SQL Profiler</strong>: Monitor query performance to identify bottlenecks.<br />
+<strong>Use Appropriate Data Type</strong> to improve storage efficiency & process speed<br />
+<strong>Use EXISTS() Instead of COUNT()</strong> as EXISTS() is generally faster.<br />
+<strong>Partitioning</strong> split large table into small and manageable within same server<br />
+<strong>Sharding</strong> distributes data across multiple servers to balance the load.<br />
+<strong>Normalize Tables</strong>: Eliminate redundancy and improve data consistency.<br />
+<strong>Reduce Use of Wildcards</strong>: Avoid wildcard characters to allow index usage<br />
+<strong>Use UNION ALL Instead of UNION</strong> as it does not eliminate duplicate rows.<br />
+<strong>Implement Pagination</strong> use TAKE, SKIP, LIMIT, OFFSET to improve performance</p>)
+        }
+      >Optimize</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Function</strong> must return a value while <strong>Procedure</strong> may or not return values.<br />
+<strong>Function</strong> will allow only Select statements. <strong>Procedure</strong> can have select statements as well as DML statements such as insert, update, delete.<br />
+<strong>Function</strong> allow only input parameters. <strong>Procedure</strong> allow input and output both parameters.<br />
+<strong>Function</strong> does not allow try-catch blocks. But <strong>Procedure</strong> allow exception handling like try catch blocks.<br />
+Transactions are not allowed within <strong>Function</strong> while <strong>Procedure</strong> allow transactions.<br />
+<strong>Function</strong> can be call in Procedure. <strong>Procedure</strong> can not be call in <strong>Function</strong>. Functions can be called from a select statement.</p>)
+        }
+      >Procedure vs Function</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>&#64;&#64;Rowcount</strong> is a system variable that is used to return the number of rows that are affected by the last executed statement.</p>)
+        }
+      >&#64;&#64;Rowcount</button>
+
+        <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>&#64;&#64;IDENTITY</strong> return the last identity value generated in any table in the current session. It is not limited to a specific scope. IDENT_CURRENT is not limited by scope and session and it is limited to a specified table.</p>, `CREATE TABLE Employees (
+    EmployeeID INT IDENTITY(1,1),
+    EmployeeName NVARCHAR(100)
+);
+
+Insert a new row
+INSERT INTO Employees (EmployeeName)
+VALUES ('John Doe');
+
+Retrieve the last inserted identity
+ value using @@IDENTITY
+SELECT @@IDENTITY AS LastIdentityValue;`)
+        }
+      >&#64;&#64;IDENTITY</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>NOLOCK</strong> is used when we need to run a heavy query on a table, retrieve data from a table that constantly updates, or when we don't know how many records our query will retrieve and how it will affect the database. When we use the NOLOCK hint, our query is not blocked by other processes because it ignores any locks when reading data from tables.</p>, `SELECT Name, Email, Mobile FROM Employee WITH (NOLOCK)
+WHERE Name = 'Rakesh';`)
+        }
+      >NOLOCK</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>ROW_NUMBER()</strong> assigns a unique sequence number to each row within a result set or partition of data. Unlike <strong>RANK()</strong> and <strong>DENSE_RANK(), ROW_NUMBER()</strong> does not allow ties—even if rows have the same values, each gets a unique row number.</p>,
+        `SELECT Name, Score,
+ROW_NUMBER() OVER (ORDER BY Score DESC) AS RowNum
+FROM Students;
+Name	Score	RowNum
+Alice	95	1
+Bob	95	2
+Carol	90	3
+David	85	4`)
+        }
+      >Row_Number</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Both <strong>RANK()</strong> and <strong>DENSE_RANK()</strong> are used to assign a ranking number to rows within a partition of a result set.<br />
+          <strong>RANK()</strong> adds gaps in the ranking when there are ties. If two rows have the same rank, the next rank is skipped.<br />
+          <strong>DENSE_RANK()</strong> does not skip ranks when there are ties.</p>, 
+          `SELECT * RANK() OVER (ORDER BY Score DESC) AS Rank
+FROM Students;
+
+SELECT * DENSE_RANK() OVER (ORDER BY Score DESC) AS
+DenseRank FROM Students;`)
+        }
+      >Rank vs Dense Rank</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>SCOPE_IDENTITY</strong> return the last identity value generated in any table in the current session. It returns the value only within the current scope.</p>, `CREATE TABLE Employees
+(Id INT IDENTITY(1,1), Name NVARCHAR(100));
+
+CREATE TABLE Orders (Id INT IDENTITY(1,1),
+    EmployeeID INT, OrderDate DATE
+);
+Insert a new row into Employees
+INSERT INTO Employees (Name) VALUES ('John Doe');
+Insert a new row into Orders
+INSERT INTO Orders (Id, OrderDate)
+VALUES (SCOPE_IDENTITY(), '2025-03-28');
+
+Retrieve last inserted value by SCOPE_IDENTITY()
+SELECT SCOPE_IDENTITY() AS LastEmployeeID;`)
+        }
+      >SCOPE_IDENTITY</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Sequence</strong> is a user-defined object that generates a sequence of numeric values. Unlike Identity which is tied to a specific table column Sequence can be used across multiple tables and queries.</p>, `CREATE SEQUENCE unique_num
+	AS INT
+	START WITH 1
+	INCREMENT BY 1; 
+
+CREATE TABLE Country
+(
+	Id INT PRIMARY KEY,
+	Name varchar(50)
+); 
+INSERT INTO Country 
+VALUES(NEXT VALUE FOR dbo.unique_num, 'USA');`)
+        }
+      >Sequence</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>View</strong> is a virtual table based on the result of a select query. It does not store data physically, but stores the SQL query itself.<br />
+Views can be updated using INSERT, UPDATE, DELETE—only if it is updatable.<br />
+<strong>A view is typically not updatable if it includes</strong>:<br />
+Aggregate functions (SUM, AVG), DISTINCT, GROUP BY, Subqueries, Joins</p>, `CREATE VIEW ActiveCustomers AS
+SELECT CustomerID, Name, Email FROM Customers
+WHERE Status = 'Active';
+
+SELECT * FROM ActiveCustomers;`)
+        }
+      >View</button><br />
+
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>ACID</strong> is used to maintain database consistency before and after a transaction. Transaction is a single logical unit which is used to modify the data through read write operations like insert, update, delete and retrieve the data.</p>)
         }
@@ -102,7 +322,20 @@ Common TCL commands include:<br />
 <strong>SAVEPOINT</strong>: Sets a point in a transaction to which you can roll back without affecting the entire transaction.<br />
 <strong>SET TRANSACTION</strong>: Sets properties for the transaction, such as its isolation level.</p>)
         }
-      >TCL</button><br />
+      >TCL</button>
+       <button className="btn btn-danger me-2 mb-2" onClick={() =>
+          handleOpenPopup(null, `with cte as
+(SELECT Name, Salary, 
+RANK() OVER(ORDER BY Salary DESC) sal_rank from Employees)
+select * from cte where sal_rank = 2
+
+//Using subquery
+SELECT Name, Salary FROM 
+   (SELECT Name, Salary, RANK() OVER (ORDER BY Salary DESC) 
+   AS sal_rank FROM Employee) AS ranked_salaries 
+WHERE sal_rank = 2;`)
+        }
+      >Highest Salary</button><br />
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Constraints</strong> are set of rules that we apply to columns in a table to control what kind of data can be stored in that columns. Constraints help to keep our database accurate, reliable, and safe from invalid data.</p>)
@@ -279,7 +512,22 @@ WHERE Name = 'Laptop';);`)
           handleOpenPopup(<p><strong>SET</strong>: Used to store a collection of values from a predefined list. Each value is stored as a bit (either 0 or 1).
 <br />Example: SET('a', 'b', 'c', 'd')</p>)
         }
-      >SET</button><br />
+      >SET</button>
+       <button className="btn btn-danger me-2 mb-2" onClick={() =>
+          handleOpenPopup(null, `WITH cte AS 
+(
+  SELECT Name, 
+  ROW_NUMBER() OVER(PARTITION BY Name ORDER BY Name) row_num
+  FROM employee
+)	
+SELECT * FROM cte WHERE row_num > 1;
+
+//Using subqueries
+SELECT Name, COUNT(Id) AS Duplicate FROM Employee 
+GROUP BY Name
+HAVING COUNT(Name) > 1;`)
+        }
+      >Find Duplicate Name</button><br />
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Functions</strong> SQL functions are built-in operations in SQL that perform calculations, transform data, or return specific information based on input values. They are often used in SELECT, WHERE, GROUP BY and ORDER BY clauses to manipulate data in a query.</p>)
@@ -543,257 +791,7 @@ BEGIN
 PRINT 'A new user has logged in.';
 END;`)
         }
-      >Logon</button><br />
-
-        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>CTE</strong> is a tool which is used to simplify complex queries and makes them more readable. CTE allows us to break down complicated logic into manageable parts by defining temporary result sets that can be referenced multiple times.<br />
-CTE is a temporary result set that is defined and used within the execution scope of a SELECT, INSERT, UPDATE, or DELETE statement. CTEs are defined using the WITH clause and can be referenced multiple times within the main SQL query. This makes CTEs a great alternative to subqueries to perform the same operation multiple times or create recursive queries.</p>, `WITH AvgSalaryByDept AS (
-  SELECT Depart,AVG(Sal) AS AvgSal FROM Emp
-  GROUP BY Depart
-)
-SELECT * FROM AvgSalaryByDept;`)
-        }
-      >CTE</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Cursor</strong> Cursor is a database object which is used to iterate in a result set row by row. For example</p>, `DECLARE @name VARCHAR(50) /* Declare Variable */
-
-DECLARE db_cursor CURSOR FOR  /*Declare Cursor Name*/
-SELECT name from Students 
-WHERE parent_name IN ('Sara', 'Ansh')
-
-OPEN db_cursor /*Open cursor & Fetch data into @name*/
-FETCH next
-FROM db_cursor
-INTO @name
-
-CLOSE db_cursor /*Close cursor+deallocate resources*/
-DEALLOCATE db_cursor`)
-        }
-      >Cursor</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Deadlock</strong>: occurs when two or more transactions are unable to the proceed because each transaction is waiting for the other to the release locks on resources.<br />
-<strong>We can Avoid Deadlocks:</strong><br />
-Minimize transactions size and transaction times.<br />
-Always acces servr objct in same order each time<br />
-Avoid cursors that require usr input while runing.<br />
-Use NoLock and RowLock to prevent locking<br />
-Reduce lock time in application.</p>)
-        }
-      >Deadlock</button>
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>SQL Debugging</strong>: Open the Visual Studio.NET and continue without code<br />
-Connect to SQLServer in Visual Studio<br />
-Menu Tools-&lt;SQL Server-&lt;New Query<br />
-Enter Sql Server Connection Data<br />
-In script write script or Invoke the Stored procedure<br />
-F9 or double click left of code line for out the break point<br />
-In menu SQL-&lt; Execute with debugger<br />
-With F11 trace line By line</p>)
-        }
-      >Debugging</button>
-
-        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>IdentityCurrent</strong> the ident_current(table_name) returns the last identity created for specific table or view in any session.</p>, `CREATE TABLE Employees (
-    EmployeeID INT IDENTITY(1,1),
-    EmployeeName NVARCHAR(100)
-);
-
-Insert into Employees table
-INSERT INTO Employees (EmployeeName)
-VALUES ('John Doe');
-
-Insert into Orders table
-INSERT INTO Orders (EmployeeID, OrderDate)
-VALUES (1, '2025-03-28');
-
-Retrieve the last identity value
- generated for the Employees table
-SELECT IDENT_CURRENT('Employees') AS LastEmployeeID;`)
-        }
-      >IdentityCurrent</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>MERGE</strong> Statement combines insert, update and delete statements into one single query. It is used to perform insert, update and delete operations on a target table based on the results of JOIN with a source table. This allows users to synchronize two tables by performing operations on one table based on results from the second table.
-MERGE statement compares data between a source table and a target table based on specified key fields. It performs actions like inserting new records, updating existing ones and deleting records.</p>, 
-`MERGE INTO Employees AS target
-USING SalaryUpdates AS source
-ON target.EmployeeID = source.EmployeeID
-WHEN MATCHED THEN
-    UPDATE SET target.Salary = source.NewSalary
-WHEN NOT MATCHED BY TARGET THEN
-    INSERT (EmployeeID, Name, Salary)
-    VALUES (source.EmployeeID, 'Unknown', source.NewSalary);`)
-        }
-      >MERGE</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>OLTP</strong> (Online Transaction Processing) is a class which supports in transaction-oriented programs. OLTP maintains the concurrency and follow a decentralized architecture to avoid single points of failure.</p>)
-        }
-      >OLTP</button>
-      
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>OLAP</strong> (Online Analytical Processing) is a class which is used in low frequency online transactions. Queries are too complex and involve a bunch of aggregations.</p>)
-        }
-      >OLAP</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Indexing</strong>: help us to retrieve data faster in a faster way.<br />
-<strong>Avoid SELECT *</strong>: Retrieve only the required columns to improve performance<br />
-<strong>Optimize JOINs</strong>: Use proper join to avoid duplicates and improve queries<br />
-<strong>Minimize Subqueries</strong>: Replace complex|nested subqueries with joins or CTEs<br />
-<strong>Avoid Unnecessary Data Retrieval</strong>: Use filters like WHERE clauses to fetch only relevant data.<br />
-<strong>Use SP Instead of Dynamic Query</strong> as SP are precompiled and more secure<br />
-<strong>Use SQL Profiler</strong>: Monitor query performance to identify bottlenecks.<br />
-<strong>Use Appropriate Data Type</strong> to improve storage efficiency & process speed<br />
-<strong>Use EXISTS() Instead of COUNT()</strong> as EXISTS() is generally faster.<br />
-<strong>Partitioning</strong> split large table into small and manageable within same server<br />
-<strong>Sharding</strong> distributes data across multiple servers to balance the load.<br />
-<strong>Normalize Tables</strong>: Eliminate redundancy and improve data consistency.<br />
-<strong>Reduce Use of Wildcards</strong>: Avoid wildcard characters to allow index usage<br />
-<strong>Use UNION ALL Instead of UNION</strong> as it does not eliminate duplicate rows.<br />
-<strong>Implement Pagination</strong> use TAKE, SKIP, LIMIT, OFFSET to improve performance</p>)
-        }
-      >Optimize</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Function</strong> must return a value while <strong>Procedure</strong> may or not return values.<br />
-<strong>Function</strong> will allow only Select statements. <strong>Procedure</strong> can have select statements as well as DML statements such as insert, update, delete.<br />
-<strong>Function</strong> allow only input parameters. <strong>Procedure</strong> allow input and output both parameters.<br />
-<strong>Function</strong> does not allow try-catch blocks. But <strong>Procedure</strong> allow exception handling like try catch blocks.<br />
-Transactions are not allowed within <strong>Function</strong> while <strong>Procedure</strong> allow transactions.<br />
-<strong>Function</strong> can be call in Procedure. <strong>Procedure</strong> can not be call in <strong>Function</strong>. Functions can be called from a select statement.</p>)
-        }
-      >Procedure vs Function</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>&#64;&#64;Rowcount</strong> is a system variable that is used to return the number of rows that are affected by the last executed statement.</p>)
-        }
-      >&#64;&#64;Rowcount</button>
-
-        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>&#64;&#64;IDENTITY</strong> return the last identity value generated in any table in the current session. It is not limited to a specific scope. IDENT_CURRENT is not limited by scope and session and it is limited to a specified table.</p>, `CREATE TABLE Employees (
-    EmployeeID INT IDENTITY(1,1),
-    EmployeeName NVARCHAR(100)
-);
-
-Insert a new row
-INSERT INTO Employees (EmployeeName)
-VALUES ('John Doe');
-
-Retrieve the last inserted identity
- value using @@IDENTITY
-SELECT @@IDENTITY AS LastIdentityValue;`)
-        }
-      >&#64;&#64;IDENTITY</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>NOLOCK</strong> is used when we need to run a heavy query on a table, retrieve data from a table that constantly updates, or when we don't know how many records our query will retrieve and how it will affect the database. When we use the NOLOCK hint, our query is not blocked by other processes because it ignores any locks when reading data from tables.</p>, `SELECT Name, Email, Mobile FROM Employee WITH (NOLOCK)
-WHERE Name = 'Rakesh';`)
-        }
-      >NOLOCK</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ROW_NUMBER()</strong> assigns a unique sequence number to each row within a result set or partition of data. Unlike <strong>RANK()</strong> and <strong>DENSE_RANK(), ROW_NUMBER()</strong> does not allow ties—even if rows have the same values, each gets a unique row number.</p>,
-        `SELECT Name, Score,
-ROW_NUMBER() OVER (ORDER BY Score DESC) AS RowNum
-FROM Students;
-Name	Score	RowNum
-Alice	95	1
-Bob	95	2
-Carol	90	3
-David	85	4`)
-        }
-      >Row_Number</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Both <strong>RANK()</strong> and <strong>DENSE_RANK()</strong> are used to assign a ranking number to rows within a partition of a result set.<br />
-          <strong>RANK()</strong> adds gaps in the ranking when there are ties. If two rows have the same rank, the next rank is skipped.<br />
-          <strong>DENSE_RANK()</strong> does not skip ranks when there are ties.</p>, 
-          `SELECT * RANK() OVER (ORDER BY Score DESC) AS Rank
-FROM Students;
-
-SELECT * DENSE_RANK() OVER (ORDER BY Score DESC) AS
-DenseRank FROM Students;`)
-        }
-      >Rank vs Dense Rank</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>SCOPE_IDENTITY</strong> return the last identity value generated in any table in the current session. It returns the value only within the current scope.</p>, `CREATE TABLE Employees
-(Id INT IDENTITY(1,1), Name NVARCHAR(100));
-
-CREATE TABLE Orders (Id INT IDENTITY(1,1),
-    EmployeeID INT, OrderDate DATE
-);
-Insert a new row into Employees
-INSERT INTO Employees (Name) VALUES ('John Doe');
-Insert a new row into Orders
-INSERT INTO Orders (Id, OrderDate)
-VALUES (SCOPE_IDENTITY(), '2025-03-28');
-
-Retrieve last inserted value by SCOPE_IDENTITY()
-SELECT SCOPE_IDENTITY() AS LastEmployeeID;`)
-        }
-      >SCOPE_IDENTITY</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Sequence</strong> is a user-defined object that generates a sequence of numeric values. Unlike Identity which is tied to a specific table column Sequence can be used across multiple tables and queries.</p>, `CREATE SEQUENCE unique_num
-	AS INT
-	START WITH 1
-	INCREMENT BY 1; 
-
-CREATE TABLE Country
-(
-	Id INT PRIMARY KEY,
-	Name varchar(50)
-); 
-INSERT INTO Country 
-VALUES(NEXT VALUE FOR dbo.unique_num, 'USA');`)
-        }
-      >Sequence</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>View</strong> is a virtual table based on the result of a select query. It does not store data physically, but stores the SQL query itself.<br />
-Views can be updated using INSERT, UPDATE, DELETE—only if it is updatable.<br />
-<strong>A view is typically not updatable if it includes</strong>:<br />
-Aggregate functions (SUM, AVG), DISTINCT, GROUP BY, Subqueries, Joins</p>, `CREATE VIEW ActiveCustomers AS
-SELECT CustomerID, Name, Email FROM Customers
-WHERE Status = 'Active';
-
-SELECT * FROM ActiveCustomers;`)
-        }
-      >View</button><br />
-
-       <button className="btn btn-danger me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `WITH cte AS 
-(
-  SELECT Name, 
-  ROW_NUMBER() OVER(PARTITION BY Name ORDER BY Name) row_num
-  FROM employee
-)	
-SELECT * FROM cte WHERE row_num > 1;
-
-//Using subqueries
-SELECT Name, COUNT(Id) AS Duplicate FROM Employee 
-GROUP BY Name
-HAVING COUNT(Name) > 1;`)
-        }
-      >Duplicate Name</button>
-
-       <button className="btn btn-danger me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `with cte as
-(SELECT Name, Salary, 
-RANK() OVER(ORDER BY Salary DESC) sal_rank from Employees)
-select * from cte where sal_rank = 2
-
-//Using subquery
-SELECT Name, Salary FROM 
-   (SELECT Name, Salary, RANK() OVER (ORDER BY Salary DESC) 
-   AS sal_rank FROM Employee) AS ranked_salaries 
-WHERE sal_rank = 2;`)
-        }
-      >Highest Salary</button>
+      >Logon</button>
 
       {/* Popup */}
       {isOpen && (
