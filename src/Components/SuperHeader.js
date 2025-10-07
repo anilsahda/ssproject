@@ -242,7 +242,7 @@ useEffect(() => {
                     <section>
                       <h2>💸 Salary Structure</h2>
                       <p style={{ textAlign: 'center' }}><strong>During Probation Period :</strong> ₹2,000 - 8,000</p>
-                      <p style={{ textAlign: 'center' }}><strong>Post - Probation Salary :</strong> ₹12,000 - 16,000</p>
+                      <p style={{ textAlign: 'center' }}><strong>Post - Probation Salary :</strong> ₹12,000</p>
                       <p style={{ textAlign: 'center' }}>(Shiwansh Solutions <b>OR</b> Other Companies on the basis of Shiwansh Solutions)</p>                      
                       <p style={{ textAlign: 'center' }}><strong>Revised Salary After 6 Months :</strong>  ₹16,000 - 24,000</p>
                     </section>
