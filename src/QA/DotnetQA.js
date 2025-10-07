@@ -1024,6 +1024,172 @@ Database.ExecuteSqlRaw()	Runs raw SQL.</p>)
         }
       >Database</button><br />
 
+       <button className="btn btn-warning me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Monolithic Architecture</strong> is like a big container where all the software components are bundled together tightly. It is usually built as one large system and is one code-base.<br />
+<strong>Microservice Architecture</strong> is more about applying a certain number of principles and architectural patterns. Each microservice lives independently and rely on each other. Microservices are deployed independently with their own database per service.<br />
+There are many components in a microservices architecture like:<br />
+<strong>Clients</strong>: Different users send requests from various devices.<br />
+<strong>Identity Provider</strong>: Validate a user's or client's identity and issue security tokens.<br />
+<strong>API Gateway</strong>: Handles the requests from clients.<br />
+<strong>Static Content</strong>: Contains all of the system's content.<br />
+<strong>Management</strong>: Services are balanced on nodes and failures are identified.<br />
+<strong>Service Discovery</strong>: A guide to discovering the routes of communication between microservices.<br />
+<strong>Content Delivery Network</strong>: Includes distributed network of proxy servers and their data centers.<br />
+<strong>Remote Service</strong>: Provides remote access to data or information that resides on networked computers and devices.<br /><br />
+<strong>Advantage of Microservices</strong><br />
+<strong>Decoupling</strong>: Within a system, services are largely decoupled. The application as a whole can be easily constructed, altered, and scalable<br />
+<strong>Componentization</strong>: Microservices are viewed as independent components that can easily be exchanged or upgraded<br />
+<strong>Business Capabilities</strong>: Microservices are relatively simple and only focus on one service<br />
+<strong>Team Autonomy</strong>: Each developer works independently of each other, allowing for a faster project timeline<br />
+<strong>Continuous Delivery</strong>: Enables frequent software releases through systematic automation of software development, testing, and approval<br />
+<strong>Decentralized Governance</strong>: Choosing the right tool according to the job is the goal. Developers can choose the best tools to solve their problems<br />
+<strong>Agility</strong>: Microservices facilitate agile development. It is possible to create new features quickly and discard them again at any time.</p>)
+        }
+      >Microservice</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Blue-Green Deployment</strong> is a software development strategy that uses two identical environments to reduce downtime and risk when deploying new features or versions of an application.<br />
+Create two identical environments, one called blue and the other called green<br />
+Run the current application version in the blue environment<br />
+Run the new application version in the green environment<br />
+After testing, redirect traffic from blue to green<br />
+If problems occur, roll back to the blue environment<br />
+After the green environment has been live for a while, make it the new blue environment and create a new green environment<br />
+<strong>Benefits</strong>: Reduces downtime and risk, Improves rollback capabilities, Improves user experience, and Useful for product experimentation.</p>)
+        }
+      >Blue-Green</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Implementing a microservice architecture requires effective communication, complexity management and service interactions.<br />
+<strong>Challenges</strong><br />
+<strong>Challenge 1: Service Coordination</strong> can be complex due to each microservice operates independently with its codebase and database and it's essential to establish effective communication between them.<br />
+<strong>Solution: API Gateway</strong> provide a central entry point for clients and simplify service communication. API Gateway handle request routing and can perform tasks like load balancing and authentication. This practice centralizes the routing logic. API gateway can also help with versioning and rate limiting.<br />
+<strong>Challenge 2: Data Management</strong> Each microservice maintains its own database, which can lead to data consistency and synchronization issues. To make sure data is accurate and up to date across all services can be complex. So, managing transactions and maintain data security between services becomes critical.<br />
+<strong>Solution: Event Sourcing and CQRS</strong><br />
+<strong>Event Sourcing</strong> involves capturing all changes to an application’s state as a sequence of immutable events. Each event represents a change to the system’s state and can be used to reconstruct the state at any point in time. By storing these events and using them for data reconstruction, we can maintain data consistency and simplify synchronization.<br />
+<strong>Command Query Responsibility Segregation (CQRS)</strong> approach separate the read and write data models. This allows to optimizations and improved data consistency.<br /> 
+<strong>Challenge 3: Scalability</strong> While the architecture promotes horizontal scaling of individual services, ensuring dynamic scaling, load balancing, and resource allocation to meet changing demands without overprovisioning resources becomes challenging.<br />
+<strong>Solution: Utilize containerization and orchestration</strong><br />
+Containerization like Docker packages each microservice and its dependencies into a standardized container. Orchestration tools like Kubernetes manage these containers automatically scaling them up and down in response to changes the workloads. This combination simplifies deployment and scaling and makes it easier to adapt to changing demands.<br />
+<strong>Challenge 4: Monitoring and Debugging</strong> varius independent services communicate in Microservices so it’s dificult to monitor individual service's health, performance, and logs across the entire system. Debugging issues of performance problems become more complex in this type of distributed environment.<br />
+<strong>Solution: Incorporate centralized logging and distributed tracing</strong> Centralized logging tools collect log data from various services into a single location. It allows for easier monitoring and debugging, as developers can access a unified log stream for all services.<br />
+<strong>Challenge 5: Security</strong> Each service may expose APIs for interaction, making it essential to ensure the security of both the services themselves and the communication between them. As services interact across a network including data breaches, unauthorized access, and denial-of-service attacks, must be addressed effectively.<br />
+<strong>Solution: Implement OAuth 2.0 and JWT</strong> is an industry-standard protocol for secure authentication and authorization. It ensures that only authenticated users and services can access sensitive data. JWTs are compact, self-contained tokens that transmit information between services securely. These technologies enhance security by enabling controlled access and secure data transmission.</p>)
+        }
+      >Challenges</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>6 steps to deploy the Microservices:</strong><br />
+<strong>Cloud Services</strong> provide scalable, reliable infrastructure, eliminating the need to manage physical servers.<br />
+<strong>Design for Failure</strong> implement redundancy and failover mechanisms so that when a service goes down, it doesn’t bring down the entire system. This approach ensures uninterrupted service availability.<br />
+<strong>Decentralized Data Management</strong> Each microservice should have its own data store. Decentralized data management ensures that changes to one service’s data structure won’t impact others, enhancing agility and scalability.<br />
+<strong>Distribute Governance</strong> approach accelerates development, and ensures findings align with service-specific requirements.<br />
+<strong>Automate Deployment and CI/CD</strong> tools like Kubernetes, Docker, and Jenkins to streamline our deployment pipeline. Implement continuous integration and continuous deployment (CI/CD) processes to automate testing, building, and deploying microservices. This automation accelerates the release cycle and minimizes the risk of human error. Monitor, log, and troubleshoot from the start Start monitoring and logging your microservices right from the beginning.<br /> 
+<strong>Use Monitoring and Observability Tools</strong> like Prometheus, Grafana, and ELK Stack to collect and analyze your services’ performance data. Effective monitoring lets you identify issues early, troubleshoot efficiently, and continuously optimize your microservices.</p>)
+        }
+      >Deployment</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>🛠️ <strong>Handle Microservice Failures</strong> <br />
+<strong>Fail Fast</strong> – Stop the process immediately when something goes wrong.<br />
+<strong>Retry</strong> – Try the failed request again, but only a few times.<br />
+<strong>Exponential Backoff</strong> – Wait longer after each retry to avoid overloading the system.<br />
+<strong>Circuit Breaker</strong> – Stop calling a failing service for a while to let it recover.<br />
+<strong>Bulkhead</strong> – Isolate parts of the system so one failure doesn’t affect everything.<br />
+<strong>Timeouts</strong> – Set time limits so requests don’t hang forever.<br />
+<strong>Graceful Degradation</strong> – Show partial or old data when the full service isn’t working.<br />
+<strong>Fallbacks</strong> – Use a backup method or data if the main service fails.<br />
+<strong>Health Checks</strong> – Regularly check if services are alive and ready.<br />
+<strong>Monitoring and Alerts</strong> – Watch services and get notified if something breaks.<br />
+<strong>Centralized Logging</strong> – Collect all logs in one place to debug issues.<br />
+<strong>Tracing</strong> – Track how a request moves through different services.<br />
+<strong>Idempotency</strong> – Make sure retrying a request doesn’t cause problems.<br />
+<strong>Service Mesh</strong> – Use tools like Istio to handle retries, timeouts, and more automatically.</p>)
+        }
+      >Failure</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>SAGA Pattern</strong> is the failure management that is used to stable distributed applications. It helps to coordinate transactions among multiple microservices to maintain the consistency of data. Saga is a sequence of transactions that updates every service and announces a message to trigger the next step in the transaction. If somehow any step fails the saga pattern executes a transaction that compensates to prevent transaction. It provides transaction management through a sequence of local transactions. Each local transaction updates the database and send message to trigger the next local saga transaction.<br />
+<strong>Saga Pattern is of two types:</strong><br />
+<strong>Choreography Saga Pattern</strong> is a method to organise sagas where participants swap events without centralized control point.<br />
+<strong>Orchestration Saga Pattern</strong> is a method to coordinate sagas through a centralized controller that informs the saga participants what local transactions should be executed.<br />
+<strong>Advantages of Saga Pattern</strong><br />
+The orchestrator saga pattern is good for the complex workflow that involves various participants.<br />
+It will be suitable when every participant and activity flow is controlled in the process.<br />
+Whereas, the choreography saga pattern is beneficial for simple workflows having few participants.<br />
+It doesn’t require additional service maintenance and implementation and doesn’t introduce a single failure point as the responsibilities are distributed among the participants.<br />
+<strong>When to Use Saga Pattern</strong><br />
+Majorly this pattern can be used when we need to ensure data consistency without tight coupling in the distributed system or microservices. It can also be used when there is a need to roll back or compensate for the operation in the case of sequential failure.</p>)
+        }
+      >SAGA</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>In the traditional CRUD model data process like read, modified, and then updated using a transaction that locks the data. This process was slow, difficult to scale, and less responsive due to the extra steps involved.<br />
+That’s why event sourcing pattern came. It is commonly used with CQRS Design Pattern to decouple read and write workloads from each other and optimize them for better scalability, performance and security. It is an approach where we can get all the application state changes as a sequence of events. The data is stored as a number of events rather than direct update in data stores. Event sourcing is an excellent method to update the application’s state and publish the events automatically.<br />
+In this pattern application code sends a series of events that describes each action that has taken place on the data to the event store. The events are persisted in an event store that acts as the record system of the current data state. Then the event store publishes the events to notify the users and handle them if required.<br />
+<strong>Advantages of Event Sourcing Pattern</strong><br />
+Events don’t update data store directly instead they are simply record for handling at a suitable time that can simplify the management and implementation.<br />
+Events are changeable and can be stored using an append-only operation. The user interface process that has created an event can continue while tasks handling events run in the background.<br />
+As event sourcing can avoid the need to directly update an object in the data store, it helps to out the concurrent updates from creating conflicts.<br />
+The event source initiates an event and performs task operation in response to that event. With this decoupling of the task, we can easily achieve extensibility and flexibility in the application.<br />
+<strong>When To Use Event Sourcing Pattern</strong><br />
+Event sourcing patterns can be used when it’s important to minimize the existence of conflicting updates to data.<br />
+It can be used to record an event that has taken place and be capable to replay them and restore the state of a system, keep history, roll back changes and audit logs.<br />
+Event sourcing pattern can also be used in conjunction with CQRS for eventual consistency.<br />
+It can be used to increase the flexibility to change the format of entity data.</p>)
+        }
+      >Event Sourcing</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Use Microservice</strong><br />
+When our application needs to scale independently and each component can grow or shrink based on its demands.<br />
+When we want to enable multiple development teams to work concurrently<br />
+When different parts of our application require various technologies.<br />
+When we need to isolate failures and maintain system reliability.<br />
+When we plan for CI/CD pipeline, quicker updates and bug fixes.<br />
+When we have cross-functional teams that can take ownership of specific microservices.<br />
+<strong>Do Not Use Microservice</strong><br />
+When we’re dealing with small-scale applications with minimal complexity.<br />
+When we have limited resources or a small development team.<br />
+When migrating from a legacy system it can be expensive or risky<br />
+When dealing with applications heavily reliant on data consistency and transactions.<br />
+When our project demands stringent security and compliance requirements, these can be challenging to implement across numerous microservices.</p>)
+        }
+      >When Use</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>API Gateway</strong> is a single entry point for clients to access microservices. It acts as a reverse proxy between client applications and the microservices.<br />
+<strong>How does an API gateway work?</strong><br />
+It routes requests to the appropriate microservice<br />
+It aggregates data from multiple microservices<br />
+It applies policies consistently across all microservices<br />
+It can translate protocols between clients and microservices<br />
+It can reduce the number of round trips between the client and the application<br />
+<strong>Why use an API gateway?</strong><br />
+It simplifies the complexities of client and microservices interactions<br />
+It improves the operation and management efficiency of your microservice architecture<br />
+It hides the details of the system architecture implementation<br />
+It makes microservices more user-friendly<br />
+It can perform tasks such as authentication, rate limiting, and caching</p>)
+        }
+      >API Gateway</button><br />
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p></p>)
+        }
+      ></button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p></p>)
+        }
+      ></button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p></p>)
+        }
+      ></button>
+
+
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Exception Handling</strong> is the method of catching and recording these errors in code so that we can fix them. Usually, errors and exceptions are stored in log files or databases. If these errors are not handled properly, the application may crash and we may not know the root cause of the problem.<br />
 <strong>finally</strong> is used to clean up resources used in the try block when an exception occurs. The finalize method is used to perform cleanup on unmanaged resources held by an object. It is also known as a destructor.<br />
