@@ -1174,21 +1174,62 @@ It can perform tasks such as authentication, rate limiting, and caching</p>)
         }
       >API Gateway</button><br />
 
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p></p>)
+       <button className="btn btn-warning me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>SOLID Principles</strong> are the design principles that help us to manage several software design problems. These principles provide us the ways to move our tightly coupled code to loosely coupled and encapsulate real business needs properly.</p>)
         }
-      ></button>
+      >SOLID</button>
 
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p></p>)
+          handleOpenPopup(<p><strong>Single Responsibility Principle</strong> says that every software module should have only one reason to change. This means that every class or similar structure in your code should have only one job. Everything in that class should be related to a single purpose. It does not mean that our classes should only contain one method or property. There may be many members as long as they relate to a single responsibility.<br />
+<strong>For example</strong>: consider a ReportGenerator class that is responsible for both generating reports and formatting them. This violates SRP. To follow the SRP, we can split this into two classes: ReportGenerator responsible for generating reports and ReportFormatter responsible for formatting reports.</p>)
         }
-      ></button>
+      >SRP</button>
 
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p></p>)
+          handleOpenPopup(<p><strong>Open/Closed Principle</strong> says that software module/class is open for extension and closed for modification. Open for extension means we must design our module/class so that the new functionality can be added only when new requirements are generated. Closed for modification means we have already developed a class, and it has gone through unit testing. We should then not alter it until we find bugs. As it says, a class should be open for extensions; we can use inheritance.<br />
+<strong>For example</strong>: Consider a Shape class with a method to calculate area for different shapes. To follow the OCP, we can create specific classes for each shape, inheriting from an abstract base class Shape.</p>)
         }
-      ></button>
+      >OCP</button>
 
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Liskov Substitution Principle</strong> states that we should be able to use any derived class instead of a parent class and have it behave in the same manner without modification. It ensures that a derived class does not affect the behavior of the parent class. In this principle objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program. This means that the behavior of a subclass should not contradict the behavior of its superclass.<br />
+<strong>For example</strong> Consider a Rectangle class with Width and Height properties. If we inherit from Rectangle to create a Square class, the LSP is violated because a square's width and height should always be equal.<br />
+<strong>For example 1</strong>: A father is a doctor, whereas his son wants to become a cricketer. So here, the son can't replace his father even though they belong to the same family hierarchy.</p>)
+        }
+      >LSP</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Interface Segregation Principle</strong> states that clients should not be forced to implement interfaces which they don't use. Instead of using one big interface we shoul use small small interfaces.<br />
+<strong>For example</strong>: Consider an IWorker interface with methods for both developers and testers. This could be problematic for a Manager class that doesn't need to implement both methods. To follow the ISP, we can split the IWorker interface into two separate interfaces: ICodeWriter and ICodeTester.</p>)
+        }
+      >ISP</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Dependency Inversion Principle</strong> is a software design principle that states that high-level modules should not depend on low-level modules. Instead, both should depend on abstractions. This principle makes code more flexible and maintainable and easier to develop and deploy an application.<br />
+<strong>For example</strong>: Consider a NotificationService class that directly depends on a EmailSender class. This creates a tight coupling between NotificationService and EmailSender. To adhere to DIP, we should introduce an abstraction (interface) that both classes can depend on. By using the IMessageSender interface, we can decoupled NotificationService from the concrete implementation of the message sender, allowing for greater flexibility.</p>)
+        }
+      >DIP</button><br />
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Why and How Deadlock</strong>: Suppose we have 2 threads Thread 1 and Thread 2 and 2 resources Resource 1 and Resource 2. Thread 1 has already acquired a lock on Resource 1 and wants to acquire a lock on Resource 2. At the same time, Thread 2 has already acquired a lock on Resource 2 and wants to acquire a lock on Resource 1. Two threads never give up their locks, hence a deadlock.<br />
+<strong>4 Conditions for Deadlock</strong>: Mutual Exclusion, Hold and Wait, No pre-emption, Circular Wait<br />
+<strong>Mutual Exclusion</strong>: Resources involved must be unshareable between multiple threads.<br />
+<strong>Hold and Wait</strong>: Threads hold the resources they have allocated and wait for the resources they want.<br />
+<strong>No pre-emption</strong>: If the thread locks the resource other threads cannot take the resource until the thread releases it.<br />
+<strong>Circular Wait</strong>: A circular chain must exist in which each thread waits for other threads to release resources.<br />
+
+<strong>Avoid and resolve deadlocks like</strong><br />
+Acquiring locks in a specific defined order<br />
+Mutex class<br />
+Monitor.TryEnter() method<br />
+
+<strong>Lock</strong> keyword ensures that one thread is executing a piece of code at one time. The lock keyword ensures that one thread does not enter a critical section of code while another thread is in that critical section.<br />
+<strong>Interlocked</strong> functions are useful in multithreading programs to safely change the value of shared variables. By default variables are not thread-safe. When we apply addition, subtraction, or checking the value of variables multiple threads can corrupt the variables. For preventing these dirty reads, we can use Interlocked functions.<br />
+<strong>LiveLock</strong> is very similar to a deadlock except for involved threads states are continually changing their state but still, they cannot complete their work.
+          </p>)
+
+        }
+      >Deadlock</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Exception Handling</strong> is the method of catching and recording these errors in code so that we can fix them. Usually, errors and exceptions are stored in log files or databases. If these errors are not handled properly, the application may crash and we may not know the root cause of the problem.<br />
@@ -1202,6 +1243,163 @@ It can perform tasks such as authentication, rate limiting, and caching</p>)
 <strong>.NET Core</strong>: middleware is used to handle exceptions globally.</p>)
         }
       >Exception Handling</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Filters</strong> are used to inject extra processing logic in the request-response pipeline. Filters allow us to add pre-processing and post-processing logic to an action. Filter run before or after the action method executes and can also intercept results.<br />
+<strong>Authentication</strong> filter is used to check the identity of user.<br /> 
+<strong>Authorization</strong> filters are useful for implementing the logic of authentication and authorization. IAuthorizationFilter provides the logic for determining if a user is allowed to access a specific action.<br />
+<strong>Action</strong> filters contains the pre-processing and post-processing logic which can be applied to the action method of the controller. This filter is executed before and after the action method of the controller executes.<br />
+IActionFilter is used to modify the request or response before or after the action method is executed. IResultFilter is used to modify the result of the action method before it is returned to the client.<br />
+<strong>Result</strong> filters allows us to modify the HTTP response, which means modifying the view result before the view is rendered to the browser. The OutputCacheAttribute class is an example of a result filter.<br />
+IResultFilter is used to modify the result of the action method before it is returned to the client.<br />
+<strong>Exception</strong> Filter will execute when an action method of the controller throws an unhandled exception. These filters implement the IExceptionFilter interface and can be used to log errors or to display the specific error page. The HandleErrorAttribute class is an example of the exception filter.<br />
+IExceptionFilter is used to catch and handle exceptions.</p>,
+`public class MyActionFilter : ActionFilterAttribute
+{
+ public override void OnActionExecuting(ActionExecutingContext c)
+  {
+	// Code execute before action method is called
+	base.OnActionExecuting(c);
+  }
+  public override void OnActionExecuted(ActionExecutedContext c)
+  {
+	// Code execute after action method is called
+	base.OnActionExecuted(c);
+  }
+}
+[MyActionFilter] // Apply the filter
+public class HomeController : Controller`)
+        }
+      >Filters</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Difference between Filter and Middleware</strong><br />
+Both filters and middleware intercept request and response. Middleware operates at a lower level, affecting the entire application pipeline while Filters are more targeted and interact with specific MVC actions or controllers.<br />
+<strong>Middleware</strong> is a software component that handles requests and responses in request pipeline. It can be used to add functionality like logging, authentication, and caching.<br />
+<strong>Middleware</strong> is configured in the Program.cs file and the order of middleware components determines how requests are processed and responses are constructed. Middleware components can inspect requests, modify requests or responses, and handle tasks. Middleware can also stop further processing if an error is detected.<br />
+<strong>Custom Middleware</strong> We can add custom middleware to modify the request/response pipeline, perform logging, authentication, error handling or any custom logic.<br />
+<strong>Use</strong> adds middleware to the pipeline that handles every request and passes it to the next middleware.<br />
+<strong>Run</strong> terminates the pipeline and generates a response.<br />
+<strong>Map</strong> branches the pipeline based on request paths.</p>,
+`public class CustomMiddleware//1.Create Class with Invoke()
+{
+    private readonly RequestDelegate _next;
+    public CustomMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+    public async Task Invoke(HttpContext context)
+    {
+        //Preprocessing logic before next middleware
+        await _next(context); //Call next middleware
+        //Post-processing logic after next middleware
+    }
+}
+//2. Register Middleware in Program.cs
+     app.UseMiddleware<CustomMiddleware>();
+	 app.UseCustomMiddleware();
+//3. Using Middleware as Extension Method
+public static class CustomMiddlewareExtensions
+{
+   public static IApplicationBuilder 
+   UseCustomMiddleware(this IApplicationBuilder builder)
+   {
+      return builder.UseMiddleware<CustomMiddleware>();
+   }
+}`)
+        }
+      >Middleware</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><small>HTTPRequest-&gt;Middleware-&gt;Routing-&gt;ControllerInitialization-&gt;ActionMethodExecution-&gt;ResultExection-&gt;Data|View Result-&gt;View Render</small><br />
+MVC Request Life Cycle is a sequence of events, stages or components that interact with each other to process an HTTP request and generate a response that goes back to the client.<br />
+<strong>Middleware</strong> component forms the basic building block of application HTTP pipeline. These are a series of components that are combined to form a request pipeline in order to handle any incoming request.<br />
+<strong>Routing</strong> is a middleware component which decides how an incoming request can be mapped to Controllers and actions methods, with the help of convention routes and attribute routes.<br />
+<strong>Controller Initialization</strong> at this stage the process of initialization and execution of controllers takes place. Controllers are responsible for handling incoming requests. The controller selects the appropriate action methods on the basis of route templates provided.<br />
+<strong>Action Method Execution</strong> after the controllers are initialized, the action methods are executed and returns a view which contains Html document to be returned as response to the browser.<br />
+<strong>Result Execution During</strong> this stage the response generated to the original HTTP request. If an action method returns a view result, the MVC view engine renders a view and returns the HTML response. If result is not of view type, then action method will generate its own response.</p>)
+        }
+      >MVC LifeCycle</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>ViewResult</strong> is used to return a view.<br />
+<strong>PartialViewResult</strong> is used to return partialview.<br />
+<strong>ContentResult</strong> is used to return content to the view.<br />
+<strong>EmptyResult</strong> returns nothing in the view page.<br />
+<strong>FileResult</strong> is used to return file to the view.<br />
+<strong>JSONResult</strong> is used to return JSON data to the view.<br />
+<strong>JavascriptResult</strong> is used to return javascript to the view.</p>)
+        }
+      >Return Type</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>1xx - represents informational responses<br />
+2xx - represents successful responses<br />
+3xx - represents redirects<br />
+4xx - represents client errors<br />
+5xx - represents server errors<br />
+200 - success/OK<br />
+201 - CREATED(POST / PUT methods)<br />
+304 - NOT MODIFIED<br />
+400 - BAD REQUEST<br />
+401- UNAUTHORIZED<br />
+403 - FORBIDDEN<br />
+404 - NOT FOUND<br />
+500 - INTERNAL SERVER ERROR<br />
+502 - BAD GATEWAY Server</p>)
+        }
+      >Status Codes</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>State Management</strong> is a technique to maintain the state of an application, object and variable across multiple requests. It's useful because web applications are stateless.<br />
+          <strong>Server Side State Management</strong><br />
+<strong>Application State</strong> is used to store information that is shared among users. Application state is stored in the memory of the Windows process which processes user requests on the web server. Application state is useful in storing a small amount of often-used data.<br />
+<strong>Session State</strong> provides a place to store values that will persist across page requests. Values stored in Session are stored on the server and will remain in memory until they are explicitly removed or until the Session expires. It is defined as the period of time that a unique user interacts with a Web application. Session state is a collection of objects, tied to a session stored on a server.<br />
+<strong>Client-Side State Management</strong><br />
+<strong>View State</strong> is a client-side state management technique that use a hidden field to store page values. It help us to build a call and retain values across multiple requests for the same page. When a page is rendered, the page's state and values are serialized into base64-encoded strings. These strings are stored in a hidden field on the page. When the page is requested again, the hidden field is returned to the server. The server restores the values from the hidden field and processes the request.<br />
+<strong>Control State</strong>: The purpose of the control state repository is to cache data necessary for a control to function properly. ControlState is essentially a private ViewState for our control only, and it is not affected when ViewState is turned off. ControlState is used to store small amounts of critical information.<br />
+<strong>Hidden Control</strong> is a control that does not render anything on the web page at the client browser but can be used to store some information on the web page which can be used on the page. Hidden fields are used to store data at the page level.<br />
+<strong>Cookie</strong> is a small amount of data that is either stored on the client side in a text file or in the memory of the client browser session. Cookies are always sent with the request to the web server and information can be retrieved from the cookies at the web server. Every time a user visits a website, cookies are retrieved from the user's machine and help identify the user.<br />
+<strong>Query String</strong> is used to pass the values or information from one page to another page. They are passed along with URLs in clear text. Query strings provide a simple but limited way of maintaining some state information.
+</p>)
+        }
+      >State Management</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Versioning</strong> is a method for managing and maintaining multiple versions of an API. This is useful when various client depend on different versions of an API as It modify or improve our services without breaking the functionality of existing clients. <strong>Benifits of Versioning are:</strong><br />
+          <strong>Backward Compatibility</strong>: ensures that existing clients can continue to function even as new features and changes are rolled out.<br />
+<strong>Incremental Improvements</strong> allow to introduce new features, improvements and bug fixes to the API without breaking contracts with clients.<br />
+<strong>Adoption</strong>: clients can choose when to upgrade to the latest API version based on their schedule, reducing the impact of new updates.<br />
+We can do versioning using: <strong>Query String, URL, HTTP Header</strong><br />
+Install <strong>AspNetCore.Mvc.Versioning</strong> package.<br />
+Add <strong>services.AddApiVersioning</strong> in program.cs file.<br />
+<strong>DefaultApiVersion</strong> is used to set the default version to API. We can create EmployeeV1Controller and EmployeeV2Controller.<br />
+Query String Versioning: <strong>[ApiVersion(version_name)]</strong> attributes.<br />
+URL based Versioning, we can define versions in a URL <strong>[Route("api/&#123;v:apiVersion&#125;/Values")]</strong>.<br />
+In HTTP Header-Based Versioning we send the version in the Http header when call the controller and we need to add <strong>services.AddApiVersioning</strong> service in Program.cs</p>)
+        }
+      >Versioning</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>C# is a type-safe and managed language which provides many built-in security features. But, vulnerabilities can still arise, especially due to insecure coding practices, misconfiguration or third-party dependencies.<br />
+<strong>SQL Injection</strong>: Using raw SQL queries in input SqlCommand("select *" )<br />
+<strong>Command Injection</strong>:	Injecting input into system commands<br />
+<strong>LDAP Injection</strong>:	Insecure LDAP queries<br />
+<strong>XSS (Cross-Site Scripting)</strong>: Displaying user input without encoding<br />
+<strong>Hardcoded Credentials</strong>:	Embedding passwords or API keys in source code<br />
+<strong>Weak Authentication Logic</strong>:	Custom or broken login mechanisms<br />
+<strong>Improper Role Check</strong>:	Failed to check role/permission([Authorize] missing)<br />
+<strong>Insecure Token Storage</strong>:	Storing JWTs or refresh tokens insecurely<br />
+<strong>Weak Algorithms</strong>:	Using MD5, SHA1, or DES<br />
+<strong>Poor Key Management</strong>:	Hardcoded or improperly stored keys<br />
+<strong>Deserializing</strong>: untrusted data using libraries like BinaryFormatter<br />
+<strong>Missing HTTPS</strong>:	Sending sensitive data over HTTP<br />
+<strong>Improper CORS Configuration</strong>:	Allowing * origins in production<br />
+<strong>Insecure Headers</strong>:	Missing headers like CSP, HSTS, etc.<br />
+<strong>Large File Uploads</strong>:	Unrestricted upload sizes<br />
+Using outdated or vulnerable NuGet packages.</p>)
+        }
+      >Vulnerabilities</button>
 
       {/* Popup */}
       {isOpen && (
