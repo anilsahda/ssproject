@@ -24,6 +24,138 @@ const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Closure</strong> is formed when a function is defined inside another function. The inner function has access to the outer function's variables and parameters, even after the outer function has finished executing. This creates a "private" scope for the inner function, allowing it to retain a reference to the outer function's state.<br />
+<strong>Why are Closures Important in React?</strong><br />
+<strong>Event Handlers</strong>: Closures are commonly used in event handlers to capture the state of the component at the time the handler is created.<br />
+<strong>State Management</strong>: React's useState hook creates closures around the state values it maintains.<br />
+<strong>Side Effects</strong>: useEffect hook also relies on closures to access variables in the component's scope.<br />
+<strong>Performance Optimization</strong>: useCallback and useMemo can be used to memoize functions and prevent unnecessary re-renders by leveraging closures</p>)
+        }
+      >Closur</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Dispatcher</strong> is the central hub of data flow in a react application. It is a function that sends actions to the store to update the state. It acts as a conduit between your app's components and the logic that updates the state, typically encapsulated in a reducer function. The dispatch function form is straightforward: it takes an action object as its only argument. This action object must have a type property, which is a string that describes the action being performed. It can also carry a payload with data that the reducer function might need to update the state.</p>)
+        }
+      >Dispatcher</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Event</strong> When a user presses a key, clicks the mouse, or performs any action on the machine or when the machine itself triggers an action, these actions are called Event.</p>)
+        }
+      >Event</button>
+
+        <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>JSX allow us to write <strong>Conditional Statements</strong> so we can display data in the browser according to the conditions provided inside the JSX.<br />
+          <strong>Easy Debugging</strong> Makes development more predictable and easy debug<br />
+          <strong>Easy Learn</strong> Whoever knows JavaScript can quickly learn React<br />
+          <strong>JSX(JavaScript Syntax Extension)</strong> is a combination of HTML and JavaScript. It means we can combine JavaScript inside the HTML elements.<br />
+          <strong>One-way Data Binding</strong> means data flows only in one direction means the data is transferred from top to bottom, from parent components to child<br />
+          React can improve search engine optimization by rendering on the server side via <strong>Next JS</strong> and can improve page load times.<br />
+          <strong>Reusable Component</strong> can maintain & scale app for better performance<br />
+          <strong>Vast Ecosystem, Libraries</strong> and <strong>Tools</strong> which makes problem-solving and fast development.<br />
+          React provides built-in <strong>State Management</strong> like useState, context-API, Redux<br />
+          <strong>Virtual DOM</strong> is a lightweight copy of the real DOM. It compares the current and previous versions of updates to the DOM. It only re-renders the parts of the UI that have changed.<br />
+<strong>Disadvantages of Virtual DOM</strong>: Consume additional memory<br />Developers need to understand concepts of Virtual DOM.<br />
+VDOM can introduce unnecessary complexity for very simple application</p>)
+        }
+      >Features</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>filter()</strong> method takes each element in an array and it applies a conditional statement against it. If this conditional returns true, the element gets pushed to the output array. If the condition returns false, the element does not get pushed to the output array.</p>,
+        `const students = [
+  { name: 'Ram', grade: 96 },
+  { name: 'Jason', grade: 84 },
+  { name: 'Roy', grade: 100 },
+  { name: 'Sam', grade: 65 }
+];
+
+const studentGrades = students.filter(s => s.grade >= 90);
+return stdGrades; 
+output: [{ name:'Ram', grade:96}, {name:'Roy', grade:100}]`)
+        }
+      >Filter</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Pure Functions</strong> are functions that don't modify data outside their scope, while impure functions can. Pure functions are easier to debug and optimize, and are often used to render components. Pure component is a component that always returns the same output for the same input (props and state), essentially acting like a pure function.<br />
+<strong>Impure Functions</strong> can be useful for handling user input and making API calls, but they can be more difficult to debug. Impure Component can produce different outputs even with the same input due to side effects or state modifications within the component, leading to potentially unpredictable rendering behavior.</p>)
+        }
+      >Pure vs Impure Function</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Higher-Order Component</strong> is an advanced pattern in React used to reuse component logic. It is a function that takes a component as an argument and returns a new enhanced component. Using HOC, we can Render Hijacking, Reuse code and Manipulate Props</p>)
+        }
+      >HOC</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Key</strong> is a unique identifier which is used to identify which items have changed, updated, or deleted in the list. It is useful when we dynamically created components or when the users alter the lists. It also help us to determine which components in a collection needs to be re-rendered instead of re-rendering the entire set of components every time.</p>)
+        }
+      >Key</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Lifecycle Hooks</strong> have many methods which automatically called at different phases in the component. It provides the power to control and manipulate what's going on throughout the lifecycle.<br />
+constructor()<br />
+getDerivedStateFromProps()<br />
+render()<br />
+componentDidMount()<br />
+shouldComponentUpdate()<br />
+getSnapshotBeforeUpdate()<br />
+componentDidUpdate()<br />
+componentWillUnmount()</p>)
+        }
+      >Lifecycle Hooks</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Map()</strong> method is used for creating a new array from an existing one, applying a function to each one of the elements of the first array.</p>,
+        `const numbers = [1, 2, 3, 4];
+const doubled = numbers.map(item => item * 2);
+console.log(doubled);
+Output: [2, 4, 6, 8]`)
+        }
+      >Map</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Code Splitting</strong> split our code into smaller chunks using dynamic imports or React.lazy to load only the necessary code for each route, improving initial load times and reducing time to interactive.<br />
+          <strong>Lazy Loading</strong> is a technique which is used to improve the initial loading time by deferring the loading of non-essential components until they are needed. This can significantly reduce the initial bundle size and improve the perceived performance of the application. Lazy loading can be implemented using lazy function along with Suspense for code-splitting. <strong>Lazy Loading</strong> prevents the creation of unnecessary DOM nodes and allow to delay the loading of images until they are required.<br />
+import LazyLoad from 'react-lazyload';<br />
+import React, &#123; lazy, Suspense &#125; from 'react'<br />
+          <strong>List Visualization</strong> means render only those items which are currently visible on the screen. When dealing with a large number of items in a list, rendering all the items at once can slow down the performance and consume extra memory. import &#123; List &#125; from 'react-virtualized'<br />
+          <strong>Memoization</strong> techniques can be used like useMemo and React.memo to prevent unnecessary re-renders of components and expensive computations.<br />
+          <strong>Fragment</strong> is used to maintain a cleaner DOM structure by eliminating unnecessary wrapper elements. Using Fragments we can create more reusable and modular components.<br />
+          <strong>Throttling Events</strong> is used to limit the number of times an event handler is invoked. It ensures that the function is called at a specified interval and prevent to execute frequently.<br />
+          <strong>UseTransition Hook</strong> is used to specify what state changes should run with a lower priority to increase the performance of our application.<br />
+          <strong>Web Workers</strong> run scripts in background threads for web content. The worker thread can perform tasks without interfering the user interface</p>)
+        }
+      >Performance</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Prop-Drilling</strong> is a situation where we pass data through multiple levels of components just to reach a deeply nested component, even if the intermediate components don’t need that data.</p>)
+        }
+      >Prop-Drilling</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Reduce()</strong> method reduces an array of values down to just one value. To get the output value, it runs a reducer function on each element of the array.<br />
+<strong>Callback</strong> argument is a function that will be called once for every item in the array. This function takes four arguments, but often only the first two are used.<br />
+<strong>InitialValue</strong> argument is optional. If provided, it will be used as the initial accumulator value in the first call to the callback function.</p>, 
+`const numbers = [1, 2, 3, 4];
+const sum = numbers.reduce(function (result, item) {
+  return result + item;
+}, 0);
+console.log(sum); // 10`)
+        }
+      >Reduce</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Reducer</strong> is a single function that takes the current state and an action, returning a new state based on that action while combined reducer is a function that merges multiple individual reducers into a single unit, allowing you to manage different parts of your application state with separate reducers, all within one combined reducer function.</p>)
+        }
+      >Reducer</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Tree Shaking</strong> is a process of eliminating dead or unused code from the final bundle during the build process. Tree Shaking can remove unused React components, functions, or imports from the bundle, resulting in a smaller bundle size and improved performance.<br />
+<strong>Tree Shaking</strong> is Beneficial in large applications with many dependencies as it help us to optimize the application's bundle size and reduce the amount of code that needs to be parsed and executed by the browser.</p>)
+        }
+      >Tree Shaking</button><br />
+
+
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Best Practices</strong> </p>)
         }
@@ -305,138 +437,7 @@ When state changes, React re-renders the component to show updated info.</p>)
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Props</strong> are objects that pass data from one component to another. Props are read-only means the child component cannot change the data from the parent component. Props can be used to pass any JavaScript value including objects, arrays, and functions. Props can be used to make components more dynamic.</p>)
         }
-      >Props</button><br />
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Closure</strong> is formed when a function is defined inside another function. The inner function has access to the outer function's variables and parameters, even after the outer function has finished executing. This creates a "private" scope for the inner function, allowing it to retain a reference to the outer function's state.<br />
-<strong>Why are Closures Important in React?</strong><br />
-<strong>Event Handlers</strong>: Closures are commonly used in event handlers to capture the state of the component at the time the handler is created.<br />
-<strong>State Management</strong>: React's useState hook creates closures around the state values it maintains.<br />
-<strong>Side Effects</strong>: useEffect hook also relies on closures to access variables in the component's scope.<br />
-<strong>Performance Optimization</strong>: useCallback and useMemo can be used to memoize functions and prevent unnecessary re-renders by leveraging closures</p>)
-        }
-      >Closur</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Dispatcher</strong> is the central hub of data flow in a react application. It is a function that sends actions to the store to update the state. It acts as a conduit between your app's components and the logic that updates the state, typically encapsulated in a reducer function. The dispatch function form is straightforward: it takes an action object as its only argument. This action object must have a type property, which is a string that describes the action being performed. It can also carry a payload with data that the reducer function might need to update the state.</p>)
-        }
-      >Dispatcher</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Event</strong> When a user presses a key, clicks the mouse, or performs any action on the machine or when the machine itself triggers an action, these actions are called Event.</p>)
-        }
-      >Event</button>
-
-        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>JSX allow us to write <strong>Conditional Statements</strong> so we can display data in the browser according to the conditions provided inside the JSX.<br />
-          <strong>Easy Debugging</strong> Makes development more predictable and easy debug<br />
-          <strong>Easy Learn</strong> Whoever knows JavaScript can quickly learn React<br />
-          <strong>JSX(JavaScript Syntax Extension)</strong> is a combination of HTML and JavaScript. It means we can combine JavaScript inside the HTML elements.<br />
-          <strong>One-way Data Binding</strong> means data flows only in one direction means the data is transferred from top to bottom, from parent components to child<br />
-          React can improve search engine optimization by rendering on the server side via <strong>Next JS</strong> and can improve page load times.<br />
-          <strong>Reusable Component</strong> can maintain & scale app for better performance<br />
-          <strong>Vast Ecosystem, Libraries</strong> and <strong>Tools</strong> which makes problem-solving and fast development.<br />
-          React provides built-in <strong>State Management</strong> like useState, context-API, Redux<br />
-          <strong>Virtual DOM</strong> is a lightweight copy of the real DOM. It compares the current and previous versions of updates to the DOM. It only re-renders the parts of the UI that have changed.<br />
-<strong>Disadvantages of Virtual DOM</strong>: Consume additional memory<br />Developers need to understand concepts of Virtual DOM.<br />
-VDOM can introduce unnecessary complexity for very simple application</p>)
-        }
-      >Features</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>filter()</strong> method takes each element in an array and it applies a conditional statement against it. If this conditional returns true, the element gets pushed to the output array. If the condition returns false, the element does not get pushed to the output array.</p>,
-        `const students = [
-  { name: 'Ram', grade: 96 },
-  { name: 'Jason', grade: 84 },
-  { name: 'Roy', grade: 100 },
-  { name: 'Sam', grade: 65 }
-];
-
-const studentGrades = students.filter(s => s.grade >= 90);
-return stdGrades; 
-output: [{ name:'Ram', grade:96}, {name:'Roy', grade:100}]`)
-        }
-      >Filter</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Pure Functions</strong> are functions that don't modify data outside their scope, while impure functions can. Pure functions are easier to debug and optimize, and are often used to render components. Pure component is a component that always returns the same output for the same input (props and state), essentially acting like a pure function.<br />
-<strong>Impure Functions</strong> can be useful for handling user input and making API calls, but they can be more difficult to debug. Impure Component can produce different outputs even with the same input due to side effects or state modifications within the component, leading to potentially unpredictable rendering behavior.</p>)
-        }
-      >Pure vs Impure Function</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Higher-Order Component</strong> is an advanced pattern in React used to reuse component logic. It is a function that takes a component as an argument and returns a new enhanced component. Using HOC, we can Render Hijacking, Reuse code and Manipulate Props</p>)
-        }
-      >HOC</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Key</strong> is a unique identifier which is used to identify which items have changed, updated, or deleted in the list. It is useful when we dynamically created components or when the users alter the lists. It also help us to determine which components in a collection needs to be re-rendered instead of re-rendering the entire set of components every time.</p>)
-        }
-      >Key</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Lifecycle Hooks</strong> have many methods which automatically called at different phases in the component. It provides the power to control and manipulate what's going on throughout the lifecycle.<br />
-constructor()<br />
-getDerivedStateFromProps()<br />
-render()<br />
-componentDidMount()<br />
-shouldComponentUpdate()<br />
-getSnapshotBeforeUpdate()<br />
-componentDidUpdate()<br />
-componentWillUnmount()</p>)
-        }
-      >Lifecycle Hooks</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Map()</strong> method is used for creating a new array from an existing one, applying a function to each one of the elements of the first array.</p>,
-        `const numbers = [1, 2, 3, 4];
-const doubled = numbers.map(item => item * 2);
-console.log(doubled);
-Output: [2, 4, 6, 8]`)
-        }
-      >Map</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Code Splitting</strong> split our code into smaller chunks using dynamic imports or React.lazy to load only the necessary code for each route, improving initial load times and reducing time to interactive.<br />
-          <strong>Lazy Loading</strong> is a technique which is used to improve the initial loading time by deferring the loading of non-essential components until they are needed. This can significantly reduce the initial bundle size and improve the perceived performance of the application. Lazy loading can be implemented using lazy function along with Suspense for code-splitting. <strong>Lazy Loading</strong> prevents the creation of unnecessary DOM nodes and allow to delay the loading of images until they are required.<br />
-import LazyLoad from 'react-lazyload';<br />
-import React, &#123; lazy, Suspense &#125; from 'react'<br />
-          <strong>List Visualization</strong> means render only those items which are currently visible on the screen. When dealing with a large number of items in a list, rendering all the items at once can slow down the performance and consume extra memory. import &#123; List &#125; from 'react-virtualized'<br />
-          <strong>Memoization</strong> techniques can be used like useMemo and React.memo to prevent unnecessary re-renders of components and expensive computations.<br />
-          <strong>Fragment</strong> is used to maintain a cleaner DOM structure by eliminating unnecessary wrapper elements. Using Fragments we can create more reusable and modular components.<br />
-          <strong>Throttling Events</strong> is used to limit the number of times an event handler is invoked. It ensures that the function is called at a specified interval and prevent to execute frequently.<br />
-          <strong>UseTransition Hook</strong> is used to specify what state changes should run with a lower priority to increase the performance of our application.<br />
-          <strong>Web Workers</strong> run scripts in background threads for web content. The worker thread can perform tasks without interfering the user interface</p>)
-        }
-      >Performance</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Prop-Drilling</strong> is a situation where we pass data through multiple levels of components just to reach a deeply nested component, even if the intermediate components don’t need that data.</p>)
-        }
-      >Prop-Drilling</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Reduce()</strong> method reduces an array of values down to just one value. To get the output value, it runs a reducer function on each element of the array.<br />
-<strong>Callback</strong> argument is a function that will be called once for every item in the array. This function takes four arguments, but often only the first two are used.<br />
-<strong>InitialValue</strong> argument is optional. If provided, it will be used as the initial accumulator value in the first call to the callback function.</p>, 
-`const numbers = [1, 2, 3, 4];
-const sum = numbers.reduce(function (result, item) {
-  return result + item;
-}, 0);
-console.log(sum); // 10`)
-        }
-      >Reduce</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Reducer</strong> is a single function that takes the current state and an action, returning a new state based on that action while combined reducer is a function that merges multiple individual reducers into a single unit, allowing you to manage different parts of your application state with separate reducers, all within one combined reducer function.</p>)
-        }
-      >Reducer</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Tree Shaking</strong> is a process of eliminating dead or unused code from the final bundle during the build process. Tree Shaking can remove unused React components, functions, or imports from the bundle, resulting in a smaller bundle size and improved performance.<br />
-<strong>Tree Shaking</strong> is Beneficial in large applications with many dependencies as it help us to optimize the application's bundle size and reduce the amount of code that needs to be parsed and executed by the browser.</p>)
-        }
-      >Tree Shaking</button><br />
+      >Props</button>
 
       {/* Popup */}
       {isOpen && (

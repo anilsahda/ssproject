@@ -1,14 +1,14 @@
 import React from 'react';
 
-function Array() {
+function Tuple() {
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold">Arrays (DSA in C#)</h1>
+      <h1 className="text-3xl font-bold">Tuple</h1>
 
       {/* Introduction */}
       <section>
         <h2 className="text-2xl font-semibold mt-4">1. Introduction</h2>
-        <p>Arrays are strongly-typed collections of the same data type and have a fixed length that cannot be changed during runtime. We can access the Array elements by numeric index. The array indexes start at zero. The default value of numeric array elements is set to zero, and the reference elements are set to null.</p>
+        <p><strong>Tuple</strong>is a data structure that holds a finite ordered list of values, potentially of different types. Tuples are useful when you want to return multiple values from a method without creating a custom class or struct.</p>
       </section>
 
       {/* Types of Arrays */}
@@ -132,4 +132,4 @@ int BinarySearch(int[] arr, int target) {
   );
 }
 
-export default Array;
+export default Tuple;

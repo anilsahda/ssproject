@@ -8,9 +8,7 @@ function Arraylist() {
       {/* Introduction */}
       <section>
         <h2 className="text-2xl font-semibold mt-4">1. Introduction</h2>
-        <p>
-          ArrayList is a non-generic collection in C# that can store objects of any type. It automatically resizes as elements are added or removed.
-        </p>
+        <p>ArrayList is one of the most flexible data structures from Collections. ArrayList contains a simple list of values. ArrayList implements the IList interface using an array, and very easily, we can add, insert, delete, view, etc. It is very flexible because we can add without any size information that it will grow dynamically and also shrink.</p>
       </section>
 
       {/* Characteristics */}

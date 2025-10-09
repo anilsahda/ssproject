@@ -226,12 +226,11 @@ import Pythonfacebookauth from "./Python/Pythonfacebookauth";
 import Netaspnetquestion from "./Dotnet/Netaspnetquestion";
 import Relationships from "./SQL/Relationships.js";
 import KafkaQA from "./QA/KafkaQA";
-import RabbitMQQA from "./QA/RabbitMQQA";
 import SQLQA from "./QA/SQLQA";
-import AzureServiceBusQA from "./QA/AzureServiceBusQA";
 import AngularQA from "./QA/AngularQA";
 import ReactQA from "./QA/ReactQA";
 import DotnetQA from "./QA/DotnetQA";
+import Tuple from "./DSA/Tuple.js";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -395,6 +394,7 @@ function App() {
             <Route path="/hashmap" element={<Hashmap />} />
             <Route path="/dictionary" element={<Dictionary />} />
             <Route path="/hashtable" element={<Hashtable />} />
+            <Route path="/tuple" element={<Tuple />} />
             <Route path="/binarysearch" element={<Binarysearch />} />
             <Route path="/linearsearch" element={<Linearsearch />} />
             <Route path="/selectionsort" element={<Selectionsort />} />
@@ -504,8 +504,6 @@ function App() {
 
             {/* Message Broker */}
             <Route path="/kafkaqa" element={<KafkaQA />} />
-            <Route path="/rabbitmqqa" element={<RabbitMQQA />} />
-            <Route path="/azureservicebusqa" element={<AzureServiceBusQA />} />            
             <Route path="/sqlqa" element={<SQLQA />} />
             <Route path="/reactqa" element={<ReactQA />} />
             <Route path="/angularqa" element={<AngularQA />} />

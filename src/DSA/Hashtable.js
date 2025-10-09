@@ -9,7 +9,7 @@ function Hashtable() {
       <section>
         <h2 className="text-2xl font-semibold mt-4">1. Introduction</h2>
         <p>
-          <strong>Hashtable</strong> is a non-generic collection in C# that stores key-value pairs. It provides fast lookup, addition, and removal of elements using keys. Hashtable is part of the <strong>System.Collections</strong> namespace.
+          <strong>Hashtable</strong> is a non-generic collection that stores key-value pairs, similar to Dictionary. It optimize lookups by computing the hash code of each key and store in different bucket internally and then match the hash code of specified key at the time of accessing the values. Keys must be unique and cannot be null. Values can be accessed by associated key.
         </p>
       </section>
 

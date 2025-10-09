@@ -196,6 +196,7 @@ style={{
               <SidebarButton to="/hashmap" icon="bi-diagram-3" label="Hashmap" />
               <SidebarButton to="/Dictionary" icon="bi-book" label="Dictionary" />
               <SidebarButton to="/Hashtable" icon="bi-grid-3x3-gap" label="Hashtable" />
+              <SidebarButton to="/tuple" icon="bi-grid-3x3-gap" label="Tuple" />              
               <SidebarButton to="/binarysearch" icon="bi-search" label="Binary Search" />
               <SidebarButton to="/linearsearch" icon="bi-search" label="Linear Search" />
               <SidebarButton to="/selectionsort" icon="bi-sort-down-alt" label="Selection Sort" />
@@ -339,9 +340,7 @@ style={{
             <SidebarButton to="/dotnetqa" icon="bi-caret-down-square" label="Dotnet" />
             <SidebarButton to="/reactqa" icon="bi-caret-down-square" label="React" />
             <SidebarButton to="/angularqa" icon="bi-caret-down-square" label="Angular" />
-            <SidebarButton to="/kafkaqa" icon="bi-calendar-check" label="Apache Kafka" />
-            <SidebarButton to="/rabbitmqqa" icon="bi-ui-checks-grid" label="RabbitMQ" />
-            <SidebarButton to="/azureservicebusqa" icon="bi-ui-checks-grid" label="Service Bus" />
+            <SidebarButton to="/kafkaqa" icon="bi-calendar-check" label="Message Broker" />
             <SidebarButton to="/netaspnetquestion" icon="bi-calendar-check" label="Web Forms" />
             </>
           )}

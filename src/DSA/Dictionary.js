@@ -8,9 +8,7 @@ function Dictionary() {
       {/* Introduction */}
       <section>
         <h2 className="text-2xl font-semibold mt-4">1. Introduction</h2>
-        <p>
-          <strong>Dictionary&lt;TKey, TValue&gt;</strong> is a generic collection in C# that stores key-value pairs. It allows fast lookup, addition, and removal of items using keys.
-        </p>
+        <p><strong>Dictionary</strong> is a generic collection that stores key-value pairs and keys must be unique. Dictionary cannot be null but values can be null or duplicate and can be accessed by passing associated key.</p>
       </section>
 
       {/* CRUD Operations */}
