@@ -1210,8 +1210,29 @@ It can perform tasks such as authentication, rate limiting, and caching</p>)
         }
       >DIP</button><br />
 
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Why and How Deadlock</strong>: Suppose we have 2 threads Thread 1 and Thread 2 and 2 resources Resource 1 and Resource 2. Thread 1 has already acquired a lock on Resource 1 and wants to acquire a lock on Resource 2. At the same time, Thread 2 has already acquired a lock on Resource 2 and wants to acquire a lock on Resource 1. Two threads never give up their locks, hence a deadlock.<br />
+       <button className="btn btn-warning me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Thread</strong> is a lightweight unit of execution which shares memory within a process. <strong>Process</strong> is something that the operating system uses to execute a program by providing the resources required. Each process has a unique process id associated with it. We can view the process within which a program is running using the windows task manager.<br /> 
+          <strong>Multithreading</strong>: is a programming technique which allow to run multiple threads at the same time within a single process. Each thread represents a separate execution path and enable task to be performed in parallel to improve the efficiency and performance of applications. It is useful for better CPU utilization and responsive apps like UI + background work or downloading a file while keeping the UI responsive.<br />
+<strong>There are two ways to share data between multiple threads</strong> Concurrent collection classes and Using Synchronization Primitives<br />
+<strong>Start()</strong>	Starts the thread.<br />
+<strong>Join()</strong>	blocks the current thread and makes it wait until the thread on which the Join method is invoked completes. The join method also has an overload where we can specify the timeout. If we don’t specify the timeout the calling thread waits indefinitely, until the thread on which Join() is invoked completes. This overloaded Join method returns a boolean true if the thread has terminated otherwise false.<br />
+<strong>Sleep(ms)</strong>	Pauses the thread for a duration.<br />
+<strong>IsAlive()</strong>	Checks if the thread is still running.<br />
+<strong>Abort()</strong>	Used to forcibly stop a thread.<br />
+<strong>Deadlocks</strong> Threads waiting on each other.<br />
+<strong>Race Conditions</strong> Two threads modify shared data at the same time.<br />
+<strong>Thread Safety</strong> Shared data must be protected like with lock, Monitor<br />
+          </p>)
+        }
+      >Thread</button>
+      
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p></p>)
+        }
+      >AutoResetEvent</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Deadlock</strong> occurs when 2 or more threads wait for each other to release resources and none of them proceed because they are all stuck and waiting. <strong>Suppose</strong> we have 2 threads Thread 1 and Thread 2 and 2 resources Resource 1 and Resource 2. Thread 1 has already acquired a lock on Resource 1 and wants to acquire a lock on Resource 2. At the same time, Thread 2 has already acquired a lock on Resource 2 and wants to acquire a lock on Resource 1. Two threads never give up their locks, hence a deadlock.<br />
 <strong>4 Conditions for Deadlock</strong>: Mutual Exclusion, Hold and Wait, No pre-emption, Circular Wait<br />
 <strong>Mutual Exclusion</strong>: Resources involved must be unshareable between multiple threads.<br />
 <strong>Hold and Wait</strong>: Threads hold the resources they have allocated and wait for the resources they want.<br />
@@ -1221,15 +1242,103 @@ It can perform tasks such as authentication, rate limiting, and caching</p>)
 <strong>Avoid and resolve deadlocks like</strong><br />
 Acquiring locks in a specific defined order<br />
 Mutex class<br />
-Monitor.TryEnter() method<br />
+Monitor.TryEnter() method</p>,
+`object lockA = new object();
+object lockB = new object();
 
-<strong>Lock</strong> keyword ensures that one thread is executing a piece of code at one time. The lock keyword ensures that one thread does not enter a critical section of code while another thread is in that critical section.<br />
+void Thread1()
+{
+    lock (lockA)
+    {
+        Thread.Sleep(100); // Simulate work
+        lock (lockB)
+        {
+            Console.WriteLine("Thread 1 acquired lockA and lockB");
+        }
+    }
+}
+
+void Thread2()
+{
+    lock (lockB)
+    {
+        Thread.Sleep(100); // Simulate work
+        lock (lockA)
+        {
+            Console.WriteLine("Thread 2 acquired lockB and lockA");
+        }
+    }
+}
+    
+And running them like this:
+
+new Thread(Thread1).Start();
+new Thread(Thread2).Start();`)
+        }
+      >Deadlock</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Lock</strong> keyword ensures that one thread is executing a piece of code at one time. The lock keyword ensures that one thread does not enter a critical section of code while another thread is in that critical section.<br />
 <strong>Interlocked</strong> functions are useful in multithreading programs to safely change the value of shared variables. By default variables are not thread-safe. When we apply addition, subtraction, or checking the value of variables multiple threads can corrupt the variables. For preventing these dirty reads, we can use Interlocked functions.<br />
 <strong>LiveLock</strong> is very similar to a deadlock except for involved threads states are continually changing their state but still, they cannot complete their work.
           </p>)
-
         }
-      >Deadlock</button>
+      >Lock</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Monitor</strong> provides a mechanism that synchronizes access to objects. It can be done by acquiring a significant lock so that only one thread can enter in a given piece of code at one time. Using a monitor it can be ensured that no other thread is allowed to access a section of application code being executed by the lock owner, unless the other thread is executing the code using a different locked object. The Monitor class has few methods to access to a region like Monitor.Enter, Monitor.TryEnter and Monitor.Exit.</p>)
+        }
+      >Monitor</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Mutex</strong> works similarly to AutoResetEvent and releases only one waiting thread at a time. In the AutoResetEvent any thread can call the Set() method and unblock a waiting thread. But the Mutex object remembers the thread which got the Mutex object and only that thread can release the Mutex. Mutex object auto record the thread id which got the Mutex object and when a user calls the ReleaseMutex() method for releasing a Mutex object, it internally checks whether the releasing thread is the same as the thread which got the Mutex object if yes, then only it releases the Mutex object else it throws an exception.</p>)
+        }
+      >Mutex</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Semaphores</strong> are used when we have to restrict how many threads can enter a critical region. Semaphore is simply an int32 variable maintained by the kernel. We have initialized the Semaphore variable we specify the count of how many threads can enter into the critical region at a time. A thread waiting on a semaphore block when the semaphore is 0 and unblocks when the semaphore is greater than 0.</p>)
+        }
+      >Semaphores</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Task.Run</strong> is used to run code asynchronously on a separate thread from the thread pool. It is commonly used to offload CPU-bound or long-running operations to prevent blocking the main thread, especially in UI or web applications.</p>,
+            `class Program
+{
+    static async Task Main()
+    {
+        Console.WriteLine("Starting...");
+        Task<int> task = Task.Run(() =>
+        {
+            Task.Delay(3000).Wait();
+            return 42;
+        });
+        int result = await task;
+        Console.WriteLine($"Result: {result}");
+    }
+}`
+          )
+        }
+      >Task.Run</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>ThreadPool</strong> class is a useful feature which manage a pool of threads and can be used to execute tasks asynchronously and manages a pool of threads and can be used to execute tasks asynchronously. So Instead of creating and destroying threads for every task, which can be resource-intensive, the ThreadPool allows multiple tasks to share a limited number of threads.</p>)
+        }
+      >ThreadPool</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Task class used for more complex or parallel tasks also known as <strong>Task Parallel Library (TPL)</strong>. The Task class allows us to create tasks that can run asynchronously, improving both performance and code readability. It also simplifies task management by handling thread pooling and synchronization.</p>)
+        }
+      >TPL</button><br />
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong></strong></p>)
+        }
+      ></button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong></strong></p>)
+        }
+      ></button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Exception Handling</strong> is the method of catching and recording these errors in code so that we can fix them. Usually, errors and exceptions are stored in log files or databases. If these errors are not handled properly, the application may crash and we may not know the root cause of the problem.<br />
@@ -1320,6 +1429,59 @@ MVC Request Life Cycle is a sequence of events, stages or components that intera
 <strong>Result Execution During</strong> this stage the response generated to the original HTTP request. If an action method returns a view result, the MVC view engine renders a view and returns the HTML response. If result is not of view type, then action method will generate its own response.</p>)
         }
       >MVC LifeCycle</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Caching</strong> is a technique that stores data to improve application performance and scalability. It can reduce the time taken to fetch and process data. Caching is most effective for data that is expensive to generate and changes frequently. In-Memory Cache, Distributed Cache and Output Cache<br />
+<strong>Lazy Loading</strong> defers the initialization of an object until it is needed, improves performance and reducing the memory usage. We can implement lazy loading using the Lazy Class.<br />
+<strong>Reflection</strong> can be used to improve the application performance. It is used to access metadata at runtime. Using reflection we can access and invoke a type's methods, attributes, and events dynamically.<br />
+<strong>Using</strong> statement is commonly used for resource management to ensure that unmanaged resources are properly disposed of, preventing memory leaks and improving application stability.<br />
+<strong>StringBuilder</strong> is more efficient and it can improve the performance when performing multiple string manipulations.<br />
+<strong>Garbage Collection</strong> is an automatic memory management feature that reclaims memory occupied by objects that are no longer in use.<br />
+<strong>IDisposable</strong> handle unmanaged resources like windows handles, database connections, network connections, files which cannot be collected by the Garbage Collector. If we want to explicitly release some specific objects then this is the best to implement IDisposable and override the Dispose() method of IDisposable interface.<br />
+<strong>Concurrent Operations</strong> can be limit to reduce the system’s overall load.<br />
+<strong>Serialization</strong> We should use Newtonsoft.Json instead of XML serialization<br />
+<strong>Partitioner</strong> class can efficiently distribute workloads into chunks<br />
+<strong>Code Generation Tools</strong> can improve the performance and efficiency by automating repetitive tasks and optimizing low-level code<br />
+<strong>UseConfigureAwait()</strong> can prevent deadlocks and improve the performance.<br />
+<strong>ArrayPool</strong> can reduce the frequency of allocating and garbage collecting<br />
+<strong>Loop Unrolling</strong> can improve the code execution by reducing overhead</p>)
+        }
+      >Performance</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Debugging</strong> in a production environment should be done carefully to avoid downtime and performance issues.<br />
+<strong>Check Logs First using ELK</strong><br />
+Elasticsearch search engine that stores and indexes logs<br />
+Logstash collect the logs, process them and send to Elasticsearch.<br />
+Kibana a visualization tool to exploring and analysis logs<br />
+<strong>CloudWatch</strong> collects and track logs and events from AWS resources and supports alarms, dashboards, and automated actions based on logs and metrics.<br />
+<strong>Splunk</strong> is a powerful log management tool which indexes and search log data for real-time analysis. It can be use for security threat detection, IT operations monitoring, and business analytics.<br />
+<strong>Use Monitoring & APM Tools</strong> like New Relic, Datadog, Prometheus, or Grafana help track real-time performance. Check metrics, slow endpoints, high CPU/memory usage.<br />
+<strong>Reproduce with Safe Methods</strong> Use flag features to isolate the issue. Reproduce in staging if possible before making live changes. Debug specific requests using Zipkin.<br />
+<strong>Remote Debugging</strong> Attach a remote debugger via VS Code<br />
+<strong>Hotfix & Rollback Strategy</strong> If a fix is needed, apply a hotfix with CI/CD pipelines. Have a rollback plan (blue-green deployment, canary releases).<br />
+<strong>Database & Configuration Checks</strong> Verify DB queries, cache issues, env variables. Use readonly access to production databases for debugging.</p>)
+        }
+      >Prod Debug</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Reflection</strong> can be used to improve the application performance. It is used to access metadata at runtime. Using reflection we can access and invoke a type's methods, attributes, and events dynamically. In addition to reading and calling, reflection is used to construct new types at runtime. The System.Reflection namespace contains the classes that provide access to the program's metadata during runtime.</p>)
+        }
+      >Reflection</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Caching</strong> is a technique that stores data to improve application performance and scalability. It can reduce the time taken to fetch and process data. Caching is most effective for data that is expensive to generate and changes frequently.<br />
+<strong>In-memory caching</strong> Stores data in the application server's memory. This is fast, but limited by the server's memory.<br />
+<strong>Distributed caching</strong> Stores data outside the application server, often in a separate service like Redis or MongoDB.<br />
+<strong>Output caching</strong> Caches the entire output of a response, reducing the need to process and generate the response again.<br />
+Use the IMemoryCache class to implement in-memory caching.<br />
+Use the CacheItem class to represent a cache entry.<br />
+Use the CacheItemPolicy class to represent a set of eviction and expiration details for a cache entry.<br />
+Use the ICacheEntry class to add an entry into the cache.<br />
+Use the TryGetValue method to retrieve the value stored in the cache for a given key.<br />
+Use the Remove method to remove an entry for a given key.</p>)
+        }
+      >Redis and Cache</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>ViewResult</strong> is used to return a view.<br />
