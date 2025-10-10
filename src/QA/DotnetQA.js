@@ -44,7 +44,7 @@ display("Hello, Anonymous method!");
       >Anonymous</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong></strong>Boxing and Unboxing allow to convert data types from value type to reference type and vice versa. Boxing is the process of changing a Value Type like char, int etc. variable to a Reference Type like object. Reference type variables are kept in Heap memory, whereas Value type variables are always kept in Stack memory.</p>,
+          handleOpenPopup(<p><strong>Boxing and Unboxing</strong> allow to convert data types from value type to reference type and vice versa. Boxing is the process of changing a Value Type like char, int etc. variable to a Reference Type like object. Reference type variables are kept in Heap memory, whereas Value type variables are always kept in Stack memory.</p>,
             `int i = 1;
 object o = i; // boxing
 int j = (int)o; // unboxing`
@@ -78,15 +78,16 @@ CLR can be used for:<br />
       >CLR</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Delegates</strong> are Type-Safe Function Pointer which hold the reference of a function and call that method for execution. When we instantiate a delegate we can associate its instance with any method that matches the delegate’s signature. we can invoke the method through the delegate instance. <strong>We can use delegates for:</strong><br />
-<strong>Type Safety</strong> provides a type-safe way to handle method references to ensure the method signature matches the delegate signature.<br />
-<strong>Flexibility</strong> They allow methods to be passed as parameters, enabling dynamic method invocation and callback mechanisms.<br />
-<strong>Event Handling</strong> are the foundation of event handling.<br />
-There are 3 types of delegates: Singlecast, Multicast and Generic<br /><br />
+          handleOpenPopup(<p><strong>Delegates</strong> are Type-Safe Function Pointer which hold the reference of a function and call that method for execution. When we instantiate a delegate we can associate its instance with any method that matches the delegate’s signature. We can invoke the method through the delegate instance.<br /> 
+<strong>Delegates are used for:</strong><br />
+<strong>Type Safety</strong>: Delegates provide a type-safe way to reference methods to make sure the method signature matches the delegate's signature.<br />
+<strong>Callback Function</strong>: Delegates allow methods to be passed as parameters to enable callbacks and flexible execution.<br />
+<strong>Event Handling</strong>: Delegates serve as the foundation of event handling by enabling event publishers to call event handler methods on subscribers.<br /><br />
+<strong>Types of Delegates: Generic, Singlecast and Multicast</strong><br />
 <strong>Generic Delegates</strong> use generic types parameter to work with multiple types without casting. C# provides 3 generics delegate<br />
-Func delegate represents a function with return type.<br />
-Action delegate represents void return type with no parameter.<br />
-Predicate delegate takes an input parameter and returns boolean<br /><br />
+<strong>Func</strong> delegate represents a function with return type.<br />
+<strong>Action</strong> delegate represents void return type with no parameter.<br />
+<strong>Predicate</strong> delegate takes an input parameter and returns boolean<br />
 <strong>Singlecast Delegates</strong> reference a single method with a matching signature. When the delegate is invoked, it calls the referenced method.<br />
 <strong>Multicast Delegates</strong> can reference multiple methods with a matching signature. When the delegate is invoked, it calls all the referenced methods in the order they were added. Multicast delegates are created using the += or -= operators.</p>,
 `class Program
@@ -106,12 +107,12 @@ Predicate delegate takes an input parameter and returns boolean<br /><br />
           handleOpenPopup(<p><strong>Exception Handling</strong> is the method of catching and recording these errors in code so that we can fix them. Usually, errors and exceptions are stored in log files or databases. If these errors are not handled properly, the application may crash and we may not know the root cause of the problem.<br />
 <strong>finally</strong> is used to clean up resources used in the try block when an exception occurs. The finalize method is used to perform cleanup on unmanaged resources held by an object. It is also known as a destructor.<br />
 <strong>Finalize</strong> is called by the Garbage Collector before an object that is eligible for collection is reclaimed. Garbage collector will take the responsibility to deallocate the memory for the unreferenced object.<br />
-<strong>throw</strong> preserves the stack trace which point to the method that caused the exception in the first place while <strong>throw ex</strong> does not preserve the stack trace and we lose the information about the method that caused the exception in the first place.<br />
+<strong>throw</strong> preserves the stack trace which point to the method that caused the exception in the first place<br /> 
+<strong>throw ex</strong> does not preserve the stack trace and we lose the information about the method that caused the exception in the first place.<br />
 <strong>throw new Exception</strong> provides additional context with a new exception message while preserving the original exception as an inner exception.<br />
-<strong>Global Exception Handler</strong> is used to catch and handle unhandled exceptions across the entire application. This approach depends on whether we're working with a console applications, .Net Core or Windows Forms.<br />
-<strong>Console Applications</strong>:
-<strong>AppDomain.CurrentDomain.UnhandledException</strong> is used to handle exceptions globally at the application domain level.<br />
-<strong>.NET Core</strong>: middleware is used to handle exceptions globally.</p>)
+<strong>Global Exception Handler</strong> is used to catch and handle unhandled exceptions across the entire application.<br /> 
+In <strong>.NET Core</strong>: UseExceptionHandler or UseDeveloperExceptionPage middleware is used to handle exceptions globally<br />
+In <strong>ASP.NET MVC</strong>: HandleError attribute filter at the controller or global level through FilterConfig.cs. We use Application_Error in Global.asax for global error handling.</p>)
         }
       >Exception Handling</button>
 

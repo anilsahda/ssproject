@@ -223,7 +223,6 @@ import Pythonjwtauth from "./Python/Pythonjwtauth";
 import Pythonquestions from "./Python/Pythonquestions";
 import Pythongoogleauth from "./Python/Pythongoogleauth";
 import Pythonfacebookauth from "./Python/Pythonfacebookauth";
-import Netaspnetquestion from "./Dotnet/Netaspnetquestion";
 import Relationships from "./SQL/Relationships.js";
 import KafkaQA from "./QA/KafkaQA";
 import SQLQA from "./QA/SQLQA";
@@ -231,6 +230,7 @@ import AngularQA from "./QA/AngularQA";
 import ReactQA from "./QA/ReactQA";
 import DotnetQA from "./QA/DotnetQA";
 import Tuple from "./DSA/Tuple.js";
+import MVCQA from "./QA/MVCQA.js";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -322,7 +322,6 @@ function App() {
             <Route path="/netradiobutton" element={<Netradiobutton />} />
             <Route path="/netsearching" element={<Netsearching />} />
             <Route path="/netquestions" element={<Netquestions />} />
-            <Route path="/netaspnetquestion" element={<Netaspnetquestion />} />
             <Route path="/pythonprojectsetup" element={<PythonProjectSetup />} />
             <Route path="/pythonlanguages" element={<Pythonlanguages />} />
             <Route path="/pythoncountry" element={<Pythoncountry />} />
@@ -508,6 +507,7 @@ function App() {
             <Route path="/reactqa" element={<ReactQA />} />
             <Route path="/angularqa" element={<AngularQA />} />
             <Route path="/dotnetqa" element={<DotnetQA />} />
+            <Route path="/mvcqa" element={<MVCQA />} />
           </Routes>
         </div>
       </div>
