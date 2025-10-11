@@ -24,6 +24,10 @@ const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
+      <button className="btn btn-warning me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>ASP.NET Web Form</strong> is a UI-based framework that uses drag-and-drop controls and an event-driven model to build web applications. It manages state automatically using ViewState and is ideal for rapid development with complex UI needs.</p>)
+        }
+      >Web Form</button>
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Round Trip</strong> any web page that travels from the client side to the server side will get processed on the server and travels back to the client, this whole process is called a round trip.</p>)
         }
@@ -38,7 +42,7 @@ const [isOpen, setIsOpen] = useState(false);
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p>Both files are used to define configurations<br />
-<strong>Web.config</strong> is used to define application-level settings. If any setting is not specified in Web.config it inherits from Machine.config by default. Web.config is an XML-based configuration file for an ASP.NET application that includes the settings for Data Connection, Customizing Security, State Management, Memory Management, Error Handling, and much more.
+<strong>Web.config</strong> is used to define application-level settings. If any setting is not specified in Web.config it inherits from Machine.config by default. Web.config is an XML-based configuration file for an ASP.NET application that includes the settings for Data Connection, Customizing Security, State Management, Memory Management, Error Handling, and much more.<br />
 <strong>Machine.config</strong> file is at the highest level in the configuration hierarchy. Machine.config is used for defining server-level settings.</p>)
         }
       >Config Files</button>
@@ -72,7 +76,10 @@ const [isOpen, setIsOpen] = useState(false);
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Navigation Controls</strong> help us to navigate in a Web application easily. These controls store all the links in a hierarchical or drop-down structure.<br />
-There are 3 navigation controls: SiteMapPath, Menu, TreeView</p>)
+There are three common types of navigation controls:<br />
+<strong>SiteMapPath (Breadcrumb)</strong> displays the current page's location within the site hierarchy. It provides a breadcrumb-style trail that allows users to trace their path back to the home page or previous sections.<br />
+<strong>Menu</strong> displays a set of menu items that can be organized in a horizontal or vertical layout. It supports static or dynamic menus with submenus that drop down or expand on hover or click.<br />
+<strong>TreeView</strong> displays hierarchical data in a tree structure. It it used for site navigation, file explorers, or categories, allowing users to expand and collapse nodes to view nested items.</p>)
         }
       >Navigation Controls</button>
 
@@ -136,24 +143,6 @@ There are two types of resource files as given below :<br />
       >Session States</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Model</strong> represents the core data and business logic of the application. It is responsible for managing the data, processing rules, and interactions with the database or data sources. The Model does not handle user interface or input but focuses solely on the data and operations related to it.
-<strong>View</strong> is the presentation layer of the application. It displays the data provided by the Model to the user and is responsible for the user interface. Views are concerned with how information is presented, but they do not contain business logic or handle user input directly.
-<strong>Controller</strong> acts as an intermediary between the Model and the View. It handles user input, processes user requests, and decides which Model data to retrieve and which View to display.</p>)
-        }
-      >MVC Pattern</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>NuGet</strong> is a package manager dedicated to the .NET ecosystem. Microsoft developed it to offer access to thousands of packages being written by .NET developers.<br />
-A classic web application being developed through ASP.NET depends on several open-source NuGet packages to work. One of the famous NuGet package managers is Newtonsoft.Json. It is used for working with JSON data in .NET.</p>)
-        }
-      >NuGet</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Bundling and Minification</strong> refers to the techniques that help in optimizing the performance of web application by reducing the number of HTTP requests and minimizing the size of resourceslike CSS, JavaScript.</p>)
-        }
-      >Bundling and Minification</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>RequiredFieldValidator</strong> validator is used when you don’t want the container to stay empty.<br />
 <strong>RangeValidator</strong> finds out whether the value in validated control falls the specific range or not.<br />
 <strong>CompareValidator</strong> tests if the value in controls matches certain specific values or not. RegularExpressionValidator: Tests if the particular value matches an explicit regular expression or not.<br />
@@ -180,22 +169,6 @@ A classic web application being developed through ASP.NET depends on several ope
       >Lifecycle</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ASP.NET Web Form</strong> is a UI-based framework that uses drag-and-drop controls and an event-driven model to build web applications. It manages state automatically using ViewState and is ideal for rapid development with complex UI needs.<br />
-<strong>ASP.NET MVC</strong> is a lightweight, pattern-based framework that follows the Model-View-Controller architecture. It provides full control over HTML and is suited for applications requiring clear separation of concerns and testability.</p>)
-        }
-      >Web Form vs MVC</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Caching</strong> is the process of storing frequently accessed data or page output in memory to reduce server load and improve application performance. Like<br />
-<strong>Output Caching</strong> stores the entire rendered HTML of a page and serves it for future requests without regenerating it.<br />
-<strong>Data Caching</strong> stores data objects (e.g., datasets, objects) in memory for reuse across requests.<br />
-<strong>Fragment Caching</strong> caches only a portion (fragment) of the page, such as a user control or partial view.<br />
-<strong>SQL Cache Dependency</strong> automatically invalidates cached data when the underlying SQL Server data changes.<br />
-<strong>Custom Caching</strong> allows developers to implement personalized caching logic based on specific application needs.</p>)
-        }
-      >Caching</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Response.Redirect</strong> redirects the user to a new page, making a round trip to the server. The URL in the browser changes.<br />
 <strong>Server.Transfer</strong> transfers control to another page on the same server without a round trip. The browser URL remains unchanged.</p>)
         }
@@ -210,9 +183,9 @@ A classic web application being developed through ASP.NET depends on several ope
           handleOpenPopup(<p>Preparing the Application for Deployment- Make sure that the application is successfully developed, tested and ready for deployment.<br />
 <strong>Choosing a Hosting Environment</strong> Choose a hosting environment like Azure app Service or AWS Elastic Beanstalk.<br />
 <strong>Setting up of Production Environment</strong> Make sure that all the hardware and software requirements are met by the server.<br />
-<strong>Publishing the Application</strong> Publish the application using Visual Studio or .NET CLI.<br />
+<strong>Publish the Application</strong> using Visual Studio or .NET CLI.<br />
 <strong>Deploying to the Server</strong> Transfer it to the production server with the help of FTP, SSH or Git.<br />
-<strong>Configuring IIS</strong> Configure IIS settings if the application is hosted on an IIS server.<br />
+<strong>Configure IIS</strong> settings if the application is hosted on an IIS server.<br />
 <strong>Testing the Environment</strong> Test the deployed application thoroughly to make sure that all the functions are working correctly.<br />
 <strong>Monitoring and Maintenance</strong> Monitor the performance of the application and regularly update and maintain the application with enhancements required.<br />
 <strong>Backup and Disaster recovery</strong> Set up backup and disaster recovery techniques to protect the application and its data.</p>)
@@ -220,18 +193,15 @@ A classic web application being developed through ASP.NET depends on several ope
       >Deploy</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ActionResult</strong> is a base class that represents the result of an action method. It allows controllers to return different types of responses to the client, such as views, JSON data, files, or status codes. like<br />
-<strong>ViewResult</strong> returns an HTML view to the browser.<br />
-<strong>PartialViewResult</strong> returns a portion of a view (partial view), commonly used with AJAX.<br />
-<strong>RedirectResult</strong> redirects the browser to a specified URL.<br />
-<strong>RedirectToRouteResult</strong> redirects the user based on route configuration.<br />
-<strong>RedirectToActionResult</strong> redirects to a specific action method within a controller.<br />
-<strong>JsonResult</strong> returns JSON-formatted data, useful for APIs and AJAX calls.<br />
-<strong>ContentResult</strong> returns plain text, HTML, or any custom content.<br />
-<strong>FileResult</strong> sends a file to the browser, either to display or download.<br />
-<strong>EmptyResult</strong> returns no content; used when no response is required.</p>)
+          handleOpenPopup(<p><strong>NuGet</strong> is a package manager dedicated to the .NET ecosystem. Microsoft developed it to offer access to thousands of packages being written by .NET developers.<br />
+A classic web application being developed through ASP.NET depends on several open-source NuGet packages to work. One of the famous NuGet package managers is Newtonsoft.Json. It is used for working with JSON data in .NET.</p>)
         }
-      >ActionResult</button>
+      >NuGet</button><br />
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Bundling and Minification</strong> refers to the techniques that help in optimizing the performance of web application by reducing the number of HTTP requests and minimizing the size of resourceslike CSS, JavaScript.</p>)
+        }
+      >Bundling and Minification</button>
 
       {/* Popup */}
       {isOpen && (

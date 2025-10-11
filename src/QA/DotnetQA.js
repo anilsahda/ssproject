@@ -24,6 +24,21 @@ const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>ActionResult</strong> is a base class that represents the result of an action method. It allows controllers to return different types of responses to the client, such as views, JSON data, files, or status codes. like<br />
+<strong>ViewResult</strong> returns an HTML view to the browser.<br />
+<strong>PartialViewResult</strong> returns a portion of a view commonly used with AJAX.<br />
+<strong>RedirectResult</strong> redirects the browser to a specified URL.<br />
+<strong>RedirectToRouteResult</strong> redirects the user based on route configuration.<br />
+<strong>RedirectToActionResult</strong> redirects to a specific action method within a controller.<br />
+<strong>JsonResult</strong> returns JSON-formatted data, useful for APIs and AJAX calls.<br />
+<strong>JavascriptResult</strong> is used to return javascript to the view.<br />
+<strong>ContentResult</strong> returns plain text, HTML, or any custom content.<br />
+<strong>FileResult</strong> sends a file to the browser, either to display or download.<br />
+<strong>EmptyResult</strong> returns no content; used when no response is required.</p>)
+        }
+      >ActionResult</button>
+
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Anonymous Methods</strong> are a way to define inline unnamed methods that can be assigned to delegate instances. They provide a concise way to create small functions without declaring an entire named method. Anonymous methods use the delegate keyword and do not require a separate method declaration.</p>,
             `public delegate void DisplayMessage(string message);
@@ -53,7 +68,7 @@ int j = (int)o; // unboxing`
       >Boxing</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Caching</strong> is a technique that stores data to improve application performance and scalability. It can reduce the time taken to fetch and process data. Caching is most effective for data that is expensive to generate and changes frequently.<br />
+          handleOpenPopup(<p><strong>Caching</strong> is the process of storing frequently accessed data in memory to reduce server load and improve application performance. Caching is most effective for data that is expensive to generate and changes frequently.<br />
 <strong>In-memory caching</strong> Stores data in the application server's memory. This is fast, but limited by the server's memory.<br />
 <strong>Distributed caching</strong> Stores data outside the application server, often in a separate service like Redis or MongoDB.<br />
 <strong>Output caching</strong> Caches the entire output of a response, reducing the need to process and generate the response again.<br />
@@ -77,6 +92,22 @@ CLR can be used for:<br />
         }
       >CLR</button>
 
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Debugging</strong> in a production environment should be done carefully to avoid downtime and performance issues.<br />
+<strong>Check Logs First using ELK</strong><br />
+Elasticsearch search engine that stores and indexes logs<br />
+Logstash collect the logs, process them and send to Elasticsearch.<br />
+Kibana a visualization tool to exploring and analysis logs<br />
+<strong>CloudWatch</strong> collects and track logs and events from AWS resources and supports alarms, dashboards, and automated actions based on logs and metrics.<br />
+<strong>Splunk</strong> is a powerful log management tool which indexes and search log data for real-time analysis. It can be use for security threat detection, IT operations monitoring, and business analytics.<br />
+<strong>Use Monitoring & APM Tools</strong> like New Relic, Datadog, Prometheus, or Grafana help track real-time performance. Check metrics, slow endpoints, high CPU/memory usage.<br />
+<strong>Reproduce with Safe Methods</strong> Use flag features to isolate the issue. Reproduce in staging if possible before making live changes. Debug specific requests using Zipkin.<br />
+<strong>Remote Debugging</strong> Attach a remote debugger via VS Code<br />
+<strong>Hotfix & Rollback Strategy</strong> If a fix is needed, apply a hotfix with CI/CD pipelines. Have a rollback plan (blue-green deployment, canary releases).<br />
+<strong>Database & Configuration Checks</strong> Verify DB queries, cache issues, env variables. Use readonly access to production databases for debugging.</p>)
+        }
+      >Debug Production</button>
+
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Delegates</strong> are Type-Safe Function Pointer which hold the reference of a function and call that method for execution. When we instantiate a delegate we can associate its instance with any method that matches the delegate’s signature. We can invoke the method through the delegate instance.<br /> 
 <strong>Delegates are used for:</strong><br />
@@ -84,7 +115,7 @@ CLR can be used for:<br />
 <strong>Callback Function</strong>: Delegates allow methods to be passed as parameters to enable callbacks and flexible execution.<br />
 <strong>Event Handling</strong>: Delegates serve as the foundation of event handling by enabling event publishers to call event handler methods on subscribers.<br /><br />
 <strong>Types of Delegates: Generic, Singlecast and Multicast</strong><br />
-<strong>Generic Delegates</strong> use generic types parameter to work with multiple types without casting. C# provides 3 generics delegate<br />
+<strong>Generic Delegates</strong> use generic types parameter to work with multiple types without casting. <strong>There are 3 generics delegate</strong><br />
 <strong>Func</strong> delegate represents a function with return type.<br />
 <strong>Action</strong> delegate represents void return type with no parameter.<br />
 <strong>Predicate</strong> delegate takes an input parameter and returns boolean<br />
@@ -104,40 +135,63 @@ CLR can be used for:<br />
       >Delegates</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Exception Handling</strong> is the method of catching and recording these errors in code so that we can fix them. Usually, errors and exceptions are stored in log files or databases. If these errors are not handled properly, the application may crash and we may not know the root cause of the problem.<br />
-<strong>finally</strong> is used to clean up resources used in the try block when an exception occurs. The finalize method is used to perform cleanup on unmanaged resources held by an object. It is also known as a destructor.<br />
-<strong>Finalize</strong> is called by the Garbage Collector before an object that is eligible for collection is reclaimed. Garbage collector will take the responsibility to deallocate the memory for the unreferenced object.<br />
-<strong>throw</strong> preserves the stack trace which point to the method that caused the exception in the first place<br /> 
+          handleOpenPopup(<p><strong>Entity Framework</strong> is an ORM for .NET which allow .NET developers to work with a database using .NET objects, eliminating the need for most of the data-access code that you'd otherwise write manually like SQL.<br />
+SaveChanges()	Saves all changes made in the context to the database.<br />
+Add()	Marks a single entity as Added.<br />
+AddRange()	Adds multiple entities to the context.<br />
+Update()	Marks the entire entity as Modified.<br />
+UpdateRange()	Updates multiple entities.<br />
+Remove()	Marks the entity as Deleted.<br />
+RemoveRange()	Deletes multiple entities.<br />
+Attach()	Attaches an entity to the context without marking it as Modified.<br />
+AttachRange()	Attaches multiple entities.<br />
+Entry(entity)	Gets metadata and state information about an entity.<br />
+Find(key)	Finds an entity with the given primary key.<br />
+FirstOrDefault()	Returns the first element or default value.<br />
+SingleOrDefault()	Returns a single element or default, throws if more than one match.<br />
+ToList()	Converts query to a list.<br />
+Where(predicate)	Filters entities based on condition.<br />
+Any()	Checks if any elements match a condition.<br />
+All()	Checks if all elements satisfy a condition.<br />
+Count()	Counts number of elements.<br />
+Select()	Projects each element into a new form.<br />
+Include()	Eager loads related entities.<br />
+ThenInclude()	Used after Include() for nested relationships.<br />
+OrderBy() / OrderByDescending()	Sorts elements.<br />
+GroupBy()	Groups elements by key.<br />
+Take(n)	Takes first n elements.<br />
+TakeWhile(n)<br />
+Skip(n)	Skips first n elements.<br />
+SkipWhile(n)<br />
+Distinct()	Returns distinct elements.<br />
+FromSqlRaw(sql)	Executes a raw SQL query and returns entities.<br />
+ExecuteSqlRaw()	Executes raw SQL for INSERT, UPDATE, DELETE.</p>)
+        }
+      >EF</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Exception Handling</strong> is the process of catching and recording errors in code so that they can be fixed. These errors are usually logged in files or databases. If these errors not handled properly, the application may crash without showing the root cause<br />
+<strong>finally</strong> is used to clean up resources after a try block, whether or not an exception occurs<br />
+<strong>Finalize</strong> is used to clean up unmanaged resources. It’s called by the Garbage Collector before reclaiming memory from an object<br />
+<strong>throw</strong> preserves the original stack trace, helping identify where the exception occurred<br /> 
 <strong>throw ex</strong> does not preserve the stack trace and we lose the information about the method that caused the exception in the first place.<br />
-<strong>throw new Exception</strong> provides additional context with a new exception message while preserving the original exception as an inner exception.<br />
 <strong>Global Exception Handler</strong> is used to catch and handle unhandled exceptions across the entire application.<br /> 
-In <strong>.NET Core</strong>: UseExceptionHandler or UseDeveloperExceptionPage middleware is used to handle exceptions globally<br />
-In <strong>ASP.NET MVC</strong>: HandleError attribute filter at the controller or global level through FilterConfig.cs. We use Application_Error in Global.asax for global error handling.</p>)
+<strong>.NET Core</strong>: UseExceptionHandler or UseDeveloperExceptionPage middleware<br />
+<strong>ASP.NET MVC</strong> use HandleError attribute at the controller level or FilterConfig.cs for global level. Global errors can also be handled in Application_Error within Global.asax</p>)
         }
       >Exception Handling</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Filters</strong> are used to inject extra processing logic in the request-response pipeline. Filters allow us to add pre-processing and post-processing logic to an action. Filter run before or after the action method executes and can also intercept results.<br />
+          handleOpenPopup(<p><strong>Filters</strong> are used to inject extra processing logic in the req-res pipeline. Filters add pre-processing and post-processing logic to an action. Filter run before or after the action method executes and can also intercept results.<br />
 <strong>Authentication</strong> filter is used to check the identity of user.<br /> 
 <strong>Authorization</strong> filters are useful for implementing the logic of authentication and authorization. IAuthorizationFilter provides the logic for determining if a user is allowed to access a specific action.<br />
-<strong>Action</strong> filters contains the pre-processing and post-processing logic which can be applied to the action method of the controller. This filter is executed before and after the action method of the controller executes.<br />
-IActionFilter is used to modify the request or response before or after the action method is executed. IResultFilter is used to modify the result of the action method before it is returned to the client.<br />
-<strong>Result</strong> filters allows us to modify the HTTP response, which means modifying the view result before the view is rendered to the browser. The OutputCacheAttribute class is an example of a result filter.<br />
-IResultFilter is used to modify the result of the action method before it is returned to the client.<br />
-<strong>Exception</strong> Filter will execute when an action method of the controller throws an unhandled exception. These filters implement the IExceptionFilter interface and can be used to log errors or to display the specific error page. The HandleErrorAttribute class is an example of the exception filter.<br />
-IExceptionFilter is used to catch and handle exceptions.</p>,
+<strong>Action</strong> filters contain the pre-processing and post-processing logic which can be applied to the action method. This filter is executed before and after the action method of the controller executes. IActionFilter is used to modify the request or response before or after the action method is executed.<br />
+<strong>Result</strong> filters modify the HTTP response means modify the view result before the view is rendered to the browser. IResultFilter interface and OutputCacheAttribute class are used to modify the result of the action method before it is returned to the client.<br />
+<strong>Exception</strong> Filter will execute when an action method of the controller throws an unhandled exception. IExceptionFilter interface and HandleErrorAttribute class are used to catch and handle exceptions and it can be used to log errors or to display the specific error page.</p>,
 `public class MyActionFilter : ActionFilterAttribute
 {
- public override void OnActionExecuting(ActionExecutingContext c)
-  {
-	// Code execute before action method is called
-	base.OnActionExecuting(c);
-  }
-  public override void OnActionExecuted(ActionExecutedContext c)
-  {
-	// Code execute after action method is called
-	base.OnActionExecuted(c);
-  }
+  Methods OnActionExecuting & OnActionExecuted
+  Parameters ActionExecuting & ActionExecutedContext
 }
 [MyActionFilter] // Apply the filter
 public class HomeController : Controller`)
@@ -145,12 +199,12 @@ public class HomeController : Controller`)
       >Filters</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>High-Level Design</strong> refers to the overall architecture of the system. It breaks down the system into major modules or components and describes how these components interact with each other. The focus is on what each module is responsible for, rather than how it achieves that functionality. For example in an e-commerce system, HLD would show modules like User Service, Product Service, Order Service, and how they interact through APIs or messaging queues.<br />
-<strong>Low-Level Design</strong> takes the output of HLD and dives deeper into the implementation details of each component. It describes the class structures, methods, interfaces, database tables, data structures, and algorithms used. The focus here is on how to implement the functionality defined in the HLD.<br />
-LLD is usually done by developers and is essential for actual coding. It ensures that everyone has a clear understanding of the responsibilities and behavior of each part of the system.<br />
-Example in the same e-commerce project: LLD would define a ProductService class, with methods like AddProduct, GetProductById, and describe the structure of the Product entity, relationships with the database, and how validation and error handling are performed.</p>)
+          handleOpenPopup(<p><strong>High-Level Design</strong> refers to the overall architecture of the system. It breaks down the system into major modules and describes how these modules interact with each other. The focus is on what each module is responsible for, rather than how it achieves that functionality. For example in an e-commerce system, HLD would show modules like User Service, Product Service, Order Service, and how they interact through APIs or messaging queues.<br />
+<strong>Low-Level Design</strong> takes the output of HLD and dives deeper into the implementation details of each module. It describes the class structures, methods, interfaces, database tables, data structures, and algorithms used. The focus here is on how to implement the functionality defined in the HLD.<br />
+LLD is usually done by developers and it's essential for actual coding. It ensures that everyone has a clear understanding of the responsibilities and behavior of each part of the system.<br />
+For example in the same e-commerce project: LLD would define a ProductService class, with methods like AddProduct, GetProductById, and describe the structure of the Product entity, relationships with the database, and how validation and error handling are performed.</p>)
         }
-      >HLD vs LLD</button>
+      >HLD | LLD</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>IEnumerable</strong> executes the query in the client's memory and makes it suitable for in-memory collections but less efficient for large datasets. But IQueryable executes the query on the server and it is used for more efficient data handling, especially with large or complex data sets. IEnumerable is more straightforward and is used for in-memory data, while IQueryable is more complex and is better suited for remote data sources<br />
@@ -164,6 +218,17 @@ Example in the same e-commerce project: LLD would define a ProductService class,
           handleOpenPopup(<p><strong>Indexer</strong> is used to access instances of a class using an index just like an array. Indexer is just like properties using this keyword followed by [] index notation. Indexers are implemented through get and set accessors for the [] operator. Indexers are used on group of elements. Indexer can be overloaded.</p>)
         }
       >Indexer</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><small>HTTPRequest-&gt;Middleware-&gt;Routing-&gt;ControllerInitialization-&gt;ActionMethodExecution-&gt;ResultExection-&gt;Data|View Result-&gt;View Render</small><br />
+<strong>MVC LifeCycle</strong> is a sequence of events, stages or components that interact with each other to process an HTTP request and generate a response that goes back to the client.<br />
+<strong>Middleware</strong> component forms the basic building block of application HTTP pipeline. These are a series of components that are combined to form a request pipeline in order to handle any incoming request.<br />
+<strong>Routing</strong> is a middleware component which decides how an incoming request can be mapped to Controllers and actions methods, with the help of convention routes and attribute routes.<br />
+<strong>Controller Initialization</strong> at this stage the process of initialization and execution of controllers takes place. Controllers are responsible for handling incoming requests. The controller selects the appropriate action methods on the basis of route templates provided.<br />
+<strong>Action Method Execution</strong> after the controllers are initialized, the action methods are executed and returns a view which contains Html document to be returned as response to the browser.<br />
+<strong>Result Execution During</strong> this stage the response generated to the original HTTP request. If an action method returns a view result, the MVC view engine renders a view and returns the HTML response. If result is not of view type, then action method will generate its own response.</p>)
+        }
+      >LifeCycle</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Managed Code</strong> executes under the CLR and <strong>Benefits</strong> are:<br />
@@ -184,53 +249,23 @@ Example in the same e-commerce project: LLD would define a ProductService class,
       >Managed Code</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Difference between Filter and Middleware</strong><br />
-Both filters and middleware intercept request and response. Middleware operates at a lower level, affecting the entire application pipeline while Filters are more targeted and interact with specific MVC actions or controllers.<br />
-<strong>Middleware</strong> is a software component that handles requests and responses in request pipeline. It can be used to add functionality like logging, authentication, and caching.<br />
-<strong>Middleware</strong> is configured in the Program.cs file and the order of middleware components determines how requests are processed and responses are constructed. Middleware components can inspect requests, modify requests or responses, and handle tasks. Middleware can also stop further processing if an error is detected.<br />
-<strong>Custom Middleware</strong> We can add custom middleware to modify the request/response pipeline, perform logging, authentication, error handling or any custom logic.<br />
-<strong>Use</strong> adds middleware to the pipeline that handles every request and passes it to the next middleware.<br />
-<strong>Run</strong> terminates the pipeline and generates a response.<br />
-<strong>Map</strong> branches the pipeline based on request paths.</p>,
-`public class CustomMiddleware//1.Create Class with Invoke()
-{
-    private readonly RequestDelegate _next;
-    public CustomMiddleware(RequestDelegate next)
-    {
-        _next = next;
-    }
-    public async Task Invoke(HttpContext context)
-    {
-        //Preprocessing logic before next middleware
-        await _next(context); //Call next middleware
-        //Post-processing logic after next middleware
-    }
-}
-//2. Register Middleware in Program.cs
-     app.UseMiddleware<CustomMiddleware>();
-	 app.UseCustomMiddleware();
-//3. Using Middleware as Extension Method
-public static class CustomMiddlewareExtensions
-{
-   public static IApplicationBuilder 
-   UseCustomMiddleware(this IApplicationBuilder builder)
-   {
-      return builder.UseMiddleware<CustomMiddleware>();
-   }
-}`)
+          handleOpenPopup(<p><strong>Middleware</strong> is a software component that processe the req and resp in the request pipeline. It can be used for tasks like logging, authentication, or caching. Middleware order is important as it controls how requests and responses move through the app. Each middleware can inspect, modify, or handle requests and responses, and can also stop the pipeline if any error occurs. <strong>Use</strong> middleware runs for every request and then passes the request to the next middleware. <strong>Run</strong> terminates the pipeline and generates a response. <strong>Map</strong> branches the pipeline based on request paths.<br /><br />
+<strong>Custom Middleware</strong> is used to add our own logic like logging, error handling, authentication between incoming requests and outgoing response.<br />
+<strong>To create Custom Middleware</strong> define a class with a constructor that takes a <strong>RequestDelegate</strong> parameter to call the next middleware, then implement an <strong>Invoke</strong> method that accepts an <strong>HttpContext</strong> parameter to add our custom logic. We can create an extension method for cleaner registration but it's optional and then finally register the middleware in the request pipeline using <strong>app.UseMiddleware</strong>&lt;CustomMiddlewareName&gt;() in Program.cs file.<br /><br />
+<strong>Difference between Filter and Middleware</strong>: Both filters and middleware intercept request and response. Middleware operates at a lower level and affect the entire application pipeline while Filters are more targeted and interact with specific MVC actions or controllers.</p>)
         }
       >Middleware</button>
 
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><small>HTTPRequest-&gt;Middleware-&gt;Routing-&gt;ControllerInitialization-&gt;ActionMethodExecution-&gt;ResultExection-&gt;Data|View Result-&gt;View Render</small><br />
-MVC Request Life Cycle is a sequence of events, stages or components that interact with each other to process an HTTP request and generate a response that goes back to the client.<br />
-<strong>Middleware</strong> component forms the basic building block of application HTTP pipeline. These are a series of components that are combined to form a request pipeline in order to handle any incoming request.<br />
-<strong>Routing</strong> is a middleware component which decides how an incoming request can be mapped to Controllers and actions methods, with the help of convention routes and attribute routes.<br />
-<strong>Controller Initialization</strong> at this stage the process of initialization and execution of controllers takes place. Controllers are responsible for handling incoming requests. The controller selects the appropriate action methods on the basis of route templates provided.<br />
-<strong>Action Method Execution</strong> after the controllers are initialized, the action methods are executed and returns a view which contains Html document to be returned as response to the browser.<br />
-<strong>Result Execution During</strong> this stage the response generated to the original HTTP request. If an action method returns a view result, the MVC view engine renders a view and returns the HTML response. If result is not of view type, then action method will generate its own response.</p>)
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>ASP.NET MVC</strong> is a lightweight, pattern-based framework that follows the Model-View-Controller architecture. It provides full control over HTML and is suited for applications requiring clear separation of concerns and testability.<br />
+<strong>Model</strong> represents the core data and business logic of the application. It is responsible for managing the data, processing rules, and interactions with the database or data sources. The Model does not handle user interface or input but focuses solely on the data and operations related to it.<br />
+<strong>View</strong> is the presentation layer of the application. It displays the data provided by the Model to the user and is responsible for the user interface. Views are concerned with how information is presented, but they do not contain business logic or handle user input directly.<br />
+<strong>Controller</strong> acts as an intermediary between the Model and the View. It handles user input, processes user requests, and decides which Model data to retrieve and which View to display.<br />
+<strong>ViewBag</strong> is a dynamic object which is used to pass data from the controller to the view. It only works for the current request.<br />
+<strong>ViewData</strong> is a key-value pair which is used to pass data from the controller to the view. It also limited to the current request.<br />
+<strong>TempData</strong> is a dictionary which is used to pass data from one request to another, usually between two actions. It persists only until the next request</p>)
         }
-      >MVC LifeCycle</button>
+      >MVC</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>.NET Core is Cross-Platform</strong> that can run on Windows, macOS, and Linux.<br />
@@ -253,8 +288,8 @@ Good support for asynchronous programming<br />
           handleOpenPopup(<p><strong>Abstraction</strong> is the process of showing only essential/necessary features of an entity/object to the outside world and hiding the other irrelevant information.<br />
 <strong>Encapsulation</strong> is a process of binding data members like variables, properties and member methods together.<br />
 <strong>Inheritance</strong> is the process of creating a new class by extending the existing class is called inheritance or the process of inheriting the features of the base class is called as inheritance.<br />
-<strong>Method Overloading</strong> means creating multiple methods in a class with the same names but different signatures (Parameters). It permits a class, struct, or interface to declare multiple methods with the same name with unique signatures.<br />
-<strong>Method Overriding</strong> means having two methods with the same name and same signatures. We can override the functionality of a base class method to create the same name method with the same signature in a derived class. We can achieve method overriding using inheritance. Virtual and Override keywords are used to achieve method overriding.</p>)
+<strong>Overloading</strong> means creating multiple methods in a class with the same names but different signatures (Parameters). It permits a class, struct, or interface to declare multiple methods with the same name with unique signatures.<br />
+<strong>Overriding</strong> means having two methods with the same name and same signatures. We can override the functionality of a base class method to create the same name method with the same signature in a derived class. We can achieve method overriding using inheritance. Virtual and Override keywords are used to achieve method overriding.</p>)
         }
       >OOPS</button>
 
@@ -277,46 +312,15 @@ Good support for asynchronous programming<br />
       >Performance</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Debugging</strong> in a production environment should be done carefully to avoid downtime and performance issues.<br />
-<strong>Check Logs First using ELK</strong><br />
-Elasticsearch search engine that stores and indexes logs<br />
-Logstash collect the logs, process them and send to Elasticsearch.<br />
-Kibana a visualization tool to exploring and analysis logs<br />
-<strong>CloudWatch</strong> collects and track logs and events from AWS resources and supports alarms, dashboards, and automated actions based on logs and metrics.<br />
-<strong>Splunk</strong> is a powerful log management tool which indexes and search log data for real-time analysis. It can be use for security threat detection, IT operations monitoring, and business analytics.<br />
-<strong>Use Monitoring & APM Tools</strong> like New Relic, Datadog, Prometheus, or Grafana help track real-time performance. Check metrics, slow endpoints, high CPU/memory usage.<br />
-<strong>Reproduce with Safe Methods</strong> Use flag features to isolate the issue. Reproduce in staging if possible before making live changes. Debug specific requests using Zipkin.<br />
-<strong>Remote Debugging</strong> Attach a remote debugger via VS Code<br />
-<strong>Hotfix & Rollback Strategy</strong> If a fix is needed, apply a hotfix with CI/CD pipelines. Have a rollback plan (blue-green deployment, canary releases).<br />
-<strong>Database & Configuration Checks</strong> Verify DB queries, cache issues, env variables. Use readonly access to production databases for debugging.</p>)
-        }
-      >Prod Debug</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>State Management</strong> is a technique to maintain the state of an application, object and variable across multiple requests. It's useful because web applications are stateless.<br />
-          <strong>Server Side State Management</strong><br />
-<strong>Application State</strong> is used to store information that is shared among users. Application state is stored in the memory of the Windows process which processes user requests on the web server. Application state is useful in storing a small amount of often-used data.<br />
-<strong>Session State</strong> provides a place to store values that will persist across page requests. Values stored in Session are stored on the server and will remain in memory until they are explicitly removed or until the Session expires. It is defined as the period of time that a unique user interacts with a Web application. Session state is a collection of objects, tied to a session stored on a server.<br />
-<strong>Client-Side State Management</strong><br />
-<strong>View State</strong> is a client-side state management technique that use a hidden field to store page values. It help us to build a call and retain values across multiple requests for the same page. When a page is rendered, the page's state and values are serialized into base64-encoded strings. These strings are stored in a hidden field on the page. When the page is requested again, the hidden field is returned to the server. The server restores the values from the hidden field and processes the request.<br />
-<strong>Control State</strong>: The purpose of the control state repository is to cache data necessary for a control to function properly. ControlState is essentially a private ViewState for our control only, and it is not affected when ViewState is turned off. ControlState is used to store small amounts of critical information.<br />
-<strong>Hidden Control</strong> is a control that does not render anything on the web page at the client browser but can be used to store some information on the web page which can be used on the page. Hidden fields are used to store data at the page level.<br />
-<strong>Cookie</strong> is a small amount of data that is either stored on the client side in a text file or in the memory of the client browser session. Cookies are always sent with the request to the web server and information can be retrieved from the cookies at the web server. Every time a user visits a website, cookies are retrieved from the user's machine and help identify the user.<br />
-<strong>Query String</strong> is used to pass the values or information from one page to another page. They are passed along with URLs in clear text. Query strings provide a simple but limited way of maintaining some state information.
-</p>)
-        }
-      >State Management</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Value Type</strong> holds a data value within its own memory space. It means the variables of these data types directly contain values. When we pass a value-type variable from one method to another, the system creates a separate copy of a variable in another method. If value got changed in the one method, it wouldn't affect the variable in another method.
-<strong>Reference Type</strong> doesn't store its value directly within its own memory space. Instead, it stores the address where the value is being stored. In other words, a reference type contains a pointer to another memory location that holds the data. When you pass a reference type variable from one method to another, it doesn't create a new copy; instead, it passes the variable's address. So, If we change the value of a variable in a method, it will also be reflected in the calling method.</p>)
-        }
-      >Reference Type</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Reflection</strong> can be used to improve the application performance. It is used to access metadata at runtime. Using reflection we can access and invoke a type's methods, attributes, and events dynamically. In addition to reading and calling, reflection is used to construct new types at runtime. The System.Reflection namespace contains the classes that provide access to the program's metadata during runtime.</p>)
         }
       >Reflection</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Value Type</strong> holds a data value within its own memory space. It means the variables of these data types directly contain values. When we pass a value-type variable from one method to another, the system creates a separate copy of a variable in another method. If value got changed in the one method, it wouldn't affect the variable in another method.<br />
+<strong>Reference Type</strong> doesn't store its value directly within its own memory space. Instead, it stores the address where the value is being stored. In other words, a reference type contains a pointer to another memory location that holds the data. When you pass a reference type variable from one method to another, it doesn't create a new copy; instead, it passes the variable's address. So, If we change the value of a variable in a method, it will also be reflected in the calling method.</p>)
+        }
+      >Reference Type</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Flexibility</strong>: REST is considered more flexible due to various data formats like JSON, XML, or plain text while SOAP is based on XML only.<br />
@@ -329,15 +333,14 @@ Kibana a visualization tool to exploring and analysis logs<br />
       >REST vs SOAP</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ViewResult</strong> is used to return a view.<br />
-<strong>PartialViewResult</strong> is used to return partialview.<br />
-<strong>ContentResult</strong> is used to return content to the view.<br />
-<strong>EmptyResult</strong> returns nothing in the view page.<br />
-<strong>FileResult</strong> is used to return file to the view.<br />
-<strong>JSONResult</strong> is used to return JSON data to the view.<br />
-<strong>JavascriptResult</strong> is used to return javascript to the view.</p>)
+          handleOpenPopup(<p><strong>SOLID Principles</strong> are design rules that help us to build better software. They make our code easier to change, understand and maintain by reducing tight connections between different parts of the code.<br />
+<strong>SRP</strong> says that a class should have only one reason to change, meaning it should do only one job. <strong>For example</strong>: consider a ReportGenerator class that is responsible for both generating reports and formatting them. This violates SRP. To follow the SRP, we can split this into two classes: ReportGenerator responsible for generating reports and ReportFormatter responsible for formatting reports.<br />
+<strong>OCP</strong> says that a class should be open for extension, but closed for modification means we should be able to add new features without changing existing code. <strong>For example</strong> onsider a Shape class with a method to calculate area for different shapes. To follow the OCP, create a base Shape class and make separate classes like Circle, Rectangle, etc., that extend it.<br />
+<strong>LSP</strong> states that a subclass should be able to replace its parent class without breaking the program. <strong>For example</strong> a Rectangle class with Width and Height properties. If we inherit from Rectangle to create a Square class, the LSP is violated because a square's width and height should always be equal.<br />
+<strong>ISP</strong> states that clients should not be forced to implement interfaces which they don't use. Instead of using one big interface we shoul use small small interfaces. <strong>For example</strong>: Consider an IWorker interface with methods for both developers and testers. This could be problematic for a Manager class that doesn't need to implement both methods. To follow the ISP, we can split the IWorker interface into 2 separate interfaces ICodeWriter & ICodeTester<br />
+<strong>DIP</strong> is a software design principle that states that high-level modules should not depend on low-level modules. Instead, both should depend on abstractions. This principle makes code more flexible and maintainable and easier to develop and deploy an application. <strong>For example</strong> consider a NotificationService class that directly depend on a EmailSender class. This creates a tight coupling between NotificationService and EmailSender. So we use an interface like IMessageSender to make it more flexible and loosely connected.</p>)
         }
-      >Return Type</button>
+      >SOLID</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p>1xx - represents informational responses<br />
@@ -362,7 +365,7 @@ Kibana a visualization tool to exploring and analysis logs<br />
 <strong>Dynamic</strong> compiler doesn't check the type of value at compile time and check it out at runtime.<br />
 <strong>Let</strong> declared as block-scoped variable. It can be updated but not re-declared in the same block. In C# used only in LINQ queries to create a temp var<br />
 <strong>Out</strong> Passes a variable by reference, but it's used only to output data from the method. Out does not need to be initialized before passed, but must be assigned inside the method<br />
-<strong>Readonly</strong> value can be assigned only once, either at declaration or in the constructor only through the non-static constructor. It it little different from const because readonly can be set at runtime.<br />
+<strong>Readonly</strong> value can be assigned only once, either at declaration or in the constructor only through the non-static constructor. It is little different from const because readonly can be set at runtime.<br />
 <strong>Ref</strong>: Passes a variable by reference means the method can read and modify the original variable. Ref must be initialized before it is passed.<br />
 <strong>Static</strong> declared with the static keyword and shared among all instances of the class.<br />
 <strong>Var</strong>: declared as function-scoped variable. It can be re-declared and updated. In C# Declares a variable with implicit type and it's known at compile time<br />
@@ -586,17 +589,23 @@ If there is at least one method abstract in a class then the class is abstract.<
       >Abstract</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Static Class</strong> is the type of class that cannot be instantiated means we cannot create an object of the class using the new keyword like such that class members can be called directly using their name.<br />
-The CLR handles the loading and initialization of static classes and their members. When a program or namespace containing a static class is loaded, the CLR automatically loads the static class and its members.<br />
+          handleOpenPopup(<p><strong>Partial Class</strong> is a type of class that allows dividing their properties, methods, and events into multiple source files, and at compile time, these files are combined into a single class.<br />
 <strong>Key Points</strong>:<br />
-It was created using the static keyword.<br />
-Only static members are allowed; in other words, everything inside the class must be static.<br />
-We cannot create an object of the static class.<br />
-A Static class cannot be inherited.<br />
-It allows only a static constructor to be declared.<br />
-The static class methods can be called using the class name without creating the instance.</p>)
+All the parts of the partial class must be prefixed with the partial keyword.<br />
+If you seal a specific part of a partial class, the entire class is sealed, the same as for an abstract class.<br />
+Inheritance cannot be applied to partial classes.<br />
+The classes written in two class files are combined at run time.</p>)
         }
-      >Static</button>
+      >Partial</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Private Class</strong> is a class that is only accessible within the class that contains it. This means it can only be used inside the outer (enclosing) class and not from outside.<br />
+<strong>✅ When to Use a Private Class</strong><br />
+To encapsulate helper logic that should not be accessed outside.<br />
+To organize code within a class without polluting the global scope.<br />
+To enforce tighter encapsulation and reduce the surface area of your code.</p>)
+        }
+      >Private</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Sealed Class</strong> cannot be inherited and used to restrict the properties.<br />
@@ -608,14 +617,17 @@ To access the sealed members we must create an object of the class.</p>)
       >Sealed</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Partial Class</strong> is a type of class that allows dividing their properties, methods, and events into multiple source files, and at compile time, these files are combined into a single class.<br />
+          handleOpenPopup(<p><strong>Static Class</strong> is the type of class that cannot be instantiated means we cannot create an object of the class using the new keyword like such that class members can be called directly using their name.<br />
+The CLR handles the loading and initialization of static classes and their members. When a program containing a static class is loaded, the CLR automatically loads the static class and its members.<br />
 <strong>Key Points</strong>:<br />
-All the parts of the partial class must be prefixed with the partial keyword.<br />
-If you seal a specific part of a partial class, the entire class is sealed, the same as for an abstract class.<br />
-Inheritance cannot be applied to partial classes.<br />
-The classes written in two class files are combined at run time.</p>)
+It was created using the static keyword.<br />
+Everything inside the static class must be static.<br />
+We cannot create an object of the static class.<br />
+A Static class cannot be inherited.<br />
+It allows only a static constructor to be declared.<br />
+The methods can be called using the class name without creating the instance.</p>)
         }
-      >Partial</button>
+      >Static</button>
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Constructor</strong> is a special method that is automatically called when an object of a class is created. Its main purpose is to initialize the object.<br />
@@ -1285,129 +1297,8 @@ Benefits of IoC<br />
 IoC promotes loose coupling and improves code modularity and testability.<br />
 It allows developers to swap dependency implementations and mock dependencies.</p>)
         }
-      >IOC</button>
-
-       <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>SOLID Principles</strong> are the design principles that help us to manage several software design problems. These principles provide us the ways to move our tightly coupled code to loosely coupled and encapsulate real business needs properly.</p>)
-        }
-      >SOLID</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Single Responsibility Principle</strong> says that every software module should have only one reason to change. This means that every class or similar structure in your code should have only one job. Everything in that class should be related to a single purpose. It does not mean that our classes should only contain one method or property. There may be many members as long as they relate to a single responsibility.<br />
-<strong>For example</strong>: consider a ReportGenerator class that is responsible for both generating reports and formatting them. This violates SRP. To follow the SRP, we can split this into two classes: ReportGenerator responsible for generating reports and ReportFormatter responsible for formatting reports.</p>)
-        }
-      >SRP</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Open/Closed Principle</strong> says that software module/class is open for extension and closed for modification. Open for extension means we must design our module/class so that the new functionality can be added only when new requirements are generated. Closed for modification means we have already developed a class, and it has gone through unit testing. We should then not alter it until we find bugs. As it says, a class should be open for extensions; we can use inheritance.<br />
-<strong>For example</strong>: Consider a Shape class with a method to calculate area for different shapes. To follow the OCP, we can create specific classes for each shape, inheriting from an abstract base class Shape.</p>)
-        }
-      >OCP</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Liskov Substitution Principle</strong> states that we should be able to use any derived class instead of a parent class and have it behave in the same manner without modification. It ensures that a derived class does not affect the behavior of the parent class. In this principle objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program. This means that the behavior of a subclass should not contradict the behavior of its superclass.<br />
-<strong>For example</strong> Consider a Rectangle class with Width and Height properties. If we inherit from Rectangle to create a Square class, the LSP is violated because a square's width and height should always be equal.<br />
-<strong>For example 1</strong>: A father is a doctor, whereas his son wants to become a cricketer. So here, the son can't replace his father even though they belong to the same family hierarchy.</p>)
-        }
-      >LSP</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Interface Segregation Principle</strong> states that clients should not be forced to implement interfaces which they don't use. Instead of using one big interface we shoul use small small interfaces.<br />
-<strong>For example</strong>: Consider an IWorker interface with methods for both developers and testers. This could be problematic for a Manager class that doesn't need to implement both methods. To follow the ISP, we can split the IWorker interface into two separate interfaces: ICodeWriter and ICodeTester.</p>)
-        }
-      >ISP</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Dependency Inversion Principle</strong> is a software design principle that states that high-level modules should not depend on low-level modules. Instead, both should depend on abstractions. This principle makes code more flexible and maintainable and easier to develop and deploy an application.<br />
-<strong>For example</strong>: Consider a NotificationService class that directly depends on a EmailSender class. This creates a tight coupling between NotificationService and EmailSender. To adhere to DIP, we should introduce an abstraction (interface) that both classes can depend on. By using the IMessageSender interface, we can decoupled NotificationService from the concrete implementation of the message sender, allowing for greater flexibility.</p>)
-        }
-      >DIP</button><br />
-
-       <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Entity Framework</strong> is an ORM for .NET which allow .NET developers to work with a database using .NET objects, eliminating the need for most of the data-access code that you'd otherwise write manually like SQL.<br />
-          Benefits of Using Entity Framework<br />
-Feature	Benefit<br />
-Productivity	No need to write SQL or stored procedures.<br />
-Maintainability	Clean separation of concerns and code-first approach.<br />
-LINQ Support	Write queries in C# using strong typing and IntelliSense.<br />
-Migration Support	Handles schema evolution in a controlled way.<br />
-Cross-Platform	Works on Windows, Linux, macOS via .NET Core/.NET 5/6/7+.</p>)
-        }
-      >Entity Framework</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>SaveChanges()	Saves all changes made in the context to the database.<br />
-SaveChangesAsync()	Async version of SaveChanges().<br />
-Add()	Marks a single entity as Added.<br />
-AddAsync()	Async version of Add().<br />
-AddRange()	Adds multiple entities to the context.<br />
-AddRangeAsync()	Async version of AddRange().<br />
-Update()	Marks the entire entity as Modified.<br />
-UpdateRange()	Updates multiple entities.<br />
-Remove()	Marks the entity as Deleted.<br />
-RemoveRange()	Deletes multiple entities.<br />
-Attach()	Attaches an entity to the context without marking it as Modified.<br />
-AttachRange()	Attaches multiple entities.<br />
-Entry(entity)	Gets metadata and state information about an entity.</p>)
-        }
-      >DbContext</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Find(key)	Finds an entity with the given primary key.<br />
-FindAsync(key)	Async version of Find().<br />
-FirstOrDefault()	Returns the first element or default value.<br />
-FirstOrDefaultAsync()	Async version.<br />
-SingleOrDefault()	Returns a single element or default, throws if more than one match.<br />
-SingleOrDefaultAsync()	Async version.<br />
-ToList()	Converts query to a list.<br />
-ToListAsync()	Async version.<br />
-Where(predicate)	Filters entities based on condition.<br />
-Any()	Checks if any elements match a condition.<br />
-AnyAsync()	Async version.<br />
-All()	Checks if all elements satisfy a condition.<br />
-Count()	Counts number of elements.<br />
-CountAsync()	Async version.</p>)
-        }
-      >DbSet</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Select()	Projects each element into a new form.<br />
-Include()	Eager loads related entities.<br />
-ThenInclude()	Used after Include() for nested relationships.<br />
-OrderBy() / OrderByDescending()	Sorts elements.<br />
-GroupBy()	Groups elements by key.<br />
-Take(n)	Takes first n elements.<br />
-TakeWhile(n)<br />
-Skip(n)	Skips first n elements.<br />
-SkipWhile(n)<br />
-Distinct()	Returns distinct elements.</p>)
-        }
-      >Querying</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>ChangeTracker.Entries()	Returns all tracked entity entries.<br />
-ChangeTracker.HasChanges()	Checks if there are pending changes.<br />
-ChangeTracker.DetectChanges()	Manually triggers change detection.</p>)
-        }
-      >Change Tracking</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>FromSqlRaw(sql)	Executes a raw SQL query and returns entities.<br />
-FromSqlInterpolated($"sql")	SQL with interpolation (parameter safe).<br />
-ExecuteSqlRaw()	Executes raw SQL for non-query (INSERT, UPDATE, DELETE).<br />
-ExecuteSqlInterpolated()	Interpolated version of ExecuteSqlRaw()</p>)
-        }
-      >Raw SQL</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Database.Migrate()	Applies pending migrations.<br />
-Database.EnsureCreated()	Creates the DB if it doesn't exist.<br />
-Database.EnsureDeleted()	Deletes the database.<br />
-Database.BeginTransaction()	Starts a manual transaction.<br />
-Database.ExecuteSqlRaw()	Runs raw SQL.</p>)
-        }
-      >Database</button><br />
-
+      >IOC</button><br />
+      
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Monolithic Architecture</strong> is like a big container where all the software components are bundled together tightly. It is usually built as one large system and is one code-base.<br />
 <strong>Microservice Architecture</strong> is more about applying a certain number of principles and architectural patterns. Each microservice lives independently and rely on each other. Microservices are deployed independently with their own database per service.<br />
@@ -1557,6 +1448,32 @@ It makes microservices more user-friendly<br />
 It can perform tasks such as authentication, rate limiting, and caching</p>)
         }
       >API Gateway</button><br />
+
+       <button className="btn btn-warning me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>State Management</strong> is a technique to maintain the state of an application, object and variable across multiple requests. It's useful because web applications are stateless.</p>)
+        }
+      >State Management</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Application State</strong> is used to store information that is shared among users. Application state is stored in the memory of the Windows process which processes user requests on the web server. Application state is useful in storing a small amount of often-used data.<br />
+<strong>Session State</strong> provides a place to store values that will persist across page requests. Values stored in Session are stored on the server and will remain in memory until they are explicitly removed or Session expires. It is defined as the period of time that a unique user interacts with a Web application. Session state is a collection of objects, tied to a session stored on a server.<br />
+<strong>TempData</strong> is a dictionary used to store data between requests after a redirect and the data is removed after it's read once. We can use Peek or Keep. <strong>TempData.Peek("key")</strong> reads the value without removing it, so it stays available for the next request. <strong>TempData.Keep("key")</strong> keeps the value after it has been read, so it won’t be deleted automatically.<br />
+<strong>ViewBag</strong> is a dynamic wrapper around ViewData that also passes data from controller to view in the same<br />
+<strong>ViewData</strong> is a dictionary object used to pass data from controller to view during the same request; requires string keys and type casting.</p>)
+        }
+      >Server Side</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Control State</strong> is used to cache the necessary data for a control to function properly. ControlState is essentially a private ViewState for our control only, and it is not affected when ViewState is turned off. ControlState is used to store small amounts of critical information.<br />        
+<strong>Cookie</strong> is a small amount of data that is either stored on the client side in a text file or in the memory of the client browser session. Cookies are always sent with the request to the web server and information can be retrieved from the cookies at the web server. Every time a user visits a website, cookies are retrieved from the user's machine and help identify the user.<br />
+<strong>Hidden Control</strong> doesn't render anything on the web page at the client browser but can be used to store some information on the web page which can be used on the page. Hidden fields are used to store data at page level.<br />
+<strong>Query String</strong> is used to pass the values or information from one page to another page. They are passed along with URLs in clear text. Query strings provide a simple but limited way of maintaining some state information.<br />
+<strong>View State</strong> is a client-side way to keep page values between requests. It stores data in a hidden field on the page using encoded text. When the page is sent to the server again, this hidden data goes with it, so the server can restore the values and continue processing.<br />
+<strong>Local Storage/Session Storage</strong> Stores data on the client side</p>)
+}
+      >Client Side</button>
+
+      <br />
 
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Thread</strong> is a lightweight unit of execution which shares memory within a process. <strong>Process</strong> is something that the operating system uses to execute a program by providing the resources required. Each process has a unique process id associated with it. We can view the process within which a program is running using the windows task manager.<br /> 
