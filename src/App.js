@@ -230,7 +230,6 @@ import AngularQA from "./QA/AngularQA";
 import ReactQA from "./QA/ReactQA";
 import DotnetQA from "./QA/DotnetQA";
 import Tuple from "./DSA/Tuple.js";
-import MVCQA from "./QA/MVCQA.js";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -507,7 +506,6 @@ function App() {
             <Route path="/reactqa" element={<ReactQA />} />
             <Route path="/angularqa" element={<AngularQA />} />
             <Route path="/dotnetqa" element={<DotnetQA />} />
-            <Route path="/mvcqa" element={<MVCQA />} />
           </Routes>
         </div>
       </div>

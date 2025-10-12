@@ -54,9 +54,7 @@ const [isOpen, setIsOpen] = useState(false);
           <strong>Reusable Component</strong> can maintain & scale app for better performance<br />
           <strong>Vast Ecosystem, Libraries</strong> and <strong>Tools</strong> which makes problem-solving and fast development.<br />
           React provides built-in <strong>State Management</strong> like useState, context-API, Redux<br />
-          <strong>Virtual DOM</strong> is a lightweight copy of the real DOM. It compares the current and previous versions of updates to the DOM. It only re-renders the parts of the UI that have changed.<br />
-<strong>Disadvantages of Virtual DOM</strong>: Consume additional memory<br />Developers need to understand concepts of Virtual DOM.<br />
-VDOM can introduce unnecessary complexity for very simple application</p>)
+          <strong>Virtual DOM</strong> compares the current and previous versions of updates to the DOM and only re-renders the parts of the UI that have changed.</p>)
         }
       >Features</button>
 
@@ -76,10 +74,11 @@ output: [{ name:'Ram', grade:96}, {name:'Roy', grade:100}]`)
       >Filter</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Pure Functions</strong> are functions that don't modify data outside their scope, while impure functions can. Pure functions are easier to debug and optimize, and are often used to render components. Pure component is a component that always returns the same output for the same input (props and state), essentially acting like a pure function.<br />
+          handleOpenPopup(<p><strong>Arrow Function</strong> is a modern way to write functions in JavaScript. It allows to define functions using a shorter syntax compared to traditional function.<br />
+<strong>Pure Functions</strong> are functions that don't modify data outside their scope, while impure functions can. Pure functions are easier to debug and optimize, and are often used to render components. Pure component is a component that always returns the same output for the same input (props and state), essentially acting like a pure function.<br />
 <strong>Impure Functions</strong> can be useful for handling user input and making API calls, but they can be more difficult to debug. Impure Component can produce different outputs even with the same input due to side effects or state modifications within the component, leading to potentially unpredictable rendering behavior.</p>)
         }
-      >Pure vs Impure Function</button>
+      >Function</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Higher-Order Component</strong> is an advanced pattern in React used to reuse component logic. It is a function that takes a component as an argument and returns a new enhanced component. Using HOC, we can Render Hijacking, Reuse code and Manipulate Props</p>)
@@ -90,19 +89,6 @@ output: [{ name:'Ram', grade:96}, {name:'Roy', grade:100}]`)
           handleOpenPopup(<p><strong>Key</strong> is a unique identifier which is used to identify which items have changed, updated, or deleted in the list. It is useful when we dynamically created components or when the users alter the lists. It also help us to determine which components in a collection needs to be re-rendered instead of re-rendering the entire set of components every time.</p>)
         }
       >Key</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Lifecycle Hooks</strong> have many methods which automatically called at different phases in the component. It provides the power to control and manipulate what's going on throughout the lifecycle.<br />
-constructor()<br />
-getDerivedStateFromProps()<br />
-render()<br />
-componentDidMount()<br />
-shouldComponentUpdate()<br />
-getSnapshotBeforeUpdate()<br />
-componentDidUpdate()<br />
-componentWillUnmount()</p>)
-        }
-      >Lifecycle Hooks</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Map()</strong> method is used for creating a new array from an existing one, applying a function to each one of the elements of the first array.</p>,
@@ -153,7 +139,14 @@ console.log(sum); // 10`)
           handleOpenPopup(<p><strong>Tree Shaking</strong> is a process of eliminating dead or unused code from the final bundle during the build process. Tree Shaking can remove unused React components, functions, or imports from the bundle, resulting in a smaller bundle size and improved performance.<br />
 <strong>Tree Shaking</strong> is Beneficial in large applications with many dependencies as it help us to optimize the application's bundle size and reduce the amount of code that needs to be parsed and executed by the browser.</p>)
         }
-      >Tree Shaking</button><br />
+      >Tree Shaking</button>
+      
+        <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Virtual DOM</strong> is a lightweight copy of the real DOM. It compares the current and previous versions of updates to the DOM. It only re-renders the parts of the UI that have changed.<br />
+<strong>Disadvantages of Virtual DOM</strong>: Consume additional memory<br />Developers need to understand concepts of Virtual DOM.<br />
+VDOM can introduce unnecessary complexity for very simple application</p>)
+        }
+      >Virtual DOM</button><br />
 
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
@@ -339,7 +332,26 @@ export default Counter;`)
       >API Calls</button><br />
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>React Hooks</strong> are special functions which use React features in functional components. Hooks allow functional components to be powerful, cleaner and easier to reuse logic.</p>)
+          handleOpenPopup(<p><strong>Lifecycle Hooks</strong> perform actions like fetching data, updating the DOM or cleaning up resources when components are created, updated or destroyed.<br />
+🔹 <strong>Functional Component Lifecycle Hooks:</strong><br />
+<strong>useState</strong> adds state to a functional component.<br />
+<strong>useEffect</strong> is used to perform side effects in components.<br />
+<strong>useContext</strong> accesses context values.<br />
+<strong>useRef</strong> accesses DOM elements or keeps mutable values.<br />
+<strong>useMemo</strong> memoizes expensive calculations.<br />
+<strong>useCallback</strong> memoizes functions to prevent unnecessary re-renders.<br />
+<strong>useReducer</strong> alternative to useState for complex state logic.<br />
+<strong>useLayoutEffect</strong> like useEffect but runs synchronously after DOM updates.<br />
+<strong>useImperativeHandle</strong> customizes the instance value exposed by ref.<br />
+
+🔹 <strong>Class Component Lifecycle Hooks:</strong><br />
+<strong>constructor</strong> initializes state and binds methods.<br />
+<strong>componentDidMount</strong> runs after the component is mounted.<br />
+<strong>shouldComponentUpdate</strong> determines if the component should re-render.<br />
+<strong>componentDidUpdate</strong> runs after the component updates.<br />
+<strong>componentWillUnmount</strong> run before the component is removed from DOM.<br />
+<strong>getDerivedStateFromProps</strong> syncs state with props which rarely used.<br />
+<strong>getSnapshotBeforeUpdate</strong> captures info like scroll position before update.</p>)
         }
       >Hooks</button>
 

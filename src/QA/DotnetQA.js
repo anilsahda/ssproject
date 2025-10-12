@@ -24,6 +24,292 @@ const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
+       <button className="btn btn-warning me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Abstraction</strong> is the process of showing only essential/necessary features of an entity/object to the outside world and hiding the other irrelevant information.<br />
+<strong>Encapsulation</strong> is a process of binding data members like variables, properties and member methods together.<br />
+<strong>Inheritance</strong> is the process of creating a new class by extending the existing class is called inheritance or the process of inheriting the features of the base class is called as inheritance.<br />
+<strong>Overloading</strong> means creating multiple methods in a class with the same names but different signatures (Parameters). It permits a class, struct, or interface to declare multiple methods with the same name with unique signatures.<br />
+<strong>Overriding</strong> means having two methods with the same name and same signatures. We can override the functionality of a base class method to create the same name method with the same signature in a derived class. We can achieve method overriding using inheritance. Virtual and Override keywords are used to achieve method overriding.</p>)
+        }
+      >OOPS</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Boxing and Unboxing</strong> allow to convert data types from value type to reference type and vice versa. Boxing is the process of changing a Value Type like char, int etc. variable to a Reference Type like object. Reference type variables are kept in Heap memory, whereas Value type variables are always kept in Stack memory.</p>,
+            `int i = 1;
+object o = i; // boxing
+int j = (int)o; // unboxing`
+          )
+        }
+      >Boxing</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>CLR</strong> is a virtual machine that manages the execution of C# programs and other .NET applications. It's a component of the Microsoft .NET Framework.<br />
+CLR can be used for:<br />
+<strong>Compilation</strong>: Compiles C# code into an intermediate language called Microsoft Intermediate Language (MSIL) or Common Intermediate Language (CIL)<br />
+<strong>Execution</strong>: Uses a Just-In-Time (JIT) compiler to convert MSIL into machine code that can be executed by the processor<br />
+<strong>Memory management</strong>: Manages memory through garbage collection to prevent memory leaks<br />
+<strong>Security</strong>: Checks IL code for security risks before running it<br />
+<strong>Cross-language integration</strong>: Allows developers to write code in C#, VB.NET, or any other .NET language</p>)
+        }
+      >CLR</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Delegates</strong> are Type-Safe Function Pointer which hold the reference of a function and call that method for execution. When we instantiate a delegate we can associate its instance with any method that matches the delegate’s signature. We can invoke the method through the delegate instance.<br /> 
+<strong>Delegates are used for:</strong><br />
+<strong>Type Safety</strong>: Delegates provide a type-safe way to reference methods to make sure the method signature matches the delegate's signature.<br />
+<strong>Callback Function</strong>: Delegates allow methods to be passed as parameters to enable callbacks and flexible execution.<br />
+<strong>Event Handling</strong>: Delegates serve as the foundation of event handling by enabling event publishers to call event handler methods on subscribers.<br /><br />
+<strong>Types of Delegates: Generic, Singlecast and Multicast</strong><br />
+<strong>Generic Delegates</strong> use generic types parameter to work with multiple types without casting. <strong>There are 3 generics delegate</strong><br />
+<strong>Func</strong> delegate represents a function with return type.<br />
+<strong>Action</strong> delegate represents void return type with no parameter.<br />
+<strong>Predicate</strong> delegate takes an input parameter and returns boolean<br />
+<strong>Singlecast Delegates</strong> reference a single method with a matching signature. When the delegate is invoked, it calls the referenced method.<br />
+<strong>Multicast Delegates</strong> can reference multiple methods with a matching signature. When the delegate is invoked, it calls all the referenced methods in the order they were added. Multicast delegates are created using the += or -= operators.</p>,
+`class Program
+{
+   static void Main()
+   {
+      Func<int, int, int> add = (x, y) => x + y;
+      Action<string> display = msg=> Console.WriteLine(msg);
+      int sum = add(10, 20);
+      display($"Sum: {sum}");
+   }
+}`)
+        }
+      >Delegates</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>High-Level Design</strong> refers to the overall architecture of the system. It breaks down the system into major modules and describes how these modules interact with each other. The focus is on what each module is responsible for, rather than how it achieves that functionality. For example in an e-commerce system, HLD would show modules like User Service, Product Service, Order Service, and how they interact through APIs or messaging queues.<br />
+<strong>Low-Level Design</strong> takes the output of HLD and dives deeper into the implementation details of each module. It describes the class structures, methods, interfaces, database tables, data structures, and algorithms used. The focus here is on how to implement the functionality defined in the HLD.<br />
+LLD is usually done by developers and it's essential for actual coding. It ensures that everyone has a clear understanding of the responsibilities and behavior of each part of the system.<br />
+For example in the same e-commerce project: LLD would define a ProductService class, with methods like AddProduct, GetProductById, and describe the structure of the Product entity, relationships with the database, and how validation and error handling are performed.</p>)
+        }
+      >HLD | LLD</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>IEnumerable</strong> executes the query in the client's memory and makes it suitable for in-memory collections but less efficient for large datasets. But IQueryable executes the query on the server and it is used for more efficient data handling, especially with large or complex data sets. IEnumerable is more straightforward and is used for in-memory data, while IQueryable is more complex and is better suited for remote data sources<br />
+<strong>IEnumerable</strong> can be used for in-memory data collections and working with small to medium datasets and data source is not a database.<br />
+<strong>IQueryable</strong> can be used for large datasets or databases and querying data from remote sources like a web service or a database and for performance optimization.<br />
+<strong>IList</strong> Inherits from ICollection. Represents a list of items that are accessible by index. Provides advanced collection manipulation like insert and remove by index. Supports random access to elements. Contains property to access elements by index and methods like Insert and RemoveAt.</p>)
+        }
+      >IEnumerable</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Indexer</strong> is used to access instances of a class using an index just like an array. Indexer is just like properties using this keyword followed by [] index notation. Indexers are implemented through get and set accessors for the [] operator. Indexers are used on group of elements. Indexer can be overloaded.</p>)
+        }
+      >Indexer</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Managed Code</strong> executes under the CLR and <strong>Benefits</strong> are:<br />
+<strong>Automatic Memory Management</strong> The runtime handles memory allocation and garbage collection, reducing the risk of memory leaks and errors.<br />
+<strong>Improved Security</strong> The runtime provides security features and prevents unsafe code execution. Simplified Development Developers can focus on the application logic rather than low-level system interactions.<br />
+<strong>Drawbacks</strong><br />
+<strong>Performance Overhead</strong> The runtime can introduce some overhead, potentially impacting performance in certain scenarios.<br /> 
+<strong>Limited Control</strong> Developers have less direct control over system resources compared to unmanaged code.<br />
+<strong>Unmanaged Code</strong> runs directly on the operating system and <strong>Benefits</strong> are:<br />
+
+<strong>Fine-Grained Control</strong> Developers have more control over system resources, allowing for optimized performance in specific cases.<br /> 
+<strong>Access to Low-Level Features</strong> Unmanaged code can access low-level system features that are not available in managed code.<br />
+<strong>Drawbacks</strong><br />
+<strong>Manual Memory Management</strong> Developers are responsible for memory allocation and deallocation, increasing the risk of memory leaks and crashes.<br />
+<strong>Security Risks</strong> Unmanaged code can be more vulnerable to security exploits if not written carefully.<br />
+<strong>Increased Development Complexity</strong> Managing memory and other low-level details can make development more complex.</p>)
+        }
+      >Managed Code</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Value Type</strong> holds a data value within its own memory space. It means the variables of these data types directly contain values. When we pass a value-type variable from one method to another, the system creates a separate copy of a variable in another method. If value got changed in the one method, it wouldn't affect the variable in another method.<br />
+<strong>Reference Type</strong> doesn't store its value directly within its own memory space. Instead, it stores the address where the value is being stored. In other words, a reference type contains a pointer to another memory location that holds the data. When you pass a reference type variable from one method to another, it doesn't create a new copy; instead, it passes the variable's address. So, If we change the value of a variable in a method, it will also be reflected in the calling method.</p>)
+        }
+      >Ref Type</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Constant</strong> value never changes after initialization and it must be initialized at declaration time.<br />
+<strong>Dynamic</strong> compiler doesn't check the type of value at compile time and check it out at runtime.<br />
+<strong>Let</strong> declared as block-scoped variable. It can be updated but not re-declared in the same block. In C# used only in LINQ queries to create a temp var<br />
+<strong>Out</strong> Passes a variable by reference, but it's used only to output data from the method. Out does not need to be initialized before passed, but must be assigned inside the method<br />
+<strong>Readonly</strong> value can be assigned only once, either at declaration or in the constructor only through the non-static constructor. It is little different from const because readonly can be set at runtime.<br />
+<strong>Ref</strong>: Passes a variable by reference means the method can read and modify the original variable. Ref must be initialized before it is passed.<br />
+<strong>Static</strong> declared with the static keyword and shared among all instances of the class.<br />
+<strong>Var</strong>: declared as function-scoped variable. It can be re-declared and updated. In C# Declares a variable with implicit type and it's known at compile time<br />
+<strong>Static Readonly</strong> value can be assigned at runtime or assigned at compile time and changed at runtime. But this variable's value can only be changed in the static constructor. And cannot be changed further. So it can change only once at runtime.</p>)
+        }
+      >Variables</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Yield</strong> keyword is used to create an iterator that returns values one at a time. This allows the programmer to loop through a collection of items without having to create a temporary collection to store all the data.</p>)
+        }
+      >Yield</button>
+<br />
+
+      <button className="btn btn-warning me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Web Form</strong> is a UI-based framework that uses drag-and-drop controls and an event-driven model to build web applications. It manages state automatically using ViewState and is ideal for rapid development with complex UI needs.<br />
+<strong>ASP.NET Web Form Lifecycle</strong> is the sequence of events that happen in an ASP.NET web page, that is from creation to its rendering like:<br />
+<strong>Initialization</strong>- initialize the controls and sets their properties.<br />
+<strong>Loading</strong> process the control events and ViewState data is restored.<br />
+<strong>Postback Event Handling</strong> handle the Postback events<br />
+<strong>Rendering</strong> send the page to the client after page generation.<br />
+<strong>Unloading</strong> finally unloaded the page and releases all its resources.<br />
+<strong>Global.asax</strong> is a special file derived from the HttpApplication class. It is used to handle application-level events like <strong>Application_Start, Application_End, Session_Start and Session_End</strong>. The code is compiled when the application runs for the first time.<br />
+<strong>Response.Redirect</strong> sends the user to a new page with a round trip to the server, and the URL in the browser changes.<br />
+<strong>Server.Transfer</strong> switches to another page on the same server without a round trip, and the browser URL stays the same.<br />
+<strong>Round Trip</strong> any web page that travels from the client side to the server side will get processed on the server and travels back to the client, this whole process is called a round trip.<br />
+<strong>Globalization</strong> enables support for multiple cultures and languages for international use.<br />
+<strong>Localization</strong> customizes the application for a specific culture, translating UI and formatting content.<br />
+<strong>Web.config</strong> is used to define application-level settings<br />
+<strong>Machine.config</strong> is used for defining server-level settings.<br />
+
+          </p>
+          )
+        }
+      >Web Form</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>DataReader</strong>: A fast, connection-based, forward-only, read-only data reader for one table<br />
+<strong>DataAdapter</strong>: A disconnected component that transfers data between a database and a DataSet or DataTable.<br />
+<strong>DataSet</strong>: An in-memory, disconnected data store that can hold multiple tables and supports full data operations.<br />
+<strong>DataTable</strong>: Represents a single table with rows and columns, used alone or inside a DataSet.<br />
+<strong>DataSet.Clone()</strong>: Copies only the structure (schema, relations) without data.<br />
+<strong>DataSet.Copy()</strong>: Copies both structure and data<br />
+<strong>ExecuteScalar()</strong>: Returns a single value like first row, first column.<br />
+<strong>ExecuteNonQuery()</strong>: Executes insert, update, or delete commands and returns the number of rows affected.<br />
+<strong>ExecuteReader()</strong>: Returns a DataReader for reading multiple rows and columns from the database.</p>)
+        }
+      >ADO.Net</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Server Controls</strong> are HTML elements with runat="server" that support server-side events and automatic state management.<br />
+<strong>HTML Controls</strong> is standard HTML elements that respond to user actions but are processed on the client-side only.<br />
+<strong>Navigation Controls</strong> help users to move through the application. <strong>SiteMapPath</strong> shows the current page's position as a breadcrumb trail. <strong>Menu</strong> displays menus with static or dynamic sub-items horizontal or vertical layout. <strong>TreeView</strong> displays hierarchical data, useful for site maps or file structures.<br />
+<strong>Hyperlink</strong> is simple navigation control; does not support Click events<br />
+<strong>LinkButton Control</strong> is a hyperlink but supports server-side events.<br />
+<strong>User Control</strong> is a reusable piece of UI created using an .ascx file. It’s like a mini web page that can be used in multiple places within the same application. It's easy to create and use. It is language-dependent. It cannot be added to the Visual Studio toolbox.<br />
+<strong>Custom Control</strong> is a more advanced, compiled control built into a .dll file. It can be reused across multiple applications. It is more complex to create. It's language-independent. It can be added in toolbox for drag-and-drop use.<br />
+<strong>Data Controls</strong> is used to connect database, run queries and display data like <strong>GridView, ListView, DataGrid, Repeater and SqlDataSource</strong>.<br />
+<strong>GridView</strong> is a data-bound control introduced in ASP.NET 2.0 that supports built-in paging, sorting, updating, deleting, and automatic styling, but has slower performance.<br />
+<strong>ListView</strong> is a flexible data-bound control introduced in ASP.NET 3.5 that supports built-in paging, sorting, data grouping, and CRUD operations, but has slower performance.<br />
+<strong>DataGrid</strong> is a data-bound control introduced in ASP.NET 1.0 that requires manual coding for paging, sorting, updating, and deleting, lacks automatic styling, but offers faster performance.<br />
+<strong>Repeater</strong> is a  lightweight data-bound control introduced in ASP.NET 1.0 that requires custom coding for paging, sorting, data grouping, and CRUD operations, but offers faster performance.
+</p>)
+        }
+      >Controls</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>PreInit</strong> is the first event of a page used to set values such as a master page.<br />
+<strong>Init</strong> event fires after each control have been initialized. You can use this event to change the initialized value of controls.<br />
+<strong>InitComplete</strong> event is raised after all initializations of a page and its controls have been completed.<br />
+<strong>PreLoad</strong> event fires before the view state has been loaded for a page and its controls and before page postback processing. This event is useful when you need to write code after the page is initialized.<br />
+<strong>Load(PageLoad)</strong> event is used to check postback and then sets control properties. After this event, the load event of child control is called.<br />
+<strong>ControlEvents(Postback)</strong> event is called when a page or its controls causes postback such as ButtonClick event, SelectedIndexChanged event etc.<br />
+<strong>LoadComplete</strong> event load all controls.<br />
+<strong>PreRender</strong> event is taking place before the view state is saved also it allows final changes to the page or its control.<br />
+<strong>SaveStateComplete</strong> ignore any changes to the page’s controls<br />
+<strong>Render</strong> is not an event this is actually a method of a page object and at this point controls are rendered in client-side.<br />
+<strong>Unload</strong> is used to clean up the code  and use to release resources manually</p>)
+        }
+      >Page Events</button>
+
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>ASP.NET provides <strong>Resource Files</strong> to implement globalization and localization. The resource file is an XML file having extension resx. Each resource in the resx file is in the form of a key-value pair. For example, WebResources.en.resx is a resource file for the English language, and WebResources.hi.resx is a resource file for the Hindi language.<br /> 
+There are two types of resource files as given below :<br />
+<strong>Local Resources</strong>: Local resources are specific to a single web page and are used for providing versions of a web page in different languages. These are stored in the App_LocalResources folder.<br />
+<strong>Global Resources</strong>: Global resources are common for the whole web application and can be accessed by all the web pages. These are stored in the App_GlobalResources folder.</p>)
+        }
+      >Resource File</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Session States</strong> modes in web.config file are:<br />
+<strong>Off</strong> specify that Session state is not enabled.<br />
+<strong>InProc</strong> is the default mode of the session. In this mode session state is stored on the web server i.e. IIS where an application is running.<br />
+<strong>OutProc</strong> mode can be handled by using the following ways<br />
+<strong>State Server</strong> In this mode, the session is stored in a separate process called ASP.NET state service. This ensures that the session state will be available in the web application and is restarted. This way also makes the session state available to multiple web servers in a web farm.<br />
+<strong>SQL Server</strong> In this mode, the session is stored in aSQL Serverdatabase. This also ensures that the session state will be available in the web application is restarted. This way also makes the session state available to multiple web servers in a web farm.</p>)
+        }
+      >Session States</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Endpoints</strong> defines where and how a service communicate using <strong>ABC</strong><br />
+<strong>BasicHttpBinding</strong> uses SOAP over HTTP and provides no security by default.<br />
+<strong>WSHttpBinding</strong> support WS-* standards including security & transactions<br />
+<strong>WSDualHttpBinding</strong>: 2-way communication between client and service<br />
+<strong>WSFederationHttpBinding</strong> support federated authentication & transaction<br />
+<strong>NetTcpBinding</strong> is fast, secure communication between WCF apps over TCP.<br />
+<strong>NetMsmqBinding</strong> queued messaging between WCF services using MSMQ.<br />
+<strong>MsmqIntegrationBinding</strong> communicate with existing MSMQ-based apps.<br />
+<strong>Throttling</strong> control concurrent call, session & instance to improve performance<br /> 
+<strong>Service Proxy</strong> is a client-side class that exposes WCF service methods and hides connection details, auto-generated from metadata.<br /><br />
+WCF Serializers: <strong>DataContractSerializer</strong> is default WCF serializer that works without needing explicit attributes<br />
+<strong>XmlSerializer</strong> is used by default in older ASMX web services.<br />
+<strong>NetDataContractSerializer</strong> is similar to .NET Remoting and supports [Serializable] types but is not recommended for service-oriented design.</p>)
+        }
+      >WCF</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>RequiredFieldValidator</strong> validator is used when you don’t want the container to stay empty.<br />
+<strong>RangeValidator</strong> finds out whether the value in validated control falls the specific range or not.<br />
+<strong>CompareValidator</strong> tests if the value in controls matches certain specific values or not. RegularExpressionValidator: Tests if the particular value matches an explicit regular expression or not.<br />
+<strong>CustomValidator</strong> is useful for defining User Defined validation.<br />
+<strong>Summary Validation</strong> shows a summary of all existing validation errors over an ASP.NET page.</p>)
+        }
+      >Validators</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>My name is Amit Kumar</strong>. I have around 10 years of experience in designing & implementing applications using monolithic & microservice architectures. Throughout my career, I have worked on greenfield projects as well as existing systems. I focus on writing clean and maintainable code while following SOLID principles & best practices. Beyond coding, I collaborate with cross-functional teams to deliver efficient solutions. I am always eager to learn & adapt to new technologies to enhance project outcomes.<br />
+<strong>I have</strong> very good hands on experience in .Net Core, C#, MVC, Web Services like WCF, Web Methods, Web API & Microservices.<br /> 
+<strong>Database</strong> SQL Server, MySQL, Oracle, PostgreSQL, Mongo and Dynamo DB<br />
+<strong>Cloud</strong> side I have experience in Azure & AWS.<br />
+<strong>UI</strong> I have experience in React, Angular, HTML, CSS n Bootstrap.<br />
+<strong>Message Broker</strong> like RabbitMQ, Kafka and Azure Service Bus.<br />
+<strong>Version Controls</strong> I have experience in Git Hub, SVN and TFS.<br />
+<strong>Project</strong>: Healthcare, Banking, E-Commerce, Insurance, EPS, LPA & Logistic<br />
+<strong>My roles</strong> & responsibilities are designing, developing & maintaining applications. I work on complex projects that require high-level of technical skills, creativity & leadership. I mentor & guide junior developers, code reveiw & collaborate with other teams as well.</p>)
+        }
+      >Intro</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Project</strong>: Aerospace Employee Payroll System<br />
+<strong>Client</strong>: RTX Aerospace Organization<br />
+<strong>Domain</strong>: Aerospace<br />
+<strong>Technologies</strong>: .NET Core, React JS, Entity Framework, Dapper, Web API, SQL Server<br />
+<strong>Description</strong>:<br />
+I was involved in the development of an Aerospace Employee Payroll System. The system was designed to streamline and automate employee management and payroll processes in a highly secure specifically for the aerospace industry.<br />
+<strong>Key Modules & Functionalities are</strong>:<br />
+<strong>Employee Management</strong><br />
+Enabled HR to add, update and remove employee records.<br />
+Managed personal details, job-related details and banking information.<br />
+Integrated validation and business rules for data consistency.<br />
+<strong>Payroll Processing</strong><br />
+Automated salary calculations based on attendance data and policy-driven deductions.<br />
+Integrated tax computations, benefits like insurance, bonuses and overtime handling.<br />
+<strong>Attendance and Leave Management</strong><br />
+Integrated with biometric and manual attendance systems<br />
+Developed a leave tracking system, enabling deduction logic for payroll.<br />
+Handled various types of leaves and approvals<br />
+<strong>User Roles and Security</strong><br />
+Implemented role-based access for Admin, HR, and Employee portals.<br />
+Used secure authentication mechanisms and data encryption for sensitive information.<br />
+<strong>Reports and Payslips</strong><br />
+Auto-generated detailed payslips with salary breakdowns.</p>)
+        }
+      >Project</button>
+<br />
+
+       <button className="btn btn-warning me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>ASP.NET MVC</strong> is a lightweight, pattern-based framework that follows the Model-View-Controller architecture. It provides full control over HTML and is suited for applications requiring clear separation of concerns and testability.<br />
+<strong>Model</strong> handles data, business logic, and database interactions.<br />
+<strong>View</strong> displays data to the user; it manages the UI but not logic.<br />
+<strong>Controller</strong> process user input, interact with the Model and returns to View<br /><br />
+<strong>MVC LifeCycle</strong> is a sequence of events, stages or components that interact with each other to process an HTTP request and generate a response client.<br />
+<strong>Middleware</strong> process incoming HTTP requests through a pipeline.<br />
+<strong>Routing</strong> map request to appropriate controller and action using route patterns<br />
+<strong>Controller Initialization</strong>: Creates the controller to handle the request.<br />
+<strong>Action Execution</strong> Executes the action method and prepares the result.<br />
+<strong>Result Execution</strong> Render the View and send the final response to the browser.</p>)
+        }
+      >MVC</button>
+
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>ActionResult</strong> is a base class that represents the result of an action method. It allows controllers to return different types of responses to the client, such as views, JSON data, files, or status codes. like<br />
 <strong>ViewResult</strong> returns an HTML view to the browser.<br />
@@ -58,14 +344,10 @@ display("Hello, Anonymous method!");
         }
       >Anonymous</button>
 
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Boxing and Unboxing</strong> allow to convert data types from value type to reference type and vice versa. Boxing is the process of changing a Value Type like char, int etc. variable to a Reference Type like object. Reference type variables are kept in Heap memory, whereas Value type variables are always kept in Stack memory.</p>,
-            `int i = 1;
-object o = i; // boxing
-int j = (int)o; // unboxing`
-          )
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Bundling and Minification</strong> refers to the techniques that help in optimizing the performance of web application by reducing the number of HTTP requests and minimizing the size of resourceslike CSS, JavaScript.</p>)
         }
-      >Boxing</button>
+      >Bundling</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Caching</strong> is the process of storing frequently accessed data in memory to reduce server load and improve application performance. Caching is most effective for data that is expensive to generate and changes frequently.<br />
@@ -82,17 +364,6 @@ Use the Remove method to remove an entry for a given key.</p>)
       >Cache</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>CLR</strong> is a virtual machine that manages the execution of C# programs and other .NET applications. It's a component of the Microsoft .NET Framework.<br />
-CLR can be used for:<br />
-<strong>Compilation</strong>: Compiles C# code into an intermediate language called Microsoft Intermediate Language (MSIL) or Common Intermediate Language (CIL)<br />
-<strong>Execution</strong>: Uses a Just-In-Time (JIT) compiler to convert MSIL into machine code that can be executed by the processor<br />
-<strong>Memory management</strong>: Manages memory through garbage collection to prevent memory leaks<br />
-<strong>Security</strong>: Checks IL code for security risks before running it<br />
-<strong>Cross-language integration</strong>: Allows developers to write code in C#, VB.NET, or any other .NET language</p>)
-        }
-      >CLR</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Debugging</strong> in a production environment should be done carefully to avoid downtime and performance issues.<br />
 <strong>Check Logs First using ELK</strong><br />
 Elasticsearch search engine that stores and indexes logs<br />
@@ -106,33 +377,77 @@ Kibana a visualization tool to exploring and analysis logs<br />
 <strong>Hotfix & Rollback Strategy</strong> If a fix is needed, apply a hotfix with CI/CD pipelines. Have a rollback plan (blue-green deployment, canary releases).<br />
 <strong>Database & Configuration Checks</strong> Verify DB queries, cache issues, env variables. Use readonly access to production databases for debugging.</p>)
         }
-      >Debug Production</button>
+      >Debugging</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Filters</strong> are used to inject extra processing logic in the req-res pipeline. Filters add pre-processing and post-processing logic to an action. Filter run before or after the action method executes and can also intercept results.<br />
+<strong>Authentication</strong> filter is used to check the identity of user.<br /> 
+<strong>Authorization</strong> filters are useful for implementing the logic of authentication and authorization. IAuthorizationFilter provides the logic for determining if a user is allowed to access a specific action.<br />
+<strong>Action</strong> filters contain the pre-processing and post-processing logic which can be applied to the action method. This filter is executed before and after the action method of the controller executes. IActionFilter is used to modify the request or response before or after the action method is executed.<br />
+<strong>Result</strong> filters modify the HTTP response means modify the view result before the view is rendered to the browser. IResultFilter interface and OutputCacheAttribute class are used to modify the result of the action method before it is returned to the client.<br />
+<strong>Exception</strong> Filter will execute when an action method of the controller throws an unhandled exception. IExceptionFilter interface and HandleErrorAttribute class are used to catch and handle exceptions and it can be used to log errors or to display the specific error page.</p>,
+`public class MyActionFilter : ActionFilterAttribute
+{
+  Methods OnActionExecuting & OnActionExecuted
+  Parameters ActionExecuting & ActionExecutedContext
+}
+[MyActionFilter] // Apply the filter
+public class HomeController : Controller`)
+        }
+      >Filters</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Exception Handling</strong> is the process of catching and recording errors in code so that they can be fixed. These errors are usually logged in files or databases. If these errors not handled properly, the application may crash without showing the root cause<br />
+<strong>finally</strong> is used to clean up resources after a try block, whether or not an exception occurs<br />
+<strong>Finalize</strong> is used to clean up unmanaged resources. It’s called by the Garbage Collector before reclaiming memory from an object<br />
+<strong>throw</strong> preserves the original stack trace, helping identify where the exception occurred<br /> 
+<strong>throw ex</strong> does not preserve the stack trace and we lose the information about the method that caused the exception in the first place.<br />
+<strong>Global Exception Handler</strong> is used to catch and handle unhandled exceptions across the entire application.<br /> 
+<strong>.NET Core</strong>: UseExceptionHandler or UseDeveloperExceptionPage middleware<br />
+<strong>ASP.NET MVC</strong> use HandleError attribute at the controller level or FilterConfig.cs for global level. Global errors can also be handled in Application_Error within Global.asax</p>)
+        }
+      >Exception Handling</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Delegates</strong> are Type-Safe Function Pointer which hold the reference of a function and call that method for execution. When we instantiate a delegate we can associate its instance with any method that matches the delegate’s signature. We can invoke the method through the delegate instance.<br /> 
-<strong>Delegates are used for:</strong><br />
-<strong>Type Safety</strong>: Delegates provide a type-safe way to reference methods to make sure the method signature matches the delegate's signature.<br />
-<strong>Callback Function</strong>: Delegates allow methods to be passed as parameters to enable callbacks and flexible execution.<br />
-<strong>Event Handling</strong>: Delegates serve as the foundation of event handling by enabling event publishers to call event handler methods on subscribers.<br /><br />
-<strong>Types of Delegates: Generic, Singlecast and Multicast</strong><br />
-<strong>Generic Delegates</strong> use generic types parameter to work with multiple types without casting. <strong>There are 3 generics delegate</strong><br />
-<strong>Func</strong> delegate represents a function with return type.<br />
-<strong>Action</strong> delegate represents void return type with no parameter.<br />
-<strong>Predicate</strong> delegate takes an input parameter and returns boolean<br />
-<strong>Singlecast Delegates</strong> reference a single method with a matching signature. When the delegate is invoked, it calls the referenced method.<br />
-<strong>Multicast Delegates</strong> can reference multiple methods with a matching signature. When the delegate is invoked, it calls all the referenced methods in the order they were added. Multicast delegates are created using the += or -= operators.</p>,
-`class Program
-{
-   static void Main()
-   {
-      Func<int, int, int> add = (x, y) => x + y;
-      Action<string> display = msg=> Console.WriteLine(msg);
-      int sum = add(10, 20);
-      display($"Sum: {sum}");
-   }
-}`)
+          handleOpenPopup(<p><strong>NuGet</strong> is a package manager dedicated to the .NET ecosystem. Microsoft developed it to offer access to thousands of packages being written by .NET developers.<br />
+A classic web application being developed through ASP.NET depends on several open-source NuGet packages to work. One of the famous NuGet package managers is Newtonsoft.Json. It is used for working with JSON data in .NET.</p>)
         }
-      >Delegates</button>
+      >NuGet</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Reflection</strong> can be used to improve the application performance. It is used to access metadata at runtime. Using reflection we can access and invoke a type's methods, attributes, and events dynamically. In addition to reading and calling, reflection is used to construct new types at runtime. The System.Reflection namespace contains the classes that provide access to the program's metadata during runtime.</p>)
+        }
+      >Reflection</button>
+<br />
+       <button className="btn btn-warning me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>.NET Core is Cross-Platform</strong> that can run on Windows, macOS, and Linux.<br />
+<strong>Open Source</strong> tool with cloud support and an improved version of .NET<br />
+ASP.NET Architecture is Monolithic and tightly integrated with Windows while <strong>.NET Core</strong> architecture is modular and lightweight.<br />
+ASP.NET is less flexible for customizing application architecture while <strong>.NET Core</strong> is more flexible for customizing application architecture.<br />
+<strong>.NET Core</strong> provides better testability.<br />
+<strong>.NET Core</strong> can deploy in IIS server and cloud<br />
+Built-in support for dependency injection<br />
+Built-in support for logging framework and it can be extentable<br />
+<strong>Kestrel</strong> web server which can run without IIS server<br />
+Command-line support to create, build and run the application<br />
+Good support for asynchronous programming<br />
+<strong>Rate Limiting</strong> is a technique which is used to control the rate of incoming requests to an API. It sets limits on the number of requests that is made by a client within a defined period of time. By implementing rate limiting, we can prevent abuse, protect server resources and ensure a smooth and responsive experience for all users.<br />
+<strong>Minimal APIs</strong> are simplified way to create web API in .NET Core which allow to define routes and their corresponding request-handling logic directly in Program.cs file without controllers.</p>)
+        }
+      >.Net Core</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Preparing the Application for Deployment- Make sure that the application is successfully developed, tested and ready for deployment.<br />
+<strong>Choosing a Hosting Environment</strong> Choose a hosting environment like Azure app Service or AWS Elastic Beanstalk.<br />
+<strong>Setting up of Production Environment</strong> Make sure that all the hardware and software requirements are met by the server.<br />
+<strong>Publish the Application</strong> using Visual Studio or .NET CLI.<br />
+<strong>Deploying to the Server</strong> Transfer it to the production server with the help of FTP, SSH or Git.<br />
+<strong>Configure IIS</strong> settings if the application is hosted on an IIS server.<br />
+<strong>Testing the Environment</strong> Test the deployed application thoroughly to make sure that all the functions are working correctly.<br />
+<strong>Monitoring and Maintenance</strong> Monitor the performance of the application and regularly update and maintain the application with enhancements required.<br />
+<strong>Backup and Disaster recovery</strong> Set up backup and disaster recovery techniques to protect the application and its data.</p>)
+        }
+      >Deploy</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Entity Framework</strong> is an ORM for .NET which allow .NET developers to work with a database using .NET objects, eliminating the need for most of the data-access code that you'd otherwise write manually like SQL.<br />
@@ -170,128 +485,12 @@ ExecuteSqlRaw()	Executes raw SQL for INSERT, UPDATE, DELETE.</p>)
       >EF</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Exception Handling</strong> is the process of catching and recording errors in code so that they can be fixed. These errors are usually logged in files or databases. If these errors not handled properly, the application may crash without showing the root cause<br />
-<strong>finally</strong> is used to clean up resources after a try block, whether or not an exception occurs<br />
-<strong>Finalize</strong> is used to clean up unmanaged resources. It’s called by the Garbage Collector before reclaiming memory from an object<br />
-<strong>throw</strong> preserves the original stack trace, helping identify where the exception occurred<br /> 
-<strong>throw ex</strong> does not preserve the stack trace and we lose the information about the method that caused the exception in the first place.<br />
-<strong>Global Exception Handler</strong> is used to catch and handle unhandled exceptions across the entire application.<br /> 
-<strong>.NET Core</strong>: UseExceptionHandler or UseDeveloperExceptionPage middleware<br />
-<strong>ASP.NET MVC</strong> use HandleError attribute at the controller level or FilterConfig.cs for global level. Global errors can also be handled in Application_Error within Global.asax</p>)
-        }
-      >Exception Handling</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Filters</strong> are used to inject extra processing logic in the req-res pipeline. Filters add pre-processing and post-processing logic to an action. Filter run before or after the action method executes and can also intercept results.<br />
-<strong>Authentication</strong> filter is used to check the identity of user.<br /> 
-<strong>Authorization</strong> filters are useful for implementing the logic of authentication and authorization. IAuthorizationFilter provides the logic for determining if a user is allowed to access a specific action.<br />
-<strong>Action</strong> filters contain the pre-processing and post-processing logic which can be applied to the action method. This filter is executed before and after the action method of the controller executes. IActionFilter is used to modify the request or response before or after the action method is executed.<br />
-<strong>Result</strong> filters modify the HTTP response means modify the view result before the view is rendered to the browser. IResultFilter interface and OutputCacheAttribute class are used to modify the result of the action method before it is returned to the client.<br />
-<strong>Exception</strong> Filter will execute when an action method of the controller throws an unhandled exception. IExceptionFilter interface and HandleErrorAttribute class are used to catch and handle exceptions and it can be used to log errors or to display the specific error page.</p>,
-`public class MyActionFilter : ActionFilterAttribute
-{
-  Methods OnActionExecuting & OnActionExecuted
-  Parameters ActionExecuting & ActionExecutedContext
-}
-[MyActionFilter] // Apply the filter
-public class HomeController : Controller`)
-        }
-      >Filters</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>High-Level Design</strong> refers to the overall architecture of the system. It breaks down the system into major modules and describes how these modules interact with each other. The focus is on what each module is responsible for, rather than how it achieves that functionality. For example in an e-commerce system, HLD would show modules like User Service, Product Service, Order Service, and how they interact through APIs or messaging queues.<br />
-<strong>Low-Level Design</strong> takes the output of HLD and dives deeper into the implementation details of each module. It describes the class structures, methods, interfaces, database tables, data structures, and algorithms used. The focus here is on how to implement the functionality defined in the HLD.<br />
-LLD is usually done by developers and it's essential for actual coding. It ensures that everyone has a clear understanding of the responsibilities and behavior of each part of the system.<br />
-For example in the same e-commerce project: LLD would define a ProductService class, with methods like AddProduct, GetProductById, and describe the structure of the Product entity, relationships with the database, and how validation and error handling are performed.</p>)
-        }
-      >HLD | LLD</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>IEnumerable</strong> executes the query in the client's memory and makes it suitable for in-memory collections but less efficient for large datasets. But IQueryable executes the query on the server and it is used for more efficient data handling, especially with large or complex data sets. IEnumerable is more straightforward and is used for in-memory data, while IQueryable is more complex and is better suited for remote data sources<br />
-<strong>IEnumerable</strong> can be used for in-memory data collections and working with small to medium datasets and data source is not a database.<br />
-<strong>IQueryable</strong> can be used for large datasets or databases and querying data from remote sources like a web service or a database and for performance optimization.<br />
-<strong>IList</strong> Inherits from ICollection. Represents a list of items that are accessible by index. Provides advanced collection manipulation like insert and remove by index. Supports random access to elements. Contains property to access elements by index and methods like Insert and RemoveAt.</p>)
-        }
-      >IEnumerable</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Indexer</strong> is used to access instances of a class using an index just like an array. Indexer is just like properties using this keyword followed by [] index notation. Indexers are implemented through get and set accessors for the [] operator. Indexers are used on group of elements. Indexer can be overloaded.</p>)
-        }
-      >Indexer</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><small>HTTPRequest-&gt;Middleware-&gt;Routing-&gt;ControllerInitialization-&gt;ActionMethodExecution-&gt;ResultExection-&gt;Data|View Result-&gt;View Render</small><br />
-<strong>MVC LifeCycle</strong> is a sequence of events, stages or components that interact with each other to process an HTTP request and generate a response that goes back to the client.<br />
-<strong>Middleware</strong> component forms the basic building block of application HTTP pipeline. These are a series of components that are combined to form a request pipeline in order to handle any incoming request.<br />
-<strong>Routing</strong> is a middleware component which decides how an incoming request can be mapped to Controllers and actions methods, with the help of convention routes and attribute routes.<br />
-<strong>Controller Initialization</strong> at this stage the process of initialization and execution of controllers takes place. Controllers are responsible for handling incoming requests. The controller selects the appropriate action methods on the basis of route templates provided.<br />
-<strong>Action Method Execution</strong> after the controllers are initialized, the action methods are executed and returns a view which contains Html document to be returned as response to the browser.<br />
-<strong>Result Execution During</strong> this stage the response generated to the original HTTP request. If an action method returns a view result, the MVC view engine renders a view and returns the HTML response. If result is not of view type, then action method will generate its own response.</p>)
-        }
-      >LifeCycle</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Managed Code</strong> executes under the CLR and <strong>Benefits</strong> are:<br />
-<strong>Automatic Memory Management</strong> The runtime handles memory allocation and garbage collection, reducing the risk of memory leaks and errors.<br />
-<strong>Improved Security</strong> The runtime provides security features and prevents unsafe code execution. Simplified Development Developers can focus on the application logic rather than low-level system interactions.<br />
-<strong>Drawbacks</strong><br />
-<strong>Performance Overhead</strong> The runtime can introduce some overhead, potentially impacting performance in certain scenarios.<br /> 
-<strong>Limited Control</strong> Developers have less direct control over system resources compared to unmanaged code.<br />
-<strong>Unmanaged Code</strong> runs directly on the operating system and <strong>Benefits</strong> are:<br />
-
-<strong>Fine-Grained Control</strong> Developers have more control over system resources, allowing for optimized performance in specific cases.<br /> 
-<strong>Access to Low-Level Features</strong> Unmanaged code can access low-level system features that are not available in managed code.<br />
-<strong>Drawbacks</strong><br />
-<strong>Manual Memory Management</strong> Developers are responsible for memory allocation and deallocation, increasing the risk of memory leaks and crashes.<br />
-<strong>Security Risks</strong> Unmanaged code can be more vulnerable to security exploits if not written carefully.<br />
-<strong>Increased Development Complexity</strong> Managing memory and other low-level details can make development more complex.</p>)
-        }
-      >Managed Code</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Middleware</strong> is a software component that processe the req and resp in the request pipeline. It can be used for tasks like logging, authentication, or caching. Middleware order is important as it controls how requests and responses move through the app. Each middleware can inspect, modify, or handle requests and responses, and can also stop the pipeline if any error occurs. <strong>Use</strong> middleware runs for every request and then passes the request to the next middleware. <strong>Run</strong> terminates the pipeline and generates a response. <strong>Map</strong> branches the pipeline based on request paths.<br /><br />
 <strong>Custom Middleware</strong> is used to add our own logic like logging, error handling, authentication between incoming requests and outgoing response.<br />
 <strong>To create Custom Middleware</strong> define a class with a constructor that takes a <strong>RequestDelegate</strong> parameter to call the next middleware, then implement an <strong>Invoke</strong> method that accepts an <strong>HttpContext</strong> parameter to add our custom logic. We can create an extension method for cleaner registration but it's optional and then finally register the middleware in the request pipeline using <strong>app.UseMiddleware</strong>&lt;CustomMiddlewareName&gt;() in Program.cs file.<br /><br />
 <strong>Difference between Filter and Middleware</strong>: Both filters and middleware intercept request and response. Middleware operates at a lower level and affect the entire application pipeline while Filters are more targeted and interact with specific MVC actions or controllers.</p>)
         }
       >Middleware</button>
-
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ASP.NET MVC</strong> is a lightweight, pattern-based framework that follows the Model-View-Controller architecture. It provides full control over HTML and is suited for applications requiring clear separation of concerns and testability.<br />
-<strong>Model</strong> represents the core data and business logic of the application. It is responsible for managing the data, processing rules, and interactions with the database or data sources. The Model does not handle user interface or input but focuses solely on the data and operations related to it.<br />
-<strong>View</strong> is the presentation layer of the application. It displays the data provided by the Model to the user and is responsible for the user interface. Views are concerned with how information is presented, but they do not contain business logic or handle user input directly.<br />
-<strong>Controller</strong> acts as an intermediary between the Model and the View. It handles user input, processes user requests, and decides which Model data to retrieve and which View to display.<br />
-<strong>ViewBag</strong> is a dynamic object which is used to pass data from the controller to the view. It only works for the current request.<br />
-<strong>ViewData</strong> is a key-value pair which is used to pass data from the controller to the view. It also limited to the current request.<br />
-<strong>TempData</strong> is a dictionary which is used to pass data from one request to another, usually between two actions. It persists only until the next request</p>)
-        }
-      >MVC</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>.NET Core is Cross-Platform</strong> that can run on Windows, macOS, and Linux.<br />
-<strong>Open Source</strong> tool with cloud support and an improved version of .NET<br />
-ASP.NET Architecture is Monolithic and tightly integrated with Windows while <strong>.NET Core</strong> architecture is modular and lightweight.<br />
-ASP.NET is less flexible for customizing application architecture while <strong>.NET Core</strong> is more flexible for customizing application architecture.<br />
-<strong>.NET Core</strong> provides better testability.<br />
-<strong>.NET Core</strong> can deploy in IIS server and cloud<br />
-Built-in support for dependency injection<br />
-Built-in support for logging framework and it can be extentable<br />
-<strong>Kestrel</strong> web server which can run without IIS server<br />
-Command-line support to create, build and run the application<br />
-Good support for asynchronous programming<br />
-<strong>Rate Limiting</strong> is a technique which is used to control the rate of incoming requests to an API. It sets limits on the number of requests that is made by a client within a defined period of time. By implementing rate limiting, we can prevent abuse, protect server resources and ensure a smooth and responsive experience for all users.<br />
-<strong>Minimal APIs</strong> are simplified way to create web API in .NET Core which allow to define routes and their corresponding request-handling logic directly in Program.cs file without controllers.</p>)
-        }
-      >.Net Core</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Abstraction</strong> is the process of showing only essential/necessary features of an entity/object to the outside world and hiding the other irrelevant information.<br />
-<strong>Encapsulation</strong> is a process of binding data members like variables, properties and member methods together.<br />
-<strong>Inheritance</strong> is the process of creating a new class by extending the existing class is called inheritance or the process of inheriting the features of the base class is called as inheritance.<br />
-<strong>Overloading</strong> means creating multiple methods in a class with the same names but different signatures (Parameters). It permits a class, struct, or interface to declare multiple methods with the same name with unique signatures.<br />
-<strong>Overriding</strong> means having two methods with the same name and same signatures. We can override the functionality of a base class method to create the same name method with the same signature in a derived class. We can achieve method overriding using inheritance. Virtual and Override keywords are used to achieve method overriding.</p>)
-        }
-      >OOPS</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Caching</strong> is a technique that stores data to improve application performance and scalability. It can reduce the time taken to fetch and process data. Caching is most effective for data that is expensive to generate and changes frequently. In-Memory Cache, Distributed Cache and Output Cache<br />
@@ -312,17 +511,6 @@ Good support for asynchronous programming<br />
       >Performance</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Reflection</strong> can be used to improve the application performance. It is used to access metadata at runtime. Using reflection we can access and invoke a type's methods, attributes, and events dynamically. In addition to reading and calling, reflection is used to construct new types at runtime. The System.Reflection namespace contains the classes that provide access to the program's metadata during runtime.</p>)
-        }
-      >Reflection</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Value Type</strong> holds a data value within its own memory space. It means the variables of these data types directly contain values. When we pass a value-type variable from one method to another, the system creates a separate copy of a variable in another method. If value got changed in the one method, it wouldn't affect the variable in another method.<br />
-<strong>Reference Type</strong> doesn't store its value directly within its own memory space. Instead, it stores the address where the value is being stored. In other words, a reference type contains a pointer to another memory location that holds the data. When you pass a reference type variable from one method to another, it doesn't create a new copy; instead, it passes the variable's address. So, If we change the value of a variable in a method, it will also be reflected in the calling method.</p>)
-        }
-      >Reference Type</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Flexibility</strong>: REST is considered more flexible due to various data formats like JSON, XML, or plain text while SOAP is based on XML only.<br />
 <strong>State Management</strong>: REST APIs are stateless it means each request is treated independently without depending on previous interactions while SOAP Services can maintain state information on the server.<br />
 <strong>Complexity</strong>: REST APIs are generally considered easier to implement and understand due to their simple design principles whereas SOAP can be more complex due to structure and header information.<br />
@@ -330,7 +518,7 @@ Good support for asynchronous programming<br />
 <strong>Scalability</strong>: REST APIs are highly scalable and we can add new functionalities without disturbing existing ones.<br />
 <strong>Cacheability</strong>: REST APIs are designed to be cacheable, so clients can cache a copy of the response and use it in future requests.</p>)
         }
-      >REST vs SOAP</button>
+      >REST SOAP</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>SOLID Principles</strong> are design rules that help us to build better software. They make our code easier to change, understand and maintain by reducing tight connections between different parts of the code.<br />
@@ -358,20 +546,7 @@ Good support for asynchronous programming<br />
 500 - INTERNAL SERVER ERROR<br />
 502 - BAD GATEWAY Server</p>)
         }
-      >Status Codes</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Constant</strong> value never changes after initialization and it must be initialized at declaration time.<br />
-<strong>Dynamic</strong> compiler doesn't check the type of value at compile time and check it out at runtime.<br />
-<strong>Let</strong> declared as block-scoped variable. It can be updated but not re-declared in the same block. In C# used only in LINQ queries to create a temp var<br />
-<strong>Out</strong> Passes a variable by reference, but it's used only to output data from the method. Out does not need to be initialized before passed, but must be assigned inside the method<br />
-<strong>Readonly</strong> value can be assigned only once, either at declaration or in the constructor only through the non-static constructor. It is little different from const because readonly can be set at runtime.<br />
-<strong>Ref</strong>: Passes a variable by reference means the method can read and modify the original variable. Ref must be initialized before it is passed.<br />
-<strong>Static</strong> declared with the static keyword and shared among all instances of the class.<br />
-<strong>Var</strong>: declared as function-scoped variable. It can be re-declared and updated. In C# Declares a variable with implicit type and it's known at compile time<br />
-<strong>Static Readonly</strong> value can be assigned at runtime or assigned at compile time and changed at runtime. But this variable's value can only be changed in the static constructor. And cannot be changed further. So it can change only once at runtime.</p>)
-        }
-      >Variables</button>
+      >Status Code</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Versioning</strong> is a method for managing and maintaining multiple versions of an API. This is useful when various client depend on different versions of an API as It modify or improve our services without breaking the functionality of existing clients. <strong>Benifits of Versioning are:</strong><br />
@@ -407,12 +582,7 @@ In HTTP Header-Based Versioning we send the version in the Http header when call
 <strong>Large File Uploads</strong>:	Unrestricted upload sizes<br />
 Using outdated or vulnerable NuGet packages.</p>)
         }
-      >Vulnerabilities</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Yield</strong> keyword is used to create an iterator that returns values one at a time. This allows the programmer to loop through a collection of items without having to create a temporary collection to store all the data.</p>)
-        }
-      >Yield</button><br />
+      >Vulnerabilities</button><br />
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Access Modifier</strong> control the accessibility and visibility of classes, methods and variables. It define who can access and interact with these members</p>)
@@ -1123,46 +1293,40 @@ private readonly IOrderService _orderService;
       >Onion</button><br />
 
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Dependency Injection</strong> helps us to build applications more cleaner, more testable and more maintanable. It separates the concerns of constructing objects and using them. It is a design pattern where an object's dependencies are provided from outside, rather than the object creating itself. Benefits of DI:<br />
-<strong>Loose Coupling</strong> reduce dependencies between components and makes them more modular and easier to manage.<br />
-<strong>Improved Testability</strong> enables easy unit testing by allowing mock dependencies.<br />
-<strong>Scalability and Maintainability</strong> code becomes easier to extend and modify without breaking existing implementations.<br />
-<strong>Better Code Organization</strong> promotes a clean separation of concerns and improves the architecture.<br />
-<strong>Automatic Dependency Management</strong> DI container handles the lifecycle of dependencies, reducing boilerplate code.
-There are four key concepts of DI like IServiceCollection, IServiceProvider, Key-Typed Services, IEnumerable Services</p>,
-`Types of Dependency Injection:
+          handleOpenPopup(<p><strong>Dependency Injection</strong> helps us to build applications more cleaner, testable and maintanable. It separates the concerns of constructing objects and using them. It is a design pattern where an object's dependencies are provided from outside, rather than the object creating itself. <strong>Benefits of DI</strong> are<br />
+<strong>Loose Coupling</strong> reduces direct dependencies between components.<br />
+<strong>Improved Testability</strong> makes unit testing easier using mock dependencies.<br />
+<strong>Scalability & Maintainability</strong> make easy to extend and modify the code.<br />
+<strong>Better Code Organization</strong> separates concerns and improves architecture.<br />
+<strong>DI Container Support</strong> to manages object lifecycles and reduces boilerplate.<br />
 
-1. Dependencies are passed as parameters in Constructor
 
-private readonly IOrderRepository _orderRepo;
-    public OrderService(IOrderRepository orderRepo)
-    {
-        _orderRepo = orderRepo;
-    }
-
-    2. Dependencies are passed as parameters to Methods
-
-public void ProcessOrder(int id,IOrderRepository orderRepo)
+<strong>Key Concepts</strong>: IServiceCollection, IServiceProvider, Key-Typed, IEnumerable<br /><br />
+<strong>Types of Dependency Injection</strong> are Constructors, Methods and Properties</p>,
+`private readonly IOrderRepo _order;
+public OrderService(IOrderRepo order)
 {
-	var order = orderRepo.GetOrder(id);
+    _order = order;
 }
 
-3. Dependencies are set via Properties.
-
-public IOrderRepository OrderRepository { get; set; }
-public void ProcessOrder(int orderId)
+public void ProcessOrder(int id, IOrderRepo order)
 {
-	var order = OrderRepository?.GetOrder(orderId);
+	var order = order.GetOrder(id);
+}
+
+public IOrderRepo Order { get; set; }
+public void ProcessOrder(int id)
+{
+	var order = Order.GetOrder(id);
 }`)
         }
       >DI</button>
 
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>IServiceCollection</strong> is a central part of Dependency Injection. It is a container that is used to register services and their lifetimes like Singleton, Scoped, Transient. DI is a collection of service descriptors that define how services are resolved.<br />
-Common methods of IServiceCollection are<br />
-<strong>AddSingleton&lt;Service, Implementation&gt;()</strong>: creates a single instance of the service when it is first requested and reusest that same instance in all the places where that service is needed. Memory leaks in this service will build up over time and also memory efficient as they are created once reused everywhere.<br />
-<strong>AddScoped&lt;Service, Implementation&gt;()</strong>: with every new HTTP request creates a new instance. Within the same HTTP request, if the service is required in multiple places then the same instance is provided for the entire scope of that HTTP request.<br />
-<strong>AddTransient&lt;Service, Implementation&gt;()</strong>: a new instance is created every time whether it is in the scope of the same HTTP request or across different HTTP requests. Transient create every time new instance so it will use more memory and Resources and can have a negative impact on performance. So we can use this for the lightweight service.</p>)
+          handleOpenPopup(<p><strong>IServiceCollection</strong> is a central part of Dependency Injection. It is a container that is used to register services and their lifetimes like Singleton, Scoped, Transient. DI is a collection of service descriptors that define how services are resolved. Common methods of IServiceCollection are<br />
+<strong>AddSingleton</strong> creates a single instance of the service when it first requested and reused that same instance in all the places where that service is needed. Memory leaks in this service will build up over time and also memory efficient as they are created once reused everywhere.<br />
+<strong>AddScoped</strong> creates a new instance for every new HTTP request. Within the same HTTP request, if the service is required in multiple places then the same instance is provided for the entire scope of that HTTP request.<br />
+<strong>AddTransient</strong> creates every time new instance whether it is in the scope of the same HTTP request or across different HTTP requests. It uses more memory and Resources, which can have a negative impact on performance. So we can use this for the lightweight service.</p>)
         }
       >IServiceCollection</button>
 
@@ -1210,79 +1374,17 @@ public class LoggerFactory
 }`
           )
         }
-      >Key-Typed</button>
+      >KeyType</button>
 
         <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Key Concepts of IEnumerable Services</strong><br />
-<strong>Strategy Pattern</strong>: encapsulates behaviors and makes them interchangeable at runtime. Each algorithm is isolated within its own class.<br />
-<strong>Factory Method</strong>: provides a way to instantiate objects dynamically based on runtime conditions.<br />
-<strong>IEnumerable</strong> is used to inject multiple implementations of a IService into a class. It provides a way to access all registered implementations, enabling the consumer to iterate over the services and select the appropriate implementation based on specific needs.
-</p>,
-`//DI with Strategy Pattern n Factory Method
-public interface INotification
+          handleOpenPopup(<p>We can register multiple implementations of the same interface by calling the AddTransient, AddScoped and AddSingleton method multiple times each with a different implementation. To resolve all registered implementations, we can inject <strong>IEnumerable&lt;T></strong> where T is the interface. The DI container will automatically inject all the registered implementations in the order in which they were registered. This is useful when you want to execute a series of actions and handle things like notification providers, validators or handlers.<br />
+<strong>Inject services with parameters that are not registered in DI using IServiceProvider and Using Factory Pattern</strong> which provides a way to instantiate objects dynamically based on runtime conditions.</p>,
+`services.AddTransient<INotifier, EmailNotifier>();
+services.AddTransient<INotifier, SmsNotifier>();
+public NotifiService(IEnumerable<INotifier> notifiers)
 {
-    void Send(string msg);
-}
-
-// Concrete strategies
-public class EmailNotification:INotification
-{
-    public void Send(string msg)
-    {
-        Console.WriteLine($"Email Notification:{msg}");
-    }
-}
-
-public class SmsNotification:INotification
-{
-    public void Send(string msg)
-    {
-        Console.WriteLine($"SMS Notification:{msg}");
-    }
-}
-
-// Factory for creating notifications
-public static class NotificationFactory
-{
-    public static INotification Create(string type)
-    {
-        return type switch
-        {
-            "Email" => new EmailNotification(),
-            "SMS" => new SmsNotification(),
-            _ => throw new NotImplementedException()
-        };
-    }
-}
-
-// Context class
-public class NotificationService
-{
-    private INotification _notification;
-    public void SetNotification(string type)
-    {
-        _notification=NotificationFactory.Create(type);
-    }
-    public void Notify(string msg)
-    {
-        _notification?.Send(msg);
-    }
-}
-
-// Client code
-class Program
-{
-    static void Main(string[] args)
-    {
-        var notifService=new NotificationService();
-        // Set different notification strategies
-        notifService.SetNotification("Email");
-        notifService.Notify("Welcome service!");
-
-        notifService.SetNotification("SMS");
-        notifService.Notify("Order shipped!");
-    }
-}`)
+    foreach (var notifier in notifiers)
+        notifier.Send("Hello");`)
         }
       >IEnumerable</button>
 
@@ -1297,8 +1399,47 @@ Benefits of IoC<br />
 IoC promotes loose coupling and improves code modularity and testability.<br />
 It allows developers to swap dependency implementations and mock dependencies.</p>)
         }
-      >IOC</button><br />
+      >IOC</button>
       
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>IOptions&lt;T&gt;</strong> bind and inject strongly-typed configuration settings from appsettings.json into our classes. Instead of accessing configuration values using string keys, we define a class that matches the structure of our configuration section. This class is then bound to the configuration section using the Configure&lt;T&gt;() method during service registration.
+Once configured, the settings can be injected anywhere in application using IOptions, which provides access to the bound configuration through the Value property. <strong>Benefits of Using IOptions</strong> are Strongly typed access to configuration values, Eliminates hardcoded keys and Supports validation.</p>,
+`"MySettings":{ "ApiKey": "123456" // appsettings.json
+public string ApiKey {get; set;} // MySettings class
+
+builder.Services.Configure<MySettings>(
+    builder.Configuration.GetSection("MySettings"));
+
+private readonly MySettings _settings;
+public MyService(IOptions<MySettings> options)
+Console.WriteLine(_settings.ApiKey);`)
+        }
+      >IOption</button>
+
+       <button className="btn btn-warning me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>State Management</strong> is a technique to maintain the state of an application, object and variable across multiple requests. It's useful because web applications are stateless.</p>)
+        }
+      >State Management</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Application State</strong> is used to store information that is shared among users. Application state is stored in the memory of the Windows process which processes user requests on the web server. Application state is useful in storing a small amount of often-used data.<br />
+<strong>Session State</strong> provides a place to store values that will persist across page requests. Values stored in Session are stored on the server and will remain in memory until they are explicitly removed or Session expires. It is defined as the period of time that a unique user interacts with a Web application. Session state is a collection of objects, tied to a session stored on a server.<br />
+<strong>TempData</strong> is a dictionary used to store data between requests after a redirect and the data is removed after it's read once. We can use Peek or Keep. <strong>TempData.Peek("key")</strong> reads the value without removing it, so it stays available for the next request. <strong>TempData.Keep("key")</strong> keeps the value after it has been read, so it won’t be deleted automatically.<br />
+<strong>ViewBag</strong> is a dynamic wrapper around ViewData that also passes data from controller to view in the same<br />
+<strong>ViewData</strong> is a dictionary object used to pass data from controller to view during the same request; requires string keys and type casting.</p>)
+        }
+      >Server</button>
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Control State</strong> is used to cache the necessary data for a control to function properly. ControlState is essentially a private ViewState for our control only, and it is not affected when ViewState is turned off. ControlState is used to store small amounts of critical information.<br />        
+<strong>Cookie</strong> is a small amount of data that is either stored on the client side in a text file or in the memory of the client browser session. Cookies are always sent with the request to the web server and information can be retrieved from the cookies at the web server. Every time a user visits a website, cookies are retrieved from the user's machine and help identify the user.<br />
+<strong>Hidden Control</strong> doesn't render anything on the web page at the client browser but can be used to store some information on the web page which can be used on the page. Hidden fields are used to store data at page level.<br />
+<strong>Query String</strong> is used to pass the values or information from one page to another page. They are passed along with URLs in clear text. Query strings provide a simple but limited way of maintaining some state information.<br />
+<strong>View State</strong> is a client-side way to keep page values between requests. It stores data in a hidden field on the page using encoded text. When the page is sent to the server again, this hidden data goes with it, so the server can restore the values and continue processing.<br />
+<strong>Local Storage/Session Storage</strong> Stores data on the client side</p>)
+}
+      >Client</button><br />
+
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Monolithic Architecture</strong> is like a big container where all the software components are bundled together tightly. It is usually built as one large system and is one code-base.<br />
 <strong>Microservice Architecture</strong> is more about applying a certain number of principles and architectural patterns. Each microservice lives independently and rely on each other. Microservices are deployed independently with their own database per service.<br />
@@ -1450,32 +1591,6 @@ It can perform tasks such as authentication, rate limiting, and caching</p>)
       >API Gateway</button><br />
 
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>State Management</strong> is a technique to maintain the state of an application, object and variable across multiple requests. It's useful because web applications are stateless.</p>)
-        }
-      >State Management</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Application State</strong> is used to store information that is shared among users. Application state is stored in the memory of the Windows process which processes user requests on the web server. Application state is useful in storing a small amount of often-used data.<br />
-<strong>Session State</strong> provides a place to store values that will persist across page requests. Values stored in Session are stored on the server and will remain in memory until they are explicitly removed or Session expires. It is defined as the period of time that a unique user interacts with a Web application. Session state is a collection of objects, tied to a session stored on a server.<br />
-<strong>TempData</strong> is a dictionary used to store data between requests after a redirect and the data is removed after it's read once. We can use Peek or Keep. <strong>TempData.Peek("key")</strong> reads the value without removing it, so it stays available for the next request. <strong>TempData.Keep("key")</strong> keeps the value after it has been read, so it won’t be deleted automatically.<br />
-<strong>ViewBag</strong> is a dynamic wrapper around ViewData that also passes data from controller to view in the same<br />
-<strong>ViewData</strong> is a dictionary object used to pass data from controller to view during the same request; requires string keys and type casting.</p>)
-        }
-      >Server Side</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Control State</strong> is used to cache the necessary data for a control to function properly. ControlState is essentially a private ViewState for our control only, and it is not affected when ViewState is turned off. ControlState is used to store small amounts of critical information.<br />        
-<strong>Cookie</strong> is a small amount of data that is either stored on the client side in a text file or in the memory of the client browser session. Cookies are always sent with the request to the web server and information can be retrieved from the cookies at the web server. Every time a user visits a website, cookies are retrieved from the user's machine and help identify the user.<br />
-<strong>Hidden Control</strong> doesn't render anything on the web page at the client browser but can be used to store some information on the web page which can be used on the page. Hidden fields are used to store data at page level.<br />
-<strong>Query String</strong> is used to pass the values or information from one page to another page. They are passed along with URLs in clear text. Query strings provide a simple but limited way of maintaining some state information.<br />
-<strong>View State</strong> is a client-side way to keep page values between requests. It stores data in a hidden field on the page using encoded text. When the page is sent to the server again, this hidden data goes with it, so the server can restore the values and continue processing.<br />
-<strong>Local Storage/Session Storage</strong> Stores data on the client side</p>)
-}
-      >Client Side</button>
-
-      <br />
-
-       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Thread</strong> is a lightweight unit of execution which shares memory within a process. <strong>Process</strong> is something that the operating system uses to execute a program by providing the resources required. Each process has a unique process id associated with it. We can view the process within which a program is running using the windows task manager.<br /> 
           <strong>Multithreading</strong>: is a programming technique which allow to run multiple threads at the same time within a single process. Each thread represents a separate execution path and enable task to be performed in parallel to improve the efficiency and performance of applications. It is useful for better CPU utilization and responsive apps like UI + background work or downloading a file while keeping the UI responsive.<br />
 <strong>There are two ways to share data between multiple threads</strong> Concurrent collection classes and Using Synchronization Primitives<br />
@@ -1600,7 +1715,7 @@ new Thread(Thread2).Start();`)
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p>Task class used for more complex or parallel tasks also known as <strong>Task Parallel Library (TPL)</strong>. The Task class allows us to create tasks that can run asynchronously, improving both performance and code readability. It also simplifies task management by handling thread pooling and synchronization.</p>)
         }
-      >TPL</button>
+      >TPL</button><br />
 
       {/* Popup */}
       {isOpen && (
