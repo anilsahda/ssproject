@@ -74,6 +74,22 @@ With F11 trace line By line</p>)
       >Debugging</button>
 
         <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>&#64;&#64;IDENTITY</strong> return the last identity value generated in any table in the current session. It is not limited to a specific scope. IDENT_CURRENT is not limited by scope and session and it is limited to a specified table.</p>, `CREATE TABLE Employees (
+    EmployeeID INT IDENTITY(1,1),
+    EmployeeName NVARCHAR(100)
+);
+
+Insert a new row
+INSERT INTO Employees (EmployeeName)
+VALUES ('John Doe');
+
+Retrieve the last inserted identity
+ value using @@IDENTITY
+SELECT @@IDENTITY AS LastIdentityValue;`)
+        }
+      >&#64;&#64;IDENTITY</button>
+
+        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>IdentityCurrent</strong> the ident_current(table_name) returns the last identity created for specific table or view in any session.</p>, `CREATE TABLE Employees (
     EmployeeID INT IDENTITY(1,1),
     EmployeeName NVARCHAR(100)
@@ -106,6 +122,13 @@ WHEN NOT MATCHED BY TARGET THEN
     VALUES (source.EmployeeID, 'Unknown', source.NewSalary);`)
         }
       >MERGE</button>
+
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>NOLOCK</strong> is used when we need to run a heavy query on a table, retrieve data from a table that constantly updates, or when we don't know how many records our query will retrieve and how it will affect the database. When we use the NOLOCK hint, our query is not blocked by other processes because it ignores any locks when reading data from tables.</p>, `SELECT Name, Email, Mobile FROM Employee WITH (NOLOCK)
+WHERE Name = 'Rakesh';`)
+        }
+      >NOLOCK</button>
+
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>OLTP</strong> (Online Transaction Processing) is a class which supports in transaction-oriented programs. OLTP maintains the concurrency and follow a decentralized architecture to avoid single points of failure.</p>)
@@ -150,28 +173,6 @@ Transactions are not allowed within <strong>Function</strong> while <strong>Proc
           handleOpenPopup(<p><strong>&#64;&#64;Rowcount</strong> is a system variable that is used to return the number of rows that are affected by the last executed statement.</p>)
         }
       >&#64;&#64;Rowcount</button>
-
-        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>&#64;&#64;IDENTITY</strong> return the last identity value generated in any table in the current session. It is not limited to a specific scope. IDENT_CURRENT is not limited by scope and session and it is limited to a specified table.</p>, `CREATE TABLE Employees (
-    EmployeeID INT IDENTITY(1,1),
-    EmployeeName NVARCHAR(100)
-);
-
-Insert a new row
-INSERT INTO Employees (EmployeeName)
-VALUES ('John Doe');
-
-Retrieve the last inserted identity
- value using @@IDENTITY
-SELECT @@IDENTITY AS LastIdentityValue;`)
-        }
-      >&#64;&#64;IDENTITY</button>
-
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>NOLOCK</strong> is used when we need to run a heavy query on a table, retrieve data from a table that constantly updates, or when we don't know how many records our query will retrieve and how it will affect the database. When we use the NOLOCK hint, our query is not blocked by other processes because it ignores any locks when reading data from tables.</p>, `SELECT Name, Email, Mobile FROM Employee WITH (NOLOCK)
-WHERE Name = 'Rakesh';`)
-        }
-      >NOLOCK</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>ROW_NUMBER()</strong> assigns a unique sequence number to each row within a result set or partition of data. Unlike <strong>RANK()</strong> and <strong>DENSE_RANK(), ROW_NUMBER()</strong> does not allow ties—even if rows have the same values, each gets a unique row number.</p>,
