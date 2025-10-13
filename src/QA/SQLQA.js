@@ -590,7 +590,7 @@ ON table_name (column1, column2, ...)`)
 ❌When excessive indexes increase storage and slow down write</p>, `CREATE NONCLUSTERED INDEX idx_employee_name
 ON Employees(Name, Email)`)
         }
-      >Non-Cluster</button>
+      >Non-Cluster</button><br />
 
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong></strong></p>)
