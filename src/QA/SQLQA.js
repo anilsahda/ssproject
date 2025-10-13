@@ -167,7 +167,7 @@ WHERE Name = 'Rakesh';`)
 Transactions are not allowed within <strong>Function</strong> while <strong>Procedure</strong> allow transactions.<br />
 <strong>Function</strong> can be call in Procedure. <strong>Procedure</strong> can not be call in <strong>Function</strong>. Functions can be called from a select statement.</p>)
         }
-      >Procedure vs Function</button>
+      >Proc vs Function</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>&#64;&#64;Rowcount</strong> is a system variable that is used to return the number of rows that are affected by the last executed statement.</p>)
