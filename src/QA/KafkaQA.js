@@ -28,6 +28,140 @@ export default function KafkaQA() {
 
   return (
     <div>
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Successfully migrated a monolithic .NET application to microservices on AWS, reducing operational costs by 30%.<br />
+Optimized an API-driven application using AWS Lambda and DynamoDB, reducing response times by 40%.<br />
+Designed a secure and scalable CI/CD pipeline, improving deployment speed and reducing failures by 60%.<br />
+Led a team of 5 developers in a cloud modernization project, delivering within budget and ahead of schedule.</p>)
+        }
+      >Achievement</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>In one of my previous projects, I had to migrate a legacy monolithic application to a microservices-based architecture without disrupting ongoing business operations. The main challenge was to make sure a smooth transition means moving from one system or process to another without disruptions, delay or issues while maintaining data consistency. To tackle this, I collaborated with stakeholders to plan a step-by-step rollout, implemented API gateways for smooth communication, and used event-driven architecture to handle real-time data synchronization. By following best practices and conducting extensive testing, I successfully completed the migration with minimal downtime.</p>)
+        }
+      >Chalenge Project</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>I believe open communication is key to resolving conflicts. First, I try to understand each perspective by actively listening. If it’s a technical disagreement, I encourage data-driven discussions and proof-of-concept implementations to determine the best approach. If it’s a personal conflict, I mediate and find common ground that aligns with the team's goals. My goal is to create a supportive and productive workplace where everyone feels like valued and everyone's opinions, concerns and ideas are listened carefully and acknowledged.</p>)
+        }
+      >Conflict</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Yes, there was a time when I had a different technical opinion on an approach proposed by my lead. Instead of directly opposing the idea, I conducted research and prepared a proof-of-concept to demonstrate my perspective. I then presented my findings in a collaborative discussion, highlighting the pros and cons of both approaches. At the end, we combined aspects of both solutions, leading to a more efficient implementation. I believe respectful discussions lead to better decision-making and learning opportunities for both sides.</p>)
+        }
+      >Disagree with Manager</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>I prioritize tasks using Agile methods. I focus on high-impact tasks first and break down complex projects into smaller, manageable milestones. Additionally, I communicate regularly with stakeholders to align on priorities and adjust as needed. I also leverage tools like Jira or Trello to track progress and ensure deadlines are met without compromising quality.</p>)
+        }
+      >Prioritize Task</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Strong Problem-Solving Skills, Good Code Quality, Quick Learner, Team Player, Ownership and Responsibility</p>)
+        }
+      >People Think</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Strength</strong> I have strong problem-solving skills and a structured approach to debugging and optimizing applications. I am also a quick learner and adapt well to new technologies and methodologies. Additionally, I excel at collaborating with cross-functional teams and ensuring that business and technical requirements align.<br />
+<strong>Weakness</strong> I'm very detail-oriented and sometimes spend extra time to refining a solution. However, I am actively working on balancing perfection with efficiency by following best practices and focusing on the overall impact of the task.</p>)
+        }
+      >Strength & Weakness</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Limited Cross-Platform Experience While .NET Core and .NET 5+ improved cross-platform compatibility. Sometimes we have limited experience with Linux/macOS environments or non-Windows deployments.<br />
+Performance Optimization Challenges Sometimes we may struggle with performance tuning, such as garbage collection, memory management, or optimizing for high-performance applications.<br />
+Lack of Frontend Expertise We mostly focus on backend and sometimes we are weaker in frontend technologies like React, Angular or Vue.js.<br />
+Limited DevOps and Cloud Knowledge we may have gaps in DevOps, CI/CD, and cloud platforms as they are more familiar with Azure or traditional deployment methods.<br />
+Security Awareness Gaps Sometimes lack expertise in secure coding practices, making our applications vulnerable to common threats like SQL injection or authentication techniques.</p>)
+        }
+      >Shortcoming</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>I first analyze the scope of work and identify the critical tasks that need immediate attention. If necessary, I break down the work into smaller increments and focus on delivering a working version within the given timeline. I also collaborate with my team to delegate tasks efficiently. If I see any roadblocks, I communicate them early with stakeholders to manage expectations and if required, negotiate timelines or scope adjustments</p>)
+        }
+      >Tight Deadline</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>I admire your company’s innovative approach and it's my commitment to building high-quality software solutions. This profile is a strong fit for me because I have a solid background in .NET development, including expertise in C#, ASP.NET, and related frameworks. Additionally, I have hands-on experience with AWS services like Lambda, EC2 Instance, S3 Bucket, DynamoDB, SQS and API Gateway which demonstrates cloud proficiency. I have ability to develop scalable, cloud-native applications, coupled with experience in CI/CD pipelines, microservices, and DevOps practices. I can effectively design, deploy and manage applications on AWS. I have strong problem-solving skills and prior experience in cloud migrations or modernization. Additionally, I appreciate the company’s emphasis on collaboration and continuous learning, which aligns with my personal and professional growth goals.</p>)
+        }
+      >Why Hire</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>If the client is non-technical, it's best to keep the explanation simple, clear, and solution-oriented. Here's how you can respond: like<br />
+I understand the concern, and I want to assure you that we are looking into it. The application was thoroughly tested before deployment, but sometimes, differences between the production environment and the testing environment can cause unexpected issues. We are currently diagnosing the problem and will resolve it as quickly as possible. I'll keep you updated with our progress and the estimated time for resolution.</p>)
+        }
+      >Non-Tech Client</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Mentoring effectively can involve a mix of technical guidance, soft skills development, and creating an environment where your team members feel supported and challenged.<br />
+Understand Their Strengths & Weaknesses Start with one-on-one discussions to assess their skills, interests, and career goals. Identify technical gaps and areas where they need improvement. Assign tasks based on their strengths while gradually introducing challenges.<br />
+Lead by Example Show best practices in coding, design patterns, and architecture principles through. Maintain high coding standards SOLID, clean code, microservices best practices. Encourage writing efficient, maintainable, and scalable code.<br />
+Provide Hands-On Guidance Conduct pair programming sessions to solve real-world problems together. Use code reviews as a learning opportunity rather than just a correction tool. Break down complex concepts into simpler, understandable parts.<br />
+Encourage Ownership & Problem-Solving Assign real responsibilities rather than just minor tasks. Encourage them to think through problems rather than providing immediate solutions. Ask guiding questions like: What approaches do you think could work? What are the trade-offs of this design?<br />
+Share Knowledge & Best Practices Conduct regular knowledge-sharing sessions on topics like microservices, cloud architecture, or system design. Recommend books, blogs, and courses to deepen their knowledge. Encourage contributing to open-source projects or writing technical blogs.<br />
+Develop Soft Skills & Leadership Teach them how to communicate technical ideas clearly. Encourage them to present in team meetings. Help them navigate team collaboration, conflict resolution, and stakeholder communication.<br />
+Provide Constructive Feedback & Motivation Give regular, specific, and actionable feedback instead of vague comments. Recognize their improvements and celebrate their small wins. Set measurable growth goals to track progress.<br />
+Guide Them Towards Career Growth Help them set short-term and long-term career goals. Introduce them to new technologies, tools, and methodologies. Support them in taking leadership roles or higher responsibilities over time.<br />
+Create a Culture of Continuous Learning Encourage a growth mindset where failures are seen as learning opportunities. Foster an environment where asking questions is welcomed. Keep them engaged with hackathons, tech talks, and problem-solving exercises.</p>)
+        }
+      >Team Handle</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Common Challenges in Mentoring<br />
+Some team members may not take feedback well or feel defensive Frame feedback as collaborative improvement rather than criticism. Use real examples to show the impact of their code/design. Encourage self-review before submitting work.<br />
+Skill Gaps & Learning Curve Some engineers may struggle to learn advanced concepts. Break down complex ideas into smaller, digestible parts. Use real-world examples and analogies to explain architecture and design patterns. Assign progressive tasks to build confidence gradually.<br />
+Lack of Ownership & Initiative Some developers wait for instructions instead of taking initiative. Encourage critical thinking by asking: How would you solve this problem? instead of giving solutions immediately. Assign ownership of a module so they feel accountable. Recognize small wins to motivate them.</p>)
+        }
+      >Chalenges in Mentoring</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Code Reviews A good code review ensures maintainability, scalability, security, and performance.<br />
+Uses meaningful variable and function names.<br />
+Follows proper indentation and formatting.<br />
+Breaks down complex logic into smaller, reusable functions.<br />
+Avoids unnecessary comments.<br />
+Uses comments only where needed like explaining tricky logic<br />
+Consistent naming conventions camelCase.<br />
+Follows team or industry style guides.<br />
+Avoids hardcoded values and magic numbers<br />
+Follows DRY (Don't Repeat Yourself) and KISS (Keep It Simple, Stupid) principles.<br />
+Uses efficient algorithms and data structures.<br />
+Handles increasing load without performance degradation.<br />
+Catches and handles exceptions properly.<br />
+Logs meaningful messages without exposing sensitive data.<br />
+Uses batch processing instead of multiple DB/API calls in loops.<br />
+Minimizes unnecessary computations or memory allocations.<br />
+Uses caching when appropriate.<br />
+Uses indexes where needed.<br />
+Avoids N+1 query problems.<br />
+Uses pagination for large datasets.<br />
+Prevents SQL Injection, XSS, CSRF attacks.<br />
+Uses parameterized queries and proper authentication/authorization.<br />
+Ensures sensitive data (passwords, API keys) is encrypted and stored securely.<br />
+Covers all edge cases and boundary conditions.<br />
+Doesn't introduce unexpected side effects.<br />
+Works correctly under different conditions (e.g., empty inputs, large datasets).<br />
+Uses SOLID principles (if applicable).<br />
+Implements correct design patterns (Factory, Singleton, Repository, etc.).<br />
+Covers unit tests, integration tests, and edge cases.<br />
+Uses proper assertions and test coverage.<br />
+Avoids testing implementation details instead of actual functionality.<br />
+Uses mocking and dependency injection where necessary.<br />
+Doesn't have flaky or redundant tests.<br />
+Implements what was specified in the ticket/user story.<br />
+Matches business logic and functional requirements.<br />
+Follows RESTful/GraphQL principles if applicable.<br />
+Returns expected status codes and error responses.</p>)
+        }
+      >Code Review</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Unexpected Downtime & Critical Failures</strong> Follow a structured debugging approach: Reproduce the issue (logs, monitoring tools, customer reports). Analyze root cause (database, API failures, infrastructure). Fix & validate (test in staging before deploying). Prevent recurrence (add monitoring, improve logging, automate alerts). Conduct post-mortem analysis to document learnings.<br />
+<strong>Performance Bottlenecks in Production Issue</strong>: Slow response times, memory leaks, or high CPU usage. Use profiling tools (New Relic, Prometheus, Dynatrace) to identify bottlenecks. Optimize database queries, caching strategies, and API calls. Scale horizontally (microservices, load balancing) if needed.<br />
+<strong>Rollback & Deployment Failures Issue</strong>: A new release breaks existing functionality. Solution: Implement blue-green deployments or canary releases. Use feature flags to disable new features instantly if issues arise. Always have a rollback strategy and automated deployment pipelines.</p>)
+        }
+      >Prod Issues & High Level Presser</button><br />
+
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Kafka</strong> is an open-source, distributed data streaming platform used to publish, subscribe to, store, and process real-time data streams. It works like a high-performance message queue, allowing different applications to communicate by sending and receiving messages. <strong>Kafka Components are:</strong><br />
 <strong>Producer</strong> sends data to Kafka topics<br />

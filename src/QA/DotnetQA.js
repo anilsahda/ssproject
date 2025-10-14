@@ -25,10 +25,10 @@ const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Abstraction</strong> is the process of showing only essential/necessary features of an entity/object to the outside world and hiding the other irrelevant information.<br />
+          handleOpenPopup(<p><strong>Abstraction</strong> is the process of showing only necessary features of an object to the outside world and hiding the information which are not relevant.<br />
 <strong>Encapsulation</strong> is a process of binding data members like variables, properties and member methods together.<br />
-<strong>Inheritance</strong> is the process of creating a new class by extending the existing class is called inheritance or the process of inheriting the features of the base class is called as inheritance.<br />
-<strong>Overloading</strong> means creating multiple methods in a class with the same names but different signatures (Parameters). It permits a class, struct, or interface to declare multiple methods with the same name with unique signatures.<br />
+<strong>Inheritance</strong>: Using the properties of one class in another class. <br />
+<strong>Overloading</strong> means creating multiple methods in a class with the same names but different Parameters. It permits a class, struct, or interface to declare multiple methods with the same name with unique signatures.<br />
 <strong>Overriding</strong> means having two methods with the same name and same signatures. We can override the functionality of a base class method to create the same name method with the same signature in a derived class. We can achieve method overriding using inheritance. Virtual and Override keywords are used to achieve method overriding.</p>)
         }
       >OOPS</button>
@@ -101,13 +101,15 @@ For example in the same e-commerce project: LLD would define a ProductService cl
       >Indexer</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Managed Code</strong> executes under the CLR and <strong>Benefits</strong> are:<br />
+          handleOpenPopup(<p><strong>Managed Code</strong> executes under the CLR<br /> 
+          <strong>Benefits</strong> are:<br />
 <strong>Automatic Memory Management</strong> The runtime handles memory allocation and garbage collection, reducing the risk of memory leaks and errors.<br />
 <strong>Improved Security</strong> The runtime provides security features and prevents unsafe code execution. Simplified Development Developers can focus on the application logic rather than low-level system interactions.<br />
-<strong>Drawbacks</strong><br />
+<strong>Drawbacks are:</strong><br />
 <strong>Performance Overhead</strong> The runtime can introduce some overhead, potentially impacting performance in certain scenarios.<br /> 
 <strong>Limited Control</strong> Developers have less direct control over system resources compared to unmanaged code.<br />
-<strong>Unmanaged Code</strong> runs directly on the operating system and <strong>Benefits</strong> are:<br />
+<strong>Unmanaged Code</strong> runs directly on the operating system<br /> 
+<strong>Benefits</strong> are:<br />
 
 <strong>Fine-Grained Control</strong> Developers have more control over system resources, allowing for optimized performance in specific cases.<br /> 
 <strong>Access to Low-Level Features</strong> Unmanaged code can access low-level system features that are not available in managed code.<br />
@@ -131,7 +133,7 @@ For example in the same e-commerce project: LLD would define a ProductService cl
 <strong>Out</strong> Passes a variable by reference, but it's used only to output data from the method. Out does not need to be initialized before passed, but must be assigned inside the method<br />
 <strong>Readonly</strong> value can be assigned only once, either at declaration or in the constructor only through the non-static constructor. It is little different from const because readonly can be set at runtime.<br />
 <strong>Ref</strong>: Passes a variable by reference means the method can read and modify the original variable. Ref must be initialized before it is passed.<br />
-<strong>Static</strong> declared with the static keyword and shared among all instances of the class.<br />
+<strong>Static</strong> declared with static keyword & shared among all instances of class<br />
 <strong>Var</strong>: declared as function-scoped variable. It can be re-declared and updated. In C# Declares a variable with implicit type and it's known at compile time<br />
 <strong>Static Readonly</strong> value can be assigned at runtime or assigned at compile time and changed at runtime. But this variable's value can only be changed in the static constructor. And cannot be changed further. So it can change only once at runtime.</p>)
         }
@@ -181,16 +183,18 @@ For example in the same e-commerce project: LLD would define a ProductService cl
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Server Controls</strong> are HTML elements with runat="server" that support server-side events and automatic state management.<br />
 <strong>HTML Controls</strong> is standard HTML elements that respond to user actions but are processed on the client-side only.<br />
-<strong>Navigation Controls</strong> help users to move through the application. <strong>SiteMapPath</strong> shows the current page's position as a breadcrumb trail. <strong>Menu</strong> displays menus with static or dynamic sub-items horizontal or vertical layout. <strong>TreeView</strong> displays hierarchical data, useful for site maps or file structures.<br />
+<strong>Navigation Controls</strong> help users to move through the application. <strong>SiteMapPath</strong> shows the current page's position as a breadcrumb trail.<br /> 
+<strong>Menu</strong> displays static or dynamic munus horizontally or vertically on layout.<br /> 
+<strong>TreeView</strong> displays hierarchical data, useful for site maps or file structures.<br />
 <strong>Hyperlink</strong> is simple navigation control; does not support Click events<br />
 <strong>LinkButton Control</strong> is a hyperlink but supports server-side events.<br />
 <strong>User Control</strong> is a reusable piece of UI created using an .ascx file. It’s like a mini web page that can be used in multiple places within the same application. It's easy to create and use. It is language-dependent. It cannot be added to the Visual Studio toolbox.<br />
 <strong>Custom Control</strong> is a more advanced, compiled control built into a .dll file. It can be reused across multiple applications. It is more complex to create. It's language-independent. It can be added in toolbox for drag-and-drop use.<br />
 <strong>Data Controls</strong> is used to connect database, run queries and display data like <strong>GridView, ListView, DataGrid, Repeater and SqlDataSource</strong>.<br />
-<strong>GridView</strong> is a data-bound control introduced in ASP.NET 2.0 that supports built-in paging, sorting, updating, deleting, and automatic styling, but has slower performance.<br />
-<strong>ListView</strong> is a flexible data-bound control introduced in ASP.NET 3.5 that supports built-in paging, sorting, data grouping, and CRUD operations, but has slower performance.<br />
-<strong>DataGrid</strong> is a data-bound control introduced in ASP.NET 1.0 that requires manual coding for paging, sorting, updating, and deleting, lacks automatic styling, but offers faster performance.<br />
-<strong>Repeater</strong> is a  lightweight data-bound control introduced in ASP.NET 1.0 that requires custom coding for paging, sorting, data grouping, and CRUD operations, but offers faster performance.
+<strong>GridView</strong> is a data-bound control that supports built-in paging, sorting, updating, deleting, and automatic styling, but has slower performance.<br />
+<strong>ListView</strong> is a flexible data-bound control that supports built-in paging, sorting, data grouping, and CRUD operations, but has slower performance.<br />
+<strong>DataGrid</strong> is a data-bound control that requires manual coding for paging, sorting, updating and deleting, lacks of automatic styling, but offers faster performance.<br />
+<strong>Repeater</strong> is a lightweight data-bound control that requires custom coding for paging, sorting, data grouping, and CRUD operations, but offers faster performance.
 </p>)
         }
       >Controls</button>
