@@ -39,10 +39,14 @@ Led a team of 5 developers in a cloud modernization project, delivering within b
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p>In one of my previous projects, I had to migrate a legacy monolithic application to a microservices-based architecture without disrupting ongoing business operations. The main challenge was to make sure a smooth transition means moving from one system or process to another without disruptions, delay or issues while maintaining data consistency. To tackle this, I collaborated with stakeholders to plan a step-by-step rollout, implemented API gateways for smooth communication, and used event-driven architecture to handle real-time data synchronization. By following best practices and conducting extensive testing, I successfully completed the migration with minimal downtime.</p>)
         }
-      >Chalenge Project</button>
+      >Chalenge</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>I believe open communication is key to resolving conflicts. First, I try to understand each perspective by actively listening. If it’s a technical disagreement, I encourage data-driven discussions and proof-of-concept implementations to determine the best approach. If it’s a personal conflict, I mediate and find common ground that aligns with the team's goals. My goal is to create a supportive and productive workplace where everyone feels like valued and everyone's opinions, concerns and ideas are listened carefully and acknowledged.</p>)
+          handleOpenPopup(<p><strong>Comman Chalenges in Project</strong><br />I believe open communication is key to resolving conflicts. First, I try to understand each perspective by actively listening. If it’s a technical disagreement, I encourage data-driven discussions and proof-of-concept implementations to determine the best approach. If it’s a personal conflict, I mediate and find common ground that aligns with the team's goals. My goal is to create a supportive and productive workplace where everyone feels like valued and everyone's opinions, concerns and ideas are listened carefully and acknowledged.<br />
+<strong>Common Challenges in Mentoring</strong><br />
+Some team members may not take feedback well or feel defensive Frame feedback as collaborative improvement rather than criticism. Use real examples to show the impact of their code/design. Encourage self-review before submitting work.<br />
+Skill Gaps & Learning Curve Some engineers may struggle to learn advanced concepts. Break down complex ideas into smaller, digestible parts. Use real-world examples and analogies to explain architecture and design patterns. Assign progressive tasks to build confidence gradually.<br />
+Lack of Ownership & Initiative Some developers wait for instructions instead of taking initiative. Encourage critical thinking by asking: How would you solve this problem? instead of giving solutions immediately. Assign ownership of a module so they feel accountable. Recognize small wins to motivate them.</p>)
         }
       >Conflict</button>
 
@@ -105,14 +109,6 @@ Guide Them Towards Career Growth Help them set short-term and long-term career g
 Create a Culture of Continuous Learning Encourage a growth mindset where failures are seen as learning opportunities. Foster an environment where asking questions is welcomed. Keep them engaged with hackathons, tech talks, and problem-solving exercises.</p>)
         }
       >Team Handle</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Common Challenges in Mentoring<br />
-Some team members may not take feedback well or feel defensive Frame feedback as collaborative improvement rather than criticism. Use real examples to show the impact of their code/design. Encourage self-review before submitting work.<br />
-Skill Gaps & Learning Curve Some engineers may struggle to learn advanced concepts. Break down complex ideas into smaller, digestible parts. Use real-world examples and analogies to explain architecture and design patterns. Assign progressive tasks to build confidence gradually.<br />
-Lack of Ownership & Initiative Some developers wait for instructions instead of taking initiative. Encourage critical thinking by asking: How would you solve this problem? instead of giving solutions immediately. Assign ownership of a module so they feel accountable. Recognize small wins to motivate them.</p>)
-        }
-      >Chalenges in Mentoring</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p>Code Reviews A good code review ensures maintainability, scalability, security, and performance.<br />
@@ -575,7 +571,97 @@ Shared Access Signature (SAS) tokens<br />
 Azure Active Directory (Azure AD) authentication<br />
 Role-Based Access Control (RBAC)</p>)
         }
-      >Secure Service Bus Access</button>
+      >Secure Service Bus Access</button><br />
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>SonarQube</strong>: SonarQube is an open-source platform developed by SonarSource for continuous inspection of code quality. It performs static code analysis to detect issues like bugs, code smells, and security vulnerabilities in your codebase.<br />
+<strong>How does SonarQube work</strong><br />
+SonarQube works in three steps:<br />
+Sonar Scanner analyzes source code and generates a report.<br />
+SonarQube Server processes and stores this data in a database.<br />
+Web UI Dashboard displays metrics, issues, and trends for developers.<br />
+
+<strong>Key features</strong><br />
+Static code analysis for multiple languages<br />
+Code quality metrics – code coverage, complexity, duplication<br />
+Security vulnerability detection (via SonarQube rules)<br />
+Integrations with CI/CD tools (Jenkins, Azure DevOps, GitHub Actions)<br />
+Quality Gates for enforcing code standards before merging or releasing<br />
+
+<strong>Quality Gate in SonarQube</strong><br />
+A Quality Gate is a set of predefined conditions (e.g., code coverage ≥ 80%, no new critical bugs) that code must meet before it can be merged or deployed.<br />
+It acts as a “go/no-go” checkpoint in your CI/CD pipeline.<br />
+
+<strong>Bug, vulnerability, and code smell in SonarQube</strong><br />
+Type	Description	Example<br />
+Bug	Logic error that may cause incorrect behavior.	Null reference exception.<br />
+
+<strong>Integrate SonarQube with .NET Core projects</strong><br />
+Install SonarScanner for .NET (dotnet-sonarscanner).<br />
+dotnet tool install --global dotnet-sonarscanner<br />
+Run the analysis:<br />
+View results in the SonarQube dashboard.<br />
+
+<strong>Integrate with CI/CD pipelines</strong><br />
+SonarQube can be integrated with:<br />
+Jenkins: Using the SonarQube plugin and “Execute SonarQube Scanner” build step.<br />
+Azure DevOps: Using Prepare Analysis Configuration, Run Code Analysis, and Publish Quality Gate Result tasks.<br />
+GitHub Actions / GitLab CI: With sonar-scanner commands in workflow YAML.<br />
+
+<strong>Quality Profile</strong><br />
+A Quality Profile defines which rules SonarQube uses during analysis.<br />
+Inherit from built-in profiles<br />
+Create custom profiles per language or project.<br />
+Activate/deactivate rules based on your team standards.<br />
+
+<strong>Common SonarQube metrics</strong><br />
+Metric	Description<br />
+Code Coverage	% of code covered by tests<br />
+Duplicated Lines (%)	Reused or identical code<br />
+
+<strong>Handle false positives</strong><br />
+“Won’t Fix” – if intentional design choice.<br />
+“False Positive” – if rule is not applicable.<br />
+
+<strong>Multiple Microservices in one SonarQube instance</strong><br />
+Create separate projects in SonarQube for each microservice.<br />
+Each service uses its own project key and token in the pipeline.<br />
+
+<strong>SonarQube vs SonarCloud</strong><br />
+Feature	SonarQube	SonarCloud<br />
+Hosting	Self-hosted	Cloud-hosted (SaaS)<br />
+Setup	Manual installation	No setup needed<br />
+
+<strong>Detect code duplication</strong><br />
+It tokenizes the source code and compares syntax patterns to detect similar or identical blocks — even if variable names differ slightly.<br />
+
+<strong>How do you exclude specific files or folders from SonarQube analysis</strong><br />
+You can use:<br />
+sonar-project.properties<br />
+sonar.exclusions=**/Migrations/**, **/TestHelpers/**<br />
+Or UI → Project Settings → Exclusions<br />
+
+<strong>Editions</strong><br />
+Edition	Features<br />
+Community	Free, basic analysis<br />
+Developer	Adds branch analysis, PR decoration<br />
+Enterprise	Portfolio management, governance<br />
+Data Center	Clustering, high availability<br />
+
+<strong>Can SonarQube analyze frontend and backend code together</strong><br />
+Yes, SonarQube supports multi-language projects (like .NET + React or Node.js + Angular).<br />
+You just need to include all relevant paths in sonar.sources:<br />
+sonar.sources=src/backend,src/frontend<br />
+
+<strong>Pull Requests using SonarQube</strong><br />
+Requires Developer Edition or higher.<br />
+Configure PR analysis in your pipeline:<br />
+
+<strong>Sonar Token</strong><br />
+A Sonar Token is a secure API key generated per user or project.<br />
+It replaces username/password for authentication in CI/CD pipelines:</p>)
+        }
+      >SonarQube</button>
 
       {/* Popup */}
       {isOpen && (
