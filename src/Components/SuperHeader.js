@@ -224,7 +224,7 @@ useEffect(() => {
                 <div className="container">
                 <header className="header">
                     <h1>🚀 Hiring: Junior Software Engineers</h1>
-                    <p style={{ textAlign: 'center' }}>Join our Probation Program and work on Live Projects</p>
+                    <p style={{ textAlign: 'center' }}>Join our 6-Month's Probation Program and work on Live Projects</p>
                   </header>
 
                   <div className="container">
