@@ -62,6 +62,19 @@ const [isOpen, setIsOpen] = useState(false);
         }
       >Data Binding</button>
 
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Decorators</strong> are functions that are used to modify the behavior of classes and their members. Decorators provide a way to add metadata. Decorators are used to define like components, services, directives, pipes, modules.<br />
+  Angular supports four types of decorators<br />
+<strong>Property Decorators</strong> are applied to class properties and are mostly used to modify the properties within the classes like @Input<br />
+          <strong>Method Decorators</strong> are applied to classes methods and modify their behavior or add extra functionalities. For example @HostListener allows us to listen for events on a method.<br />
+          <strong>Parameter Decorator</strong> is a special function that adds metadata or modifies the behavior of a function/method parameter. It’s commonly used in Angular for things like injecting services or capturing route parameters. Parameter decorators are heavily used with Dependency Injection and routing.<br />
+          <strong>Class Decorators</strong> are used to classes to modify their behavior or metadata like @Component define a simple angular component. This decorator provides metadata such as selector, template and styles.<br />
+<strong>@Directive</strong> is used to create a directive which is a class that allows to attach behavior to elements.<br />
+<strong>@NgModule</strong> is a set of instructions that tells Angular how to assemble the components, directives, pipes and services into single units          
+          </p>)
+        }
+      >Decorators</button>
+
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Dependency Injection</strong> is a design pattern that is used to manage component dependencies by injecting them from external sources rather than creating them within the component itself. It is use to improved testability, make Components loose coupling.<br />
 <strong>Dependency Injection</strong> creates single instances of services and shares them throughout the application. Constructor is used for Dependency Injection.</p>)
@@ -76,7 +89,15 @@ const [isOpen, setIsOpen] = useState(false);
 
 }
       >Directives</button>
-
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Error Handling</strong> ensures your app can gracefully handle unexpected issues—like API failures, rendering issues, or user input errors—without crashing the entire UI.<br />
+<strong>HTTP Error Handling</strong> The HttpClient service returns observables for HTTP requests, which can be utilized with RxJS operators for error handling. We can build an HTTP interceptor to detect and handle faults in all HTTP requests.<br />
+          <strong>Global Error Handling</strong> Angular provides a global error handling class called ErrorHandler. You can extend this class to create a custom global error handler<br />
+          <strong>RxJS Operators</strong>: These operators allow you to handle errors in observables. You can use them to catch errors and return a fallback value or rethrow the error.<br />
+          <strong>Component-Level Error Handling</strong>: You can handle errors directly in your components by subscribing to observables and using try-catch blocks for synchronous code.          
+          </p>)
+        }
+      >Error Handling</button>
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p>Angular is a powerful framework for developing web applications which have many features like<br />
 <strong>Component-Based Architecture</strong>: It breaks down the application into reusable components, making the code more manageable and scalable.<br/>          
@@ -146,7 +167,18 @@ Lowercase - Format a string to lowercase.</p>)
 `)
         }
       >Forms</button>
-
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Hooks</strong> are methods you implement in your component or directive class that Angular calls automatically at different stages.<br />
+<strong>ngOnChanges()</strong> responds when Angular sets/resets data-bound input properties.<br />
+<strong>ngOnInit()</strong> initialize the directive/component after Angular first displays the data-bound properties and sets the directive/component's input properties<br />
+<strong>ngDoCheck()</strong> detect and act upon changes that Angular can't or won't detect.<br />
+<strong>ngAfterContentInit()</strong> responds after Angular projects external content into the component's view.<br />
+<strong>ngAfterContentChecked()</strong> respond after Angular checks the content projected into the component.<br />
+<strong>ngAfterViewChecked()</strong> respond after Angular checks the component's views and child views.<br />
+<strong>ngOnDestroy()</strong> runs just before a component or directive is destroyed.
+          </p>)
+        }
+      >Hooks</button>
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>@HostBinding</strong> decorator is used to bind a property of the host element. It is used to set a property on the host element based on a property of the directive or component.</p>,
             `import{Directive,HostBinding}from '@angular/core';
@@ -178,6 +210,43 @@ export class ClickLoggerDirective {
       >@HostListener</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Interceptor</strong>Angular HTTP Interceptor is a feature that allows us to intercept and modify all outgoing HTTP requests and incoming HTTP responses in a centralized way. It acts like a middleware layer between the Angular application and the backend API.<br />
+<strong>Why Interceptors Are Needed</strong><br />
+In a real-world Angular application, almost every HTTP call needs some common behavior, like Adding an authentication token, Adding common headers, Showing and hiding loaders, Handling errors globally and Logging API calls. <br />
+If we implement this logic inside every service, it leads to Code duplication, Tight coupling, Difficult maintenance.<br />
+Interceptors solve this problem by allowing us to handle cross-cutting concerns in one place.<br />
+<strong>How Interceptor Works</strong><br />
+Whenever Angular’s HttpClient makes a request: The request first passes through one or more interceptors<br />
+The interceptor can: Modify the request like add headers and Pass it to the server<br />
+When the response comes back: The interceptor can process the response and Handle errors. Finally, the response reaches the component or service<br />
+<strong>Common Use Case</strong><br />
+A very common use case is JWT authentication.<br />
+After login: The token is stored in localStorage or sessionStorage, Every API call must send this token in the Authorization header<br />
+Instead of adding the token manually in every service: The interceptor reads the token once<br />
+Adds it to every outgoing request, This keeps the services clean and focused only on business logic.<br />
+Error Handling with Interceptor like If the server returns 401 Unauthorized, The interceptor can log the user out<br />
+Redirect to the login page, If a 500 error occurs The interceptor can show a generic error message<br />
+This avoids writing repetitive error handling logic in every component.<br />
+<strong>Multiple Interceptors</strong><br />
+Angular supports multiple interceptors. They are executed in the order they are provided<br />
+Requests go through interceptors in sequence<br />
+Responses come back in reverse order<br />
+This allows us to separate responsibilities, for example: One interceptor for authentication One for logging One for error handling<br />
+<strong>Benefits of Using Interceptors</strong><br />
+Centralized HTTP logic<br />
+Cleaner and more maintainable code<br />
+Better separation of concerns<br />
+Easy to extend without touching existing services<br />
+Consistent behavior across the application<br />
+<strong>When Not to Use Interceptors</strong><br />
+For component-specific logic<br />
+For business rules related to a single feature<br />
+For UI-only behavior<br />
+Interceptors should be used only for cross-cutting concerns.</p>)
+        }
+      >Interceptor</button>
+
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Module</strong> is a mechanism that groups similar components, directives, pipes, and services. This group help in structure and functionality to makes it easier to maintain and scale.</p>)
         }
       >Module</button>
@@ -186,8 +255,16 @@ export class ClickLoggerDirective {
           handleOpenPopup(<p><strong>NgModules</strong> are containers that reserve a code block to an application domain or a workflow. @NgModule takes a metadata object that generally describes the way to compile the template of a component and generate an injector at runtime. In addition, it identifies the module's components, directives, and pipes, making some of them public through the export property so that external components can use them.</p>)
         }
       >NgModules</button>
-
       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>NgRx</strong> implements the Redux principles for providing a structured way of managing the application state. NgRx uses concepts like actions, reducers, effects and selectors to manipulate the state in the application.<br />
+<strong>Store</strong> is the part of the state manager that contains immutable data. The data contained in store cannot be changed directly. Means all state changes must be done through actions. These actions define what will be changed in the state which is defined in reducer.<br />
+<strong>Reducer</strong> process all necessary actions that changes the state of the store. It receives as input of current state and the action and returns the new state after the change.<br />
+<strong>Actions</strong> are simply objects that are sent to store with the information that will change the store’s state.<br />
+<strong>Selectors</strong> are functions used to access and get specific information of state from store.<br />
+<strong>Effects</strong> deal with asynchronous tasks or side effects like network requests, database access, calls to external APIs, or any operation.</p>)
+        }
+      >NgRx</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>NgZone</strong> provides an execution context for running code both inside and outside of zone. It uses the Zone.js library to manage and monitor asynchronous operations and allow to perform change detection efficiently.<br />
 <strong>Purposes of NgZone:</strong><br />
 <strong>Change Detection</strong>: Helps Angular know when to run change detection. When you run code within NgZone, Angular can automatically trigger change detection when async operations are complete.<br />
@@ -211,6 +288,42 @@ Use code splitting technique to divide application<br />
 Use tree-shaking approach to remove unnecessary code</p>)
         }
       >Optimize</button>
+        <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Pipes</strong> are a way to transform the format of output data for display. The data can be string, currency, date etc. Pipes are simple functions that accept an input and return a transformed value. Pipes do not alter the data but change into the required format to display in the browser. Angular provides many built-in pipes for data transformation like Currency, Date, Lower Case and Upper Case<br />
+<strong>Pure Pipes vs Impure Pipes</strong> detect changes within strings, numbers etc, while Impure Pipes detect changes within objects.
+Pure Pipes uses pure functions while Impure Pipes uses impure functions. In Pure Pipes single instance is created while in Impure Pipes multiple instance is created
+Pure Pipes can optimize performance while Impure Pipes may slow down performance.<br />
+<strong>Custom Pipes</strong> We can create custom pipes using PipeTransform interface which provides one transform() that takes an input value and returns the transformed value.</p>,
+        `custom.pipe.ts
+--------------		
+import {Pipe,PipeTransform} from '@angular/core';
+@Pipe({name: 'filterByLength'})
+export class CustomPipe implements PipeTransform{
+ transform(values:string[],minLength:number): 
+ string[]{
+   return 
+   values.filter(value=>value.length>=minLength);
+  }
+}
+
+app.module.ts
+-------------
+@NgModule({
+  declarations: [CustomPipe]
+})
+
+app.component.ts
+----------------
+export class AppComponent {
+  values: string[]=['apple','banana','date'];
+}
+
+app.component.html
+------------------
+<li *ngFor="let value of values | 
+filterByLength: 5">{{ value }}</li>`)
+        }
+      >Pipes</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Promise and Observable</strong> are both used to handle asynchronous operations.<br />
@@ -255,7 +368,49 @@ Use tree-shaking approach to remove unnecessary code</p>)
           handleOpenPopup(<p><strong>Single-Page Applications</strong> are web applications that load once with new features just as mere user interface additions. It does not load new HTML pages to display the new page's content; it is generated dynamically. This is made possible through JavaScript's ability to manipulate the DOM elements on the existing page itself. SPA approach is faster, thus providing a seamless user experience. </p>)
         }
       >SPA</button>
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>State management</strong> means handling application data in a centralized and controlled way, where data is stored at one place, updated properly, and shared across multiple components. Whenever the data changes, all related components automatically get updated, which helps avoid data mismatch, improves performance, and makes the application easier to manage as it grows.<br />
+<strong>Why State Management Is Needed</strong><br />
+As an Angular application grows, multiple components often need access to the same data. These components may not have a direct parent-child relationship.<br />
+If we rely only on @Input() and @Output() or repeated API calls, It leads to Code duplication, Data inconsistency and Difficult maintenance<br />
+State management solves this by centralizing shared data and making it available wherever needed.<br />
 
+<strong>State Management Approaches can be</strong><br />
+1. Component State: This is state managed inside a single component. Example: form values, UI toggles<br />
+2. Service-Based State Management: Angular services combined with RxJS are widely used for state management.<br />
+Data is stored in a service using BehaviorSubject or Observable<br />
+Components subscribe to this data<br />
+When the state changes, all subscribers automatically update<br />
+This approach is Simple, Effective and Suitable for small to medium-sized applications<br />
+3. NgRx: For large and complex applications, Angular provides NgRx, which follows the Redux pattern.<br />
+NgRx introduces a structured data flow: <br />
+Actions describe what happened<br />
+Reducers define how the state changes<br />
+Store acts as a single source of truth<br />
+Selectors retrieve specific parts of the state<br />
+Effects handle API calls and other side effects<br />
+In this approach Components only dispatch actions and Business logic and state updates are handled centrally<br />
+
+<strong>When to Use NgRx</strong><br />
+Large-scale applications<br />
+Complex data flows<br />
+Multiple teams working on the same codebase<br />
+When predictable and traceable state changes are required<br />
+
+<strong>When Not to Use NgRx</strong><br />
+Small applications<br />
+Simple CRUD-based systems<br />
+When state sharing is minimal<br />
+NgRx adds structure but also complexity, so it should be used only when needed.<br />
+
+<strong>Benefits of Proper State Management</strong><br />
+Single source of truth<br />
+Better performance through optimized data flow<br />
+Easier debugging and testing<br />
+Consistent data across components<br />
+Scalable and maintainable architecture</p>)
+        }
+      >State Management</button>
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Angular Template</strong> is HTML and represents a view which display data and change the data whenever an event occurs.<br />
 There are two ways of defining templates <strong>Inline and External</strong> Template<br />
@@ -304,7 +459,10 @@ By offloading CPU-intensive tasks to Web Workers, the main thread remains free t
 Parallel Processing: Web Workers allow parallel processing, enabling multiple tasks to run concurrently. This makes effective use of multi-core CPUs, which is especially beneficial for tasks like data processing, image manipulation, and complex calculations.</p>)
         }
       >Web Workers</button>
-
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>ViewChild and ContentChild</strong> decorators allow a parent component to access its child components directly. These decorators can be used to reference child component instances and access their properties and methods.</p>)
+        }
+      >ViewChild & ContentChild</button>
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>View Encapsulation</strong> is a mechanism which is used to control how styles of the components are scoped and applied to the application. This means the styles defined in a component do not affect any other part of the application and vice versa.<br />
           Angular supports 3 forms of view encapsulation:<br />
@@ -323,401 +481,7 @@ constructor( private sanitizer : DomSanitizer) {}
 sanitizedHtml = this.sanitizer.sanitize(
 SecurityContext.HTML, userInput);`)
         }
-      >Vulnerabilities</button><br />
-
-       <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Decorators</strong> are functions that are used to modify the behavior of classes and their members. Decorators provide a way to add metadata. Decorators are used to define like components, services, directives, pipes, modules. Angular supports four types of decorators</p>)
-        }
-      >Decorators</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Class Decorators</strong> are used to classes to modify their behavior or metadata like @Component define a simple angular component. This decorator provides metadata such as selector, template and styles.<br />
-<strong>@Directive</strong> is used to create a directive which is a class that allows to attach behavior to elements.<br />
-<strong>@NgModule</strong> is a set of instructions that tells Angular how to assemble the components, directives, pipes and services into single units</p>)
-        }
-      >Class</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Property Decorators</strong> are applied to class properties and are mostly used to modify the properties within the classes like @Input</p>)
-        }
-      >Property</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Method Decorators</strong> are applied to classes methods and modify their behavior or add extra functionalities. For example @HostListener allows us to listen for events on a method.</p>)
-        }
-      >Method</button>
-      
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Parameter Decorator</strong> is a special function that adds metadata or modifies the behavior of a function/method parameter. It’s commonly used in Angular for things like injecting services or capturing route parameters. Parameter decorators are heavily used with Dependency Injection and routing.</p>)
-        }
-      >Parameter</button>
-
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Error Handling</strong> ensures your app can gracefully handle unexpected issues—like API failures, rendering issues, or user input errors—without crashing the entire UI.</p>)
-        }
-      >Error Handling</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>HTTP Error Handling</strong> The HttpClient service returns observables for HTTP requests, which can be utilized with RxJS operators for error handling. We can build an HTTP interceptor to detect and handle faults in all HTTP requests.</p>)
-        }
-      >HTTP</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Global Error Handling</strong> Angular provides a global error handling class called ErrorHandler. You can extend this class to create a custom global error handler</p>)
-        }
-      >Global</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>RxJS Operators</strong>: These operators allow you to handle errors in observables. You can use them to catch errors and return a fallback value or rethrow the error.</p>)
-        }
-      >RxJS</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Component-Level Error Handling</strong>: You can handle errors directly in your components by subscribing to observables and using try-catch blocks for synchronous code.</p>)
-        }
-      >Component</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p></p>)
-        }
-      >Directive</button><br />
-
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Lifecycle Hooks</strong> are methods you implement in your component or directive class that Angular calls automatically at different stages.</p>)
-        }
-      >Hooks</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ngOnChanges()</strong> responds when Angular sets/resets data-bound input properties.</p>)
-        }
-      >ngOnChange</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ngOnInit()</strong> initialize the directive/component after Angular first displays the data-bound properties and sets the directive/component's input properties</p>)
-        }
-      >ngOnInit</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ngDoCheck()</strong> detect and act upon changes that Angular can't or won't detect.</p>)
-        }
-      >ngDoCheck</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ngAfterContentInit()</strong> responds after Angular projects external content into the component's view.</p>)
-        }
-      >ngAfterContentInit</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ngAfterContentChecked()</strong> respond after Angular checks the content projected into the component.</p>)
-        }
-      >ngAfterContentCheck</button>
-      
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ngAfterViewChecked()</strong> respond after Angular checks the component's views and child views.</p>)
-        }
-      >ngAfterViewCheck</button>
-      
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ngOnDestroy()</strong> runs just before a component or directive is destroyed.</p>)
-        }
-      >ngOnDes</button><br />
-
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Interceptor</strong> is a middleware which intercepts HTTP request n response. It is used to intercept request response n perform operations</p>)
-        }
-      >Interceptor</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `@Injectable()
-export class AuthInterceptor implements
-HttpInterceptor {
-intercept(req:HttpRequest<any>,next:HttpHandler):
-  Observable<HttpEvent<any>> {
-	const token=localStorage.getItem('token');
-    const authReq = req.clone(
-      headers: req.headers.set('Authorization','Bearer token')
-      });
-      return next.handle(authReq);
-    }
-}`)
-        }
-      >Injecting JWT in Header</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `@Injectable()
-export class LoggingInterceptor implements 
-HttpInterceptor {
-intercept(req:HttpRequest<any>,next:HttpHandler):
-	Observable<HttpEvent<any>> {
-	console.log('Req URL:', req.url);
-	console.log('Req Headers:', req.headers);
-	return next.handle(req).pipe(
-	  tap(event => {
-if (event.type === HttpEventType.Response) {
-	console.log('Status:', event.status);
-	console.log('Body:', event.body);
-}
-	  })
-	);
-    }
-}`)
-        }
-      >Logging Req and Res</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `@Injectable()
-export class ErrorInterceptor implements 
-HttpInterceptor {
-intercept(req:HttpRequest<any>,next:HttpHandler): 
-  Observable<HttpEvent<any>> {
-      return next.handle(req).pipe(
-          catchError(error => {
-              if (error.status === 401) {
-                  console.error('Unauthorized');
-              } else if (error.status === 500) {
-                  console.error('Server error');
-              }
-              return throwError(error);
-          })
-      );
-  }
-}`)
-        }
-      >Global Error Handling</button>                  
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(null,`@Injectable()
-export class CachingInterceptor implements 
-HttpInterceptor {
-    private cache = new Map<string, 
-	HttpResponse<any>>();
-    intercept(req: HttpRequest<any>, next: 
-	HttpHandler): Observable<HttpEvent<any>>{
-      if (req.method !== 'GET') {
-          return next.handle(req); 
-      }
-      const cachedRes = this.cache.get(req.url);
-      if (cachedRes) {
-          return of(cachedRes); 
-      }
-      return next.handle(req).pipe(
-        tap(event => {
-            if (event instanceof HttpResponse) {
-                this.cache.set(req.url, event);
-            }
-        })
-      );
-    }
-}`)
-        }
-      >Caching Response</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `@Injectable()
-export class UrlInterceptor implements 
-HttpInterceptor {
-    intercept(
-        req: HttpRequest<any>,
-        next: HttpHandler
-    ): Observable<HttpEvent<any>> {
-        const apiReq = req.clone({ url: url});
-        return next.handle(apiReq);
-    }
-}`)
-        }
-      >Modify Request Urls</button><br />
-
-       <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Pipes</strong> are a way to transform the format of output data for display. The data can be string, currency, date etc. Pipes are simple functions that accept an input and return a transformed value. Pipes do not alter the data but change into the required format to display in the browser. Angular provides many built-in pipes for data transformation like:</p>,
-            `Currency: {{ price | currency:'EUR' }}
-Date: {{ curDate | date:'fullDate' }}
-Json: {{ myObject | json }}
-Percent: {{ myNumber | percent }}
-Slice: {{ myArray | slice:1:3 }}
-Async: {{ promiseObservable | async }}
-Title Case: {{ name | titlecase }}
-Lower Case: {{ name | lowercase }}
-Upper Case: {{ name | uppercase }}`
-          )
-        }
-      >Pipes</button>
-
-        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Custom Pipes</strong> We can create custom pipes using PipeTransform interface which provides one transform() that takes an input value and returns the transformed value.</p>,
-        `custom.pipe.ts
---------------		
-import {Pipe,PipeTransform} from '@angular/core';
-@Pipe({name: 'filterByLength'})
-export class CustomPipe implements PipeTransform{
- transform(values:string[],minLength:number): 
- string[]{
-   return 
-   values.filter(value=>value.length>=minLength);
-  }
-}
-
-app.module.ts
--------------
-@NgModule({
-  declarations: [CustomPipe]
-})
-
-app.component.ts
-----------------
-export class AppComponent {
-  values: string[]=['apple','banana','date'];
-}
-
-app.component.html
-------------------
-<li *ngFor="let value of values | 
-filterByLength: 5">{{ value }}</li>`)
-        }
-      >Custom</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Pure Pipes</strong> detect changes within strings, numbers etc, while <strong>Impure Pipes</strong> detect changes within objects.<br />
-<strong>Pure Pipes</strong> uses pure functions while <strong>Impure Pipes</strong> uses impure functions<br />
-In <strong>Pure Pipes</strong> single instance is created while in <strong>Impure Pipes</strong> multiple instance is created<br />
-<strong>Pure Pipes</strong> can optimize performance while <strong>Impure Pipes</strong> may slow down performance</p>)
-        }
-      >Pure & Impure</button>
-
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong></strong> </p>)
-        }
-      >State Management</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>@Input</strong> decorator is used to send data from parent component to child component. It's a unidirectional data flow from parent to child.</p>,
-            <pre style={{ backgroundColor: '#f8f9fa', padding: '10px', borderRadius: '5px', overflowX: 'auto' }}>
-          <code>
-{String.raw`// parent.component.ts
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-parent',
-  template: \`
-    <app-child [message]="parentMessage"></app-child>
-  \`
-})
-export class ParentComponent {
-  parentMessage = 'Hello from Parent!';
-}
-
-// child.component.ts
-import { Component, Input, OnChanges } from '@angular/core';
-
-@Component({
-  selector: 'app-child',
-  template: \`{{ receivedMessage }}\`
-})
-export class ChildComponent implements OnChanges {
-  @Input() message: string;
-  receivedMessage: string;
-
-  ngOnChanges() {
-    this.receivedMessage = this.message;
-  }
-}`}
-          </code>
-        </pre>
-          )
-        }
-      >@Input</button>
-
- <button
-  className="btn btn-primary me-2 mb-2"
-  onClick={() =>
-    handleOpenPopup(
-      <div>
-        <p>
-          <strong>@Output</strong> decorator is used to send data from a child component to its parent in Angular. It allows the child to <strong>emit custom events</strong> that the parent can listen to and handle.
-        </p>
-        <pre
-          style={{
-            backgroundColor: '#f8f9fa',
-            padding: '10px',
-            borderRadius: '5px',
-            overflowX: 'auto',
-          }}
-        >
-          <code>
-{String.raw`// parent.component.ts
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-parent',
-  template: \`
-    <app-child (buttonClick)="handleButtonClick()"></app-child>
-  \`
-})
-export class ParentComponent {
-  handleButtonClick() {
-    console.log('Clicked in child component!');
-  }
-}
-
-// child.component.ts
-import { Component, Output, EventEmitter } from '@angular/core';
-
-@Component({
-  selector: 'app-child',
-  template: \`
-    <button (click)="onClick()">Click Me</button>
-  \`
-})
-export class ChildComponent {
-  @Output() buttonClick = new EventEmitter<void>();
-
-  onClick() {
-    this.buttonClick.emit();
-  }
-}`}
-          </code>
-        </pre>
-      </div>
-    )
-  }
->
-  @Output
-</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Services</strong> is used to share data between unrelated components. Components can inject the same service instance and use it to share data in different different components. <strong>HttpClient</strong> service is used to make HTTP requests to a server. It is used to interact with RESTful APIs and perform database operation from backend.</p>,
-            `import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-@Injectable({
-  providedIn: 'root'
-})
-export class TodoService {
-  var url = 'https://localhost/todos';
-  constructor(private http: HttpClient) { }
-  getEmployee() {
-    return this.http.get(url);
-  }
-  getEmployeeById(id: number) {
-    return this.http.get(url + /{id});
-  }
-}`
-          )
-        }
-      >Services</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>NgRx</strong> implements the Redux principles for providing a structured way of managing the application state. NgRx uses concepts like actions, reducers, effects and selectors to manipulate the state in the application.<br />
-<strong>Store</strong> is the part of the state manager that contains immutable data. The data contained in store cannot be changed directly. Means all state changes must be done through actions. These actions define what will be changed in the state which is defined in reducer.<br />
-<strong>Reducer</strong> process all necessary actions that changes the state of the store. It receives as input of current state and the action and returns the new state after the change.<br />
-<strong>Actions</strong> are simply objects that are sent to store with the information that will change the store’s state.<br />
-<strong>Selectors</strong> are functions used to access and get specific information of state from store.<br />
-<strong>Effects</strong> deal with asynchronous tasks or side effects like network requests, database access, calls to external APIs, or any operation.</p>)
-        }
-      >NgRx</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ViewChild and ContentChild</strong> decorators allow a parent component to access its child components directly. These decorators can be used to reference child component instances and access their properties and methods.</p>)
-        }
-      >ViewChild & ContentChild</button>
+      >Vulnerabilities</button>
 
       {/* Popup */}
       {isOpen && (

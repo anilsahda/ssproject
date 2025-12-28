@@ -924,260 +924,141 @@ Behavioral: Chain of Responsibility, Command, Interpreter, Iterator, Mediator, M
       >Design Patterns</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Abstract Factory</strong> creates a set of related objects or dependent objects. The objects created by the factory is determined at run-time depending on the selection of concrete factory classes. Abstract factory pattern acts as a super-factory that creates other factories. Abstract factory interface creates a set of related or dependent objects without specifying their concrete classes.</p>)
+          handleOpenPopup(<p><strong>Abstract Factory</strong> is an extension of the Factory pattern, used when creating families of related objects together. It ensures consistency among related components. For example, in a UI framework, WindowsStyleFactory can create buttons, menus, and textboxes in Windows style, while MacStyleFactory creates the same components with Mac styling. This pattern centralizes creation logic, allowing consistent look and behavior across objects.<br />
+<strong>When to use</strong><br />
+When creating families of related objects together<br />
+When multiple variations of components must work consistently together<br />
+For UI themes, platform-specific components, or reporting systems producing multiple formats<br />
+
+<strong>Benefits</strong><br />
+Ensures uniformity across related objects<br />
+Centralizes creation logic, making maintenance easier<br />
+Simplifies switching platforms or themes without breaking code<br />
+
+<strong>Project Example</strong><br />
+In a reporting system, PDF, Excel, and HTML report families were generated consistently using Abstract Factory. Switching format or style didn’t require changes in business logic.</p>)
         }
       >Abstract Factory</button>
       
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>CQRS (Command Query Responsibility Segregation)</strong> is a design pattern that separates read and write operations for a data store. This separation improves scalability, performance, and maintainability in applications. CQRS is often implemented with MediatR, event sourcing, and sometimes combined with the Clean Architecture pattern.<br />
-Key Components of CQRS<br />
-<strong>Commands</strong>: Used to modify the state of the system. Handled by command handlers.<br />
-<strong>Queries</strong>: Used to retrieve data without modifying it. Handled by query handlers.<br />
-<strong>Handlers</strong>: Process commands and queries separately.<br />
-<strong>MediatR</strong>: Used to decouple handlers from controllers.<br />
-<strong>Event Sourcing</strong>: Stores state changes as events rather than persisting the current state.</p>)
+          handleOpenPopup(<p><strong>CQRS (Command Query Responsibility Segregation)</strong> is a design pattern that separates read and write operations for a data store.  The main idea is that reading data and updating data often have very different requirements in terms of performance, consistency, and scalability. By keeping these two responsibilities separate, we can optimize each independently, which is especially important in high-scale systems. CQRS is often implemented with MediatR, event sourcing, and sometimes combined with the Clean Architecture pattern. Key Components of CQRS are:<br />
+<strong>Commands</strong> are used to modify the state of the system and handled by command handlers. In an e-commerce application <strong>Commands</strong> can be used to Place order, Update inventory, Process payments. These require strong consistency to avoid issues like double orders or overselling.<br />
+<strong>Queries</strong> are used to retrieve data without modifying it and handled by query handlers. It can be used to Browse products, View product details, Check stock availability. These need to be very fast and scalable and can work with eventual consistency.<br />
+<strong>Handlers</strong> process both commands and queries separately.<br />
+<strong>MediatR</strong> is usedd to decouple handlers from controllers.<br />
+<strong>Event Sourcing</strong> stores state changes as events rather than persisting the current state.<br />
+<strong>When to Use CQRS</strong><br />
+When read and write workloads are very different<br />
+Systems with high read traffic compared to writes<br />
+Applications that need audit trails or historical data<br />
+When scalability and performance are critical<br />
+<strong>Benefits</strong><br />
+Read and write paths can scale independently<br />
+Different databases can be used like SQL for write operations, NoSQL or cache for read  operations<br />
+Cleaner code by separating responsibilities<br />
+Better performance and system responsiveness<br />
+
+<strong>Project Experience Example</strong><br />
+In a high-traffic e-commerce platform handling millions of read requests per day, we implemented CQRS by:<br />
+Using a transactional SQL database for order placement<br />
+Using a read-optimized NoSQL store for product and catalog queries<br />
+Syncing data asynchronously using messaging<br />
+This approach improved read performance by more than 50% without impacting order consistency.<br />
+
+<strong>Challenges</strong><br />
+Increases architectural complexity (two models to maintain)<br />
+Requires careful handling of eventual consistency, especially in UI<br />
+Typically needs message queues or event streaming (Kafka, SQS, RabbitMQ)
+</p>)
         }
       >CQRS</button>
 
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Factory Design Pattern</strong> is a creational design pattern used to create objects without specifying their exact class. It provides a centralized place to create instances of a class, improving code maintainability, flexibility, and abstraction. Factory Design Pattern provides an interface for creating objects in a superclass but allows subclasses to alter the type of objects that will be created. It helps in creating objects without exposing the instantiation logic to the client.</p>,  
-            `//Step 1: Define a Factory Interface
-public interface IPaymentFactory
-{
-    IPaymentService CreatePaymentService(string paymentType);
-}
-//Step 2: Implement Factory with DI Support
-public class PaymentFactoryDI : IPaymentFactory
-{
-    private readonly IServiceProvider _serviceProvider;
+          handleOpenPopup(<p><strong>Factory Pattern</strong> is used to create objects without exposing the object-creation logic to the client. Instead of using new and multiple if–else or switch statements throughout the code, object creation is centralized in a factory. This makes the system flexible, easier to maintain, and easier to extend when new object types are introduced.<br />
+          <strong>When to Use Factory Pattern</strong><br />
+When object creation logic should be hidden from the client<br />
+When there are multiple implementations of an interface<br />
+When new object types may be added in the future<br />
+To follow the Open/Closed Principle<br />
 
-    public PaymentFactoryDI(IServiceProvider serviceProvider)
-    {
-        _serviceProvider = serviceProvider;
-    }
+<strong>Benefits</strong><br />
+Keeps business logic clean and focused<br />
+Makes the system easy to extend with new object types<br />
+Centralizes and standardizes object creation<br />
+Reduces duplication and scattered if–else logic<br />
 
-    public IPaymentService CreatePaymentService(
-	string paymentType)
-    {
-        return paymentType switch
-        {
-            "CreditCard" => _serviceProvider
-			.GetRequiredService<CreditCardPayment>(),
-            "PayPal" => _serviceProvider
-			.GetRequiredService<PayPalPayment>(),
-            _ => throw new ArgumentException("Invalid payment")
-        };
-    }
-}
-//Step 3: Register Services in Program.cs
-var builder = WebApplication.CreateBuilder(args);
+<strong>Project Example</strong><br />
+In one of our projects, we initially supported Email, SMS, and Push notifications. Later, we added WhatsApp notifications.<br />
+Because the creation logic was handled by a Factory:<br />
+We added a new implementation<br />
+Updated the factory<br />
+No existing business code had to change<br />
+This made the integration seamless and low-risk.<br />
 
-builder.Services.AddTransient<CreditCardPayment>();
-builder.Services.AddTransient<PayPalPayment>();
-builder.Services.AddSingleton<IPaymentFactory, 
-PaymentFactoryDI>();
-
-var app = builder.Build();
-app.Run();
-//Step 4: Inject and Use the Factory
-public class PaymentController : ControllerBase
-{
-    private readonly IPaymentFactory _paymentFactory;
-
-    public PaymentController(IPaymentFactory paymentFactory)
-    {
-        _paymentFactory = paymentFactory;
-    }
-
-    [HttpPost("pay")]
-    public IActionResult Pay(string paymentType)
-    {
-        var paymentService = 
-	_paymentFactory.CreatePaymentService(paymentType);
-        paymentService.ProcessPayment();
-        return Ok("Payment processed successfully.");
-    }
-}`)
+<strong>Best Practices</strong><br />
+Adds a small level of indirection<br />
+Best suited when object types are expected to change or grow<br />
+Often combined with Dependency Injection for better flexibility and testability</p>)
         }
       >Factory</button>
 
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Mediator Pattern</strong> is a behavioral design pattern that reduces direct dependencies between objects by introducing a mediator object that handles communication. This promotes loose coupling and improves maintainability.<br />
-We can use the Mediator Pattern<br />
-When you have many objects that need to communicate with each other but don't want them to be tightly coupled.<br />
-When you want to centralize complex communication logic.<br />
-When modifying an object's interaction should not affect many other objects.</p>)
+          handleOpenPopup(<p><strong>Mediator Pattern</strong> centralizes communication between components, reducing direct dependencies. Instead of objects referencing each other directly, they communicate via a mediator, which coordinates interactions. This reduces tight coupling and makes the system easier to maintain, especially as components grow.<br />
+<strong>When to use</strong><br />
+Many components interact in complex ways<br />
+You want to reduce direct dependencies<br />
+To simplify maintenance and extendability<br />
+<strong>Benefits</strong><br />
+Reduces coupling between components<br />
+Centralizes communication logic<br />
+Easier to extend or modify interactions<br />
+<strong>Project Example</strong><br />
+In a chat application, multiple modules (message sender, receiver, notifications, logging) communicated through a Mediator. Adding a new module (like analytics) didn’t require changes in other modules—just updated the Mediator.<br />
+<strong>Challenges</strong><br />
+The mediator can become too complex if it handles too many responsibilities<br />
+Best for systems with high interaction complexity</p>)
         }
       >Mediator</button>
 
         <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Repository Pattern</strong> is a design pattern that abstracts data access logic and provides a centralized way to interact with a database, making code more maintainable and testable. It acts as a mediator between the business logic and the data layer.</p>, 
-            `public class Product
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public decimal Price { get; set; }
-}
-
-public interface IRepository<T> where T : class
-{
-    Task<IEnumerable<T>> GetAllAsync();
-    Task<T> GetByIdAsync(int id);
-    Task AddAsync(T entity);
-    Task UpdateAsync(T entity);
-    Task DeleteAsync(int id);
-}
-
-public class Repository<T>:IRepository<T> where T:class
-{
-    private readonly DbContext _context;
-    private readonly DbSet<T> _dbSet;
-    public Repository(DbContext context)
-    {
-        _context = context;
-        _dbSet = context.Set<T>();
-    }
-
-    public async Task<IEnumerable<T>> GetAllAsync()
-    {
-        return await _dbSet.ToListAsync();
-    }
-}
-
-public class ProductRepository : Repository<Product>
-{
- public ProductRepository(DbContext context):base(context){}
-}
-Generic Repository with Unit of Work
-public interface IUnitOfWork : IDisposable
-{
-    IRepository<Product> Products { get; }
-    Task<int> CompleteAsync();
-}
-
-public class UnitOfWork : IUnitOfWork
-{
-    private readonly DbContext _context;
-    public IRepository<Product> Products {get;private set;}
-    public UnitOfWork(DbContext context)
-    {
-        _context = context;
-        Products = new Repository<Product>(context);
-    }
-
-    public async Task<int> CompleteAsync()
-    {
-        return await _context.SaveChangesAsync();
-    }
-
-    public void Dispose()
-    {
-        _context.Dispose();
-    }
-}
-
-public class ProductService
-{
-    private readonly IUnitOfWork _unitOfWork;
-
-    public ProductService(IUnitOfWork unitOfWork)
-    {
-        _unitOfWork = unitOfWork;
-    }
-
-    public async Task AddProductAsync(Product product)
-    {
-        await _unitOfWork.Products.AddAsync(product);
-        await _unitOfWork.CompleteAsync();
-    }
-}
-
-Repository with Specification Pattern
-public interface ISpecification<T>
-{
-    Expression<Func<T, bool>> Criteria { get; }
-}
-
-public class ProductByPriceSpecification:ISpecification<Product>
-{
-    public Expression<Func<Product, bool>> Criteria { get; }
-    public ProductByPriceSpecification(decimal minPrice)
-    {
-        Criteria = p => p.Price >= minPrice;
-    }
-}
-
-public class ProductRepository : Repository<Product>
-{
-    public ProductRepository(DbContext context):base(context){}
-    public async Task<IEnumerable<Product>> 
-	GetBySpecificationAsync(ISpecification<Product> spec)
-    {
-        return await _dbSet.Where(spec.Criteria).ToListAsync();
-    }
-}
-
-services.AddScoped<IRepository<Product>,
-Repository<Product>>();
-services.AddScoped<IUnitOfWork, UnitOfWork>();`)
+          handleOpenPopup(<p><strong>Repository Pattern</strong> acts as a bridge between business logic and the database. Instead of writing SQL or database-specific queries directly in service or controller layers, all data access is handled through repository interfaces such as UserRepository or OrderRepository. The business layer interacts with the repository using clear, intention-revealing methods like GetUserById() or SaveOrder(), without knowing how or where the data is stored. This keeps the code clean, maintainable, and testable, and allows the data source to change without impacting business logic.<br />
+          <strong>When to Use Repository Pattern</strong><br />
+When you want a clear separation between business logic and data access<br />
+To make unit testing easier by mocking repositories<br />
+When the database technology may change in the future (SQL → NoSQL)<br />
+To centralize common concerns like Filtering, Pagination, Caching, Query optimization<br />
+<strong>Benefits</strong><br />
+Decouples business logic from database-specific code<br />
+Improves testability and flexibility<br />
+Makes data access consistent and reusable<br />
+Simplifies maintenance by centralizing database operations<br />
+<strong>Best Practices</strong><br />
+Repositories should focus only on data access, not business rules<br />
+Avoid exposing ORM-specific details to the business layer<br />
+For complex transactions, combine Repository with the Unit of Work pattern<br />
+Keep repositories simple and intention-based, not generic CRUD dumping grounds</p>)
         }
       >Repository</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Singleton Design Pattern</strong> ensures that the class has only one instance and provides a global point of access to it. All further references to objects of the singleton class refer to the same instance. There are situations where we want only one instance of the object to be created and shared among all the clients. Client can not create an instance from outside.</p>, 
-            `public sealed class Singelton
-{
-  private static Singelton _instance;
-  private static object _lock = new object();
-  public static Singelton GetSingleton()
-  {
-	lock (_lock)
-		if (_instance == null) 
-		_instance = new Singelton();
-	return _instance;
-  }
-}
-//
-public class Singleton
-{
-private static readonly Singleton _instance=new Singleton();
-  // Private constructor to prevent instantiation
-  private Singleton() { }
-  public static Singleton Instance => _instance;
-  public void DoSomething()
-  {
-      Console.WriteLine("Singleton Instance Executing...");
-  }
-}
+          handleOpenPopup(<p><strong>Singleton Design Patterns</strong> that only one instance of a class is created and shared across the entire application. This is useful when we need a single, consistent point of access to a shared resource. Instead of creating multiple objects in different parts of the system, the Singleton guarantees that everyone uses the same instance, preventing inconsistent behavior and unnecessary resource usage.<br />
+<strong>When to use</strong><br />
+When a single instance is needed globally<br />
+For shared resources like logging, configuration, or database connections<br />
+When centralized access without passing objects around is desired<br />
 
-// Usage
-class Program
-{
-    static void Main()
-    {
-        Singleton instance = Singleton.Instance;
-        instance.DoSomething();
-    }
-}
+<strong>Benefits</strong><br />
+Saves memory and resources<br />
+Ensures consistent state across the application<br />
+Provides global access, avoiding excessive object passing<br />
 
-Thread-Safe Singleton Using Lazy Initialization
-public class Singleton
-{
-    private static readonly Lazy<Singleton> _instance=
-	new Lazy<Singleton>(() => new Singleton());
+<strong>Project Example</strong><br />
+In a microservice project, a central logging module was implemented as a Singleton, ensuring uniform logs across all services, and allowing mock injection for unit testing.<br />
 
-    private Singleton() { }
-
-    public static Singleton Instance => _instance.Value;
-}
-Registering Singleton in .NET Core (DI)
-public class MySingletonService
-{
-    public string GetMessage() => "Hello Singleton!";
-}
-
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSingleton<MySingletonService>();`)
+<strong>Chalenges/Limitations</strong><br />
+Overuse can lead to tight coupling<br />
+A stateful Singleton can make unit testing harder<br />
+Best practice is to keep Singletons stateless and use them via DI instead of direct access</p>)
         }
       >Singleton</button>
 

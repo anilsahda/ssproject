@@ -29,6 +29,16 @@ export default function KafkaQA() {
   return (
     <div>
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>My name is Amit Kumar. I have around 14 years of experience in designing and implementing enterprise applications using both monolithic and microservice architectures. I have worked on greenfield projects as well as enhancing and modernizing existing systems across multiple domains.<br />
+My core expertise in the Microsoft technology like Node JS, .NET Core, C#, MVC, WCF, Web API and Microservices. I strongly focus on writing clean, maintainable, and scalable code while following SOLID principles, design patterns, and industry best practices.<br />
+I have hands-on experience with multiple databases like SQL Server, MySQL, Oracle, PostgreSQL, MongoDB, and DynamoDB. On the cloud side, I have worked with both Azure and AWS, designing and deploying cloud-native solutions using CI/CD pipelines.<br />
+In frontend, I have experience in Next, React, Angular and Vue JS which helps me contribute effectively to full-stack solution design. I have also implemented event-driven architectures using messaging systems like RabbitMQ, Kafka, and Azure Service Bus.<br />
+Throughout my career, I’ve worked in domains such as Healthcare, Banking, E-Commerce, Insurance, Loan Applications and Shipment Management. My responsibilities include solution design, development, maintenance, code reviews, mentoring junior developers, and collaborating with cross-functional teams to deliver high-quality, efficient, and scalable solutions.<br />
+I am always eagar to learn and adapt new technologies, and I enjoy solving complex business problems through thoughtful architecture and technical leadership.</p>)
+        }
+      >Intro</button>
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p>Successfully migrated a monolithic .NET application to microservices on AWS, reducing operational costs by 30%.<br />
 Optimized an API-driven application using AWS Lambda and DynamoDB, reducing response times by 40%.<br />
 Designed a secure and scalable CI/CD pipeline, improving deployment speed and reducing failures by 60%.<br />
@@ -111,151 +121,50 @@ Create a Culture of Continuous Learning Encourage a growth mindset where failure
       >Team Handle</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Code Reviews A good code review ensures maintainability, scalability, security, and performance.<br />
-Uses meaningful variable and function names.<br />
-Follows proper indentation and formatting.<br />
-Breaks down complex logic into smaller, reusable functions.<br />
-Avoids unnecessary comments.<br />
-Uses comments only where needed like explaining tricky logic<br />
-Consistent naming conventions camelCase.<br />
-Follows team or industry style guides.<br />
-Avoids hardcoded values and magic numbers<br />
-Follows DRY (Don't Repeat Yourself) and KISS (Keep It Simple, Stupid) principles.<br />
-Uses efficient algorithms and data structures.<br />
-Handles increasing load without performance degradation.<br />
-Catches and handles exceptions properly.<br />
-Logs meaningful messages without exposing sensitive data.<br />
-Uses batch processing instead of multiple DB/API calls in loops.<br />
-Minimizes unnecessary computations or memory allocations.<br />
-Uses caching when appropriate.<br />
-Uses indexes where needed.<br />
-Avoids N+1 query problems.<br />
-Uses pagination for large datasets.<br />
-Prevents SQL Injection, XSS, CSRF attacks.<br />
-Uses parameterized queries and proper authentication/authorization.<br />
-Ensures sensitive data (passwords, API keys) is encrypted and stored securely.<br />
-Covers all edge cases and boundary conditions.<br />
-Doesn't introduce unexpected side effects.<br />
-Works correctly under different conditions (e.g., empty inputs, large datasets).<br />
-Uses SOLID principles (if applicable).<br />
-Implements correct design patterns (Factory, Singleton, Repository, etc.).<br />
-Covers unit tests, integration tests, and edge cases.<br />
-Uses proper assertions and test coverage.<br />
-Avoids testing implementation details instead of actual functionality.<br />
-Uses mocking and dependency injection where necessary.<br />
-Doesn't have flaky or redundant tests.<br />
-Implements what was specified in the ticket/user story.<br />
-Matches business logic and functional requirements.<br />
-Follows RESTful/GraphQL principles if applicable.<br />
-Returns expected status codes and error responses.</p>)
-        }
-      >Code Review</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Unexpected Downtime & Critical Failures</strong> Follow a structured debugging approach: Reproduce the issue (logs, monitoring tools, customer reports). Analyze root cause (database, API failures, infrastructure). Fix & validate (test in staging before deploying). Prevent recurrence (add monitoring, improve logging, automate alerts). Conduct post-mortem analysis to document learnings.<br />
 <strong>Performance Bottlenecks in Production Issue</strong>: Slow response times, memory leaks, or high CPU usage. Use profiling tools (New Relic, Prometheus, Dynatrace) to identify bottlenecks. Optimize database queries, caching strategies, and API calls. Scale horizontally (microservices, load balancing) if needed.<br />
 <strong>Rollback & Deployment Failures Issue</strong>: A new release breaks existing functionality. Solution: Implement blue-green deployments or canary releases. Use feature flags to disable new features instantly if issues arise. Always have a rollback strategy and automated deployment pipelines.</p>)
         }
-      >Prod Issues & High Level Presser</button><br />
+      >Prod Issues & High Level Presser</button>
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Kafka</strong> is an open-source, distributed data streaming platform used to publish, subscribe to, store, and process real-time data streams. It works like a high-performance message queue, allowing different applications to communicate by sending and receiving messages. <strong>Kafka Components are:</strong><br />
-<strong>Producer</strong> sends data to Kafka topics<br />
-<strong>Consumer</strong> reads data from Kafka topics<br />
+          handleOpenPopup(<p><strong>Kafka</strong> is an open-source, distributed data streaming platform used to publish, subscribe to, store, and process real-time data streams. It works like a high-performance message queue, allowing different applications to communicate by sending and receiving messages.<br />
+<strong>Kafka Components are:</strong><br />
+<strong>Producer</strong> sends messages or events to Kafka and it publishes data to a topic and kafka does not care who consumes the data. For example: Order Service sends OrderCreated events<br />
+<strong>Consumer</strong> reads messages from Kafka topics and it belong to consumer groups. Kafka make sure each partition is consumed by only one consumer in a group. For example: Inventory Service consumes OrderCreated events<br />
 <strong>Broker</strong> Kafka server that stores topic data and serves producers/consumers.<br /> 
 <strong>Cluster</strong> is a group of multiple brokers for scalability.<br />
 <strong>Topic</strong> is a logical channel where producers send message and consumers subscribe them and it is divided into partitions to process in parallel.<br />
 <strong>Partition</strong> topics are split into partitions for scalability<br />
 <strong>ZooKeeper</strong> used for cluster coordination<br /><br />
-<strong>Kafka Connect</strong> is a tool for integrating Kafka with external systems, using source connectors and sink connectors<br />
-<strong>Kafka Streams</strong> is a Java library for building real-time, stream-processing applications using Kafka topics as input/output.<br />
-<strong>Use Cases</strong>: Like collecting app logs, Real-time analytics, Order tracking in e-commerce and Communication between microservices</p>)
-        }
-      >Kafka</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`The acks setting controls how many brokers must confirm receipt:
-acks=0: fire and forget
-acks=1: leader must write the record
-acks=all: all in-sync replicas must acknowledge (most reliable)`)
-        }
-      >Acknowledgment</button>
+<strong>Kafka Key Features</strong><br />
+<strong>High Throughput</strong> Can handle millions of messages per second. Suitable for big data and real-time systems<br />
+<strong>Fault Tolerance</strong> Data is replicated across brokers. If one broker fails, another takes over<br />
+<strong>Durability</strong> Messages are written to disk. Data is not lost even if consumers are down<br />
+<strong>Scalability</strong> Add more brokers → automatic scaling. Add more partitions → more parallelism<br />
+<strong>Loose Coupling</strong> Producers and consumers are independent. New consumers can be added without affecting producers<br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`Automatically using enable.auto.commit=true
-Manually using commitSync() or commitAsync()
-This determines where the consumer resumes after a restart or crash.`)
-        }
-      >Commit Offsets</button>
+<strong>Why Kafka is Needed</strong><br />
+Traditional systems were struggling with: High-volume data, Real-time processing, Loose coupling between services, Reliability at scale<br />
+Kafka solves these problems by: Decoupling producers and consumers, Handling millions of messages per second, Ensuring durability and fault tolerance<br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`A consumer group allows multiple consumers to share the load of reading from a topic. Each partition is assigned to one consumer within the group.`)
-        }
-      >Consumer Group</button>
+<strong>When to Use Kafka</strong><br />
+Use Kafka when:<br />
+You need real-time data streaming<br />
+You want event-driven architecture<br />
+Systems need to be decoupled<br />
+High throughput and scalability are required<br />
+Messages must be durable and replayable<br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`Replication of partitions across brokers
-Leader election among in-sync replicas
-Message durability via commit logs
-High availability via cluster design`)
-        }
-      >Fault Tolerance</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`Each partition has one leader and multiple followers (replicas). The leader handles all reads/writes. Replicas stay in sync and one is promoted if the leader fails.`)
-        }
-      >Handle Replication</button>
-      
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`An idempotent producer avoids duplicates by ensuring Kafka only accepts a message once per producer session and sequence number. Set via enable.idempotence=true.`)
-        }
-      >Idempotent Producer</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`At most once – message may be lost but never duplicated
-At least once – message may be duplicated but not lost
-Exactly once – message is delivered once without loss or duplication (requires special configuration)`)
-        }
-      >Message Delivery Guarantees</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`Based on a message key (hashed to pick a partition)
-If no key, Kafka uses round-robin distribution`)
-        }
-      >Messages Distribution</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`Kafka preserves message order within a single partition. Across partitions, ordering is not guaranteed.`)
-        }
-      >Message Ordering</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`An offset is a unique identifier (number) for each message in a partition. Consumers use it to keep track of which messages they've processed.`)
-        }
-      >Offset</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`A partition is a unit of parallelism in Kafka. Each partition is an append-only log and maintains the ordering of messages within itself.`)
-        }
-      >Partition</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`Kafka retains messages for a configured time duration (e.g., 7 days) or size limit per topic, even if they're consumed. Configurable via retention.ms or retention.bytes.`)
-        }
-      >Retention Policy</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(`ZooKeeper is used for:
-Cluster metadata management
-Broker registration
-Leader election`)
-        }
-      >ZooKeeper</button>
-    <br />
-<button className="btn btn-success me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    `producer.js`, 
-    `const { Kafka } = require("kafkajs");
+<strong>When NOT to Use Kafka</strong><br />
+Simple request-response communication<br />
+Low-volume messaging<br />
+Strict request ordering across all messages<br />
+Very small applications<br />
+<strong>Use Cases</strong>: Like collecting app logs, Real-time analytics, Order tracking in e-commerce and Communication between microservices</p>,
+`************************ producer.js ************************ 
+const { Kafka } = require("kafkajs");
 
 const kafka = new Kafka({
   clientId: "demo-producer",
@@ -285,14 +194,10 @@ const run = async () => {
   }, 2000);
 };
 
-run().catch(console.error);`
-  )
-}>
-  producer.js
-</button>
+run().catch(console.error);
 
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(`consumerA.js`, `const { Kafka } = require("kafkajs");
+************************ consumerA.js ************************
+const { Kafka } = require("kafkajs");
 
 const kafka = new Kafka({
   clientId: "analytics-service",
@@ -312,12 +217,10 @@ const run = async () => {
   });
 };
 
-run().catch(console.error);`)
-        }
-      >consumerA.js</button>
+run().catch(console.error);
 
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(`consumerB.js`, `const { Kafka } = require("kafkajs");
+************************ consumerB.js ************************
+const { Kafka } = require("kafkajs");
 
 const kafka = new Kafka({
   clientId: "email-service",
@@ -337,12 +240,10 @@ const run = async () => {
   });
 };
 
-run().catch(console.error);`)
-        }
-      >consumerB.js</button>
+run().catch(console.error);
 
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(`docker-compose.yml`, `services:
+********************** docker-compose.yml ************************
+services:
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
     environment:
@@ -361,307 +262,604 @@ run().catch(console.error);`)
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1`)
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+`)
         }
-      >docker-compose.yml</button><br />
+      >Kafka</button>
 
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>RabbitMQ</strong> is an open-source message broker that helps applications to communicate with each other by sending and receiving messages through queues. It acts like a middleman that stores messages from producers and delivers them to consumers, ensuring reliable, asynchronous communication between systems.<br />
-<strong>Key Concepts are:</strong><br />
-<strong>Producer</strong>: Sends messages.<br />
-<strong>Queue</strong> stores messages until they are processed by consumers. Queues make sure reliable delivery from consumers.<br />
-<strong>Consumer</strong> connects to the queue and receives messages for processing. It can acknowledge messages after processing<br />
-<strong>Broker</strong> is RabbitMQ server that manages everything like receiving messages from producers, routing them to the correct queues, and deliver to consumers based on defined rules and configurations.<br />
-<strong>Binding</strong> is a link between an exchange and a queue, with optional routing rules. It tells the exchange which messages should go to which queues.<br />
-<strong>vHost</strong> is like a namespace and it separate resources like queue and exchange<br />
-<strong>Use Cases</strong>: Sending notifications, Order processing in e-commerce, Decoupling microservices, Background job handling</p>)
-        }
-      >RabbitMQ</button>
+<button className="btn btn-info me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>RabbitMQ</strong> is an open-source message broker that enables applications to communicate by sending and receiving messages through queues. It follows the traditional messaging model and is mainly used for reliable, asynchronous communication between systems.<br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Exchange</strong> is responsible for receiving messages from producers and routing them to queues based on bindings and routing keys.<br />
-<strong>Direct</strong> routes messages to queues with exact routing key match<br />
-<strong>Fanout</strong> broadcasts to all bound queues<br />
-<strong>Topic</strong> routes based on pattern matching of routing keys<br />
-<strong>Headers</strong> routes based on header values instead of routing keys</p>)
-        }
-      >Exchange</button>
+      <strong>RabbitMQ Components are:</strong><br />
+      <strong>Producer</strong> sends messages to RabbitMQ exchanges. It does not send messages directly to queues.<br />
+      <strong>Consumer</strong> receives messages from queues and processes them asynchronously.<br />
+      <strong>Exchange</strong> routes messages to one or more queues based on routing rules. Types include Direct, Topic, Fanout, and Headers.<br />
+      <strong>Queue</strong> stores messages until they are consumed. Messages are removed once acknowledged by consumers.<br />
+      <strong>Binding</strong> defines the relationship between an exchange and a queue using routing keys.<br />
+      <strong>Broker</strong> RabbitMQ server that manages exchanges, queues, and message routing.<br /><br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Idempotent Producer</strong> avoid duplicate messages and making sure each message is delivered only once. It uses a producer ID and a sequence number to track messages and we can enable it by setting enable.idempotence=true</p>)
-        }
-      >Idempotent Producer</button>
+      <strong>RabbitMQ Key Features</strong><br />
+      <strong>Reliable Messaging</strong> Ensures message delivery using acknowledgements and persistence.<br />
+      <strong>Message Routing</strong> Flexible routing using different exchange types.<br />
+      <strong>Low Latency</strong> Optimized for fast message delivery.<br />
+      <strong>Back Pressure Handling</strong> Queues help absorb traffic spikes.<br />
+      <strong>Request-Response Support</strong> Works well for command-based communication.<br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Routing Key</strong> is a string used by RabbitMQ to decide how to route a message from an exchange to the correct queue.</p>)
-        }
-      >Routing Key</button>
+      <strong>Why RabbitMQ is Needed</strong><br />
+      Traditional synchronous communication can cause tight coupling, failures to cascade, and poor scalability.<br />
+      RabbitMQ solves this by enabling asynchronous communication, reliable delivery, and loose coupling between producers and consumers.<br /><br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Message Durability</strong> means messages are saved to disk, so that messages are not lost if the server restarts or crash. To achieve durability, the queue must be durable and the messages must be marked as persistent.</p>)
-        }
-      >Message Durability</button>
+      <strong>When to Use RabbitMQ</strong><br />
+      Use RabbitMQ when:<br />
+      You need reliable message delivery<br />
+      You need complex routing logic<br />
+      You want task queues or background job processing<br />
+      Low latency messaging is required<br />
+      Request-response or command-based communication is needed<br /><br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>RabbitMQ requires consumers to send an <strong>acknowledgment</strong> after successfully processed the message. If a message is not acknowledged, RabbitMQ assumes it wasn’t processed and may re-deliver to another consumer.</p>)
-        }
-      >Acknowledgment</button>
+      <strong>When NOT to Use RabbitMQ</strong><br />
+      Very high throughput streaming systems<br />
+      Event replay or long-term message storage is required<br />
+      Real-time analytics pipelines<br /><br />
 
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>prefetch_count</strong> controls how many unacknowledged messages RabbitMQ can send to a consumer at a time. It make sure fair distribution by preventing one consumer from being overloaded while others are idle.</p>)
-        }
-      >Prefetch Count</button>
+      <strong>Use Cases</strong>: Task queues, Background job processing, Email/SMS notifications, Payment processing, Microservices communication
+    </p>
+  )
+}>
+  RabbitMQ
+</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>In <strong>auto-ack</strong> RabbitMQ marks the message as processed immediately after sending it, even if the consumer hasn’t finished handling it.<br />
-In <strong>manual ack</strong> the consumer must explicitly confirm (acknowledge) the message after successfully processing it.</p>)
-        }
-      >auto-ack vs manual-ack</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Dead-Letter Exchanges (DLX)</strong> is used to redirect messages that are rejected, expired or have exceeded retry limits. These messages are sent to a dead-letter queue for further inspection, logging or retry handling.</p>)
-        }
-      >Dead-Letter Exchanges</button>
+<button className="btn btn-primary me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Azure Service Bus</strong> is a fully managed enterprise message broker provided by Microsoft Azure. It enables reliable, secure, and asynchronous communication between applications using queues and topics, making it ideal for cloud and enterprise systems.<br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Reliable Message Delivery</strong> means make sure messages are not lost and are successfully delivered from producer to broker to consumer, even if the producer, consumer, or server fails during processing the message.</p>)
-        }
-      >Reliable Delivery Messages</button>
+      <strong>Azure Service Bus Components are:</strong><br />
+      <strong>Producer (Sender)</strong> sends messages to queues or topics. It does not need to know who consumes the messages.<br />
+      <strong>Consumer (Receiver)</strong> receives messages from queues or topic subscriptions and processes them asynchronously.<br />
+      <strong>Queue</strong> stores messages in a FIFO manner and delivers each message to a single consumer.<br />
+      <strong>Topic</strong> is used for publish-subscribe messaging where multiple subscriptions can receive the same message.<br />
+      <strong>Subscription</strong> is a virtual queue attached to a topic that receives messages based on filters.<br />
+      <strong>Broker</strong> Azure-managed service that handles message storage, delivery, and security.<br /><br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Message Expiration</strong> means that a message has a time limit to live in a queue; if it’s not delivered or consumed within that time, RabbitMQ removes (expires) the message automatically.</p>)
-        }
-      >Message Expiration</button>
+      <strong>Azure Service Bus Key Features</strong><br />
+      <strong>Reliable Messaging</strong> Supports at-least-once delivery with message locks and acknowledgements.<br />
+      <strong>Dead-Letter Queue</strong> Automatically stores failed or expired messages for later analysis.<br />
+      <strong>Message Scheduling</strong> Allows messages to be delivered at a future time.<br />
+      <strong>Duplicate Detection</strong> Prevents processing the same message multiple times.<br />
+      <strong>Security</strong> Integrated with Azure Active Directory and role-based access control.<br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>RabbitMQ Plugins</strong> are optional add-ons that extend RabbitMQ’s functionality with extra features like monitoring, management, protocols, and integrations.<br />
-<strong>Management Plugin</strong> provides a web-based UI to monitor and manage RabbitMQ easily.<br />
-<strong>Federation Plugin</strong> allows connecting and syncing multiple RabbitMQ brokers across different networks.<br />
-<strong>Shovel Plugin</strong> automatically moves messages between queues on different brokers.<br />
-<strong>STOMP / MQTT Plugins</strong> enable RabbitMQ to support different messaging protocols besides AMQP.<br />
-<strong>Tracing Plugin</strong> helps track message flow for debugging.</p>)
-        }
-      >RabbitMQ Plugins</button>
-    <br />
+      <strong>Why Azure Service Bus is Needed</strong><br />
+      In distributed and cloud-based systems, direct communication can cause tight coupling and reliability issues.<br />
+      Azure Service Bus enables asynchronous, reliable messaging with built-in security, scalability, and fault handling.<br /><br />
 
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Azure Service Bus</strong> is a fully managed message broker that helps applications or services communicate with each other asynchronously by sending messages through queues and topics. Service Bus decouple services, meaning the sender and receiver don’t need to be online at the same time. It’s great for enterprise-level messaging, ensuring reliable delivery, retry handling, and ordered processing.<br />
-Features of Azure Service Bus are:<br />
-<strong>Reliable messaging</strong> with retries and dead-letter queues<br />
-<strong>Message ordering</strong> and <strong>duplicate detection</strong><br />
-<strong>Scheduled delivery</strong> of messages<br />
-<strong>Message sessions</strong> for maintaining state in conversations<br />
-<strong>Advanced filtering</strong> in topics/subscriptions<br />
+      <strong>When to Use Azure Service Bus</strong><br />
+      Use Azure Service Bus when:<br />
+      You need enterprise-grade messaging<br />
+      Guaranteed message delivery is required<br />
+      Publish-subscribe communication is needed<br />
+      Azure-native integration is preferred<br />
+      Message ordering and transactions are important<br /><br />
 
-<strong>Service Bus Components are</strong>:<br />
-<strong>Topic</strong> is a messaging channel that allows one-to-many communication, meaning a single message sent to a topic can be received by multiple subscribers.<br />
-<strong>Use Case</strong>: In an e-commerce app, when a user places an order the <strong>Order Service</strong> sends a message to the Service Bus queue. The <strong>Inventory and Billing Services</strong> receive and process the message independently.</p>)
-        }
-      >Service Bus</button>
+      <strong>When NOT to Use Azure Service Bus</strong><br />
+      Extremely high-throughput event streaming systems<br />
+      Long-term message storage or replay is required<br />
+      Real-time analytics pipelines<br /><br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Dead-letter Queue</strong> is used to store messages that can’t be delivered or processed due to Rejected messages, Messages that exceeded the max delivery count, Expired messages. They can be inspected or reprocessed later.</p>)
-        }
-      >DLQ</button>
+      <strong>Use Cases</strong>: Order processing, Payment workflows, Inventory updates, Microservices communication, Event-driven enterprise applications
+    </p>
+  )
+}>
+  Azure Service Bus
+</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Subscription</strong> is a virtual queue that receives a copy of each message sent to the topic.</p>)
-        }
-      >Subscription</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Amazon SQS (Simple Queue Service)</strong> is a fully managed message queuing service provided by AWS. It enables applications to decouple and scale by sending, storing, and receiving messages between distributed components without managing messaging infrastructure.<br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Service Bus Session</strong> is a feature that enables FIFO and stateful processing across messages. Messages with the same SessionId are grouped and handled sequentially.</p>)
-        }
-      >Service Bus Session</button>
+      <strong>Amazon SQS Components are:</strong><br />
+      <strong>Producer (Sender)</strong> sends messages to an SQS queue. It does not need to know who consumes the messages.<br />
+      <strong>Consumer (Receiver)</strong> polls messages from the queue and processes them asynchronously.<br />
+      <strong>Queue</strong> stores messages until they are processed and deleted by consumers.<br />
+      <strong>Standard Queue</strong> provides at-least-once delivery with high throughput and best-effort ordering.<br />
+      <strong>FIFO Queue</strong> guarantees exactly-once processing and strict message ordering.<br />
+      <strong>AWS Managed Service</strong> SQS is fully managed by AWS, so no broker or server management is required.<br /><br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Peek-Lock</strong>: Message is locked, processed, then explicitly completed.<br />
-<strong>Receive-and-Delete</strong>: Message is removed immediately after reading.</p>)
-        }
-      >PeekLock vs ReceiveAndDelete</button>
-      
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Azure Service Bus can detect and ignore duplicate messages within a deduplication time window (e.g., 10 minutes) using a MessageId.</p>)
-        }
-      >Duplicate Detection</button>
+      <strong>Amazon SQS Key Features</strong><br />
+      <strong>Fully Managed</strong> No servers, brokers, or cluster management required.<br />
+      <strong>Scalability</strong> Automatically scales to handle any message volume.<br />
+      <strong>Reliability</strong> Messages are stored redundantly across multiple AZs.<br />
+      <strong>Dead-Letter Queue</strong> Captures messages that fail processing after multiple retries.<br />
+      <strong>Security</strong> Integrated with IAM for fine-grained access control.<br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Auto Delete</strong> automatically deletes a queue or topic if it remains idle for a specified time period.</p>)
-        }
-      >Auto Delete</button>
+      <strong>Why Amazon SQS is Needed</strong><br />
+      Direct communication between services can cause tight coupling and cascading failures.<br />
+      SQS enables asynchronous communication, improves fault tolerance, and allows systems to scale independently.<br /><br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Auto Forwarding</strong> automatically forward messages from one queue or subscription to another within the same namespace.</p>)
-        }
-      >Auto Forwarding</button>
+      <strong>When to Use Amazon SQS</strong><br />
+      Use Amazon SQS when:<br />
+      You want a fully managed queue with minimal operational overhead<br />
+      You need reliable asynchronous processing<br />
+      You want to decouple microservices or distributed systems<br />
+      You are building AWS-native applications<br />
+      Message ordering or exactly-once processing is required (FIFO queues)<br /><br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Basic – Only queues<br />
-Standard – Queues and Topics<br />
-Premium – Dedicated resources, better performance, virtual network integration</p>)
-        }
-      >Pricing Tiers</button>
+      <strong>When NOT to Use Amazon SQS</strong><br />
+      Event streaming or real-time analytics pipelines<br />
+      Message replay or long-term retention is required<br />
+      Complex message routing is needed (use SNS or EventBridge)<br /><br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>We can improve message throughput in Azure Service Bus like:<br />
-Enable partitioning<br />
-Use batched sends<br />
-Use asynchronous send/receive<br />
-Scale with Premium tier</p>)
-        }
-      >Improve Message Throughput</button>
+      <strong>Use Cases</strong>: Background job processing, Order processing, Payment workflows, Image or file processing, Microservices communication
+    </p>
+  )
+}>
+  SQS
+</button><br />
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Messages can be deferred for later processing. A message is set aside and retrieved by its sequence number when needed.</p>)
-        }
-      >Message Deferral</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Migrating Monolithic App to Microservices</strong><br />
+Scenario: You have a large ASP.NET monolithic application hosted on-premises. Users are growing rapidly, and deployments are risky and slow.<br />
+Question: How would you migrate this system to microservices on the cloud while minimizing downtime?<br />
+First, I will not break the monolith in one shot because that is risky and can cause downtime. I will use the Strangler Pattern so that migration happens step by step.<br />
+I will start by analyzing the existing ASP.NET monolithic application and identify business modules using Domain-Driven Design, like User Management, Orders, Payments, Notifications, etc. These will become bounded contexts, and I will pick one small, less risky module to migrate first.<br />
+Then I will put an API Gateway in front of the monolith. Initially, all traffic will go to the monolith. When I create a new microservice, for example Order Service, I will route only order-related APIs to the new service, and remaining APIs will still go to the monolith. This way users will not face any downtime.<br />
+Each microservice will be built using .NET Core, containerized using Docker, and deployed to the cloud using Kubernetes or managed container services. This will help in scaling, rolling deployments, and easy rollback.<br />
+For database, I will follow database-per-service concept. Each microservice will own its own data. In the beginning, some services may still read from the monolith database, but gradually data will be separated. For communication between services, I will use events and eventual consistency instead of distributed transactions.
+    </p>
+  )
+}>
+  Migrating Monolithic App to Microservices
+</button>
 
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Poison Messages</strong> can be handled in Azure Service Bus like:<br />
-            Using DLQ to store them<br />
-Monitor DLQs and move or delete bad messages manually or via code</p>)
-        }
-      >Poison Messages</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>High-Traffic Web App/Scaling a Web Application</strong><br />
+Scenario: Your web app is facing performance issues during peak traffic.<br />
+Question: How would you scale it to handle high traffic?<br />
+When a web app faces performance issues during peak traffic, I would scale it to handle high load using multiple strategies.<br />
+First, I will use horizontal scaling by adding more servers or instances behind a load balancer, so traffic is evenly distributed and no single server gets overloaded. I will also configure auto-scaling so new instances spin up automatically during spikes and scale down when traffic reduces.<br />
+Next, I will implement caching. For dynamic data, I can use Redis to reduce repeated database hits, and for static assets like JS, CSS, and images, I will use a CDN to serve content closer to users.<br />
+On the database side, I will optimize performance using read replicas for read-heavy workloads and consider sharding if the data grows too large. Queries and indexes will also be tuned to improve response times.<br />
+Overall, by combining horizontal scaling, load balancing, auto-scaling, caching, and database optimization, the app can handle high traffic smoothly without performance issues.
+    </p>
+  )
+}>
+  High-Traffic Web App/Scaling a Web Application
+</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>The maximum message size in Azure Service Bus are:<br />
-Standard Tier: 256 KB<br />
-Premium Tier: 1 MB</p>)
-        }
-      >Max Message Size</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Multi-Tenant Architecture</strong><br />
+Scenario: You are designing a multi-tenant SaaS application for enterprise customers using .NET.<br />
+Question: How would you design tenant isolation at the application and database levels?<br />
+While designing a multi-tenant application in .NET, my main focus will be tenant isolation, security, and cost control.<br />
+At the application level, I will identify tenants using a Tenant ID, which can come from subdomain, request header, or JWT token. Every API request will be validated to ensure the user can access only their own tenant data. I will enforce this using middleware in .NET so isolation is handled centrally.<br />
+At the database level, there are multiple approaches.<br />
+For small and medium customers, I will use a single database with tenant-based isolation, either using a TenantId column or schema-per-tenant approach. Schema isolation gives better separation while keeping costs lower.<br />
+For large enterprise customers, I will use database-per-tenant. This provides strong isolation, better security, and easier compliance, but at higher cost. This mixed approach helps in cost optimization.<br />
+For security boundaries, I will ensure:<br />
+Strict authorization checks at application level<br />
+Encryption of data at rest and in transit<br />
+Separate secrets and connection strings per tenant where required<br />
+Overall, by combining proper tenant identification, database isolation strategies, strong security checks, and flexible deployment models, we can build a secure and scalable multi-tenant system in .NET.
+    </p>
+  )
+}>
+  Multi-Tenant Architecture
+</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Partitioning</strong> allows messages to be stored across multiple message brokers, improving availability and scalability.</p>)
-        }
-      >Partitioning</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Securing Microservices</strong><br />
+Scenario: Your system consists of multiple microservices built using .NET and Node.js.<br />
+Question: How would you secure communication between services and external clients?<br />
+To secure communication between microservices and external clients, I will design security at multiple layers.<br />
+For external clients, I will use OAuth 2.0 with OpenID Connect for authentication. Users will log in via an Identity Provider, and after login they will get a JWT token. This JWT will be sent with every API request and validated by the system to check user identity and permissions.<br />
+I will place an API Gateway in front of all microservices. The gateway will handle authentication, token validation, rate limiting, and routing, so individual services remain simple and secure.<br />
+For service-to-service communication, I will use mTLS (mutual TLS). This ensures both services authenticate each other using certificates, so only trusted services can talk to each other.<br />
+JWT tokens will be short-lived, and sensitive scopes or roles will be validated inside the services. For extra safety, secrets and certificates will be stored in a secure vault.<br />
+To protect against abuse and traffic spikes, I will enable rate limiting and throttling at the API Gateway level.<br />
+Overall, using OAuth + JWT for clients, API Gateway for centralized security, mTLS for internal traffic, and rate limiting, the microservices architecture will be secure and scalable.
+    </p>
+  )
+}>
+Securing Microservices
+</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Message Lock</strong> prevents other receivers from processing the same message and the default time is 30 seconds and extendable up to 5 minutes</p>)
-        }
-      >Message Lock</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Cloud Cost Optimization</strong><br />
+Scenario: Your cloud bill has increased by 40% over 3 months.<br />
+Question: How would you analyze and reduce cloud costs without impacting performance?<br />
+First, I will analyze where the cost is increasing using cloud cost management and monitoring tools. I will break down the bill by services like compute, storage, database, and network to find major cost contributors.<br />
+Next, I will do rightsizing of resources. Many VMs or containers are usually over-provisioned. Based on CPU, memory, and usage metrics, I will downsize instances or reduce replica counts without affecting performance.<br />
+Then, I will review auto-scaling policies. Instead of running high capacity all the time, I will ensure scaling happens only during peak load and scales down properly during low traffic.<br />
+For predictable workloads, I will use Reserved Instances or Savings Plans to reduce compute costs significantly compared to on-demand pricing.<br />
+On the storage side, I will enable storage tiering, moving infrequently accessed data to cheaper tiers like cold or archive storage.<br />
+Finally, I will improve observability and monitoring by setting up cost alerts, usage dashboards, and regular cost reviews. This helps catch cost issues early before they grow.<br />
+Overall, by combining rightsizing, smart auto-scaling, long-term reservations, storage optimization, and continuous monitoring, I can reduce cloud costs without impacting system performance.
+    </p>
+  )
+}>
+Cloud Cost Optimization
+</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ScheduledEnqueueTimeUtc</strong> is use to deliver message at a specific time in the future</p>)
-        }
-      >ScheduledEnqueueTimeUtc</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Database Strategy for Global Users</strong><br />
+Scenario: Your application serves users across multiple continents with strict latency requirements.<br />
+Question: How would you design the database architecture?<br />
+For a global application with users across multiple continents, my main goal will be low latency and high availability, while still keeping data consistent where required.<br />
+First, I will use geo-replication so data is available in multiple regions closer to users. For read-heavy workloads, I will configure read replicas in different regions, so users can read data from the nearest location with low latency.<br />
+For write operations, I will usually keep a primary region to avoid conflicts. Some delay between regions is acceptable, so I will follow eventual consistency for non-critical data like user activity, logs, or analytics.<br />
+Based on the use case, I will choose SQL or NoSQL. If the application needs strong relationships and transactions, I will use SQL with geo-replicated read replicas. For massive scale and flexible data with global distribution, I will use NoSQL databases that support multi-region writes.<br />
+I will also consider data residency and compliance. For example, European user data will stay in EU regions, and routing will ensure data does not cross restricted boundaries.<br />
+Overall, by combining read replicas, geo-replication, eventual consistency, right database choice, and data residency rules, the system will deliver low latency globally while staying compliant.
+    </p>
+  )
+}>
+Database Strategy for Global Users
+</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Message Ordering</strong> is guaranteed only when using sessions. Without sessions, messages might arrive out of order.</p>)
-        }
-      >Message Ordering</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>CI/CD for Polyglot Stack (.NET + MERN/MEAN)</strong><br />
+Scenario: Your solution includes .NET backend services and React/Angular frontends.<br />
+Question: How would you design a CI/CD pipeline that supports all technologies?<br />
+Since the solution has .NET backend and React/Angular frontend, I will design a polyglot CI/CD pipeline that handles both efficiently.<br />
+First, I will have separate build and test stages for each technology. For .NET, build and run unit/integration tests, and for React/Angular, run npm install, build, and test. After successful builds, I will create artifacts like Docker images or static bundles and store them in a central artifact repository.<br />
+Next, I will use Infrastructure as Code with Terraform or Bicep to provision environments consistently, so staging, QA, and production are reproducible.<br />
+For deployments, I will promote artifacts through environments—Dev → QA → Staging → Production—using automated pipelines. To reduce risk during production deployment, I will use blue-green or canary deployments, so only a part of traffic hits the new version initially, and rollback is easy if something goes wrong.<br />
+Overall, this CI/CD approach ensures fast, reliable, and consistent deployments across multiple technologies without manual errors.
+    </p>
+  )
+}>
+CI/CD for Polyglot Stack (.NET + MERN/MEAN)
+</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>QuotaExceededException</strong>	message or size limit reached. It can be fixed using increase quota, remove messages<br />
-<strong>ServerBusyException</strong> when throttling. It can be fixed using retry with exponential backoff.<br />
-<strong>MessageLockLostException</strong> when lock expired. It can be fixed using	 RenewLock or process faster.<br />
-<strong>UnauthorizedAccessException</strong> when wrong SAS or AAD permission. It can be fixed using	validate credentials/roles.</p>)
-        }
-      >Common Errors</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Observability and Troubleshooting in Cloud</strong><br />
+Scenario: Users report intermittent issues, but logs do not show obvious errors.<br />
+Question: How would you implement observability to quickly diagnose issues?<br />
+When users report intermittent issues and logs don’t show obvious errors, I will implement full observability across the system.<br />
+First, I will use centralized logging so all logs from different services go to one place, like ELK Stack or Azure Monitor. This makes searching and correlating logs much easier.<br />
+Next, I will implement distributed tracing to follow a request as it passes through multiple microservices. This helps find slow services or points where requests fail. Correlation IDs will be attached to every request so logs, traces, and metrics can be linked together.<br />
+I will also set up metrics and alerts for key KPIs like latency, error rates, and resource usage. Alerts will trigger when thresholds are crossed, so problems are noticed before users complain.<br />
+Finally, I will use APM tools like Application Insights or New Relic to monitor performance, database queries, and service dependencies. This gives a real-time view of the system and helps quickly diagnose intermittent issues.<br />
+Overall, by combining centralized logs, tracing, correlation IDs, metrics, and APM tools, we can detect, diagnose, and fix issues much faster in cloud environments.
+    </p>
+  )
+}>
+Observability and Troubleshooting in Cloud
+</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Azure Monitor<br />
-Application Insights<br />
-Service Bus Explorer</p>)
-        }
-      >Monitor Service Bus</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Disaster Recovery & High Availability</strong><br />
+Scenario: Your system must meet 99.99% availability and recover from regional outages.<br />
+Question: How would you design for high availability and disaster recovery?<br />
+To achieve 99.99% availability and recover from regional outages, I will design the system with multi-region deployments. Services and databases will be deployed across at least two regions to ensure redundancy.<br />
+I will decide between active-active or active-passive based on cost and performance. For critical services, active-active allows both regions to serve traffic simultaneously, while active-passive can be used for less critical workloads.<br />
+For data, I will implement a strong backup and restore strategy with regular backups, and define RTO (Recovery Time Objective) and RPO (Recovery Point Objective) to know how fast and how much data we can recover.<br />
+I will also set up automated failover using DNS, load balancers, or cloud services so traffic shifts automatically to the healthy region without manual intervention.<br />
+Finally, regular DR drills and monitoring will ensure the system meets SLA and is ready for real outages.<br />
+Overall, multi-region deployments, proper backup, defined RTO/RPO, and automated failover together provide high availability and disaster recovery.
+    </p>
+  )
+}>
+Disaster Recovery & High Availability
+</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>You can secure it using:<br />
-Shared Access Signature (SAS) tokens<br />
-Azure Active Directory (Azure AD) authentication<br />
-Role-Based Access Control (RBAC)</p>)
-        }
-      >Secure Service Bus Access</button><br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Cloud Migration Strategy</strong><br />
+Scenario: A legacy application is moving from on-premises to cloud.<br />
+Question: How would you plan migration with minimal downtime and risk?<br />
+For moving a legacy on-premises application to cloud with minimal downtime, I would follow an incremental and low-risk approach.<br />
+First, I will analyze the application to understand dependencies, modules, and data. Then I will decide which parts can move first—starting with non-critical or low-risk components.<br />
+I will use the Strangler Pattern, where new functionality runs in the cloud and old features still run on-premises. Traffic gradually moves to the cloud until the old system can be retired.<br />
+I will also containerize the application using Docker and deploy it on cloud services or Kubernetes to make scaling and management easier. For the database, I will plan a data migration strategy, maybe starting with read replicas and then switching writes gradually.<br />
+To reduce risk, I will set up CI/CD pipelines, monitoring, and alerts, so every deployment is automated and we can rollback quickly if needed.<br />
+Overall, by incremental migration, strangler pattern, containerization, careful data migration, and automated pipelines, we can move to cloud safely with minimal downtime.
+    </p>
+  )
+}>
+Cloud Migration Strategy
+</button>
 
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>SonarQube</strong>: SonarQube is an open-source platform developed by SonarSource for continuous inspection of code quality. It performs static code analysis to detect issues like bugs, code smells, and security vulnerabilities in your codebase.<br />
-<strong>How does SonarQube work</strong><br />
-SonarQube works in three steps:<br />
-Sonar Scanner analyzes source code and generates a report.<br />
-SonarQube Server processes and stores this data in a database.<br />
-Web UI Dashboard displays metrics, issues, and trends for developers.<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>CI/CD Pipeline in Cloud</strong><br />
+Scenario: Multiple microservices need frequent deployments.<br />
+Question: How would you design CI/CD pipelines for automated, safe releases?<br />
+For multiple microservices needing frequent deployments, I will design a fully automated CI/CD pipeline to make releases safe and fast.<br />
+First, each microservice will have its own build and test pipeline. For example, .NET services will run unit and integration tests, while Node.js/React services will run npm build and tests. Successful builds will produce artifacts or Docker images stored in a central repository.<br />
+Next, I will use Infrastructure as Code with Terraform or Bicep to provision environments consistently—Dev, QA, Staging, Production. This ensures deployments are predictable and repeatable.<br />
+For deployment, I will use blue-green or canary strategies. Traffic is gradually shifted to new versions so any issues can be rolled back quickly without affecting users.<br />
+Finally, I will add automated monitoring, alerts, and rollback triggers to make sure failures are detected early. Pipelines will also support parallel deployments for independent microservices to save time.<br />
+Overall, by combining independent pipelines, artifact management, IaC, blue-green/canary deployment, and monitoring, the system can release microservices safely and frequently.
+    </p>
+  )
+}>
+CI/CD Pipeline in Cloud
+</button>
 
-<strong>Key features</strong><br />
-Static code analysis for multiple languages<br />
-Code quality metrics – code coverage, complexity, duplication<br />
-Security vulnerability detection (via SonarQube rules)<br />
-Integrations with CI/CD tools (Jenkins, Azure DevOps, GitHub Actions)<br />
-Quality Gates for enforcing code standards before merging or releasing<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Caching for High Performance</strong><br />
+Scenario: Your app experiences high read traffic on the same data.<br />
+Question: How would you implement cloud caching solutions to reduce latency and database load?<br />
+For an app with high read traffic on the same data, I would implement caching to reduce latency and database load.<br />
+First, I will use an in-memory cache like Redis or Memcached to store frequently accessed data such as product lists, user profiles, or session info. This reduces repeated database hits.<br />
+Next, I will decide the cache strategy—for example, write-through or read-through so cache stays consistent with the database. I can also use time-to-live (TTL) to refresh data periodically.<br />
+For cloud, I will use managed caching services so scaling is automatic and highly available. For global users, I can also use CDNs to cache static content like images, JS, and CSS closer to users.<br />
+Finally, I will monitor cache hit/miss ratios and performance metrics to optimize caching and avoid stale or unnecessary data.<br />
+Overall, by using in-memory caching, proper eviction policies, TTL, CDN for static content, and monitoring, we can drastically reduce latency and database load while keeping the app fast under high traffic.
+    </p>
+  )
+}>
+Caching for High Performance
+</button>
 
-<strong>Quality Gate in SonarQube</strong><br />
-A Quality Gate is a set of predefined conditions (e.g., code coverage ≥ 80%, no new critical bugs) that code must meet before it can be merged or deployed.<br />
-It acts as a “go/no-go” checkpoint in your CI/CD pipeline.<br />
 
-<strong>Bug, vulnerability, and code smell in SonarQube</strong><br />
-Type	Description	Example<br />
-Bug	Logic error that may cause incorrect behavior.	Null reference exception.<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Appropriate Cloud Service</strong><br />
+Question: How do you select the appropriate cloud service (aws, azure, gcp) for given solution ?<br />
+First I try to understand the business requirement, not the cloud name. I ask questions like: what kind of application it is, expected traffic, data sensitivity, budget, and timeline.<br />
+Then I check existing ecosystem. If client is already using Microsoft tools like Windows Server, Active Directory, Office 365, then Azure makes more sense. If they are already on Linux, open-source stack, or need strong DevOps and startup-friendly services, AWS is usually preferred. If requirement is heavy on data analytics, AI/ML, or BigQuery-type workloads, then GCP is a good fit.<br />
+Next I compare core services needed—compute, storage, database, networking—and see which cloud gives best managed services for that use case. For example, serverless → AWS Lambda / Azure Functions / GCP Cloud Functions.<br />
+I also consider cost and pricing model, region availability, compliance (like GDPR, ISO), and support level.<br />
+Finally, I look at team skillset. If team already has experience in one cloud, choosing that reduces risk and delivery time.<br />
+So overall, I don’t select cloud emotionally—I select it based on business need, technical fit, cost, and team capability.
+    </p>
+  )
+}>
+Appropriate Cloud Service
+</button>
 
-<strong>Integrate SonarQube with .NET Core projects</strong><br />
-Install SonarScanner for .NET (dotnet-sonarscanner).<br />
-dotnet tool install --global dotnet-sonarscanner<br />
-Run the analysis:<br />
-View results in the SonarQube dashboard.<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Choosing the Right Message Broker</strong><br />
+Scenario: Your system needs asynchronous processing across .NET and Node.js services.<br />
+Question: Would you choose RabbitMQ, Kafka, or SQS, and why?<br />
+For asynchronous processing across .NET and Node.js services, I would choose the message broker based on use case and delivery guarantees.<br />
+If I need simple, reliable task queues with easy setup and support for multiple languages, I would go with RabbitMQ. It’s great for request/response patterns and smaller scale async jobs.<br />
+If the system requires high throughput, event streaming, and replay of messages, I would choose Kafka. Kafka is better for analytics pipelines or cases where multiple consumers need to process the same events.<br />
+If I want a fully managed, serverless option with minimal operational overhead on AWS, I could use SQS. It handles scaling automatically and integrates well with other AWS services.<br />
+In short, for most multi-language microservice async jobs, I prefer RabbitMQ for simplicity, Kafka for high-volume streaming, and SQS for managed cloud integration, depending on requirements.
+    </p>
+  )
+}>
+Choosing the Right Message Broker
+</button>
 
-<strong>Integrate with CI/CD pipelines</strong><br />
-SonarQube can be integrated with:<br />
-Jenkins: Using the SonarQube plugin and “Execute SonarQube Scanner” build step.<br />
-Azure DevOps: Using Prepare Analysis Configuration, Run Code Analysis, and Publish Quality Gate Result tasks.<br />
-GitHub Actions / GitLab CI: With sonar-scanner commands in workflow YAML.<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Order Processing System</strong><br />
+Scenario: You have a high-volume e-commerce system. Orders must be processed reliably.<br />
+Question: How would you design message queues and retries to avoid lost orders?<br />
+For a high-volume e-commerce system, reliability is key, so I would design message queues and retry mechanisms carefully.<br />
+First, every order will be sent to a durable message queue like RabbitMQ or Kafka. This ensures that even if a service goes down, messages are not lost. Messages should be acknowledged only after successful processing.<br />
+For failures, I will implement retry policies. Immediate retries for transient issues, and if it still fails, move the message to a dead-letter queue for manual or later processing. This prevents orders from being lost or processed twice.<br />
+To make the system idempotent, order processing logic will check if the order was already handled, so retries don’t create duplicates.<br />
+I can also scale consumers horizontally to handle peak traffic, and monitor queue length and processing metrics to make sure no orders get stuck.<br />
+Overall, using durable queues, controlled retries, dead-letter queues, idempotent processing, and scaling, the system can process orders reliably without losing any, even under high load.
+    </p>
+  )
+}>
+Order Processing System
+</button>
 
-<strong>Quality Profile</strong><br />
-A Quality Profile defines which rules SonarQube uses during analysis.<br />
-Inherit from built-in profiles<br />
-Create custom profiles per language or project.<br />
-Activate/deactivate rules based on your team standards.<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Event Sourcing</strong><br />
+Scenario: You want to maintain an audit log of all changes in your application.<br />
+Question: How would you use a message broker for event sourcing?<br />
+If I want to maintain an audit log of all changes, I would use event sourcing with a message broker like Kafka or RabbitMQ.<br />
+Whenever any change happens in the application, instead of directly updating the database only, I will publish an event describing the change to the message broker. Each event is immutable and stored in order, so it acts as a reliable audit log.<br />
+Consumers can subscribe to these events to update read models, analytics, or reporting systems without touching the main database. This also allows rebuilding the state at any time by replaying events.<br />
+For reliability, the broker ensures durable messages and supports retries if a consumer fails. Using Kafka, for example, I can store events for a long time and replay them for auditing or debugging.
+    </p>
+  )
+}>
+Event Sourcing
+</button>
 
-<strong>Common SonarQube metrics</strong><br />
-Metric	Description<br />
-Code Coverage	% of code covered by tests<br />
-Duplicated Lines (%)	Reused or identical code<br />
 
-<strong>Handle false positives</strong><br />
-“Won’t Fix” – if intentional design choice.<br />
-“False Positive” – if rule is not applicable.<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Dead Letter Queue Handling</strong><br />
+Scenario: Some messages fail processing repeatedly.<br />
+Question: How would you implement dead-letter queues and retries effectively?<br />
+When some messages failed and not processing, I would implement a dead-letter queue (DLQ) to handle them safely.<br />
+First, every message goes to the main queue and is processed by consumers. If processing fails, I will have a retry policy—a few automatic retries with exponential backoff for transient errors.<br />
+If a message still fails after all retries, it goes to the DLQ. This prevents blocking the main queue and lets us inspect or manually process failed messages later. The DLQ can also trigger alerts so the team can take action quickly.<br />
+For scaling, I will make sure both the main queue and DLQ can scale horizontally. Consumers can scale based on queue length, so spikes in traffic don’t delay processing.<br />
+Overall, main queue + controlled retries + DLQ + scaling consumers ensures reliable processing, prevents message loss, and keeps the system resilient even under high load.
+    </p>
+  )
+}>
+Dead Letter Queue Handling
+</button>
 
-<strong>Multiple Microservices in one SonarQube instance</strong><br />
-Create separate projects in SonarQube for each microservice.<br />
-Each service uses its own project key and token in the pipeline.<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Message Broker Scaling</strong><br />
+Scenario: Your message broker becomes a bottleneck during peak hours.<br />
+Question: How would you scale publish-subscribe or queue systems to handle millions of messages per day?<br />
+When a message broker becomes a bottleneck during peak hours, I will scale both publish-subscribe and queue systems to handle millions of messages reliably.<br />
+First, I will partition the broker—for example, Kafka topics can have multiple partitions so multiple consumers can read in parallel. For RabbitMQ, I can use multiple queues and exchanges to distribute load.<br />
+Next, I will scale consumers horizontally. Adding more consumers ensures messages are processed faster without blocking the queue. Producers can also be scaled if message publishing is high.<br />
+I will also enable message batching and asynchronous processing to reduce load per request. For durability and reliability, I will make sure messages are persistent and acknowledged only after successful processing.<br />
+Finally, monitoring queue length, broker health, and throughput is key. Auto-scaling consumers or partitions based on metrics ensures the system handles traffic spikes without failures.<br />
+Overall, by partitioning, horizontal scaling, batching, async processing, and monitoring, the message broker can handle millions of messages per day efficiently.
+    </p>
+  )
+}>
+Message Broker Scaling
+</button>
 
-<strong>SonarQube vs SonarCloud</strong><br />
-Feature	SonarQube	SonarCloud<br />
-Hosting	Self-hosted	Cloud-hosted (SaaS)<br />
-Setup	Manual installation	No setup needed<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Key Responsibilities of Solution Architect</strong><br />
+Question: Can You explain the key responsibilities of a solution architect in a software development project?<br />
+As a Solution Architect, my main responsibility is to convert business requirements into a technical solution.<br />
+First, I work closely with business stakeholders to understand what problem we are solving, expected outcome, budget, and timeline. Then I design the overall system architecture—like application flow, cloud setup, databases, integrations, and security.<br />
+I also decide technology stack—which cloud, frameworks, databases, and third-party tools should be used—keeping scalability, performance, and cost in mind.<br />
+Another key responsibility is non-functional requirements like security, availability, scalability, and disaster recovery. I make sure the system can handle future growth and failures.<br />
+During development, I guide the dev team, review designs, and ensure best practices are followed. I also coordinate with DevOps, QA, and operations teams.<br />
+Finally, I make sure the solution is aligned with business goals, technically sound, and ready for long-term maintenance.
+    </p>
+  )
+}>
+Key Responsibilities of Solution Architect
+</button>
 
-<strong>Detect code duplication</strong><br />
-It tokenizes the source code and compares syntax patterns to detect similar or identical blocks — even if variable names differ slightly.<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Tools and Frameworks</strong><br />
+Question: What tool and frameworks do you use for architecture modeling and documentation?<br />
+For architecture modeling and documentation, I use a mix of tools, depending on project and client maturity.<br />
+For high-level architecture diagrams, I commonly use Draw.io, Lucidchart, or Visio because they are easy to understand for both technical and non-technical stakeholders.<br />
+For cloud architecture, I use AWS Architecture Icons, Azure Architecture Center templates, and sometimes Cloudcraft for detailed cloud diagrams.<br />
+For documentation, I usually use Confluence or SharePoint, where I maintain architecture decisions, design documents, and assumptions. For API documentation, I use Swagger / OpenAPI.<br />
+For architecture frameworks, I mainly follow C4 Model for system, container, and component-level views. For enterprise-level projects, I align with TOGAF principles, but in a practical way, not heavy documentation.<br />
+Overall, my focus is on clear, simple, and maintainable documentation that actually helps the team, not just for formality.
+    </p>
+  )
+}>
+Tools and Frameworks
+</button>
 
-<strong>How do you exclude specific files or folders from SonarQube analysis</strong><br />
-You can use:<br />
-sonar-project.properties<br />
-sonar.exclusions=**/Migrations/**, **/TestHelpers/**<br />
-Or UI → Project Settings → Exclusions<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>SQL vs NoSQL</strong><br />
+Question: How do handle data storage decisions, such as sql vs nosql databases?<br />
+When handling data storage decisions like SQL vs NoSQL, first I clearly understand the data nature and access pattern.<br />
+If data is structured, needs strong relationships, joins, and ACID transactions—like finance, orders, billing—then I prefer SQL databases such as MySQL, PostgreSQL, or SQL Server.<br />
+If data is semi-structured or unstructured, schema changes frequently, or application needs high scalability and low latency—like logs, user activity, IoT, or large-scale apps—then NoSQL like MongoDB, DynamoDB, or Cassandra is better.<br />
+I also check read/write pattern. For complex queries → SQL. For high-volume reads/writes → NoSQL.<br />
+Then I consider scalability, cost, and cloud-native options, and sometimes we even use polyglot persistence, meaning SQL for core transactions and NoSQL for analytics or caching.<br />
+So decision is always based on use case, consistency needs, scalability, and future growth, not just database popularity.
+    </p>
+  )
+}>
+SQL vs NoSQL
+</button>
 
-<strong>Editions</strong><br />
-Edition	Features<br />
-Community	Free, basic analysis<br />
-Developer	Adds branch analysis, PR decoration<br />
-Enterprise	Portfolio management, governance<br />
-Data Center	Clustering, high availability<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>CAP Theorem</strong><br />
+Question: What is CAP theorem and how does it influence your architecture decisions?<br />
+CAP theorem says that in a distributed system, we can only fully guarantee two out of three things: Consistency, Availability, and Partition Tolerance.<br />
+Consistency means all users see the same data at the same time<br />
+Availability means system always responds, even if data is slightly outdated<br />
+Partition Tolerance means system continues working even if network failure happens<br />
+In real-world distributed systems, partition tolerance is mandatory, so the real choice is between Consistency and Availability.<br />
+In architecture decisions, I choose based on business requirement.<br />
+For example, in banking or payments, consistency is more important, so I design CP systems like traditional SQL or strongly consistent databases.<br />
+For systems like social media, product catalogs, or logging, availability is more important, so I go for AP systems like Cassandra or DynamoDB, where eventual consistency is acceptable.<br />
+So CAP theorem helps me make conscious trade-offs and design systems that match business expectations, not over-engineer blindly.
+    </p>
+  )
+}>
+CAP Theorem
+</button>
 
-<strong>Can SonarQube analyze frontend and backend code together</strong><br />
-Yes, SonarQube supports multi-language projects (like .NET + React or Node.js + Angular).<br />
-You just need to include all relevant paths in sonar.sources:<br />
-sonar.sources=src/backend,src/frontend<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Performance Optimization</strong><br />
+Question: How do you ensure performance optimization in your solutions?<br />
+To ensure performance optimization, I start from design stage itself, not after problems come.<br />
+First, I understand expected load and usage pattern—number of users, peak traffic, read vs write ratio. Based on that, I design scalable architecture using load balancers, auto-scaling, and stateless services.<br />
+At data layer, I choose right database, proper indexing, caching using Redis or CDN, and avoid unnecessary heavy queries.<br />
+I also focus on network and API performance—using async processing, message queues, pagination, and compression where needed.<br />
+On cloud side, I select right instance types, enable monitoring, and do performance testing like load and stress testing.<br />
+Finally, I continuously monitor metrics like latency, CPU, memory, and optimize proactively. So performance is handled by good design, right tools, and continuous monitoring.
+    </p>
+  )
+}>
+Performance Optimization
+</button>
 
-<strong>Pull Requests using SonarQube</strong><br />
-Requires Developer Edition or higher.<br />
-Configure PR analysis in your pipeline:<br />
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Containerization and Orchestration</strong><br />
+Question: What is your experience with containerization and orchestration(docker, kubernetes)?<br />
+I have good hands-on experience with containerization using Docker and orchestration using Kubernetes.<br />
+I use Docker to containerize applications so that environment issues are removed and the app runs consistently from dev to prod. I create optimized Dockerfiles, handle multi-stage builds, and manage images using container registries.<br />
+For orchestration, I work with Kubernetes to manage deployment, scaling, and high availability. I define pods, services, deployments, and config maps, and use auto-scaling and health checks to ensure reliability.<br />
+I’ve worked with managed Kubernetes like EKS, AKS, and GKE, and integrate it with CI/CD pipelines. I also focus on security, resource limits, and monitoring.<br />
+Overall, containers help in faster deployment, scalability, and stability, and Kubernetes helps manage everything efficiently at scale.
+    </p>
+  )
+}>
+Containerization and Orchestration
+</button>
 
-<strong>Sonar Token</strong><br />
-A Sonar Token is a secure API key generated per user or project.<br />
-It replaces username/password for authentication in CI/CD pipelines:</p>)
-        }
-      >SonarQube</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Synchronous and Asynchronous Communication</strong><br />
+Question: Can you explain synchronous and asynchronous communication in distributed systems and when to use each?<br />
+In distributed systems, synchronous communication means the calling service waits for a response from another service. It is usually done using REST or gRPC.<br />
+I use synchronous communication when I need immediate response—like login, payment validation, or fetching user details—where user is waiting for result.<br />
+Asynchronous communication means the calling service does not wait for response. It sends a message and continues processing. This is usually done using message queues or event systems like Kafka, RabbitMQ, or SQS.<br />
+I use async communication for background tasks, long-running processes, notifications, order processing, or when high scalability and loose coupling is needed.<br />
+From architecture point of view, synchronous is simple but tightly coupled, while asynchronous is more scalable and resilient but slightly complex.<br />
+So choice depends on business requirement, response time expectation, and system scalability needs.
+    </p>
+  )
+}>
+Synchronous and Asynchronous Communication
+</button>
+
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Code Review</strong><br /> 
+      As a Lead Engineer, code review is a process where I review team members’ code to make sure it is correct, clean, secure, and maintainable before it goes to production.<br />
+Purpose is not to find fault, but to improve code quality and share knowledge.<br />
+While doing code review, first I check logic and functionality—whether code solves the requirement correctly and handles edge cases. Then I check readability and maintainability—proper naming, comments, and simple structure.<br />
+I also ensure coding standards are followed, like formatting, folder structure, and best practices defined by the team. I look for performance issues, security concerns, and proper error handling.<br />
+I encourage small pull requests, constructive feedback, and automated checks like linting, unit tests, and static code analysis.<br />
+Overall, good code review helps maintain high-quality code, team consistency, and long-term stability of the product.
+    </p>
+  )
+}>
+Code Review
+</button>
 
       {/* Popup */}
       {isOpen && (
