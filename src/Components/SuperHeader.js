@@ -72,7 +72,7 @@ useEffect(() => {
 
           <div className="d-flex align-items-center gap-3 flex-wrap text-white">
             <div>
-              <strong>Helpline:</strong> <i className="bi bi-telephone-fill me-2"></i> <a href="tel:+919534098040" className="text-white text-decoration-none">99903 64345</a>
+              <strong>Helpline:</strong> <i className="bi bi-telephone-fill me-2"></i> <a href="tel:+919534098040" className="text-white text-decoration-none">95340 98040</a>
             </div>
 
             <div className="d-flex align-items-center gap-2">
