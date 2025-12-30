@@ -266,7 +266,7 @@ useEffect(() => {
                           <tr>
                             <td>🏢 Work From Office</td>
                             <td>💼 Junior Software Engineer<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Probation)</td>
-                            <td>💰 ₹2,000 – ₹8,000</td>
+                            <td>💰 ₹2,000 – ₹5,000</td>
                             <td>
                               ✅ Appointment Letter<br />
                               ✅ Salary Account<br />
@@ -278,7 +278,7 @@ useEffect(() => {
                           <tr>
                             <td>🏢 Work From Office</td>
                             <td>💼 Junior Software Engineer<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Confirmed)</td>
-                            <td>💰 ₹12,000</td>
+                            <td>💰 ₹8,000 - ₹12,000</td>
                             <td>
                               ✅ Appointment Letter<br />
                               ✅ Salary Account<br />
