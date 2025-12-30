@@ -236,7 +236,7 @@ useEffect(() => {
 
                     <section>
                       <h2>💼 Role & Designation</h2>
-                      <p style={{ textAlign: 'center' }}><strong>Junior Software Engineer</strong> (Probation)</p>
+                      <p style={{ textAlign: 'center' }}><strong>Junior Software Engineer</strong> (6-Months Probation)</p>
                     </section>
 
                     <section>
