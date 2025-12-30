@@ -241,7 +241,7 @@ useEffect(() => {
 
                     <section>
                       <h2>💸 Salary Structure</h2>
-                      <p style={{ textAlign: 'center' }}><strong>During Probation Period :</strong> ₹2,000 - 5,000 for right candidates</p>
+                      <p style={{ textAlign: 'center' }}><strong>During Probation Period :</strong> ₹2,000 - ₹5,000 for right candidates</p>
                       <p style={{ textAlign: 'center' }}><strong>Post - Probation Salary :</strong> ₹8,000 - ₹12,000</p>
                       <p style={{ textAlign: 'center' }}>(Shiwansh Solutions <b>OR</b> Other Companies on the basis of Shiwansh Solutions)</p>                      
                     </section>
