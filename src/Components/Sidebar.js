@@ -340,7 +340,7 @@ style={{
             <SidebarButton to="/dotnetqa" icon="bi-caret-down-square" label="Dotnet" />
             <SidebarButton to="/reactqa" icon="bi-caret-down-square" label="React" />
             <SidebarButton to="/angularqa" icon="bi-caret-down-square" label="Angular" />
-            <SidebarButton to="/kafkaqa" icon="bi-calendar-check" label="Message Broker" />
+            <SidebarButton to="/kafkaqa" icon="bi-calendar-check" label="Scenario" />
             </>
           )}
 

@@ -33,7 +33,8 @@ export default function KafkaQA() {
 My core expertise in the Microsoft technology like Node JS, .NET Core, C#, MVC, WCF, Web API and Microservices. I strongly focus on writing clean, maintainable, and scalable code while following SOLID principles, design patterns, and industry best practices.<br />
 I have hands-on experience with multiple databases like SQL Server, MySQL, Oracle, PostgreSQL, MongoDB, and DynamoDB. On the cloud side, I have worked with both Azure and AWS, designing and deploying cloud-native solutions using CI/CD pipelines.<br />
 In frontend, I have experience in Next, React, Angular and Vue JS which helps me contribute effectively to full-stack solution design. I have also implemented event-driven architectures using messaging systems like RabbitMQ, Kafka, and Azure Service Bus.<br />
-Throughout my career, I’ve worked in domains such as Healthcare, Banking, E-Commerce, Insurance, Loan Applications and Shipment Management. My responsibilities include solution design, development, maintenance, code reviews, mentoring junior developers, and collaborating with cross-functional teams to deliver high-quality, efficient, and scalable solutions.<br />
+I’ve worked in domains such as Healthcare, Banking, E-Commerce, Insurance, Loan Applications and Shipment Management.<br /> 
+My responsibilities include 70% of my role is focused on coding, architecture design, and making technical decisions, and the remaining 30% involves client interaction, requirement analysis, and leading development teams.<br />
 I am always eagar to learn and adapt new technologies, and I enjoy solving complex business problems through thoughtful architecture and technical leadership.</p>)
         }
       >Intro</button>
@@ -353,7 +354,7 @@ services:
     </p>
   )
 }>
-  Azure Service Bus
+  Service Bus
 </button>
 
 <button className="btn btn-success me-2 mb-2" onClick={() =>
@@ -399,6 +400,122 @@ services:
 }>
   SQS
 </button><br />
+
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>High-Traffic Digital Media Platform</strong> I’m currently working on Daily Star UK, a high-traffic digital media publishing platform that serves millions of users daily, supporting real-time content publishing and very high read/write traffic, especially during breaking news.<br />
+I work as a hands-on Solution Architect, where around 70% of my time is spent on coding, system design, and architectural decisions, and the remaining 30% on stakeholder collaboration and team leadership. The platform is built using .NET Core microservices, exposing REST APIs for content delivery, user engagement, and analytics.<br />
+The content publication workflow is event-driven. Journalists create or update articles in the CUE CMS, which triggers events to an Event System. These events are processed by the E2A service, which retrieves article data from CUE, transforms it into a standardized Agnostic JSON format, and stores it in AWS S3. Any subsequent updates follow the same process, ensuring content consistency and version control across distribution channels.<br />
+To handle scale and performance, we use AWS cloud infrastructure, horizontal scaling, Redis caching, and CDN integration to manage traffic spikes. We rely on Kafka for asynchronous processing such as publishing workflows and analytics. Data is managed using SQL Server for transactional data and MongoDB for content and metadata.<br />
+For website delivery, Navigator Web uses YAML-based configuration files stored in S3. These configurations are managed through Commander, a centralized configuration management tool that converts YAML into JSON and stores it in Redis, allowing teams to update website-level configurations quickly without requiring a full code release.<br />
+My responsibilities include defining service boundaries, developing and reviewing critical code, optimizing APIs, ensuring security and high availability, and mentoring developers, while closely collaborating with product teams, editors, and stakeholders to deliver scalable and reliable solutions.
+    </p>
+  )
+}>
+  Publishing
+</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Healthcare</strong><br />
+Client: US Client<br />
+Domain: Healthcare & Health Information Systems<br />
+Technologies: .NET Core Microservices, REST APIs, Azure, Blobstorage, SQL Server, MongoDB<br />
+
+<strong>Description</strong><br />
+I worked on a Healthcare Management System. The platform is designed to manage patient information, provider workflows, appointments, billing, and integrations with external healthcare systems. The solution is built with a strong focus on scalability, security, and compliance, which are critical requirements in the healthcare domain.<br />
+Key Modules & Functionalities are:<br />
+<strong>Patient Management</strong><br />
+Managed complete patient lifecycle including registration, demographics, and medical history.<br />
+Ensured secure handling of sensitive patient data.<br />
+Implemented validation and data consistency rules.<br />
+<strong>Provider & Clinical Workflow Management</strong><br />
+Designed workflows for doctors, nurses, and healthcare staff.<br />
+Enabled efficient management of consultations, prescriptions, and clinical notes.<br />
+Streamlined provider operations through service-based architecture.<br />
+<strong>Appointment & Scheduling Management</strong><br />
+Implemented appointment booking, rescheduling, and cancellation.<br />
+Handled provider availability and patient notifications.<br />
+Ensured optimized scheduling and reduced conflicts.<br />
+<strong>Billing & Payments</strong><br />
+Developed billing services for consultations, procedures, and services.<br />
+Integrated insurance, invoicing, and payment workflows.<br />
+Ensured accurate and auditable financial transactions.<br />
+<strong>Integration with External Healthcare Systems</strong><br />
+Integrated with third-party healthcare systems and external services using REST APIs.<br />
+Supported data exchange with labs, pharmacies, and insurance providers.<br />
+Ensured secure and reliable inter-system communication.
+    </p>
+  )
+}>
+  Healthcare
+</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Roadside Assistance Insurance System</strong>  I worked on Roadside Assistance Insurance System, where I serve as a hands-on Lead Engineer. The platform is designed to manage insurance policies, roadside assistance requests, claims processing, customer accounts, and integrations with third-party service providers and payment systems.<br /><br />
+From a technical perspective, the system is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. The platform is deployed on Azure to ensure high scalability, availability, and security, as it processes real-time requests across multiple geographies. Data is managed using SQL Server for transactional data and MongoDB for document-based service records and metadata.<br /><br />
+My responsibilities include designing and implementing core services, writing and reviewing critical code, ensuring SOLID principles and best practices, and handling performance, security, and fault-tolerance considerations. I also mentor junior developers, guide the team through technical challenges, and work closely with product owners and stakeholders to translate business requirements into scalable, maintainable solutions.<br /><br />
+Overall, the project emphasizes real-time processing, scalability, reliability, and regulatory compliance, and my role balances hands-on development with technical leadership and team guidance.
+    </p>
+  )
+}>
+  FORTEGRA
+</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Shipment</strong> I worked on a Shipment and Logistics platform where I serve as a hands-on Solution Architect. The system is designed to manage shipment tracking, warehouse operations, delivery scheduling, route optimization, and integrations with third-party carriers and tracking services.<br /><br />
+From a technical perspective, the platform is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. We leverage AWS and Azure for cloud infrastructure to ensure high scalability, availability, and performance, as shipment systems often handle real-time updates across multiple regions. Data is stored in SQL Server for transactional operations and MongoDB for document-based shipment and logistics data.<br /><br />
+My responsibilities include solution and architecture design, defining service boundaries, database design, and implementing core services, keeping me actively involved in hands-on coding. I also lead code reviews, enforce SOLID principles and best practices, and ensure performance, reliability, and security across the system.<br /><br />
+On the collaboration side, I work closely with product owners, operations teams, and client stakeholders to understand business requirements and translate them into scalable technical solutions. I also mentor the development team, provide guidance on technical challenges, and ensure smooth delivery across multiple services.<br /><br />
+Overall, the project focuses on real-time data processing, scalability, system reliability, and seamless integration with external logistics partners, and my role balances hands-on development with architectural leadership.
+    </p>
+  )
+}>
+  Shipment
+</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong> Loan Application System</strong> I worked on the DirectAxis Loan Application System as a Lead Developer. The platform manages the end-to-end loan lifecycle, including loan applications, approvals, disbursements, repayments, customer account management, and integrations with credit bureaus and payment gateways.<br /><br />
+The system is built using .NET Core with a microservices architecture, with RESTful APIs handling communication between services. We use Azure and AWS for cloud infrastructure to ensure scalability, high availability, and security, and data is stored in SQL Server for transactional operations and MongoDB for document-based data.<br /><br />
+As Lead Developer, my responsibilities include designing and implementing core services, writing and reviewing critical code, ensuring best practices and SOLID principles, and optimizing performance, security, and reliability. I also mentor junior developers, guide the team through technical challenges, and collaborate with product owners and business analysts to translate requirements into efficient, maintainable solutions.<br /><br />
+Overall, the project emphasizes scalability, reliability, and regulatory compliance, and my role focuses on hands-on development, technical leadership, and team guidance.
+    </p>
+  )
+}>
+   Loan App
+</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>E-Commerce</strong> I worked on a high-volume E-commerce platform where I serve as a hands-on Solution Architect. The system is designed to manage product catalogs, inventory, orders, payments, user accounts, and integrations with third-party services such as payment gateways and logistics providers.<br /><br />
+From a technical perspective, the platform is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. We use Azure and AWS for cloud infrastructure, ensuring scalability, high availability, and reliability during peak traffic, such as sales events or promotions. Data is managed using SQL Server for transactional operations and MongoDB for product metadata and catalog information.<br /><br />
+My responsibilities include solution and architecture design, defining service boundaries, database schema design, and implementing core services, keeping me actively involved in hands-on coding. I also lead code reviews, ensure SOLID principles and best practices are followed, and optimize performance and security, which are critical for an E-commerce environment.<br /><br />
+On the collaboration side, I work closely with product owners, business analysts, and client stakeholders to understand business requirements and translate them into robust technical solutions. I also mentor the development team, guide them through technical challenges, and ensure smooth delivery across multiple services.<br /><br />
+Overall, the project emphasizes scalability, high availability, performance, and secure transaction handling, and my role strikes a balance between hands-on development and architectural leadership.
+
+    </p>
+  )
+}>
+  E-Commerce
+</button>
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Insurance</strong> I worked on a comprehensive Insurance platform where I serve as a hands-on Solution Architect. The system is designed to manage policy administration, claims processing, underwriting, customer accounts, and integrations with third-party services such as payment gateways and regulatory systems.<br /><br />
+From a technical perspective, the platform is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. We use Azure and AWS for cloud infrastructure to ensure scalability, high availability, and security. Data is managed using SQL Server for transactional operations and MongoDB for document-based data, depending on the type of insurance information.<br /><br />
+My responsibilities include solution and architecture design, defining service boundaries, database design, and implementing core services, keeping me actively involved in hands-on coding. I also lead code reviews, ensure adherence to SOLID principles and best practices, and optimize performance, security, and compliance, which are especially critical in the insurance domain.<br /><br />
+From a collaboration standpoint, I work closely with product owners, business analysts, and client stakeholders to understand business requirements and translate them into scalable technical solutions. I also mentor the development team, guide them through technical challenges, and ensure smooth delivery across multiple services.<br /><br />
+Overall, the project emphasizes scalability, data security, regulatory compliance, and reliable transaction processing, and my role balances hands-on development with architectural leadership.
+    </p>
+  )
+}>
+  Insurance
+</button>
+<br />
 
 <button className="btn btn-success me-2 mb-2" onClick={() =>
   handleOpenPopup(
