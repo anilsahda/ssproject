@@ -209,7 +209,31 @@ When state changes, React re-renders the component to show updated info.<br />
 VDOM can introduce unnecessary complexity for very simple application</p>)
         }
       >Virtual DOM</button>
-
+        <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Enterprise Dashboard Application</strong> I worked on a large-scale enterprise dashboard application used by thousands of users daily. The app had multiple complex features like real-time charts, live notifications, dynamic forms, and multi-role access control. The biggest challenges were managing state efficiently, optimizing performance, and maintaining a scalable architecture as the app grew.”<br />
+<strong>Challenge 1 – State Management</strong><br />
+The app had a mix of local UI state, form state, and global app state. Initially, we were using only React Context, but as the app grew, it became difficult to track changes and prevent unnecessary re-renders.<br />
+<strong>Solution</strong><br />
+Introduced Redux Toolkit for global state (like user data, permissions, and shared entities).<br />
+Used React Query for server state (API caching, pagination, and background updates).<br />
+Kept component-level state for local UI interactions (useState and useReducer).<br />
+Implemented memoization with useMemo and useCallback to avoid re-rendering expensive components unnecessarily.”<br />
+<strong>Challenge 2 – Performance Issues</strong><br />
+With dozens of charts updating in real-time, we started seeing UI lag and slow rendering.<br />
+<strong>Solution</strong><br />
+Leveraged React.memo to prevent unnecessary re-renders of chart components.<br />
+Implemented virtualization (react-window) for long lists and tables.<br />
+Introduced code splitting and lazy loading for routes and heavy components.<br />
+Optimized API calls by batching requests and debouncing user inputs.”<br />
+<strong>Challenge 3 – Architecture Decisions</strong><br />
+As more features were added, it was hard to maintain the codebase and ensure consistency.<br />
+<strong>Solution</strong><br />
+Adopted a feature-based folder structure, where each module contained its components, hooks, and services.<br />
+Created custom hooks for repeated logic (form handling, API requests, and WebSocket subscriptions).<br />
+Established type safety with TypeScript to reduce runtime errors and improve developer productivity.<br />
+Implemented unit and integration tests using Jest and React Testing Library to ensure reliability.”</p>)
+        }
+      >Enterprise Dashboard Application</button>
 <br />
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
@@ -274,50 +298,6 @@ VDOM can introduce unnecessary complexity for very simple application</p>)
           handleOpenPopup(<p><strong>useState</strong> is used to remember and change information over time. It is used in functional components to manage state, such as form inputs, counters, or any changing values.</p>)
         }
       >useState</button><br />
-
-        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Enterprise Dashboard Application</strong> I worked on a large-scale enterprise dashboard application used by thousands of users daily. The app had multiple complex features like real-time charts, live notifications, dynamic forms, and multi-role access control. The biggest challenges were managing state efficiently, optimizing performance, and maintaining a scalable architecture as the app grew.”<br />
-
-Challenge 1 – State Management:<br />
-“The app had a mix of local UI state, form state, and global app state. Initially, we were using only React Context, but as the app grew, it became difficult to track changes and prevent unnecessary re-renders.<br />
-
-Solution:<br />
-
-Introduced Redux Toolkit for global state (like user data, permissions, and shared entities).<br />
-
-Used React Query for server state (API caching, pagination, and background updates).<br />
-
-Kept component-level state for local UI interactions (useState and useReducer).<br />
-
-Implemented memoization with useMemo and useCallback to avoid re-rendering expensive components unnecessarily.”<br />
-
-Challenge 2 – Performance Issues:<br />
-“With dozens of charts updating in real-time, we started seeing UI lag and slow rendering.<br />
-
-Solution:<br />
-
-Leveraged React.memo to prevent unnecessary re-renders of chart components.<br />
-
-Implemented virtualization (react-window) for long lists and tables.<br />
-
-Introduced code splitting and lazy loading for routes and heavy components.<br />
-
-Optimized API calls by batching requests and debouncing user inputs.”<br />
-
-Challenge 3 – Architecture Decisions:<br />
-“As more features were added, it was hard to maintain the codebase and ensure consistency.<br />
-
-Solution:<br />
-
-Adopted a feature-based folder structure, where each module contained its components, hooks, and services.<br />
-
-Created custom hooks for repeated logic (form handling, API requests, and WebSocket subscriptions).<br />
-
-Established type safety with TypeScript to reduce runtime errors and improve developer productivity.<br />
-
-Implemented unit and integration tests using Jest and React Testing Library to ensure reliability.”</p>)
-        }
-      >Enterprise Dashboard Application</button>
 
       {/* Popup */}
       {isOpen && (

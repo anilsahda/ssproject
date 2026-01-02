@@ -24,6 +24,35 @@ const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>ACID</strong> is used to maintain database consistency before and after a transaction. Transaction is a single logical unit which is used to modify the data through read write operations like insert, update, delete and retrieve the data.<br />
+<strong>Atomicity</strong> means a transaction can be treated as a single. Either all the operations will be completed successfully or nothing will be performed. Means If any part of the transaction fails, the entire transaction is rolled back in original state.<br />
+<strong>Consistency</strong> means a transaction takes the database from one consistent state to another consistent state. Database should be in consistent state before and after the transaction executed.<br />
+<strong>Isolation</strong> means multiple transactions can execute concurrently without interfaring with each other. Each transaction must be isolated from other transactions until it's completed.<br />
+<strong>Durability</strong> means the data remains consistent and accurate, even system failure or crash. It guarantees that committed transactions are durable and will be recovered without data loss.
+          </p>)
+        }
+      >ACID</button>
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Constraints</strong> are set of rules that we apply to columns in a table to control what kind of data can be stored in that columns. Constraints help to keep our database accurate, reliable, and safe from invalid data.<br />
+ <strong>Null</strong> means column can have Null value.<br />
+<strong>Not Null</strong> means column cannot have Null value.<br />
+<strong>Default</strong> sets a default value if data is not supply<br />
+          <strong>Primary Key</strong> used to identify unique row and must contain unique value. It can’t be null or duplicate.<br />
+          <strong>Foreign Key</strong> is basically the primary key in another table. It builds a connection between tables.<br />
+          <strong>Unique Key</strong> is almost same as primary key but it allow null value and table can have multiple Unique Keys.<br />
+          <strong>Composite Key</strong> is a combination of two or more columns that uniquely identifies each row.<br />
+          <strong>Alternate Key</strong> When multiple keys are added except Primary Key then all keys are called Alternate Keys except Primary Key.<br />
+          <strong>Check</strong> is used to specify the condition that must be validated in order to insert data into a table</p>,`CREATE TABLE Persons 
+(
+    Id int primary key identity(1,1),
+    Name varchar(100) NOT NULL,
+    Age int,
+    Check (Age >= 18)
+);`)
+        }
+      >Constraint</button>
+
         <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>CTE</strong> is a tool which is used to simplify complex queries and makes them more readable. CTE allows us to break down complicated logic into manageable parts by defining temporary result sets that can be referenced multiple times.<br />
 CTE is a temporary result set that is defined and used within the execution scope of a SELECT, INSERT, UPDATE, or DELETE statement. CTEs are defined using the WITH clause and can be referenced multiple times within the main SQL query. This makes CTEs a great alternative to subqueries to perform the same operation multiple times or create recursive queries.</p>, `WITH AvgSalaryByDept AS (
@@ -71,8 +100,26 @@ F9 or double click left of code line for out the break point<br />
 In menu SQL-&lt; Execute with debugger<br />
 With F11 trace line By line</p>)
         }
-      >Debugging</button>
+      >Debug</button>
+      <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Functions</strong> SQL functions are built-in operations in SQL that perform calculations, transform data, or return specific information based on input values. They are often used in SELECT, WHERE, GROUP BY and ORDER BY clauses to manipulate data in a query.<br />
+<strong>Aggregate Functions</strong> These perform calculations on a set of values or multiple rows and return a single result like COUNT(), SUM(), MIN(), MAX(), AVG()<br />
+          <strong>Scalar or Single-Row Functions</strong> operate on individual values and return a result for each row like UPPER(), SUBSTRING(), REPLACE(), CONCAT(), LENGTH(), GETDATE(), NOW(), DATEADD(), DATEDIFF(), DAY(), MONTH(), YEAR(), CAST(), CONVERT()<br />
+          <strong>Table-Valued Function</strong> is a type of user-defined function in SQL that returns a table as its result, rather than a single value.</p>, 
+`CREATE FUNCTION dbo.GetOrdersByCustomer (@CustomerID INT)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT OrderID, OrderDate, TotalAmount
+    FROM Orders
+    WHERE CustomerID = @CustomerID
+);
 
+SELECT * FROM dbo.GetOrdersByCustomer(101);`
+          )
+        }
+      >Functions</button>
         <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>&#64;&#64;IDENTITY</strong> return the last identity value generated in any table in the current session. It is not limited to a specific scope. IDENT_CURRENT is not limited by scope and session and it is limited to a specified table.</p>, `CREATE TABLE Employees (
     EmployeeID INT IDENTITY(1,1),
@@ -128,7 +175,15 @@ WHEN NOT MATCHED BY TARGET THEN
 WHERE Name = 'Rakesh';`)
         }
       >NOLOCK</button>
-
+       <button className="btn btn-success me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Normalization</strong> is the way of organizing structured data in the database efficiently. It includes the creation of tables, establishing relationships between them, and defining rules for those relationships. Inconsistency and redundancy can be check based on these rules.<br />
+          <strong>First Normal Form</strong>: A relation is in first normal form if every attribute in that relation is a single-valued attribute. If a relation contains a composite or multi-valued attribute, it violates the first normal form.<br />
+<strong>Second Normal Form</strong>: A relation is in second normal form if it satisfies the conditions for the first normal form and does not contain any partial dependency. A relation in 2NF has no partial dependency.<br />
+<strong>Third Normal Form</strong>: A relation is said to be in the third normal form, if it satisfies the conditions for the second normal form and there is no transitive dependency between the non-prime attributes.<br />
+<strong>Boyce-Codd Normal Form</strong>: A relation is in Boyce-Codd Normal Form if satisfies the conditions for third normal form and for every functional dependency, Left-Hand-Side is super key.
+          </p>)
+        }
+      >Normalization</button>
 
       <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>OLTP</strong> (Online Transaction Processing) is a class which supports in transaction-oriented programs. OLTP maintains the concurrency and follow a decentralized architecture to avoid single points of failure.</p>)
@@ -167,7 +222,7 @@ WHERE Name = 'Rakesh';`)
 Transactions are not allowed within <strong>Function</strong> while <strong>Procedure</strong> allow transactions.<br />
 <strong>Function</strong> can be call in Procedure. <strong>Procedure</strong> can not be call in <strong>Function</strong>. Functions can be called from a select statement.</p>)
         }
-      >Proc vs Function</button>
+      >Procedure vs Function</button>
 
        <button className="btn btn-success me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>&#64;&#64;Rowcount</strong> is a system variable that is used to return the number of rows that are affected by the last executed statement.</p>)
@@ -246,31 +301,6 @@ SELECT * FROM ActiveCustomers;`)
       >View</button><br />
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>ACID</strong> is used to maintain database consistency before and after a transaction. Transaction is a single logical unit which is used to modify the data through read write operations like insert, update, delete and retrieve the data.</p>)
-        }
-      >ACID</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Atomicity</strong> means a transaction can be treated as a single. Either all the operations will be completed successfully or nothing will be performed. Means If any part of the transaction fails, the entire transaction is rolled back in original state.</p>)
-        }
-      >Atomicity</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Consistency</strong> means a transaction takes the database from one consistent state to another consistent state. Database should be in consistent state before and after the transaction executed.</p>)
-        }
-      >Consistency</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Isolation</strong> means multiple transactions can execute concurrently without interfaring with each other. Each transaction must be isolated from other transactions until it's completed.</p>)
-        }
-      >Isolation</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Durability</strong> means the data remains consistent and accurate, even system failure or crash. It guarantees that committed transactions are durable and will be recovered without data loss.</p>)
-        }
-      >Durability</button>
-
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>SQL</strong> is a standard programming language used to manage and manipulate relational databases.SQL allows you to perform a variety of tasks, such as retrieving, inserting, updating, and deleting data, as well as defining and modifying database structures.SQL works on relational databases, where data is organized in tables, and each table consists of rows and columns.<br />
 <strong>Types of SQL Commands are:</strong><br />
 <strong>DDL</strong> (Data Definition Language)<br />
@@ -324,77 +354,6 @@ Common TCL commands include:<br />
 <strong>SET TRANSACTION</strong>: Sets properties for the transaction, such as its isolation level.</p>)
         }
       >TCL</button>
-       <button className="btn btn-danger me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `with cte as
-(SELECT Name, Salary, 
-RANK() OVER(ORDER BY Salary DESC) sal_rank from Employees)
-select * from cte where sal_rank = 2
-
-//Using subquery
-SELECT Name, Salary FROM 
-   (SELECT Name, Salary, RANK() OVER (ORDER BY Salary DESC) 
-   AS sal_rank FROM Employee) AS ranked_salaries 
-WHERE sal_rank = 2;`)
-        }
-      >Highest Salary</button><br />
-
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Constraints</strong> are set of rules that we apply to columns in a table to control what kind of data can be stored in that columns. Constraints help to keep our database accurate, reliable, and safe from invalid data.</p>)
-        }
-      >Constraint</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Null</strong> means column can have Null value.</p>, `CREATE TABLE Country
-Code varchar(3) NULL;`)
-        }
-      >Null</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Not Null</strong> means column cannot have Null value.</p>, `CREATE TABLE Country
-Code varchar(3) NOT NULL;`)
-        }
-      >Not Null</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Check</strong> used to make sure to satisfy specific condition</p>,`CREATE TABLE Persons 
-(
-    Id int primary key identity(1,1),
-    Name varchar(100) NOT NULL,
-    Age int,
-    Check (Age >= 18)
-);`)
-        }
-      >Check</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Default</strong> sets a default value if data is not supply</p>)
-        }
-      >Default</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Primary Key</strong> used to identify unique row and must contain unique value. It can’t be null or duplicate.</p>)
-        }
-      >Primary Key</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Foreign Key</strong> is basically the primary key in another table. It builds a connection between tables.</p>)
-        }
-      >Foreign Key</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Unique Key</strong> is almost same as primary key but it allow null value and table can have multiple Unique Keys.</p>)
-        }
-      >Unique Key</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Composite Key</strong> is a combination of two or more columns that uniquely identifies each row.</p>)
-        }
-      >Composite Key</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Alternate Key</strong> When multiple keys are added except Primary Key then all keys are called Alternate Keys except Primary Key.</p>)
-        }
-      >Alternat Key</button><br />
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Data Types</strong> define the type of data that can be stored in a column of a table. SQL supports a wide range of data types, and they can be categorized into several types based on their usage. For Example: Numeric, String, Boolean, Binary etc.</p>)
@@ -442,12 +401,12 @@ Code varchar(3) NOT NULL;`)
 <strong>TIME</strong> Used to store time values without date like HH:MM:SS<br />
 <strong>YEAR</strong> Used to store a year value in 4 digits like YYYY</p>)
         }
-      >Date Time</button>
+      >Date</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Boolean Type</strong> stores TRUE or FALSE values. For example BOOLEAN can also be represented by TINYINT(1)</p>)
         }
-      >Boolean</button>
+      >Bool</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Binary</strong> are used to store binary data like images, files etc. For example<br />
@@ -513,52 +472,7 @@ WHERE Name = 'Laptop';);`)
           handleOpenPopup(<p><strong>SET</strong>: Used to store a collection of values from a predefined list. Each value is stored as a bit (either 0 or 1).
 <br />Example: SET('a', 'b', 'c', 'd')</p>)
         }
-      >SET</button>
-       <button className="btn btn-danger me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `WITH cte AS 
-(
-  SELECT Name, 
-  ROW_NUMBER() OVER(PARTITION BY Name ORDER BY Name) row_num
-  FROM employee
-)	
-SELECT * FROM cte WHERE row_num > 1;
-
-//Using subqueries
-SELECT Name, COUNT(Id) AS Duplicate FROM Employee 
-GROUP BY Name
-HAVING COUNT(Name) > 1;`)
-        }
-      >Find Duplicate Name</button><br />
-
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Functions</strong> SQL functions are built-in operations in SQL that perform calculations, transform data, or return specific information based on input values. They are often used in SELECT, WHERE, GROUP BY and ORDER BY clauses to manipulate data in a query.</p>)
-        }
-      >Functions</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Aggregate Functions</strong> These perform calculations on a set of values or multiple rows and return a single result like COUNT(), SUM(), MIN(), MAX(), AVG()</p>)
-        }
-      >Aggregate Functions</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Scalar or Single-Row Functions</strong> operate on individual values and return a result for each row like UPPER(), SUBSTRING(), REPLACE(), CONCAT(), LENGTH(), GETDATE(), NOW(), DATEADD(), DATEDIFF(), DAY(), MONTH(), YEAR(), CAST(), CONVERT()</p>)
-        }
-      >Scalar or Single-Row Functions</button>
-
-      <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Table-Valued Function</strong> is a type of user-defined function in SQL that returns a table as its result, rather than a single value.</p>, `CREATE FUNCTION dbo.GetOrdersByCustomer (@CustomerID INT)
-RETURNS TABLE
-AS
-RETURN
-(
-    SELECT OrderID, OrderDate, TotalAmount
-    FROM Orders
-    WHERE CustomerID = @CustomerID
-);
-
-SELECT * FROM dbo.GetOrdersByCustomer(101);`)
-        }
-      >Table-Valued Functions</button>                  
+      >SET</button><br />
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Indexing</strong> is a data structure that helps us to improve the speed of retrieving specific data from tables.</p>)
@@ -591,7 +505,7 @@ ON table_name (column1, column2, ...)`)
 ❌When excessive indexes increase storage and slow down write</p>, `CREATE NONCLUSTERED INDEX idx_employee_name
 ON Employees(Name, Email)`)
         }
-      >Non-Cluster</button><br />
+      >Non-Cluster</button>
 
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong></strong></p>)
@@ -633,32 +547,35 @@ CROSS JOIN Department;`)
 FROM Employees E1
 SELF JOIN Employees E2 ON E1.ManagerID = E2.EmployeeID;`)
         }
-      >Self Join</button>
+      >Self Join</button>      <button className="btn btn-danger me-2 mb-2" onClick={() =>
+          handleOpenPopup(null, `with cte as
+(SELECT Name, Salary, 
+RANK() OVER(ORDER BY Salary DESC) sal_rank from Employees)
+select * from cte where sal_rank = 2
 
-       <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Normalization</strong> is the way of organizing structured data in the database efficiently. It includes the creation of tables, establishing relationships between them, and defining rules for those relationships. Inconsistency and redundancy can be check based on these rules.</p>)
+//Using subquery
+SELECT Name, Salary FROM 
+   (SELECT Name, Salary, RANK() OVER (ORDER BY Salary DESC) 
+   AS sal_rank FROM Employee) AS ranked_salaries 
+WHERE sal_rank = 2;`)
         }
-      >Normalization</button>
+      >Highest Salary</button>
+             <button className="btn btn-danger me-2 mb-2" onClick={() =>
+          handleOpenPopup(null, `WITH cte AS 
+(
+  SELECT Name, 
+  ROW_NUMBER() OVER(PARTITION BY Name ORDER BY Name) row_num
+  FROM employee
+)	
+SELECT * FROM cte WHERE row_num > 1;
 
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>First Normal Form</strong>: A relation is in first normal form if every attribute in that relation is a single-valued attribute. If a relation contains a composite or multi-valued attribute, it violates the first normal form.</p>)
+//Using subqueries
+SELECT Name, COUNT(Id) AS Duplicate FROM Employee 
+GROUP BY Name
+HAVING COUNT(Name) > 1;`)
         }
-      >1NF</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Second Normal Form</strong>: A relation is in second normal form if it satisfies the conditions for the first normal form and does not contain any partial dependency. A relation in 2NF has no partial dependency.</p>)
-        }
-      >2NF</button>
-
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Third Normal Form</strong>: A relation is said to be in the third normal form, if it satisfies the conditions for the second normal form and there is no transitive dependency between the non-prime attributes.</p>)
-        }
-      >3NF</button>
-
-        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Boyce-Codd Normal Form</strong>: A relation is in Boyce-Codd Normal Form if satisfies the conditions for third normal form and for every functional dependency, Left-Hand-Side is super key.</p>)
-        }
-      >BCNF</button><br />
+      >Duplicat Name</button>      
+<br />
 
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Relationship</strong> defines how tables are connected to each other based on common fields. Relationship help us to maintain data integrity and eliminate redundancy by linking data across multiple tables like<br /> <strong>One-to-One, One-to-Many, Many-to-One and Many-to-Many</strong>.</p>)
@@ -792,8 +709,8 @@ BEGIN
 PRINT 'A new user has logged in.';
 END;`)
         }
-      >Logon</button>
-
+      >Logon</button><br />
+ 
       {/* Popup */}
       {isOpen && (
         <div className="popup-overlay" onClick={handleClosePopup}>

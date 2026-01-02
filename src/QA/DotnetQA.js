@@ -1062,7 +1062,7 @@ Best practice is to keep Singletons stateless and use them via DI instead of dir
         }
       >Singleton</button>
 
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Clean Architecture</strong> is a software design approach that help us to create maintainable, testable and scalable applications by enforcing clear separation of concerns.<br />
 <strong>Core Principles of Clean Architecture are:</strong><br />
 <strong>Separation of Concerns</strong> different layers handle different responsibilities.<br />

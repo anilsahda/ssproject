@@ -128,7 +128,7 @@ Create a Culture of Continuous Learning Encourage a growth mindset where failure
         }
       >Prod Issues & High Level Presser</button>
 
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
+      <button className="btn btn-info me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Kafka</strong> is an open-source, distributed data streaming platform used to publish, subscribe to, store, and process real-time data streams. It works like a high-performance message queue, allowing different applications to communicate by sending and receiving messages.<br />
 <strong>Kafka Components are:</strong><br />
 <strong>Producer</strong> sends messages or events to Kafka and it publishes data to a topic and kafka does not care who consumes the data. For example: Order Service sends OrderCreated events<br />
@@ -313,7 +313,7 @@ services:
 </button>
 
 
-<button className="btn btn-primary me-2 mb-2" onClick={() =>
+<button className="btn btn-info me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
       <strong>Azure Service Bus</strong> is a fully managed enterprise message broker provided by Microsoft Azure. It enables reliable, secure, and asynchronous communication between applications using queues and topics, making it ideal for cloud and enterprise systems.<br />
@@ -357,7 +357,7 @@ services:
   Service Bus
 </button>
 
-<button className="btn btn-success me-2 mb-2" onClick={() =>
+<button className="btn btn-info me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
       <strong>Amazon SQS (Simple Queue Service)</strong> is a fully managed message queuing service provided by AWS. It enables applications to decouple and scale by sending, storing, and receiving messages between distributed components without managing messaging infrastructure.<br />
@@ -401,7 +401,7 @@ services:
   SQS
 </button><br />
 
-<button className="btn btn-success me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
       <strong>High-Traffic Digital Media Platform</strong> I’m currently working on Daily Star UK, a high-traffic digital media publishing platform that serves millions of users daily, supporting real-time content publishing and very high read/write traffic, especially during breaking news.<br />
@@ -415,7 +415,7 @@ My responsibilities include defining service boundaries, developing and reviewin
 }>
   Publishing
 </button>
-<button className="btn btn-success me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
       <strong>Healthcare</strong><br />
@@ -451,7 +451,7 @@ Ensured secure and reliable inter-system communication.
 }>
   Healthcare
 </button>
-<button className="btn btn-success me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
       <strong>Roadside Assistance Insurance System</strong>  I worked on Roadside Assistance Insurance System, where I serve as a hands-on Lead Engineer. The platform is designed to manage insurance policies, roadside assistance requests, claims processing, customer accounts, and integrations with third-party service providers and payment systems.<br /><br />
@@ -463,7 +463,7 @@ Overall, the project emphasizes real-time processing, scalability, reliability, 
 }>
   FORTEGRA
 </button>
-<button className="btn btn-success me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
       <strong>Shipment</strong> I worked on a Shipment and Logistics platform where I serve as a hands-on Solution Architect. The system is designed to manage shipment tracking, warehouse operations, delivery scheduling, route optimization, and integrations with third-party carriers and tracking services.<br /><br />
@@ -476,7 +476,7 @@ Overall, the project focuses on real-time data processing, scalability, system r
 }>
   Shipment
 </button>
-<button className="btn btn-success me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
       <strong> Loan Application System</strong> I worked on the DirectAxis Loan Application System as a Lead Developer. The platform manages the end-to-end loan lifecycle, including loan applications, approvals, disbursements, repayments, customer account management, and integrations with credit bureaus and payment gateways.<br /><br />
@@ -488,7 +488,7 @@ Overall, the project emphasizes scalability, reliability, and regulatory complia
 }>
    Loan App
 </button>
-<button className="btn btn-success me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
       <strong>E-Commerce</strong> I worked on a high-volume E-commerce platform where I serve as a hands-on Solution Architect. The system is designed to manage product catalogs, inventory, orders, payments, user accounts, and integrations with third-party services such as payment gateways and logistics providers.<br /><br />
@@ -502,7 +502,7 @@ Overall, the project emphasizes scalability, high availability, performance, and
 }>
   E-Commerce
 </button>
-<button className="btn btn-success me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
       <strong>Insurance</strong> I worked on a comprehensive Insurance platform where I serve as a hands-on Solution Architect. The system is designed to manage policy administration, claims processing, underwriting, customer accounts, and integrations with third-party services such as payment gateways and regulatory systems.<br /><br />
