@@ -141,7 +141,6 @@ Create a Culture of Continuous Learning Encourage a growth mindset where failure
   handleOpenPopup(
     <p>
       <strong>High-Traffic Digital Media Platform</strong> I’m currently working on Daily Star UK, a high-traffic digital media publishing platform that serves millions of users daily, supporting real-time content publishing and very high read/write traffic, especially during breaking news.<br />
-I work as a hands-on Solution Architect, where around 70% of my time is spent on coding, system design, and architectural decisions, and the remaining 30% on stakeholder collaboration and team leadership. The platform is built using .NET Core microservices, exposing REST APIs for content delivery, user engagement, and analytics.<br />
 The content publication workflow is event-driven. Journalists create or update articles in the CUE CMS, which triggers events to an Event System. These events are processed by the E2A service, which retrieves article data from CUE, transforms it into a standardized Agnostic JSON format, and stores it in AWS S3. Any subsequent updates follow the same process, ensuring content consistency and version control across distribution channels.<br />
 To handle scale and performance, we use AWS cloud infrastructure, horizontal scaling, Redis caching, and CDN integration to manage traffic spikes. We rely on Kafka for asynchronous processing such as publishing workflows and analytics. Data is managed using SQL Server for transactional data and MongoDB for content and metadata.<br />
 For website delivery, Navigator Web uses YAML-based configuration files stored in S3. These configurations are managed through Commander, a centralized configuration management tool that converts YAML into JSON and stores it in Redis, allowing teams to update website-level configurations quickly without requiring a full code release.<br />
@@ -987,6 +986,111 @@ Overall, my focus is on clear, simple, and maintainable documentation that actua
 Tools and Frameworks
 </button>
 
+<button className="btn btn-warning me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>MakeMyTrip | Booking system</strong><br />
+A booking system works in multiple steps.<br />
+First, when the user searches, the request goes to the Search Service, which fetches data from cache and inventory systems.<br />
+Then the Inventory Service checks seat or room availability.<br />
+The Pricing Service calculates price based on demand, offers, and taxes.<br />
+
+After user confirms, the Booking Service temporarily locks inventory.<br />
+Then Payment Service handles payment securely through a payment gateway.<br />
+Once payment is successful, booking is confirmed and Notification Service sends confirmation.<br />
+
+All these services are independent but coordinated using events and messaging.
+    </p>
+  )
+}>
+MakeMyTrip|Booking system
+</button>
+
+<button className="btn btn-warning me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Payment Success but Booking Failed</strong><br />
+This is a very common real-world problem.<br />
+To handle this, we use idempotency keys and Saga pattern.<br />
+
+If payment is successful but booking fails, the system triggers a compensation transaction, which refunds the payment.<br />
+This ensures data consistency without blocking the system.
+    </p>
+  )
+}>
+Booking Failed
+</button>
+
+<button className="btn btn-warning me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Avoid Duplicate Payments</strong><br />
+      We generate a unique transaction ID for every payment request.<br />
+Before processing, we always check whether the transaction ID already exists.<br />
+APIs are made idempotent, so retrying the same request will not create a new payment.
+    </p>
+  )
+}>
+Avoid Duplicate Payments
+</button>
+
+<button className="btn btn-warning me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Handle Fault Occurrence in Booking Systems</strong><br />
+We use multiple strategies:<br />
+Retry with exponential backoff<br />
+Circuit breaker to stop cascading failures<br />
+Fallback responses when a service is down<br />
+Dead-letter queues for failed messages
+    </p>
+  )
+}>
+Handle Fault in Booking Systems
+</button>
+
+<button className="btn btn-warning me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>HttpClient vs HttpClientFactory</strong><br />
+Direct HttpClient usage can cause socket issues.<br />
+HttpClientFactory manages lifecycle and connections properly.
+    </p>
+  )
+}>
+HttpClient vs HttpClientFactory
+</button>
+
+<button className="btn btn-warning me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Handling 10,000+ requests</strong><br />
+To handle 10,000+ concurrent requests, I mainly focus on scalable architecture and non-blocking execution.<br />
+First, I use async APIs so threads are not blocked during database or external service calls. This allows the server to handle more requests with limited resources.<br />
+Second, I design stateless services, where no session data is stored on the server. Each request is independent and can be served by any instance.<br />
+Third, I use a load balancer to distribute incoming traffic across multiple application instances, which prevents any single server from becoming a bottleneck.<br />
+Finally, I enable auto scaling, so new instances are automatically added during high traffic and removed during low traffic.<br />
+By combining async APIs, stateless design, load balancing, and auto scaling, the system can efficiently handle very high concurrent traffic.
+    </p>
+  )
+}>
+Handling 10,000+ requests
+</button>
+
+<button className="btn btn-warning me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Upload 500 Files</strong><br />
+To upload 500 files efficiently, I focus on parallelism, reliability, and non-blocking processing.<br />
+First, I use parallel uploads, so multiple files are uploaded at the same time instead of one by one. This significantly reduces total upload time.<br />
+Second, I use chunking, where large files are broken into smaller chunks. This helps in resuming uploads if a failure happens and improves network stability.<br />
+Third, I use background processing, where the upload request is accepted quickly, and actual processing happens asynchronously using background workers or queues.<br />
+By combining parallel uploads, chunking, and background processing, the system becomes fast, reliable, and scalable, even when handling hundreds of files.
+    </p>
+  )
+}>
+Upload 500 Files
+</button>
       {/* Popup */}
       {isOpen && (
         <div className="popup-overlay" onClick={handleClosePopup}>

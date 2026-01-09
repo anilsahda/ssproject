@@ -1356,7 +1356,9 @@ Run the new application version in the green environment<br />
 After testing, redirect traffic from blue to green<br />
 If problems occur, roll back to the blue environment<br />
 After the green environment has been live for a while, make it the new blue environment and create a new green environment<br />
-<strong>Benefits</strong>: Reduces downtime and risk, Improves rollback capabilities, Improves user experience, and Useful for product experimentation.</p>)
+<strong>Canary Deployment</strong> means we release the new version to a small percentage of users first, like 5% or 10%.
+If the system is stable and no errors are observed, we gradually increase traffic to the new version.<br />
+<strong>Benefits</strong> Reduces downtime and risk, Improves rollback capabilities, Improves user experience, and Useful for product experimentation.</p>)
         }
       >Blue-Green</button>
 
@@ -1492,7 +1494,7 @@ It can perform tasks such as authentication, rate limiting, and caching</p>)
       >Thread</button>
       
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Async and Await</strong> are keywords that work together to enable asynchronous programming. It allows methods to run in the background without blocking the main thread.<br />
+          handleOpenPopup(<p>async/await is used for IO-heavy work. <strong>Async and Await</strong> are keywords that work together to enable asynchronous programming. It allows methods to run in the background without blocking the main thread.<br />
 <strong>Async</strong> performs asynchronous tasks such as fetching data from a database, reading a file, etc and they can be marked as 'async'.<br />
 Whereas <strong>Await</strong> keyword making await to a statement means suspending the execution of the async method until the asynchronous task completes. After suspension, the control goes back to the caller method. Once the task completes, the control comes back to the states where await is mentioned and executes the remaining statements in the enclosing method.<br />
 
@@ -1598,7 +1600,7 @@ new Thread(Thread2).Start();`)
       >ThreadPool</button>
 
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Task class used for more complex or parallel tasks also known as <strong>Task Parallel Library (TPL)</strong>. The Task class allows us to create tasks that can run asynchronously, improving both performance and code readability. It also simplifies task management by handling thread pooling and synchronization.</p>)
+          handleOpenPopup(<p>TPL is used for CPU-heavy work. Task class used for more complex or parallel tasks also known as <strong>Task Parallel Library (TPL)</strong>. The Task class allows us to create tasks that can run asynchronously, improving both performance and code readability. It also simplifies task management by handling thread pooling and synchronization.</p>)
         }
       >TPL</button><br />
 
