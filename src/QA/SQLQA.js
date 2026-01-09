@@ -672,13 +672,18 @@ modelBuilder.Entity<Student>()
       >Global</button>
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Trigger</strong> is a stored procedure which automatically executes when special event occurs in database. Automatic Execution is the main key feature which fires automatically when we perform database operation like INSERT, UPDATE or DELETE.
-There are 3 types of Trigger</p>)
+          handleOpenPopup(<p><strong>Trigger</strong> is a special type of program which automatically executes when a specific event happens on a table like insert, update or delete. Whenever someone INSERTs, UPDATEs, or DELETEs data, the trigger wakes up and does its job automatically.<br />
+          <strong>Why do we use Triggers?</strong><br />
+To validate data before saving<br />
+To maintain audit logs<br />
+To enforce business rules<br />
+To sync data between tables<br />
+To prevent invalid operations</p>)
         }
       >Trigger</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>DDL Triggers</strong> respond to DDL events like CREATE, ALTER, DROP, GRANT, DENY, REVOKE etc. It allow to track changes in the structure of the database. The trigger will prevent any table creation, alteration, or deletion in the database.</p>, `CREATE TRIGGER prevent_table_creation
+          handleOpenPopup(<p><strong>DDL Triggers</strong> fire when database structure changes like create, alter and drop</p>, `CREATE TRIGGER prevent_table_creation
 ON DATABASE
 FOR CREATE_TABLE, ALTER_TABLE, DROP_TABLE
 AS 
@@ -690,24 +695,71 @@ END;`)
       >DDL</button>
       
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>DML Triggers</strong> are automatically invoked when an INSERT, UPDATE or DELETE statement is executed.</p>, `CREATE TRIGGER prevent_update
-ON students
-FOR UPDATE
+          handleOpenPopup(<p><strong>DML Triggers</strong> are automatically fires when an INSERT, UPDATE or DELETE statement is executed.<br />
+          There are 3 types of DML Trigger<br />
+<strong>After Insert</strong>: fires when an INSERT statement is executed<br />
+<strong>After Update</strong>: fires when an UPDATE statement is executed<br />
+<strong>After Delete</strong>: fires when an DELETE statement is executed</p>, 
+`CREATE TRIGGER trg_AfterInsert_Employee
+ON Employees
+AFTER INSERT
 AS
 BEGIN
-PRINT 'You can not insert, update and delete';
-ROLLBACK;
-END;`)
+    INSERT INTO EmployeeLog(EmployeeId, ActionDate, ActionType)
+    SELECT Id, GETDATE(), 'INSERT' FROM INSERTED
+END
+
+CREATE TRIGGER trg_AfterUpdate_Salary
+ON Employees
+AFTER UPDATE
+AS
+BEGIN
+    IF UPDATE(Salary)
+    BEGIN
+        INSERT INTO SalaryAudit(EmployeeId, OldSalary, NewSalary, ChangedOn)
+        SELECT d.Id, d.Salary, i.Salary, GETDATE() FROM DELETED d
+        JOIN INSERTED i ON d.Id = i.Id
+    END
+END
+
+CREATE TRIGGER trg_AfterDelete_Employee
+ON Employees
+AFTER DELETE
+AS
+BEGIN
+    INSERT INTO DeletedEmployees SELECT *, GETDATE() FROM DELETED
+END`)
         }
       >DML</button>
 
-       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Logon Triggers</strong> are useful for monitoring user sessions or restricting user access to the database. It can be used for tracking login activities, put the restriction on logins, or limiting the number of sessions for a particular login.</p>, `CREATE TRIGGER track_logon
-ON LOGON
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>INSTEAD OF Trigger</strong> Insert data into multiple tables via a view.</p>, 
+`CREATE TRIGGER trg_InsteadOfInsert_View
+ON vwEmployeeDetails
+INSTEAD OF INSERT
 AS
 BEGIN
-PRINT 'A new user has logged in.';
-END;`)
+    INSERT INTO Employees(Name, DepartmentId)
+    SELECT Name, DepartmentId
+    FROM INSERTED
+END`)
+        }
+      >INSTEAD OF</button>
+
+
+       <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Logon Triggers</strong> fire when a user logs in to the database. Login triggers can be used to Restrict login time, Log login details, Block unauthorized users</p>, 
+`Office time ke bahar login karega toh trigger login block kar dega.
+CREATE TRIGGER trg_BlockLogin
+ON ALL SERVER
+FOR LOGON
+AS
+BEGIN
+    IF DATEPART(HOUR, GETDATE()) < 9 OR DATEPART(HOUR, GETDATE()) > 18
+    BEGIN
+        ROLLBACK;
+    END
+END`)
         }
       >Logon</button><br />
  
