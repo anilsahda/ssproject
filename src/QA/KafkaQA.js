@@ -49,15 +49,33 @@ I am always eagar to learn and adapt new technologies, and I enjoy solving compl
       >Indivisual Contributor</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Successfully migrated a monolithic .NET application to microservices on AWS, reducing operational costs by 30%.<br />
-Optimized an API-driven application using AWS Lambda and DynamoDB, reducing response times by 40%.<br />
-Designed a secure and scalable CI/CD pipeline, improving deployment speed and reducing failures by 60%.<br />
-Led a team of 5 developers in a cloud modernization project, delivering within budget and ahead of schedule.</p>)
+          handleOpenPopup(<p><strong>I have a small family</strong> with my wife and a 9-year-old child. I am the youngest in my family and have four brothers and two sisters.<br />
+<strong>My eldest</strong> brother is a Mechanical Engineer living in Mumbai. My second brother is a Civil Engineer based in Gujarat. Another brother works in a government job and lives with my father in a rural area. Both my sisters are married; one lives in Kolkata and the other in Jharkhand.<br />
+<strong>My wife</strong> is self-employed and runs paying guest accommodations in Mohali and Dehradun. She manages the day-to-day operations, which include onboarding tenants, handling bookings, managing staff, and taking care of food and accommodation arrangements. She also looks after rent collection, utility management, and maintaining a safe and comfortable environment for working professionals and students. Through this business, she independently handles operations and ensures smooth functioning at both locations.<br />
+<strong>Our child</strong> is currently studying in the 3rd standard. We actively focus on providing a good learning environment and supporting academic as well as overall development, including extracurricular activities. <br />
+<strong>My father</strong> works as a government contractor and is associated with the Public Works Department (PWD). His primary responsibility is executing government-awarded road construction projects. This includes activities such as building new roads, widening existing roads, repairing damaged roads, and maintaining road infrastructure.<br />
+<strong>He manages</strong> the complete project lifecycle—from participating in government tenders and planning the work to supervising on-site execution. His role involves coordinating with engineers, labor teams, and suppliers to ensure that projects are completed according to government specifications, safety standards, and timelines. He is also responsible for quality control, compliance with regulations, and timely delivery of the projects.</p>)
+        }
+      >Family</button>
+
+
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>One of my major achievements</strong> was migrating a large monolithic .NET application into a microservices-based architecture on AWS. Earlier, the application was tightly coupled, difficult to scale, and costly to maintain. I designed the microservices approach, broke down the modules based on business domains, and deployed them using AWS services. Because of this migration, we were able to scale only the required services instead of the entire application, which helped us reduce operational and infrastructure costs by nearly 30%. It also improved system stability and made deployments much faster.<br />
+<strong>Another key</strong> achievement was optimizing an API-driven application using AWS Lambda and DynamoDB. The earlier system was hosted on traditional servers and had performance issues during peak traffic. I redesigned the APIs to be serverless, optimized database access patterns, and reduced unnecessary calls. As a result, the API response time improved by around 40%, and the application handled traffic spikes very smoothly without manual intervention.<br />
+<strong>I also designed</strong> and implemented a secure and scalable CI/CD pipeline. Earlier, deployments were mostly manual and error-prone. I automated the build, test, and deployment process using CI/CD best practices, added security checks, and proper rollback mechanisms. This significantly improved deployment speed and reduced production failures by almost 60%, which increased team confidence and release quality.<br />
+<strong>Along with</strong> technical contributions, I led a team of 5 developers during a cloud modernization project. I was involved in architecture decisions, task planning, code reviews, and mentoring junior developers. I ensured clear communication with stakeholders and proper tracking of deliverables. Because of good planning and teamwork, we delivered the project ahead of schedule and within budget, while maintaining high code quality and performance.<br />
+<strong>Overall</strong>, these achievements show my ability to handle both hands-on technical work and team leadership, especially in cloud and modern application architectures.</p>)
         }
       >Achievement</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>In one of my previous projects, I had to migrate a legacy monolithic application to a microservices-based architecture without disrupting ongoing business operations. The main challenge was to make sure a smooth transition means moving from one system or process to another without disruptions, delay or issues while maintaining data consistency. To tackle this, I collaborated with stakeholders to plan a step-by-step rollout, implemented API gateways for smooth communication, and used event-driven architecture to handle real-time data synchronization. By following best practices and conducting extensive testing, I successfully completed the migration with minimal downtime.</p>)
+          handleOpenPopup(<p><strong>One of the biggest challenges</strong> I faced in my previous project was migrating a legacy monolithic application to a microservices-based architecture without disturbing ongoing business operations. The application was already live and actively used by customers, so even a small downtime or data issue could have created serious business impact.<br />
+<strong>The main challenge</strong> was ensuring a smooth transition, meaning there should be no service disruption, no major delays, and no data inconsistency while moving from the old system to the new one. Since the monolithic system was tightly coupled, breaking it into microservices had to be done very carefully.<br />
+<strong>To handle this</strong>, I first worked closely with business stakeholders, product owners, and the operations team to understand critical workflows and peak usage times. Based on this, I created a step-by-step migration plan instead of doing a big-bang release. We identified low-risk modules first and migrated them gradually.<br />
+<strong>From a technical</strong> side, I implemented an API Gateway to manage communication between the existing monolith and the new microservices. This helped us route traffic smoothly and control which requests should go to the old system and which to the new services.<br />
+<strong>To maintain data</strong> consistency across systems, I used an event-driven architecture. Whenever data was created or updated, events were published so that all dependent services stayed in sync in real time. This approach reduced tight coupling and ensured data reliability during the transition phase.<br />
+<strong>I also focused</strong> heavily on testing and monitoring. We performed extensive unit testing, integration testing, and parallel runs where both systems worked together. Proper logging and alerts were added so that issues could be detected early.<br />
+<strong>Because of careful</strong> planning, collaboration, and following best practices, we completed the migration with minimal downtime and no major business impact. The system became more scalable, easier to maintain, and ready for future enhancements. This experience really strengthened my skills in system design, risk management, and stakeholder coordination.</p>)
         }
       >Chalenge</button>
 
@@ -76,12 +94,22 @@ Lack of Ownership & Initiative Some developers wait for instructions instead of 
       >Disagree with Manager</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>I prioritize tasks using Agile methods. I focus on high-impact tasks first and break down complex projects into smaller, manageable milestones. Additionally, I communicate regularly with stakeholders to align on priorities and adjust as needed. I also leverage tools like Jira or Trello to track progress and ensure deadlines are met without compromising quality.</p>)
+          handleOpenPopup(<p><strong>When it comes to prioritizing tasks</strong>, I mainly follow Agile methodologies, because they help me stay flexible while still focusing on business goals. First of all, I try to clearly understand the business impact of each task. I always ask myself which task will give maximum value to the customer or business, and I prioritize those items first.<br />
+<strong>For complex</strong> or large projects, I don’t try to do everything at once. Instead, I break the work into smaller, manageable milestones and user stories. This makes the work easier to track, reduces risk, and helps the team deliver value continuously rather than waiting till the end.<br />
+<strong>I also work</strong> very closely with stakeholders, product owners, and team members. We regularly discuss priorities during sprint planning, daily stand-ups, and review meetings. If there is any change in business requirement or urgency, I realign the priorities quickly so the team is always working on the most important tasks.<br />
+<strong>To manage</strong> and track work effectively, I use tools like Jira or Trello. These tools help me visualize the backlog, track progress, identify blockers early, and ensure nothing is missed. I also use them to monitor deadlines and workload distribution across the team.<br />
+<strong>At the same</strong> time, I never compromise on quality. Even when deadlines are tight, I make sure proper code reviews, testing, and documentation are followed. If required, I discuss trade-offs transparently with stakeholders instead of taking shortcuts.<br />
+<strong>Overall</strong>, my approach to task prioritization is a balance of business value, technical feasibility, and team capacity, which helps in delivering projects on time while maintaining high quality.</p>)
         }
       >Prioritize Task</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Strong Problem-Solving Skills, Good Code Quality, Quick Learner, Team Player, Ownership and Responsibility</p>)
+          handleOpenPopup(<p><strong>Based on feedback</strong> from my managers and teammates, people generally see me as someone with strong problem-solving skills. Whenever there is a complex technical issue or production problem, I try to first understand the root cause instead of applying quick fixes. I analyze logs, review code, and think from both technical and business perspectives before proposing a solution.<br />
+<strong>I am also</strong> known for maintaining good code quality. I follow coding standards, write clean and readable code, and focus on proper design and reusability. I believe that good code reduces future maintenance effort, so I pay attention to reviews, testing, and documentation.<br />
+<strong>Many people</strong> consider me a quick learner. When I am exposed to a new technology, tool, or domain, I make it a point to learn it quickly and apply it practically in the project. This helps the team adapt faster to changing requirements and technologies.<br />
+<strong>I am seen</strong> as a team player who collaborates well with others. I actively participate in discussions, support team members when they are stuck, and share knowledge whenever possible. I believe good teamwork is key to successful project delivery.<br />
+<strong>Finally</strong>, I take ownership and responsibility for my work. Once a task is assigned to me, I make sure it is completed end-to-end, including design, implementation, testing, and post-deployment support. If there is any issue, I don’t blame others—I take responsibility and work towards fixing it.<br />
+<strong>Overall</strong>, people see me as someone reliable, technically strong, and easy to work with.</p>)
         }
       >People Think</button>
 
