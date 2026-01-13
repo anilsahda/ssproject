@@ -49,9 +49,7 @@ I am always eagar to learn and adapt new technologies, and I enjoy solving compl
       >Indivisual Contributor</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>I have a small family</strong> with my wife and a 9-year-old child. I am the youngest in my family and have four brothers and two sisters.<br />
-<strong>My eldest</strong> brother is a Mechanical Engineer living in Mumbai. My second brother is a Civil Engineer based in Gujarat. Another brother works in a government job and lives with my father in a rural area. Both my sisters are married; one lives in Kolkata and the other in Jharkhand.<br />
-<strong>My wife</strong> is self-employed and runs paying guest accommodations in Mohali and Dehradun. She manages the day-to-day operations, which include onboarding tenants, handling bookings, managing staff, and taking care of food and accommodation arrangements. She also looks after rent collection, utility management, and maintaining a safe and comfortable environment for working professionals and students. Through this business, she independently handles operations and ensures smooth functioning at both locations.<br />
+          handleOpenPopup(<p><strong>I have</strong> a small family and I live with my wife and a 9-year-old child in at Mohali in Punjab. <strong>My wife</strong> is self-employed and runs paying guest and home stay in Mohali and Dehradun. She manages the day-to-day operations, which include onboarding tenants, handling bookings, managing staff, and taking care of food and accommodation arrangements. She also looks after rent collection, utility management, and maintaining a safe and comfortable environment for working professionals and students.<br />
 <strong>Our child</strong> is currently studying in the 3rd standard. We actively focus on providing a good learning environment and supporting academic as well as overall development, including extracurricular activities. <br />
 <strong>My father</strong> works as a government contractor and is associated with the Public Works Department (PWD). His primary responsibility is executing government-awarded road construction projects. This includes activities such as building new roads, widening existing roads, repairing damaged roads, and maintaining road infrastructure.<br />
 <strong>He manages</strong> the complete project lifecycle—from participating in government tenders and planning the work to supervising on-site execution. His role involves coordinating with engineers, labor teams, and suppliers to ensure that projects are completed according to government specifications, safety standards, and timelines. He is also responsible for quality control, compliance with regulations, and timely delivery of the projects.</p>)
@@ -551,7 +549,37 @@ services:
   SQS
 </button>
 <br />
-
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p><strong>Azure DevOps</strong> is a complete end-to-end DevOps platform provided by Microsoft that helps teams plan, build, test, release, and monitor applications efficiently. It supports the full software development lifecycle and enables strong collaboration between development and operations teams.<br />
+<strong>Core Services of Azure DevOps</strong><br/>
+Azure Repos – Git-based source control for managing code<br />
+Azure Pipelines – CI/CD automation for build and deployment<br />
+Azure Boards – Work item tracking using Agile, Scrum, or Kanban<br />
+Azure Artifacts – Package management for NuGet, npm, Maven<br />
+Azure Test Plans – Manual and exploratory testing<br />
+      <strong>CI/CD Pipelines</strong> are used to automate the process of building, testing, and deploying applications. The main objective is to deliver software faster, more reliably, and with minimal manual effort.<br />
+<strong>Continuous Integration</strong> means integrating code frequently into a shared repository. Whenever a developer
+commits the code and pushes it to Azure Repos or GitHub, the CI pipeline is triggered automatically and performs code compilation, dependency restoration, unit and integration testing and static code analysis<br />
+If any step fails, the pipeline stops immediately and provides feedback to the developer. This helps in detecting issues early and ensures that the codebase always remains in a deployable state.<br />
+<strong>Continuous Deployment or Delivery</strong> focuses on automating the release process. After the CI pipeline succeeds:
+The application is packaged as a build artifact and deployed to multiple environments such as:
+Development, QA, UAT, Production. <br />
+Azure Pipelines supports deployments to Azure App Services, Azure Kubernetes Service (AKS)
+Virtual Machines and Azure Functions.<br />
+Manual approval gates can be added before critical environments like production to maintain control.<br />
+<strong>Benefits of Azure CI/CD Pipelines</strong><br />
+Faster and reliable releases<br />
+Reduced manual errors<br />
+Consistent deployment process<br />
+Easy rollback and traceability<br />
+Improved team productivity<br />
+In real projects, deployment time is reduced significantly—from hours to just a few minutes.
+    </p>
+  )
+}>
+Azure DevOps and CI-CD
+</button>
 <button className="btn btn-success me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
@@ -625,23 +653,6 @@ Choose Message Broker
 <button className="btn btn-success me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
-      <strong>SQL vs NoSQL</strong><br />
-      <strong>Question</strong>: How do handle data storage decisions, such as sql vs nosql databases?<br />
-When handling data storage decisions like SQL vs NoSQL, first I clearly understand the data nature and access pattern.<br />
-If data is structured, needs strong relationships, joins, and ACID transactions—like finance, orders, billing—then I prefer SQL databases such as MySQL, PostgreSQL, or SQL Server.<br />
-If data is semi-structured or unstructured, schema changes frequently, or application needs high scalability and low latency—like logs, user activity, IoT, or large-scale apps—then NoSQL like MongoDB, DynamoDB, or Cassandra is better.<br />
-I also check read/write pattern. For complex queries → SQL. For high-volume reads/writes → NoSQL.<br />
-Then I consider scalability, cost, and cloud-native options, and sometimes we even use polyglot persistence, meaning SQL for core transactions and NoSQL for analytics or caching.<br />
-So decision is always based on use case, consistency needs, scalability, and future growth, not just database popularity.
-    </p>
-  )
-}>
-Choose SQL vs NoSQL
-</button>
-
-<button className="btn btn-success me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
       <strong>Choose React vs Angualar</strong><br />
       <strong>Question</strong>: How do you handle frontend technology decisions, such as Angular vs React?<br />
 When handling frontend technology decisions, first I clearly understand the application requirements and complexity.<br />
@@ -655,6 +666,23 @@ So the frontend decision is always based on application size, performance requir
   )
 }>
 Choose React vs Angualar
+</button>
+
+<button className="btn btn-success me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>SQL vs NoSQL</strong><br />
+      <strong>Question</strong>: How do handle data storage decisions, such as sql vs nosql databases?<br />
+When handling data storage decisions like SQL vs NoSQL, first I clearly understand the data nature and access pattern.<br />
+If data is structured, needs strong relationships, joins, and ACID transactions—like finance, orders, billing—then I prefer SQL databases such as MySQL, PostgreSQL, or SQL Server.<br />
+If data is semi-structured or unstructured, schema changes frequently, or application needs high scalability and low latency—like logs, user activity, IoT, or large-scale apps—then NoSQL like MongoDB, DynamoDB, or Cassandra is better.<br />
+I also check read/write pattern. For complex queries → SQL. For high-volume reads/writes → NoSQL.<br />
+Then I consider scalability, cost, and cloud-native options, and sometimes we even use polyglot persistence, meaning SQL for core transactions and NoSQL for analytics or caching.<br />
+So decision is always based on use case, consistency needs, scalability, and future growth, not just database popularity.
+    </p>
+  )
+}>
+Choose SQL vs NoSQL
 </button>
 
 <button className="btn btn-success me-2 mb-2" onClick={() =>
@@ -737,7 +765,7 @@ Overall, containers help in faster deployment, scalability, and stability, and K
     </p>
   )
 }>
-Containerization and Orchestration
+Containerization & Orchestration
 </button>
 <button className="btn btn-success me-2 mb-2" onClick={() =>
   handleOpenPopup(
@@ -908,9 +936,7 @@ To reduce risk, I will set up CI/CD pipelines, monitoring, and alerts, so every 
 Overall, by incremental migration, strangler pattern, containerization, careful data migration, and automated pipelines, we can move to cloud safely with minimal downtime.
     </p>
   )
-}>
-On-Premises to Cloud Migration
-</button>
+}>On-Premises to Cloud</button>
 
 <button className="btn btn-success me-2 mb-2" onClick={() =>
   handleOpenPopup(
