@@ -3,6 +3,66 @@ import React, { useState } from 'react';
 export default function Azurecosmosdb() {
   return (
     <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif', lineHeight: '1.6' }}>
+      <ToggleSection title="1. What is GraphQL and why would you use it?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`GraphQL is a query language for APIs developed by Facebook. Instead of getting fixed data from REST APIs, GraphQL allows the client to ask exactly what data it needs.
+In simple terms, GraphQL avoids over-fetching and under-fetching problems.
+We use GraphQL when frontend needs flexibility, especially in mobile apps, dashboards, or microservices-based systems.`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="2. Difference between GraphQL and REST?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`In REST, we have multiple endpoints and each endpoint returns fixed data.
+In GraphQL, we have a single endpoint and client controls the response.
+Desi explanation:
+REST → Server decides data
+GraphQL → Client decides data
+GraphQL reduces network calls, improves performance, and makes frontend development faster.`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="3. What are Query, Mutation, and Subscription in GraphQL?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`Query → Used to read data (like GET)
+Mutation → Used to create, update, or delete data (like POST/PUT/DELETE)
+Subscription → Used for real-time updates (like live notifications)
+Example use cases:
+Query → Fetch user details
+Mutation → Create order
+Subscription → Live order status or chat messages`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="4. What is Schema and Resolver in GraphQL?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`Schema defines the structure of the API — what data is available and in what format
+Resolver contains the actual logic to fetch data from database or services
+In simple words:
+Schema = Contract
+Resolver = Implementation
+Without resolvers, schema is useless.`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="5. How do you handle performance issues in GraphQL?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`Performance issues mainly come from N+1 query problem.
+We handle this by:
+Using DataLoader for batching
+Pagination instead of large responses
+Proper caching
+Limiting query depth
+Avoiding unnecessary fields
+Well-designed GraphQL APIs are fast, scalable, and frontend-friendly.`}
+          </code>
+        </pre>
+      </ToggleSection>
       <ToggleSection title="1. What is Azure Cosmos DB and when would you use it?">
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
