@@ -3,19 +3,131 @@ import React, { useState } from 'react';
 export default function Azurecosmosdb() {
   return (
     <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif', lineHeight: '1.6' }}>
-      <h2>💾 Azure Cosmos DB Setup</h2>
-
-      <ToggleSection title="1. ✅ What is Cosmos DB?">
+      <ToggleSection title="1. What is Azure Cosmos DB and when would you use it?">
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`Azure Cosmos DB is a globally distributed, multi-model NoSQL database service.
 It provides high availability, low latency, and elastic scalability with support
-for multiple APIs including SQL (Core), MongoDB, Cassandra, Gremlin, and Table.`}
+for multiple APIs including SQL (Core), MongoDB, Cassandra, Gremlin, and Table.
+We usually use Cosmos DB for high-traffic applications like e-commerce, IoT, real-time dashboards, gaming apps, or global applications where users are spread across different regions. It handles millions of requests without manual database management.`}
           </code>
         </pre>
       </ToggleSection>
-
-      <ToggleSection title="2. 🔹 Create a Cosmos DB Account & Container">
+      <ToggleSection title="2. What are the different APIs supported by Cosmos DB?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`Cosmos DB supports multiple APIs, so developers can use the model they are comfortable with:
+Core (SQL) API – most commonly used, JSON-based documents
+MongoDB API – for MongoDB-compatible apps
+Cassandra API – for wide-column data
+Table API – key-value storage
+Gremlin API – graph-based data
+This flexibility allows easy migration from existing databases.`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="3. What is a container in Cosmos DB? How is it different from a collection?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`A container is where data is actually stored in Cosmos DB.
+Earlier it was called a collection, but now Microsoft uses the term container.
+A container holds items (documents) and is configured with:
+Partition key
+Throughput (RU/s)
+Indexing rules`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="4. Explain partition key and why it is important.">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`Partition key decides how data is distributed across physical partitions.
+If we choose a good partition key, load is evenly distributed and performance is fast.
+If we choose a bad partition key, one partition becomes overloaded (hot partition).
+Example:
+Using UserId as partition key in user-based applications is a good choice.
+So, partition key is very important for scalability and performance.`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="5. What are Request Units (RU/s) and how are they calculated?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`RU/s is the currency of Cosmos DB. Every operation like read, write, update, or query consumes RUs.
+Simple read = low RU
+Complex query or large document = high RU
+RU consumption depends on:
+Document size
+Query complexity
+Index usage
+So we must design queries carefully to save cost.`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="6. Difference between throughput at database level vs container level?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`Database-level throughput: Shared RU/s across all containers
+Useful when containers have uneven traffic
+Container-level throughput: Dedicated RU/s for one container
+Useful for critical or high-load containers
+In real projects, we use container-level throughput for performance-critical data.`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="7. How does Cosmos DB ensure high availability and low latency?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`Cosmos DB automatically:
+Replicates data across multiple regions
+Uses multi-master or single-master replication
+Provides 99.999% availability SLA
+Because data is closer to users geographically, latency is very low.
+Failover happens automatically without downtime.`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="8. What consistency levels are supported in Cosmos DB?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`Cosmos DB supports 5 consistency levels:
+Strong
+Bounded Staleness
+Session
+Consistent Prefix
+Eventual
+In most applications, Session consistency is used because it gives a balance between performance and correctness.`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="9. How does indexing work in Cosmos DB? Can it be customized?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`By default, Cosmos DB automatically indexes all properties.
+This makes querying easy but can increase RU cost.
+Yes, indexing can be customized:
+Include specific fields
+Exclude unnecessary fields
+Use composite indexes
+Proper indexing improves query performance and reduces RU consumption.`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="10. How do you handle scaling and performance optimization in Cosmos DB?">
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`We handle scaling by:
+Choosing a good partition key
+Using autoscale RU/s
+Optimizing queries
+Reducing document size
+Custom indexing
+Caching frequent reads
+Cosmos DB scales horizontally automatically, so no manual sharding is required.`}
+          </code>
+        </pre>
+      </ToggleSection>
+      <ToggleSection title="🔹 Create a Cosmos DB Account & Container">
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`1. Go to Azure Portal → Create a Resource
@@ -31,7 +143,7 @@ for multiple APIs including SQL (Core), MongoDB, Cassandra, Gremlin, and Table.`
         </pre>
       </ToggleSection>
 
-      <ToggleSection title="3. 📝 CRUD Operations - Node.js & Azure Cosmos DB">
+      <ToggleSection title="📝 CRUD Operations - Node.js & Azure Cosmos DB">
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`import { CosmosClient } from "@azure/cosmos";
@@ -58,7 +170,7 @@ await container.item("1", "1").delete();`}
         </pre>
       </ToggleSection>
 
-      <ToggleSection title="4. 🧱 CRUD Operations - .NET Core & Azure Cosmos DB">
+      <ToggleSection title="🧱 CRUD Operations - .NET Core & Azure Cosmos DB">
         <ol>
           <li>Install NuGet package: <code>Microsoft.Azure.Cosmos</code></li>
           <li>Create a Cosmos DB SQL API account and container.</li>
@@ -121,72 +233,6 @@ await container.item("1", "1").delete();`}
         </Section>
       </ToggleSection>
 
-      <ToggleSection title="5. ☕️ CRUD Operations - Spring Boot & Azure Cosmos DB">
-        <ol>
-          <li>Add Maven dependency:</li>
-        </ol>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>{`
-<dependency>
-  <groupId>com.azure</groupId>
-  <artifactId>azure-cosmos</artifactId>
-  <version>4.54.0</version>
-</dependency>`}</code>
-        </pre>
-
-        📁 <b>application.properties</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>{`
-azure.cosmos.uri=YOUR_COSMOS_DB_ENDPOINT
-azure.cosmos.key=YOUR_COSMOS_DB_KEY
-azure.cosmos.database=MyDatabase
-azure.cosmos.container=MyContainer`}</code>
-        </pre>
-
-        📁 <b>Country.java</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>{`public class Country {
-    private String id;
-    private String name;
-    // getters and setters
-}`}</code>
-        </pre>
-
-        📁 <b>CountryRepository.java</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>{`@Repository
-public class CountryRepository {
-
-    private final CosmosContainer container;
-
-    public CountryRepository(CosmosClient cosmosClient) {
-        this.container = cosmosClient.getDatabase("MyDatabase").getContainer("MyContainer");
-    }
-
-    public void save(Country country) {
-        container.createItem(country);
-    }
-
-    public Country findById(String id) {
-        return container.readItem(id, new PartitionKey(id), Country.class).getItem();
-    }
-
-    public void delete(String id) {
-        container.deleteItem(id, new PartitionKey(id));
-    }
-}`}</code>
-        </pre>
-
-        <Section title="API Endpoints" color="text-green-600">
-          <ul className="list-disc ml-5 space-y-1 text-gray-700">
-            <li><code className="bg-gray-100 px-1 rounded">GET /api/countries</code> – Retrieves all countries</li>
-            <li><code className="bg-gray-100 px-1 rounded">GET /api/countries/{`{id}`}</code> – Retrieves a country by ID</li>
-            <li><code className="bg-gray-100 px-1 rounded">POST /api/countries</code> – Adds a new country</li>
-            <li><code className="bg-gray-100 px-1 rounded">PUT /api/countries</code> – Updates a country</li>
-            <li><code className="bg-gray-100 px-1 rounded">DELETE /api/countries/{`{id}`}</code> – Deletes a country</li>
-          </ul>
-        </Section>
-      </ToggleSection>
     </div>
   );
 }
