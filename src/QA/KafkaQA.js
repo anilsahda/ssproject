@@ -87,7 +87,11 @@ Lack of Ownership & Initiative Some developers wait for instructions instead of 
       >Conflict</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Yes, there was a time when I had a different technical opinion on an approach proposed by my lead. Instead of directly opposing the idea, I conducted research and prepared a proof-of-concept to demonstrate my perspective. I then presented my findings in a collaborative discussion, highlighting the pros and cons of both approaches. At the end, we combined aspects of both solutions, leading to a more efficient implementation. I believe respectful discussions lead to better decision-making and learning opportunities for both sides.</p>)
+          handleOpenPopup(<p><strong>Yes, there</strong> was a situation where I had a different technical opinion from my lead regarding the approach for implementing a key feature. The proposed solution worked functionally, but based on my experience with similar systems and our long-term scalability requirements, I felt there could be performance and maintainability challenges in the future.<br />
+<strong>Instead of directly</strong> disagreeing in the meeting, I took a more constructive approach. I spent some time researching alternative patterns and reviewing best practices, including how similar problems were solved in other projects. To make my point concrete, I created a small proof of concept that demonstrated my suggested approach and compared it with the existing proposal in terms of performance, readability, and extensibility.<br />
+<strong>Once</strong> I had clear data, I scheduled a discussion with my lead and presented my findings respectfully. I didn’t position it as “right versus wrong,” but rather as a comparison of trade-offs. I clearly explained the pros and cons of both approaches, including the risks associated with my own suggestion. This helped keep the conversation objective and focused on what was best for the project, rather than personal opinions.<br />
+<strong>During the discussion</strong>, we realized that both approaches had strong points. As a result, we decided to combine aspects of each solution—using the original approach for simplicity where it made sense, and incorporating my recommendations in the areas that impacted performance and future scalability. The final implementation turned out to be more efficient and easier to extend.<br />
+<strong>This experience</strong> reinforced my belief that healthy, respectful technical discussions lead to better outcomes. I’m always open to feedback, and I value collaboration over being “right.” Ultimately, the goal is to deliver the best possible solution for the team and the business, and I believe constructive disagreement is an important part of that process.</p>)
         }
       >Disagree with Manager</button>
 
@@ -127,7 +131,11 @@ Security Awareness Gaps Sometimes lack expertise in secure coding practices, mak
       >Shortcoming</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>I first analyze the scope of work and identify the critical tasks that need immediate attention. If necessary, I break down the work into smaller increments and focus on delivering a working version within the given timeline. I also collaborate with my team to delegate tasks efficiently. If I see any roadblocks, I communicate them early with stakeholders to manage expectations and if required, negotiate timelines or scope adjustments</p>)
+          handleOpenPopup(<p><strong>When I’m</strong> faced with a tight deadline, the first thing I do is step back and clearly analyze the scope of work. I focus on understanding what is absolutely critical for delivery versus what can be optimized or enhanced later. This helps me avoid trying to do everything at once and instead prioritize tasks that have the highest business impact.<br />
+<strong>Next, I break</strong> the overall work into smaller, manageable increments. I usually aim to deliver a working or minimum viable version first, ensuring that the core functionality is stable and usable within the timeline. This approach reduces risk and gives stakeholders something tangible to review early, rather than waiting until the very end.<br />
+<strong>Collaboration</strong> is also key during tight timelines. I work closely with my team to delegate tasks based on individual strengths and availability. Clear ownership and frequent check-ins help ensure everyone stays aligned and potential issues are identified quickly. If needed, I also step in to support critical tasks myself to keep momentum going.<br />
+<strong>If I encounter</strong> any roadblocks—whether technical, dependency-related, or resource-based—I communicate them as early as possible. I believe transparency is very important in such situations. I discuss the impact with stakeholders and propose solutions, such as adjusting the scope, reprioritizing features, or negotiating a more realistic timeline if required. This proactive communication helps manage expectations and avoids last-minute surprises.<br />
+<strong>Overall</strong>, my approach to tight deadlines is a balance between speed and quality. By prioritizing effectively, collaborating closely with the team, and communicating openly with stakeholders, I ensure that we deliver a reliable solution on time without compromising long-term maintainability.</p>)
         }
       >Tight Deadline</button>
 
@@ -137,418 +145,82 @@ Security Awareness Gaps Sometimes lack expertise in secure coding practices, mak
       >Why Hire</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>If the client is non-technical, it's best to keep the explanation simple, clear, and solution-oriented. Here's how you can respond: like<br />
-I understand the concern, and I want to assure you that we are looking into it. The application was thoroughly tested before deployment, but sometimes, differences between the production environment and the testing environment can cause unexpected issues. We are currently diagnosing the problem and will resolve it as quickly as possible. I'll keep you updated with our progress and the estimated time for resolution.</p>)
+          handleOpenPopup(<p><strong>When</strong> I’m communicating with a non-technical client, my primary focus is to keep the conversation simple, transparent, and solution-oriented. I avoid using technical jargon and instead explain the situation in a way that relates to business impact and next steps.<br />
+<strong>In such situations</strong>, I usually start by acknowledging the client’s concern and reassuring them. For example, I explain that I understand the issue and that the team is actively working on it. I also clarify that the application was thoroughly tested before deployment, which helps build confidence in our process without going into unnecessary technical details.<br />
+<strong>If there</strong> is an issue in production, I explain it in simple terms—such as differences between the testing environment and the live environment—without assigning blame or overwhelming them with complexity. The goal is to help the client understand why issues can occur, not how they occur technically. This keeps the conversation calm and focused on resolution rather than frustration.<br />
+<strong>Next, I clearly</strong> communicate what actions are being taken. I let the client know that the team is diagnosing the root cause, prioritizing the fix, and working toward a resolution as quickly as possible. I also set expectations by sharing an estimated timeline or at least the next checkpoint when I will provide an update.<br />
+<strong>Finally</strong>, I make sure to keep the client informed throughout the process. Regular updates, even if the issue is still being worked on, help maintain trust. Once the issue is resolved, I follow up with a brief summary and, if needed, outline preventive measures to avoid similar issues in the future.<br />
+<strong>Overall</strong>, my approach is to be calm, empathetic, and clear. By focusing on reassurance, transparency, and consistent communication, I ensure that non-technical clients feel confident and supported, even during challenging situations.</p>)
         }
       >Non-Tech Client</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Mentoring effectively can involve a mix of technical guidance, soft skills development, and creating an environment where your team members feel supported and challenged.<br />
-Understand Their Strengths & Weaknesses Start with one-on-one discussions to assess their skills, interests, and career goals. Identify technical gaps and areas where they need improvement. Assign tasks based on their strengths while gradually introducing challenges.<br />
-Lead by Example Show best practices in coding, design patterns, and architecture principles through. Maintain high coding standards SOLID, clean code, microservices best practices. Encourage writing efficient, maintainable, and scalable code.<br />
-Provide Hands-On Guidance Conduct pair programming sessions to solve real-world problems together. Use code reviews as a learning opportunity rather than just a correction tool. Break down complex concepts into simpler, understandable parts.<br />
-Encourage Ownership & Problem-Solving Assign real responsibilities rather than just minor tasks. Encourage them to think through problems rather than providing immediate solutions. Ask guiding questions like: What approaches do you think could work? What are the trade-offs of this design?<br />
-Share Knowledge & Best Practices Conduct regular knowledge-sharing sessions on topics like microservices, cloud architecture, or system design. Recommend books, blogs, and courses to deepen their knowledge. Encourage contributing to open-source projects or writing technical blogs.<br />
-Develop Soft Skills & Leadership Teach them how to communicate technical ideas clearly. Encourage them to present in team meetings. Help them navigate team collaboration, conflict resolution, and stakeholder communication.<br />
-Provide Constructive Feedback & Motivation Give regular, specific, and actionable feedback instead of vague comments. Recognize their improvements and celebrate their small wins. Set measurable growth goals to track progress.<br />
-Guide Them Towards Career Growth Help them set short-term and long-term career goals. Introduce them to new technologies, tools, and methodologies. Support them in taking leadership roles or higher responsibilities over time.<br />
-Create a Culture of Continuous Learning Encourage a growth mindset where failures are seen as learning opportunities. Foster an environment where asking questions is welcomed. Keep them engaged with hackathons, tech talks, and problem-solving exercises.</p>)
+          handleOpenPopup(<p><strong>Mentoring</strong> effectively can involve a mix of technical guidance, soft skills development, and creating an environment where your team members feel supported and challenged.<br />
+<strong>Understand</strong> their strengths and weaknesses Start with one-to-one discussions to anlyse their skills, interests, and career goals. Identify technical gaps and areas where they need improvement. Assign tasks based on their strengths while gradually introducing challenges.<br />
+<strong>Show best practices</strong> in coding, design patterns, and architecture principles through. Maintain high coding standards SOLID, clean code, microservices best practices. Encourage writing efficient, maintainable, and scalable code.<br />
+<strong>Provide Hands-On</strong> guidance Conduct pair programming sessions to solve real-world problems together. Use code reviews as a learning opportunity rather than just a correction tool. Break down complex concepts into simpler, understandable parts.<br />
+<strong>Encourage</strong> ownership and problem-solving, assign real responsibilities rather than just minor tasks. Encourage them to think through problems rather than providing immediate solutions. Ask guiding questions like: What approaches do you think could work? What are the trade-offs of this design?<br />
+<strong>Share Knowledge</strong> and best practices, conduct regular knowledge-sharing sessions on topics like microservices, cloud architecture, or system design. Recommend books, blogs, and courses to deepen their knowledge. Encourage contributing to open-source projects or writing technical blogs.<br />
+<strong>Develop Soft Skills</strong> and leadership teach them how to communicate technical ideas clearly. Encourage them to present in team meetings. Help them navigate team collaboration, conflict resolution, and stakeholder communication.<br />
+<strong>Provide Constructive</strong> feedback and motivation, give regular, specific, and actionable feedback instead of vague comments. Recognize their improvements and celebrate their small wins. Set measurable growth goals to track progress.<br />
+<strong>Guide Them Towards</strong> career growth help them set short-term and long-term career goals. Introduce them to new technologies, tools, and methodologies. Support them in taking leadership roles or higher responsibilities over time.<br />
+<strong>Create a Culture</strong> of continuous learning, encourage a growth mindset where failures are seen as learning opportunities. Foster an environment where asking questions is welcomed. Keep them engaged with hackathons, tech talks, and problem-solving exercises.</p>)
         }
       >Team Handle</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Unexpected Downtime & Critical Failures</strong> Follow a structured debugging approach: Reproduce the issue (logs, monitoring tools, customer reports). Analyze root cause (database, API failures, infrastructure). Fix & validate (test in staging before deploying). Prevent recurrence (add monitoring, improve logging, automate alerts). Conduct post-mortem analysis to document learnings.<br />
-<strong>Performance Bottlenecks in Production Issue</strong>: Slow response times, memory leaks, or high CPU usage. Use profiling tools (New Relic, Prometheus, Dynatrace) to identify bottlenecks. Optimize database queries, caching strategies, and API calls. Scale horizontally (microservices, load balancing) if needed.<br />
-<strong>Rollback & Deployment Failures Issue</strong>: A new release breaks existing functionality. Solution: Implement blue-green deployments or canary releases. Use feature flags to disable new features instantly if issues arise. Always have a rollback strategy and automated deployment pipelines.</p>)
+          handleOpenPopup(<p><strong>When a production issue</strong> occurs and there is high pressure from the client, my first priority is to stay calm and focus on impact and resolution. Panic or rushed decisions usually make things worse, so I make sure the team is aligned and working with a clear plan.<br />
+<strong>The first step</strong> I take is to quickly assess the severity of the issue—understanding which functionalities are affected, how many users are impacted, and whether there is any data or business risk involved. Based on this, I help the team prioritize immediate containment, such as applying a temporary workaround, rollback, or feature toggle to minimize client impact.<br />
+<strong>At the same time</strong>, I ensure clear and proactive communication with the client. I acknowledge the issue, take ownership, and reassure them that the team is actively working on it. I avoid technical jargon and focus on what they care about most: impact, actions being taken, and expected timelines. Even if the root cause is not yet known, I provide regular updates so the client never feels left in the dark.<br />
+<strong>Internally</strong>, I coordinate closely with the team—assigning clear responsibilities for root cause analysis, fixing the issue, and validating the solution. I encourage fast but careful decision-making, ensuring fixes are properly tested before going live to avoid repeat incidents. If additional support is needed, I escalate early rather than waiting for things to worsen.<br />
+<strong>Once the issue</strong> is resolved, I follow up with the client to confirm stability and restore confidence. I also conduct a post-incident review with the team to identify the root cause and define preventive measures, such as monitoring improvements, better test coverage, or process changes.<br />
+<strong>Overall</strong>, I see production issues as opportunities to demonstrate reliability and leadership. By staying calm, communicating transparently, and driving a structured resolution, I ensure both the client and the team remain confident, even under high-pressure situations.</p>)
         }
-      >Prod Issues & High Level Presser</button><br />
-
-<button className="btn btn-danger me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
-      <strong>High-Traffic Digital Media Platform</strong> I’m currently working on Daily Star UK, a high-traffic digital media publishing platform that serves millions of users daily, supporting real-time content publishing and very high read/write traffic, especially during breaking news.<br />
-The content publication workflow is event-driven. Journalists create or update articles in the CUE CMS, which triggers events to an Event System. These events are processed by the E2A service, which retrieves article data from CUE, transforms it into a standardized Agnostic JSON format, and stores it in AWS S3. Any subsequent updates follow the same process, ensuring content consistency and version control across distribution channels.<br />
-To handle scale and performance, we use AWS cloud infrastructure, horizontal scaling, Redis caching, and CDN integration to manage traffic spikes. We rely on Kafka for asynchronous processing such as publishing workflows and analytics. Data is managed using SQL Server for transactional data and MongoDB for content and metadata.<br />
-For website delivery, Navigator Web uses YAML-based configuration files stored in S3. These configurations are managed through Commander, a centralized configuration management tool that converts YAML into JSON and stores it in Redis, allowing teams to update website-level configurations quickly without requiring a full code release.<br />
-My responsibilities include defining service boundaries, developing and reviewing critical code, optimizing APIs, ensuring security and high availability, and mentoring developers, while closely collaborating with product teams, editors, and stakeholders to deliver scalable and reliable solutions.
-    </p>
-  )
-}>
-  Publishing
-</button>
-<button className="btn btn-danger me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
-      <strong>Healthcare</strong><br />
-Client: US Client<br />
-Domain: Healthcare & Health Information Systems<br />
-Technologies: .NET Core Microservices, REST APIs, Azure, Blobstorage, SQL Server, MongoDB<br />
-
-<strong>Description</strong><br />
-I worked on a Healthcare Management System. The platform is designed to manage patient information, provider workflows, appointments, billing, and integrations with external healthcare systems. The solution is built with a strong focus on scalability, security, and compliance, which are critical requirements in the healthcare domain.<br />
-Key Modules & Functionalities are:<br />
-<strong>Patient Management</strong><br />
-Managed complete patient lifecycle including registration, demographics, and medical history.<br />
-Ensured secure handling of sensitive patient data.<br />
-Implemented validation and data consistency rules.<br />
-<strong>Provider & Clinical Workflow Management</strong><br />
-Designed workflows for doctors, nurses, and healthcare staff.<br />
-Enabled efficient management of consultations, prescriptions, and clinical notes.<br />
-Streamlined provider operations through service-based architecture.<br />
-<strong>Appointment & Scheduling Management</strong><br />
-Implemented appointment booking, rescheduling, and cancellation.<br />
-Handled provider availability and patient notifications.<br />
-Ensured optimized scheduling and reduced conflicts.<br />
-<strong>Billing & Payments</strong><br />
-Developed billing services for consultations, procedures, and services.<br />
-Integrated insurance, invoicing, and payment workflows.<br />
-Ensured accurate and auditable financial transactions.<br />
-<strong>Integration with External Healthcare Systems</strong><br />
-Integrated with third-party healthcare systems and external services using REST APIs.<br />
-Supported data exchange with labs, pharmacies, and insurance providers.<br />
-Ensured secure and reliable inter-system communication.
-    </p>
-  )
-}>
-  Healthcare
-</button>
-<button className="btn btn-danger me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
-      <strong>Roadside Assistance Insurance System</strong>  I worked on Roadside Assistance Insurance System, where I serve as a hands-on Lead Engineer. The platform is designed to manage insurance policies, roadside assistance requests, claims processing, customer accounts, and integrations with third-party service providers and payment systems.<br /><br />
-From a technical perspective, the system is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. The platform is deployed on Azure to ensure high scalability, availability, and security, as it processes real-time requests across multiple geographies. Data is managed using SQL Server for transactional data and MongoDB for document-based service records and metadata.<br /><br />
-My responsibilities include designing and implementing core services, writing and reviewing critical code, ensuring SOLID principles and best practices, and handling performance, security, and fault-tolerance considerations. I also mentor junior developers, guide the team through technical challenges, and work closely with product owners and stakeholders to translate business requirements into scalable, maintainable solutions.<br /><br />
-Overall, the project emphasizes real-time processing, scalability, reliability, and regulatory compliance, and my role balances hands-on development with technical leadership and team guidance.
-    </p>
-  )
-}>
-  FORTEGRA
-</button>
-<button className="btn btn-danger me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
-      <strong>Shipment</strong> I worked on a Shipment and Logistics platform where I serve as a hands-on Solution Architect. The system is designed to manage shipment tracking, warehouse operations, delivery scheduling, route optimization, and integrations with third-party carriers and tracking services.<br /><br />
-From a technical perspective, the platform is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. We leverage AWS and Azure for cloud infrastructure to ensure high scalability, availability, and performance, as shipment systems often handle real-time updates across multiple regions. Data is stored in SQL Server for transactional operations and MongoDB for document-based shipment and logistics data.<br /><br />
-My responsibilities include solution and architecture design, defining service boundaries, database design, and implementing core services, keeping me actively involved in hands-on coding. I also lead code reviews, enforce SOLID principles and best practices, and ensure performance, reliability, and security across the system.<br /><br />
-On the collaboration side, I work closely with product owners, operations teams, and client stakeholders to understand business requirements and translate them into scalable technical solutions. I also mentor the development team, provide guidance on technical challenges, and ensure smooth delivery across multiple services.<br /><br />
-Overall, the project focuses on real-time data processing, scalability, system reliability, and seamless integration with external logistics partners, and my role balances hands-on development with architectural leadership.
-    </p>
-  )
-}>
-  Shipment
-</button>
-<button className="btn btn-danger me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
-      <strong> Loan Application System</strong> I worked on the DirectAxis Loan Application System as a Lead Developer. The platform manages the end-to-end loan lifecycle, including loan applications, approvals, disbursements, repayments, customer account management, and integrations with credit bureaus and payment gateways.<br /><br />
-The system is built using .NET Core with a microservices architecture, with RESTful APIs handling communication between services. We use Azure and AWS for cloud infrastructure to ensure scalability, high availability, and security, and data is stored in SQL Server for transactional operations and MongoDB for document-based data.<br /><br />
-As Lead Developer, my responsibilities include designing and implementing core services, writing and reviewing critical code, ensuring best practices and SOLID principles, and optimizing performance, security, and reliability. I also mentor junior developers, guide the team through technical challenges, and collaborate with product owners and business analysts to translate requirements into efficient, maintainable solutions.<br /><br />
-Overall, the project emphasizes scalability, reliability, and regulatory compliance, and my role focuses on hands-on development, technical leadership, and team guidance.
-    </p>
-  )
-}>
-   Loan App
-</button>
-<button className="btn btn-danger me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
-      <strong>E-Commerce</strong> I worked on a high-volume E-commerce platform where I serve as a hands-on Solution Architect. The system is designed to manage product catalogs, inventory, orders, payments, user accounts, and integrations with third-party services such as payment gateways and logistics providers.<br /><br />
-From a technical perspective, the platform is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. We use Azure and AWS for cloud infrastructure, ensuring scalability, high availability, and reliability during peak traffic, such as sales events or promotions. Data is managed using SQL Server for transactional operations and MongoDB for product metadata and catalog information.<br /><br />
-My responsibilities include solution and architecture design, defining service boundaries, database schema design, and implementing core services, keeping me actively involved in hands-on coding. I also lead code reviews, ensure SOLID principles and best practices are followed, and optimize performance and security, which are critical for an E-commerce environment.<br /><br />
-On the collaboration side, I work closely with product owners, business analysts, and client stakeholders to understand business requirements and translate them into robust technical solutions. I also mentor the development team, guide them through technical challenges, and ensure smooth delivery across multiple services.<br /><br />
-Overall, the project emphasizes scalability, high availability, performance, and secure transaction handling, and my role strikes a balance between hands-on development and architectural leadership.
-
-    </p>
-  )
-}>
-  E-Commerce
-</button>
-<button className="btn btn-danger me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
-      <strong>Insurance</strong> I worked on a comprehensive Insurance platform where I serve as a hands-on Solution Architect. The system is designed to manage policy administration, claims processing, underwriting, customer accounts, and integrations with third-party services such as payment gateways and regulatory systems.<br /><br />
-From a technical perspective, the platform is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. We use Azure and AWS for cloud infrastructure to ensure scalability, high availability, and security. Data is managed using SQL Server for transactional operations and MongoDB for document-based data, depending on the type of insurance information.<br /><br />
-My responsibilities include solution and architecture design, defining service boundaries, database design, and implementing core services, keeping me actively involved in hands-on coding. I also lead code reviews, ensure adherence to SOLID principles and best practices, and optimize performance, security, and compliance, which are especially critical in the insurance domain.<br /><br />
-From a collaboration standpoint, I work closely with product owners, business analysts, and client stakeholders to understand business requirements and translate them into scalable technical solutions. I also mentor the development team, guide them through technical challenges, and ensure smooth delivery across multiple services.<br /><br />
-Overall, the project emphasizes scalability, data security, regulatory compliance, and reliable transaction processing, and my role balances hands-on development with architectural leadership.
-    </p>
-  )
-}>
-  Insurance
-</button>
-      <button className="btn btn-info me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Kafka</strong> is an open-source, distributed data streaming platform used to publish, subscribe to, store, and process real-time data streams. It works like a high-performance message queue, allowing different applications to communicate by sending and receiving messages.<br />
-<strong>Kafka Components are:</strong><br />
-<strong>Producer</strong> sends messages or events to Kafka and it publishes data to a topic and kafka does not care who consumes the data. For example: Order Service sends OrderCreated events<br />
-<strong>Consumer</strong> reads messages from Kafka topics and it belong to consumer groups. Kafka make sure each partition is consumed by only one consumer in a group. For example: Inventory Service consumes OrderCreated events<br />
-<strong>Broker</strong> Kafka server that stores topic data and serves producers/consumers.<br /> 
-<strong>Cluster</strong> is a group of multiple brokers for scalability.<br />
-<strong>Topic</strong> is a logical channel where producers send message and consumers subscribe them and it is divided into partitions to process in parallel.<br />
-<strong>Partition</strong> topics are split into partitions for scalability<br />
-<strong>ZooKeeper</strong> used for cluster coordination<br /><br />
-
-<strong>Kafka Key Features</strong><br />
-<strong>High Throughput</strong> Can handle millions of messages per second. Suitable for big data and real-time systems<br />
-<strong>Fault Tolerance</strong> Data is replicated across brokers. If one broker fails, another takes over<br />
-<strong>Durability</strong> Messages are written to disk. Data is not lost even if consumers are down<br />
-<strong>Scalability</strong> Add more brokers → automatic scaling. Add more partitions → more parallelism<br />
-<strong>Loose Coupling</strong> Producers and consumers are independent. New consumers can be added without affecting producers<br />
-
-<strong>Why Kafka is Needed</strong><br />
-Traditional systems were struggling with: High-volume data, Real-time processing, Loose coupling between services, Reliability at scale<br />
-Kafka solves these problems by: Decoupling producers and consumers, Handling millions of messages per second, Ensuring durability and fault tolerance<br />
-
-<strong>When to Use Kafka</strong><br />
-Use Kafka when:<br />
-You need real-time data streaming<br />
-You want event-driven architecture<br />
-Systems need to be decoupled<br />
-High throughput and scalability are required<br />
-Messages must be durable and replayable<br />
-
-<strong>When NOT to Use Kafka</strong><br />
-Simple request-response communication<br />
-Low-volume messaging<br />
-Strict request ordering across all messages<br />
-Very small applications<br />
-<strong>Use Cases</strong>: Like collecting app logs, Real-time analytics, Order tracking in e-commerce and Communication between microservices</p>,
-`************************ producer.js ************************ 
-const { Kafka } = require("kafkajs");
-
-const kafka = new Kafka({
-  clientId: "demo-producer",
-  brokers: ["localhost:9092"]
-});
-
-const producer = kafka.producer();
-
-const run = async () => {
-  await producer.connect();
-
-  setInterval(async () => {
-    const event1 = { userId: 1, action: "login" };
-    const event2 = { userId: 2, action: "hi, how r u?" };
-
-    await producer.send({ 
-      topic: "user-events1", 
-      messages: [{ value: JSON.stringify(event1) }]
-    });
-
-    await producer.send({ 
-      topic: "user-events2", 
-      messages: [{ value: JSON.stringify(event2) }]
-    });
-
-    console.log("Produced:", event1);
-  }, 2000);
-};
-
-run().catch(console.error);
-
-************************ consumerA.js ************************
-const { Kafka } = require("kafkajs");
-
-const kafka = new Kafka({
-  clientId: "analytics-service",
-  brokers: ["localhost:9092"],
-});
-
-const consumer = kafka.consumer({ groupId: "analytics-group" });
-
-const run = async () => {
-  await consumer.connect();
-  await consumer.subscribe({ topic: "user-events1", fromBeginning: true });
-
-  await consumer.run({
-    eachMessage: async ({ message }) => {
-      console.log("📊 Analytics received:", message.value.toString());
-    },
-  });
-};
-
-run().catch(console.error);
-
-************************ consumerB.js ************************
-const { Kafka } = require("kafkajs");
-
-const kafka = new Kafka({
-  clientId: "email-service",
-  brokers: ["localhost:9092"],
-});
-
-const consumer = kafka.consumer({ groupId: "email-group" });
-
-const run = async () => {
-  await consumer.connect();
-  await consumer.subscribe({ topic: "user-events2", fromBeginning: true });
-
-  await consumer.run({
-    eachMessage: async ({ message }) => {
-      console.log("📧 Email service triggered:", message.value.toString());
-    },
-  });
-};
-
-run().catch(console.error);
-
-********************** docker-compose.yml ************************
-services:
-  zookeeper:
-    image: confluentinc/cp-zookeeper:7.5.0
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-    ports:
-      - "2181:2181"
-
-  kafka:
-    image: confluentinc/cp-kafka:7.5.0
-    depends_on:
-      - zookeeper
-    ports:
-      - "9092:9092"
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-`)
+      >Prod Issues & High Level Presser</button>
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>When I notice a team member underperforming, my first approach is to understand the reason behind it rather than jumping to conclusions. In my experience, underperformance is rarely due to lack of intent—it’s often caused by unclear expectations, skill gaps, personal challenges, or lack of confidence.<br />
+I start with a one-on-one conversation in a safe, non-judgmental setting. I clearly explain my observations using facts and examples, and then listen carefully to their perspective. This helps build trust and often reveals underlying issues such as workload imbalance, unfamiliar technology, or unclear requirements.<br />
+Once the root cause is identified, I create a clear improvement plan together with the team member. This might include mentoring, pairing them with a senior developer, providing learning resources, or breaking tasks into smaller, achievable goals. I also set clear expectations and measurable milestones so progress can be tracked.<br />
+During this phase, I maintain regular check-ins and provide constructive feedback—both positive and corrective. If improvement is visible, I acknowledge it publicly to boost confidence. If there’s still no progress, I escalate in a structured way, involving management or HR with proper documentation, always keeping the process fair and transparent.<br />
+My goal is always to help the individual succeed while protecting the overall team’s delivery and morale.</p>)
         }
-      >Kafka</button>
+      >Underperforming Employee</button>
 
-<button className="btn btn-info me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
-      <strong>RabbitMQ</strong> is an open-source message broker that enables applications to communicate by sending and receiving messages through queues. It follows the traditional messaging model and is mainly used for reliable, asynchronous communication between systems.<br />
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Balancing hands-on coding with leadership is something I do very consciously. I believe a Tech Lead should stay technically relevant while also enabling the team to succeed.<br />
+I prioritize my responsibilities based on impact. Leadership tasks such as design reviews, mentoring, unblocking team members, and stakeholder communication come first because they affect the entire team. For coding, I focus on high-impact areas like architecture-level components, complex modules, proof-of-concepts, or critical bug fixes rather than routine tasks.<br />
+I also practice delegation. Instead of coding everything myself, I empower team members by assigning ownership and reviewing their work. This helps them grow while freeing me to focus on technical direction and decision-making.<br />
+Time management is key. I block dedicated time for coding and leadership activities separately, so neither gets neglected. This approach allows me to stay involved technically without becoming a bottleneck.<br />
+Overall, I see my role as someone who codes when needed but primarily enables others to code better and faster.</p>)
+        }
+      >Balance Coding & Leadership</button>      
 
-      <strong>RabbitMQ Components are:</strong><br />
-      <strong>Producer</strong> sends messages to RabbitMQ exchanges. It does not send messages directly to queues.<br />
-      <strong>Consumer</strong> receives messages from queues and processes them asynchronously.<br />
-      <strong>Exchange</strong> routes messages to one or more queues based on routing rules. Types include Direct, Topic, Fanout, and Headers.<br />
-      <strong>Queue</strong> stores messages until they are consumed. Messages are removed once acknowledged by consumers.<br />
-      <strong>Binding</strong> defines the relationship between an exchange and a queue using routing keys.<br />
-      <strong>Broker</strong> RabbitMQ server that manages exchanges, queues, and message routing.<br /><br />
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Ensuring code quality is a combination of process, culture, and tooling.<br />
+From a process perspective, I enforce mandatory code reviews. Reviews are not just about finding bugs—they’re about knowledge sharing, consistency, and maintainability. I encourage constructive feedback and discussions rather than approvals based on hierarchy.<br />
+From a culture standpoint, I promote ownership. Developers are responsible not just for writing code, but for maintaining it in production. I also encourage writing clean, readable, and testable code instead of quick fixes.<br />
+From a tooling perspective, I ensure we use static code analysis, linters, unit tests, and CI pipelines. Automated checks catch issues early and reduce manual errors. I also promote writing unit and integration tests as part of the definition of done.<br />
+Additionally, I conduct periodic refactoring and technical debt reviews so quality doesn’t degrade over time. By combining standards, automation, and accountability, I ensure consistent code quality across the team.</p>)
+        }
+      >Code Quality</button>      
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>During high-pressure releases, motivation comes from clarity, support, and trust.<br />
+First, I ensure everyone understands why the release is important and how their work contributes to the bigger picture. Clear goals reduce anxiety and confusion. I also break down work into manageable tasks so the pressure feels achievable rather than overwhelming.<br />
+I stay closely involved during such phases—removing blockers, helping with critical issues, and being available for quick decisions. This reassures the team that they’re not alone.<br />
+Recognition is also important. I acknowledge extra efforts publicly, even small wins, to keep morale high. I also encourage reasonable work hours and discourage burnout, reminding the team that sustainable pace is crucial.<br />
+After the release, I make sure to appreciate the team’s effort and, if possible, allow some breathing space. This balance of pressure and care helps keep motivation strong even in stressful situations.</p>)
+        }
+      >Motivate Team</button>      
+      <button className="btn btn-primary me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p>Efficient onboarding starts even before the new member writes their first line of code.<br />
+I ensure they have proper access, documentation, and a clear understanding of the system architecture. I usually start with a high-level overview—business domain, system flow, and team processes—before diving into technical details.<br />
+I assign a buddy or mentor who helps them with day-to-day questions and accelerates learning. I also give them small, meaningful tasks early on so they gain confidence and understand the codebase practically.<br />
+Regular check-ins during the first few weeks help identify gaps early and ensure they’re comfortable. I also encourage them to ask questions openly and reassure them that no question is too small.<br />
+This structured and supportive onboarding approach helps new team members become productive quickly while feeling welcomed and confident.</p>)
+        }
+      >Onboarding</button>      
+      <br />
 
-      <strong>RabbitMQ Key Features</strong><br />
-      <strong>Reliable Messaging</strong> Ensures message delivery using acknowledgements and persistence.<br />
-      <strong>Message Routing</strong> Flexible routing using different exchange types.<br />
-      <strong>Low Latency</strong> Optimized for fast message delivery.<br />
-      <strong>Back Pressure Handling</strong> Queues help absorb traffic spikes.<br />
-      <strong>Request-Response Support</strong> Works well for command-based communication.<br />
-
-      <strong>Why RabbitMQ is Needed</strong><br />
-      Traditional synchronous communication can cause tight coupling, failures to cascade, and poor scalability.<br />
-      RabbitMQ solves this by enabling asynchronous communication, reliable delivery, and loose coupling between producers and consumers.<br /><br />
-
-      <strong>When to Use RabbitMQ</strong><br />
-      Use RabbitMQ when:<br />
-      You need reliable message delivery<br />
-      You need complex routing logic<br />
-      You want task queues or background job processing<br />
-      Low latency messaging is required<br />
-      Request-response or command-based communication is needed<br /><br />
-
-      <strong>When NOT to Use RabbitMQ</strong><br />
-      Very high throughput streaming systems<br />
-      Event replay or long-term message storage is required<br />
-      Real-time analytics pipelines<br /><br />
-
-      <strong>Use Cases</strong>: Task queues, Background job processing, Email/SMS notifications, Payment processing, Microservices communication
-    </p>
-  )
-}>
-  RabbitMQ
-</button>
-
-
-<button className="btn btn-info me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
-      <strong>Azure Service Bus</strong> is a fully managed enterprise message broker provided by Microsoft Azure. It enables reliable, secure, and asynchronous communication between applications using queues and topics, making it ideal for cloud and enterprise systems.<br />
-
-      <strong>Azure Service Bus Components are:</strong><br />
-      <strong>Producer (Sender)</strong> sends messages to queues or topics. It does not need to know who consumes the messages.<br />
-      <strong>Consumer (Receiver)</strong> receives messages from queues or topic subscriptions and processes them asynchronously.<br />
-      <strong>Queue</strong> stores messages in a FIFO manner and delivers each message to a single consumer.<br />
-      <strong>Topic</strong> is used for publish-subscribe messaging where multiple subscriptions can receive the same message.<br />
-      <strong>Subscription</strong> is a virtual queue attached to a topic that receives messages based on filters.<br />
-      <strong>Broker</strong> Azure-managed service that handles message storage, delivery, and security.<br /><br />
-
-      <strong>Azure Service Bus Key Features</strong><br />
-      <strong>Reliable Messaging</strong> Supports at-least-once delivery with message locks and acknowledgements.<br />
-      <strong>Dead-Letter Queue</strong> Automatically stores failed or expired messages for later analysis.<br />
-      <strong>Message Scheduling</strong> Allows messages to be delivered at a future time.<br />
-      <strong>Duplicate Detection</strong> Prevents processing the same message multiple times.<br />
-      <strong>Security</strong> Integrated with Azure Active Directory and role-based access control.<br />
-
-      <strong>Why Azure Service Bus is Needed</strong><br />
-      In distributed and cloud-based systems, direct communication can cause tight coupling and reliability issues.<br />
-      Azure Service Bus enables asynchronous, reliable messaging with built-in security, scalability, and fault handling.<br /><br />
-
-      <strong>When to Use Azure Service Bus</strong><br />
-      Use Azure Service Bus when:<br />
-      You need enterprise-grade messaging<br />
-      Guaranteed message delivery is required<br />
-      Publish-subscribe communication is needed<br />
-      Azure-native integration is preferred<br />
-      Message ordering and transactions are important<br /><br />
-
-      <strong>When NOT to Use Azure Service Bus</strong><br />
-      Extremely high-throughput event streaming systems<br />
-      Long-term message storage or replay is required<br />
-      Real-time analytics pipelines<br /><br />
-
-      <strong>Use Cases</strong>: Order processing, Payment workflows, Inventory updates, Microservices communication, Event-driven enterprise applications
-    </p>
-  )
-}>
-  Service Bus
-</button>
-
-<button className="btn btn-info me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
-      <strong>Amazon SQS (Simple Queue Service)</strong> is a fully managed message queuing service provided by AWS. It enables applications to decouple and scale by sending, storing, and receiving messages between distributed components without managing messaging infrastructure.<br />
-
-      <strong>Amazon SQS Components are:</strong><br />
-      <strong>Producer (Sender)</strong> sends messages to an SQS queue. It does not need to know who consumes the messages.<br />
-      <strong>Consumer (Receiver)</strong> polls messages from the queue and processes them asynchronously.<br />
-      <strong>Queue</strong> stores messages until they are processed and deleted by consumers.<br />
-      <strong>Standard Queue</strong> provides at-least-once delivery with high throughput and best-effort ordering.<br />
-      <strong>FIFO Queue</strong> guarantees exactly-once processing and strict message ordering.<br />
-      <strong>AWS Managed Service</strong> SQS is fully managed by AWS, so no broker or server management is required.<br /><br />
-
-      <strong>Amazon SQS Key Features</strong><br />
-      <strong>Fully Managed</strong> No servers, brokers, or cluster management required.<br />
-      <strong>Scalability</strong> Automatically scales to handle any message volume.<br />
-      <strong>Reliability</strong> Messages are stored redundantly across multiple AZs.<br />
-      <strong>Dead-Letter Queue</strong> Captures messages that fail processing after multiple retries.<br />
-      <strong>Security</strong> Integrated with IAM for fine-grained access control.<br />
-
-      <strong>Why Amazon SQS is Needed</strong><br />
-      Direct communication between services can cause tight coupling and cascading failures.<br />
-      SQS enables asynchronous communication, improves fault tolerance, and allows systems to scale independently.<br /><br />
-
-      <strong>When to Use Amazon SQS</strong><br />
-      Use Amazon SQS when:<br />
-      You want a fully managed queue with minimal operational overhead<br />
-      You need reliable asynchronous processing<br />
-      You want to decouple microservices or distributed systems<br />
-      You are building AWS-native applications<br />
-      Message ordering or exactly-once processing is required (FIFO queues)<br /><br />
-
-      <strong>When NOT to Use Amazon SQS</strong><br />
-      Event streaming or real-time analytics pipelines<br />
-      Message replay or long-term retention is required<br />
-      Complex message routing is needed (use SNS or EventBridge)<br /><br />
-
-      <strong>Use Cases</strong>: Background job processing, Order processing, Payment workflows, Image or file processing, Microservices communication
-    </p>
-  )
-}>
-  SQS
-</button>
-<br />
 <button className="btn btn-success me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p><strong>Azure DevOps</strong> is a complete end-to-end DevOps platform provided by Microsoft that helps teams plan, build, test, release, and monitor applications efficiently. It supports the full software development lifecycle and enables strong collaboration between development and operations teams.<br />
@@ -1040,111 +712,392 @@ Overall, my focus is on clear, simple, and maintainable documentation that actua
 Tools and Frameworks
 </button>
 
-<button className="btn btn-warning me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
-      <strong>MakeMyTrip | Booking system</strong><br />
-A booking system works in multiple steps.<br />
-First, when the user searches, the request goes to the Search Service, which fetches data from cache and inventory systems.<br />
-Then the Inventory Service checks seat or room availability.<br />
-The Pricing Service calculates price based on demand, offers, and taxes.<br />
-
-After user confirms, the Booking Service temporarily locks inventory.<br />
-Then Payment Service handles payment securely through a payment gateway.<br />
-Once payment is successful, booking is confirmed and Notification Service sends confirmation.<br />
-
-All these services are independent but coordinated using events and messaging.
+      <strong>High-Traffic Digital Media Platform</strong> I’m currently working on Daily Star UK, a high-traffic digital media publishing platform that serves millions of users daily, supporting real-time content publishing and very high read/write traffic, especially during breaking news.<br />
+The content publication workflow is event-driven. Journalists create or update articles in the CUE CMS, which triggers events to an Event System. These events are processed by the E2A service, which retrieves article data from CUE, transforms it into a standardized Agnostic JSON format, and stores it in AWS S3. Any subsequent updates follow the same process, ensuring content consistency and version control across distribution channels.<br />
+To handle scale and performance, we use AWS cloud infrastructure, horizontal scaling, Redis caching, and CDN integration to manage traffic spikes. We rely on Kafka for asynchronous processing such as publishing workflows and analytics. Data is managed using SQL Server for transactional data and MongoDB for content and metadata.<br />
+For website delivery, Navigator Web uses YAML-based configuration files stored in S3. These configurations are managed through Commander, a centralized configuration management tool that converts YAML into JSON and stores it in Redis, allowing teams to update website-level configurations quickly without requiring a full code release.<br />
+My responsibilities include defining service boundaries, developing and reviewing critical code, optimizing APIs, ensuring security and high availability, and mentoring developers, while closely collaborating with product teams, editors, and stakeholders to deliver scalable and reliable solutions.
     </p>
   )
 }>
-MakeMyTrip|Booking system
+  Publishing
 </button>
-
-<button className="btn btn-warning me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
-      <strong>Payment Success but Booking Failed</strong><br />
-This is a very common real-world problem.<br />
-To handle this, we use idempotency keys and Saga pattern.<br />
+      <strong>Healthcare</strong><br />
+Client: US Client<br />
+Domain: Healthcare & Health Information Systems<br />
+Technologies: .NET Core Microservices, REST APIs, Azure, Blobstorage, SQL Server, MongoDB<br />
 
-If payment is successful but booking fails, the system triggers a compensation transaction, which refunds the payment.<br />
-This ensures data consistency without blocking the system.
+<strong>Description</strong><br />
+I worked on a Healthcare Management System. The platform is designed to manage patient information, provider workflows, appointments, billing, and integrations with external healthcare systems. The solution is built with a strong focus on scalability, security, and compliance, which are critical requirements in the healthcare domain.<br />
+Key Modules & Functionalities are:<br />
+<strong>Patient Management</strong><br />
+Managed complete patient lifecycle including registration, demographics, and medical history.<br />
+Ensured secure handling of sensitive patient data.<br />
+Implemented validation and data consistency rules.<br />
+<strong>Provider & Clinical Workflow Management</strong><br />
+Designed workflows for doctors, nurses, and healthcare staff.<br />
+Enabled efficient management of consultations, prescriptions, and clinical notes.<br />
+Streamlined provider operations through service-based architecture.<br />
+<strong>Appointment & Scheduling Management</strong><br />
+Implemented appointment booking, rescheduling, and cancellation.<br />
+Handled provider availability and patient notifications.<br />
+Ensured optimized scheduling and reduced conflicts.<br />
+<strong>Billing & Payments</strong><br />
+Developed billing services for consultations, procedures, and services.<br />
+Integrated insurance, invoicing, and payment workflows.<br />
+Ensured accurate and auditable financial transactions.<br />
+<strong>Integration with External Healthcare Systems</strong><br />
+Integrated with third-party healthcare systems and external services using REST APIs.<br />
+Supported data exchange with labs, pharmacies, and insurance providers.<br />
+Ensured secure and reliable inter-system communication.
     </p>
   )
 }>
-Booking Failed
+  Healthcare
 </button>
-
-<button className="btn btn-warning me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
-      <strong>Avoid Duplicate Payments</strong><br />
-      We generate a unique transaction ID for every payment request.<br />
-Before processing, we always check whether the transaction ID already exists.<br />
-APIs are made idempotent, so retrying the same request will not create a new payment.
+      <strong>Roadside Assistance Insurance System</strong>  I worked on Roadside Assistance Insurance System, where I serve as a hands-on Lead Engineer. The platform is designed to manage insurance policies, roadside assistance requests, claims processing, customer accounts, and integrations with third-party service providers and payment systems.<br /><br />
+From a technical perspective, the system is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. The platform is deployed on Azure to ensure high scalability, availability, and security, as it processes real-time requests across multiple geographies. Data is managed using SQL Server for transactional data and MongoDB for document-based service records and metadata.<br /><br />
+My responsibilities include designing and implementing core services, writing and reviewing critical code, ensuring SOLID principles and best practices, and handling performance, security, and fault-tolerance considerations. I also mentor junior developers, guide the team through technical challenges, and work closely with product owners and stakeholders to translate business requirements into scalable, maintainable solutions.<br /><br />
+Overall, the project emphasizes real-time processing, scalability, reliability, and regulatory compliance, and my role balances hands-on development with technical leadership and team guidance.
     </p>
   )
 }>
-Avoid Duplicate Payments
+  FORTEGRA
 </button>
-
-<button className="btn btn-warning me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
-      <strong>Handle Fault Occurrence in Booking Systems</strong><br />
-We use multiple strategies:<br />
-Retry with exponential backoff<br />
-Circuit breaker to stop cascading failures<br />
-Fallback responses when a service is down<br />
-Dead-letter queues for failed messages
+      <strong>Shipment</strong> I worked on a Shipment and Logistics platform where I serve as a hands-on Solution Architect. The system is designed to manage shipment tracking, warehouse operations, delivery scheduling, route optimization, and integrations with third-party carriers and tracking services.<br /><br />
+From a technical perspective, the platform is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. We leverage AWS and Azure for cloud infrastructure to ensure high scalability, availability, and performance, as shipment systems often handle real-time updates across multiple regions. Data is stored in SQL Server for transactional operations and MongoDB for document-based shipment and logistics data.<br /><br />
+My responsibilities include solution and architecture design, defining service boundaries, database design, and implementing core services, keeping me actively involved in hands-on coding. I also lead code reviews, enforce SOLID principles and best practices, and ensure performance, reliability, and security across the system.<br /><br />
+On the collaboration side, I work closely with product owners, operations teams, and client stakeholders to understand business requirements and translate them into scalable technical solutions. I also mentor the development team, provide guidance on technical challenges, and ensure smooth delivery across multiple services.<br /><br />
+Overall, the project focuses on real-time data processing, scalability, system reliability, and seamless integration with external logistics partners, and my role balances hands-on development with architectural leadership.
     </p>
   )
 }>
-Handle Fault in Booking Systems
+  Shipment
 </button>
-
-<button className="btn btn-warning me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
-      <strong>HttpClient vs HttpClientFactory</strong><br />
-Direct HttpClient usage can cause socket issues.<br />
-HttpClientFactory manages lifecycle and connections properly.
+      <strong> Loan Application System</strong> I worked on the DirectAxis Loan Application System as a Lead Developer. The platform manages the end-to-end loan lifecycle, including loan applications, approvals, disbursements, repayments, customer account management, and integrations with credit bureaus and payment gateways.<br /><br />
+The system is built using .NET Core with a microservices architecture, with RESTful APIs handling communication between services. We use Azure and AWS for cloud infrastructure to ensure scalability, high availability, and security, and data is stored in SQL Server for transactional operations and MongoDB for document-based data.<br /><br />
+As Lead Developer, my responsibilities include designing and implementing core services, writing and reviewing critical code, ensuring best practices and SOLID principles, and optimizing performance, security, and reliability. I also mentor junior developers, guide the team through technical challenges, and collaborate with product owners and business analysts to translate requirements into efficient, maintainable solutions.<br /><br />
+Overall, the project emphasizes scalability, reliability, and regulatory compliance, and my role focuses on hands-on development, technical leadership, and team guidance.
     </p>
   )
 }>
-HttpClient vs HttpClientFactory
+   Loan App
 </button>
-
-<button className="btn btn-warning me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
-      <strong>Handling 10,000+ requests</strong><br />
-To handle 10,000+ concurrent requests, I mainly focus on scalable architecture and non-blocking execution.<br />
-First, I use async APIs so threads are not blocked during database or external service calls. This allows the server to handle more requests with limited resources.<br />
-Second, I design stateless services, where no session data is stored on the server. Each request is independent and can be served by any instance.<br />
-Third, I use a load balancer to distribute incoming traffic across multiple application instances, which prevents any single server from becoming a bottleneck.<br />
-Finally, I enable auto scaling, so new instances are automatically added during high traffic and removed during low traffic.<br />
-By combining async APIs, stateless design, load balancing, and auto scaling, the system can efficiently handle very high concurrent traffic.
+      <strong>E-Commerce</strong> I worked on a high-volume E-commerce platform where I serve as a hands-on Solution Architect. The system is designed to manage product catalogs, inventory, orders, payments, user accounts, and integrations with third-party services such as payment gateways and logistics providers.<br /><br />
+From a technical perspective, the platform is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. We use Azure and AWS for cloud infrastructure, ensuring scalability, high availability, and reliability during peak traffic, such as sales events or promotions. Data is managed using SQL Server for transactional operations and MongoDB for product metadata and catalog information.<br /><br />
+My responsibilities include solution and architecture design, defining service boundaries, database schema design, and implementing core services, keeping me actively involved in hands-on coding. I also lead code reviews, ensure SOLID principles and best practices are followed, and optimize performance and security, which are critical for an E-commerce environment.<br /><br />
+On the collaboration side, I work closely with product owners, business analysts, and client stakeholders to understand business requirements and translate them into robust technical solutions. I also mentor the development team, guide them through technical challenges, and ensure smooth delivery across multiple services.<br /><br />
+Overall, the project emphasizes scalability, high availability, performance, and secure transaction handling, and my role strikes a balance between hands-on development and architectural leadership.
+
     </p>
   )
 }>
-Handling 10,000+ requests
+  E-Commerce
 </button>
-
-<button className="btn btn-warning me-2 mb-2" onClick={() =>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
-      <strong>Upload 500 Files</strong><br />
-To upload 500 files efficiently, I focus on parallelism, reliability, and non-blocking processing.<br />
-First, I use parallel uploads, so multiple files are uploaded at the same time instead of one by one. This significantly reduces total upload time.<br />
-Second, I use chunking, where large files are broken into smaller chunks. This helps in resuming uploads if a failure happens and improves network stability.<br />
-Third, I use background processing, where the upload request is accepted quickly, and actual processing happens asynchronously using background workers or queues.<br />
-By combining parallel uploads, chunking, and background processing, the system becomes fast, reliable, and scalable, even when handling hundreds of files.
+      <strong>Insurance</strong> I worked on a comprehensive Insurance platform where I serve as a hands-on Solution Architect. The system is designed to manage policy administration, claims processing, underwriting, customer accounts, and integrations with third-party services such as payment gateways and regulatory systems.<br /><br />
+From a technical perspective, the platform is built using .NET Core with a microservices architecture, with RESTful APIs enabling communication between services. We use Azure and AWS for cloud infrastructure to ensure scalability, high availability, and security. Data is managed using SQL Server for transactional operations and MongoDB for document-based data, depending on the type of insurance information.<br /><br />
+My responsibilities include solution and architecture design, defining service boundaries, database design, and implementing core services, keeping me actively involved in hands-on coding. I also lead code reviews, ensure adherence to SOLID principles and best practices, and optimize performance, security, and compliance, which are especially critical in the insurance domain.<br /><br />
+From a collaboration standpoint, I work closely with product owners, business analysts, and client stakeholders to understand business requirements and translate them into scalable technical solutions. I also mentor the development team, guide them through technical challenges, and ensure smooth delivery across multiple services.<br /><br />
+Overall, the project emphasizes scalability, data security, regulatory compliance, and reliable transaction processing, and my role balances hands-on development with architectural leadership.
     </p>
   )
 }>
-Upload 500 Files
+  Insurance
 </button>
+      <button className="btn btn-info me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>Kafka</strong> is an open-source, distributed data streaming platform used to publish, subscribe to, store, and process real-time data streams. It works like a high-performance message queue, allowing different applications to communicate by sending and receiving messages.<br />
+<strong>Kafka Components are:</strong><br />
+<strong>Producer</strong> sends messages or events to Kafka and it publishes data to a topic and kafka does not care who consumes the data. For example: Order Service sends OrderCreated events<br />
+<strong>Consumer</strong> reads messages from Kafka topics and it belong to consumer groups. Kafka make sure each partition is consumed by only one consumer in a group. For example: Inventory Service consumes OrderCreated events<br />
+<strong>Broker</strong> Kafka server that stores topic data and serves producers/consumers.<br /> 
+<strong>Cluster</strong> is a group of multiple brokers for scalability.<br />
+<strong>Topic</strong> is a logical channel where producers send message and consumers subscribe them and it is divided into partitions to process in parallel.<br />
+<strong>Partition</strong> topics are split into partitions for scalability<br />
+<strong>ZooKeeper</strong> used for cluster coordination<br /><br />
+
+<strong>Kafka Key Features</strong><br />
+<strong>High Throughput</strong> Can handle millions of messages per second. Suitable for big data and real-time systems<br />
+<strong>Fault Tolerance</strong> Data is replicated across brokers. If one broker fails, another takes over<br />
+<strong>Durability</strong> Messages are written to disk. Data is not lost even if consumers are down<br />
+<strong>Scalability</strong> Add more brokers → automatic scaling. Add more partitions → more parallelism<br />
+<strong>Loose Coupling</strong> Producers and consumers are independent. New consumers can be added without affecting producers<br />
+
+<strong>Why Kafka is Needed</strong><br />
+Traditional systems were struggling with: High-volume data, Real-time processing, Loose coupling between services, Reliability at scale<br />
+Kafka solves these problems by: Decoupling producers and consumers, Handling millions of messages per second, Ensuring durability and fault tolerance<br />
+
+<strong>When to Use Kafka</strong><br />
+Use Kafka when:<br />
+You need real-time data streaming<br />
+You want event-driven architecture<br />
+Systems need to be decoupled<br />
+High throughput and scalability are required<br />
+Messages must be durable and replayable<br />
+
+<strong>When NOT to Use Kafka</strong><br />
+Simple request-response communication<br />
+Low-volume messaging<br />
+Strict request ordering across all messages<br />
+Very small applications<br />
+<strong>Use Cases</strong>: Like collecting app logs, Real-time analytics, Order tracking in e-commerce and Communication between microservices</p>,
+`************************ producer.js ************************ 
+const { Kafka } = require("kafkajs");
+
+const kafka = new Kafka({
+  clientId: "demo-producer",
+  brokers: ["localhost:9092"]
+});
+
+const producer = kafka.producer();
+
+const run = async () => {
+  await producer.connect();
+
+  setInterval(async () => {
+    const event1 = { userId: 1, action: "login" };
+    const event2 = { userId: 2, action: "hi, how r u?" };
+
+    await producer.send({ 
+      topic: "user-events1", 
+      messages: [{ value: JSON.stringify(event1) }]
+    });
+
+    await producer.send({ 
+      topic: "user-events2", 
+      messages: [{ value: JSON.stringify(event2) }]
+    });
+
+    console.log("Produced:", event1);
+  }, 2000);
+};
+
+run().catch(console.error);
+
+************************ consumerA.js ************************
+const { Kafka } = require("kafkajs");
+
+const kafka = new Kafka({
+  clientId: "analytics-service",
+  brokers: ["localhost:9092"],
+});
+
+const consumer = kafka.consumer({ groupId: "analytics-group" });
+
+const run = async () => {
+  await consumer.connect();
+  await consumer.subscribe({ topic: "user-events1", fromBeginning: true });
+
+  await consumer.run({
+    eachMessage: async ({ message }) => {
+      console.log("📊 Analytics received:", message.value.toString());
+    },
+  });
+};
+
+run().catch(console.error);
+
+************************ consumerB.js ************************
+const { Kafka } = require("kafkajs");
+
+const kafka = new Kafka({
+  clientId: "email-service",
+  brokers: ["localhost:9092"],
+});
+
+const consumer = kafka.consumer({ groupId: "email-group" });
+
+const run = async () => {
+  await consumer.connect();
+  await consumer.subscribe({ topic: "user-events2", fromBeginning: true });
+
+  await consumer.run({
+    eachMessage: async ({ message }) => {
+      console.log("📧 Email service triggered:", message.value.toString());
+    },
+  });
+};
+
+run().catch(console.error);
+
+********************** docker-compose.yml ************************
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+`)
+        }
+      >Kafka</button>
+
+<button className="btn btn-info me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>RabbitMQ</strong> is an open-source message broker that enables applications to communicate by sending and receiving messages through queues. It follows the traditional messaging model and is mainly used for reliable, asynchronous communication between systems.<br />
+
+      <strong>RabbitMQ Components are:</strong><br />
+      <strong>Producer</strong> sends messages to RabbitMQ exchanges. It does not send messages directly to queues.<br />
+      <strong>Consumer</strong> receives messages from queues and processes them asynchronously.<br />
+      <strong>Exchange</strong> routes messages to one or more queues based on routing rules. Types include Direct, Topic, Fanout, and Headers.<br />
+      <strong>Queue</strong> stores messages until they are consumed. Messages are removed once acknowledged by consumers.<br />
+      <strong>Binding</strong> defines the relationship between an exchange and a queue using routing keys.<br />
+      <strong>Broker</strong> RabbitMQ server that manages exchanges, queues, and message routing.<br /><br />
+
+      <strong>RabbitMQ Key Features</strong><br />
+      <strong>Reliable Messaging</strong> Ensures message delivery using acknowledgements and persistence.<br />
+      <strong>Message Routing</strong> Flexible routing using different exchange types.<br />
+      <strong>Low Latency</strong> Optimized for fast message delivery.<br />
+      <strong>Back Pressure Handling</strong> Queues help absorb traffic spikes.<br />
+      <strong>Request-Response Support</strong> Works well for command-based communication.<br />
+
+      <strong>Why RabbitMQ is Needed</strong><br />
+      Traditional synchronous communication can cause tight coupling, failures to cascade, and poor scalability.<br />
+      RabbitMQ solves this by enabling asynchronous communication, reliable delivery, and loose coupling between producers and consumers.<br /><br />
+
+      <strong>When to Use RabbitMQ</strong><br />
+      Use RabbitMQ when:<br />
+      You need reliable message delivery<br />
+      You need complex routing logic<br />
+      You want task queues or background job processing<br />
+      Low latency messaging is required<br />
+      Request-response or command-based communication is needed<br /><br />
+
+      <strong>When NOT to Use RabbitMQ</strong><br />
+      Very high throughput streaming systems<br />
+      Event replay or long-term message storage is required<br />
+      Real-time analytics pipelines<br /><br />
+
+      <strong>Use Cases</strong>: Task queues, Background job processing, Email/SMS notifications, Payment processing, Microservices communication
+    </p>
+  )
+}>
+  RabbitMQ
+</button>
+
+
+<button className="btn btn-info me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Azure Service Bus</strong> is a fully managed enterprise message broker provided by Microsoft Azure. It enables reliable, secure, and asynchronous communication between applications using queues and topics, making it ideal for cloud and enterprise systems.<br />
+
+      <strong>Azure Service Bus Components are:</strong><br />
+      <strong>Producer (Sender)</strong> sends messages to queues or topics. It does not need to know who consumes the messages.<br />
+      <strong>Consumer (Receiver)</strong> receives messages from queues or topic subscriptions and processes them asynchronously.<br />
+      <strong>Queue</strong> stores messages in a FIFO manner and delivers each message to a single consumer.<br />
+      <strong>Topic</strong> is used for publish-subscribe messaging where multiple subscriptions can receive the same message.<br />
+      <strong>Subscription</strong> is a virtual queue attached to a topic that receives messages based on filters.<br />
+      <strong>Broker</strong> Azure-managed service that handles message storage, delivery, and security.<br /><br />
+
+      <strong>Azure Service Bus Key Features</strong><br />
+      <strong>Reliable Messaging</strong> Supports at-least-once delivery with message locks and acknowledgements.<br />
+      <strong>Dead-Letter Queue</strong> Automatically stores failed or expired messages for later analysis.<br />
+      <strong>Message Scheduling</strong> Allows messages to be delivered at a future time.<br />
+      <strong>Duplicate Detection</strong> Prevents processing the same message multiple times.<br />
+      <strong>Security</strong> Integrated with Azure Active Directory and role-based access control.<br />
+
+      <strong>Why Azure Service Bus is Needed</strong><br />
+      In distributed and cloud-based systems, direct communication can cause tight coupling and reliability issues.<br />
+      Azure Service Bus enables asynchronous, reliable messaging with built-in security, scalability, and fault handling.<br /><br />
+
+      <strong>When to Use Azure Service Bus</strong><br />
+      Use Azure Service Bus when:<br />
+      You need enterprise-grade messaging<br />
+      Guaranteed message delivery is required<br />
+      Publish-subscribe communication is needed<br />
+      Azure-native integration is preferred<br />
+      Message ordering and transactions are important<br /><br />
+
+      <strong>When NOT to Use Azure Service Bus</strong><br />
+      Extremely high-throughput event streaming systems<br />
+      Long-term message storage or replay is required<br />
+      Real-time analytics pipelines<br /><br />
+
+      <strong>Use Cases</strong>: Order processing, Payment workflows, Inventory updates, Microservices communication, Event-driven enterprise applications
+    </p>
+  )
+}>
+  Service Bus
+</button>
+
+<button className="btn btn-info me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+    <p>
+      <strong>Amazon SQS (Simple Queue Service)</strong> is a fully managed message queuing service provided by AWS. It enables applications to decouple and scale by sending, storing, and receiving messages between distributed components without managing messaging infrastructure.<br />
+
+      <strong>Amazon SQS Components are:</strong><br />
+      <strong>Producer (Sender)</strong> sends messages to an SQS queue. It does not need to know who consumes the messages.<br />
+      <strong>Consumer (Receiver)</strong> polls messages from the queue and processes them asynchronously.<br />
+      <strong>Queue</strong> stores messages until they are processed and deleted by consumers.<br />
+      <strong>Standard Queue</strong> provides at-least-once delivery with high throughput and best-effort ordering.<br />
+      <strong>FIFO Queue</strong> guarantees exactly-once processing and strict message ordering.<br />
+      <strong>AWS Managed Service</strong> SQS is fully managed by AWS, so no broker or server management is required.<br /><br />
+
+      <strong>Amazon SQS Key Features</strong><br />
+      <strong>Fully Managed</strong> No servers, brokers, or cluster management required.<br />
+      <strong>Scalability</strong> Automatically scales to handle any message volume.<br />
+      <strong>Reliability</strong> Messages are stored redundantly across multiple AZs.<br />
+      <strong>Dead-Letter Queue</strong> Captures messages that fail processing after multiple retries.<br />
+      <strong>Security</strong> Integrated with IAM for fine-grained access control.<br />
+
+      <strong>Why Amazon SQS is Needed</strong><br />
+      Direct communication between services can cause tight coupling and cascading failures.<br />
+      SQS enables asynchronous communication, improves fault tolerance, and allows systems to scale independently.<br /><br />
+
+      <strong>When to Use Amazon SQS</strong><br />
+      Use Amazon SQS when:<br />
+      You want a fully managed queue with minimal operational overhead<br />
+      You need reliable asynchronous processing<br />
+      You want to decouple microservices or distributed systems<br />
+      You are building AWS-native applications<br />
+      Message ordering or exactly-once processing is required (FIFO queues)<br /><br />
+
+      <strong>When NOT to Use Amazon SQS</strong><br />
+      Event streaming or real-time analytics pipelines<br />
+      Message replay or long-term retention is required<br />
+      Complex message routing is needed (use SNS or EventBridge)<br /><br />
+
+      <strong>Use Cases</strong>: Background job processing, Order processing, Payment workflows, Image or file processing, Microservices communication
+    </p>
+  )
+}>
+  SQS
+</button>
+
       {/* Popup */}
       {isOpen && (
         <div className="popup-overlay" onClick={handleClosePopup}>
