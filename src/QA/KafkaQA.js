@@ -255,8 +255,7 @@ Azure DevOps and CI-CD
 <button className="btn btn-success me-2 mb-2" onClick={() =>
   handleOpenPopup(
     <p>
-      <strong>Caching for High Performance</strong><br />
-<strong>Scenario</strong> Your app experiences high read traffic on the same data.<br />
+      <strong>Caching for High Performance for high read traffic on the same data</strong><br />
 <strong>Question</strong> How would you implement cloud caching solutions to reduce latency and database load?<br />
 For an app with high read traffic on the same data, I would implement caching to reduce latency and database load.<br />
 First, I will use an in-memory cache like Redis or Memcached to store frequently accessed data such as product lists, user profiles, or session info. This reduces repeated database hits.<br />
@@ -267,7 +266,7 @@ Overall, by using in-memory caching, proper eviction policies, TTL, CDN for stat
     </p>
   )
 }>
-Caching for High Performance
+Caching for High Read Traffic
 </button>
 
 <button className="btn btn-success me-2 mb-2" onClick={() =>
@@ -629,15 +628,52 @@ Order Processing System
 </button>
 <button className="btn btn-success me-2 mb-2" onClick={() =>
   handleOpenPopup(
-    <p>
-      <strong>Performance Optimization</strong><br />
-<strong>Question</strong> How do you ensure performance optimization in your solutions?<br />
-To ensure performance optimization, I start from design stage itself, not after problems come.<br />
-First, I understand expected load and usage pattern—number of users, peak traffic, read vs write ratio. Based on that, I design scalable architecture using load balancers, auto-scaling, and stateless services.<br />
-At data layer, I choose right database, proper indexing, caching using Redis or CDN, and avoid unnecessary heavy queries.<br />
-I also focus on network and API performance—using async processing, message queues, pagination, and compression where needed.<br />
-On cloud side, I select right instance types, enable monitoring, and do performance testing like load and stress testing.<br />
-Finally, I continuously monitor metrics like latency, CPU, memory, and optimize proactively. So performance is handled by good design, right tools, and continuous monitoring.
+    <p>To improve the performance of an application, I focus on frontend optimization, efficient backend APIs, database tuning, cloud auto-scaling, and strong observability. This holistic approach ensures the system remains fast, scalable, and reliable even under heavy load. Use CQRS for read-heavy systems and use event-driven architecture to decouple services.<br />
+<strong>For Frontend Performance</strong><br />
+My goal is to reduce load time and unnecessary re-renders.<br />
+I use code splitting and lazy loading so that only required components are loaded initially.<br />
+I optimize rendering using React.memo, useCallback and useMemo in react.<br />
+I avoid over-fetching data and implement pagination and infinite scroll.<br />
+I use cloudfront (CDN) for Static assets like images, JS and CSS to served efficiently.<br />
+I optimize image sizes and use responsive images.<br />
+
+<strong>For Backend Performance</strong><br />
+Can be improved by efficient API design and async processing.<br />
+APIs are designed to be stateless, enabling horizontal scaling.<br />
+I use asynchronous programming to avoid thread blocking for I/O operations.<br />
+Heavy operations such as email sending or report generation are handled via background workers and queues (SQS / SNS).<br />
+I implement caching at multiple levels to reduce database load like In-memory cache and distributed cache using Redis<br />
+
+<strong>For Database Performance like SQL Server</strong><br />
+I focus on query optimization and data access patterns.<br />
+Proper indexing strategy (clustered & non-clustered indexes).<br />
+Avoid SELECT *; fetch only required columns.<br />
+Use stored procedures for complex queries.<br />
+Enable connection pooling.<br />
+Implement read replicas for read-heavy workloads.<br />
+Use pagination and batching for large datasets.<br />
+
+<strong>For Database Performance like NoSQL</strong><br />
+Like MongoDB is usually used for high-volume or flexible data, so optimization differs.<br />
+Create indexes based on query patterns.<br />
+Avoid large documents; follow proper document modeling.<br />
+Use projections to fetch only required fields.<br />
+Enable sharding for large collections.<br />
+Tune connection pool size from .NET MongoDB driver.<br />
+
+<strong>For AWS Infrastructure Optimization</strong><br />
+Use Auto Scaling Groups for APIs and background services.<br />
+Use Elastic Load Balancer for traffic distribution.<br />
+Choose correct EC2 instance types or move to ECS / EKS.<br />
+Store files in S3 instead of local storage.<br />
+Use CloudFront for global content delivery.<br />
+
+<strong>Use Observability & Monitoring tools</strong><br />
+Because performance improvement is incomplete without visibility.<br />
+Use OpenTelemetry in .NET for distributed tracing.<br />
+Monitor logs and metrics using CloudWatch and Grafana.<br />
+Identify slow APIs, long DB queries, and bottlenecks.<br />
+Set alerts for latency, CPU, memory, and error rates.
     </p>
   )
 }>
@@ -711,6 +747,22 @@ Overall, my focus is on clear, simple, and maintainable documentation that actua
 }>
 Tools and Frameworks
 </button>
+<button className="btn btn-danger me-2 mb-2" onClick={() =>
+  handleOpenPopup(
+<p><strong>I worked</strong> for Healthcare domain like RCM-Revenue Cycle Management for US Client and used tech stakcs like .NET Core, Microservices, REST APIs, AWS Services, SQL Server, PostgreSQL, Event Driven Architecture<br />
+<strong>I designed</strong> a cloud-based, end-to-end Revenue Cycle Management (RCM) platform on AWS to optimize the complete patient-to-payment lifecycle. The goal was to reduce denial rates, improve AR turnover, and provide real-time financial visibility.<br />
+<strong>The solution</strong> covered patient intake, insurance eligibility verification, cost estimation, medical coding, claims processing, denials management, payment posting, and financial reporting.<br />
+<strong>From an architecture</strong> perspective, I implemented a microservices-based design where each RCM function—Patient, Eligibility, Claims, Payments, Denials & Reporting was built as an independent service exposing REST APIs.<br />
+<strong>I deployed</strong> the services using Amazon Elastic Kubernetes Service, which allowed container orchestration and auto-scaling. To distribute traffic and ensure high availability, we used Elastic Load Balancing.<br />
+<strong>For transactional</strong> workloads (OLTP) like patient registration, claim creation, and payment posting, we used Amazon RDS to ensure ACID compliance and high performance.<br />
+<strong>For analytics</strong> and reporting (OLAP), including AR aging, denial trends, and revenue forecasting, we used Amazon Redshift. Data was moved from OLTP to OLAP through ETL pipelines to avoid impacting transaction performance.<br />
+<strong>I also used</strong> Amazon S3 for secure document and claim file storage.<br />
+<strong>This architecture</strong> reduced denial rates by around 30%, improved first-pass claim acceptance, shortened AR cycles, and provided leadership with real-time revenue dashboards.
+    </p>
+  )
+}>
+  Healthcare
+</button>
 
 <button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
@@ -724,42 +776,6 @@ My responsibilities include defining service boundaries, developing and reviewin
   )
 }>
   Publishing
-</button>
-<button className="btn btn-danger me-2 mb-2" onClick={() =>
-  handleOpenPopup(
-    <p>
-      <strong>Healthcare</strong><br />
-Client: US Client<br />
-Domain: Healthcare & Health Information Systems<br />
-Technologies: .NET Core Microservices, REST APIs, Azure, Blobstorage, SQL Server, MongoDB<br />
-
-<strong>Description</strong><br />
-I worked on a Healthcare Management System. The platform is designed to manage patient information, provider workflows, appointments, billing, and integrations with external healthcare systems. The solution is built with a strong focus on scalability, security, and compliance, which are critical requirements in the healthcare domain.<br />
-Key Modules & Functionalities are:<br />
-<strong>Patient Management</strong><br />
-Managed complete patient lifecycle including registration, demographics, and medical history.<br />
-Ensured secure handling of sensitive patient data.<br />
-Implemented validation and data consistency rules.<br />
-<strong>Provider & Clinical Workflow Management</strong><br />
-Designed workflows for doctors, nurses, and healthcare staff.<br />
-Enabled efficient management of consultations, prescriptions, and clinical notes.<br />
-Streamlined provider operations through service-based architecture.<br />
-<strong>Appointment & Scheduling Management</strong><br />
-Implemented appointment booking, rescheduling, and cancellation.<br />
-Handled provider availability and patient notifications.<br />
-Ensured optimized scheduling and reduced conflicts.<br />
-<strong>Billing & Payments</strong><br />
-Developed billing services for consultations, procedures, and services.<br />
-Integrated insurance, invoicing, and payment workflows.<br />
-Ensured accurate and auditable financial transactions.<br />
-<strong>Integration with External Healthcare Systems</strong><br />
-Integrated with third-party healthcare systems and external services using REST APIs.<br />
-Supported data exchange with labs, pharmacies, and insurance providers.<br />
-Ensured secure and reliable inter-system communication.
-    </p>
-  )
-}>
-  Healthcare
 </button>
 <button className="btn btn-danger me-2 mb-2" onClick={() =>
   handleOpenPopup(
