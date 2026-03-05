@@ -220,12 +220,12 @@ This structured and supportive onboarding approach helps new team members become
         }
       >Onboarding</button>
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>Hello, my name is Amit Kumar, and I bring around 16 years of experience in enterprise application development, technical leadership, and project delivery.
-Throughout my career, I have led the design and implementation of scalable enterprise systems, working with modern architectures such as microservices and cloud-native platforms. I have been involved in both greenfield product development and modernization of large legacy platforms.
-From a leadership perspective, I focus on driving technical strategy, ensuring architectural quality, and enabling teams to deliver scalable and reliable solutions. I regularly collaborate with clients, product owners, and cross-functional teams to translate business requirements into technical roadmaps and deliverable solutions.
-I have worked across multiple industries including Healthcare, Banking, E-Commerce, Insurance, and Logistics, which has helped me understand complex business processes and align technology with business goals.
-In my current role, I lead development teams, guide architectural decisions, manage stakeholder communication, and ensure timely delivery of high-quality solutions, while also mentoring engineers and promoting engineering best practices.
-I am passionate about building strong teams, improving delivery processes, and leveraging modern technologies like cloud platforms and microservices to solve complex business challenges.</p>)
+          handleOpenPopup(<p><strong>Hello</strong>, my name is Amit Kumar, and I bring around 16 years of experience in enterprise application development, technical leadership, and project delivery.<br />
+<strong>Throughout</strong> my career, I have led the design and implementation of scalable enterprise systems, working with modern architectures such as microservices and cloud-native platforms. I have been involved in both greenfield product development and modernization of large legacy platforms.<br />
+<strong>From</strong> a leadership perspective, I focus on driving technical strategy, ensuring architectural quality, and enabling teams to deliver scalable and reliable solutions. I regularly collaborate with clients, product owners, and cross-functional teams to translate business requirements into technical roadmaps and deliverable solutions.<br />
+<strong>I have</strong> worked across multiple industries including Healthcare, Banking, E-Commerce, Insurance, and Logistics, which has helped me understand complex business processes and align technology with business goals.<br />
+<strong>In my current</strong> role, I lead development teams, guide architectural decisions, manage stakeholder communication, and ensure timely delivery of high-quality solutions, while also mentoring engineers and promoting engineering best practices.<br />
+<strong>I am passionate</strong> about building strong teams, improving delivery processes, and leveraging modern technologies like cloud platforms and microservices to solve complex business challenges.</p>)
         }
       >Intro Manager</button>
       <br />
