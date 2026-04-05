@@ -212,12 +212,12 @@ style={{
               <SidebarButton to="/sqljoins" icon="bi-pencil-square" label="SQL Joins" />
               <SidebarButton to="/sqlstoredprocedure" icon="bi-gear" label="SQL Stored Procedure" />
               <SidebarButton to="/sqlfunctions" icon="bi-funnel" label="SQL Functions" />
-              <SidebarButton to="/sqlacid" icon="bi-shield-check" label="SQL ACID" />
               <SidebarButton to="/sqlindexing" icon="bi-list-nested" label="SQL Indexing" />
-              <SidebarButton to="/sqlnormalization" icon="bi-sliders" label="SQL Normalization" />
               <SidebarButton to="/sqlqueriescommands" icon="bi-terminal" label="SQL Commands" />
-              <SidebarButton to="/sqlprofiler" icon="bi-graph-up" label="SQL Profiler" />
               <SidebarButton to="/sqltrigger" icon="bi-bell" label="SQL Trigger" />
+              <SidebarButton to="/sqlacid" icon="bi-shield-check" label="SQL ACID" />
+              <SidebarButton to="/sqlnormalization" icon="bi-sliders" label="SQL Normalization" />
+              <SidebarButton to="/sqlprofiler" icon="bi-graph-up" label="SQL Profiler" />
               <SidebarButton to="/sqlcursor" icon="bi-arrow-left-right" label="SQL Cursor" />
               <SidebarButton to="/sqlrelationships" icon="bi-arrow-left-right" label="SQL Relationships" />
               <SidebarButton to="/sqlquestions" icon="bi-question-circle" label="SQL Questions" />

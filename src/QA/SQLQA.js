@@ -24,7 +24,7 @@ const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
+      <button className="btn btn-danger me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>ACID</strong> is used to maintain database consistency before and after a transaction. Transaction is a single logical unit which is used to modify the data through read write operations like insert, update, delete and retrieve the data.<br />
 <strong>Atomicity</strong> means a transaction can be treated as a single. Either all the operations will be completed successfully or nothing will be performed. Means If any part of the transaction fails, the entire transaction is rolled back in original state.<br />
 <strong>Consistency</strong> means a transaction takes the database from one consistent state to another consistent state. Database should be in consistent state before and after the transaction executed.<br />
@@ -33,7 +33,7 @@ const [isOpen, setIsOpen] = useState(false);
           </p>)
         }
       >ACID</button>
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
+      <button className="btn btn-danger me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Constraints</strong> are set of rules that we apply to columns in a table to control what kind of data can be stored in that columns. Constraints help to keep our database accurate, reliable, and safe from invalid data.<br />
  <strong>Null</strong> means column can have Null value.<br />
 <strong>Not Null</strong> means column cannot have Null value.<br />
@@ -53,13 +53,22 @@ const [isOpen, setIsOpen] = useState(false);
         }
       >Constraint</button>
 
-        <button className="btn btn-success me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>CTE</strong> is a tool which is used to simplify complex queries and makes them more readable. CTE allows us to break down complicated logic into manageable parts by defining temporary result sets that can be referenced multiple times.<br />
-CTE is a temporary result set that is defined and used within the execution scope of a SELECT, INSERT, UPDATE, or DELETE statement. CTEs are defined using the WITH clause and can be referenced multiple times within the main SQL query. This makes CTEs a great alternative to subqueries to perform the same operation multiple times or create recursive queries.</p>, `WITH AvgSalaryByDept AS (
-  SELECT Depart,AVG(Sal) AS AvgSal FROM Emp
-  GROUP BY Depart
-)
-SELECT * FROM AvgSalaryByDept;`)
+        <button className="btn btn-danger me-2 mb-2" onClick={() =>
+          handleOpenPopup(<p><strong>CTE</strong> is a temporary table that we create just for one query so that our SQL becomes easier to read. 
+          Instead of writing a long, messy query, we can create a small small temporary resultsets and give it a name and then we can use that name in our main query.</p>, 
+          `// second highest salary
+WITH cte 
+AS
+(SELECT Name, Sal, 
+RANK() OVER(ORDER BY Sal DESC) sal_rank from Employee)
+SELECT * FROM cte EHERE sal_rank = 2
+
+// find duplicate name 
+WITH cte 
+AS 
+(SELECT Name, 
+ ROW_NUMBER() OVER(PARTITION BY Name ORDER BY Name) row_num FROM employee)	
+SELECT * FROM cte WHERE row_num > 1;`)
         }
       >CTE</button>
 
@@ -101,7 +110,7 @@ In menu SQL-&lt; Execute with debugger<br />
 With F11 trace line By line</p>)
         }
       >Debug</button>
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
+      <button className="btn btn-danger me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Functions</strong> SQL functions are built-in operations in SQL that perform calculations, transform data, or return specific information based on input values. They are often used in SELECT, WHERE, GROUP BY and ORDER BY clauses to manipulate data in a query.<br />
 <strong>Aggregate Functions</strong> These perform calculations on a set of values or multiple rows and return a single result like COUNT(), SUM(), MIN(), MAX(), AVG()<br />
           <strong>Scalar or Single-Row Functions</strong> operate on individual values and return a result for each row like UPPER(), SUBSTRING(), REPLACE(), CONCAT(), LENGTH(), GETDATE(), NOW(), DATEADD(), DATEDIFF(), DAY(), MONTH(), YEAR(), CAST(), CONVERT()<br />
@@ -195,7 +204,7 @@ WHERE Name = 'Rakesh';`)
         }
       >OLAP</button>
 
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
+      <button className="btn btn-danger me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Indexing</strong>: help us to retrieve data faster in a faster way.<br />
 <strong>Avoid SELECT *</strong>: Retrieve only the required columns to improve performance<br />
 <strong>Optimize JOINs</strong>: Use proper join to avoid duplicates and improve queries<br />
@@ -214,7 +223,7 @@ WHERE Name = 'Rakesh';`)
         }
       >Optimize</button>
 
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
+       <button className="btn btn-danger me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Function</strong> must return a value while <strong>Procedure</strong> may or not return values.<br />
 <strong>Function</strong> will allow only Select statements. <strong>Procedure</strong> can have select statements as well as DML statements such as insert, update, delete.<br />
 <strong>Function</strong> allow only input parameters. <strong>Procedure</strong> allow input and output both parameters.<br />
@@ -229,7 +238,7 @@ Transactions are not allowed within <strong>Function</strong> while <strong>Proc
         }
       >&#64;&#64;Rowcount</button>
 
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
+       <button className="btn btn-danger me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>ROW_NUMBER()</strong> assigns a unique sequence number to each row within a result set or partition of data. Unlike <strong>RANK()</strong> and <strong>DENSE_RANK(), ROW_NUMBER()</strong> does not allow ties—even if rows have the same values, each gets a unique row number.</p>,
         `SELECT Name, Score,
 ROW_NUMBER() OVER (ORDER BY Score DESC) AS RowNum
@@ -242,7 +251,7 @@ David	85	4`)
         }
       >Row_Number</button>
 
-       <button className="btn btn-success me-2 mb-2" onClick={() =>
+       <button className="btn btn-danger me-2 mb-2" onClick={() =>
           handleOpenPopup(<p>Both <strong>RANK()</strong> and <strong>DENSE_RANK()</strong> are used to assign a ranking number to rows within a partition of a result set.<br />
           <strong>RANK()</strong> adds gaps in the ranking when there are ties. If two rows have the same rank, the next rank is skipped.<br />
           <strong>DENSE_RANK()</strong> does not skip ranks when there are ties.</p>, 
@@ -254,7 +263,7 @@ DenseRank FROM Students;`)
         }
       >Rank vs Dense Rank</button>
 
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
+      <button className="btn btn-danger me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>SCOPE_IDENTITY</strong> return the last identity value generated in any table in the current session. It returns the value only within the current scope.</p>, `CREATE TABLE Employees
 (Id INT IDENTITY(1,1), Name NVARCHAR(100));
 
@@ -272,7 +281,7 @@ SELECT SCOPE_IDENTITY() AS LastEmployeeID;`)
         }
       >SCOPE_IDENTITY</button>
 
-      <button className="btn btn-success me-2 mb-2" onClick={() =>
+      <button className="btn btn-danger me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Sequence</strong> is a user-defined object that generates a sequence of numeric values. Unlike Identity which is tied to a specific table column Sequence can be used across multiple tables and queries.</p>, `CREATE SEQUENCE unique_num
 	AS INT
 	START WITH 1
@@ -355,7 +364,7 @@ Common TCL commands include:<br />
         }
       >TCL</button>
 
-      <button className="btn btn-warning me-2 mb-2" onClick={() =>
+      {/* <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Data Types</strong> define the type of data that can be stored in a column of a table. SQL supports a wide range of data types, and they can be categorized into several types based on their usage. For Example: Numeric, String, Boolean, Binary etc.</p>)
         }
       >Data Types</button>
@@ -472,7 +481,7 @@ WHERE Name = 'Laptop';);`)
           handleOpenPopup(<p><strong>SET</strong>: Used to store a collection of values from a predefined list. Each value is stored as a bit (either 0 or 1).
 <br />Example: SET('a', 'b', 'c', 'd')</p>)
         }
-      >SET</button><br />
+      >SET</button><br /> */}
 
       <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Indexing</strong> is a data structure that helps us to improve the speed of retrieving specific data from tables.</p>)
@@ -522,60 +531,32 @@ INNER JOIN Department d ON e.DepartmentID = d.DepartmentID;`)
           handleOpenPopup(<p><strong>LEFT JOIN</strong> returns all rows from the left table and the matching rows from the right table. If there is no match in the right table, NULL values are returned for those columns.</p>, `SELECT e.Name, d.DepartmentName FROM Employee e
 LEFT JOIN Department d ON e.DepartmentID = d.DepartmentID;`)
         }
-      >Left Join</button>
+      >Left</button>
 
         <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>RIGHT JOIN</strong> returns all rows from the right table and the matching rows from the left table. If there is no match in the left table, NULL values are returned for those columns.</p>, `SELECT e.Name, d.DepartmentName FROM Employee e
 RIGHT JOIN Department d ON e.DepartmentID = d.DepartmentID;`)
         }
-      >Right Join</button>
+      >Right</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>FULL OUTER JOIN</strong> returns all rows from both tables. If there is a match, it includes the values from both tables. If there is no match, NULL values are returned for the missing side.</p>, `SELECT e.Name, d.DepartmentName FROM Employee e
 FULL OUTER JOIN Department d ON e.DepartmentID = d.DepartmentID;`)
         }
-      >Full Join</button>
+      >Full</button>
 
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>CROSS JOIN</strong> creates a cartesian product between two tables. This means each row from the first table is combined with every row from the second table</p>, `SELECT e.Name, d.DepartmentName FROM Employee e
 CROSS JOIN Department;`)
         }
-      >Cross Join</button>
+      >Cross</button>
       
        <button className="btn btn-primary me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>SELF JOIN</strong> is when a table is joined with itself. This is useful for hierarchical relationships, comparisons within the same table, or finding related records.</p>, `SELECT E1.Name AS Employee, E2.Name AS Manager
 FROM Employees E1
 SELF JOIN Employees E2 ON E1.ManagerID = E2.EmployeeID;`)
         }
-      >Self Join</button>      <button className="btn btn-danger me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `with cte as
-(SELECT Name, Salary, 
-RANK() OVER(ORDER BY Salary DESC) sal_rank from Employees)
-select * from cte where sal_rank = 2
-
-//Using subquery
-SELECT Name, Salary FROM 
-   (SELECT Name, Salary, RANK() OVER (ORDER BY Salary DESC) 
-   AS sal_rank FROM Employee) AS ranked_salaries 
-WHERE sal_rank = 2;`)
-        }
-      >Highest Salary</button>
-             <button className="btn btn-danger me-2 mb-2" onClick={() =>
-          handleOpenPopup(null, `WITH cte AS 
-(
-  SELECT Name, 
-  ROW_NUMBER() OVER(PARTITION BY Name ORDER BY Name) row_num
-  FROM employee
-)	
-SELECT * FROM cte WHERE row_num > 1;
-
-//Using subqueries
-SELECT Name, COUNT(Id) AS Duplicate FROM Employee 
-GROUP BY Name
-HAVING COUNT(Name) > 1;`)
-        }
-      >Duplicat Name</button>      
-<br />
+      >Self</button><br />
 
        <button className="btn btn-warning me-2 mb-2" onClick={() =>
           handleOpenPopup(<p><strong>Relationship</strong> defines how tables are connected to each other based on common fields. Relationship help us to maintain data integrity and eliminate redundancy by linking data across multiple tables like<br /> <strong>One-to-One, One-to-Many, Many-to-One and Many-to-Many</strong>.</p>)
@@ -762,7 +743,7 @@ BEGIN
 END`)
         }
       >Logon</button><br />
- 
+
       {/* Popup */}
       {isOpen && (
         <div className="popup-overlay" onClick={handleClosePopup}>
