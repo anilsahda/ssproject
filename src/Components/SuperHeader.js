@@ -223,76 +223,32 @@ useEffect(() => {
               <div className="modal-body">
                 <div className="container">
                 <header className="header">
-                    <h1>🚀 Hiring: Junior Software Engineers</h1>
-                    <p style={{ textAlign: 'center' }}>Join our 6-Month's Probation Program and work on Live Projects</p>
+                    <h1>🚀 Hiring: Trainee Software Engineers</h1>
+                    <p style={{ textAlign: 'center' }}>Join our (4 - 6) Month's Probation Program and work on Live Projects</p>
                   </header>
 
                   <div className="container">
                     <section>
                       <h2>📍 Locations</h2>
-                      <p style={{ textAlign: 'center' }}><strong>Mohali</strong> & <strong>Dehradun</strong> (based on client/project requirements)</p>
-                      <p style={{ textAlign: 'center' }}><em>Note: Candidates may be relocated between branches during probation as per project needs.</em></p>
+                      <p style={{ textAlign: 'center' }}><strong>Hyderabad, Mohali & Dehradun</strong></p>
+                      <p style={{ textAlign: 'center' }}><em>Candidates may be relocated to any branch during the probation period, based on project requirements.</em></p>
                     </section>
 
                     <section>
                       <h2>💼 Role & Designation</h2>
-                      <p style={{ textAlign: 'center' }}><strong>Junior Software Engineer</strong> (6-Months Probation)</p>
+                      <p style={{ textAlign: 'center' }}><strong>Trainee Software Engineer</strong> <br />
+                      Upon successful completion of the probation period, your designation will be Software Engineer.</p>
                     </section>
 
                     <section>
                       <h2>💸 Salary Structure</h2>
-                      <p style={{ textAlign: 'center' }}><strong>During Probation Period :</strong> ₹2,000 - ₹5,000 for right candidates</p>
-                      <p style={{ textAlign: 'center' }}><strong>Post - Probation Salary :</strong> ₹8,000 - ₹12,000</p>
-                      <p style={{ textAlign: 'center' }}>(Shiwansh Solutions <b>OR</b> Other Companies on the basis of Shiwansh Solutions)</p>                      
+                      <p style={{ textAlign: 'center' }}><strong>During Probation Period :</strong> No Salary</p>
+                      <p style={{ textAlign: 'center' }}><strong>After Probation :</strong> ₹15k - ₹30k per month</p>
                     </section>
 
                     <section>
                       <h2>📝 Appointment Process</h2>
-                      <p style={{ textAlign: 'center' }}>Appointment letter will be issued once candidates confirm their joining date & complete 1-week assessment test.</p>
-                    </section>
-
-                    <section>
-                      <h2>📊 Mode Comparison</h2>
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Mode</th>
-                            <th>Designation</th>
-                            <th>Salary</th>
-                            <th>Benefits & Facilities</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>🏢 Work From Office</td>
-                            <td>💼 Junior Software Engineer<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Probation)</td>
-                            <td>💰 ₹2,000 – ₹5,000</td>
-                            <td>
-                              ✅ Appointment Letter<br />
-                              ✅ Salary Account<br />
-                              ✅ Salary Certificate<br />
-                              ✅ Experience Letter<br />
-                              ✅ Relieving Letter
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>🏢 Work From Office</td>
-                            <td>💼 Junior Software Engineer<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Confirmed)</td>
-                            <td>💰 ₹8,000 - ₹12,000</td>
-                            <td>
-                              ✅ Appointment Letter<br />
-                              ✅ Salary Account<br />
-                              ✅ Salary Certificate<br />
-                              ✅ Experience Letter<br />
-                              ✅ Relieving Letter
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </section>
-                    <section>
-                      <h2>📩 Ready to Launch Your Career?</h2>
-                      <p style={{ textAlign: 'center' }}>Apply now and become a part of a team that values <strong>learning</strong>, <strong>growth</strong> and <strong>real impact</strong>.</p>
+                      <p style={{ textAlign: 'center' }}>The offer letter will be issued once the candidate successfully completes the assessment test.</p>
                     </section>
                   </div>
                 </div>
