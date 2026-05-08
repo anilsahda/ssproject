@@ -9,6 +9,7 @@ export default function Reactprojectsetup() {
           <code>
 {`npm create vite@latest myapp -- --template react-ts
 cd myapp
+code .
 npm run dev
 npm i react-router-dom
 npm i bootstrap
