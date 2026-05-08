@@ -47,7 +47,7 @@ npm i sweetalert2`}
 {`function Home() {
   return (
     <div className="container">
-      <h1>Manage</h1>
+      <h1>Form Example</h1>
       <form>
         <div className="row">
             <input type="text" placeholder="Name" className="form-control" />
@@ -56,6 +56,23 @@ npm i sweetalert2`}
             <button type="submit" className="btn btn-primary">Save</button>
         </div>
       </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>1</td>
+              <td>India</td>
+              <td><button>Edit</button><button>Delete</button></td>
+            </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
