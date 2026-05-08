@@ -27,16 +27,13 @@ npm i sweetalert2`}
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`myapp/
-├── src/
-│   ├── pages/
-│   │   ├── Home.tsx
-│   │   └── Country.tsx
-│   ├── components/
-│   │   ├── Header.tsx
-│   │   ├── Footer.tsx
-│   │   └── Layout.tsx
-│   ├── App.tsx
-│   └── main.tsx`}
+└── src/
+    ├── pages/
+    │   └── Home.tsx
+    ├── components/
+    │   └── Layout.tsx
+    ├── App.tsx
+    └── main.tsx`}
           </code>
         </pre>
       </section>
@@ -57,22 +54,22 @@ export default Home`}
           </code>
         </pre>
 
-        <b>4.🔹 Country.tsx</b>
+        <b>3.🔹 Home.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`function Country() {
+{`function Home() {
   return (
     <div className="container mt-4">
-      <h1 className="mb-4">Manage Country</h1>
+      <h1 className="mb-4">Manage Form/h1>
       <form>
         <div className="row mb-3">
           <div className="col-md-6">
-            <input type="text" placeholder="Enter country name" className="form-control" />
+            <input type="text" placeholder="Enter Name" className="form-control" />
           </div>
         </div>
         <div className="row">
           <div className="col-md-6">
-            <button type="submit" className="btn btn-primary">Add Country</button>
+            <button type="submit" className="btn btn-primary">Save</button>
           </div>
         </div>
       </form>
@@ -80,59 +77,25 @@ export default Home`}
   );
 }
 
-export default Country`}
+export default Home`}
           </code>
         </pre>
 
-        <b>5.🧩 Header.tsx</b>
+        <b>4.🧩 Layout.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`import { Link } from 'react-router-dom';
+{`import type { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 
-function Header() {
+function Layout({ children }: { children: ReactNode }) {
   return (
-    <header>
+    <>
       <h1>My App</h1>
       <nav>
         <Link to="/">Home</Link>
         <Link to="/country">Country</Link>
       </nav>
-    </header>
-  );
-}
-
-export default Header`}
-          </code>
-        </pre>
-
-        <b>6.🧩 Footer.tsx</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`function Footer() {
-  return (
-    <footer>
-      <p>&copy; {new Date().getFullYear()} Shiwansh Intern</p>
-    </footer>
-  );
-}
-
-export default Footer`}
-          </code>
-        </pre>
-
-        <b>7.🧩 Layout.tsx</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`import Header from './Header';
-import Footer from './Footer';
-import type { ReactNode } from 'react';
-
-function Layout({ children }: { children: ReactNode }) {
-  return (
-    <>
-      <Header />
       <main>{children}</main>
-      <Footer />
     </>
   );
 }
@@ -147,7 +110,6 @@ export default Layout`}
 {`import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import Country from './pages/Country';
 
 function App() {
   return (
@@ -155,7 +117,6 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/country" element={<Country />} />
         </Routes>
       </Layout>
     </Router>
