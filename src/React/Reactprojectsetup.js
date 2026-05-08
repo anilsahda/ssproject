@@ -10,9 +10,10 @@ export default function Reactprojectsetup() {
 {`npm create vite@latest myapp -- --template react-ts
 cd myapp
 npm run dev
-npm install axios
 npm i react-router-dom
 npm i bootstrap
+
+npm install axios
 npm i bootstrap-icons
 npm i react-bootstrap-icons
 npm i react-select
@@ -48,14 +49,10 @@ npm i sweetalert2`}
       <h1>Manage</h1>
       <form>
         <div className="row">
-          <div className="col-md-6">
             <input type="text" placeholder="Name" className="form-control" />
-          </div>
         </div>
         <div className="row">
-          <div className="col-md-6">
             <button type="submit" className="btn btn-primary">Save</button>
-          </div>
         </div>
       </form>
     </div>
@@ -112,7 +109,7 @@ export default App;`}
         </pre>
 
         <b>6.🔹 main.tsx</b>
-        add bootstrap
+        <p>Add bootstrap in main.tsx</p>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`import 'bootstrap/dist/css/bootstrap.min.css';`}
