@@ -45,7 +45,7 @@ npm i sweetalert2`}
 {`function Home() {
   return (
     <div className="container">
-      <h1>Manage/h1>
+      <h1>Manage</h1>
       <form>
         <div className="row">
           <div className="col-md-6">
@@ -112,17 +112,10 @@ export default App;`}
         </pre>
 
         <b>6.🔹 main.tsx</b>
+        add bootstrap
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);`}
+{`import 'bootstrap/dist/css/bootstrap.min.css';`}
           </code>
         </pre>
       </section>
