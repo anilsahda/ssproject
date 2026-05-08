@@ -78,7 +78,6 @@ function Layout({ children }: { children: ReactNode }) {
       <h1>My App</h1>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/country">Country</Link>
       </nav>
       <main>{children}</main>
     </>
@@ -89,7 +88,7 @@ export default Layout`}
           </code>
         </pre>
 
-        <b>8.🔹 App.tsx</b>
+        <b>5.🔹 App.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -112,7 +111,7 @@ export default App;`}
           </code>
         </pre>
 
-        <b>9.🔹 main.tsx</b>
+        <b>6.🔹 main.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`import React from 'react';
