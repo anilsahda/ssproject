@@ -9,7 +9,6 @@ export default function Reactprojectsetup() {
           <code>
 {`npm create vite@latest myapp -- --template react-ts
 cd myapp
-npm install
 npm run dev
 npm install axios
 npm i react-router-dom
@@ -39,32 +38,18 @@ npm i sweetalert2`}
       </section>
 
       <section>
-        <b>3.🔹 Home.tsx</b>
-        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
-          <code>
-{`function Home() {
-  return (
-    <main>
-      <h1>Welcom to Home Page</h1>
-    </main>
-  );
-}
-
-export default Home`}
-          </code>
-        </pre>
 
         <b>3.🔹 Home.tsx</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`function Home() {
   return (
-    <div className="container mt-4">
-      <h1 className="mb-4">Manage Form/h1>
+    <div className="container">
+      <h1>Manage/h1>
       <form>
-        <div className="row mb-3">
+        <div className="row">
           <div className="col-md-6">
-            <input type="text" placeholder="Enter Name" className="form-control" />
+            <input type="text" placeholder="Name" className="form-control" />
           </div>
         </div>
         <div className="row">
