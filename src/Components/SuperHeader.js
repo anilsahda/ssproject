@@ -224,32 +224,44 @@ useEffect(() => {
                 <div className="container">
                 <header className="header">
                     <h1>🚀 Hiring: Trainee Software Engineers</h1>
-                    <p style={{ textAlign: 'center' }}>Join our (4 - 6) Month's Probation Program and work on Live Projects</p>
+                    <p style={{ textAlign: 'center' }}>Join our 6-Months Internship Program and start your career as a Full-Stack Engineer</p>
                   </header>
 
                   <div className="container">
                     <section>
                       <h2>📍 Locations</h2>
                       <p style={{ textAlign: 'center' }}><strong>Hyderabad, Mohali & Dehradun</strong></p>
-                      <p style={{ textAlign: 'center' }}><em>Candidates may be relocated to any branch during the probation period, based on project requirements.</em></p>
+                      <p style={{ textAlign: 'center' }}><em>Candidates may be relocated to any branch based on project requirements.</em></p>
                     </section>
 
                     <section>
-                      <h2>💼 Role & Designation</h2>
-                      <p style={{ textAlign: 'center' }}><strong>Trainee Software Engineer</strong> <br />
-                      Upon successful completion of the probation period, your designation will be Software Engineer.</p>
+                      <h2>💸 Job Details</h2>
+                      <table className="table table-bordered">
+                        <thead className="table-light">
+                          <tr>
+                            <th>Duration</th>
+                            <th>Position</th>
+                            <th>Work Mode</th>                                                        
+                            <th>Appointment</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1-Month Internship</td>
+                            <td>Trainee Software Engineer</td>
+                            <td>Remote/Hybrid/On-site</td>
+                            <td>Assesment Test after 1-Month Internship to join as a Fullstack Engineer</td>
+                          </tr>
+                          <tr>
+                            <td>6-Months Internship</td>
+                            <td>Junior Software Engineer</td>
+                            <td>Hybrid/On-site</td>
+                            <td>Direct Join as a Fullstack Engineer after 6-Months Internship</td>
+                          </tr>                          
+                        </tbody>
+                      </table>
                     </section>
 
-                    <section>
-                      <h2>💸 Salary Structure</h2>
-                      <p style={{ textAlign: 'center' }}><strong>During Probation Period :</strong> No Salary</p>
-                      <p style={{ textAlign: 'center' }}><strong>After Probation :</strong> ₹15k - ₹30k per month</p>
-                    </section>
-
-                    <section>
-                      <h2>📝 Appointment Process</h2>
-                      <p style={{ textAlign: 'center' }}>The offer letter will be issued once the candidate successfully completes the assessment test.</p>
-                    </section>
                   </div>
                 </div>
               </div>
