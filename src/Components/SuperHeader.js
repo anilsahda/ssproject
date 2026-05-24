@@ -64,7 +64,7 @@ useEffect(() => {
       <nav className="navbar navbar-expand-lg bg-primary bg-gradient text-white py-2 px-3">
         <div className="container-fluid d-flex justify-content-between align-items-center flex-wrap">
           <div className="d-flex align-items-center">
-            <Link to="/" className="navbar-brand fw-bold brand-text" style={{ textDecoration: "none", fontSize: "1.4rem", letterSpacing: "1px", color: "white"}}>Shiwansh Solutions</Link>
+            <Link to="/" className="navbar-brand fw-bold brand-text" style={{ textDecoration: "none", fontSize: "1.4rem", letterSpacing: "1px", color: "white"}}>SS INTERNS</Link>
           </div>
           <form className="d-flex mx-3 flex-grow-1" role="search" style={{ maxWidth: '250px' }}>
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

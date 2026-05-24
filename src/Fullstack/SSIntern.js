@@ -98,11 +98,11 @@ function SSIntern() {
           },
           {
             title: "🧑‍🏫 WFO (Work From Office)",
-            desc: "Direct join within 4 months at Shiwansh Solutions",
+            desc: "Direct join within 4 months at SS Interns",
           },
           {
             title: "🎯 WFH (Work From Home)",
-            desc: "Join anytime after 4 months based on performance & interview at Shiwansh Solutions",
+            desc: "Join anytime after 4 months based on performance & interview at SS Interns",
           },
         ].map((item, index) => (
           <div className="col-md-4" key={index}>
