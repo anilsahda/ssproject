@@ -198,6 +198,10 @@ import SSAttendancePortal from "./Projects/AttendancePortal/AttendancePortalProj
 import SSEHouse from "./Projects/SmartHouse/SmartHouseProject";
 import SSJobs from "./Projects/SmartJobs/SmartJobsProject";
 import SSHealthInsurance from "./Projects/HealthInsurance/SSHealthInsurance";
+import SSTransportManagement from "./Projects/TransportManagement/TMS";
+import SSEVBV from "./Projects/RCM/EVBV";
+import SSMedicalCoding from "./Projects/RCM/MedicalCoding";
+import SSAR from "./Projects/RCM/AR";
 import SSIntern from "./Fullstack/SSIntern";
 import Awsrds from "./AWS/Awsrds";
 import Amplify from "./AWS/Amplify";
@@ -268,7 +272,10 @@ function App() {
             <Route path="/ssjobs" element={<SSJobs />} />
             <Route path="/sshealthinsurance" element={<SSHealthInsurance />} />
             <Route path="/sslogistrics" element={<SSLogistrics />} />
-
+            <Route path="/sstransportmanagement" element={<SSTransportManagement />} />
+            <Route path="/ssevbv" element={<SSEVBV />} />
+            <Route path="/ssmedicalcoding" element={<SSMedicalCoding />} />
+            <Route path="/ssar" element={<SSAR />} />
 
             {/* Fulstack Static */}
             <Route path="/languagestatic" element={<LanguagesStatic />} />

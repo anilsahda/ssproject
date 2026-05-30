@@ -195,7 +195,7 @@ function Authentication() {
       {/* Top Navbar */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div className="container">
-          <a className="navbar-brand fw-bold" href="#">MyCompany</a>
+          <a className="navbar-brand fw-bold" href="#">My Shop</a>
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
               {!isLoggedIn && ["Home", "About", "Services"].map(item => (

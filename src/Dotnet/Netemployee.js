@@ -58,7 +58,7 @@ function Netemployee() {
       {/* Step 5: Model */}
       <Section title="Interface (IEmployee.cs)" color="text-green-600">
         <CodeBlock>
-{`public class IEmployee
+{`public interface IEmployee
 {
     List<Employee> GetAllEmployee();
     Employee GetEmployeeById(int id);
