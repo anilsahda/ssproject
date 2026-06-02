@@ -287,14 +287,18 @@ useEffect(() => {
 
                   <div className="mb-3">
                     <h6>Back-End</h6>
-                    <span className="badge bg-primary me-2">Node.js</span>
                     <span className="badge bg-primary">.NET Core</span>
+                    <span className="badge bg-primary me-2">Node.js</span>
+                    <span className="badge bg-primary">SpringBoot</span>
+                    <span className="badge bg-primary">AI-ML</span>
                   </div>
 
                   <div className="mb-3">
                     <h6>Front-End</h6>
                     <span className="badge bg-success me-2">React.js</span>
                     <span className="badge bg-success">Next.js</span>
+                    <span className="badge bg-success">Vue.js</span>                    
+                    <span className="badge bg-success">Angular.js</span>
                   </div>
 
                   <div>
@@ -312,7 +316,7 @@ useEffect(() => {
                       EC2
                     </span>
                     <span className="badge bg-warning text-dark">
-                      Lambda
+                      Lambda Function
                     </span>
                   </div>
                 </div>
@@ -332,10 +336,10 @@ useEffect(() => {
                       ✅ Industry-Oriented Curriculum
                     </div>
                     <div className="col-md-4">
-                      ✅ Real-Time Project Experience
+                      ✅ Live Project Experience
                     </div>
                     <div className="col-md-4">
-                      ✅ AWS Cloud Exposure
+                      ✅ AWS/Azure/GCP Cloud Exposure
                     </div>
                     <div className="col-md-4">
                       ✅ Full-Stack Development
@@ -344,7 +348,7 @@ useEffect(() => {
                       ✅ Professional Mentorship
                     </div>
                     <div className="col-md-4">
-                      ✅ Placement Assistance
+                      ✅ Microservices Architecture
                     </div>
                   </div>
                 </div>
@@ -379,6 +383,21 @@ useEffect(() => {
                           </td>
                           <td>
                             .NET Developer
+                          </td>
+                          <td>
+                            Based on your skills and performance
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            Direct Opportunity
+                          </td>
+                          <td>
+                            Shiwansh Solutions
+                          </td>
+                          <td>
+                            Java Developer
                           </td>
                           <td>
                             Based on your skills and performance
