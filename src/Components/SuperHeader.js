@@ -237,6 +237,7 @@ useEffect(() => {
                   <p><strong>Work Mode:</strong> Work From Office</p>
                   <p><strong>Office Hours:</strong> 9:00 AM – 6:00 PM</p>
                   <p><strong>Locations:</strong> Hyderabad, Mohali & Dehradun</p>
+                  <p><strong>Placement:</strong> Direct Opportunity after Completion the internship</p>
                 </div>
               </div>
             </div>
