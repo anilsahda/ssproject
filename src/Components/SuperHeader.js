@@ -18,12 +18,12 @@ function SuperHeader() {
   }, []);
 
 useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowIntern(true);
-    }, 10000);
+  const timer = setTimeout(() => {
+    setShowIntern(true);
+  }, 5000);
 
-    return () => clearTimeout(timer);
-  }, []);
+  return () => clearTimeout(timer);
+}, []);
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -78,9 +78,7 @@ useEffect(() => {
             <div className="d-flex align-items-center gap-2">
               {!isLoggedIn ? (
                 <>
-                  <button className="btn btn-outline-light me-2" onClick={() => setShowIntern(true)}>
-                    Job Oriented Program
-                  </button>
+                  <button className="btn btn-warning fw-bold px-3" onClick={() => setShowIntern(true)}>🚀 Full-Stack Program</button>
                   <button className="btn btn-outline-light me-2" onClick={() => setShowSignup(true)}>
                     <FaUser className="me-1" />
                   </button>
@@ -216,60 +214,255 @@ useEffect(() => {
       )}
 
       {/* Login Modal */}
- {showIntern && (
-        <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.7)' }} onClick={() => setShowIntern(false)}>
-          <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "1000px" }} onClick={(e) => e.stopPropagation()}>
-            <div className="modal-content shadow rounded-3">
-              <div className="modal-body">
-                <div className="container">
-                <header className="header">
-                    <h1>🚀 Hiring: Trainee Software Engineers</h1>
-                    <p style={{ textAlign: 'center' }}>Join our 6-Months Internship Program and start your career as a Full-Stack Engineer</p>
-                  </header>
+{/* Training Program Modal */}
+{showIntern && (
+  <div
+    className="modal d-block"
+    tabIndex="-1"
+    style={{ backgroundColor: "rgba(0,0,0,0.75)" }}
+    onClick={() => setShowIntern(false)}
+  >
+    <div
+      className="modal-dialog modal-dialog-centered modal-xl"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div
+        className="modal-content border-0 shadow-lg"
+        style={{ borderRadius: "20px", overflow: "hidden" }}
+      >
+        {/* Header */}
+        <div
+          className="text-white p-5"
+          style={{
+            background:
+              "linear-gradient(135deg, #0d6efd 0%, #6610f2 100%)",
+          }}
+        >
+          <h1 className="fw-bold mb-3">
+            🚀 Full-Stack Development Program
+          </h1>
+          <h5 className="mb-0">
+            Build Your Career in Modern Web Development & Cloud Technologies
+          </h5>
+        </div>
 
-                  <div className="container">
-                    <section>
-                      <h2>📍 Locations</h2>
-                      <p style={{ textAlign: 'center' }}><strong>Hyderabad, Mohali & Dehradun</strong></p>
-                      <p style={{ textAlign: 'center' }}><em>Candidates may be relocated to any branch based on project requirements.</em></p>
-                    </section>
+        <div className="modal-body p-4">
+          <div className="row g-4">
 
-                    <section>
-                      <h2>💸 Job Details</h2>
-                      <table className="table table-bordered">
-                        <thead className="table-light">
-                          <tr>
-                            <th>Duration</th>
-                            <th>Position</th>
-                            <th>Work Mode</th>                                                        
-                            <th>Appointment</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1-Month Internship</td>
-                            <td>Trainee Software Engineer</td>
-                            <td>Remote/Hybrid/On-site</td>
-                            <td>Assesment Test after 1-Month Internship to join as a Fullstack Engineer</td>
-                          </tr>
-                          <tr>
-                            <td>6-Months Internship</td>
-                            <td>Junior Software Engineer</td>
-                            <td>Hybrid/On-site</td>
-                            <td>Direct Join as a Fullstack Engineer after 6-Months Internship</td>
-                          </tr>                          
-                        </tbody>
-                      </table>
-                    </section>
+            {/* Program Details */}
+            <div className="col-md-6">
+              <div className="card h-100 shadow-sm border-0">
+                <div className="card-body">
+                  <h4 className="text-primary mb-3">
+                    📅 Program Details
+                  </h4>
 
+                  <p>
+                    <strong>Duration:</strong> 6 Months
+                  </p>
+
+                  <p>
+                    <strong>Work Mode:</strong> Work From Office
+                  </p>
+
+                  <p>
+                    <strong>Office Hours:</strong> 9:00 AM – 6:00 PM
+                  </p>
+
+                  <p>
+                    <strong>Locations:</strong> Hyderabad, Mohali &
+                    Dehradun
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Technologies */}
+            <div className="col-md-6">
+              <div className="card h-100 shadow-sm border-0">
+                <div className="card-body">
+                  <h4 className="text-success mb-3">
+                    💻 Technologies Covered
+                  </h4>
+
+                  <div className="mb-3">
+                    <h6>Back-End</h6>
+                    <span className="badge bg-primary me-2">Node.js</span>
+                    <span className="badge bg-primary">.NET Core</span>
+                  </div>
+
+                  <div className="mb-3">
+                    <h6>Front-End</h6>
+                    <span className="badge bg-success me-2">React.js</span>
+                    <span className="badge bg-success">Next.js</span>
+                  </div>
+
+                  <div>
+                    <h6>AWS Cloud</h6>
+                    <span className="badge bg-warning text-dark me-2">
+                      S3
+                    </span>
+                    <span className="badge bg-warning text-dark me-2">
+                      DynamoDB
+                    </span>
+                    <span className="badge bg-warning text-dark me-2">
+                      IAM
+                    </span>
+                    <span className="badge bg-warning text-dark me-2">
+                      EC2
+                    </span>
+                    <span className="badge bg-warning text-dark">
+                      Lambda
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Benefits */}
+            <div className="col-12">
+              <div className="card shadow-sm border-0">
+                <div className="card-body">
+                  <h4 className="text-danger mb-3">
+                    ⭐ Program Benefits
+                  </h4>
+
+                  <div className="row">
+                    <div className="col-md-4">
+                      ✅ Industry-Oriented Curriculum
+                    </div>
+                    <div className="col-md-4">
+                      ✅ Real-Time Project Experience
+                    </div>
+                    <div className="col-md-4">
+                      ✅ AWS Cloud Exposure
+                    </div>
+                    <div className="col-md-4">
+                      ✅ Full-Stack Development
+                    </div>
+                    <div className="col-md-4">
+                      ✅ Professional Mentorship
+                    </div>
+                    <div className="col-md-4">
+                      ✅ Placement Assistance
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Career Opportunities */}
+            <div className="col-12">
+              <div className="card border-0 shadow">
+                <div className="card-body">
+                  <h4 className="text-primary mb-4">
+                    🎯 Career Opportunities After Completion
+                  </h4>
+
+                  <div className="table-responsive">
+                    <table className="table table-bordered align-middle">
+                      <thead className="table-primary">
+                        <tr>
+                          <th>Opportunity</th>
+                          <th>Company</th>
+                          <th>Role</th>
+                          <th>Monthly Salary</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Placement Assistance
+                          </td>
+                          <td>
+                            Associated / Partner Companies
+                          </td>
+                          <td>
+                            Software Engineer / Full-Stack Developer
+                          </td>
+                          <td>
+                            ₹15,000 – ₹25,000
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            Direct Opportunity
+                          </td>
+                          <td>
+                            Shiwansh Solutions
+                          </td>
+                          <td>
+                            .NET Developer
+                          </td>
+                          <td>
+                            ₹12,000
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            Direct Opportunity
+                          </td>
+                          <td>
+                            Shiwansh Solutions
+                          </td>
+                          <td>
+                            DevOps Engineer
+                          </td>
+                          <td>
+                            ₹10,000
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Direct Opportunity
+                          </td>
+                          <td>
+                            Shiwansh Solutions
+                          </td>
+                          <td>
+                            AI-ML Engineer
+                          </td>
+                          <td>
+                            ₹10,000
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Direct Opportunity
+                          </td>
+                          <td>
+                            Shiwansh Solutions
+                          </td>
+                          <td>
+                            MERN Stack Developer
+                          </td>
+                          <td>
+                            ₹10,000
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div className="text-center mt-4">
+                    <button
+                      className="btn btn-lg btn-primary px-5"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-      )}
-
+      </div>
+    </div>
+  </div>
+)}
     </>
   );
 }
