@@ -216,34 +216,13 @@ useEffect(() => {
       {/* Login Modal */}
 {/* Training Program Modal */}
 {showIntern && (
-  <div
-    className="modal d-block"
-    tabIndex="-1"
-    style={{ backgroundColor: "rgba(0,0,0,0.75)" }}
-    onClick={() => setShowIntern(false)}
-  >
-    <div
-      className="modal-dialog modal-dialog-centered modal-xl"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div
-        className="modal-content border-0 shadow-lg"
-        style={{ borderRadius: "20px", overflow: "hidden" }}
-      >
+  <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0,0,0,0.75)" }} onClick={() => setShowIntern(false)}>
+    <div className="modal-dialog modal-dialog-centered modal-xl" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content border-0 shadow-lg" style={{ borderRadius: "20px", overflow: "hidden" }}>
         {/* Header */}
-        <div
-          className="text-white p-5"
-          style={{
-            background:
-              "linear-gradient(135deg, #0d6efd 0%, #6610f2 100%)",
-          }}
-        >
-          <h1 className="fw-bold mb-3">
-            🚀 Full-Stack Development Program
-          </h1>
-          <h5 className="mb-0">
-            Build Your Career in Modern Web Development & Cloud Technologies
-          </h5>
+        <div className="text-white p-5" style={{ background: "linear-gradient(135deg, #0d6efd 0%, #6610f2 100%)"}}>
+          <h1 className="fw-bold mb-3">🚀 Full-Stack Development Program</h1>
+          <h5 className="mb-0">Build Your Career in Modern Web Development & Cloud Technologies</h5>
         </div>
 
         <div className="modal-body p-4">
@@ -253,26 +232,11 @@ useEffect(() => {
             <div className="col-md-6">
               <div className="card h-100 shadow-sm border-0">
                 <div className="card-body">
-                  <h4 className="text-primary mb-3">
-                    📅 Program Details
-                  </h4>
-
-                  <p>
-                    <strong>Duration:</strong> 6 Months
-                  </p>
-
-                  <p>
-                    <strong>Work Mode:</strong> Work From Office
-                  </p>
-
-                  <p>
-                    <strong>Office Hours:</strong> 9:00 AM – 6:00 PM
-                  </p>
-
-                  <p>
-                    <strong>Locations:</strong> Hyderabad, Mohali &
-                    Dehradun
-                  </p>
+                  <h4 className="text-primary mb-3">📅 Program Details</h4>
+                  <p><strong>Duration:</strong> 6 Months</p>
+                  <p><strong>Work Mode:</strong> Work From Office</p>
+                  <p><strong>Office Hours:</strong> 9:00 AM – 6:00 PM</p>
+                  <p><strong>Locations:</strong> Hyderabad, Mohali & Dehradun</p>
                 </div>
               </div>
             </div>
@@ -281,43 +245,30 @@ useEffect(() => {
             <div className="col-md-6">
               <div className="card h-100 shadow-sm border-0">
                 <div className="card-body">
-                  <h4 className="text-success mb-3">
-                    💻 Technologies Covered
-                  </h4>
-
+                  <h4 className="text-success mb-3">💻 Technologies Covered</h4>
                   <div className="mb-3">
                     <h6>Back-End</h6>
-                    <span className="badge bg-primary">.NET Core</span>
+                    <span className="badge bg-primary me-2">.NET Core</span>
                     <span className="badge bg-primary me-2">Node.js</span>
-                    <span className="badge bg-primary">SpringBoot</span>
+                    <span className="badge bg-primary me-2">SpringBoot</span>
                     <span className="badge bg-primary">AI-ML</span>
                   </div>
 
                   <div className="mb-3">
                     <h6>Front-End</h6>
                     <span className="badge bg-success me-2">React.js</span>
-                    <span className="badge bg-success">Next.js</span>
-                    <span className="badge bg-success">Vue.js</span>                    
+                    <span className="badge bg-success me-2">Next.js</span>
+                    <span className="badge bg-success me-2">Vue.js</span>                    
                     <span className="badge bg-success">Angular.js</span>
                   </div>
 
                   <div>
                     <h6>AWS Cloud</h6>
-                    <span className="badge bg-warning text-dark me-2">
-                      S3
-                    </span>
-                    <span className="badge bg-warning text-dark me-2">
-                      DynamoDB
-                    </span>
-                    <span className="badge bg-warning text-dark me-2">
-                      IAM
-                    </span>
-                    <span className="badge bg-warning text-dark me-2">
-                      EC2
-                    </span>
-                    <span className="badge bg-warning text-dark">
-                      Lambda Function
-                    </span>
+                    <span className="badge bg-warning text-dark me-2">S3</span>
+                    <span className="badge bg-warning text-dark me-2">DynamoDB</span>
+                    <span className="badge bg-warning text-dark me-2">IAM</span>
+                    <span className="badge bg-warning text-dark me-2">EC2</span>
+                    <span className="badge bg-warning text-dark">Lambda Function</span>
                   </div>
                 </div>
               </div>
@@ -327,29 +278,14 @@ useEffect(() => {
             <div className="col-12">
               <div className="card shadow-sm border-0">
                 <div className="card-body">
-                  <h4 className="text-danger mb-3">
-                    ⭐ Program Benefits
-                  </h4>
-
+                  <h4 className="text-danger mb-3">⭐ Program Benefits</h4>
                   <div className="row">
-                    <div className="col-md-4">
-                      ✅ Industry-Oriented Curriculum
-                    </div>
-                    <div className="col-md-4">
-                      ✅ Live Project Experience
-                    </div>
-                    <div className="col-md-4">
-                      ✅ AWS/Azure/GCP Cloud Exposure
-                    </div>
-                    <div className="col-md-4">
-                      ✅ Full-Stack Development
-                    </div>
-                    <div className="col-md-4">
-                      ✅ Professional Mentorship
-                    </div>
-                    <div className="col-md-4">
-                      ✅ Microservices Architecture
-                    </div>
+                    <div className="col-md-4">✅ Industry-Oriented Curriculum</div>
+                    <div className="col-md-4">✅ Live Project Experience</div>
+                    <div className="col-md-4">✅ AWS/Azure/GCP Cloud Exposure</div>
+                    <div className="col-md-4">✅ Full-Stack Development</div>
+                    <div className="col-md-4">✅ Professional Mentorship</div>
+                    <div className="col-md-4">✅ Microservices Architecture</div>
                   </div>
                 </div>
               </div>
@@ -359,10 +295,7 @@ useEffect(() => {
             <div className="col-12">
               <div className="card border-0 shadow">
                 <div className="card-body">
-                  <h4 className="text-primary mb-4">
-                    🎯 Career Opportunities After Completion
-                  </h4>
-
+                  <h4 className="text-primary mb-4">🎯 Career Opportunities After Completion</h4>
                   <div className="table-responsive">
                     <table className="table table-bordered align-middle">
                       <thead className="table-primary">
@@ -375,92 +308,43 @@ useEffect(() => {
                       </thead>
                       <tbody>
                         <tr>
-                          <td>
-                            Direct Opportunity
-                          </td>
-                          <td>
-                            Shiwansh Solutions
-                          </td>
-                          <td>
-                            .NET Developer
-                          </td>
-                          <td>
-                            Based on your skills and performance
-                          </td>
+                          <td>Direct Opportunity</td>
+                          <td>Shiwansh Solutions</td>
+                          <td>.NET Developer</td>
+                          <td>Based on your skills and performance</td>
                         </tr>
 
                         <tr>
-                          <td>
-                            Direct Opportunity
-                          </td>
-                          <td>
-                            Shiwansh Solutions
-                          </td>
-                          <td>
-                            Java Developer
-                          </td>
-                          <td>
-                            Based on your skills and performance
-                          </td>
+                          <td>Direct Opportunity</td>
+                          <td>Shiwansh Solutions</td>
+                          <td>Java Developer</td>
+                          <td>Based on your skills and performance</td>
                         </tr>
 
                         <tr>
-                          <td>
-                            Direct Opportunity
-                          </td>
-                          <td>
-                            Shiwansh Solutions
-                          </td>
-                          <td>
-                            DevOps Engineer
-                          </td>
-                          <td>
-                            Based on your skills and performance
-                          </td>
+                          <td>Direct Opportunity</td>
+                          <td>Shiwansh Solutions</td>
+                          <td>DevOps Engineer</td>
+                          <td>Based on your skills and performance</td>
                         </tr>
                         <tr>
-                          <td>
-                            Direct Opportunity
-                          </td>
-                          <td>
-                            Shiwansh Solutions
-                          </td>
-                          <td>
-                            AI-ML Engineer
-                          </td>
-                          <td>
-                            Based on your skills and performance
-                          </td>
+                          <td>Direct Opportunity</td>
+                          <td>Shiwansh Solutions</td>
+                          <td>AI-ML Engineer</td>
+                          <td>Based on your skills and performance</td>
                         </tr>
                         <tr>
-                          <td>
-                            Direct Opportunity
-                          </td>
-                          <td>
-                            Shiwansh Solutions
-                          </td>
-                          <td>
-                            MERN Stack Developer
-                          </td>
-                          <td>
-                            Based on your skills and performance
-                          </td>
+                          <td>Direct Opportunity</td>
+                          <td>Shiwansh Solutions</td>
+                          <td>MERN Stack Developer</td>
+                          <td>Based on your skills and performance</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
-
-                  <div className="text-center mt-4">
-                    <button
-                      className="btn btn-lg btn-primary px-5"
-                    >
-                      Apply Now
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
