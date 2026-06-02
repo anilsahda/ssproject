@@ -381,7 +381,7 @@ useEffect(() => {
                             Software Engineer / Full-Stack Developer
                           </td>
                           <td>
-                            ₹15,000 – ₹25,000
+                            Based on your skills and performance
                           </td>
                         </tr>
 
@@ -396,7 +396,7 @@ useEffect(() => {
                             .NET Developer
                           </td>
                           <td>
-                            ₹12,000
+                            Based on your skills and performance
                           </td>
                         </tr>
 
@@ -411,7 +411,7 @@ useEffect(() => {
                             DevOps Engineer
                           </td>
                           <td>
-                            ₹10,000
+                            Based on your skills and performance
                           </td>
                         </tr>
                         <tr>
@@ -425,7 +425,7 @@ useEffect(() => {
                             AI-ML Engineer
                           </td>
                           <td>
-                            ₹10,000
+                            Based on your skills and performance
                           </td>
                         </tr>
                         <tr>
@@ -439,7 +439,7 @@ useEffect(() => {
                             MERN Stack Developer
                           </td>
                           <td>
-                            ₹10,000
+                            Based on your skills and performance
                           </td>
                         </tr>
                       </tbody>
