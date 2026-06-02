@@ -372,21 +372,6 @@ useEffect(() => {
                       <tbody>
                         <tr>
                           <td>
-                            Placement Assistance
-                          </td>
-                          <td>
-                            Associated / Partner Companies
-                          </td>
-                          <td>
-                            Software Engineer / Full-Stack Developer
-                          </td>
-                          <td>
-                            Based on your skills and performance
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>
                             Direct Opportunity
                           </td>
                           <td>
