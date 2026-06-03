@@ -264,7 +264,7 @@ useEffect(() => {
                     <span className="badge bg-success">Angular.js</span>
                   </div>
 
-                  <div>
+                  <div className="mb-3">
                     <h6>Database</h6>
                     <span className="badge bg-dark text-white me-2">SQL Server</span>
                     <span className="badge bg-dark text-white me-2">PostgreSQL</span>
