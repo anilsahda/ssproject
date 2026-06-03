@@ -233,11 +233,12 @@ useEffect(() => {
               <div className="card h-100 shadow-sm border-0">
                 <div className="card-body">
                   <h4 className="text-primary mb-3">📅 Program Details</h4>
-                  <p><strong>Duration:</strong> 6 Months</p>
+                  <p><strong>Duration:</strong> 3 - 6 Months</p>
                   <p><strong>Work Mode:</strong> Work From Office</p>
                   <p><strong>Office Hours:</strong> 9:00 AM – 6:00 PM</p>
                   <p><strong>Locations:</strong> Hyderabad, Mohali & Dehradun</p>
-                  <p><strong>Placement:</strong> Direct Opportunity after Completion the internship</p>
+                  <p><strong>Stipend:</strong> 4k</p>
+                  <p><strong>Placement:</strong> Direct join after completion the internship</p>
                 </div>
               </div>
             </div>
@@ -264,6 +265,15 @@ useEffect(() => {
                   </div>
 
                   <div>
+                    <h6>Database</h6>
+                    <span className="badge bg-dark text-white me-2">SQL Server</span>
+                    <span className="badge bg-dark text-white me-2">PostgreSQL</span>
+                    <span className="badge bg-dark text-white me-2">MongoDB</span>
+                    <span className="badge bg-dark text-white me-2">MySQL</span>
+                    <span className="badge bg-dark text-white">SQLite</span>
+                  </div>
+
+                  <div>
                     <h6>AWS Cloud</h6>
                     <span className="badge bg-warning text-dark me-2">S3</span>
                     <span className="badge bg-warning text-dark me-2">DynamoDB</span>
@@ -281,13 +291,37 @@ useEffect(() => {
                 <div className="card-body">
                   <h4 className="text-danger mb-3">⭐ Program Benefits</h4>
                   <div className="row">
-                    <div className="col-md-4">✅ Industry-Oriented Curriculum</div>
-                    <div className="col-md-4">✅ Live Project Experience</div>
-                    <div className="col-md-4">✅ AWS/Azure/GCP Cloud Exposure</div>
-                    <div className="col-md-4">✅ Full-Stack Development</div>
-                    <div className="col-md-4">✅ Professional Mentorship</div>
-                    <div className="col-md-4">✅ Microservices Architecture</div>
+                    <div className="col-md-2">✅ AWS</div>
+                    <div className="col-md-2">✅ AWS S3</div>
+                    <div className="col-md-2">✅ CloudFront</div>
+                    <div className="col-md-2">✅ Route 53</div>
+                    <div className="col-md-2">✅ EC2</div>
+                    <div className="col-md-2">✅ RDS</div>
                   </div>
+                  <div className="row">
+                    <div className="col-md-2">✅ Database</div>
+                    <div className="col-md-2">✅ PostgreSQL</div>
+                    <div className="col-md-2">✅ MongoDB</div>
+                    <div className="col-md-2">✅ SQL Server</div>
+                    <div className="col-md-2">✅ MySQL</div>
+                    <div className="col-md-2">✅ DynamoDB</div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-2">✅ Front-End</div>
+                    <div className="col-md-2">✅ Bootstrap</div>
+                    <div className="col-md-2">✅ React.js</div>
+                    <div className="col-md-2">✅ Next.js</div>
+                    <div className="col-md-2">✅ Zustand</div>
+                    <div className="col-md-2">✅ Redux</div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-2">✅ Back-End</div>
+                    <div className="col-md-2">✅ Onion Architecture</div>
+                    <div className="col-md-2">✅ CQRS</div>
+                    <div className="col-md-2">✅ Microservices</div>
+                    <div className="col-md-2">✅ Docker</div>
+                    <div className="col-md-2">✅ Multi-Tenant (SaaS)</div>
+                  </div>                  
                 </div>
               </div>
             </div>
