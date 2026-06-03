@@ -316,11 +316,11 @@ useEffect(() => {
                   </div>
                   <div className="row">
                     <div className="col-md-2">✅ Back-End</div>
-                    <div className="col-md-2">✅ Onion Architecture</div>
+                    <div className="col-md-2">✅ Onion Arch</div>
                     <div className="col-md-2">✅ CQRS</div>
                     <div className="col-md-2">✅ Microservices</div>
                     <div className="col-md-2">✅ Docker</div>
-                    <div className="col-md-2">✅ Multi-Tenant (SaaS)</div>
+                    <div className="col-md-2">✅ SaaS based App</div>
                   </div>                  
                 </div>
               </div>
