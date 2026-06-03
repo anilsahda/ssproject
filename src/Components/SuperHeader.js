@@ -330,7 +330,7 @@ useEffect(() => {
                     <div className="col-md-2">✅ TensorFlow</div>
                     <div className="col-md-2">✅ PyTorch</div>
                     <div className="col-md-2">✅ NLP</div>
-                    <div className="col-md-2">✅ Computer Vision</div>
+                    <div className="col-md-2">✅ SageMaker / Bedrock</div>
                   </div>                                
                 </div>
               </div>
