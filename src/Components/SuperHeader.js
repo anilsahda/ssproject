@@ -321,7 +321,17 @@ useEffect(() => {
                     <div className="col-md-2">✅ Microservices</div>
                     <div className="col-md-2">✅ Docker</div>
                     <div className="col-md-2">✅ SaaS based App</div>
-                  </div>                  
+                  </div>    
+                  <div className="row">
+                    <div className="col-md-2">
+                      <span className="badge bg-primary me-2">AI / ML</span>
+                    </div>
+                    <div className="col-md-2">✅ Python</div>
+                    <div className="col-md-2">✅ TensorFlow</div>
+                    <div className="col-md-2">✅ PyTorch</div>
+                    <div className="col-md-2">✅ NLP</div>
+                    <div className="col-md-2">✅ Computer Vision</div>
+                  </div>                                
                 </div>
               </div>
             </div>
