@@ -291,7 +291,7 @@ useEffect(() => {
                 <div className="card-body">
                   <h4 className="text-danger mb-3">⭐ Program Benefits</h4>
                   <div className="row">
-                    <div className="col-md-2">✅ AWS</div>
+                    <div className="col-md-2"><span className="badge bg-primary me-2"> AWS</span></div>
                     <div className="col-md-2">✅ AWS S3</div>
                     <div className="col-md-2">✅ CloudFront</div>
                     <div className="col-md-2">✅ Route 53</div>
@@ -299,7 +299,7 @@ useEffect(() => {
                     <div className="col-md-2">✅ RDS</div>
                   </div>
                   <div className="row">
-                    <div className="col-md-2">✅ Database</div>
+                    <div className="col-md-2"><span className="badge bg-primary me-2">Database</span></div>
                     <div className="col-md-2">✅ PostgreSQL</div>
                     <div className="col-md-2">✅ MongoDB</div>
                     <div className="col-md-2">✅ SQL Server</div>
@@ -307,7 +307,7 @@ useEffect(() => {
                     <div className="col-md-2">✅ DynamoDB</div>
                   </div>
                   <div className="row">
-                    <div className="col-md-2">✅ Front-End</div>
+                    <div className="col-md-2"><span className="badge bg-primary me-2">Front-End</span></div>
                     <div className="col-md-2">✅ Bootstrap</div>
                     <div className="col-md-2">✅ React.js</div>
                     <div className="col-md-2">✅ Next.js</div>
@@ -315,7 +315,7 @@ useEffect(() => {
                     <div className="col-md-2">✅ Redux</div>
                   </div>
                   <div className="row">
-                    <div className="col-md-2">✅ Back-End</div>
+                    <div className="col-md-2"><span className="badge bg-primary me-2">Back-End</span></div>
                     <div className="col-md-2">✅ Onion Arch</div>
                     <div className="col-md-2">✅ CQRS</div>
                     <div className="col-md-2">✅ Microservices</div>
