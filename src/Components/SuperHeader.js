@@ -305,7 +305,7 @@ useEffect(() => {
                     <div className="col-md-2">✅ SQL Server</div>
                     <div className="col-md-2">✅ MySQL</div>
                     <div className="col-md-2">✅ SQLite</div>
-                    <div className="col-md-1">✅ Mongo</div>
+                    <div className="col-md-1">✅ Mong</div>
                     <div className="col-md-2">✅ DynamoDB</div>
                   </div>
                   <div className="row">
