@@ -354,33 +354,33 @@ useEffect(() => {
                       <tbody>
                         <tr>
                           <td>Direct Opportunity</td>
-                          <td>CWS | DevB Infotech |Shiwansh Solutions</td>
+                          <td>CWS | DevB Infotech | Shiwansh Solutions</td>
                           <td>.NET Developer</td>
                           <td>Based on your skills and performance</td>
                         </tr>
 
                         <tr>
                           <td>Direct Opportunity</td>
-                          <td>CWS | DevB Infotech |Shiwansh Solutions</td>
+                          <td>CWS | DevB Infotech | Shiwansh Solutions</td>
                           <td>Java Developer</td>
                           <td>Based on your skills and performance</td>
                         </tr>
 
                         <tr>
                           <td>Direct Opportunity</td>
-                            <td>Shiwansh Solutions</td>
+                           <td>CWS | DevB Infotech | Shiwansh Solutions</td>
                           <td>DevOps Engineer</td>
                           <td>Based on your skills and performance</td>
                         </tr>
                         <tr>
                           <td>Direct Opportunity</td>
-                          <td>CWS | DevB Infotech |Shiwansh Solutions</td>
+                          <td>CWS | DevB Infotech | Shiwansh Solutions</td>
                           <td>AI-ML Engineer</td>
                           <td>Based on your skills and performance</td>
                         </tr>
                         <tr>
                           <td>Direct Opportunity</td>
-                          <td>CWS | DevB Infotech |Shiwansh Solutions</td>
+                          <td>CWS | DevB Infotech | Shiwansh Solutions</td>
                           <td>MERN Stack Developer</td>
                           <td>Based on your skills and performance</td>
                         </tr>
