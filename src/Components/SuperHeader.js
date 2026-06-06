@@ -291,7 +291,7 @@ useEffect(() => {
                 <div className="card-body">
                   <h4 className="text-danger mb-3">⭐ Program Benefits</h4>
                   <div className="row">
-                    <div className="col-md-2"><span className="badge bg-primary me-1"> AWS</span></div>
+                    <div className="col-md-1"><span className="badge bg-primary me-2"> AWS</span></div>
                     <div className="col-md-2">✅ AWS S3</div>
                     <div className="col-md-2">✅ CloudFront</div>
                     <div className="col-md-2">✅ Route 53</div>
@@ -300,36 +300,34 @@ useEffect(() => {
                     <div className="col-md-2">✅ RDS</div>
                   </div>
                   <div className="row">
-                    <div className="col-md-2"><span className="badge bg-primary me-1">Database</span></div>
+                    <div className="col-md-1"><span className="badge bg-primary me-2">Database</span></div>
                     <div className="col-md-2">✅ PostgreSQL</div>
-                    <div className="col-md-2">✅ MongoDB</div>
                     <div className="col-md-2">✅ SQL Server</div>
+                    <div className="col-md-2">✅ MongoDB</div>
                     <div className="col-md-2">✅ MySQL</div>
                     <div className="col-md-1">✅ SQLite</div>
                     <div className="col-md-2">✅ DynamoDB</div>
                   </div>
                   <div className="row">
-                    <div className="col-md-2"><span className="badge bg-primary me-1">Front-End</span></div>
+                    <div className="col-md-1"><span className="badge bg-primary me-2">Front-End</span></div>
                     <div className="col-md-2">✅ Bootstrap</div>
+                    <div className="col-md-2">✅ Intercepter</div>
                     <div className="col-md-2">✅ React.js</div>
                     <div className="col-md-2">✅ Next.js</div>
                     <div className="col-md-2">✅ Zustand</div>
                     <div className="col-md-1">✅ Redux</div>
-                    <div className="col-md-2">✅ Intercepter</div>
                   </div>
                   <div className="row">
-                    <div className="col-md-2"><span className="badge bg-primary me-1">Back-End</span></div>
+                    <div className="col-md-1"><span className="badge bg-primary me-2">Back-End</span></div>
                     <div className="col-md-2">✅ Onion Arch</div>
+                    <div className="col-md-2">✅ Microservice</div>
                     <div className="col-md-2">✅ CQRS</div>
-                    <div className="col-md-2">✅ Microservices</div>
                     <div className="col-md-2">✅ Docker</div>
                     <div className="col-md-1">✅ ORM</div>
-                    <div className="col-md-2">✅ SaaS based App</div>
+                    <div className="col-md-2">✅ SaaS App</div>
                   </div>    
                   <div className="row">
-                    <div className="col-md-2">
-                      <span className="badge bg-primary me-1">AI / ML</span>
-                    </div>
+                    <div className="col-md-1"><span className="badge bg-primary me-2">AI / ML</span></div>
                     <div className="col-md-2">✅ Python</div>
                     <div className="col-md-2">✅ TensorFlow</div>
                     <div className="col-md-2">✅ PyTorch</div>
@@ -351,7 +349,7 @@ useEffect(() => {
                       <thead className="table-primary">
                         <tr>
                           <th>Opportunity</th>
-                          <th>Company</th>
+                          <th>Associated Company</th>
                           <th>Role</th>
                           <th>Monthly Salary</th>
                         </tr>
