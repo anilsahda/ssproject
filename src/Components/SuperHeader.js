@@ -303,9 +303,9 @@ useEffect(() => {
                     <div className="col-md-1"><span className="badge bg-primary me-2">Database</span></div>
                     <div className="col-md-2">✅ PostgreSQL</div>
                     <div className="col-md-2">✅ SQL Server</div>
-                    <div className="col-md-2">✅ MongoDB</div>
+                    <div className="col-md-2">✅ MySQL</div>
                     <div className="col-md-2">✅ SQLite</div>
-                    <div className="col-md-1">✅ MySQL</div>
+                    <div className="col-md-1">✅ Mongo</div>
                     <div className="col-md-2">✅ DynamoDB</div>
                   </div>
                   <div className="row">
@@ -314,8 +314,8 @@ useEffect(() => {
                     <div className="col-md-2">✅ Intercepter</div>
                     <div className="col-md-2">✅ React</div>
                     <div className="col-md-2">✅ Zustand</div>
-                    <div className="col-md-2">✅ Next</div>
-                    <div className="col-md-1">✅ Redux</div>
+                    <div className="col-md-1">✅ Next</div>
+                    <div className="col-md-2">✅ Redux</div>
                   </div>
                   <div className="row">
                     <div className="col-md-1"><span className="badge bg-primary me-2">Back-End</span></div>
