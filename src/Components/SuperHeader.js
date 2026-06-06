@@ -301,7 +301,7 @@ useEffect(() => {
                   </div>
                   <div className="row">
                     <div className="col-md-1"><span className="badge bg-primary me-2">Database</span></div>
-                    <div className="col-md-1">✅ Mongo</div>
+                    <div className="col-md-1">✅ Mong</div>
                     <div className="col-md-2">✅ PostgreSQL</div>
                     <div className="col-md-2">✅ SQL Server</div>
                     <div className="col-md-2">✅ MySQL</div>
