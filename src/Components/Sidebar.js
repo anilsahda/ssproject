@@ -37,9 +37,9 @@ style={{
     <ul className="nav nav-pills flex-column gap-2">
         {activeMenu === "Project" && (
           <>
-          <SidebarButton to="/ssevbv" icon="bi-hospital" label="EVBV" />
+          {/* <SidebarButton to="/ssevbv" icon="bi-hospital" label="EVBV" />
           <SidebarButton to="/ssmedicalcoding" icon="bi-hospital" label="Medical Coding" />
-          <SidebarButton to="/ssar" icon="bi-hospital" label="AR" />
+          <SidebarButton to="/ssar" icon="bi-hospital" label="AR" /> */}
           <SidebarButton to="/sstransportmanagement" icon="bi-hospital" label="Transport Management" />
           <SidebarButton to="/sshotel" icon="bi-book" label="SS Hotel" />
           <SidebarButton to="/sshealthcare" icon="bi-book" label="SS Health Care" />          
