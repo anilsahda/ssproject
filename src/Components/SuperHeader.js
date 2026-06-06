@@ -304,17 +304,17 @@ useEffect(() => {
                     <div className="col-md-2">✅ PostgreSQL</div>
                     <div className="col-md-2">✅ SQL Server</div>
                     <div className="col-md-2">✅ MongoDB</div>
-                    <div className="col-md-2">✅ MySQL</div>
-                    <div className="col-md-1">✅ SQLite</div>
+                    <div className="col-md-2">✅ SQLite</div>
+                    <div className="col-md-1">✅ MySQL</div>
                     <div className="col-md-2">✅ DynamoDB</div>
                   </div>
                   <div className="row">
                     <div className="col-md-1"><span className="badge bg-primary me-2">Front-End</span></div>
                     <div className="col-md-2">✅ Bootstrap</div>
                     <div className="col-md-2">✅ Intercepter</div>
-                    <div className="col-md-2">✅ React.js</div>
-                    <div className="col-md-2">✅ Next.js</div>
+                    <div className="col-md-2">✅ React</div>
                     <div className="col-md-2">✅ Zustand</div>
+                    <div className="col-md-2">✅ Next</div>
                     <div className="col-md-1">✅ Redux</div>
                   </div>
                   <div className="row">
