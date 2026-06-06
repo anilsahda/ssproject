@@ -295,9 +295,9 @@ useEffect(() => {
                     <div className="col-md-1">✅ IAM</div>                    
                     <div className="col-md-2">✅ AWS S3</div>
                     <div className="col-md-2">✅ CloudFront</div>
-                    <div className="col-md-2">✅ Route 53</div>
-                    <div className="col-md-2">✅ EC2</div>
                     <div className="col-md-2">✅ RDS</div>
+                    <div className="col-md-2">✅ EC2</div>
+                    <div className="col-md-2">✅ Route 53</div>
                   </div>
                   <div className="row">
                     <div className="col-md-1"><span className="badge bg-primary me-2">Database</span></div>
@@ -328,10 +328,10 @@ useEffect(() => {
                   </div>    
                   <div className="row">
                     <div className="col-md-1"><span className="badge bg-primary me-2">AI / ML</span></div>
-                    <div className="col-md-1">✅ NLP</div>                    
-                    <div className="col-md-2">✅ Python</div>
-                    <div className="col-md-2">✅ TensorFlow</div>
+                    <div className="col-md-1">✅ LLM</div>                    
                     <div className="col-md-2">✅ PyTorch</div>
+                    <div className="col-md-2">✅ TensorFlow</div>
+                    <div className="col-md-2">✅ RAG</div>
                     <div className="col-md-2">✅ Fast API</div>
                     <div className="col-md-2">✅ SageMaker</div>
                   </div>                                
