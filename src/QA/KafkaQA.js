@@ -29,7 +29,7 @@ export default function KafkaQA() {
   return (
     <div>
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>My name is Amit Kumar, and I have around 18 years of experience in designing and delivering enterprise applications using both monolithic and microservices architectures. I have worked on greenfield projects as well as modernization and enhancement of existing systems across multiple domains.<br /><br />
+          handleOpenPopup(<p>My name is Amit Kumar, and I have around 18 years of experience in designing and deliver enterprise applications using both monolithic and microservices architectures. I have worked on greenfield projects as well as modernization and enhancement of existing systems across multiple domains.<br /><br />
 My core expertise includes .NET Core, C#, ASP.NET MVC, Web API, Microservices, Node.js, and cloud-native application development. I have strong experience in designing scalable, secure, and high-performance solutions while following SOLID principles, design patterns, and industry best practices.<br /><br />
 I have worked extensively with databases such as SQL Server, Oracle, PostgreSQL, MySQL, MongoDB, and DynamoDB. On the cloud side, I have experience with both Azure and AWS, including CI/CD pipelines, DevOps practices, containerization, and distributed systems.<br /><br />
 I also have experience in data engineering, API integrations, ETL pipelines, Kafka-based event-driven architectures, and messaging platforms such as RabbitMQ and Azure Service Bus. From a frontend perspective, I have worked with React, Next.js, Angular, and Vue.js, enabling me to contribute to end-to-end solution architecture.<br />
