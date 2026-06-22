@@ -29,14 +29,13 @@ export default function KafkaQA() {
   return (
     <div>
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p>My name is Amit Kumar. I have around 14 years of experience in designing and implementing enterprise applications using both monolithic and microservice architectures. I have worked on greenfield projects as well as enhancing and modernizing existing systems across multiple domains.<br /><br />
-My core expertise in the Microsoft technology like Node JS, .NET Core, C#, MVC, WCF, Web API and Microservices. I strongly focus on writing clean, maintainable, and scalable code while following SOLID principles, design patterns, and industry best practices.<br /><br />
-I have hands-on experience with multiple databases like SQL Server, MySQL, Oracle, PostgreSQL, MongoDB, and DynamoDB. On the cloud side, I have worked with both Azure and AWS, designing and deploying cloud-native solutions using CI/CD pipelines.<br /><br />
-I have experience in designing ETL pipelines, SQL development, data modeling, API integrations, Kafka-based real-time processing, and cloud platforms. I have worked on extracting data from multiple sources, transforming it using Python/SQL, and loading it into data warehouses for reporting and analytics.<br />
-In frontend, I have experience in Next, React, Angular and Vue JS which helps me contribute effectively to full-stack solution design. I have also implemented event-driven architectures using messaging systems like RabbitMQ, Kafka, and Azure Service Bus.<br /><br />
-I’ve worked in domains such as Healthcare, Banking, E-Commerce, Insurance, Loan Applications and Shipment Management.<br /> <br />
-My responsibilities include 70% of my role is focused on coding, architecture design, and making technical decisions, and the remaining 30% involves client interaction, requirement analysis, and leading development teams.<br /><br />
-I am always eagar to learn and adapt new technologies, and I enjoy solving complex business problems through thoughtful architecture and technical leadership.</p>)
+          handleOpenPopup(<p>My name is Amit Kumar, and I have around 18 years of experience in designing and delivering enterprise applications using both monolithic and microservices architectures. I have worked on greenfield projects as well as modernization and enhancement of existing systems across multiple domains.<br /><br />
+My core expertise includes .NET Core, C#, ASP.NET MVC, Web API, Microservices, Node.js, and cloud-native application development. I have strong experience in designing scalable, secure, and high-performance solutions while following SOLID principles, design patterns, and industry best practices.<br /><br />
+I have worked extensively with databases such as SQL Server, Oracle, PostgreSQL, MySQL, MongoDB, and DynamoDB. On the cloud side, I have experience with both Azure and AWS, including CI/CD pipelines, DevOps practices, containerization, and distributed systems.<br /><br />
+I also have experience in data engineering, API integrations, ETL pipelines, Kafka-based event-driven architectures, and messaging platforms such as RabbitMQ and Azure Service Bus. From a frontend perspective, I have worked with React, Next.js, Angular, and Vue.js, enabling me to contribute to end-to-end solution architecture.<br />
+In the AI space, I have been working on integrating Generative AI capabilities into enterprise applications using OpenAI, Azure OpenAI, AI Agents, Semantic Kernel, RAG, Vector Databases, and LLM-powered solutions to enhance business processes and user experiences.<br /><br />
+I have delivered solutions across Healthcare, Banking, Insurance, Loan Management, E-Commerce, Transportation, and HRMS domains.<br /> <br />
+Currently, my role focuses on enterprise architecture, solution design, technical leadership, cloud strategy, and guiding development teams while remaining actively involved in hands-on development and key technical decisions.</p>)
         }
       >Architect</button>
       <button className="btn btn-primary me-2 mb-2" onClick={() =>
