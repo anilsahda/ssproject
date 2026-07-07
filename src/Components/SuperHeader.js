@@ -88,49 +88,19 @@ useEffect(() => {
                 </>
               ) : (
                 <div className="dropdown">
-                <img
-                    src={localStorage.getItem("userImageUrl") || "https://i.pravatar.cc/40"}
-                    alt="Profile"
-                    className="rounded-circle dropdown-toggle border border-light"
-                    data-bs-toggle="dropdown"
-                    style={{
-                    width: "42px",
-                    height: "42px",
-                    cursor: "pointer",
-                    boxShadow: "0 0 5px rgba(255,255,255,0.6)"
-                    }}
-                />
-                <ul
-                    className="dropdown-menu dropdown-menu-end mt-2 shadow"
-                    style={{
-                    minWidth: "200px",
-                    background: "linear-gradient(to bottom, #ffffff, #e3f2fd)",
-                    borderRadius: "10px",
-                    border: "1px solid #bbdefb"
-                    }}
-                >
-                    <li>
-                    <Link className="dropdown-item d-flex align-items-center gap-2" to="/profile">
-                        <FaUser className="text-primary" />
-                        <span>Edit Profile</span>
-                    </Link>
-                    </li>
-                    <li>
-                    <button className="dropdown-item d-flex align-items-center gap-2 text-danger" onClick={handleLogout}>
-                        <FaSignInAlt />
-                        <span>Logout</span>
-                    </button>
-                    </li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li className="dropdown-item text-center text-dark" style={{ fontSize: "0.9rem" }}>
-                    <div style={{ lineHeight: "1.2" }}>
-                        <span className="text-muted">Logged in as</span><br />
-                        <strong>{localStorage.getItem("userName")}</strong>
-                    </div>
-                    </li>
-                </ul>
+                  <img src={localStorage.getItem("userImageUrl") || "https://i.pravatar.cc/40"} alt="Profile" className="rounded-circle dropdown-toggle border border-light" data-bs-toggle="dropdown" style={{ width: "42px", height: "42px", cursor: "pointer", boxShadow: "0 0 5px rgba(255,255,255,0.6)" }} />
+                  <ul className="dropdown-menu dropdown-menu-end mt-2 shadow" style={{ minWidth: "200px", background: "linear-gradient(to bottom, #ffffff, #e3f2fd)", borderRadius: "10px", border: "1px solid #bbdefb" }}>
+                      <li><Link className="dropdown-item d-flex align-items-center gap-2" to="/profile"><FaUser className="text-primary" /><span>Edit Profile</span></Link></li>
+                      <li><button className="dropdown-item d-flex align-items-center gap-2 text-danger" onClick={handleLogout}><FaSignInAlt /><span>Logout</span></button></li>
+                      <li><hr className="dropdown-divider" /></li>
+                      <li className="dropdown-item text-center text-dark" style={{ fontSize: "0.9rem" }}>
+                      <div style={{ lineHeight: "1.2" }}>
+                          <span className="text-muted">Logged in as</span><br />
+                          <strong>{localStorage.getItem("userName")}</strong>
+                      </div>
+                      </li>
+                  </ul>
                 </div>
-
               )}
             </div>
           </div>
@@ -213,16 +183,15 @@ useEffect(() => {
         </div>
       )}
 
-      {/* Login Modal */}
+{/* Login Modal */}
 {/* Training Program Modal */}
 {showIntern && (
   <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0,0,0,0.75)" }} onClick={() => setShowIntern(false)}>
     <div className="modal-dialog modal-dialog-centered modal-xl" onClick={(e) => e.stopPropagation()}>
       <div className="modal-content border-0 shadow-lg" style={{ borderRadius: "20px", overflow: "hidden" }}>
-        {/* Header */}
         <div className="text-white p-5" style={{ background: "linear-gradient(135deg, #0d6efd 0%, #6610f2 100%)"}}>
-          <h1 className="fw-bold mb-3">🚀 Full-Stack Development Program</h1>
-          <h5 className="mb-0">Build Your Career in Modern Web Development & Cloud Technologies</h5>
+          <h1 className="fw-bold mb-3">🚀 AI-ML and Full-Stack Engineers Program</h1>
+          <h5 className="mb-0">Build Your Career in AI-ML, Cloud, DevOps and Full-Stack Web Development</h5>
         </div>
 
         <div className="modal-body p-4">
@@ -237,8 +206,8 @@ useEffect(() => {
                   <p><strong>Work Mode:</strong> Work From Office</p>
                   <p><strong>Office Hours:</strong> 9:00 AM – 6:00 PM</p>
                   <p><strong>Locations:</strong> Hyderabad, Mohali & Dehradun</p>
-                  <p><strong>Stipend:</strong> Stipend not available</p>
-                  <p><strong>Placement:</strong> Direct join after completion the internship</p>
+                  <p><strong>Holidays:</strong> Saturdays and Sundays fixed off</p>
+                  <p><strong>Stipend / Salary:</strong> Based on performance in every month</p>
                 </div>
               </div>
             </div>
@@ -260,8 +229,9 @@ useEffect(() => {
                     <h6>Front-End</h6>
                     <span className="badge bg-success me-2">React.js</span>
                     <span className="badge bg-success me-2">Next.js</span>
-                    <span className="badge bg-success me-2">Vue.js</span>                    
-                    <span className="badge bg-success">Angular.js</span>
+                    <span className="badge bg-success me-2">Bootstrap</span>                    
+                    <span className="badge bg-success me-2">Redux</span>
+                    <span className="badge bg-success me-2">Zustand</span>                    
                   </div>
 
                   <div className="mb-3">
@@ -269,17 +239,17 @@ useEffect(() => {
                     <span className="badge bg-dark text-white me-2">SQL Server</span>
                     <span className="badge bg-dark text-white me-2">PostgreSQL</span>
                     <span className="badge bg-dark text-white me-2">MongoDB</span>
-                    <span className="badge bg-dark text-white me-2">MySQL</span>
-                    <span className="badge bg-dark text-white">SQLite</span>
+                    <span className="badge bg-dark text-white me-2">Vector DB</span>
                   </div>
 
                   <div>
                     <h6>AWS Cloud</h6>
                     <span className="badge bg-warning text-dark me-2">S3</span>
-                    <span className="badge bg-warning text-dark me-2">DynamoDB</span>
+                    <span className="badge bg-warning text-dark me-2">RDS</span>
                     <span className="badge bg-warning text-dark me-2">IAM</span>
                     <span className="badge bg-warning text-dark me-2">EC2</span>
-                    <span className="badge bg-warning text-dark">Lambda Function</span>
+                    <span className="badge bg-warning text-dark me-2">Lambda</span>
+                    <span className="badge bg-warning text-dark me-2">Dynamo DB</span>
                   </div>
                 </div>
               </div>
@@ -306,7 +276,7 @@ useEffect(() => {
                     <div className="col-md-2">✅ MongoDB</div>
                     <div className="col-md-2">✅ MySQL</div>
                     <div className="col-md-2">✅ DynamoDB</div>
-                    <div className="col-md-2">✅ SQLite</div>
+                    <div className="col-md-2">✅ VectorDB</div>
                   </div>
                   <div className="row">
                     <div className="col-md-1"><span className="badge bg-primary me-2">Front-End</span></div>
@@ -324,22 +294,22 @@ useEffect(() => {
                     <div className="col-md-2">✅ Microservice</div>
                     <div className="col-md-2">✅ CQRS</div>
                     <div className="col-md-2">✅ Docker</div>
-                    <div className="col-md-2">✅ SaaS App</div>
-                  </div>    
+                    <div className="col-md-2">✅ Deployment</div>
+                  </div>
                   <div className="row">
                     <div className="col-md-1"><span className="badge bg-primary me-2">AI / ML</span></div>
-                    <div className="col-md-1">✅ LLM</div>                    
-                    <div className="col-md-2">✅ PyTorch</div>
-                    <div className="col-md-2">✅ TensorFlow</div>
-                    <div className="col-md-2">✅ RAG</div>
-                    <div className="col-md-2">✅ Fast API</div>
-                    <div className="col-md-2">✅ SageMaker</div>
+                    <div className="col-md-1">✅ RAG</div>
+                    <div className="col-md-2">✅ APIs & Pandas</div>
+                    <div className="col-md-2">✅ LangGraph</div>
+                    <div className="col-md-2">✅ Gen AI</div>
+                    <div className="col-md-2">✅ Agentic AI</div>
+                    <div className="col-md-2">✅ MLOPs</div>
                   </div>                                
                 </div>
               </div>
             </div>
 
-            {/* Career Opportunities */}
+            {/* Career Opportunities
             <div className="col-12">
               <div className="card border-0 shadow">
                 <div className="card-body">
@@ -392,7 +362,7 @@ useEffect(() => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
