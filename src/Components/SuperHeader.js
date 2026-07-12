@@ -202,12 +202,12 @@ useEffect(() => {
               <div className="card h-100 shadow-sm border-0">
                 <div className="card-body">
                   <h4 className="text-primary mb-3">📅 Program Details</h4>
-                  <p><strong>Duration:</strong> 3 - 6 Months</p>
+                  <p><strong>Duration:</strong> 1 - 6 Months</p>
                   <p><strong>Work Mode:</strong> Work From Office</p>
                   <p><strong>Office Hours:</strong> 9:00 AM – 6:00 PM</p>
                   <p><strong>Locations:</strong> Hyderabad, Mohali & Dehradun</p>
-                  <p><strong>Holidays:</strong> Saturdays and Sundays fixed off</p>
-                  <p><strong>Stipend / Salary:</strong> Based on performance in every month</p>
+                  <p><strong>Holidays:</strong> Saturday & Sunday fixed off</p>
+                  <p><strong>Stipend / Salary:</strong> Based on performance</p>
                 </div>
               </div>
             </div>
@@ -219,10 +219,10 @@ useEffect(() => {
                   <h4 className="text-success mb-3">💻 Technologies Covered</h4>
                   <div className="mb-3">
                     <h6>Back-End</h6>
+                    <span className="badge bg-primary me-2">AI-ML</span>
                     <span className="badge bg-primary me-2">.NET Core</span>
-                    <span className="badge bg-primary me-2">Node.js</span>
                     <span className="badge bg-primary me-2">SpringBoot</span>
-                    <span className="badge bg-primary">AI-ML</span>
+                    <span className="badge bg-primary me-2">Node</span>
                   </div>
 
                   <div className="mb-3">
@@ -238,8 +238,8 @@ useEffect(() => {
                     <h6>Database</h6>
                     <span className="badge bg-dark text-white me-2">SQL Server</span>
                     <span className="badge bg-dark text-white me-2">PostgreSQL</span>
-                    <span className="badge bg-dark text-white me-2">MongoDB</span>
                     <span className="badge bg-dark text-white me-2">Vector DB</span>
+                    <span className="badge bg-dark text-white me-2">MongoDB</span>
                   </div>
 
                   <div>
