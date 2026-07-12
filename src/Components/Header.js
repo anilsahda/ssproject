@@ -28,6 +28,9 @@ function Header({ setActiveMenu }) {
               <button className="btn btn-sm nav-btn btn-info" onClick={() => setActiveMenu("Python")}>Python</button>
             </li>
             <li className="nav-item">
+              <button className="btn btn-sm nav-btn btn-primary" onClick={() => setActiveMenu("AI/ML")}>AI/ML</button>
+            </li>
+            <li className="nav-item">
               <button className="btn btn-sm nav-btn btn-danger" onClick={() => setActiveMenu("DSA")}>DSA</button>
             </li>
             <li className="nav-item">

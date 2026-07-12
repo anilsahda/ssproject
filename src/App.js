@@ -234,6 +234,22 @@ import AngularQA from "./QA/AngularQA";
 import ReactQA from "./QA/ReactQA";
 import DotnetQA from "./QA/DotnetQA";
 import Tuple from "./DSA/Tuple.js";
+import Aimlprojectsetup from "./AIML/Aimlprojectsetup";
+import Aimlfastapi from "./AIML/Aimlfastapi";
+import Aimllangchain from "./AIML/Aimllangchain";
+import Aimlllamaidex from "./AIML/Aimlllamaidex";
+import Aimlvectordb from "./AIML/Aimlvectordb";
+import Aimlpytorch from "./AIML/Aimlpytorch";
+import Aimltensorflow from "./AIML/Aimltensorflow";
+import Aimlhuggingface from "./AIML/Aimlhuggingface";
+import Aimlnumpy from "./AIML/Aimlnumpy";
+import Aimlpandas from "./AIML/Aimlpandas";
+import Aimlscikitlearn from "./AIML/Aimlscikitlearn";
+import Aimlchromadb from "./AIML/Aimlchromadb";
+import Aimlqdrantdb from "./AIML/Aimlqdrantdb";
+import Aimlrag from "./AIML/Aimlrag";
+import Aimlgenai from "./AIML/Aimlgenai";
+import Aimlagenticai from "./AIML/Aimlagenticai";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -328,6 +344,7 @@ function App() {
             <Route path="/netradiobutton" element={<Netradiobutton />} />
             <Route path="/netsearching" element={<Netsearching />} />
             <Route path="/netquestions" element={<Netquestions />} />
+
             <Route path="/pythonprojectsetup" element={<PythonProjectSetup />} />
             <Route path="/pythonlanguages" element={<Pythonlanguages />} />
             <Route path="/pythoncountry" element={<Pythoncountry />} />
@@ -336,7 +353,7 @@ function App() {
             <Route path="/pythonemployee" element={<Netemployee />} />
             <Route path="/pythoncheckbox" element={<Pythoncheckbox />} />
             <Route path="/pythoncqrsdesignpattern" element={<Netcqrsdesignpattern />} />
-            <Route path="/pythonrepositorydesignpattern" element={<Netrepositorydesignpattern />} />            
+            <Route path="/pythonrepositorydesignpattern" element={<Netrepositorydesignpattern />} />
             <Route path="/pythonfacebookauth" element={<Pythonfacebookauth />} />
             <Route path="/pythongoogleauth" element={<Pythongoogleauth />} />
             <Route path="/pythonimageupload" element={<Pythonimageupload />} />
@@ -349,7 +366,24 @@ function App() {
             <Route path="/pythonexportcsv" element={<Pythonexportcsv />} />
             <Route path="/pythonradiobutton" element={<Pythonradiobutton />} />
             <Route path="/pythonsearching" element={<Pythonsearching />} />
-            <Route path="/pythonquestions" element={<Pythonquestions />} />            
+            <Route path="/pythonquestions" element={<Pythonquestions />} />
+
+            <Route path="/aimlprojectsetup" element={<Aimlprojectsetup />} />
+            <Route path="/aimlnumpy" element={<Aimlnumpy />} />
+            <Route path="/aimlpandas" element={<Aimlpandas />} />
+            <Route path="/aimlscikitlearn" element={<Aimlscikitlearn />} />
+            <Route path="/aimlpytorch" element={<Aimlpytorch />} />
+            <Route path="/aimltensorflow" element={<Aimltensorflow />} />
+            <Route path="/aimlhuggingface" element={<Aimlhuggingface />} />
+            <Route path="/aimllangchain" element={<Aimllangchain />} />
+            <Route path="/aimlllamaidex" element={<Aimlllamaidex />} />            
+            <Route path="/aimlfastapi" element={<Aimlfastapi />} />
+            <Route path="/aimlchroma" element={<Aimlchromadb />} />
+            <Route path="/aimlqdrant" element={<Aimlqdrantdb />} />
+            <Route path="/aimlrag" element={<Aimlrag />} />
+            <Route path="/aimlgenai" element={<Aimlgenai />} />
+            <Route path="/aimlagenticai" element={<Aimlagenticai />} />
+
 
             <Route path="/javaprojectsetup" element={<Javaprojectsetup />} />
             <Route path="/javalanguages" element={<Javalanguages />} />

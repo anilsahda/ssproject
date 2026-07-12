@@ -142,6 +142,27 @@ style={{
             </>
           )}
 
+          {activeMenu === "AI/ML" && (
+            <>
+            <SidebarButton to="/aimlprojectsetup" icon="bi-calendar-check" label="AI/ML Project Setup" />
+            <SidebarButton to="/aimlnumpy" icon="bi-ui-checks-grid" label="NumPy" />
+            <SidebarButton to="/aimlpandas" icon="bi-ui-checks-grid" label="Pandas" />
+            <SidebarButton to="/aimlscikitlearn" icon="bi-caret-down-square" label="Scikit-Learn" />
+            <SidebarButton to="/aimlpytorch" icon="bi-diagram-3" label="PyTorch" />
+            <SidebarButton to="/aimltensorflow" icon="bi-file-image" label="TensorFlow" />
+            <SidebarButton to="/aimlhuggingface" icon="bi-record-circle" label="Hugging Face" />
+            <SidebarButton to="/aimllangchain" icon="bi-search" label="LangChain" />
+            <SidebarButton to="/aimlllamaidex" icon="bi-list-nested" label="LlamaIndex" />
+            <SidebarButton to="/aimlfastapi" icon="bi-list-nested" label="FastAPI" />
+            <SidebarButton to="/aimlvectordb" icon="bi-check-square" label="Vector DB" />
+            <SidebarButton to="/aimlchroma" icon="bi-check-square" label="Chroma" />
+            <SidebarButton to="/aimlqdrant" icon="bi-check-square" label="Qdrant" />
+            <SidebarButton to="/aimlrag" icon="bi-check-square" label="RAG" />
+            <SidebarButton to="/aimlgenai" icon="bi-check-square" label="Gen AI" />
+            <SidebarButton to="/aimlagenticai" icon="bi-check-square" label="Agentic AI" />
+            </>
+          )}
+
           {activeMenu === "Springboot" && (
             <>
             <SidebarButton to="/javaprojectsetup" icon="bi-calendar-check" label="Java Project Setup" />
