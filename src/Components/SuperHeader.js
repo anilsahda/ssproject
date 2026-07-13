@@ -363,6 +363,191 @@ useEffect(() => {
                 </div>
               </div>
             </div> */}
+
+            {/* Accommodation & Facilities */}
+            <div className="col-12">
+              <div className="card border-0 shadow-sm">
+                <div className="card-body p-4">
+
+                  <h3 className="text-primary fw-bold mb-4">
+                    🏠 Accommodation & Facilities
+                  </h3>
+
+                  <div className="alert alert-info border-0 shadow-sm">
+                    <h5 className="fw-bold mb-2">✨ Comfortable Stay for Relocating Interns</h5>
+                    <p className="mb-0">
+                      We provide affordable and comfortable accommodation for interns
+                      relocating to our development centers, ensuring a safe and
+                      convenient stay throughout the internship.
+                    </p>
+                  </div>
+
+                  <div className="row mt-4">
+
+                    {/* Locations */}
+                    <div className="col-md-4 mb-3">
+                      <div className="card h-100 border-primary">
+                        <div className="card-body">
+                          <h5 className="text-primary fw-bold mb-3">
+                            📍 Available Locations
+                          </h5>
+
+                          <ul className="list-group list-group-flush">
+                            <li className="list-group-item border-0">
+                              📌 Mohali
+                            </li>
+                            <li className="list-group-item border-0">
+                              📌 Dehradun
+                            </li>
+                            <li className="list-group-item border-0">
+                              📌 Hyderabad
+                            </li>
+                            <li className="list-group-item border-0">
+                              📌 Delhi  - Available in Nov 2026
+                            </li>
+                            <li className="list-group-item border-0">
+                              📌 Jaipur - Available in Dec 2026
+                            </li>
+                            <li className="list-group-item border-0">
+                              📌 Bangalore - Available in Jan 2027
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Hostel Facilities */}
+                    <div className="col-md-5 mb-3">
+                      <div className="card h-100 border-success">
+                        <div className="card-body">
+                          <h5 className="text-success fw-bold mb-3">
+                            🛏️ Hostel Facilities
+                          </h5>
+
+                          <ul className="list-group list-group-flush">
+                            <li className="list-group-item border-0">✅ Fully Furnished Rooms</li>
+                            <li className="list-group-item border-0">📶 High-Speed Wi-Fi</li>
+                            <li className="list-group-item border-0">🏏 Rooftop Cricket Practice Net</li>
+                            <li className="list-group-item border-0">💪 Basic Gym Equipment</li>
+                            <li className="list-group-item border-0">🛡️ Safe & Secure Environment</li>
+                            <li className="list-group-item border-0">🧹 Clean & Well-Maintained Rooms</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Pricing */}
+                    <div className="col-md-3 mb-3">
+                      <div className="card h-100 border-warning">
+                        <div className="card-body">
+                          <h5 className="text-warning fw-bold mb-3">
+                            💰 Charges
+                          </h5>
+
+                          <p className="mb-3">
+                            <strong>Accommodation</strong><br />
+                            ₹5,000 / Month
+                            <br />
+                            <small className="text-muted">
+                              (Food not included)
+                            </small>
+                          </p>
+
+                          <p className="mb-0">
+                            <strong>Meals</strong><br />
+                            🍽️ Food is available
+                                                        <br />
+                            <small className="text-muted">
+                              (outside and inside the hostel)
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  {/* Documents */}
+                  <div className="card mt-4 border-info">
+                    <div className="card-body">
+
+                      <h4 className="text-info fw-bold mb-3">
+                        📄 Documents Provided
+                      </h4>
+
+                      <div className="row text-center">
+
+                        <div className="col-md-3">
+                          <div className="p-3 border rounded shadow-sm h-100">
+                            📃
+                            <h6 className="mt-2 mb-0">Offer Letter</h6>
+                          </div>
+                        </div>
+
+                        <div className="col-md-3">
+                          <div className="p-3 border rounded shadow-sm h-100">
+                            🎓
+                            <h6 className="mt-2 mb-0">Internship Certificate</h6>
+                          </div>
+                        </div>
+                        <div className="col-md-3">
+                          <div className="p-3 border rounded shadow-sm h-100">
+                            💼
+                            <h6 className="mt-2 mb-0">Experience Letter</h6>
+                          </div>
+                        </div>
+                        <div className="col-md-3">
+                          <div className="p-3 border rounded shadow-sm h-100">
+                            ✅
+                            <h6 className="mt-2 mb-0">Relieving Letter</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Why Choose */}
+                  <div className="card mt-4 border-primary bg-light">
+                    <div className="card-body">
+
+                      <h4 className="text-primary fw-bold mb-3">
+                        ⭐ Why Choose Our Internship Program?
+                      </h4>
+
+                      <div className="row">
+
+                        <div className="col-md-4 mb-2">
+                          ✅ Comfortable & Affordable Living
+                        </div>
+
+                        <div className="col-md-4 mb-2">
+                          🚀 Industry-Level Training
+                        </div>
+
+                        <div className="col-md-4 mb-2">
+                          💼 Live Projects
+                        </div>
+
+                        <div className="col-md-4 mb-2">
+                          🤝 Mentorship from Experienced Developers
+                        </div>
+
+                        <div className="col-md-4 mb-2">
+                          📈 Career Growth Opportunities
+                        </div>
+
+                        <div className="col-md-4 mb-2">
+                          🏆 Placement & Internship Support
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
