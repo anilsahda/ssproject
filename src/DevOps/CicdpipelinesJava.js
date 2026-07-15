@@ -162,9 +162,8 @@ mvn spring-boot:run
         <b>8. ✅ Summary</b>
         <ul>
           <li>⚛️ Spring Boot API CI/CD automated with Jenkins.</li>
-          <li>🔹 Automated build, test, package, and deployment.</li>
-          <li>🔹 Can deploy JAR or Docker container.</li>
-          <li>🚀 Fast feedback loop for developers.</li>
+          <li>🔹 Automated build, test, package and deploy JAR using Docker hub.</li>
+          <li>🚀 CI-CD Pipeline for Spring Boot API https://www.youtube.com/watch?v=NIAEruc-eP8</li>
         </ul>
       </section>
     </div>
