@@ -14,7 +14,7 @@ function Javalanguages() {
       {/* Step 1: SQL Table */}
       <Section title="SQL Table" color="text-indigo-600">
         <CodeBlock>
-{`CREATE TABLE language (
+{`CREATE TABLE Language (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL
 );`}
@@ -25,7 +25,7 @@ function Javalanguages() {
       <Section title="Entity (Language.java)" color="text-green-600">
         <CodeBlock>
 {`@Entity
-@Table(name = "language")
+@Table(name = "Language")
 public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

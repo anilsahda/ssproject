@@ -261,13 +261,22 @@ useEffect(() => {
                 <div className="card-body">
                   <h4 className="text-danger mb-3">⭐ Program Benefits</h4>
                   <div className="row">
-                    <div className="col-md-1"><span className="badge bg-primary me-2"> AWS</span></div>
-                    <div className="col-md-1">✅ IAM</div>                    
-                    <div className="col-md-2">✅ AWS S3</div>
-                    <div className="col-md-2">✅ CloudFront</div>
-                    <div className="col-md-2">✅ RDS</div>
-                    <div className="col-md-2">✅ EC2</div>
-                    <div className="col-md-2">✅ Route 53</div>
+                    <div className="col-md-1"><span className="badge bg-primary me-2">AI / ML</span></div>
+                    <div className="col-md-1">✅ RAG</div>
+                    <div className="col-md-2">✅ APIs & Pandas</div>
+                    <div className="col-md-2">✅ LangGraph</div>
+                    <div className="col-md-2">✅ Gen AI</div>
+                    <div className="col-md-2">✅ Agentic AI</div>
+                    <div className="col-md-2">✅ MLOPs</div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-1"><span className="badge bg-primary me-2">Back-End</span></div>
+                    <div className="col-md-1">✅ ORM</div>
+                    <div className="col-md-2">✅ Onion Arch</div>
+                    <div className="col-md-2">✅ Microservice</div>
+                    <div className="col-md-2">✅ CQRS</div>
+                    <div className="col-md-2">✅ Cloud</div>
+                    <div className="col-md-2">✅ Deployment</div>
                   </div>
                   <div className="row">
                     <div className="col-md-1"><span className="badge bg-primary me-2">Database</span></div>
@@ -288,23 +297,14 @@ useEffect(() => {
                     <div className="col-md-2">✅ Redux</div>
                   </div>
                   <div className="row">
-                    <div className="col-md-1"><span className="badge bg-primary me-2">Back-End</span></div>
-                    <div className="col-md-1">✅ ORM</div>
-                    <div className="col-md-2">✅ Onion Arch</div>
-                    <div className="col-md-2">✅ Microservice</div>
-                    <div className="col-md-2">✅ CQRS</div>
-                    <div className="col-md-2">✅ Docker</div>
-                    <div className="col-md-2">✅ Deployment</div>
+                    <div className="col-md-1"><span className="badge bg-primary me-2"> AWS</span></div>
+                    <div className="col-md-1">✅ IAM</div>                    
+                    <div className="col-md-2">✅ AWS S3</div>
+                    <div className="col-md-2">✅ CloudFront</div>
+                    <div className="col-md-2">✅ RDS</div>
+                    <div className="col-md-2">✅ EC2</div>
+                    <div className="col-md-2">✅ Route 53</div>
                   </div>
-                  <div className="row">
-                    <div className="col-md-1"><span className="badge bg-primary me-2">AI / ML</span></div>
-                    <div className="col-md-1">✅ RAG</div>
-                    <div className="col-md-2">✅ APIs & Pandas</div>
-                    <div className="col-md-2">✅ LangGraph</div>
-                    <div className="col-md-2">✅ Gen AI</div>
-                    <div className="col-md-2">✅ Agentic AI</div>
-                    <div className="col-md-2">✅ MLOPs</div>
-                  </div>                                
                 </div>
               </div>
             </div>
