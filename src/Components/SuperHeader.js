@@ -276,7 +276,7 @@ useEffect(() => {
                     <div className="col-md-2">✅ Microservice</div>
                     <div className="col-md-2">✅ CQRS</div>
                     <div className="col-md-2">✅ Cloud</div>
-                    <div className="col-md-2">✅ Deployment</div>
+                    <div className="col-md-2">✅ CI/CD Pipeline</div>
                   </div>
                   <div className="row">
                     <div className="col-md-1"><span className="badge bg-primary me-2">Database</span></div>
@@ -289,12 +289,12 @@ useEffect(() => {
                   </div>
                   <div className="row">
                     <div className="col-md-1"><span className="badge bg-primary me-2">Front-End</span></div>
-                    <div className="col-md-1">✅ Next</div>
+                    <div className="col-md-1">✅ React</div>
                     <div className="col-md-2">✅ Bootstrap</div>
                     <div className="col-md-2">✅ Intercepter</div>
-                    <div className="col-md-2">✅ React</div>
-                    <div className="col-md-2">✅ Zustand</div>
                     <div className="col-md-2">✅ Redux</div>
+                    <div className="col-md-2">✅ Zustand</div>
+                    <div className="col-md-2">✅ CI/CD Pipeline</div>
                   </div>
                   <div className="row">
                     <div className="col-md-1"><span className="badge bg-primary me-2"> AWS</span></div>
