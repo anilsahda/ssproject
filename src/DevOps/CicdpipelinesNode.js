@@ -97,13 +97,13 @@ npm run dev or node index.js`}
         </ul>
       </section>
 
+      {/* Step 4 */}
       <section>
-        <b>4. ⚡ Notes</b>
+        <b>4. ✅ Summary</b>
         <ul>
-          <li>Ensure Node.js and npm are installed on Jenkins agent.</li>
-          <li>Update deployment path and PM2 app name according to your server.</li>
-          <li>Use environment variables for sensitive credentials.</li>
-          <li>Docker or Kubernetes deployment can be added in the Deploy stage if required.</li>
+          <li>⚛️ Node.js API CI/CD automated with Jenkins.</li>
+          <li>🔹 Automated build, test, package and deploy using Docker hub.</li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=EECHnbOIVZQ" target="_blank" rel="noopener noreferrer">CI-CD Pipeline</a></li>
         </ul>
       </section>
     </div>

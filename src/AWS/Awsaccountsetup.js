@@ -48,6 +48,20 @@ export default function Awsaccountsetup() {
           </code>
         </pre>
       </section>
+      {/* Step 7 */}
+      <section>
+        <b>4. ✅ Summary</b>
+        <ul>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=kFeplA2bubM" target="_blank" rel="noopener noreferrer">S3 Bucket</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=1xpGkAHUadw" target="_blank" rel="noopener noreferrer">EC2 Instance</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=ZMJV5AIfVBE" target="_blank" rel="noopener noreferrer">VPC Setup</a></li>          
+          <li>🚀 <a href="https://www.youtube.com/watch?v=csXEbgwH7Vs" target="_blank" rel="noopener noreferrer">Route 53</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=CH1EhkBzkyo" target="_blank" rel="noopener noreferrer">IAM</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=_z07kmHEMzM" target="_blank" rel="noopener noreferrer">AWS Lambda</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=5JWrgsAg4iM" target="_blank" rel="noopener noreferrer">AWS RDS</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=weWeaM5-EHc" target="_blank" rel="noopener noreferrer">AWS Glue</a></li>                              
+        </ul>
+      </section>      
     </div>
   );
 }
