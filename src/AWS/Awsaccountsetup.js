@@ -52,14 +52,22 @@ export default function Awsaccountsetup() {
       <section>
         <b>4. ✅ Summary</b>
         <ul>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=V7x8qay7ePA&list=PL-bgVzzRdaPhE4h7u9OWe0cf7P6H-MpeM" target="_blank" rel="noopener noreferrer">AWS + Springboot Roadmap</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=cr1BdiU35Uw" target="_blank" rel="noopener noreferrer">AWS API Gateway</a></li>
           <li>🚀 <a href="https://www.youtube.com/watch?v=kFeplA2bubM" target="_blank" rel="noopener noreferrer">S3 Bucket</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=bSFYOpDRHQw" target="_blank" rel="noopener noreferrer">Dynamo DB</a></li>
           <li>🚀 <a href="https://www.youtube.com/watch?v=1xpGkAHUadw" target="_blank" rel="noopener noreferrer">EC2 Instance</a></li>
           <li>🚀 <a href="https://www.youtube.com/watch?v=ZMJV5AIfVBE" target="_blank" rel="noopener noreferrer">VPC Setup</a></li>          
           <li>🚀 <a href="https://www.youtube.com/watch?v=csXEbgwH7Vs" target="_blank" rel="noopener noreferrer">Route 53</a></li>
           <li>🚀 <a href="https://www.youtube.com/watch?v=CH1EhkBzkyo" target="_blank" rel="noopener noreferrer">IAM</a></li>
           <li>🚀 <a href="https://www.youtube.com/watch?v=_z07kmHEMzM" target="_blank" rel="noopener noreferrer">AWS Lambda</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=Ekty8xUc4n4" target="_blank" rel="noopener noreferrer">AWS SQS</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=1vMo6K4Zyas" target="_blank" rel="noopener noreferrer">AWS SNS</a></li>          
+          <li>🚀 <a href="https://www.youtube.com/watch?v=5LyYH9nC67g" target="_blank" rel="noopener noreferrer">AWS Secrets Manager</a></li>
           <li>🚀 <a href="https://www.youtube.com/watch?v=5JWrgsAg4iM" target="_blank" rel="noopener noreferrer">AWS RDS</a></li>
-          <li>🚀 <a href="https://www.youtube.com/watch?v=weWeaM5-EHc" target="_blank" rel="noopener noreferrer">AWS Glue</a></li>                              
+          <li>🚀 <a href="https://www.youtube.com/watch?v=ui6px5hkWxE" target="_blank" rel="noopener noreferrer">AWS ECR</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=weWeaM5-EHc" target="_blank" rel="noopener noreferrer">AWS Glue</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=PQidBErmQIo" target="_blank" rel="noopener noreferrer">ECS vs EKS vs EC2</a></li>
         </ul>
       </section>      
     </div>

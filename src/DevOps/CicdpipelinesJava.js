@@ -163,8 +163,8 @@ mvn spring-boot:run
         <ul>
           <li>⚛️ Spring Boot API CI/CD automated with Jenkins.</li>
           <li>🔹 Automated build, test, package and deploy JAR using Docker hub.</li>
-          <li>🚀 <a href="https://www.youtube.com/watch?v=icZUzgtz_d8" target="_blank" rel="noopener noreferrer">CI-CD Pipeline 1</a></li>
-          <li>🚀 <a href="https://www.youtube.com/watch?v=NIAEruc-eP8" target="_blank" rel="noopener noreferrer">CI-CD Pipeline 2</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=icZUzgtz_d8" target="_blank" rel="noopener noreferrer">CI-CD Pipeline using GitHub Actions 1</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=NIAEruc-eP8" target="_blank" rel="noopener noreferrer">CI-CD Pipeline using GitHub Actions 2</a></li>
         </ul>
       </section>
     </div>

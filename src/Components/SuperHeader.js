@@ -228,18 +228,19 @@ useEffect(() => {
                   <div className="mb-3">
                     <h6>Front-End</h6>
                     <span className="badge bg-success me-2">React.js</span>
-                    <span className="badge bg-success me-2">Next.js</span>
-                    <span className="badge bg-success me-2">Bootstrap</span>                    
+                    <span className="badge bg-success me-2">Bootstrap</span>
                     <span className="badge bg-success me-2">Redux</span>
-                    <span className="badge bg-success me-2">Zustand</span>                    
+                    <span className="badge bg-success me-2">Zustand</span>
+                    <span className="badge bg-success me-2">Next.js</span>
                   </div>
 
                   <div className="mb-3">
                     <h6>Database</h6>
                     <span className="badge bg-dark text-white me-2">SQL Server</span>
                     <span className="badge bg-dark text-white me-2">PostgreSQL</span>
-                    <span className="badge bg-dark text-white me-2">Vector DB</span>
+                    <span className="badge bg-dark text-white me-2">MySQL</span>
                     <span className="badge bg-dark text-white me-2">MongoDB</span>
+                    <span className="badge bg-dark text-white me-2">Vector DB</span>
                   </div>
 
                   <div>

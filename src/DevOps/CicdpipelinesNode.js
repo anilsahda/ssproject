@@ -1,7 +1,7 @@
 export default function CicdpipelinesNode() {
   return (
     <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif', lineHeight: '1.6' }}>
-      <h2>📘 Jenkins CI/CD Pipeline for Node.js API</h2>
+      <h2>📘 Jenkins CI/CD Pipeline for Node JS API</h2>
 
       <section>
         <b>1. ✅ Project Setup</b>
@@ -21,7 +21,7 @@ npm run dev or node index.js`}
       </section>
 
       <section>
-        <b>2. 🔹 Jenkins Pipeline (Jenkinsfile)</b>
+        <b>2. 🔹 Jenkins Pipeline</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
 {`pipeline {
@@ -103,7 +103,7 @@ npm run dev or node index.js`}
         <ul>
           <li>⚛️ Node.js API CI/CD automated with Jenkins.</li>
           <li>🔹 Automated build, test, package and deploy using Docker hub.</li>
-          <li>🚀 <a href="https://www.youtube.com/watch?v=EECHnbOIVZQ" target="_blank" rel="noopener noreferrer">CI-CD Pipeline</a></li>
+          <li>🚀 <a href="https://www.youtube.com/watch?v=EECHnbOIVZQ" target="_blank" rel="noopener noreferrer">CI-CD Pipeline using GitHub Actions</a></li>
         </ul>
       </section>
     </div>
