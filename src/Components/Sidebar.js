@@ -116,7 +116,7 @@ style={{
             </>
           )}
 
-          {activeMenu === "Python" && (
+          {activeMenu === "DJango" && (
             <>
             <SidebarButton to="/pythonprojectsetup" icon="bi-calendar-check" label="Python Project Setup" />
             <SidebarButton to="/pythonlanguages" icon="bi-ui-checks-grid" label="Python Language" />

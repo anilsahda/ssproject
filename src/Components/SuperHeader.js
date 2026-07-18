@@ -60,53 +60,146 @@ useEffect(() => {
   };
 
   return (
-    <>
-      <nav className="navbar navbar-expand-lg bg-primary bg-gradient text-white py-2 px-3">
-        <div className="container-fluid d-flex justify-content-between align-items-center flex-wrap">
-          <div className="d-flex align-items-center">
-            <Link to="/" className="navbar-brand fw-bold brand-text" style={{ textDecoration: "none", fontSize: "1.4rem", letterSpacing: "1px", color: "white"}}>SS INTERNS</Link>
-          </div>
-          <form className="d-flex mx-3 flex-grow-1" role="search" style={{ maxWidth: '250px' }}>
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          </form>
+    <><nav className="navbar navbar-expand-lg custom-navbar shadow-sm">
 
-          <div className="d-flex align-items-center gap-3 flex-wrap text-white">
-            <div>
-              <strong>Helpline:</strong> <i className="bi bi-telephone-fill me-2"></i> <a href="tel:+919534098040" className="text-white text-decoration-none">95340 98040</a>
+    <div className="container-fluid">
+
+        {/* Logo */}
+
+        <Link to="/" className="navbar-brand brand-logo">
+
+            <span className="brand-icon">SS</span>
+
+            <div className="brand-content">
+                <span className="brand-title">SS INTERNS</span>
             </div>
 
-            <div className="d-flex align-items-center gap-2">
-              {!isLoggedIn ? (
-                <>
-                  <button className="btn btn-warning fw-bold px-3" onClick={() => setShowIntern(true)}>🚀 Full-Stack Program</button>
-                  <button className="btn btn-outline-light me-2" onClick={() => setShowSignup(true)}>
-                    <FaUser className="me-1" />
-                  </button>
-                  <button className="btn btn-outline-light" onClick={() => setShowLogin(true)}>
-                    <FaSignInAlt className="me-1" />
-                  </button>
-                </>
-              ) : (
-                <div className="dropdown">
-                  <img src={localStorage.getItem("userImageUrl") || "https://i.pravatar.cc/40"} alt="Profile" className="rounded-circle dropdown-toggle border border-light" data-bs-toggle="dropdown" style={{ width: "42px", height: "42px", cursor: "pointer", boxShadow: "0 0 5px rgba(255,255,255,0.6)" }} />
-                  <ul className="dropdown-menu dropdown-menu-end mt-2 shadow" style={{ minWidth: "200px", background: "linear-gradient(to bottom, #ffffff, #e3f2fd)", borderRadius: "10px", border: "1px solid #bbdefb" }}>
-                      <li><Link className="dropdown-item d-flex align-items-center gap-2" to="/profile"><FaUser className="text-primary" /><span>Edit Profile</span></Link></li>
-                      <li><button className="dropdown-item d-flex align-items-center gap-2 text-danger" onClick={handleLogout}><FaSignInAlt /><span>Logout</span></button></li>
-                      <li><hr className="dropdown-divider" /></li>
-                      <li className="dropdown-item text-center text-dark" style={{ fontSize: "0.9rem" }}>
-                      <div style={{ lineHeight: "1.2" }}>
-                          <span className="text-muted">Logged in as</span><br />
-                          <strong>{localStorage.getItem("userName")}</strong>
-                      </div>
-                      </li>
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
+        </Link>
+
+        {/* Search */}
+
+        <div className="search-box mx-lg-4">
+
+            <i className="bi bi-search"></i>
+
+            <input
+                type="search"
+                placeholder="Search courses..."
+                className="form-control"
+            />
+
         </div>
-      </nav>
 
+        {/* Right Side */}
+
+        <div className="d-flex align-items-center gap-3">
+
+            <div className="helpline">
+
+                <i className="bi bi-headset"></i>
+
+                <div>
+                    <a href="tel:+919534098040">
+                        95340 98040
+                    </a>
+                </div>
+
+            </div>
+
+            {!isLoggedIn ? (
+
+                <>
+
+                    <button
+                        className="btn btn-program"
+                        onClick={() => setShowIntern(true)}
+                    >
+                        🚀 Full-Stack Program
+                    </button>
+
+                    <button
+                        className="icon-btn"
+                        onClick={() => setShowSignup(true)}
+                    >
+                        <FaUser />
+                    </button>
+
+                    <button
+                        className="icon-btn"
+                        onClick={() => setShowLogin(true)}
+                    >
+                        <FaSignInAlt />
+                    </button>
+
+                </>
+
+            ) : (
+
+                <div className="dropdown">
+
+                    <img
+                        src={localStorage.getItem("userImageUrl") || "https://i.pravatar.cc/100"}
+                        alt=""
+                        className="profile-image dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                    />
+
+                    <ul className="dropdown-menu dropdown-menu-end shadow-lg">
+
+                        <li>
+
+                            <Link className="dropdown-item" to="/profile">
+
+                                <FaUser className="me-2 text-primary" />
+
+                                Edit Profile
+
+                            </Link>
+
+                        </li>
+
+                        <li>
+
+                            <button
+                                className="dropdown-item text-danger"
+                                onClick={handleLogout}
+                            >
+
+                                <FaSignInAlt className="me-2" />
+
+                                Logout
+
+                            </button>
+
+                        </li>
+
+                        <li>
+                            <hr className="dropdown-divider"/>
+                        </li>
+
+                        <li className="text-center py-2">
+
+                            <small className="text-muted">
+                                Logged in as
+                            </small>
+
+                            <div className="fw-bold">
+                                {localStorage.getItem("userName")}
+                            </div>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            )}
+
+        </div>
+
+    </div>
+
+</nav>
       {/* Login Modal */}
       {showLogin && (
         <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.7)' }} onClick={() => setShowLogin(false)}>

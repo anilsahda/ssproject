@@ -1,65 +1,70 @@
-import './Header.css';
+import "./Header.css";
+
+import {
+  FaProjectDiagram,
+  FaLaptopCode,
+  FaMicrosoft,
+  FaJava,
+  FaNodeJs,
+  FaPython,
+  FaRobot,
+  FaDatabase,
+  FaAws,
+  FaReact,
+  FaAngular,
+  FaCheckCircle,
+  FaCloud
+} from "react-icons/fa";
 
 function Header({ setActiveMenu }) {
+
+  const menus = [
+    { name: "Project", icon: <FaProjectDiagram />, className: "btn-gradient-primary" },
+    { name: "Fullstack", icon: <FaLaptopCode />, className: "btn-gradient-purple" },
+    { name: ".NET Core", value: "Dotnet", icon: <FaMicrosoft />, className: "btn-gradient-dark" },
+    { name: "Spring Boot", value: "Springboot", icon: <FaJava />, className: "btn-gradient-success" },
+    { name: "Node", value: "Node", icon: <FaNodeJs />, className: "btn-gradient-green" },
+    { name: "DJango", icon: <FaPython />, className: "btn-gradient-info" },
+    { name: "AI/ML", icon: <FaRobot />, className: "btn-gradient-blue" },
+    // { name: "DSA", icon: <FaCheckCircle />, className: "btn-gradient-danger" },
+    { name: "SQL Server", value: "SQL", icon: <FaDatabase />, className: "btn-gradient-dark" },
+    { name: "AWS", icon: <FaAws />, className: "btn-gradient-orange" },
+    { name: "Azure", icon: <FaCloud />, className: "btn-gradient-sky" },
+    { name: "DevOps", icon: <FaCloud />, className: "btn-gradient-warning" },
+    { name: "React", icon: <FaReact />, className: "btn-gradient-cyan" },
+    { name: "Next", value: "Next", icon: <FaReact />, className: "btn-gradient-black" },
+    // { name: "Angular", icon: <FaAngular />, className: "btn-gradient-red" },
+    { name: "QA", icon: <FaCheckCircle />, className: "btn-gradient-secondary" }
+  ];
+
   return (
-    <nav className="navbar navbar-expand-lg custom-navbar shadow-sm">
-      <div className="container-fluid">
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto mb-0 d-flex gap-2 align-items-center flex-wrap">
-            <li className="nav-item">
-              <button className="btn btn-sm btn-projects nav-btn" onClick={() => setActiveMenu("Project")}>Projects</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm btn-fullstack nav-btn" onClick={() => setActiveMenu("Fullstack")}>Fullstack</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-secondary" onClick={() => setActiveMenu("Dotnet")}>.NET Core</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-success" onClick={() => setActiveMenu("Springboot")}>Spring Boot</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-warning" onClick={() => setActiveMenu("Node")}>Node</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-info" onClick={() => setActiveMenu("Python")}>Python</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-primary" onClick={() => setActiveMenu("AI/ML")}>AI/ML</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-danger" onClick={() => setActiveMenu("DSA")}>DSA</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-dark" onClick={() => setActiveMenu("SQL")}>SQL Server</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm btn-aws nav-btn" onClick={() => setActiveMenu("AWS")}>AWS</button>
-            </li>
-            <li className="nav-item">
-            <button className="btn btn-sm btn-fullstack nav-btn" onClick={() => setActiveMenu("Azure")}>Azure</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-warning" onClick={() => setActiveMenu("DevOps")}>DevOps</button>
-            </li>            
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-info" onClick={() => setActiveMenu("React")}>React</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-primary" onClick={() => setActiveMenu("Next")}>Next</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-dark" onClick={() => setActiveMenu("Angular")}>Angular</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-sm nav-btn btn-danger" onClick={() => setActiveMenu("QA")}>QA</button>
-            </li>
-          </ul>
-        </div>
+    <nav className="custom-navbar">
+
+      <div className="tech-scroll">
+
+        {menus.map((item) => (
+
+          <button
+            key={item.name}
+            type="button"
+            className={`tech-btn ${item.className}`}
+            onClick={() => setActiveMenu(item.value || item.name)}
+          >
+
+            <span className="tech-icon">
+              {item.icon}
+            </span>
+
+            <span className="tech-text">
+              {item.name}
+            </span>
+
+          </button>
+
+        ))}
+
       </div>
+
     </nav>
   );
 }

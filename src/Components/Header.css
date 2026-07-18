@@ -1,56 +1,188 @@
-/* Smaller nav button style */
-.nav-btn {
-  font-weight: 600;
-  border-radius: 20px;
-  padding: 5px 14px;    /* smaller padding */
-  min-width: 70px;      /* reduced width */
-  font-size: 0.85rem;   /* slightly smaller font */
-  color: #fff !important;
-  border: none !important;
-  box-shadow: none !important;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
+/* ===========================
+   NAVBAR
+=========================== */
+
+.custom-navbar {
+    background: linear-gradient(90deg, #2563eb, #4f46e5);
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
-/* Specific button background colors - base */
-.btn-fullstack {
-  background-color: #7b1fa2 !important;
-}
-.btn-projects {
-  background-color: #00796b !important;
-}
-.btn-aws {
-  background-color: #ef6c00 !important;
+/* ===========================
+   HORIZONTAL SCROLL
+=========================== */
+
+.tech-scroll {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    scrollbar-width: none;
 }
 
-/* Hover/focus */
-.btn-fullstack:hover,
-.btn-fullstack:focus {
-  background-color: #4a0072 !important;
-  color: #fff !important;
+.tech-scroll::-webkit-scrollbar {
+    display: none;
 }
 
-.btn-projects:hover,
-.btn-projects:focus {
-  background-color: #004d40 !important;
-  color: #fff !important;
+/* ===========================
+   BUTTON
+=========================== */
+
+.tech-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    flex: 0 0 auto;
+
+    width: auto;
+    min-width: max-content;
+
+    height: 30px;
+    padding: 0 14px;
+
+    border: none;
+    border-radius: 18px;
+
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+
+    box-sizing: border-box;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,.18);
+    transition: all .25s ease;
 }
 
-.btn-aws:hover,
-.btn-aws:focus {
-  background-color: #bf360c !important;
-  color: #fff !important;
+.tech-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0,0,0,.22);
 }
 
-/* Hover/focus transform */
-.nav-btn:hover,
-.nav-btn:focus,
-.nav-btn:active {
-  outline: none !important;
-  box-shadow: none !important;
-  filter: none !important;
-  backdrop-filter: none !important;
-  opacity: 1 !important;
-  transform: scale(1.05);
+.tech-btn:focus,
+.tech-btn:active {
+    outline: none;
+    border: none;
 }
 
+/* ===========================
+   ICON
+=========================== */
+
+.tech-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tech-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.tech-text {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
+
+/* ===========================
+   GRADIENT COLORS
+=========================== */
+
+.btn-gradient-primary {
+    background: linear-gradient(135deg,#3b82f6,#2563eb);
+}
+
+.btn-gradient-purple {
+    background: linear-gradient(135deg,#a855f7,#7c3aed);
+}
+
+.btn-gradient-dark {
+    background: linear-gradient(135deg,#6366f1,#4f46e5);
+}
+
+.btn-gradient-success {
+    background: linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+.btn-gradient-green {
+    background: linear-gradient(135deg,#34d399,#10b981);
+}
+
+.btn-gradient-info {
+    background: linear-gradient(135deg,#38bdf8,#0ea5e9);
+}
+
+.btn-gradient-blue {
+    background: linear-gradient(135deg,#60a5fa,#2563eb);
+}
+
+.btn-gradient-danger {
+    background: linear-gradient(135deg,#ef4444,#dc2626);
+}
+
+.btn-gradient-orange {
+    background: linear-gradient(135deg,#fb923c,#f97316);
+}
+
+.btn-gradient-sky {
+    background: linear-gradient(135deg,#38bdf8,#0ea5e9);
+}
+
+.btn-gradient-warning {
+    background: linear-gradient(135deg,#facc15,#f59e0b);
+    color: #111;
+}
+
+.btn-gradient-cyan {
+    background: linear-gradient(135deg,#22d3ee,#0891b2);
+}
+
+.btn-gradient-black {
+    background: linear-gradient(135deg,#64748b,#475569);
+}
+
+.btn-gradient-red {
+    background: linear-gradient(135deg,#fb7185,#e11d48);
+}
+
+.btn-gradient-secondary {
+    background: linear-gradient(135deg,#94a3b8,#64748b);
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:768px) {
+
+    .custom-navbar {
+        padding: 6px 8px;
+    }
+
+    .tech-scroll {
+        gap: 6px;
+    }
+
+    .tech-btn {
+        height: 28px;
+        padding: 0 12px;
+        font-size: 11px;
+        border-radius: 16px;
+    }
+
+    .tech-icon svg {
+        width: 13px;
+        height: 13px;
+    }
+}
