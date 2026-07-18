@@ -207,7 +207,7 @@ useEffect(() => {
                   <p><strong>Office Hours:</strong> 9:00 AM – 6:00 PM</p>
                   <p><strong>Locations:</strong> Hyderabad, Mohali & Dehradun</p>
                   <p><strong>Holidays:</strong> Saturday & Sunday fixed off</p>
-                  <p><strong>Stipend / Salary:</strong> Based on performance</p>
+                  <p><strong>Mentorship:</strong> From experienced Architect & Software Engineers</p>
                 </div>
               </div>
             </div>
@@ -306,6 +306,18 @@ useEffect(() => {
                     <div className="col-md-2">✅ EC2</div>
                     <div className="col-md-2">✅ Route 53</div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Performance-Based Opportunities */}
+            <div className="col-12">
+              <div className="card border-0 shadow-sm">
+                <div className="card-body">
+                  <h4 className="text-success mb-3">🚀 Performance-Based Opportunities</h4>
+                  <p className="mb-0">
+                    High-performing interns may be offered a <strong>full-time position</strong> with our company based on their performance and business requirements.
+                  </p>
                 </div>
               </div>
             </div>
@@ -491,18 +503,21 @@ useEffect(() => {
                             <h6 className="mt-2 mb-0">Internship Certificate</h6>
                           </div>
                         </div>
+
                         <div className="col-md-3">
                           <div className="p-3 border rounded shadow-sm h-100">
-                            💼
-                            <h6 className="mt-2 mb-0">Experience Letter</h6>
+                            🏅
+                            <h6 className="mt-2 mb-0">Best Performer Certificate</h6>
                           </div>
                         </div>
+
                         <div className="col-md-3">
                           <div className="p-3 border rounded shadow-sm h-100">
-                            ✅
-                            <h6 className="mt-2 mb-0">Relieving Letter</h6>
+                            ⭐
+                            <h6 className="mt-2 mb-0">Portfolio</h6>
                           </div>
                         </div>
+
                       </div>
                     </div>
                   </div>
