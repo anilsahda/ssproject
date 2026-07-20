@@ -191,6 +191,7 @@ import Javaexportcsv from "./Java/Javaexportcsv";
 import Nodeexportcsv from "./Node/Nodeexportcsv";
 import CicdpipelinesJava from "./DevOps/CicdpipelinesJava";
 import SSLogistrics from "./Projects/Logistrics/SSLogistrics";
+import SSInterns from "./Projects/InternsProject/SSInterns";
 import SSECommerce from "./Projects/ECommerce/EcommerceProject";
 import SSDigitalLibrary from "./Projects/DigitalLibrary/DigitalLibraryProject";
 import SSEmployeePayroll from "./Projects/EmployeePayroll/SSEmployeePayroll";
@@ -288,6 +289,7 @@ function App() {
             <Route path="/ssjobs" element={<SSJobs />} />
             <Route path="/sshealthinsurance" element={<SSHealthInsurance />} />
             <Route path="/sslogistrics" element={<SSLogistrics />} />
+            <Route path="/ssinterns" element={<SSInterns />} />
             <Route path="/sstransportmanagement" element={<SSTransportManagement />} />
             <Route path="/ssevbv" element={<SSEVBV />} />
             <Route path="/ssmedicalcoding" element={<SSMedicalCoding />} />

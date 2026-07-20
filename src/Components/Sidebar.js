@@ -51,6 +51,7 @@ style={{
           <SidebarButton to="/ssjobs" icon="bi-briefcase" label="SS Jobs" />
           <SidebarButton to="/sshealthinsurance" icon="bi-hospital" label="SS Health Insurance" />
           <SidebarButton to="/sslogistrics" icon="bi-hospital" label="SS Logistics" />
+          <SidebarButton to="/ssinterns" icon="bi-hospital" label="Interns" />          
           </>
         )}
 
