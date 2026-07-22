@@ -283,8 +283,8 @@ useEffect(() => {
     <div className="modal-dialog modal-dialog-centered modal-xl" onClick={(e) => e.stopPropagation()}>
       <div className="modal-content border-0 shadow-lg" style={{ borderRadius: "20px", overflow: "hidden" }}>
         <div className="text-white p-5" style={{ background: "linear-gradient(135deg, #0d6efd 0%, #6610f2 100%)"}}>
-          <h1 className="fw-bold mb-3">🚀 AI-ML and Full-Stack Engineers Program</h1>
-          <h5 className="mb-0">Build Your Career in AI-ML, Cloud, DevOps and Full-Stack Web Development</h5>
+          <h1 className="fw-bold mb-3 text-center">🚀 AI-ML and Full-Stack Engineers Program</h1>
+          <h5 className="mb-0 text-center">Build Your Career in AI-ML, Cloud, DevOps and Full-Stack Web Development</h5>
         </div>
 
         <div className="modal-body p-4">
@@ -296,11 +296,11 @@ useEffect(() => {
                 <div className="card-body">
                   <h4 className="text-primary mb-3">📅 Program Details</h4>
                   <p><strong>Duration:</strong> 1 - 6 Months</p>
-                  <p><strong>Work Mode:</strong> Work From Office</p>
+                  <p><strong>Work Mode:</strong> Work From Office / Remote</p>
                   <p><strong>Office Hours:</strong> 9:00 AM – 6:00 PM</p>
                   <p><strong>Locations:</strong> Hyderabad, Mohali & Dehradun</p>
                   <p><strong>Holidays:</strong> Saturday & Sunday fixed off</p>
-                  <p><strong>Mentorship:</strong> From experienced Architect & Software Engineers</p>
+                  <p><strong>Mentorship:</strong> From experienced Architect & Senior Engineers</p>
                 </div>
               </div>
             </div>
@@ -409,7 +409,7 @@ useEffect(() => {
                 <div className="card-body">
                   <h4 className="text-success mb-3">🚀 Performance-Based Opportunities</h4>
                   <p className="mb-0">
-                    High-performing interns may be offered a <strong>full-time position</strong> with our company based on their performance and business requirements.
+                    High-performing interners may be offered a <strong>full-time position</strong> with our associated company based on their performance and business requirements.
                   </p>
                 </div>
               </div>
@@ -470,105 +470,167 @@ useEffect(() => {
               </div>
             </div> */}
 
+
             {/* Accommodation & Facilities */}
             <div className="col-12">
               <div className="card border-0 shadow-sm">
                 <div className="card-body p-4">
 
                   <h3 className="text-primary fw-bold mb-4">
-                    🏠 Accommodation & Facilities
+                    🏠 Accommodation & Facilities in Multiple Cities
                   </h3>
 
                   <div className="alert alert-info border-0 shadow-sm">
-                    <h5 className="fw-bold mb-2">✨ Comfortable Stay for Relocating Interns</h5>
+                    <h5 className="fw-bold mb-2">✨ Comfortable, secure and affordable accommodation for Relocating Interners</h5>
                     <p className="mb-0">
-                      We provide affordable and comfortable accommodation for interns
-                      relocating to our development centers, ensuring a safe and
-                      convenient stay throughout the internship.
-                    </p>
-                  </div>
+                      We provide safe, comfortable, and affordable accommodation near our development centers in Dehradun, Chandigarh Tricity and Hyderabad, so you can focus on learning new skills and working on real-world projects without worrying about accommodation. During your internship, you'll also get the chance to experience different cities, explore new cultures, meet talented people, and gain valuable industry experience, making your internship an enjoyable and memorable journey.
+                    </p><br />
+                    <div className="row g-4">
 
-                  <div className="row mt-4">
+                      {/* Locations */}
+                      <div className="col-lg-4">
+                        <div className="card feature-card border-0 shadow-sm h-100 rounded-4">
+                          <div className="card-body p-4">
 
-                    {/* Locations */}
-                    <div className="col-md-4 mb-3">
-                      <div className="card h-100 border-primary">
-                        <div className="card-body">
-                          <h5 className="text-primary fw-bold mb-3">
-                            📍 Available Locations
-                          </h5>
+                            <div className="feature-icon bg-primary-subtle text-primary mb-4">
+                              <i className="bi bi-geo-alt-fill"></i>
+                            </div>
 
-                          <ul className="list-group list-group-flush">
-                            <li className="list-group-item border-0">
-                              📌 Mohali
-                            </li>
-                            <li className="list-group-item border-0">
-                              📌 Dehradun
-                            </li>
-                            <li className="list-group-item border-0">
-                              📌 Hyderabad
-                            </li>
-                            <li className="list-group-item border-0">
-                              📌 Delhi  - Available in Nov 2026
-                            </li>
-                            <li className="list-group-item border-0">
-                              📌 Jaipur - Available in Dec 2026
-                            </li>
-                            <li className="list-group-item border-0">
-                              📌 Bangalore - Available in Jan 2027
-                            </li>
-                          </ul>
+                            <h5 className="fw-bold mb-4">
+                              Available Locations
+                            </h5>
+
+                            <ul className="list-unstyled mb-0">
+
+                              <li className="mb-3 d-flex justify-content-between">
+                                <span>📍 Mohali</span>
+                                <span className="badge bg-success">Available</span>
+                              </li>
+
+                              <li className="mb-3 d-flex justify-content-between">
+                                <span>📍 Dehradun</span>
+                                <span className="badge bg-success">Available</span>
+                              </li>
+
+                              <li className="mb-3 d-flex justify-content-between">
+                                <span>📍 Hyderabad</span>
+                                <span className="badge bg-success">Available</span>
+                              </li>
+
+                              <li className="mb-3 d-flex justify-content-between">
+                                <span>📍 Delhi</span>
+                                <span className="badge bg-warning text-dark">
+                                  Nov 2026
+                                </span>
+                              </li>
+
+                              <li className="mb-3 d-flex justify-content-between">
+                                <span>📍 Jaipur</span>
+                                <span className="badge bg-warning text-dark">
+                                  Dec 2026
+                                </span>
+                              </li>
+
+                              <li className="d-flex justify-content-between">
+                                <span>📍 Bangalore</span>
+                                <span className="badge bg-warning text-dark">
+                                  Jan 2027
+                                </span>
+                              </li>
+
+                            </ul>
+
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Hostel Facilities */}
-                    <div className="col-md-5 mb-3">
-                      <div className="card h-100 border-success">
-                        <div className="card-body">
-                          <h5 className="text-success fw-bold mb-3">
-                            🛏️ Hostel Facilities
-                          </h5>
+                      {/* Facilities */}
+                      <div className="col-lg-4">
+                        <div className="card feature-card border-0 shadow-sm h-100 rounded-4">
+                          <div className="card-body p-4">
 
-                          <ul className="list-group list-group-flush">
-                            <li className="list-group-item border-0">✅ Fully Furnished Rooms</li>
-                            <li className="list-group-item border-0">📶 High-Speed Wi-Fi</li>
-                            <li className="list-group-item border-0">🏏 Rooftop Cricket Practice Net</li>
-                            <li className="list-group-item border-0">💪 Basic Gym Equipment</li>
-                            <li className="list-group-item border-0">🛡️ Safe & Secure Environment</li>
-                            <li className="list-group-item border-0">🧹 Clean & Well-Maintained Rooms</li>
-                          </ul>
+                            <div className="feature-icon bg-success-subtle text-success mb-4">
+                              <i className="bi bi-house-heart-fill"></i>
+                            </div>
+
+                            <h5 className="fw-bold mb-4">
+                              Hostel Facilities
+                            </h5>
+
+                            <ul className="list-unstyled mb-0">
+
+                              <li className="mb-3">✅ Fully Furnished Rooms</li>
+
+                              <li className="mb-3">📶 High-Speed Wi-Fi</li>
+
+                              <li className="mb-3">🏏 Rooftop Cricket Practice Net</li>
+
+                              <li className="mb-3">💪 Basic Gym Equipment</li>
+
+                              <li className="mb-3">🛡️ 24×7 Safe & Secure Environment</li>
+
+                              <li>🧹 Daily Housekeeping</li>
+
+                            </ul>
+
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Pricing */}
-                    <div className="col-md-3 mb-3">
-                      <div className="card h-100 border-warning">
-                        <div className="card-body">
-                          <h5 className="text-warning fw-bold mb-3">
-                            💰 Charges
-                          </h5>
+                      {/* Pricing */}
+                      <div className="col-lg-4">
+                        <div className="card feature-card border-0 shadow-sm h-100 rounded-4">
 
-                          <p className="mb-3">
-                            <strong>Accommodation</strong><br />
-                            ₹5,000 / Month
-                            <br />
-                            <small className="text-muted">
-                              (Food not included)
-                            </small>
-                          </p>
+                          <div className="card-body p-4">
 
-                          <p className="mb-0">
-                            <strong>Meals</strong><br />
-                            🍽️ Food is available
-                                                        <br />
-                            <small className="text-muted">
-                              (outside and inside the hostel)
-                            </small>
-                          </p>
+                            <div className="feature-icon bg-warning-subtle text-warning mb-4">
+                              <i className="bi bi-wallet2"></i>
+                            </div>
+
+                            <h5 className="fw-bold mb-4">
+                              Accommodation Charges
+                            </h5>
+
+                            <div className="price-box mb-3">
+
+                              <div className="d-flex justify-content-between">
+
+                                <span>🏠 Without Food</span>
+
+                                <strong className="text-success">
+                                  ₹5,000
+                                </strong>
+
+                              </div>
+
+                            </div>
+
+                            <div className="price-box mb-4">
+
+                              <div className="d-flex justify-content-between">
+
+                                <span>🍽️ With Food</span>
+
+                                <strong className="text-primary">
+                                  ₹10,000
+                                </strong>
+
+                              </div>
+
+                            </div>
+
+                            <div className="alert alert-light border mb-0">
+
+                              <i className="bi bi-info-circle-fill text-primary me-2"></i>
+
+                              Electricity, Wi-Fi and maintenance are included.
+
+                            </div>
+
+                          </div>
                         </div>
                       </div>
+
                     </div>
 
                   </div>
@@ -615,44 +677,101 @@ useEffect(() => {
                     </div>
                   </div>
 
-                  {/* Why Choose */}
-                  <div className="card mt-4 border-primary bg-light">
-                    <div className="card-body">
+{/* Why Choose Our Intern Developer Program */}
+<div className="card border-0 shadow-lg rounded-4 mt-5 overflow-hidden">
 
-                      <h4 className="text-primary fw-bold mb-3">
-                        ⭐ Why Choose Our Internship Program?
-                      </h4>
+  {/* Header */}
+  <div className="bg-primary text-white py-4 text-center">
+    <h3 className="fw-bold mb-2">
+      <i className="bi bi-stars me-2"></i>
+      Why Choose Our Intern Developer Program?
+    </h3>
+    <p className="mb-0 opacity-75 text-center">
+      Build your career with industry-focused training, live projects, expert mentorship, and real-world experience.
+    </p>
+  </div>
 
-                      <div className="row">
+  <div className="card-body p-4">
 
-                        <div className="col-md-4 mb-2">
-                          ✅ Comfortable & Affordable Living
-                        </div>
+    <div className="row g-4">
 
-                        <div className="col-md-4 mb-2">
-                          🚀 Industry-Level Training
-                        </div>
+      <div className="col-lg-4 col-md-6">
+        <div className="feature-box">
+          <i className="bi bi-house-heart-fill text-primary feature-icon"></i>
+          <h6>Comfortable Accommodation</h6>
+          <p>Affordable hostel facilities with Wi-Fi, security, and modern amenities.</p>
+        </div>
+      </div>
 
-                        <div className="col-md-4 mb-2">
-                          💼 Live Projects
-                        </div>
+      <div className="col-lg-4 col-md-6">
+        <div className="feature-box">
+          <i className="bi bi-laptop text-success feature-icon"></i>
+          <h6>Industry-Level Training</h6>
+          <p>Learn using the latest technologies, frameworks, and enterprise development practices.</p>
+        </div>
+      </div>
 
-                        <div className="col-md-4 mb-2">
-                          🤝 Mentorship from Experienced Developers
-                        </div>
+      <div className="col-lg-4 col-md-6">
+        <div className="feature-box">
+          <i className="bi bi-code-slash text-danger feature-icon"></i>
+          <h6>Live Client Projects</h6>
+          <p>Gain hands-on experience by contributing to real-world software projects.</p>
+        </div>
+      </div>
 
-                        <div className="col-md-4 mb-2">
-                          📈 Career Growth Opportunities
-                        </div>
+      <div className="col-lg-4 col-md-6">
+        <div className="feature-box">
+          <i className="bi bi-people-fill text-warning feature-icon"></i>
+          <h6>Expert Mentorship</h6>
+          <p>Receive guidance from experienced architects and senior software engineers.</p>
+        </div>
+      </div>
 
-                        <div className="col-md-4 mb-2">
-                          🏆 Placement & Internship Support
-                        </div>
+      <div className="col-lg-4 col-md-6">
+        <div className="feature-box">
+          <i className="bi bi-graph-up-arrow text-info feature-icon"></i>
+          <h6>Career Growth</h6>
+          <p>Develop practical skills and strengthen your portfolio for future opportunities.</p>
+        </div>
+      </div>
 
-                      </div>
+      <div className="col-lg-4 col-md-6">
+        <div className="feature-box">
+          <i className="bi bi-award-fill text-success feature-icon"></i>
+          <h6>Placement Assistance</h6>
+          <p>Resume guidance, interview preparation, and placement support after successful completion.</p>
+        </div>
+      </div>
 
-                    </div>
-                  </div>
+      <div className="col-lg-4 col-md-6">
+        <div className="feature-box">
+          <i className="bi bi-geo-alt-fill text-danger feature-icon"></i>
+          <h6>Flexible Locations</h6>
+          <p>Internship opportunities available across multiple cities with future expansion plans.</p>
+        </div>
+      </div>
+
+      <div className="col-lg-4 col-md-6">
+        <div className="feature-box">
+          <i className="bi bi-mortarboard-fill text-primary feature-icon"></i>
+          <h6>Unpaid Internship Program</h6>
+          <p>Focused on practical learning, enterprise project exposure, and skill development.</p>
+        </div>
+      </div>
+
+      <div className="col-lg-4 col-md-6">
+        <div className="feature-box">
+          <i className="bi bi-laptop-fill text-secondary feature-icon"></i>
+          <h6>Flexible Work Mode</h6>
+          <p>Choose from Work From Office (WFO), Hybrid, or Remote internships based on the program.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
                 </div>
               </div>
