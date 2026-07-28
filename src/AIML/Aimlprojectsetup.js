@@ -135,7 +135,15 @@ pip install python-multipart`}
 
       <SectionBlock title="7. Create First AI Program" color="green">
         <CodeBlock>
-{`print("Welcome to AI / ML Project")`}
+{`Update in main.py
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def home():
+    return {"message": "Welcome to AI / ML Project"}`}
         </CodeBlock>
       </SectionBlock>
 
