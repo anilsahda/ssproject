@@ -6,233 +6,155 @@ function Aimlllamaidex() {
 
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">
-          LlamaIndex Practical Examples
-        </h1>
+        <h1 className="text-xl font-bold text-indigo-700">LlamaIndex</h1>
 
         <p className="text-gray-500 text-xs mt-1">
-          Learn LlamaIndex from beginner to advanced with practical examples for building Retrieval-Augmented Generation (RAG), AI Assistants, and Enterprise Knowledge Search.
+          <strong>LlamaIndex</strong> is an open-source data framework that helps connect Large Language Models (LLMs) with private and enterprise data sources. It simplifies indexing, retrieval, and querying of structured and unstructured data for building AI applications and Retrieval-Augmented Generation (RAG) systems.<br /><br />
+
+          <strong>LlamaIndex is used for</strong>
+          <ul>
+              <li>Building Retrieval-Augmented Generation (RAG) applications</li>
+              <li>Connecting LLMs with enterprise data</li>
+              <li>Indexing documents and knowledge bases</li>
+              <li>Document parsing and data ingestion</li>
+              <li>Semantic search and information retrieval</li>
+              <li>Querying PDFs, Word documents, and databases</li>
+              <li>Integrating with vector databases</li>
+              <li>Creating AI-powered knowledge assistants</li>
+              <li>Supporting multi-document and multi-source querying</li>
+              <li>Integrating with OpenAI, Hugging Face, LangChain, Azure OpenAI, AWS Bedrock, and other LLM providers</li>
+          </ul>
         </p>
       </header>
 
       {/* Installation */}
       <Section title="Step 1 : Install LlamaIndex" color="text-green-600">
-        <CodeBlock>
-{`pip install llama-index
+        <CodeBlock>{`pip install llama-index
 
 pip install llama-index-llms-openai
-
 pip install llama-index-embeddings-openai
-
 pip install llama-index-vector-stores-faiss
-
 pip install pypdf
-
-pip install python-dotenv`}
-        </CodeBlock>
+pip install python-dotenv`}</CodeBlock>
       </Section>
 
       {/* Import */}
       <Section title="Step 2 : Import Libraries" color="text-yellow-600">
-        <CodeBlock>
-{`from llama_index.core import VectorStoreIndex
-
+        <CodeBlock>{`from llama_index.core import VectorStoreIndex
 from llama_index.core import SimpleDirectoryReader
-
-from llama_index.llms.openai import OpenAI`}
-        </CodeBlock>
+from llama_index.llms.openai import OpenAI`}</CodeBlock>
       </Section>
 
       {/* Environment */}
       <Section title="Step 3 : Configure Environment Variables" color="text-red-600">
-        <CodeBlock>
-{`# .env
+        <CodeBlock>{`# .env
 
-OPENAI_API_KEY=your_api_key`}
-        </CodeBlock>
+OPENAI_API_KEY=your_api_key`}</CodeBlock>
       </Section>
 
       {/* Read Documents */}
       <Section title="Step 4 : Load Documents" color="text-indigo-600">
-        <CodeBlock>
-{`from llama_index.core import SimpleDirectoryReader
+        <CodeBlock>{`from llama_index.core import SimpleDirectoryReader
 
-documents = SimpleDirectoryReader(
-    "documents"
-).load_data()
+documents = SimpleDirectoryReader("documents").load_data()
 
-print(documents)`}
-        </CodeBlock>
+print(documents)`}</CodeBlock>
       </Section>
 
       {/* Create Index */}
       <Section title="Step 5 : Create Vector Index" color="text-purple-600">
-        <CodeBlock>
-{`from llama_index.core import VectorStoreIndex
+        <CodeBlock>{`from llama_index.core import VectorStoreIndex
 
-index = VectorStoreIndex.from_documents(
-    documents
-)`}
-        </CodeBlock>
+index = VectorStoreIndex.from_documents(documents)`}</CodeBlock>
       </Section>
 
       {/* Query Engine */}
       <Section title="Step 6 : Create Query Engine" color="text-blue-600">
-        <CodeBlock>
-{`query_engine = index.as_query_engine()`}
-        </CodeBlock>
+        <CodeBlock>{`query_engine = index.as_query_engine()`}</CodeBlock>
       </Section>
 
       {/* Ask Questions */}
       <Section title="Step 7 : Ask Questions" color="text-green-600">
-        <CodeBlock>
-{`response = query_engine.query(
-    "Explain Artificial Intelligence."
-)
-
-print(response)`}
-        </CodeBlock>
+        <CodeBlock>{`response = query_engine.query("Explain Artificial Intelligence.")
+print(response)`}</CodeBlock>
       </Section>
 
       {/* Save Index */}
       <Section title="Step 8 : Persist Index" color="text-red-600">
-        <CodeBlock>
-{`index.storage_context.persist(
-    persist_dir="./storage"
-)`}
-        </CodeBlock>
+        <CodeBlock>{`index.storage_context.persist(persist_dir="./storage")`}</CodeBlock>
       </Section>
 
       {/* Load Index */}
       <Section title="Step 9 : Load Existing Index" color="text-yellow-600">
-        <CodeBlock>
-{`from llama_index.core import StorageContext
+        <CodeBlock>{`from llama_index.core import StorageContext
 from llama_index.core import load_index_from_storage
 
-storage_context = StorageContext.from_defaults(
-    persist_dir="./storage"
-)
-
-index = load_index_from_storage(
-    storage_context
-)`}
-        </CodeBlock>
+storage_context = StorageContext.from_defaults(persist_dir="./storage")
+index = load_index_from_storage(storage_context)`}</CodeBlock>
       </Section>
 
       {/* Chat Engine */}
       <Section title="Step 10 : Create Chat Engine" color="text-purple-600">
-        <CodeBlock>
-{`chat_engine = index.as_chat_engine()
+        <CodeBlock>{`chat_engine = index.as_chat_engine()
 
-response = chat_engine.chat(
-    "What is Machine Learning?"
-)
-
-print(response)`}
-        </CodeBlock>
+response = chat_engine.chat("What is Machine Learning?")
+print(response)`}</CodeBlock>
       </Section>
 
       {/* PDF */}
       <Section title="Step 11 : Load PDF Documents" color="text-indigo-600">
-        <CodeBlock>
-{`documents = SimpleDirectoryReader(
-    input_dir="pdfs"
-).load_data()`}
-        </CodeBlock>
+        <CodeBlock>{`documents = SimpleDirectoryReader(input_dir="pdfs").load_data()`}</CodeBlock>
       </Section>
 
       {/* Multiple Docs */}
       <Section title="Step 12 : Index Multiple Documents" color="text-blue-600">
-        <CodeBlock>
-{`documents = SimpleDirectoryReader(
-    "./documents"
-).load_data()
-
-index = VectorStoreIndex.from_documents(
-    documents
-)`}
-        </CodeBlock>
+        <CodeBlock>{`documents = SimpleDirectoryReader("./documents").load_data()
+index = VectorStoreIndex.from_documents(documents)`}</CodeBlock>
       </Section>
 
       {/* Embeddings */}
       <Section title="Step 13 : Embeddings Workflow" color="text-green-600">
-        <CodeBlock>
-{`Documents
-
+        <CodeBlock>{`Documents
 ↓
-
 Chunking
-
 ↓
-
 Embeddings
-
 ↓
-
 Vector Store
-
 ↓
-
-Query Engine`}
-        </CodeBlock>
+Query Engine`}</CodeBlock>
       </Section>
 
       {/* RAG */}
       <Section title="Step 14 : RAG Workflow" color="text-red-600">
-        <CodeBlock>
-{`User Question
-
+        <CodeBlock>{`User Question
 ↓
-
 Retriever
-
 ↓
-
 Relevant Chunks
-
 ↓
-
 LLM
-
 ↓
-
-Answer`}
-        </CodeBlock>
+Answer`}</CodeBlock>
       </Section>
 
       {/* Architecture */}
       <Section title="Step 15 : LlamaIndex Architecture" color="text-yellow-600">
-        <CodeBlock>
-{`Files
-
+        <CodeBlock>{`Files
 ↓
-
 Readers
-
 ↓
-
 Documents
-
 ↓
-
 Index
-
 ↓
-
 Retriever
-
 ↓
-
 Query Engine
-
 ↓
-
 LLM
-
 ↓
-
-Response`}
-        </CodeBlock>
+Response`}</CodeBlock>
       </Section>
 
       {/* Practice */}
@@ -253,29 +175,18 @@ Response`}
 
       {/* Mini Project */}
       <Section title="Mini Project : Enterprise Knowledge Chatbot" color="text-indigo-600">
-        <CodeBlock>
-{`Tasks
+        <CodeBlock>{`Tasks
 
 1. Upload PDF Documents.
-
 2. Read Documents.
-
 3. Create Vector Index.
-
 4. Store Embeddings.
-
 5. Build Query Engine.
-
 6. Build Chat Engine.
-
 7. Ask Questions.
-
 8. Build FastAPI API.
-
 9. Connect React Frontend.
-
-10. Deploy Application.`}
-        </CodeBlock>
+10. Deploy Application.`}</CodeBlock>
       </Section>
 
       {/* Interview */}

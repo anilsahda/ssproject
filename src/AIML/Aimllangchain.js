@@ -6,229 +6,162 @@ function Aimllangchain() {
 
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">
-          LangChain Practical Examples
-        </h1>
+        <h1 className="text-xl font-bold text-indigo-700">LangChain</h1>
 
         <p className="text-gray-500 text-xs mt-1">
-          Learn LangChain from beginner to advanced with hands-on practical examples for AI / ML Engineers.
+          <strong>LangChain</strong> is an open-source framework for building applications powered by Large Language Models (LLMs). It helps developers connect LLMs with external data sources, APIs, databases, and tools to create intelligent AI applications and agents.<br /><br />
+
+          <strong>LangChain is used for</strong>
+          <ul>
+              <li>Building AI-powered applications</li>
+              <li>Developing LLM-based chatbots</li>
+              <li>Retrieval-Augmented Generation (RAG)</li>
+              <li>Connecting LLMs with databases and APIs</li>
+              <li>Document loading, processing, and retrieval</li>
+              <li>Prompt engineering and prompt templates</li>
+              <li>Creating AI Agents with tools and memory</li>
+              <li>Conversation memory management</li>
+              <li>Workflow orchestration using chains</li>
+              <li>Integrating with OpenAI, Hugging Face, Azure OpenAI, AWS Bedrock, and other LLM providers</li>
+          </ul>
         </p>
       </header>
 
       {/* Installation */}
       <Section title="Step 1 : Install LangChain" color="text-green-600">
-        <CodeBlock>
-{`pip install langchain
+        <CodeBlock>{`pip install langchain
 
 pip install langchain-openai
-
 pip install langchain-community
-
 pip install langchain-core
-
 pip install faiss-cpu
-
 pip install chromadb
-
 pip install pypdf
-
-pip install tiktoken`}
-        </CodeBlock>
+pip install tiktoken`}</CodeBlock>
       </Section>
 
       {/* Import */}
       <Section title="Step 2 : Import Libraries" color="text-yellow-600">
-        <CodeBlock>
-{`from langchain_openai import ChatOpenAI
-
+        <CodeBlock>{`from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
-
-from langchain.chains import LLMChain`}
-        </CodeBlock>
+from langchain.chains import LLMChain`}</CodeBlock>
       </Section>
 
       {/* Environment */}
       <Section title="Step 3 : Configure API Key" color="text-red-600">
-        <CodeBlock>
-{`# .env
+        <CodeBlock>{`# .env
 
-OPENAI_API_KEY=your_api_key`}
-        </CodeBlock>
+OPENAI_API_KEY=your_api_key`}</CodeBlock>
       </Section>
 
       {/* LLM */}
       <Section title="Step 4 : Initialize LLM" color="text-indigo-600">
-        <CodeBlock>
-{`from langchain_openai import ChatOpenAI
+        <CodeBlock>{`from langchain_openai import ChatOpenAI
 
-llm = ChatOpenAI(
-    model="gpt-4o-mini",
-    temperature=0
-)`}
-        </CodeBlock>
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)`}</CodeBlock>
       </Section>
 
       {/* Prompt */}
       <Section title="Step 5 : Prompt Template" color="text-purple-600">
-        <CodeBlock>
-{`from langchain_core.prompts import ChatPromptTemplate
+        <CodeBlock>{`from langchain_core.prompts import ChatPromptTemplate
 
-prompt = ChatPromptTemplate.from_template(
-    "Explain {topic} in simple words."
-)
-
+prompt = ChatPromptTemplate.from_template("Explain {topic} in simple words.")
 chain = prompt | llm
+response = chain.invoke({"topic":"Machine Learning"})
 
-response = chain.invoke({
-    "topic":"Machine Learning"
-})
-
-print(response.content)`}
-        </CodeBlock>
+print(response.content)`}</CodeBlock>
       </Section>
 
       {/* Output Parser */}
       <Section title="Step 6 : Output Parser" color="text-blue-600">
-        <CodeBlock>
-{`from langchain_core.output_parsers import StrOutputParser
+        <CodeBlock>{`from langchain_core.output_parsers import StrOutputParser
 
 chain = prompt | llm | StrOutputParser()
-
-print(
-    chain.invoke({
-        "topic":"Deep Learning"
-    })
-)`}
-        </CodeBlock>
+print(chain.invoke({"topic":"Deep Learning"}))`}</CodeBlock>
       </Section>
 
       {/* Document Loader */}
       <Section title="Step 7 : Load PDF" color="text-green-600">
-        <CodeBlock>
-{`from langchain_community.document_loaders import PyPDFLoader
+        <CodeBlock>{`from langchain_community.document_loaders import PyPDFLoader
 
 loader = PyPDFLoader("sample.pdf")
-
 documents = loader.load()
 
-print(len(documents))`}
-        </CodeBlock>
+print(len(documents))`}</CodeBlock>
       </Section>
 
       {/* Text Splitter */}
       <Section title="Step 8 : Split Documents" color="text-red-600">
-        <CodeBlock>
-{`from langchain.text_splitter import RecursiveCharacterTextSplitter
+        <CodeBlock>{`from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-splitter = RecursiveCharacterTextSplitter(
-    chunk_size=500,
-    chunk_overlap=50
-)
-
+splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
 chunks = splitter.split_documents(documents)
 
-print(len(chunks))`}
-        </CodeBlock>
+print(len(chunks))`}</CodeBlock>
       </Section>
 
       {/* Embeddings */}
       <Section title="Step 9 : Create Embeddings" color="text-yellow-600">
-        <CodeBlock>
-{`from langchain_openai import OpenAIEmbeddings
+        <CodeBlock>{`from langchain_openai import OpenAIEmbeddings
 
-embedding = OpenAIEmbeddings()`}
-        </CodeBlock>
+embedding = OpenAIEmbeddings()`}</CodeBlock>
       </Section>
 
       {/* Vector DB */}
       <Section title="Step 10 : Store in FAISS" color="text-purple-600">
-        <CodeBlock>
-{`from langchain_community.vectorstores import FAISS
+        <CodeBlock>{`from langchain_community.vectorstores import FAISS
 
-db = FAISS.from_documents(
-    chunks,
-    embedding
-)
-
-db.save_local("faiss_db")`}
-        </CodeBlock>
+db = FAISS.from_documents(chunks, embedding)
+db.save_local("faiss_db")`}</CodeBlock>
       </Section>
 
       {/* Search */}
       <Section title="Step 11 : Similarity Search" color="text-indigo-600">
-        <CodeBlock>
-{`results = db.similarity_search(
-    "What is Artificial Intelligence?"
-)
+        <CodeBlock>{`results = db.similarity_search("What is Artificial Intelligence?")
 
-print(results[0].page_content)`}
-        </CodeBlock>
+print(results[0].page_content)`}</CodeBlock>
       </Section>
 
       {/* Retriever */}
       <Section title="Step 12 : Retriever" color="text-blue-600">
-        <CodeBlock>
-{`retriever = db.as_retriever()
+        <CodeBlock>{`retriever = db.as_retriever()
 
-docs = retriever.invoke(
-    "Explain Neural Networks"
-)
+docs = retriever.invoke("Explain Neural Networks")
 
-print(docs)`}
-        </CodeBlock>
+print(docs)`}</CodeBlock>
       </Section>
 
       {/* Conversation */}
       <Section title="Step 13 : Conversation Memory" color="text-green-600">
-        <CodeBlock>
-{`from langchain.memory import ConversationBufferMemory
+        <CodeBlock>{`from langchain.memory import ConversationBufferMemory
 
-memory = ConversationBufferMemory()`}
-        </CodeBlock>
+memory = ConversationBufferMemory()`}</CodeBlock>
       </Section>
 
       {/* RAG */}
       <Section title="Step 14 : RAG Workflow" color="text-red-600">
-        <CodeBlock>
-{`PDF
-
+        <CodeBlock>{`PDF
 ↓
-
 Split
-
 ↓
-
 Embeddings
-
 ↓
-
 Vector Database
-
 ↓
-
 Retriever
-
 ↓
-
 LLM
-
 ↓
-
-Answer`}
-        </CodeBlock>
+Answer`}</CodeBlock>
       </Section>
 
       {/* Chains */}
       <Section title="Step 15 : Simple Chain" color="text-yellow-600">
-        <CodeBlock>
-{`chain = prompt | llm
+        <CodeBlock>{`chain = prompt | llm
 
-response = chain.invoke({
-    "topic":"Python"
-})
+response = chain.invoke({ "topic":"Python" })
 
-print(response.content)`}
-        </CodeBlock>
+print(response.content)`}</CodeBlock>
       </Section>
 
       {/* Practice */}
@@ -249,29 +182,18 @@ print(response.content)`}
 
       {/* Mini Project */}
       <Section title="Mini Project : AI PDF Chat Assistant" color="text-indigo-600">
-        <CodeBlock>
-{`Tasks
+        <CodeBlock>{`Tasks
 
 1. Upload PDF.
-
 2. Read PDF.
-
 3. Split Text.
-
 4. Generate Embeddings.
-
 5. Store in FAISS.
-
 6. Retrieve Similar Documents.
-
 7. Ask Questions.
-
 8. Generate AI Answers.
-
 9. Build FastAPI Backend.
-
-10. Connect React Frontend.`}
-        </CodeBlock>
+10. Connect React Frontend.`}</CodeBlock>
       </Section>
 
       {/* Interview */}

@@ -6,44 +6,48 @@ function Aimlpandas() {
 
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">
-          Pandas Practical Examples
-        </h1>
+        <h1 className="text-xl font-bold text-indigo-700">Pandas</h1>
 
         <p className="text-gray-500 text-xs mt-1">
-          Learn Pandas with practical examples for AI / ML Engineers.
+          <strong>Pandas</strong> is a powerful Python library used for data manipulation and analysis. It provides easy-to-use data structures like Series and DataFrames for working with structured data.<br /><br />
+
+          <strong>Pandas is used for</strong>
+          <ul>
+              <li>Reading and writing data (CSV, Excel, JSON, SQL, etc.)</li>
+              <li>Data cleaning and preprocessing</li>
+              <li>Filtering and sorting data</li>
+              <li>Handling missing values</li>
+              <li>Data transformation and aggregation</li>
+              <li>Data analysis and statistical operations</li>
+              <li>Merging and joining datasets</li>
+              <li>Grouping and summarizing data</li>
+              <li>Time series analysis</li>
+              <li>Preparing data for Machine Learning</li>
+          </ul>
         </p>
       </header>
 
       {/* Installation */}
       <Section title="Step 1 : Install Pandas" color="text-green-600">
-        <CodeBlock>
-{`pip install pandas`}
-        </CodeBlock>
+        <CodeBlock>{`pip install pandas`}</CodeBlock>
       </Section>
 
       {/* Import */}
       <Section title="Step 2 : Import Pandas" color="text-yellow-600">
-        <CodeBlock>
-{`import pandas as pd`}
-        </CodeBlock>
+        <CodeBlock>{`import pandas as pd`}</CodeBlock>
       </Section>
 
       {/* Series */}
       <Section title="Step 3 : Create Pandas Series" color="text-red-600">
-        <CodeBlock>
-{`import pandas as pd
+        <CodeBlock>{`import pandas as pd
 
 numbers = pd.Series([10,20,30,40,50])
-
-print(numbers)`}
-        </CodeBlock>
+print(numbers)`}</CodeBlock>
       </Section>
 
       {/* DataFrame */}
       <Section title="Step 4 : Create DataFrame" color="text-indigo-600">
-        <CodeBlock>
-{`import pandas as pd
+        <CodeBlock>{`import pandas as pd
 
 students = {
     "Id":[1,2,3],
@@ -52,116 +56,92 @@ students = {
 }
 
 df = pd.DataFrame(students)
+print(df)`}</CodeBlock>
+      </Section>
 
-print(df)`}
-        </CodeBlock>
+      {/* Create CSV */}
+      <Section title="Step 5 : Create CSV File students.csv in app folder" color="text-purple-600">
+        <CodeBlock>{`Id,Name,Marks
+1,Anil,85
+2,Rahul,76
+3,Priya,92
+4,Amit,68
+5,Neha,88`}</CodeBlock>
       </Section>
 
       {/* Read CSV */}
-      <Section title="Step 5 : Read CSV File" color="text-purple-600">
-        <CodeBlock>
-{`import pandas as pd
+      <Section title="Step 6 : Read CSV File" color="text-purple-600">
+        <CodeBlock>{`import pandas as pd
 
 df = pd.read_csv("students.csv")
-
-print(df)`}
-        </CodeBlock>
+print(df)`}</CodeBlock>
       </Section>
 
       {/* Information */}
-      <Section title="Step 6 : Display Data Information" color="text-blue-600">
-        <CodeBlock>
-{`print(df.head())
-
+      <Section title="Step 7 : Display Data Information" color="text-blue-600">
+        <CodeBlock>{`print(df.head())
 print(df.tail())
-
 print(df.info())
-
-print(df.describe())`}
-        </CodeBlock>
+print(df.describe())`}</CodeBlock>
       </Section>
 
       {/* Columns */}
-      <Section title="Step 7 : Select Columns" color="text-green-600">
-        <CodeBlock>
-{`print(df["Name"])
-
+      <Section title="Step 8 : Select Columns" color="text-green-600">
+        <CodeBlock>{`print(df["Name"])
 print(df["Marks"])`}
         </CodeBlock>
       </Section>
 
       {/* Filtering */}
-      <Section title="Step 8 : Filter Data" color="text-red-600">
-        <CodeBlock>
-{`result = df[df["Marks"] > 80]
-
-print(result)`}
-        </CodeBlock>
+      <Section title="Step 9 : Filter Data" color="text-red-600">
+        <CodeBlock>{`result = df[df["Marks"] > 80]
+print(result)`}</CodeBlock>
       </Section>
 
       {/* Sorting */}
-      <Section title="Step 9 : Sort Data" color="text-yellow-600">
-        <CodeBlock>
-{`print(df.sort_values(by="Marks"))
-
-print(df.sort_values(by="Marks",ascending=False))`}
-        </CodeBlock>
+      <Section title="Step 10 : Sort Data" color="text-yellow-600">
+        <CodeBlock>{`print(df.sort_values(by="Marks"))
+print(df.sort_values(by="Marks",ascending=False))`}</CodeBlock>
       </Section>
 
       {/* Missing Values */}
-      <Section title="Step 10 : Handle Missing Values" color="text-purple-600">
-        <CodeBlock>
-{`print(df.isnull())
-
+      <Section title="Step 11 : Handle Missing Values" color="text-purple-600">
+        <CodeBlock>{`print(df.isnull())
 print(df.dropna())
-
-print(df.fillna(0))`}
-        </CodeBlock>
+print(df.fillna(0))`}</CodeBlock>
       </Section>
 
       {/* Add Column */}
-      <Section title="Step 11 : Add New Column" color="text-indigo-600">
-        <CodeBlock>
-{`df["Result"]="Pass"
-
-print(df)`}
-        </CodeBlock>
+      <Section title="Step 12 : Add New Column" color="text-indigo-600">
+        <CodeBlock>{`df["Result"]="Pass"
+print(df)`}</CodeBlock>
       </Section>
 
       {/* Update Column */}
-      <Section title="Step 12 : Update Column" color="text-blue-600">
-        <CodeBlock>
-{`df["Marks"]=df["Marks"]+5
-
-print(df)`}
-        </CodeBlock>
+      <Section title="Step 13 : Update Column" color="text-blue-600">
+        <CodeBlock>{`df["Marks"]=df["Marks"]+5
+print(df)`}</CodeBlock>
       </Section>
 
       {/* Delete Column */}
-      <Section title="Step 13 : Delete Column" color="text-green-600">
-        <CodeBlock>
-{`df.drop("Result",axis=1,inplace=True)
-
-print(df)`}
-        </CodeBlock>
+      <Section title="Step 14 : Delete Column" color="text-green-600">
+        <CodeBlock>{`df.drop("Result",axis=1,inplace=True)
+print(df)`}</CodeBlock>
       </Section>
 
       {/* Group By */}
-      <Section title="Step 14 : Group By" color="text-red-600">
-        <CodeBlock>
-{`sales = pd.DataFrame({
+      <Section title="Step 15 : Group By" color="text-red-600">
+        <CodeBlock>{`sales = pd.DataFrame({
     "City":["Delhi","Delhi","Mumbai","Mumbai"],
     "Sales":[1000,2000,1500,3000]
 })
 
-print(sales.groupby("City").sum())`}
-        </CodeBlock>
+print(sales.groupby("City").sum())`}</CodeBlock>
       </Section>
 
       {/* Merge */}
-      <Section title="Step 15 : Merge DataFrames" color="text-yellow-600">
-        <CodeBlock>
-{`df1 = pd.DataFrame({
+      <Section title="Step 16 : Merge DataFrames" color="text-yellow-600">
+        <CodeBlock>{`df1 = pd.DataFrame({
     "Id":[1,2],
     "Name":["John","David"]
 })
@@ -171,15 +151,12 @@ df2 = pd.DataFrame({
     "Salary":[50000,70000]
 })
 
-print(pd.merge(df1,df2,on="Id"))`}
-        </CodeBlock>
+print(pd.merge(df1,df2,on="Id"))`}</CodeBlock>
       </Section>
 
       {/* Export */}
-      <Section title="Step 16 : Export CSV" color="text-purple-600">
-        <CodeBlock>
-{`df.to_csv("students.csv",index=False)`}
-        </CodeBlock>
+      <Section title="Step 17 : Export CSV" color="text-purple-600">
+        <CodeBlock>{`df.to_csv("students.csv",index=False)`}</CodeBlock>
       </Section>
 
       {/* Practice */}
@@ -200,29 +177,18 @@ print(pd.merge(df1,df2,on="Id"))`}
 
       {/* Assignment */}
       <Section title="Assignment" color="text-indigo-600">
-        <CodeBlock>
-{`Employee Management
+        <CodeBlock>{`Employee Management
 
 1. Create Employee DataFrame.
-
 2. Add Salary column.
-
 3. Add Department column.
-
 4. Display employees with Salary > 50000.
-
 5. Sort employees by Salary.
-
 6. Calculate Average Salary.
-
 7. Find Maximum Salary.
-
 8. Find Minimum Salary.
-
 9. Export Employee Data to CSV.
-
-10. Read CSV and display all records.`}
-        </CodeBlock>
+10. Read CSV and display all records.`}</CodeBlock>
       </Section>
 
     </div>

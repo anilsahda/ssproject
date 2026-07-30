@@ -6,122 +6,104 @@ function Aimltensorflow() {
 
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">
-          TensorFlow Practical Examples
-        </h1>
+        <h1 className="text-xl font-bold text-indigo-700">TensorFlow</h1>
 
         <p className="text-gray-500 text-xs mt-1">
-          Learn TensorFlow from beginner to intermediate with practical Deep Learning examples for AI / ML Engineers.
+          <strong>TensorFlow</strong> is an open-source machine learning framework developed by Google. It is widely used for building, training, and deploying machine learning and deep learning models.<br /><br />
+
+          <strong>TensorFlow is used for</strong>
+          <ul>
+            <li>Deep Learning model development</li>
+            <li>Neural Networks (ANN, CNN, RNN)</li>
+            <li>Computer Vision applications</li>
+            <li>Natural Language Processing (NLP)</li>
+            <li>Generative AI and Large Language Models (LLMs)</li>
+            <li>Transfer Learning and Fine-Tuning</li>
+            <li>GPU and TPU accelerated model training</li>
+            <li>Model evaluation and inference</li>
+            <li>Deploying AI models to production</li>
+            <li>Building AI applications for web, mobile, and cloud</li>
+          </ul>
         </p>
       </header>
 
       {/* Installation */}
       <Section title="Step 1 : Install TensorFlow" color="text-green-600">
-        <CodeBlock>
-{`pip install tensorflow`}
-        </CodeBlock>
+        <CodeBlock>{`pip install tensorflow`}</CodeBlock>
       </Section>
 
       {/* Import */}
       <Section title="Step 2 : Import TensorFlow" color="text-yellow-600">
-        <CodeBlock>
-{`import tensorflow as tf
+        <CodeBlock>{`import tensorflow as tf
 
-print(tf.__version__)`}
-        </CodeBlock>
+print(tf.__version__)`}</CodeBlock>
       </Section>
 
       {/* Verify Installation */}
       <Section title="Step 3 : Verify Installation" color="text-red-600">
-        <CodeBlock>
-{`import tensorflow as tf
+        <CodeBlock>{`import tensorflow as tf
 
 print("TensorFlow Version :", tf.__version__)
-
-print("GPU Available :", len(tf.config.list_physical_devices('GPU')) > 0)`}
-        </CodeBlock>
+print("GPU Available :", len(tf.config.list_physical_devices('GPU')) > 0)`}</CodeBlock>
       </Section>
 
       {/* Tensor */}
       <Section title="Step 4 : Create Tensor" color="text-indigo-600">
-        <CodeBlock>
-{`import tensorflow as tf
+        <CodeBlock>{`import tensorflow as tf
 
 tensor = tf.constant([10,20,30,40])
-
-print(tensor)`}
-        </CodeBlock>
+print(tensor)`}</CodeBlock>
       </Section>
 
       {/* Variables */}
       <Section title="Step 5 : TensorFlow Variables" color="text-purple-600">
-        <CodeBlock>
-{`variable = tf.Variable([1,2,3])
-
-print(variable)`}
-        </CodeBlock>
+        <CodeBlock>{`variable = tf.Variable([1,2,3])
+print(variable)`}</CodeBlock>
       </Section>
 
       {/* Math */}
       <Section title="Step 6 : Tensor Operations" color="text-blue-600">
-        <CodeBlock>
-{`a = tf.constant([10,20,30])
-
+        <CodeBlock>{`a = tf.constant([10,20,30])
 b = tf.constant([1,2,3])
 
 print(tf.add(a,b))
-
 print(tf.subtract(a,b))
-
 print(tf.multiply(a,b))
-
-print(tf.divide(a,b))`}
-        </CodeBlock>
+print(tf.divide(a,b))`}</CodeBlock>
       </Section>
 
       {/* Matrix */}
       <Section title="Step 7 : Matrix Operations" color="text-green-600">
-        <CodeBlock>
-{`matrix1 = tf.constant([[1,2],[3,4]])
-
+        <CodeBlock>{`matrix1 = tf.constant([[1,2],[3,4]])
 matrix2 = tf.constant([[5,6],[7,8]])
 
-print(tf.matmul(matrix1,matrix2))`}
-        </CodeBlock>
+print(tf.matmul(matrix1,matrix2))`}</CodeBlock>
       </Section>
 
       {/* Random */}
       <Section title="Step 8 : Random Tensor" color="text-red-600">
-        <CodeBlock>
-{`print(tf.random.normal((3,3)))
-
-print(tf.random.uniform((2,5)))`}
-        </CodeBlock>
+        <CodeBlock>{`print(tf.random.normal((3,3)))
+print(tf.random.uniform((2,5)))`}</CodeBlock>
       </Section>
 
       {/* Reshape */}
       <Section title="Step 9 : Reshape Tensor" color="text-yellow-600">
-        <CodeBlock>
-{`tensor = tf.range(12)
+        <CodeBlock>{`tensor = tf.range(12)
 
-print(tf.reshape(tensor,(3,4)))`}
-        </CodeBlock>
+print(tf.reshape(tensor,(3,4)))`}</CodeBlock>
       </Section>
 
       {/* Dataset */}
       <Section title="Step 10 : Create Dataset" color="text-purple-600">
-        <CodeBlock>
-{`dataset = tf.data.Dataset.from_tensor_slices([1,2,3,4,5])
+        <CodeBlock>{`dataset = tf.data.Dataset.from_tensor_slices([1,2,3,4,5])
 
 for item in dataset:
-    print(item.numpy())`}
-        </CodeBlock>
+    print(item.numpy())`}</CodeBlock>
       </Section>
 
       {/* Sequential */}
       <Section title="Step 11 : Build Neural Network" color="text-indigo-600">
-        <CodeBlock>
-{`from tensorflow.keras.models import Sequential
+        <CodeBlock>{`from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
 model = Sequential([
@@ -130,86 +112,68 @@ model = Sequential([
     Dense(10,activation="softmax")
 ])
 
-model.summary()`}
-        </CodeBlock>
+model.summary()`}</CodeBlock>
       </Section>
 
       {/* Compile */}
       <Section title="Step 12 : Compile Model" color="text-blue-600">
-        <CodeBlock>
-{`model.compile(
+        <CodeBlock>{`model.compile(
     optimizer="adam",
     loss="sparse_categorical_crossentropy",
     metrics=["accuracy"]
-)`}
-        </CodeBlock>
+)`}</CodeBlock>
       </Section>
 
       {/* Train */}
       <Section title="Step 13 : Train Model" color="text-green-600">
-        <CodeBlock>
-{`model.fit(
+        <CodeBlock>{`model.fit(
     X_train,
     y_train,
     epochs=10,
     batch_size=32
-)`}
-        </CodeBlock>
+)`}</CodeBlock>
       </Section>
 
       {/* Evaluate */}
       <Section title="Step 14 : Evaluate Model" color="text-red-600">
-        <CodeBlock>
-{`loss,accuracy=model.evaluate(X_test,y_test)
+        <CodeBlock>{`loss,accuracy=model.evaluate(X_test,y_test)
 
 print(loss)
-
-print(accuracy)`}
-        </CodeBlock>
+print(accuracy)`}</CodeBlock>
       </Section>
 
       {/* Prediction */}
       <Section title="Step 15 : Prediction" color="text-yellow-600">
-        <CodeBlock>
-{`prediction=model.predict(X_test)
+        <CodeBlock>{`prediction=model.predict(X_test)
 
-print(prediction[:5])`}
-        </CodeBlock>
+print(prediction[:5])`}</CodeBlock>
       </Section>
 
       {/* Save */}
       <Section title="Step 16 : Save Model" color="text-purple-600">
-        <CodeBlock>
-{`model.save("student_model.keras")`}
-        </CodeBlock>
+        <CodeBlock>{`model.save("student_model.keras")`}</CodeBlock>
       </Section>
 
       {/* Load */}
       <Section title="Step 17 : Load Model" color="text-indigo-600">
-        <CodeBlock>
-{`from tensorflow.keras.models import load_model
+        <CodeBlock>{`from tensorflow.keras.models import load_model
 
-model=load_model("student_model.keras")`}
-        </CodeBlock>
+model=load_model("student_model.keras")`}</CodeBlock>
       </Section>
 
       {/* MNIST */}
       <Section title="Step 18 : MNIST Dataset" color="text-blue-600">
-        <CodeBlock>
-{`from tensorflow.keras.datasets import mnist
+        <CodeBlock>{`from tensorflow.keras.datasets import mnist
 
 (X_train,y_train),(X_test,y_test)=mnist.load_data()
 
 print(X_train.shape)
-
-print(y_train.shape)`}
-        </CodeBlock>
+print(y_train.shape)`}</CodeBlock>
       </Section>
 
       {/* CNN */}
       <Section title="Step 19 : Simple CNN Model" color="text-green-600">
-        <CodeBlock>
-{`from tensorflow.keras.models import Sequential
+        <CodeBlock>{`from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D,MaxPooling2D,Flatten,Dense
 
 model=Sequential([
@@ -218,8 +182,7 @@ model=Sequential([
     Flatten(),
     Dense(128,activation="relu"),
     Dense(10,activation="softmax")
-])`}
-        </CodeBlock>
+])`}</CodeBlock>
       </Section>
 
       {/* Practice */}
@@ -245,29 +208,18 @@ model=Sequential([
 
       {/* Assignment */}
       <Section title="Mini Project : Handwritten Digit Recognition" color="text-purple-600">
-        <CodeBlock>
-{`Tasks
+        <CodeBlock>{`Tasks
 
 1. Load MNIST Dataset.
-
 2. Normalize Images.
-
 3. Build CNN Model.
-
 4. Compile Model.
-
 5. Train Model.
-
 6. Evaluate Accuracy.
-
 7. Save Model.
-
 8. Load Saved Model.
-
 9. Predict New Image.
-
-10. Achieve Accuracy > 98%.`}
-        </CodeBlock>
+10. Achieve Accuracy > 98%.`}</CodeBlock>
       </Section>
 
       {/* Interview */}

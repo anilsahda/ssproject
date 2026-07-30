@@ -6,249 +6,173 @@ function Aimlhuggingface() {
 
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">
-          Hugging Face Practical Examples
-        </h1>
+        <h1 className="text-xl font-bold text-indigo-700">Hugging Face</h1>
 
         <p className="text-gray-500 text-xs mt-1">
-          Learn Hugging Face Transformers, Datasets, Pipelines and Model Hub with hands-on practical examples for AI / ML Engineers.
+          <strong>Hugging Face</strong> is an open-source AI platform and library that provides pre-trained machine learning models, datasets, and tools for Natural Language Processing (NLP), Computer Vision, Audio, and Generative AI. It is widely used for building, fine-tuning, and deploying AI applications.<br /><br />
+          <strong>Hugging Face is used for</strong>
+          <ul>
+              <li>Using pre-trained AI and Machine Learning models</li>
+              <li>Natural Language Processing (NLP)</li>
+              <li>Generative AI and Large Language Models (LLMs)</li>
+              <li>Text generation, summarization, and translation</li>
+              <li>Question Answering and Chatbot development</li>
+              <li>Computer Vision and Image Classification</li>
+              <li>Speech Recognition and Audio Processing</li>
+              <li>Fine-tuning Transformer models</li>
+              <li>Model sharing through the Hugging Face Hub</li>
+              <li>Deploying AI models using Hugging Face Inference APIs</li>
+          </ul>
         </p>
       </header>
 
       {/* Installation */}
       <Section title="Step 1 : Install Hugging Face Packages" color="text-green-600">
-        <CodeBlock>
-{`pip install transformers
-
+        <CodeBlock>{`pip install transformers
 pip install datasets
-
 pip install evaluate
-
 pip install accelerate
-
 pip install sentence-transformers
-
-pip install huggingface_hub`}
-        </CodeBlock>
+pip install huggingface_hub`}</CodeBlock>
       </Section>
 
       {/* Import */}
       <Section title="Step 2 : Import Libraries" color="text-yellow-600">
-        <CodeBlock>
-{`from transformers import pipeline
-
+        <CodeBlock>{`from transformers import pipeline
 from transformers import AutoTokenizer
-
 from transformers import AutoModel
-
-from datasets import load_dataset`}
-        </CodeBlock>
+from datasets import load_dataset`}</CodeBlock>
       </Section>
 
       {/* Version */}
       <Section title="Step 3 : Verify Installation" color="text-red-600">
-        <CodeBlock>
-{`import transformers
+        <CodeBlock>{`import transformers
 
-print(transformers.__version__)`}
-        </CodeBlock>
+print(transformers.__version__)`}</CodeBlock>
       </Section>
 
       {/* Sentiment */}
       <Section title="Step 4 : Sentiment Analysis" color="text-indigo-600">
-        <CodeBlock>
-{`from transformers import pipeline
+        <CodeBlock>{`from transformers import pipeline
 
 classifier = pipeline("sentiment-analysis")
-
 result = classifier("I love Artificial Intelligence.")
-
-print(result)`}
-        </CodeBlock>
+print(result)`}</CodeBlock>
       </Section>
 
       {/* Text Generation */}
       <Section title="Step 5 : Text Generation" color="text-purple-600">
-        <CodeBlock>
-{`generator = pipeline("text-generation")
+        <CodeBlock>{`generator = pipeline("text-generation")
 
-result = generator(
-    "Artificial Intelligence is",
-    max_length=50
-)
+result = generator("Artificial Intelligence is", max_length=50)
 
-print(result)`}
-        </CodeBlock>
+print(result)`}</CodeBlock>
       </Section>
 
       {/* Summarization */}
       <Section title="Step 6 : Text Summarization" color="text-blue-600">
-        <CodeBlock>
-{`summarizer = pipeline("summarization")
+        <CodeBlock>{`summarizer = pipeline("summarization")
 
 text = """
 Artificial Intelligence is changing every industry by
 automating tasks and improving decision making.
 """
 
-print(
-    summarizer(
-        text,
-        max_length=40,
-        min_length=15
-    )
-)`}
-        </CodeBlock>
+print(summarizer(text, max_length=40, min_length=15))`}</CodeBlock>
       </Section>
 
       {/* Translation */}
       <Section title="Step 7 : Translation" color="text-green-600">
-        <CodeBlock>
-{`translator = pipeline(
-    "translation_en_to_fr"
-)
+        <CodeBlock>{`translator = pipeline("translation_en_to_fr")
 
-print(
-    translator(
-        "Welcome to AI Engineering"
-    )
-)`}
-        </CodeBlock>
+print(translator("Welcome to AI Engineering"))`}</CodeBlock>
       </Section>
 
       {/* Question Answering */}
       <Section title="Step 8 : Question Answering" color="text-red-600">
-        <CodeBlock>
-{`qa = pipeline("question-answering")
+        <CodeBlock>{`qa = pipeline("question-answering")
 
-result = qa(
-    question="What is AI?",
-    context="Artificial Intelligence is the simulation of human intelligence."
-)
+result = qa(question="What is AI?", context="Artificial Intelligence is the simulation of human intelligence.")
 
-print(result)`}
-        </CodeBlock>
+print(result)`}</CodeBlock>
       </Section>
 
       {/* Fill Mask */}
       <Section title="Step 9 : Fill Mask" color="text-yellow-600">
-        <CodeBlock>
-{`fill = pipeline("fill-mask")
+        <CodeBlock>{`fill = pipeline("fill-mask")
 
-print(
-    fill(
-        "Machine learning is <mask>."
-    )
-)`}
-        </CodeBlock>
+print(fill("Machine learning is <mask>."))`}</CodeBlock>
       </Section>
 
       {/* Embeddings */}
       <Section title="Step 10 : Sentence Embeddings" color="text-purple-600">
-        <CodeBlock>
-{`from sentence_transformers import SentenceTransformer
+        <CodeBlock>{`from sentence_transformers import SentenceTransformer
 
-model = SentenceTransformer(
-    "all-MiniLM-L6-v2"
-)
+model = SentenceTransformer("all-MiniLM-L6-v2")
+embedding = model.encode("Artificial Intelligence")
 
-embedding = model.encode(
-    "Artificial Intelligence"
-)
-
-print(embedding.shape)`}
-        </CodeBlock>
+print(embedding.shape)`}</CodeBlock>
       </Section>
 
       {/* Tokenizer */}
       <Section title="Step 11 : Tokenizer" color="text-indigo-600">
-        <CodeBlock>
-{`from transformers import AutoTokenizer
+        <CodeBlock>{`from transformers import AutoTokenizer
 
-tokenizer = AutoTokenizer.from_pretrained(
-    "bert-base-uncased"
-)
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+tokens = tokenizer("Welcome to Hugging Face")
 
-tokens = tokenizer(
-    "Welcome to Hugging Face"
-)
-
-print(tokens)`}
-        </CodeBlock>
+print(tokens)`}</CodeBlock>
       </Section>
 
       {/* Load Model */}
       <Section title="Step 12 : Load Pretrained Model" color="text-blue-600">
-        <CodeBlock>
-{`from transformers import AutoModel
+        <CodeBlock>{`from transformers import AutoModel
 
-model = AutoModel.from_pretrained(
-    "bert-base-uncased"
-)
+model = AutoModel.from_pretrained("bert-base-uncased")
 
-print(model)`}
-        </CodeBlock>
+print(model)`}</CodeBlock>
       </Section>
 
       {/* Dataset */}
       <Section title="Step 13 : Load Dataset" color="text-green-600">
-        <CodeBlock>
-{`from datasets import load_dataset
+        <CodeBlock>{`from datasets import load_dataset
 
 dataset = load_dataset("imdb")
 
-print(dataset)`}
-        </CodeBlock>
+print(dataset)`}</CodeBlock>
       </Section>
 
       {/* Evaluation */}
       <Section title="Step 14 : Evaluation Metric" color="text-red-600">
-        <CodeBlock>
-{`import evaluate
+        <CodeBlock>{`import evaluate
 
 metric = evaluate.load("accuracy")
 
-print(metric)`}
-        </CodeBlock>
+print(metric)`}</CodeBlock>
       </Section>
 
       {/* Login */}
       <Section title="Step 15 : Login to Hugging Face Hub" color="text-yellow-600">
-        <CodeBlock>
-{`huggingface-cli login`}
-        </CodeBlock>
+        <CodeBlock>{`huggingface-cli login`}</CodeBlock>
       </Section>
 
       {/* Download */}
       <Section title="Step 16 : Download Model" color="text-purple-600">
-        <CodeBlock>
-{`from huggingface_hub import snapshot_download
+        <CodeBlock>{`from huggingface_hub import snapshot_download
 
-snapshot_download(
-    repo_id="bert-base-uncased"
-)`}
-        </CodeBlock>
+snapshot_download(repo_id="bert-base-uncased")`}</CodeBlock>
       </Section>
 
       {/* Fine Tuning */}
       <Section title="Step 17 : Fine Tuning Overview" color="text-indigo-600">
-        <CodeBlock>
-{`1. Load Dataset
-
+        <CodeBlock>{`1. Load Dataset
 2. Tokenize Dataset
-
 3. Load Pretrained Model
-
 4. Configure Trainer
-
 5. Train Model
-
 6. Evaluate Model
-
 7. Save Model
-
-8. Push to Hugging Face Hub`}
-        </CodeBlock>
+8. Push to Hugging Face Hub`}</CodeBlock>
       </Section>
 
       {/* Practice */}
@@ -273,25 +197,15 @@ snapshot_download(
 {`Tasks
 
 1. Load Text Generation Model.
-
 2. Generate Response.
-
 3. Summarize Text.
-
 4. Perform Sentiment Analysis.
-
 5. Translate Text.
-
 6. Generate Embeddings.
-
 7. Save Responses.
-
 8. Build FastAPI Endpoint.
-
 9. Connect React Frontend.
-
-10. Deploy Application.`}
-        </CodeBlock>
+10. Deploy Application.`}</CodeBlock>
       </Section>
 
       {/* Interview */}

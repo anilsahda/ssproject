@@ -6,242 +6,149 @@ function Aimlchromadb() {
 
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">
-          ChromaDB Practical Examples
-        </h1>
+        <h1 className="text-xl font-bold text-indigo-700">ChromaDB</h1>
 
         <p className="text-gray-500 text-xs mt-1">
-          Learn ChromaDB from beginner to advanced with practical examples for
-          Vector Storage, Semantic Search, Retrieval-Augmented Generation (RAG),
-          and Enterprise AI Applications.
+          <strong>ChromaDB</strong> is an open-source vector database designed for AI and Large Language Model (LLM) applications. It stores vector embeddings and enables fast semantic search, similarity matching, and document retrieval for Retrieval-Augmented Generation (RAG) systems.<br /><br />
+
+          <strong>ChromaDB is used for</strong>
+          <ul>
+              <li>Storing vector embeddings</li>
+              <li>Semantic search and similarity search</li>
+              <li>Building Retrieval-Augmented Generation (RAG) applications</li>
+              <li>Document indexing and retrieval</li>
+              <li>Knowledge base management</li>
+              <li>Powering AI chatbots with private data</li>
+              <li>Finding similar documents and text</li>
+              <li>Integrating with LangChain and LlamaIndex</li>
+              <li>Supporting OpenAI, Hugging Face, and other embedding models</li>
+              <li>Building AI-powered search and recommendation systems</li>
+          </ul>
         </p>
       </header>
 
       {/* Installation */}
       <Section title="Step 1 : Install ChromaDB" color="text-green-600">
-        <CodeBlock>
-{`pip install chromadb
-
+        <CodeBlock>{`pip install chromadb
 pip install sentence-transformers
-
 pip install langchain
-
 pip install langchain-community
-
-pip install python-dotenv`}
-        </CodeBlock>
+pip install python-dotenv`}</CodeBlock>
       </Section>
 
       {/* Import */}
       <Section title="Step 2 : Import Libraries" color="text-yellow-600">
-        <CodeBlock>
-{`import chromadb
+        <CodeBlock>{`import chromadb
 
-from sentence_transformers import SentenceTransformer`}
-        </CodeBlock>
+from sentence_transformers import SentenceTransformer`}</CodeBlock>
       </Section>
 
       {/* Create Client */}
       <Section title="Step 3 : Create ChromaDB Client" color="text-red-600">
-        <CodeBlock>
-{`import chromadb
+        <CodeBlock>{`import chromadb
 
-client = chromadb.Client()`}
-        </CodeBlock>
+client = chromadb.Client()`}</CodeBlock>
       </Section>
 
       {/* Collection */}
       <Section title="Step 4 : Create Collection" color="text-indigo-600">
-        <CodeBlock>
-{`collection = client.create_collection(
-    name="employees"
-)`}
-        </CodeBlock>
+        <CodeBlock>{`collection = client.create_collection(name="employees")`}</CodeBlock>
       </Section>
 
       {/* Embeddings */}
       <Section title="Step 5 : Generate Embeddings" color="text-purple-600">
-        <CodeBlock>
-{`model = SentenceTransformer(
-    "all-MiniLM-L6-v2"
-)
-
-embedding = model.encode(
-    "Artificial Intelligence"
-)
-
-print(embedding.shape)`}
-        </CodeBlock>
+        <CodeBlock>{`model = SentenceTransformer("all-MiniLM-L6-v2")
+embedding = model.encode("Artificial Intelligence")
+print(embedding.shape)`}</CodeBlock>
       </Section>
 
       {/* Insert */}
       <Section title="Step 6 : Insert Documents" color="text-blue-600">
-        <CodeBlock>
-{`collection.add(
-    ids=["1","2","3"],
-    documents=[
-        "Artificial Intelligence",
-        "Machine Learning",
-        "Deep Learning"
-    ]
-)`}
-        </CodeBlock>
+        <CodeBlock>{`collection.add(ids=["1","2","3"], documents=["Artificial Intelligence", "Machine Learning", "Deep Learning"])`}</CodeBlock>
       </Section>
 
       {/* Metadata */}
       <Section title="Step 7 : Insert Metadata" color="text-green-600">
-        <CodeBlock>
-{`collection.add(
-    ids=["4"],
-    documents=["Python Programming"],
-    metadatas=[
-        {"category":"Programming"}
-    ]
-)`}
-        </CodeBlock>
+        <CodeBlock>{`collection.add(ids=["4"], documents=["Python Programming"], metadatas=[{"category":"Programming"}])`}</CodeBlock>
       </Section>
 
       {/* Query */}
       <Section title="Step 8 : Semantic Search" color="text-red-600">
-        <CodeBlock>
-{`results = collection.query(
-    query_texts=[
-        "Explain Artificial Intelligence"
-    ],
-    n_results=2
-)
-
-print(results)`}
-        </CodeBlock>
+        <CodeBlock>{`results = collection.query(query_texts=["Explain Artificial Intelligence"], n_results=2)
+print(results)`}</CodeBlock>
       </Section>
 
       {/* Get */}
       <Section title="Step 9 : Retrieve Documents" color="text-yellow-600">
-        <CodeBlock>
-{`documents = collection.get()
-
-print(documents)`}
-        </CodeBlock>
+        <CodeBlock>{`documents = collection.get()
+print(documents)`}</CodeBlock>
       </Section>
 
       {/* Update */}
       <Section title="Step 10 : Update Document" color="text-purple-600">
-        <CodeBlock>
-{`collection.update(
-    ids=["1"],
-    documents=[
-        "Artificial Intelligence Updated"
-    ]
-)`}
-        </CodeBlock>
+        <CodeBlock>{`collection.update(ids=["1"], documents=["Artificial Intelligence Updated"])`}</CodeBlock>
       </Section>
 
       {/* Delete */}
       <Section title="Step 11 : Delete Document" color="text-indigo-600">
-        <CodeBlock>
-{`collection.delete(
-    ids=["2"]
-)`}
-        </CodeBlock>
+        <CodeBlock>{`collection.delete(ids=["2"])`}</CodeBlock>
       </Section>
 
       {/* Persist */}
       <Section title="Step 12 : Persistent ChromaDB" color="text-blue-600">
-        <CodeBlock>
-{`client = chromadb.PersistentClient(
-    path="./chromadb"
-)`}
-        </CodeBlock>
+        <CodeBlock>{`client = chromadb.PersistentClient(path="./chromadb")`}</CodeBlock>
       </Section>
 
       {/* LangChain */}
       <Section title="Step 13 : LangChain Integration" color="text-green-600">
-        <CodeBlock>
-{`from langchain_community.vectorstores import Chroma
+        <CodeBlock>{`from langchain_community.vectorstores import Chroma
 
-vectorstore = Chroma(
-    persist_directory="./chromadb"
-)`}
-        </CodeBlock>
+vectorstore = Chroma(persist_directory="./chromadb")`}</CodeBlock>
       </Section>
 
       {/* RAG */}
       <Section title="Step 14 : RAG Workflow" color="text-red-600">
-        <CodeBlock>
-{`PDF Files
-
+        <CodeBlock>{`PDF Files
 ↓
-
 Text Extraction
-
 ↓
-
 Chunking
-
 ↓
-
 Embeddings
-
 ↓
-
 ChromaDB
-
 ↓
-
 Retriever
-
 ↓
-
 LLM
-
 ↓
-
-AI Response`}
-        </CodeBlock>
+AI Response`}</CodeBlock>
       </Section>
 
       {/* Architecture */}
       <Section title="Step 15 : Enterprise Architecture" color="text-yellow-600">
-        <CodeBlock>
-{`React
-
+        <CodeBlock>{`React
 ↓
-
 FastAPI
-
 ↓
-
 LangChain
-
 ↓
-
 ChromaDB
-
 ↓
-
 OpenAI
-
 ↓
-
-AI Assistant`}
-        </CodeBlock>
+AI Assistant`}</CodeBlock>
       </Section>
 
       {/* CRUD */}
       <Section title="Step 16 : CRUD Operations" color="text-purple-600">
-        <CodeBlock>
-{`Create Collection
+        <CodeBlock>{`Create Collection
 
 Insert Documents
-
 Retrieve Documents
-
 Update Documents
-
 Delete Documents
-
-Semantic Search`}
-        </CodeBlock>
+Semantic Search`}</CodeBlock>
       </Section>
 
       {/* Practice */}
@@ -267,29 +174,18 @@ Semantic Search`}
 
       {/* Mini Project */}
       <Section title="Mini Project : AI Document Search" color="text-green-600">
-        <CodeBlock>
-{`Tasks
+        <CodeBlock>{`Tasks
 
 1. Upload PDF Files.
-
 2. Extract Text.
-
 3. Split into Chunks.
-
 4. Generate Embeddings.
-
 5. Store in ChromaDB.
-
 6. Perform Semantic Search.
-
 7. Integrate LangChain.
-
 8. Generate AI Answers.
-
 9. Build FastAPI Backend.
-
-10. Connect React Frontend.`}
-        </CodeBlock>
+10. Connect React Frontend.`}</CodeBlock>
       </Section>
 
       {/* Interview */}

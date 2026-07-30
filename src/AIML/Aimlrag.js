@@ -6,347 +6,212 @@ function Aimlrag() {
 
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">
-          Retrieval-Augmented Generation (RAG) Practical Examples
-        </h1>
+        <h1 className="text-xl font-bold text-indigo-700">Retrieval-Augmented Generation (RAG)</h1>
 
         <p className="text-gray-500 text-xs mt-1">
-          Learn Retrieval-Augmented Generation (RAG) from beginner to advanced
-          with practical examples covering document ingestion, embeddings,
-          vector databases, retrieval, Large Language Models (LLMs), and
-          enterprise AI applications.
+          <strong>Retrieval-Augmented Generation (RAG)</strong> is an AI architecture that combines Large Language Models (LLMs) with external knowledge sources. Instead of relying only on the model's trained knowledge, RAG retrieves relevant information from documents, databases, or vector stores before generating accurate and context-aware responses.<br /><br />
+
+          <strong>RAG is used for</strong>
+          <ul>
+              <li>Building AI-powered chatbots</li>
+              <li>Question Answering over private documents</li>
+              <li>Enterprise knowledge management</li>
+              <li>Semantic search and intelligent document retrieval</li>
+              <li>Generating accurate, context-aware responses</li>
+              <li>Reducing AI hallucinations</li>
+              <li>Searching PDFs, Word, Excel, and text documents</li>
+              <li>Integrating with vector databases (ChromaDB, Qdrant, Pinecone, FAISS)</li>
+              <li>Supporting LangChain and LlamaIndex workflows</li>
+              <li>Building AI assistants for healthcare, finance, legal, and customer support</li>
+          </ul>
         </p>
       </header>
 
       {/* Introduction */}
       <Section title="Step 1 : What is RAG?" color="text-green-600">
-        <CodeBlock>
-{`User Question
-
+        <CodeBlock>{`User Question
 ↓
-
 Retriever
-
 ↓
-
 Vector Database
-
 ↓
-
 Relevant Documents
-
 ↓
-
 Large Language Model (LLM)
-
 ↓
-
-Accurate AI Response`}
-        </CodeBlock>
+Accurate AI Response`}</CodeBlock>
       </Section>
 
       {/* Installation */}
       <Section title="Step 2 : Install Required Packages" color="text-yellow-600">
-        <CodeBlock>
-{`pip install openai
-
+        <CodeBlock>{`pip install openai
 pip install langchain
-
 pip install langgraph
-
 pip install llama-index
-
 pip install chromadb
-
 pip install qdrant-client
-
 pip install sentence-transformers
-
 pip install pypdf
-
-pip install fastapi`}
-        </CodeBlock>
+pip install fastapi`}</CodeBlock>
       </Section>
 
       {/* Architecture */}
       <Section title="Step 3 : RAG Architecture" color="text-red-600">
-        <CodeBlock>
-{`PDF Files
-
+        <CodeBlock>{`PDF Files
 ↓
-
 Loader
-
 ↓
-
 Text Extraction
-
 ↓
-
 Chunking
-
 ↓
-
 Embeddings
-
 ↓
-
 Vector Database
-
 ↓
-
 Retriever
-
 ↓
-
 LLM
-
 ↓
-
-Final Response`}
-        </CodeBlock>
+Final Response`}</CodeBlock>
       </Section>
 
       {/* Load PDF */}
       <Section title="Step 4 : Load PDF Documents" color="text-indigo-600">
-        <CodeBlock>
-{`from langchain.document_loaders import PyPDFLoader
+        <CodeBlock>{`from langchain.document_loaders import PyPDFLoader
 
 loader = PyPDFLoader("sample.pdf")
-
-documents = loader.load()`}
-        </CodeBlock>
+documents = loader.load()`}</CodeBlock>
       </Section>
 
       {/* Chunk */}
       <Section title="Step 5 : Split Documents" color="text-purple-600">
-        <CodeBlock>
-{`from langchain.text_splitter import RecursiveCharacterTextSplitter
+        <CodeBlock>{`from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-splitter = RecursiveCharacterTextSplitter(
-    chunk_size=500,
-    chunk_overlap=100
-)
-
-chunks = splitter.split_documents(documents)`}
-        </CodeBlock>
+splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
+chunks = splitter.split_documents(documents)`}</CodeBlock>
       </Section>
 
       {/* Embedding */}
       <Section title="Step 6 : Generate Embeddings" color="text-blue-600">
-        <CodeBlock>
-{`from sentence_transformers import SentenceTransformer
+        <CodeBlock>{`from sentence_transformers import SentenceTransformer
 
-model = SentenceTransformer(
-    "all-MiniLM-L6-v2"
-)
-
-embedding = model.encode(
-    "Artificial Intelligence"
-)`}
-        </CodeBlock>
+model = SentenceTransformer("all-MiniLM-L6-v2")
+embedding = model.encode("Artificial Intelligence")`}</CodeBlock>
       </Section>
 
       {/* Store */}
       <Section title="Step 7 : Store Embeddings" color="text-green-600">
-        <CodeBlock>
-{`Vector Databases
+        <CodeBlock>{`Vector Databases
 
 • ChromaDB
-
 • Qdrant
-
 • Pinecone
-
 • FAISS
-
 • Milvus
-
-• Weaviate`}
-        </CodeBlock>
+• Weaviate`}</CodeBlock>
       </Section>
 
       {/* Retrieve */}
       <Section title="Step 8 : Retrieve Relevant Documents" color="text-red-600">
-        <CodeBlock>
-{`User Question
-
+        <CodeBlock>{`User Question
 ↓
-
 Retriever
-
 ↓
-
 Top-K Documents
-
 ↓
-
 Context
-
 ↓
-
-LLM`}
-        </CodeBlock>
+LLM`}</CodeBlock>
       </Section>
 
       {/* Prompt */}
       <Section title="Step 9 : Prompt with Context" color="text-yellow-600">
-        <CodeBlock>
-{`Question:
-
-Explain Machine Learning.
-
+        <CodeBlock>{`Question: Explain Machine Learning.
 Context:
 
 Retrieved Documents
-
 ↓
-
 LLM
-
 ↓
-
-Answer`}
-        </CodeBlock>
+Answer`}</CodeBlock>
       </Section>
 
       {/* LangChain */}
       <Section title="Step 10 : LangChain RAG Pipeline" color="text-purple-600">
-        <CodeBlock>
-{`Loader
-
+        <CodeBlock>{`Loader
 ↓
-
 Splitter
-
 ↓
-
 Embedding
-
 ↓
-
 Vector Store
-
 ↓
-
 Retriever
-
 ↓
-
 Prompt Template
-
 ↓
-
 LLM
-
 ↓
-
-Answer`}
-        </CodeBlock>
+Answer`}</CodeBlock>
       </Section>
 
       {/* LlamaIndex */}
       <Section title="Step 11 : LlamaIndex Workflow" color="text-indigo-600">
-        <CodeBlock>
-{`Documents
-
+        <CodeBlock>{`Documents
 ↓
-
 Index
-
 ↓
-
 Retriever
-
 ↓
-
 Query Engine
-
 ↓
-
 LLM
-
 ↓
-
-Response`}
-        </CodeBlock>
+Response`}</CodeBlock>
       </Section>
 
       {/* Enterprise */}
       <Section title="Step 12 : Enterprise RAG Architecture" color="text-blue-600">
-        <CodeBlock>
-{`React
-
+        <CodeBlock>{`React
 ↓
-
 FastAPI
-
 ↓
-
 LangChain
-
 ↓
-
 LlamaIndex
-
 ↓
-
 Vector Database
-
 ↓
-
 OpenAI / Gemini
-
 ↓
-
-Enterprise AI Assistant`}
-        </CodeBlock>
+Enterprise AI Assistant`}</CodeBlock>
       </Section>
 
       {/* Use Cases */}
       <Section title="Step 13 : Real-World Use Cases" color="text-green-600">
-        <CodeBlock>
-{`Enterprise Chatbot
-
+        <CodeBlock>{`Enterprise Chatbot
 Document Search
-
 Knowledge Base
-
 Legal Assistant
-
 Medical Assistant
-
 HR Assistant
-
 Customer Support
-
 Research Assistant
-
 Policy Search
-
-Code Assistant`}
-        </CodeBlock>
+Code Assistant`}</CodeBlock>
       </Section>
 
       {/* Best Practices */}
       <Section title="Step 14 : Best Practices" color="text-red-600">
-        <CodeBlock>
-{`Use Good Chunk Size
-
+        <CodeBlock>{`Use Good Chunk Size
 Optimize Chunk Overlap
-
 Use High-Quality Embeddings
-
 Choose Correct Vector Database
-
 Cache Frequently Used Results
-
 Secure API Keys
-
 Monitor Token Usage
-
-Evaluate Retrieval Accuracy`}
-        </CodeBlock>
+Evaluate Retrieval Accuracy`}</CodeBlock>
       </Section>
 
       {/* Practice */}
@@ -372,29 +237,18 @@ Evaluate Retrieval Accuracy`}
 
       {/* Mini Project */}
       <Section title="Mini Project : Enterprise Document Chatbot" color="text-purple-600">
-        <CodeBlock>
-{`Tasks
+        <CodeBlock>{`Tasks
 
 1. Build React Frontend.
-
 2. Build FastAPI Backend.
-
 3. Upload PDF Files.
-
 4. Extract Text.
-
 5. Chunk Documents.
-
 6. Generate Embeddings.
-
 7. Store in ChromaDB/Qdrant.
-
 8. Implement LangChain.
-
 9. Connect OpenAI GPT.
-
-10. Deploy Using Docker.`}
-        </CodeBlock>
+10. Deploy Using Docker.`}</CodeBlock>
       </Section>
 
       {/* Interview */}

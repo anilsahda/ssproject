@@ -6,43 +6,43 @@ function Aimlfastapi() {
 
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">
-          FastAPI Practical Examples
-        </h1>
+        <h1 className="text-xl font-bold text-indigo-700">FastAPI</h1>
 
         <p className="text-gray-500 text-xs mt-1">
-          Learn FastAPI from beginner to advanced with practical examples for building REST APIs, AI APIs, and Microservices.
+          <strong>FastAPI</strong> is a modern, high-performance Python web framework used for building RESTful APIs and backend applications. It is based on standard Python type hints and is widely used for developing AI, Machine Learning, and microservices applications with automatic API documentation.<br /><br />
+
+          <strong>FastAPI is used for</strong>
+          <ul>
+              <li>Building high-performance RESTful APIs</li>
+              <li>Developing AI and Machine Learning backends</li>
+              <li>Creating Microservices architecture</li>
+              <li>Automatic API documentation (Swagger UI & ReDoc)</li>
+              <li>Request validation using Pydantic</li>
+              <li>Asynchronous programming with Async/Await</li>
+              <li>Authentication and Authorization (JWT, OAuth2)</li>
+              <li>Database integration (SQLAlchemy, PostgreSQL, MySQL, MongoDB)</li>
+              <li>File upload and background task processing</li>
+              <li>Deploying scalable cloud-native applications</li>
+          </ul>
         </p>
       </header>
 
       {/* Installation */}
       <Section title="Step 1 : Install FastAPI" color="text-green-600">
-        <CodeBlock>
-{`pip install fastapi
-
+        <CodeBlock>{`pip install fastapi
 pip install uvicorn
-
 pip install sqlalchemy
-
 pip install psycopg2-binary
-
 pip install python-dotenv
-
 pip install pydantic
-
 pip install python-multipart
-
 pip install passlib[bcrypt]
-
-pip install python-jose`}
-        </CodeBlock>
+pip install python-jose`}</CodeBlock>
       </Section>
 
       {/* Create Project */}
       <Section title="Step 2 : Create Project Structure" color="text-yellow-600">
-        <CodeBlock>
-{`FastAPIProject/
-
+        <CodeBlock>{`FastAPIProject/
 │── app/
 │   ├── routers/
 │   ├── models/
@@ -58,206 +58,147 @@ pip install python-jose`}
 │── uploads/
 │── tests/
 │── requirements.txt
-│── .env`}
-        </CodeBlock>
+│── .env`}</CodeBlock>
       </Section>
 
       {/* Hello World */}
       <Section title="Step 3 : Create First API" color="text-red-600">
-        <CodeBlock>
-{`from fastapi import FastAPI
+        <CodeBlock>{`from fastapi import FastAPI
 
 app = FastAPI()
 
 @app.get("/")
 def home():
-    return {"message":"Welcome to FastAPI"}`}
-        </CodeBlock>
+    return {"message":"Welcome to FastAPI"}`}</CodeBlock>
       </Section>
 
       {/* Run */}
       <Section title="Step 4 : Run Application" color="text-indigo-600">
-        <CodeBlock>
-{`uvicorn app.main:app --reload`}
-        </CodeBlock>
+        <CodeBlock>{`uvicorn app.main:app --reload`}</CodeBlock>
       </Section>
 
       {/* Swagger */}
       <Section title="Step 5 : Swagger UI" color="text-purple-600">
-        <CodeBlock>
-{`Swagger UI
-
+        <CodeBlock>{`Swagger UI
 http://localhost:8000/docs
 
 Redoc
 
-http://localhost:8000/redoc`}
-        </CodeBlock>
+http://localhost:8000/redoc`}</CodeBlock>
       </Section>
 
       {/* Request */}
       <Section title="Step 6 : Request Body Using Pydantic" color="text-blue-600">
-        <CodeBlock>
-{`from pydantic import BaseModel
+        <CodeBlock>{`from pydantic import BaseModel
 
 class Employee(BaseModel):
     name:str
     email:str
-    salary:float`}
-        </CodeBlock>
+    salary:float`}</CodeBlock>
       </Section>
 
       {/* POST */}
       <Section title="Step 7 : POST API" color="text-green-600">
-        <CodeBlock>
-{`@app.post("/employees")
+        <CodeBlock>{`@app.post("/employees")
 def create_employee(employee:Employee):
-    return employee`}
-        </CodeBlock>
+    return employee`}</CodeBlock>
       </Section>
 
       {/* GET */}
       <Section title="Step 8 : GET API" color="text-red-600">
-        <CodeBlock>
-{`@app.get("/employees")
+        <CodeBlock>{`@app.get("/employees")
 def get_employees():
-    return []`}
-        </CodeBlock>
+    return []`}</CodeBlock>
       </Section>
 
       {/* Path */}
       <Section title="Step 9 : Path Parameters" color="text-yellow-600">
-        <CodeBlock>
-{`@app.get("/employees/{id}")
+        <CodeBlock>{`@app.get("/employees/{id}")
 def get_employee(id:int):
-    return {"id":id}`}
-        </CodeBlock>
+    return {"id":id}`}</CodeBlock>
       </Section>
 
       {/* Query */}
       <Section title="Step 10 : Query Parameters" color="text-purple-600">
-        <CodeBlock>
-{`@app.get("/search")
+        <CodeBlock>{`@app.get("/search")
 def search(name:str):
-    return {"name":name}`}
-        </CodeBlock>
+    return {"name":name}`}</CodeBlock>
       </Section>
 
       {/* Database */}
       <Section title="Step 11 : SQLAlchemy Integration" color="text-indigo-600">
-        <CodeBlock>
-{`from sqlalchemy import create_engine
+        <CodeBlock>{`from sqlalchemy import create_engine
 
 DATABASE_URL="postgresql://postgres:password@localhost:5432/fastapidb"
 
-engine=create_engine(DATABASE_URL)`}
-        </CodeBlock>
+engine=create_engine(DATABASE_URL)`}</CodeBlock>
       </Section>
 
       {/* JWT */}
       <Section title="Step 12 : JWT Authentication" color="text-blue-600">
-        <CodeBlock>
-{`Login
-
+        <CodeBlock>{`Login
 ↓
-
 Generate JWT Token
-
 ↓
-
 Validate Token
-
 ↓
-
 Authorize User
-
 ↓
-
-Access Protected API`}
-        </CodeBlock>
+Access Protected API`}</CodeBlock>
       </Section>
 
       {/* Upload */}
       <Section title="Step 13 : File Upload" color="text-green-600">
-        <CodeBlock>
-{`from fastapi import UploadFile, File
+        <CodeBlock>{`from fastapi import UploadFile, File
 
 @app.post("/upload")
 def upload(file:UploadFile=File(...)):
-    return {"filename":file.filename}`}
-        </CodeBlock>
+    return {"filename":file.filename}`}</CodeBlock>
       </Section>
 
       {/* Middleware */}
       <Section title="Step 14 : Middleware" color="text-red-600">
-        <CodeBlock>
-{`from fastapi.middleware.cors import CORSMiddleware
+        <CodeBlock>{`from fastapi.middleware.cors import CORSMiddleware
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"]
-)`}
-        </CodeBlock>
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])`}</CodeBlock>
       </Section>
 
       {/* AI API */}
       <Section title="Step 15 : AI API Example" color="text-yellow-600">
-        <CodeBlock>
-{`from langchain_openai import ChatOpenAI
+        <CodeBlock>{`from langchain_openai import ChatOpenAI
 
 @app.post("/chat")
 def chat(question:str):
 
     llm=ChatOpenAI()
-
     response=llm.invoke(question)
 
     return {
         "answer":response.content
-    }`}
-        </CodeBlock>
+    }`}</CodeBlock>
       </Section>
 
       {/* Architecture */}
       <Section title="Step 16 : Enterprise Architecture" color="text-purple-600">
-        <CodeBlock>
-{`React
-
+        <CodeBlock>{`React
 ↓
-
 FastAPI
-
 ↓
-
 Service Layer
-
 ↓
-
 Repository Layer
-
 ↓
-
 PostgreSQL
-
 ↓
-
 Redis
-
 ↓
-
-Vector Database`}
-        </CodeBlock>
+Vector Database`}</CodeBlock>
       </Section>
 
       {/* Deployment */}
       <Section title="Step 17 : Docker Deployment" color="text-indigo-600">
-        <CodeBlock>
-{`docker build -t fastapi-app .
-
-docker run -p 8000:8000 fastapi-app`}
-        </CodeBlock>
+        <CodeBlock>{`docker build -t fastapi-app .
+docker run -p 8000:8000 fastapi-app`}</CodeBlock>
       </Section>
 
       {/* Practice */}
@@ -283,29 +224,18 @@ docker run -p 8000:8000 fastapi-app`}
 
       {/* Mini Project */}
       <Section title="Mini Project : AI Chat API" color="text-green-600">
-        <CodeBlock>
-{`Tasks
+        <CodeBlock>{`Tasks
 
 1. Build Employee CRUD API.
-
 2. Connect PostgreSQL.
-
 3. Implement JWT Authentication.
-
 4. Upload Documents.
-
 5. Integrate LangChain.
-
 6. Integrate OpenAI.
-
 7. Store Chat History.
-
 8. Build AI Chat Endpoint.
-
 9. Connect React Frontend.
-
-10. Deploy Using Docker.`}
-        </CodeBlock>
+10. Deploy Using Docker.`}</CodeBlock>
       </Section>
 
       {/* Interview */}

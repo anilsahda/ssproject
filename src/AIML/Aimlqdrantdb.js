@@ -6,246 +6,155 @@ function Aimlqdrantdb() {
 
       {/* Header */}
       <header className="border-b pb-3">
-        <h1 className="text-xl font-bold text-indigo-700">
-          Qdrant Practical Examples
-        </h1>
+        <h1 className="text-xl font-bold text-indigo-700">Qdrant</h1>
 
         <p className="text-gray-500 text-xs mt-1">
-          Learn Qdrant from beginner to advanced with practical examples for
-          Vector Storage, Semantic Search, AI Search, Retrieval-Augmented
-          Generation (RAG), and Enterprise AI Applications.
+          <strong>Qdrant</strong> is an open-source vector database and vector search engine designed for AI and Large Language Model (LLM) applications. It enables efficient storage, indexing, and similarity search of vector embeddings, making it ideal for semantic search and Retrieval-Augmented Generation (RAG) systems.<br /><br />
+
+          <strong>Qdrant is used for</strong>
+          <ul>
+              <li>Storing and managing vector embeddings</li>
+              <li>Semantic search and similarity search</li>
+              <li>Building Retrieval-Augmented Generation (RAG) applications</li>
+              <li>Document indexing and intelligent retrieval</li>
+              <li>Powering AI chatbots with enterprise knowledge</li>
+              <li>Hybrid search (vector + keyword search)</li>
+              <li>Recommendation and personalization systems</li>
+              <li>Integrating with LangChain and LlamaIndex</li>
+              <li>Supporting OpenAI, Hugging Face, and other embedding models</li>
+              <li>Building scalable AI-powered search applications</li>
+          </ul>
         </p>
       </header>
 
       {/* Installation */}
       <Section title="Step 1 : Install Qdrant" color="text-green-600">
-        <CodeBlock>
-{`pip install qdrant-client
-
+        <CodeBlock>{`pip install qdrant-client
 pip install sentence-transformers
-
 pip install langchain
-
 pip install langchain-community
-
-pip install python-dotenv`}
-        </CodeBlock>
+pip install python-dotenv`}</CodeBlock>
       </Section>
 
       {/* Docker */}
       <Section title="Step 2 : Run Qdrant using Docker" color="text-yellow-600">
-        <CodeBlock>
-{`docker pull qdrant/qdrant
-
-docker run -p 6333:6333 qdrant/qdrant`}
-        </CodeBlock>
+        <CodeBlock>{`docker pull qdrant/qdrant
+docker run -p 6333:6333 qdrant/qdrant`}</CodeBlock>
       </Section>
 
       {/* Import */}
       <Section title="Step 3 : Import Libraries" color="text-red-600">
-        <CodeBlock>
-{`from qdrant_client import QdrantClient
-
-from sentence_transformers import SentenceTransformer`}
-        </CodeBlock>
+        <CodeBlock>{`from qdrant_client import QdrantClient
+from sentence_transformers import SentenceTransformer`}</CodeBlock>
       </Section>
 
       {/* Connect */}
       <Section title="Step 4 : Connect to Qdrant" color="text-indigo-600">
-        <CodeBlock>
-{`client = QdrantClient(
-    host="localhost",
-    port=6333
-)`}
-        </CodeBlock>
+        <CodeBlock>{`client = QdrantClient(host="localhost", port=6333)`}</CodeBlock>
       </Section>
 
       {/* Collection */}
       <Section title="Step 5 : Create Collection" color="text-purple-600">
-        <CodeBlock>
-{`from qdrant_client.models import VectorParams, Distance
+        <CodeBlock>{`from qdrant_client.models import VectorParams, Distance
 
-client.create_collection(
-    collection_name="employees",
-    vectors_config=VectorParams(
-        size=384,
-        distance=Distance.COSINE
-    )
-)`}
-        </CodeBlock>
+client.create_collection(collection_name="employees", vectors_config=VectorParams(size=384, distance=Distance.COSINE))`}</CodeBlock>
       </Section>
 
       {/* Embeddings */}
       <Section title="Step 6 : Generate Embeddings" color="text-blue-600">
-        <CodeBlock>
-{`model = SentenceTransformer(
-    "all-MiniLM-L6-v2"
-)
-
-embedding = model.encode(
-    "Artificial Intelligence"
-)`}
-        </CodeBlock>
+        <CodeBlock>{`model = SentenceTransformer("all-MiniLM-L6-v2")
+embedding = model.encode("Artificial Intelligence")`}</CodeBlock>
       </Section>
 
       {/* Insert */}
       <Section title="Step 7 : Insert Vectors" color="text-green-600">
-        <CodeBlock>
-{`from qdrant_client.models import PointStruct
+        <CodeBlock>{`from qdrant_client.models import PointStruct
 
-client.upsert(
-    collection_name="employees",
-    points=[
-        PointStruct(
-            id=1,
-            vector=embedding.tolist(),
+client.upsert(collection_name="employees", points=[PointStruct(id=1, vector=embedding.tolist(),
             payload={
                 "text":"Artificial Intelligence"
             }
         )
     ]
-)`}
-        </CodeBlock>
+)`}</CodeBlock>
       </Section>
 
       {/* Search */}
       <Section title="Step 8 : Semantic Search" color="text-red-600">
-        <CodeBlock>
-{`results = client.search(
-    collection_name="employees",
-    query_vector=embedding.tolist(),
-    limit=5
-)
+        <CodeBlock>{`results = client.search(collection_name="employees", query_vector=embedding.tolist(), limit=5)
 
-print(results)`}
-        </CodeBlock>
+print(results)`}</CodeBlock>
       </Section>
 
       {/* Filter */}
       <Section title="Step 9 : Metadata Filtering" color="text-yellow-600">
-        <CodeBlock>
-{`payload={
-    "department":"IT",
-    "country":"India"
-}`}
-        </CodeBlock>
+        <CodeBlock>{`payload={"department":"IT", "country":"India"}`}</CodeBlock>
       </Section>
 
       {/* Update */}
       <Section title="Step 10 : Update Vectors" color="text-purple-600">
-        <CodeBlock>
-{`client.upsert(
-    collection_name="employees",
-    points=[
-        PointStruct(
-            id=1,
-            vector=embedding.tolist(),
+        <CodeBlock>{`client.upsert(collection_name="employees", points=[PointStruct(id=1, vector=embedding.tolist(),
             payload={
                 "text":"Updated AI Document"
             }
         )
     ]
-)`}
-        </CodeBlock>
+)`}</CodeBlock>
       </Section>
 
       {/* Delete */}
       <Section title="Step 11 : Delete Vectors" color="text-indigo-600">
-        <CodeBlock>
-{`client.delete(
-    collection_name="employees",
-    points_selector=[1]
-)`}
-        </CodeBlock>
+        <CodeBlock>{`client.delete(collection_name="employees", points_selector=[1])`}</CodeBlock>
       </Section>
 
       {/* LangChain */}
       <Section title="Step 12 : LangChain Integration" color="text-blue-600">
-        <CodeBlock>
-{`from langchain_community.vectorstores import Qdrant
+        <CodeBlock>{`from langchain_community.vectorstores import Qdrant
 
-vectorstore = Qdrant(
-    client=client,
-    collection_name="employees"
-)`}
-        </CodeBlock>
+vectorstore = Qdrant(client=client, collection_name="employees")`}</CodeBlock>
       </Section>
 
       {/* RAG */}
       <Section title="Step 13 : RAG Workflow" color="text-green-600">
-        <CodeBlock>
-{`PDF Files
-
+        <CodeBlock>{`PDF Files
 ↓
-
 Chunking
-
 ↓
-
 Embeddings
-
 ↓
-
 Qdrant
-
 ↓
-
 Retriever
-
 ↓
-
 LLM
-
 ↓
-
-AI Response`}
-        </CodeBlock>
+AI Response`}</CodeBlock>
       </Section>
 
       {/* Architecture */}
       <Section title="Step 14 : Enterprise AI Architecture" color="text-red-600">
-        <CodeBlock>
-{`React
-
+        <CodeBlock>{`React
 ↓
-
 FastAPI
-
 ↓
-
 LangChain
-
 ↓
-
 Qdrant
-
 ↓
-
 OpenAI
-
 ↓
-
-AI Assistant`}
-        </CodeBlock>
+AI Assistant`}</CodeBlock>
       </Section>
 
       {/* CRUD */}
       <Section title="Step 15 : CRUD Operations" color="text-yellow-600">
-        <CodeBlock>
-{`Create Collection
-
+        <CodeBlock>{`Create Collection
 Insert Vectors
-
 Retrieve Vectors
-
 Update Vectors
-
 Delete Vectors
-
 Similarity Search
-
-Metadata Filtering`}
-        </CodeBlock>
+Metadata Filtering`}</CodeBlock>
       </Section>
 
       {/* Practice */}
@@ -271,29 +180,18 @@ Metadata Filtering`}
 
       {/* Mini Project */}
       <Section title="Mini Project : Enterprise AI Knowledge Base" color="text-indigo-600">
-        <CodeBlock>
-{`Tasks
+        <CodeBlock>{`Tasks
 
 1. Upload PDF Documents.
-
 2. Extract Text.
-
 3. Chunk Documents.
-
 4. Generate Embeddings.
-
 5. Store in Qdrant.
-
 6. Perform Similarity Search.
-
 7. Retrieve Relevant Documents.
-
 8. Generate AI Answers.
-
 9. Build FastAPI Backend.
-
-10. Connect React Frontend.`}
-        </CodeBlock>
+10. Connect React Frontend.`}</CodeBlock>
       </Section>
 
       {/* Interview */}

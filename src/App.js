@@ -385,7 +385,7 @@ function App() {
             <Route path="/aimlrag" element={<Aimlrag />} />
             <Route path="/aimlgenai" element={<Aimlgenai />} />
             <Route path="/aimlagenticai" element={<Aimlagenticai />} />
-
+            <Route path="/aimlvectordb" element={<Aimlvectordb />} />            
 
             <Route path="/javaprojectsetup" element={<Javaprojectsetup />} />
             <Route path="/javalanguages" element={<Javalanguages />} />
