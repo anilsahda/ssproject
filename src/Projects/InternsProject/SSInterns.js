@@ -62,6 +62,13 @@ function SSInterns() {
     "https://www.olx.in/",
     "https://www.squareyards.com/",
     "https://housing.com/",
+
+"https://www.homestays.co.in/",
+"https://www.wunderhomes.in/",
+"https://www.homestaysofindia.com/",
+"https://www.rftpm.in/",
+"https://samadhihermitage.in/",
+"https://www.oberoihotels.com/",
   ];
 
   return (
