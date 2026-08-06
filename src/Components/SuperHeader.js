@@ -61,144 +61,50 @@ useEffect(() => {
 
   return (
     <><nav className="navbar navbar-expand-lg custom-navbar shadow-sm">
-
     <div className="container-fluid">
 
         {/* Logo */}
-
         <Link to="/" className="navbar-brand brand-logo">
-
             <span className="brand-icon">SS</span>
-
             <div className="brand-content">
                 <span className="brand-title">SS INTERNS</span>
             </div>
-
         </Link>
 
         {/* Search */}
-
         <div className="search-box mx-lg-4">
-
             <i className="bi bi-search"></i>
-
-            <input
-                type="search"
-                placeholder="Search courses..."
-                className="form-control"
-            />
-
+            <input type="search" placeholder="Search courses.." className="form-control" />
         </div>
 
         {/* Right Side */}
-
         <div className="d-flex align-items-center gap-3">
-
             <div className="helpline">
-
                 <i className="bi bi-headset"></i>
-
                 <div>
-                    <a href="tel:+919534098040">
-                        95340 98040
-                    </a>
+                    <a href="tel:+91-9990364345">+91-9990364345</a>
                 </div>
-
             </div>
 
             {!isLoggedIn ? (
-
                 <>
-
-                    <button
-                        className="btn btn-program"
-                        onClick={() => setShowIntern(true)}
-                    >
-                        🚀 Full-Stack Program
-                    </button>
-
-                    <button
-                        className="icon-btn"
-                        onClick={() => setShowSignup(true)}
-                    >
-                        <FaUser />
-                    </button>
-
-                    <button
-                        className="icon-btn"
-                        onClick={() => setShowLogin(true)}
-                    >
-                        <FaSignInAlt />
-                    </button>
-
+                    <button className="btn btn-program" onClick={() => setShowIntern(true)}>🚀 Full-Stack Program</button>
+                    <button className="icon-btn" onClick={() => setShowSignup(true)}><FaUser /></button>
+                    <button className="icon-btn" onClick={() => setShowLogin(true)}><FaSignInAlt /></button>
                 </>
-
             ) : (
-
                 <div className="dropdown">
-
-                    <img
-                        src={localStorage.getItem("userImageUrl") || "https://i.pravatar.cc/100"}
-                        alt=""
-                        className="profile-image dropdown-toggle"
-                        data-bs-toggle="dropdown"
-                    />
-
+                    <img src={localStorage.getItem("userImageUrl") || "https://i.pravatar.cc/100"} alt="" className="profile-image dropdown-toggle" data-bs-toggle="dropdown" />
                     <ul className="dropdown-menu dropdown-menu-end shadow-lg">
-
-                        <li>
-
-                            <Link className="dropdown-item" to="/profile">
-
-                                <FaUser className="me-2 text-primary" />
-
-                                Edit Profile
-
-                            </Link>
-
-                        </li>
-
-                        <li>
-
-                            <button
-                                className="dropdown-item text-danger"
-                                onClick={handleLogout}
-                            >
-
-                                <FaSignInAlt className="me-2" />
-
-                                Logout
-
-                            </button>
-
-                        </li>
-
-                        <li>
-                            <hr className="dropdown-divider"/>
-                        </li>
-
-                        <li className="text-center py-2">
-
-                            <small className="text-muted">
-                                Logged in as
-                            </small>
-
-                            <div className="fw-bold">
-                                {localStorage.getItem("userName")}
-                            </div>
-
-                        </li>
-
+                        <li><Link className="dropdown-item" to="/profile"><FaUser className="me-2 text-primary" />Edit Profile</Link></li>
+                        <li><button className="dropdown-item text-danger" onClick={handleLogout}><FaSignInAlt className="me-2" />Logout</button></li>
+                        <li><hr className="dropdown-divider"/></li>
+                        <li className="text-center py-2"><small className="text-muted">Logged in as</small><div className="fw-bold">{localStorage.getItem("userName")}</div></li>
                     </ul>
-
                 </div>
-
             )}
-
         </div>
-
     </div>
-
 </nav>
       {/* Login Modal */}
       {showLogin && (
@@ -317,7 +223,6 @@ useEffect(() => {
                     <span className="badge bg-primary me-2">SpringBoot</span>
                     <span className="badge bg-primary me-2">Node</span>
                   </div>
-
                   <div className="mb-3">
                     <h6>Front-End</h6>
                     <span className="badge bg-success me-2">React.js</span>
@@ -326,7 +231,6 @@ useEffect(() => {
                     <span className="badge bg-success me-2">Zustand</span>
                     <span className="badge bg-success me-2">Next.js</span>
                   </div>
-
                   <div className="mb-3">
                     <h6>Database</h6>
                     <span className="badge bg-dark text-white me-2">SQL Server</span>
@@ -335,7 +239,6 @@ useEffect(() => {
                     <span className="badge bg-dark text-white me-2">MongoDB</span>
                     <span className="badge bg-dark text-white me-2">Vector DB</span>
                   </div>
-
                   <div>
                     <h6>AWS Cloud</h6>
                     <span className="badge bg-warning text-dark me-2">S3</span>
@@ -475,71 +378,25 @@ useEffect(() => {
             <div className="col-12">
               <div className="card border-0 shadow-sm">
                 <div className="card-body p-4">
-
-                  <h3 className="text-primary fw-bold mb-4">
-                    🏠 Accommodation & Facilities in Multiple Cities
-                  </h3>
-
+                  <h3 className="text-primary fw-bold mb-4">🏠 Accommodation & Facilities in Multiple Cities</h3>
                   <div className="alert alert-info border-0 shadow-sm">
                     <h5 className="fw-bold mb-2">✨ Comfortable, secure and affordable accommodation for Relocating Interners</h5>
-                    <p className="mb-0">
-                      We provide safe, comfortable, and affordable accommodation near our development centers in Dehradun, Chandigarh Tricity and Hyderabad, so you can focus on learning new skills and working on real-world projects without worrying about accommodation. During your internship, you'll also get the chance to experience different cities, explore new cultures, meet talented people, and gain valuable industry experience, making your internship an enjoyable and memorable journey.
-                    </p><br />
+                    <p className="mb-0">We provide safe, comfortable, and affordable accommodation near our development centers in Dehradun, Chandigarh Tricity and Hyderabad, so you can focus on learning new skills and working on real-world projects without worrying about accommodation. During your internship, you'll also get the chance to experience different cities, explore new cultures, meet talented people, and gain valuable industry experience, making your internship an enjoyable and memorable journey.</p><br />
                     <div className="row g-4">
-
                       {/* Locations */}
                       <div className="col-lg-4">
                         <div className="card feature-card border-0 shadow-sm h-100 rounded-4">
                           <div className="card-body p-4">
-
-                            <div className="feature-icon bg-primary-subtle text-primary mb-4">
-                              <i className="bi bi-geo-alt-fill"></i>
-                            </div>
-
-                            <h5 className="fw-bold mb-4">
-                              Available Locations
-                            </h5>
-
+                            <div className="feature-icon bg-primary-subtle text-primary mb-4"><i className="bi bi-geo-alt-fill"></i></div>
+                            <h5 className="fw-bold mb-4">Available Locations</h5>
                             <ul className="list-unstyled mb-0">
-
-                              <li className="mb-3 d-flex justify-content-between">
-                                <span>📍 Mohali</span>
-                                <span className="badge bg-success">Available</span>
-                              </li>
-
-                              <li className="mb-3 d-flex justify-content-between">
-                                <span>📍 Dehradun</span>
-                                <span className="badge bg-success">Available</span>
-                              </li>
-
-                              <li className="mb-3 d-flex justify-content-between">
-                                <span>📍 Hyderabad</span>
-                                <span className="badge bg-success">Available</span>
-                              </li>
-
-                              <li className="mb-3 d-flex justify-content-between">
-                                <span>📍 Delhi</span>
-                                <span className="badge bg-warning text-dark">
-                                  Nov 2026
-                                </span>
-                              </li>
-
-                              <li className="mb-3 d-flex justify-content-between">
-                                <span>📍 Jaipur</span>
-                                <span className="badge bg-warning text-dark">
-                                  Dec 2026
-                                </span>
-                              </li>
-
-                              <li className="d-flex justify-content-between">
-                                <span>📍 Bangalore</span>
-                                <span className="badge bg-warning text-dark">
-                                  Jan 2027
-                                </span>
-                              </li>
-
+                              <li className="mb-3 d-flex justify-content-between"><span>📍 Mohali</span><span className="badge bg-success">Available</span></li>
+                              <li className="mb-3 d-flex justify-content-between"><span>📍 Dehradun</span><span className="badge bg-success">Available</span></li>
+                              <li className="mb-3 d-flex justify-content-between"><span>📍 Hyderabad</span><span className="badge bg-success">Available</span></li>
+                              <li className="mb-3 d-flex justify-content-between"><span>📍 Delhi</span><span className="badge bg-warning text-dark">Nov 2026</span></li>
+                              <li className="mb-3 d-flex justify-content-between"><span>📍 Jaipur</span><span className="badge bg-warning text-dark">Dec 2026</span></li>
+                              <li className="d-flex justify-content-between"><span>📍 Bangalore</span><span className="badge bg-warning text-dark">Jan 2027</span></li>
                             </ul>
-
                           </div>
                         </div>
                       </div>
@@ -548,31 +405,16 @@ useEffect(() => {
                       <div className="col-lg-4">
                         <div className="card feature-card border-0 shadow-sm h-100 rounded-4">
                           <div className="card-body p-4">
-
-                            <div className="feature-icon bg-success-subtle text-success mb-4">
-                              <i className="bi bi-house-heart-fill"></i>
-                            </div>
-
-                            <h5 className="fw-bold mb-4">
-                              Hostel Facilities
-                            </h5>
-
+                            <div className="feature-icon bg-success-subtle text-success mb-4"><i className="bi bi-house-heart-fill"></i></div>
+                            <h5 className="fw-bold mb-4">Hostel Facilities</h5>
                             <ul className="list-unstyled mb-0">
-
                               <li className="mb-3">✅ Fully Furnished Rooms</li>
-
                               <li className="mb-3">📶 High-Speed Wi-Fi</li>
-
                               <li className="mb-3">🏏 Rooftop Cricket Practice Net</li>
-
                               <li className="mb-3">💪 Basic Gym Equipment</li>
-
                               <li className="mb-3">🛡️ 24×7 Safe & Secure Environment</li>
-
                               <li>🧹 Daily Housekeeping</li>
-
                             </ul>
-
                           </div>
                         </div>
                       </div>
@@ -580,199 +422,148 @@ useEffect(() => {
                       {/* Pricing */}
                       <div className="col-lg-4">
                         <div className="card feature-card border-0 shadow-sm h-100 rounded-4">
-
                           <div className="card-body p-4">
-
-                            <div className="feature-icon bg-warning-subtle text-warning mb-4">
-                              <i className="bi bi-wallet2"></i>
-                            </div>
-
-                            <h5 className="fw-bold mb-4">
-                              Accommodation Charges
-                            </h5>
-
-                            <div className="price-box mb-3">
-
-                              <div className="d-flex justify-content-between">
-
-                                <span>🏠 Without Food</span>
-
-                                <strong className="text-success">
-                                  ₹5,000
-                                </strong>
-
-                              </div>
-
-                            </div>
-
+                            <div className="feature-icon bg-warning-subtle text-warning mb-4"><i className="bi bi-wallet2"></i></div>
+                            <h5 className="fw-bold mb-4">Accommodation Details</h5>
                             <div className="price-box mb-4">
-
                               <div className="d-flex justify-content-between">
-
-                                <span>🍽️ With Food</span>
-
-                                <strong className="text-primary">
-                                  ₹10,000
-                                </strong>
-
+                                <span>❄️ AC & Non-AC Rooms Available</span>
                               </div>
-
                             </div>
-
-                            <div className="alert alert-light border mb-0">
-
-                              <i className="bi bi-info-circle-fill text-primary me-2"></i>
-
-                              Electricity, Wi-Fi and maintenance are included.
-
+                            <div className="price-box mb-4">
+                              <div className="d-flex justify-content-between">
+                                <span>🍽️ Healthy Meal Plans Available</span>
+                              </div>
                             </div>
-
+                            <div className="price-box mb-4">
+                              <div className="d-flex justify-content-between">
+                                <span>💧 RO Purified Drinking Water</span>
+                              </div>
+                            </div>
+                            <div className="price-box mb-4">
+                              <div className="d-flex justify-content-between">
+                                <span>🧺 Laundry Facility</span>
+                              </div>
+                            </div>
+                            <div className="price-box mb-4">
+                              <div className="d-flex justify-content-between">
+                                <span>🚿 Hot Water</span>
+                              </div>
+                            </div>                            
                           </div>
                         </div>
                       </div>
-
                     </div>
-
                   </div>
 
                   {/* Documents */}
                   <div className="card mt-4 border-info">
                     <div className="card-body">
-
-                      <h4 className="text-info fw-bold mb-3">
-                        📄 Documents Provided
-                      </h4>
-
+                      <h4 className="text-info fw-bold mb-3">📄 Documents Provided</h4>
                       <div className="row text-center">
-
                         <div className="col-md-3">
-                          <div className="p-3 border rounded shadow-sm h-100">
-                            📃
-                            <h6 className="mt-2 mb-0">Offer Letter</h6>
-                          </div>
+                          <div className="p-3 border rounded shadow-sm h-100">📃 <h6 className="mt-2 mb-0">Offer Letter</h6></div>
                         </div>
-
                         <div className="col-md-3">
-                          <div className="p-3 border rounded shadow-sm h-100">
-                            🎓
-                            <h6 className="mt-2 mb-0">Internship Certificate</h6>
-                          </div>
+                          <div className="p-3 border rounded shadow-sm h-100">🎓 <h6 className="mt-2 mb-0">Internship Certificate</h6></div>
                         </div>
-
                         <div className="col-md-3">
-                          <div className="p-3 border rounded shadow-sm h-100">
-                            🏅
-                            <h6 className="mt-2 mb-0">Best Performer Certificate</h6>
-                          </div>
+                          <div className="p-3 border rounded shadow-sm h-100">🏅 <h6 className="mt-2 mb-0">Best Performer Certificate</h6></div>
                         </div>
-
                         <div className="col-md-3">
-                          <div className="p-3 border rounded shadow-sm h-100">
-                            ⭐
-                            <h6 className="mt-2 mb-0">Portfolio</h6>
-                          </div>
+                          <div className="p-3 border rounded shadow-sm h-100">⭐ <h6 className="mt-2 mb-0">Portfolio</h6></div>
                         </div>
-
                       </div>
                     </div>
                   </div>
 
-{/* Why Choose Our Intern Developer Program */}
-<div className="card border-0 shadow-lg rounded-4 mt-5 overflow-hidden">
+                  {/* Why Choose Our Intern Developer Program */}
+                  <div className="card border-0 shadow-lg rounded-4 mt-5 overflow-hidden">
 
-  {/* Header */}
-  <div className="bg-primary text-white py-4 text-center">
-    <h3 className="fw-bold mb-2">
-      <i className="bi bi-stars me-2"></i>
-      Why Choose Our Intern Developer Program?
-    </h3>
-    <p className="mb-0 opacity-75 text-center">
-      Build your career with industry-focused training, live projects, expert mentorship, and real-world experience.
-    </p>
-  </div>
+                    {/* Header */}
+                    <div className="bg-primary text-white py-4 text-center">
+                      <h3 className="fw-bold mb-2">
+                        <i className="bi bi-stars me-2"></i> Why Choose Our Intern Developer Program?
+                      </h3>
+                      <p className="mb-0 opacity-75 text-center">Build your career with industry-focused training, live projects, expert mentorship, and real-world experience.</p>
+                    </div>
 
-  <div className="card-body p-4">
+                    <div className="card-body p-4">
+                      <div className="row g-4">
+                        <div className="col-lg-4 col-md-6">
+                          <div className="feature-box">
+                            <i className="bi bi-house-heart-fill text-primary feature-icon"></i>
+                            <h6>Comfortable Accommodation</h6>
+                            <p>Affordable hostel facilities with Wi-Fi, security, and modern amenities.</p>
+                          </div>
+                        </div>
 
-    <div className="row g-4">
+                        <div className="col-lg-4 col-md-6">
+                          <div className="feature-box">
+                            <i className="bi bi-laptop text-success feature-icon"></i>
+                            <h6>Industry-Level Training</h6>
+                            <p>Learn using the latest technologies, frameworks, and enterprise development practices.</p>
+                          </div>
+                        </div>
 
-      <div className="col-lg-4 col-md-6">
-        <div className="feature-box">
-          <i className="bi bi-house-heart-fill text-primary feature-icon"></i>
-          <h6>Comfortable Accommodation</h6>
-          <p>Affordable hostel facilities with Wi-Fi, security, and modern amenities.</p>
-        </div>
-      </div>
+                        <div className="col-lg-4 col-md-6">
+                          <div className="feature-box">
+                            <i className="bi bi-code-slash text-danger feature-icon"></i>
+                            <h6>Live Client Projects</h6>
+                            <p>Gain hands-on experience by contributing to real-world software projects.</p>
+                          </div>
+                        </div>
 
-      <div className="col-lg-4 col-md-6">
-        <div className="feature-box">
-          <i className="bi bi-laptop text-success feature-icon"></i>
-          <h6>Industry-Level Training</h6>
-          <p>Learn using the latest technologies, frameworks, and enterprise development practices.</p>
-        </div>
-      </div>
+                        <div className="col-lg-4 col-md-6">
+                          <div className="feature-box">
+                            <i className="bi bi-people-fill text-warning feature-icon"></i>
+                            <h6>Expert Mentorship</h6>
+                            <p>Receive guidance from experienced architects and senior software engineers.</p>
+                          </div>
+                        </div>
 
-      <div className="col-lg-4 col-md-6">
-        <div className="feature-box">
-          <i className="bi bi-code-slash text-danger feature-icon"></i>
-          <h6>Live Client Projects</h6>
-          <p>Gain hands-on experience by contributing to real-world software projects.</p>
-        </div>
-      </div>
+                        <div className="col-lg-4 col-md-6">
+                          <div className="feature-box">
+                            <i className="bi bi-graph-up-arrow text-info feature-icon"></i>
+                            <h6>Career Growth</h6>
+                            <p>Develop practical skills and strengthen your portfolio for future opportunities.</p>
+                          </div>
+                        </div>
 
-      <div className="col-lg-4 col-md-6">
-        <div className="feature-box">
-          <i className="bi bi-people-fill text-warning feature-icon"></i>
-          <h6>Expert Mentorship</h6>
-          <p>Receive guidance from experienced architects and senior software engineers.</p>
-        </div>
-      </div>
+                        <div className="col-lg-4 col-md-6">
+                          <div className="feature-box">
+                            <i className="bi bi-award-fill text-success feature-icon"></i>
+                            <h6>Placement Assistance</h6>
+                            <p>Resume guidance, interview preparation, and placement support after successful completion.</p>
+                          </div>
+                        </div>
 
-      <div className="col-lg-4 col-md-6">
-        <div className="feature-box">
-          <i className="bi bi-graph-up-arrow text-info feature-icon"></i>
-          <h6>Career Growth</h6>
-          <p>Develop practical skills and strengthen your portfolio for future opportunities.</p>
-        </div>
-      </div>
+                        <div className="col-lg-4 col-md-6">
+                          <div className="feature-box">
+                            <i className="bi bi-geo-alt-fill text-danger feature-icon"></i>
+                            <h6>Flexible Locations</h6>
+                            <p>Internship opportunities available across multiple cities with future expansion plans.</p>
+                          </div>
+                        </div>
 
-      <div className="col-lg-4 col-md-6">
-        <div className="feature-box">
-          <i className="bi bi-award-fill text-success feature-icon"></i>
-          <h6>Placement Assistance</h6>
-          <p>Resume guidance, interview preparation, and placement support after successful completion.</p>
-        </div>
-      </div>
+                        <div className="col-lg-4 col-md-6">
+                          <div className="feature-box">
+                            <i className="bi bi-mortarboard-fill text-primary feature-icon"></i>
+                            <h6>Unpaid Internship Program</h6>
+                            <p>Focused on practical learning, enterprise project exposure, and skill development.</p>
+                          </div>
+                        </div>
 
-      <div className="col-lg-4 col-md-6">
-        <div className="feature-box">
-          <i className="bi bi-geo-alt-fill text-danger feature-icon"></i>
-          <h6>Flexible Locations</h6>
-          <p>Internship opportunities available across multiple cities with future expansion plans.</p>
-        </div>
-      </div>
-
-      <div className="col-lg-4 col-md-6">
-        <div className="feature-box">
-          <i className="bi bi-mortarboard-fill text-primary feature-icon"></i>
-          <h6>Unpaid Internship Program</h6>
-          <p>Focused on practical learning, enterprise project exposure, and skill development.</p>
-        </div>
-      </div>
-
-      <div className="col-lg-4 col-md-6">
-        <div className="feature-box">
-          <i className="bi bi-laptop-fill text-secondary feature-icon"></i>
-          <h6>Flexible Work Mode</h6>
-          <p>Choose from Work From Office (WFO), Hybrid, or Remote internships based on the program.</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
+                        <div className="col-lg-4 col-md-6">
+                          <div className="feature-box">
+                            <i className="bi bi-laptop-fill text-secondary feature-icon"></i>
+                            <h6>Flexible Work Mode</h6>
+                            <p>Choose from Work From Office (WFO), Hybrid, or Remote internships based on the program.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
