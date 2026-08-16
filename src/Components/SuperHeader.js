@@ -64,12 +64,18 @@ useEffect(() => {
     <div className="container-fluid">
 
         {/* Logo */}
-        <Link to="/" className="navbar-brand brand-logo">
+        {/* <Link to="/" className="navbar-brand brand-logo">
             <span className="brand-icon">SS</span>
             <div className="brand-content">
                 <span className="brand-title">SS INTERNS</span>
             </div>
-        </Link>
+        </Link> */}
+
+      <Link to="/" className="navbar-brand brand-logo">
+          <div className="brand-logo-image">
+              <img src="/ss-interns-logo.png" alt="SS Interns" />
+          </div>
+      </Link>
 
         {/* Search */}
         <div className="search-box mx-lg-4">
@@ -182,16 +188,104 @@ useEffect(() => {
         </div>
       )}
 
-{/* Login Modal */}
 {/* Training Program Modal */}
 {showIntern && (
   <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0,0,0,0.75)" }} onClick={() => setShowIntern(false)}>
     <div className="modal-dialog modal-dialog-centered modal-xl" onClick={(e) => e.stopPropagation()}>
       <div className="modal-content border-0 shadow-lg" style={{ borderRadius: "20px", overflow: "hidden" }}>
-        <div className="text-white p-5" style={{ background: "linear-gradient(135deg, #0d6efd 0%, #6610f2 100%)"}}>
-          <h1 className="fw-bold mb-3 text-center">🚀 AI-ML and Full-Stack Engineers Program</h1>
-          <h5 className="mb-0 text-center">Build Your Career in AI-ML, Cloud, DevOps and Full-Stack Web Development</h5>
+<div
+  className="text-white py-4 px-3 px-md-5"
+  style={{
+    background: "linear-gradient(135deg, #0d6efd 0%, #6610f2 100%)",
+    borderRadius: "0 0 20px 20px",
+  }}
+>
+  <div className="row align-items-center justify-content-center g-4">
+
+    {/* Logo */}
+    <div className="col-12 col-md-4 col-lg-3 text-center">
+      <div
+        className="bg-white rounded-4 shadow-lg mx-auto d-flex align-items-center justify-content-center"
+        style={{
+          width: "250px",
+          height: "250px",
+          padding: "8px",
+        }}
+      >
+        <img
+          src="/ss-interns-logo.png"
+          alt="SS Interns"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+          }}
+        />
+      </div>
+    </div>
+
+    {/* Programs */}
+    <div className="col-12 col-md-8 col-lg-9">
+      <div className="text-center text-md-start">
+        <h2 className="fw-bold mb-3">
+          Industry-Ready Engineering Programs
+        </h2>
+
+        <p className="mb-3 opacity-75">
+          Choose your career path and build real-world skills with expert mentorship and live project experience.
+        </p>
+
+        <div className="row g-2">
+
+          <div className="col-12 col-sm-6">
+            <div className="program-item">
+              <span className="program-icon">☕</span>
+              Java Full-Stack Engineer
+            </div>
+          </div>
+
+          <div className="col-12 col-sm-6">
+            <div className="program-item">
+              <span className="program-icon">💻</span>
+              .NET Full-Stack Engineer
+            </div>
+          </div>
+
+          <div className="col-12 col-sm-6">
+            <div className="program-item">
+              <span className="program-icon">⚛️</span>
+              MERN Full-Stack Engineer
+            </div>
+          </div>
+
+          <div className="col-12 col-sm-6">
+            <div className="program-item">
+              <span className="program-icon">☁️</span>
+              Cloud Engineer
+            </div>
+          </div>
+
+          <div className="col-12 col-sm-6">
+            <div className="program-item">
+              <span className="program-icon">🤖</span>
+              AI / ML Engineer
+            </div>
+          </div>
+
+          <div className="col-12 col-sm-6">
+            <div className="program-item">
+              <span className="program-icon">⚙️</span>
+              DevOps Engineer
+            </div>
+          </div>
+
         </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
 
         <div className="modal-body p-4">
           <div className="row g-4">
@@ -317,63 +411,6 @@ useEffect(() => {
                 </div>
               </div>
             </div>
-
-            {/* Career Opportunities
-            <div className="col-12">
-              <div className="card border-0 shadow">
-                <div className="card-body">
-                  <h4 className="text-primary mb-4">🎯 Career Opportunities After Completion</h4>
-                  <div className="table-responsive">
-                    <table className="table table-bordered align-middle">
-                      <thead className="table-primary">
-                        <tr>
-                          <th>Opportunity</th>
-                          <th>Associated Company</th>
-                          <th>Role</th>
-                          <th>Monthly Salary</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Direct Opportunity</td>
-                          <td>CWS | DevB Infotech | Shiwansh Solutions</td>
-                          <td>.NET Developer</td>
-                          <td>Based on your skills and performance</td>
-                        </tr>
-
-                        <tr>
-                          <td>Direct Opportunity</td>
-                          <td>CWS | DevB Infotech | Shiwansh Solutions</td>
-                          <td>Java Developer</td>
-                          <td>Based on your skills and performance</td>
-                        </tr>
-
-                        <tr>
-                          <td>Direct Opportunity</td>
-                           <td>CWS | DevB Infotech | Shiwansh Solutions</td>
-                          <td>DevOps Engineer</td>
-                          <td>Based on your skills and performance</td>
-                        </tr>
-                        <tr>
-                          <td>Direct Opportunity</td>
-                          <td>CWS | DevB Infotech | Shiwansh Solutions</td>
-                          <td>AI-ML Engineer</td>
-                          <td>Based on your skills and performance</td>
-                        </tr>
-                        <tr>
-                          <td>Direct Opportunity</td>
-                          <td>CWS | DevB Infotech | Shiwansh Solutions</td>
-                          <td>MERN Stack Developer</td>
-                          <td>Based on your skills and performance</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
-
             {/* Accommodation & Facilities */}
             <div className="col-12">
               <div className="card border-0 shadow-sm">

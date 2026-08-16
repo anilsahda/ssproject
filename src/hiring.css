@@ -389,3 +389,91 @@ ul {
     margin-bottom:0;
     line-height:1.6;
 }
+
+/* ================================
+   SS INTERNS NAVBAR BRAND
+================================ */
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 64px;
+    padding: 0 15px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Logo container */
+.brand-logo-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Generated logo */
+.brand-logo-image img {
+    width: 72px;
+    height: auto;
+    max-width: none;
+    display: block;
+
+    /* Move image upward so the main SS symbol is visible */
+    transform: translateY(-12px);
+}
+
+/* Brand text */
+.brand-content {
+    display: flex;
+    align-items: center;
+}
+
+.brand-title {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+.ss-interns-logo {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.program-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.program-item:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+.program-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.18);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
