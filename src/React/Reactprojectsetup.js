@@ -10,15 +10,8 @@ export default function Reactprojectsetup() {
 {`npm create vite@latest myapp -- --template react-ts
 cd myapp
 code .
-npm run dev
-npm i react-router-dom
-npm i bootstrap
-
-npm install axios
-npm i bootstrap-icons
-npm i react-bootstrap-icons
-npm i react-select
-npm i sweetalert2`}
+npm i react-router-dom bootstrap axios bootstrap-icons react-bootstrap-icons react-select sweetalert2
+npm run dev`}
           </code>
         </pre>
       </section>
@@ -47,32 +40,10 @@ npm i sweetalert2`}
 {`function Home() {
   return (
     <div className="container">
-      <h1>Form Example</h1>
-      <form>
+      <h1>Welcome to SS Interns 👋</h1>
         <div className="row">
-            <input type="text" placeholder="Name" className="form-control" />
+          <p className="text-muted">Simple, clean and modern form application</p>
         </div>
-        <div className="row">
-            <button type="submit" className="btn btn-primary">Save</button>
-        </div>
-      </form>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td>1</td>
-              <td>India</td>
-              <td><button>Edit</button><button>Delete</button></td>
-            </tr>
-        </tbody>
-      </table>
     </div>
   );
 }
@@ -90,9 +61,15 @@ import { Link } from 'react-router-dom';
 function Layout({ children }: { children: ReactNode }) {
   return (
     <>
-      <h1>My App</h1>
-      <nav>
-        <Link to="/">Home</Link>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Link to="/" className="navbar-brand">My App</Link>
+        <div className="collapse navbar-collapse">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link to="/" className="nav-link">Home</Link>
+            </li>
+          </ul>
+        </div>
       </nav>
       <main>{children}</main>
     </>
