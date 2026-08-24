@@ -427,12 +427,11 @@ useEffect(() => {
                             <div className="feature-icon bg-primary-subtle text-primary mb-4"><i className="bi bi-geo-alt-fill"></i></div>
                             <h5 className="fw-bold mb-4">Available Locations</h5>
                             <ul className="list-unstyled mb-0">
-                              <li className="mb-3 d-flex justify-content-between"><span>📍 Mohali</span><span className="badge bg-success">Available</span></li>
+                              <li className="mb-3 d-flex justify-content-between"><span>📍 Chandigarh</span><span className="badge bg-success">Available</span></li>
                               <li className="mb-3 d-flex justify-content-between"><span>📍 Dehradun</span><span className="badge bg-success">Available</span></li>
                               <li className="mb-3 d-flex justify-content-between"><span>📍 Hyderabad</span><span className="badge bg-success">Available</span></li>
-                              <li className="mb-3 d-flex justify-content-between"><span>📍 Delhi</span><span className="badge bg-warning text-dark">Nov 2026</span></li>
-                              <li className="mb-3 d-flex justify-content-between"><span>📍 Jaipur</span><span className="badge bg-warning text-dark">Dec 2026</span></li>
-                              <li className="d-flex justify-content-between"><span>📍 Bangalore</span><span className="badge bg-warning text-dark">Jan 2027</span></li>
+                              <li className="mb-3 d-flex justify-content-between"><span>📍 Delhi</span><span className="badge bg-warning text-dark">Jan 2026</span></li>
+                              <li className="mb-3 d-flex justify-content-between"><span>📍 Pune</span><span className="badge bg-warning text-dark">Apr 2027</span></li>
                             </ul>
                           </div>
                         </div>
