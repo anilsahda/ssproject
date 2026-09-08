@@ -295,10 +295,10 @@ useEffect(() => {
               <div className="card h-100 shadow-sm border-0">
                 <div className="card-body">
                   <h4 className="text-primary mb-3">📅 Program Details</h4>
-                  <p><strong>Duration:</strong> 1 - 6 Months</p>
+                  <p><strong>Duration:</strong> 3 - 6 Months</p>
                   <p><strong>Work Mode:</strong> Work From Office / Remote</p>
                   <p><strong>Office Hours:</strong> 9:00 AM – 6:00 PM</p>
-                  <p><strong>Locations:</strong> Hyderabad, Mohali & Dehradun</p>
+                  <p><strong>Locations:</strong> Dehradun, Mohali & Hyderabad</p>
                   <p><strong>Holidays:</strong> Saturday & Sunday fixed off</p>
                   <p><strong>Mentorship:</strong> From experienced Architect & Senior Engineers</p>
                 </div>
@@ -430,7 +430,7 @@ useEffect(() => {
                               <li className="mb-3 d-flex justify-content-between"><span>📍 Chandigarh</span><span className="badge bg-success">Available</span></li>
                               <li className="mb-3 d-flex justify-content-between"><span>📍 Dehradun</span><span className="badge bg-success">Available</span></li>
                               <li className="mb-3 d-flex justify-content-between"><span>📍 Hyderabad</span><span className="badge bg-success">Available</span></li>
-                              <li className="mb-3 d-flex justify-content-between"><span>📍 Delhi</span><span className="badge bg-warning text-dark">Jan 2026</span></li>
+                              <li className="mb-3 d-flex justify-content-between"><span>📍 Delhi</span><span className="badge bg-warning text-dark">Jan 2027</span></li>
                               <li className="mb-3 d-flex justify-content-between"><span>📍 Pune</span><span className="badge bg-warning text-dark">Apr 2027</span></li>
                             </ul>
                           </div>
@@ -537,8 +537,8 @@ useEffect(() => {
                         <div className="col-lg-4 col-md-6">
                           <div className="feature-box">
                             <i className="bi bi-laptop text-success feature-icon"></i>
-                            <h6>Industry-Level Training</h6>
-                            <p>Learn using the latest technologies, frameworks, and enterprise development practices.</p>
+                            <h6>100% Placement in the 1-Year Program</h6>
+                            <p>Master the latest technologies, frameworks, and enterprise development practices through hands-on training and real-world projects, and get placed with top companies.</p>
                           </div>
                         </div>
 

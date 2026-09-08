@@ -251,6 +251,7 @@ import Aimlqdrantdb from "./AIML/Aimlqdrantdb";
 import Aimlrag from "./AIML/Aimlrag";
 import Aimlgenai from "./AIML/Aimlgenai";
 import Aimlagenticai from "./AIML/Aimlagenticai";
+import Home from "./Components/Home";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -274,6 +275,7 @@ function App() {
         <div className="flex-grow-1 p-4" style={{ height: "100%", overflowY: "auto" }}>
           <Routes>
             {/* Super Admin */}
+            <Route path="/" element={<Home />} />
             <Route path="/role" element={<Role />} />
             <Route path="/user" element={<User />} />
             <Route path="/userrole" element={<UserRole />} />
