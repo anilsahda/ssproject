@@ -30,7 +30,7 @@ function Header({ setActiveMenu }) {
     { name: "SQL Server", value: "SQL", icon: <FaDatabase />, className: "btn-gradient-dark" },
     { name: "AWS", icon: <FaAws />, className: "btn-gradient-orange" },
     { name: "Azure", icon: <FaCloud />, className: "btn-gradient-sky" },
-    { name: "DevOps", icon: <FaCloud />, className: "btn-gradient-warning" },
+    { name: "DevSecOps", icon: <FaCloud />, className: "btn-gradient-warning" },
     { name: "React", icon: <FaReact />, className: "btn-gradient-cyan" },
     { name: "Next", value: "Next", icon: <FaReact />, className: "btn-gradient-black" },
     // { name: "Angular", icon: <FaAngular />, className: "btn-gradient-red" },

@@ -252,6 +252,11 @@ import Aimlrag from "./AIML/Aimlrag";
 import Aimlgenai from "./AIML/Aimlgenai";
 import Aimlagenticai from "./AIML/Aimlagenticai";
 import Home from "./Components/Home";
+import SAST from "./DevOps/SAST.js";
+import DAST from "./DevOps/DAST.js";
+import GitLeaks from "./DevOps/GitLeaks.js";
+import Trivy from "./DevOps/Trivy.js";
+import SCA from "./DevOps/SCA.js";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState("Fullstack");
@@ -489,6 +494,13 @@ function App() {
             <Route path="/cicdpipelinesjava" element={<CicdpipelinesJava />} />
             <Route path="/jenkins" element={<Jenkins />} />
             <Route path="/docker" element={<Docker />} />
+
+            <Route path="/sast" element={<SAST />} />
+            <Route path="/dast" element={<DAST />} />
+            <Route path="/gitleaks" element={<GitLeaks />} />
+            <Route path="/sca" element={<SCA />} />
+            <Route path="/trivy" element={<Trivy />} />
+
             <Route path="/kubernetes" element={<Kubernetes />} />
             <Route path="/ansible" element={<Ansible />} />
             <Route path="/terraform" element={<Terraform />} />

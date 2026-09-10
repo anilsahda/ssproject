@@ -281,7 +281,7 @@ style={{
             </>
           )}
 
-          {activeMenu === "DevOps" && (
+          {activeMenu === "DevSecOps" && (
             <>
             <SidebarButton to="/jenkins" icon="bi-gear-fill" label="Jenkins Setup" />
             <SidebarButton to="/cicdpipelinesreact" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - React" />
@@ -290,12 +290,18 @@ style={{
             <SidebarButton to="/cicdpipelinesnetcore" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - .Net Core" />
             <SidebarButton to="/cicdpipelinesjava" icon="bi-box-arrow-in-up-right" label="CI-CD Pipelines - SpringBoot" />
             <SidebarButton to="/docker" icon="bi-box-seam" label="Docker" />
+            <SidebarButton to="/sast" icon="bi-shield" label="SAST" />
+            <SidebarButton to="/dast" icon="bi-shield" label="DAST" />
+            <SidebarButton to="/sca" icon="bi-box-seam" label="SCA" />
+            <SidebarButton to="/gitleaks" icon="bi-box-seam" label="GitLeaks" />
+            <SidebarButton to="/trivy" icon="bi-box-seam" label="Trivy" />
+
             <SidebarButton to="/kubernetes" icon="bi-diagram-3-fill" label="Kubernetes" />
             <SidebarButton to="/ansible" icon="bi-tools" label="Ansible" />
             <SidebarButton to="/terraform" icon="bi-layers" label="Terraform" />
             <SidebarButton to="/monitoring" icon="bi-graph-up-arrow" label="Monitoring & Logging" />
             <SidebarButton to="/github" icon="bi-git" label="Git & GitHub" />
-            <SidebarButton to="/devopsquestions" icon="bi-question-circle" label="DevOps Questions" />
+            <SidebarButton to="/devopsquestions" icon="bi-question-circle" label="DevSecOps Questions" />
             </>
           )}
 
