@@ -100,7 +100,7 @@ useEffect(() => {
                 </>
             ) : (
                 <div className="dropdown">
-                    <img src={localStorage.getItem("userImageUrl") || "https://i.pravatar.cc/100"} alt="" className="profile-image dropdown-toggle" data-bs-toggle="dropdown" />
+                    <img src="/profile.png" alt="" className="profile-image dropdown-toggle" data-bs-toggle="dropdown" />
                     <ul className="dropdown-menu dropdown-menu-end shadow-lg">
                         <li><Link className="dropdown-item" to="/profile"><FaUser className="me-2 text-primary" />Edit Profile</Link></li>
                         <li><button className="dropdown-item text-danger" onClick={handleLogout}><FaSignInAlt className="me-2" />Logout</button></li>
