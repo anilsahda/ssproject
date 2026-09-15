@@ -7,11 +7,11 @@ export default function Reactprojectsetup() {
         <b>1. ✅ Project Initialization</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`Create Demo folder in desktop and open in VS Code
+{`Create Demo folder and open in VS Code
 npm create vite@latest myapp -- --template react-ts
+open another terminal and run below commands
 cd myapp
-npm i react-router-dom bootstrap axios bootstrap-icons react-bootstrap-icons react-select sweetalert2
-npm run dev`}
+npm i react-router-dom bootstrap axios bootstrap-icons react-bootstrap-icons react-select sweetalert2`}
           </code>
         </pre>
       </section>
