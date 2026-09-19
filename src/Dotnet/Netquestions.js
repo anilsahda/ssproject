@@ -231,13 +231,10 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         <b>14. How do you handle a transaction that spans multiple microservices?</b>
         <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
           <code>
-{`A single database transaction doesn’t work when each service owns its own database.
-
-That’s where the Saga Pattern comes in.
-
-Each service completes a local transaction and triggers the next step. If something fails, compensating actions are used to reverse the business effect of earlier steps.
-
-Interview takeaway: In distributed systems, consistency is often achieved through coordination and compensation not one global transaction.`}
+{`A single database transaction doesn’t work when each service owns its own database. That’s where the Saga Pattern comes in.
+Each service completes a local transaction and triggers the next step. If something fails, compensating actions are used to 
+reverse the business effect of earlier steps. Interview takeaway: In distributed systems, consistency is often achieved 
+through coordination and compensation not one global transaction.`}
           </code>
         </pre>
       </section>
