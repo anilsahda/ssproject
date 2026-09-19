@@ -10,6 +10,16 @@ function Aimlrag() {
 
         <p className="text-gray-500 text-xs mt-1">
           <strong>Retrieval-Augmented Generation (RAG)</strong> is an AI architecture that combines Large Language Models (LLMs) with external knowledge sources. Instead of relying only on the model's trained knowledge, RAG retrieves relevant information from documents, databases, or vector stores before generating accurate and context-aware responses.<br /><br />
+          <p><strong>RAG Design Patterns</strong></p>
+          <ul>
+            <li>🔹 Naive RAG — The foundation: retrieve relevant chunks and generate a response.</li>
+            <li>🔹 Retrieve-and-Rerank — Improves retrieval quality by reranking the most relevant results.</li>
+            <li>🔹 Multimodal RAG — Works with text, images, documents, audio, and other media.</li>
+            <li>🔹 Graph RAG — Uses relationships between entities and knowledge graphs for richer context.</li>
+            <li>🔹 Hybrid RAG — Combines vector search with graph-based retrieval.</li>
+            <li>🔹 Agentic RAG — AI agents decide how and where to retrieve information.</li>
+            <li>🔹 Multi-Agent RAG — Multiple specialized agents collaborate across different searches, databases, and tools.</li>
+          </ul><br />
 
           <strong>RAG is used for</strong>
           <ul>
@@ -23,7 +33,9 @@ function Aimlrag() {
               <li>Integrating with vector databases (ChromaDB, Qdrant, Pinecone, FAISS)</li>
               <li>Supporting LangChain and LlamaIndex workflows</li>
               <li>Building AI assistants for healthcare, finance, legal, and customer support</li>
-          </ul>
+          </ul><br />
+                    <img src="/ragdesignpattern.gif" />
+
         </p>
       </header>
 
