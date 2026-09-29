@@ -100,6 +100,20 @@ git pull origin main`}
       </section>
 
       <section>
+        <b>8. 🔹 Merge vs Rebase</b>
+        <pre style={{ background: '#f5f5f5', padding: '1rem', overflowX: 'auto' }}>
+          <code>
+{`𝗠𝗲𝗿𝗴𝗲 = combine histories
+ • 𝗥𝗲𝗯𝗮𝘀𝗲 = move your work on top of another branch
+
+ • Use 𝗺𝗲𝗿𝗴𝗲 when you want to preserve branch history.
+ • Use 𝗿𝗲𝗯𝗮𝘀𝗲 when you want a cleaner, linear history.`}
+          </code>
+        </pre>
+        <img src="/merge-rebase.jpg" />
+      </section>
+
+      <section>
         <b>✅ Summary</b>
         <ul>
           <li>📝 GitHub account setup and repository creation</li>

@@ -15,6 +15,7 @@ function Netmicroservices() {
           <li>🚀 <a href="https://www.youtube.com/watch?v=4YUpFlkCQMA" target="_blank" rel="noopener noreferrer">Designing an eCommerce Architecture 2</a></li>
         </ul>
         <img src="/microservice.jpg" />
+        <img src="/microservice1.jpg" />
       </Section>
 
       <Section title="Solution Structure" color="text-yellow-600">

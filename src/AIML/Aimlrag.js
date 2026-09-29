@@ -51,7 +51,21 @@ Relevant Documents
 ↓
 Large Language Model (LLM)
 ↓
-Accurate AI Response`}</CodeBlock>
+Accurate AI Response
+
+How RAG works:
+Indexing → Break documents into chunks and turn them into embeddings
+Retrieval → Find the most relevant pieces using semantic search
+Augmentation → Combine retrieved context with the user query
+Generation → Let the LLM produce a grounded, accurate answer
+
+The result?
+
+If you're building AI products, this isn’t optional anymore it’s foundational.
+The real power of AI isn’t just generation. It’s retrieval + generation together.`}</CodeBlock>
+
+        <img src="/rag-workflow.jpg" width="70%" />
+        <img src="/rag-workflow1.jpg" width="70%" />        
       </Section>
 
       {/* Installation */}

@@ -31,6 +31,7 @@ function Netprojectsetup() {
       <SectionBlock title="2. Install Nuget Package" color="yellow">
         <CodeBlock>
           <ul className="list-disc ml-6 text-gray-800">
+            <li>Swashbuckle.AspNetCore</li>
             <li>Microsoft.EntityFrameworkCore</li>
             <li>Microsoft.EntityFrameworkCore.Tools</li>
             <li>Microsoft.EntityFrameworkCore.Design</li>

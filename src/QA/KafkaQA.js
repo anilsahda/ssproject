@@ -859,142 +859,27 @@ Overall, the project emphasizes scalability, data security, regulatory complianc
   Insurance
 </button>
       <button className="btn btn-info me-2 mb-2" onClick={() =>
-          handleOpenPopup(<p><strong>Kafka</strong> is an open-source, distributed data streaming platform used to publish, subscribe to, store, and process real-time data streams. It works like a high-performance message queue, allowing different applications to communicate by sending and receiving messages.<br />
-<strong>Kafka Components are:</strong><br />
-<strong>Producer</strong> sends messages or events to Kafka and it publishes data to a topic and kafka does not care who consumes the data. For example: Order Service sends OrderCreated events<br />
-<strong>Consumer</strong> reads messages from Kafka topics and it belong to consumer groups. Kafka make sure each partition is consumed by only one consumer in a group. For example: Inventory Service consumes OrderCreated events<br />
-<strong>Broker</strong> Kafka server that stores topic data and serves producers/consumers.<br /> 
-<strong>Cluster</strong> is a group of multiple brokers for scalability.<br />
-<strong>Topic</strong> is a logical channel where producers send message and consumers subscribe them and it is divided into partitions to process in parallel.<br />
-<strong>Partition</strong> topics are split into partitions for scalability<br />
-<strong>ZooKeeper</strong> used for cluster coordination<br /><br />
-
-<strong>Kafka Key Features</strong><br />
-<strong>High Throughput</strong> Can handle millions of messages per second. Suitable for big data and real-time systems<br />
-<strong>Fault Tolerance</strong> Data is replicated across brokers. If one broker fails, another takes over<br />
-<strong>Durability</strong> Messages are written to disk. Data is not lost even if consumers are down<br />
-<strong>Scalability</strong> Add more brokers → automatic scaling. Add more partitions → more parallelism<br />
-<strong>Loose Coupling</strong> Producers and consumers are independent. New consumers can be added without affecting producers<br />
-
-<strong>Why Kafka is Needed</strong><br />
-Traditional systems were struggling with: High-volume data, Real-time processing, Loose coupling between services, Reliability at scale<br />
-Kafka solves these problems by: Decoupling producers and consumers, Handling millions of messages per second, Ensuring durability and fault tolerance<br />
-
-<strong>When to Use Kafka</strong><br />
-Use Kafka when:<br />
-You need real-time data streaming<br />
-You want event-driven architecture<br />
-Systems need to be decoupled<br />
-High throughput and scalability are required<br />
-Messages must be durable and replayable<br />
-
-<strong>When NOT to Use Kafka</strong><br />
-Simple request-response communication<br />
-Low-volume messaging<br />
-Strict request ordering across all messages<br />
-Very small applications<br />
-<strong>Use Cases</strong>: Like collecting app logs, Real-time analytics, Order tracking in e-commerce and Communication between microservices</p>,
-`************************ producer.js ************************ 
-const { Kafka } = require("kafkajs");
-
-const kafka = new Kafka({
-  clientId: "demo-producer",
-  brokers: ["localhost:9092"]
-});
-
-const producer = kafka.producer();
-
-const run = async () => {
-  await producer.connect();
-
-  setInterval(async () => {
-    const event1 = { userId: 1, action: "login" };
-    const event2 = { userId: 2, action: "hi, how r u?" };
-
-    await producer.send({ 
-      topic: "user-events1", 
-      messages: [{ value: JSON.stringify(event1) }]
-    });
-
-    await producer.send({ 
-      topic: "user-events2", 
-      messages: [{ value: JSON.stringify(event2) }]
-    });
-
-    console.log("Produced:", event1);
-  }, 2000);
-};
-
-run().catch(console.error);
-
-************************ consumerA.js ************************
-const { Kafka } = require("kafkajs");
-
-const kafka = new Kafka({
-  clientId: "analytics-service",
-  brokers: ["localhost:9092"],
-});
-
-const consumer = kafka.consumer({ groupId: "analytics-group" });
-
-const run = async () => {
-  await consumer.connect();
-  await consumer.subscribe({ topic: "user-events1", fromBeginning: true });
-
-  await consumer.run({
-    eachMessage: async ({ message }) => {
-      console.log("📊 Analytics received:", message.value.toString());
-    },
-  });
-};
-
-run().catch(console.error);
-
-************************ consumerB.js ************************
-const { Kafka } = require("kafkajs");
-
-const kafka = new Kafka({
-  clientId: "email-service",
-  brokers: ["localhost:9092"],
-});
-
-const consumer = kafka.consumer({ groupId: "email-group" });
-
-const run = async () => {
-  await consumer.connect();
-  await consumer.subscribe({ topic: "user-events2", fromBeginning: true });
-
-  await consumer.run({
-    eachMessage: async ({ message }) => {
-      console.log("📧 Email service triggered:", message.value.toString());
-    },
-  });
-};
-
-run().catch(console.error);
-
-********************** docker-compose.yml ************************
-services:
-  zookeeper:
-    image: confluentinc/cp-zookeeper:7.5.0
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-    ports:
-      - "2181:2181"
-
-  kafka:
-    image: confluentinc/cp-kafka:7.5.0
-    depends_on:
-      - zookeeper
-    ports:
-      - "9092:9092"
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-`)
+          handleOpenPopup(<p>
+<img src="/kafka1.jpg" />
+<br />
+<img src="/kafka2.jpg" />
+<br />
+<img src="/kafka3.jpg" />
+<br />
+<img src="/kafka4.jpg" />
+<br />
+<img src="/kafka5.jpg" />
+<br />
+<img src="/kafka6.jpg" />
+<br />
+<img src="/kafka7.jpg" />
+<br />
+<img src="/kafka8.jpg" />
+<br />
+<img src="/kafka9.jpg" />
+<br />
+<img src="/kafka10.jpg" />
+</p>)
         }
       >Kafka</button>
 
@@ -1035,7 +920,7 @@ services:
       Event replay or long-term message storage is required<br />
       Real-time analytics pipelines<br /><br />
 
-      <strong>Use Cases</strong>: Task queues, Background job processing, Email/SMS notifications, Payment processing, Microservices communication
+      <img src="/rabbitmq.jpg" />
     </p>
   )
 }>

@@ -154,7 +154,75 @@ function AuthenticationStatic() {
             <h2>Welcome to MyCompany</h2>
 
             <p>
-              This is the home page with some dummy content.
+              🔐 What Actually Happens When You Click “Login”? <br />
+
+We click Login hundreds of times. <br />
+
+But what happens behind that button? <br />
+
+It looks simple from the user’s perspective, but several things happen in just a few milliseconds. <br /><br />
+
+1️⃣ Frontend <br />
+
+You enter your email and password and click Login. <br />
+
+The frontend validates the input and sends the credentials to the backend through an API request. <br /><br />
+
+⬇️ <br /><br />
+
+2️⃣ API Request <br />
+
+The request reaches the backend. <br />
+
+For example: <br />
+
+POST /api/login <br />
+
+The backend receives the credentials and starts the authentication process. <br /><br />
+
+⬇️ <br /><br />
+
+3️⃣ Authentication <br />
+
+The backend checks whether the account exists and verifies the password against the stored credentials. <br />
+
+Passwords shouldn’t be stored as plain text. They are stored using secure hashing mechanisms. <br /><br />
+
+⬇️ <br /><br />
+
+4️⃣ Database <br />
+
+The backend communicates with the database to retrieve the required user information. <br />
+
+For example: <br />
+
+User → Email → Password Hash → Role → Permissions <br /><br />
+
+⬇️ <br /><br />
+
+5️⃣ Token / Session <br />
+
+If authentication succeeds, the server creates an authenticated session or returns a token such as a JWT. <br />
+
+This tells the application: <br />
+
+“This user has been authenticated.” <br /><br />
+
+⬇️ <br /><br />
+
+6️⃣ Response <br />
+
+The backend sends a response back to the frontend. <br />
+
+✅ Successful → User is authenticated <br />
+❌ Failed → Invalid credentials / authentication error <br /><br />
+
+⬇️ <br /><br />
+
+7️⃣ Dashboard <br />
+
+The frontend receives the response and displays the appropriate dashboard based on the user’s role and permissions.<br /><br />
+<img src="/authentication.jpg" />
             </p>
           </div>
         );
