@@ -19,7 +19,7 @@ function SuperHeader() {
 
 useEffect(() => {
   const timer = setTimeout(() => {
-    setShowIntern(true);
+    setShowIntern(false);
   }, 5000);
 
   return () => clearTimeout(timer);
@@ -94,7 +94,7 @@ useEffect(() => {
 
             {!isLoggedIn ? (
                 <>
-                    <button className="btn btn-program" onClick={() => setShowIntern(true)}>🚀 Full-Stack Program</button>
+                    <button className="btn btn-program" onClick={() => setShowIntern(true)}>🚀 Placement Cell</button>
                     <button className="icon-btn" onClick={() => setShowSignup(true)}><FaUser /></button>
                     <button className="icon-btn" onClick={() => setShowLogin(true)}><FaSignInAlt /></button>
                 </>
@@ -295,7 +295,7 @@ useEffect(() => {
               <div className="card h-100 shadow-sm border-0">
                 <div className="card-body">
                   <h4 className="text-primary mb-3">📅 Program Details</h4>
-                  <p><strong>Duration:</strong> 3 - 6 Months</p>
+                  <p><strong>Duration:</strong> 3 - 12 Months</p>
                   <p><strong>Work Mode:</strong> Work From Office / Remote</p>
                   <p><strong>Office Hours:</strong> 9:00 AM – 6:00 PM</p>
                   <p><strong>Locations:</strong> Dehradun, Mohali & Hyderabad</p>
@@ -431,7 +431,7 @@ useEffect(() => {
                               <li className="mb-3 d-flex justify-content-between"><span>📍 Dehradun</span><span className="badge bg-success">Available</span></li>
                               <li className="mb-3 d-flex justify-content-between"><span>📍 Hyderabad</span><span className="badge bg-success">Available</span></li>
                               <li className="mb-3 d-flex justify-content-between"><span>📍 Delhi</span><span className="badge bg-warning text-dark">Jan 2027</span></li>
-                              <li className="mb-3 d-flex justify-content-between"><span>📍 Pune</span><span className="badge bg-warning text-dark">Apr 2027</span></li>
+                              <li className="mb-3 d-flex justify-content-between"><span>📍 Bangalore</span><span className="badge bg-warning text-dark">Apr 2027</span></li>
                             </ul>
                           </div>
                         </div>
