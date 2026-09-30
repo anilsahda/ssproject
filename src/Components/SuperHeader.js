@@ -17,13 +17,13 @@ function SuperHeader() {
     setIsLoggedIn(!!localStorage.getItem('token'));
   }, []);
 
-useEffect(() => {
-  const timer = setTimeout(() => {
-    setShowIntern(false);
-  }, 5000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntern(false);
+    }, 5000);
 
-  return () => clearTimeout(timer);
-}, []);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -60,58 +60,59 @@ useEffect(() => {
   };
 
   return (
-    <><nav className="navbar navbar-expand-lg custom-navbar shadow-sm">
-    <div className="container-fluid">
+    <>
+    <nav className="navbar navbar-expand-lg custom-navbar shadow-sm">
+      <div className="container-fluid">
 
-        {/* Logo */}
-        {/* <Link to="/" className="navbar-brand brand-logo">
-            <span className="brand-icon">SS</span>
-            <div className="brand-content">
-                <span className="brand-title">SS INTERNS</span>
+          {/* Logo */}
+          {/* <Link to="/" className="navbar-brand brand-logo">
+              <span className="brand-icon">SS</span>
+              <div className="brand-content">
+                  <span className="brand-title">SS INTERNS</span>
+              </div>
+          </Link> */}
+
+          <Link to="/" className="navbar-brand brand-logo">
+            <div className="brand-logo-image">
+                <img src="/ss-interns-logo.png" alt="SS Interns" />
             </div>
-        </Link> */}
+          </Link>
 
-      <Link to="/" className="navbar-brand brand-logo">
-          <div className="brand-logo-image">
-              <img src="/ss-interns-logo.png" alt="SS Interns" />
+          {/* Search */}
+          <div className="search-box mx-lg-4">
+              <i className="bi bi-search"></i>
+              <input type="search" placeholder="Search courses.." className="form-control" />
           </div>
-      </Link>
 
-        {/* Search */}
-        <div className="search-box mx-lg-4">
-            <i className="bi bi-search"></i>
-            <input type="search" placeholder="Search courses.." className="form-control" />
-        </div>
+          {/* Right Side */}
+          <div className="d-flex align-items-center gap-3">
+              <div className="helpline">
+                  <i className="bi bi-headset"></i>
+                  <div>
+                      <a href="tel:+91-9990364345">+91-9990364345</a>
+                  </div>
+              </div>
 
-        {/* Right Side */}
-        <div className="d-flex align-items-center gap-3">
-            <div className="helpline">
-                <i className="bi bi-headset"></i>
-                <div>
-                    <a href="tel:+91-9990364345">+91-9990364345</a>
-                </div>
-            </div>
-
-            {!isLoggedIn ? (
-                <>
-                    <button className="btn btn-program" onClick={() => setShowIntern(true)}>🚀 Placement Cell</button>
-                    <button className="icon-btn" onClick={() => setShowSignup(true)}><FaUser /></button>
-                    <button className="icon-btn" onClick={() => setShowLogin(true)}><FaSignInAlt /></button>
-                </>
-            ) : (
-                <div className="dropdown">
-                    <img src="/profile.png" alt="" className="profile-image dropdown-toggle" data-bs-toggle="dropdown" />
-                    <ul className="dropdown-menu dropdown-menu-end shadow-lg">
-                        <li><Link className="dropdown-item" to="/profile"><FaUser className="me-2 text-primary" />Edit Profile</Link></li>
-                        <li><button className="dropdown-item text-danger" onClick={handleLogout}><FaSignInAlt className="me-2" />Logout</button></li>
-                        <li><hr className="dropdown-divider"/></li>
-                        <li className="text-center py-2"><small className="text-muted">Logged in as</small><div className="fw-bold">{localStorage.getItem("userName")}</div></li>
-                    </ul>
-                </div>
-            )}
-        </div>
-    </div>
-</nav>
+              {!isLoggedIn ? (
+                  <>
+                      <button className="btn btn-program" onClick={() => setShowIntern(true)}>🚀 Placement Cell</button>
+                      <button className="icon-btn" onClick={() => setShowSignup(true)}><FaUser /></button>
+                      <button className="icon-btn" onClick={() => setShowLogin(true)}><FaSignInAlt /></button>
+                  </>
+              ) : (
+                  <div className="dropdown">
+                      <img src="/profile.png" alt="" className="profile-image dropdown-toggle" data-bs-toggle="dropdown" />
+                      <ul className="dropdown-menu dropdown-menu-end shadow-lg">
+                          <li><Link className="dropdown-item" to="/profile"><FaUser className="me-2 text-primary" />Edit Profile</Link></li>
+                          <li><button className="dropdown-item text-danger" onClick={handleLogout}><FaSignInAlt className="me-2" />Logout</button></li>
+                          <li><hr className="dropdown-divider"/></li>
+                          <li className="text-center py-2"><small className="text-muted">Logged in as</small><div className="fw-bold">{localStorage.getItem("userName")}</div></li>
+                      </ul>
+                  </div>
+              )}
+          </div>
+      </div>
+    </nav>
       {/* Login Modal */}
       {showLogin && (
         <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.7)' }} onClick={() => setShowLogin(false)}>
